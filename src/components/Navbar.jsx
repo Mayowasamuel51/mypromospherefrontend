@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className=" absolute w-full bg-purple flex flex-row justify-between items-center py-4 px-8">
+    <header className=" bg-purple flex flex-row justify-between items-center py-4 px-8">
       <Link to="/">
         <img src={logo} alt="logo" className=" w-40 lg:w-[360px]" />
       </Link>
