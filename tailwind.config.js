@@ -14,7 +14,8 @@ export default {
         darkpink: '#FE34E6',
         blue: '#407BFF',
         red: '#E3111E',
-        lightGrayishBlue: '#F4F5F4'
+        lightGrayishBlue: '#F4F5F4',
+        mistyRose: '#E1AFB5'
       },
       backgroundImage: {
         barber: "url('/src/assests/images/barber.png')"
