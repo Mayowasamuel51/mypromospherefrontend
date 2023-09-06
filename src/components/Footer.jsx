@@ -26,33 +26,33 @@ export default function Footer() {
       url: "/testimonials",
     },
   ];
-  const resourceLinks = [
-    {
-      id: 1,
-      text: "support",
-      url: "/support",
-    },
-    {
-      id: 2,
-      text: "development",
-      url: "/development",
-    },
-    {
-      id: 3,
-      text: "contact",
-      url: "/contact",
-    },
-    {
-      id: 4,
-      text: "terms & conditions",
-      url: "/terms&conditions",
-    },
-    {
-      id: 5,
-      text: "safety & security",
-      url: "/safety&security",
-    },
-  ];
+  // const resourceLinks = [
+  //   {
+  //     id: 1,
+  //     text: "support",
+  //     url: "/support",
+  //   },
+  //   {
+  //     id: 2,
+  //     text: "development",
+  //     url: "/development",
+  //   },
+  //   {
+  //     id: 3,
+  //     text: "contact",
+  //     url: "/contact",
+  //   },
+  //   {
+  //     id: 4,
+  //     text: "terms & conditions",
+  //     url: "/terms&conditions",
+  //   },
+  //   {
+  //     id: 5,
+  //     text: "safety & security",
+  //     url: "/safety&security",
+  //   },
+  // ];
   const categoriesLinks = [
     {
       id: 1,
@@ -138,7 +138,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className=" flex flex-col gap-y-5">
+        {/* <div className=" flex flex-col gap-y-5">
           <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
             Resource
           </h2>
@@ -151,7 +151,7 @@ export default function Footer() {
               );
             })}
           </ul>
-        </div>
+        </div> */}
 
         <div className=" flex flex-col gap-y-5">
           <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
