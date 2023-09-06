@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+
 
 // assests
 import logo from "../assests/SVGs/logo.svg";
@@ -31,13 +31,28 @@ export default function Navbar() {
         <a href="#about" className=" text-xl font-semibold font-['Inter']">
           About us
         </a>
-        <a href="#talents" className=" text-xl font-semibold font-['Inter']">Find talent</a>
-        <a href="#skills" className=" text-xl font-semibold font-['Inter']">Top skills</a>
-        <a href="#testimonials" className=" text-xl font-semibold font-['Inter']">Testimonials</a>
+        <a href="#talents" className=" text-xl font-semibold font-['Inter']">
+          Find talent
+        </a>
+        <a href="#skills" className=" text-xl font-semibold font-['Inter']">
+          Top skills
+        </a>
+        <a
+          href="#testimonials"
+          className=" text-xl font-semibold font-['Inter']"
+        >
+          Testimonials
+        </a>
       </nav>
       <div className=" hidden lg:flex lg:items-center lg:gap-x-6">
-        <button className=" text-xl text-white font-['Poppins] font-semibold leading-[51px]">Login</button>
-        <button className=" bg-pink py-1 px-5 rounded-lg font-['Poppins'] text-xl font-semibold leading-[51px]">Signup</button>
+        <button className=" text-xl text-white font-['Poppins] font-semibold leading-[51px]">
+          Login
+        </button>
+        <Link to={"signUp"}>
+          <button className=" bg-pink py-1 px-5 rounded-lg font-['Poppins'] text-xl font-semibold leading-[51px]">
+            Signup
+          </button>
+        </Link>
       </div>
     </header>
   );
