@@ -27,7 +27,7 @@ export default function Navbar() {
         )}
       </div>
 
-      {toggleIcon && <MobileNav />}
+      {toggleIcon && <MobileNav handleToggle={handleToggle} />}
 
       <nav className=" hidden bigLg:flex bigLg:items-center bigLg:gap-x-[68px]">
         <a href="#about" className=" text-lg font-semibold font-['Inter']">
