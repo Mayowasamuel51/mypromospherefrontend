@@ -2,8 +2,8 @@ import mission from "../../assests/images/mission.png";
 import missionTwo from "../../assests/images/mission2.png";
 export default function Mission() {
   return (
-    <section className=" max-w-screen-lg mx-auto px-8 py-20 bigLg:px-0">
-      <div className=" flex flex-col items-center gap-y-10 bigLg:flex-row bigLg:gap-x-32">
+    <section className=" max-w-screen-exl px-8 py-20 bigLg:px-16">
+      <div className=" flex flex-col items-center gap-y-10 bigLg:flex-row bigLg:gap-x-40 exl:gap-x-52">
         <div className=" flex flex-col gap-y-3 bigLg:basis-1/2">
           <h2 className=" font-['Poppins'] text-3xl font-semibold bigLg:text-5xl">
             Our Mission
@@ -20,12 +20,12 @@ export default function Mission() {
           <img
             src={mission}
             alt=""
-            className=" md:relative md:right-20 md:top-10 rounded-full w-[200px] h-[200px] object-cover"
+            className=" md:relative md:right-20 md:top-5 rounded-full w-[200px] h-[200px] object-cover"
           />
           <img
             src={missionTwo}
             alt=""
-            className=" hidden md:block md:relative md:left-20 md:bottom-10 rounded-full w-[200px] h-[200px] object-cover"
+            className=" hidden md:block md:relative md:left-20 md:bottom-5 rounded-full w-[200px] h-[200px] object-cover"
           />
         </div>
       </div>

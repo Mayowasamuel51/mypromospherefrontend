@@ -82,7 +82,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className=" bg-pink py-8 px-5 flex flex-col">
+    <footer className=" bg-pink py-8 px-8 flex flex-col bigLg:px-16">
       <form
         action=""
         className=" flex flex-col items-center lg:max-w-screen-lg lg:mx-auto"
