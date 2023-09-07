@@ -2,8 +2,8 @@ import sampleImage from '../../assests/images/barber.png'
 
 export default function Grow() {
   return (
-    <section className=" px-8 pb-16 flex flex-col gap-y-10 lg:px-16 lg:pb-20 lg:flex-row lg:items-center lg:gap-x-16">
-      <div className=" flex flex-col gap-y-8 lg:basis-1/2">
+    <section className=" px-8 pb-16 flex flex-col gap-y-10 bigLg:px-16 bigLg:pb-20 bigLg:flex-row bigLg:items-center bigLg:gap-x-16">
+      <div className=" flex flex-col gap-y-8 bigLg:basis-1/2">
         <div className=" flex flex-col gap-y-1">
           <h3 className=" text-2xl font-medium">Grow your Business</h3>
           <p className=" text-sm">
@@ -20,8 +20,8 @@ export default function Grow() {
           </p>
         </div>
       </div>
-      <div className=' lg:basis-1/2'>
-        <img src={sampleImage} alt="a sample" className=' lg:w-full lg:h-96' />
+      <div className=' bigLg:basis-1/2'>
+        <img src={sampleImage} alt="a sample" className=' bigLg:w-full bigLg:h-96' />
       </div>
     </section>
   );

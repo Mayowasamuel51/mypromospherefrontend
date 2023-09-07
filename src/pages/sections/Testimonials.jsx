@@ -4,7 +4,7 @@ import testimonialTwo from "../../assests/SVGs/testimonialTwo.svg";
 
 export default function Testimonials() {
   return (
-    <section className=" px-8 pb-16 lg:px-16 lg:pb-20">
+    <section className=" px-8 pb-16 bigLg:px-16 bigLg:pb-20">
       <h3 className=" text-2xl font-medium text-center mb-5">Testimonials</h3>
       <div className=" flex items-start gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5">
         {/* image container */}
