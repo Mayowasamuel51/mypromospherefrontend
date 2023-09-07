@@ -19,7 +19,7 @@ export default function Navbar() {
         <img src={logo} alt="logo" className=" w-40 lg:w-[360px]" />
       </Link>
 
-      <div onClick={handleToggle} className=" z-20 lg:hidden">
+      <div onClick={handleToggle} className=" z-20 xl:hidden">
         {toggleIcon ? (
           <XMarkIcon width={35} />
         ) : (
@@ -27,17 +27,17 @@ export default function Navbar() {
         )}
       </div>
 
-      <nav className=" hidden lg:flex lg:items-center lg:gap-x-[68px]">
-        <a href="#about" className=" text-xl font-semibold font-['Inter']">
+      <nav className=" hidden xl:flex xl:items-center xl:gap-x-[68px]">
+        <a href="#about" className=" text-lg font-semibold font-['Inter']">
           About us
         </a>
-        <a href="#talents" className=" text-xl font-semibold font-['Inter']">Find talent</a>
-        <a href="#skills" className=" text-xl font-semibold font-['Inter']">Top skills</a>
-        <a href="#testimonials" className=" text-xl font-semibold font-['Inter']">Testimonials</a>
+        <a href="#talents" className=" text-lg font-semibold font-['Inter']">Find talent</a>
+        <a href="#skills" className=" text-lg font-semibold font-['Inter']">Top skills</a>
+        <a href="#testimonials" className=" text-lg font-semibold font-['Inter']">Testimonials</a>
       </nav>
-      <div className=" hidden lg:flex lg:items-center lg:gap-x-6">
-        <button className=" text-xl text-white font-['Poppins] font-semibold leading-[51px]">Login</button>
-        <button className=" bg-pink py-1 px-5 rounded-lg font-['Poppins'] text-xl font-semibold leading-[51px]">Signup</button>
+      <div className=" hidden xl:flex xl:items-center xl:gap-x-6">
+        <button className=" text-lg text-black font-['Poppins] font-semibold leading-[51px]">Login</button>
+        <button className=" bg-pink py-1 px-5 rounded-lg font-['Poppins'] text-lg font-semibold leading-[51px]">Signup</button>
       </div>
     </header>
   );
