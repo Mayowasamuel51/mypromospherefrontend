@@ -10,9 +10,7 @@ export default function TalentAndValues() {
       <div className=" bg-darkpink/20 p-5 flex flex-col items-center exl:basis-2/3">
         <h5 className=" text-lg">
           Explore the best of{" "}
-          <span className=" bg-gradient-to-r from-blue to-rose-500 bg-clip-text fill-transparent text-xl font-semibold">
-            M&E
-          </span>
+          <span className=" tracking-[-1.8px]">MyPromoSphere</span>
         </h5>
         <BestTalents />
 
