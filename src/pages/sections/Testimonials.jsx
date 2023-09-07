@@ -42,14 +42,14 @@ export default function Testimonials() {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        navigation={false}
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {testimonies.map(({ img, name, location, testimony }) => {
+        {testimonies.map(({ id, img, name, location, testimony }) => {
           return (
-            <SwiperSlide>
-              <div className=" flex items-start gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5">
+            <SwiperSlide key={id}>
+              <div className=" m-10 flex items-start gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5">
                 {/* image container */}
                 <img src={img} alt="" className=" w-16" />
                 {/* details */}

@@ -4,6 +4,7 @@ import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 // assests
 import logo from "../assests/SVGs/logo.svg";
+import MobileNav from "./MobileNav";
 
 export default function Navbar() {
   const [toggleIcon, setToggleIcon] = useState(false);
@@ -15,10 +16,10 @@ export default function Navbar() {
   return (
     <header className=" bg-white flex flex-row justify-between items-center py-4 px-8">
       <Link to="/">
-        <img src={logo} alt="logo" className=" w-40 bigLg:w-[360px]" />
+        <img src={logo} alt="logo" className="w-20" />
       </Link>
 
-      <div onClick={handleToggle} className=" z-20 exl:hidden">
+      <div onClick={handleToggle} className=" z-20 bigLg:hidden">
         {toggleIcon ? (
           <XMarkIcon width={35} />
         ) : (
@@ -26,7 +27,9 @@ export default function Navbar() {
         )}
       </div>
 
-      <nav className=" hidden exl:flex exl:items-center exl:gap-x-[68px]">
+      {toggleIcon && <MobileNav />}
+
+      <nav className=" hidden bigLg:flex bigLg:items-center bigLg:gap-x-[68px]">
         <a href="#about" className=" text-lg font-semibold font-['Inter']">
           About us
         </a>
@@ -43,7 +46,7 @@ export default function Navbar() {
           Testimonials
         </a>
       </nav>
-      <div className=" hidden exl:flex exl:items-center exl:gap-x-6">
+      <div className=" hidden bigLg:flex bigLg:items-center bigLg:gap-x-6">
         <button className=" text-lg text-black font-['Poppins] font-semibold leading-[51px]">
           Login
         </button>

@@ -41,7 +41,7 @@ export default function CategoryContainer() {
     }
   ];
   return (
-    <div className=" flex flex-col gap-y-3 md:flex-row md:items-center md:gap-5 md:flex-wrap">
+    <div className=" flex flex-col gap-y-3 md:flex-row items-center md:gap-5 md:flex-wrap">
       {Categories.map(({ id, category, rating, skills }) => {
         return (
           <div key={id} className=" bg-lightGrayishBlue px-4 py-3 rounded-md w-[260px]">

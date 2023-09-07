@@ -119,7 +119,7 @@ export default function Footer() {
             +234-908-347-2391
           </p>
           <Link>
-            <img src={logo} alt="logo" className=" w-48 " />
+            <img src={logo} alt="logo" className=" w-20 " />
           </Link>
         </div>
 

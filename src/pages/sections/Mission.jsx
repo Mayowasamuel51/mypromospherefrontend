@@ -1,3 +1,4 @@
+import mission from '../../assests/images/mission.png'
 export default function Mission() {
   return (
     <section className=" max-w-screen-lg mx-auto px-8 py-20 bigLg:px-0">
@@ -13,7 +14,9 @@ export default function Mission() {
             tailored to your unique needs.
           </p>
         </div>
-        <div>{/* the different images will be here when they are ready */}</div>
+        <div>{/* the different images will be here when they are ready */}
+        <img src={mission} alt="" className=' rounded-full w-[300px] h-[300px] object-cover' />
+        </div>
       </div>
     </section>
   );
