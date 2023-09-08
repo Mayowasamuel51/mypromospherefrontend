@@ -1,5 +1,4 @@
 // sections
-import { Link } from "react-router-dom";
 import Hero from "./sections/Hero";
 import Mission from "./sections/Mission";
 import TalentAndValues from "./sections/TalentAndValues";

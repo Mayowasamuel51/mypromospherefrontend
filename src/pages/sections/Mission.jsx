@@ -2,7 +2,7 @@ import mission from "../../assests/images/mission.png";
 import missionTwo from "../../assests/images/mission2.png";
 export default function Mission() {
   return (
-    <section className=" max-w-screen-exl px-8 py-20 bigLg:px-16">
+    <section id="about" className=" max-w-screen-exl px-8 py-20 bigLg:px-16">
       <div className=" flex flex-col items-center gap-y-10 bigLg:flex-row bigLg:gap-x-40 exl:gap-x-52">
         <div className=" flex flex-col gap-y-3 bigLg:basis-1/2">
           <h2 className=" font-['Poppins'] text-3xl font-semibold bigLg:text-5xl">

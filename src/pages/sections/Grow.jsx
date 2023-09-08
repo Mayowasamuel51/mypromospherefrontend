@@ -1,4 +1,4 @@
-import sampleImage from '../../assests/images/barber.png'
+import sampleImage from '../../assests/images/grow.jpeg'
 
 export default function Grow() {
   return (

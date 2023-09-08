@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className=" bg-white flex flex-row justify-between items-center py-4 px-8 bigLg:px-16">
+    <header className=" bg-white flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
       <Link to="/">
         <img src={logo} alt="logo" className="w-20" />
       </Link>
@@ -47,11 +47,13 @@ export default function Navbar() {
         </a>
       </nav>
       <div className=" hidden bigLg:flex bigLg:items-center bigLg:gap-x-6">
-        <button className=" text-lg text-black font-['Poppins] font-semibold leading-[51px]">
-          Login
-        </button>
+        <Link to="login">
+          <button className=" text-lg py-2 px-5 text-black font-['Poppins] font-semibold">
+            Login
+          </button>
+        </Link>
         <Link to="signUp">
-          <button className=" bg-pink py-1 px-5 rounded-lg font-['Poppins'] text-lg font-semibold leading-[51px]">
+          <button className=" bg-pink py-2 px-5 rounded-lg font-['Poppins'] text-lg font-semibold">
             Signup
           </button>
         </Link>
