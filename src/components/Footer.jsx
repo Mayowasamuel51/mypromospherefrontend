@@ -26,33 +26,33 @@ export default function Footer() {
       url: "/testimonials",
     },
   ];
-  const resourceLinks = [
-    {
-      id: 1,
-      text: "support",
-      url: "/support",
-    },
-    {
-      id: 2,
-      text: "development",
-      url: "/development",
-    },
-    {
-      id: 3,
-      text: "contact",
-      url: "/contact",
-    },
-    {
-      id: 4,
-      text: "terms & conditions",
-      url: "/terms&conditions",
-    },
-    {
-      id: 5,
-      text: "safety & security",
-      url: "/safety&security",
-    },
-  ];
+  // const resourceLinks = [
+  //   {
+  //     id: 1,
+  //     text: "support",
+  //     url: "/support",
+  //   },
+  //   {
+  //     id: 2,
+  //     text: "development",
+  //     url: "/development",
+  //   },
+  //   {
+  //     id: 3,
+  //     text: "contact",
+  //     url: "/contact",
+  //   },
+  //   {
+  //     id: 4,
+  //     text: "terms & conditions",
+  //     url: "/terms&conditions",
+  //   },
+  //   {
+  //     id: 5,
+  //     text: "safety & security",
+  //     url: "/safety&security",
+  //   },
+  // ];
   const categoriesLinks = [
     {
       id: 1,
@@ -82,7 +82,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className=" bg-pink py-8 px-5 flex flex-col">
+    <footer className=" bg-pink py-8 px-8 flex flex-col bigLg:px-16">
       <form
         action=""
         className=" flex flex-col items-center lg:max-w-screen-lg lg:mx-auto"
@@ -119,7 +119,7 @@ export default function Footer() {
             +234-908-347-2391
           </p>
           <Link>
-            <img src={logo} alt="logo" className=" w-48 " />
+            <img src={logo} alt="logo" className=" w-20 " />
           </Link>
         </div>
 
@@ -138,7 +138,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className=" flex flex-col gap-y-5">
+        {/* <div className=" flex flex-col gap-y-5">
           <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
             Resource
           </h2>
@@ -151,7 +151,7 @@ export default function Footer() {
               );
             })}
           </ul>
-        </div>
+        </div> */}
 
         <div className=" flex flex-col gap-y-5">
           <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
