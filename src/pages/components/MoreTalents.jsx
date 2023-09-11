@@ -4,7 +4,8 @@ export default function MoreTalents() {
   const moreTalents = [
     {
       id: 1,
-      text: "Baker",
+      text: "Bakerr",
+
     },
     {
       id: 2,
