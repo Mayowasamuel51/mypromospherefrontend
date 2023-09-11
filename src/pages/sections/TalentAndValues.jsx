@@ -6,13 +6,11 @@ import MoreTalents from "../components/MoreTalents";
 
 export default function TalentAndValues() {
   return (
-    <section className=" bg-offwhite px-8 py-20 flex flex-col items-center gap-y-10 lg:px-16 xl:flex-row xl:gap-x-10">
-      <div className=" bg-darkpink/20 p-5 flex flex-col items-center xl:basis-2/3">
+    <section className=" bg-offwhite px-8 py-20 flex flex-col items-center gap-y-10 bigLg:px-16 exl:flex-row exl:gap-x-10">
+      <div className=" bg-darkpink/20 p-5 flex flex-col items-center exl:basis-2/3">
         <h5 className=" text-lg">
           Explore the best of{" "}
-          <span className=" bg-gradient-to-r from-blue to-rose-500 bg-clip-text fill-transparent text-xl font-semibold">
-            M&E
-          </span>
+          <span className=" tracking-[-1.8px]">MyPromoSphere</span>
         </h5>
         <BestTalents />
 
@@ -20,7 +18,7 @@ export default function TalentAndValues() {
         <MoreTalents />
       </div>
 
-      <div className=" flex flex-col gap-y-10 xl:basis-1/3">
+      <div className=" flex flex-col gap-y-10 exl:basis-1/3">
         <div className=" flex flex-col gap-y-2">
           <div className=" flex items-center gap-x-2">
             <img
