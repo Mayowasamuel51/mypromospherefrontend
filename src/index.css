@@ -14,39 +14,3 @@
   left: 50%;
   transform : translate(-50%, -50%)
 }
-.inset-x {
-  position: absolute;
-  top:50%;
-  left: 90%;
-  transform : translate(-50%, -50%)
-}
-.inseti{
-  position: absolute;
-  top:95%;
-  left: 50%;
-  transform : translate(-50%, -50%)
-}
-.colorize-img2{
-  filter: hue-rotate(200deg);
-}
-.font-300{
-  font-weight: 300;
-}
-.font-400{
-  font-weight: 400;
-}
-.font-500{
-  font-weight: 500;
-}
-.font-600{
-  font-weight: 600;
-}
-.font-700{
-  font-weight: 700;
-}
-.font-800{
-  font-weight: 800;
-}
-.font-900{
-  font-weight: 900;
-}
