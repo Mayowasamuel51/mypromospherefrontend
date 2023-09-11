@@ -45,9 +45,12 @@ export default function Navbar() {
         </a>
       </nav>
       <div className=" hidden lg:flex lg:items-center lg:gap-x-6">
-        <button className=" text-xl text-white font-['Poppins] font-semibold leading-[51px]">
-          Login
-        </button>
+        <Link to={"Login"}>
+          <button className=" text-xl text-white font-['Poppins] font-semibold leading-[51px]">
+            Login
+          </button>
+        </Link>
+
         <Link to={"signUp"}>
           <button className=" bg-pink py-1 px-5 rounded-lg font-['Poppins'] text-xl font-semibold leading-[51px]">
             Signup
