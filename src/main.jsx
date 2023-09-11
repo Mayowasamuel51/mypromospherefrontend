@@ -8,6 +8,7 @@ import "./index.css";
 // routes/pages
 import App from "./App.jsx";
 import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         element: <Home />
       }
     ])
+  },
+  {
+   path: "signUp",
+   element: <SignUp/>,
   }
 ])
 
