@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import CategoryContainer from "../components/CategoryContainer";
 export default function Categories() {
   return (
-    <section className=" px-8 py-16 bigLg:px-16 bigLg:py-20">
-      <h3 className=" text-2xl font-medium">Browse talent by Category</h3>
-      <p className=" text-sm mb-14">
+    <section className=" flex flex-col items-center px-8 py-16 md:items-start bigLg:px-16 bigLg:py-20 exl:items-center">
+      <h3 className=" text-lg font-medium md:text-2xl">Browse talent by Category</h3>
+      <p className=" text-sm mb-14 text-center">
         Looking for a service provider?{" "}
         <Link className=" text-purple">Browse talents</Link>
       </p>

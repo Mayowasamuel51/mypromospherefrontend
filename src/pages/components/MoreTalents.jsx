@@ -36,12 +36,12 @@ export default function MoreTalents() {
     },
   ];
   return (
-    <div className=" flex flex-row items-center justify-center gap-2 flex-wrap xl:flex-nowrap xl:grid xl:grid-cols-4">
+    <div className=" grid grid-cols-1 gap-3 md:grid-cols-4">
       {moreTalents.map(({id, text}) => {
         return (
           <div
             key={id}
-            className=" relative w-[170px] h-[90px] rounded-2xl flex flex-col justify-center items-center bg-barber bg-no-repeat bg-cover bg-center"
+            className=" relative w-[230px] h-[90px] rounded-2xl flex flex-col justify-center items-center bg-barber bg-no-repeat bg-cover bg-center md:w-[150px]"
           >
             <div className=" w-full h-full bg-black/50 flex flex-col justify-center items-center">
               <Link className=" text-white font-semibold text-sm">{text}</Link>
