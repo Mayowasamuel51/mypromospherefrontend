@@ -5,6 +5,7 @@ export default function MoreTalents() {
     {
       id: 1,
       text: "Baker",
+
     },
     {
       id: 2,
@@ -21,6 +22,8 @@ export default function MoreTalents() {
     {
       id: 5,
       text: "Bag Makers",
+
+
     },
     {
       id: 6,
