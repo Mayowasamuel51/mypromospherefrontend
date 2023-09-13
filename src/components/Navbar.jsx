@@ -14,22 +14,25 @@ export default function Navbar() {
   };
 
   return (
-    <header className=" bg-white flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
-      <Link to="/">
-        <img src={logo} alt="logo" className="w-20" />
+    <header className=" absolute w-full bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
+      <Link to="/" className=" flex items-center">
+        <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
+        <h1 className=" text-sm font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
       </Link>
       
       <div onClick={handleToggle} className=" z-20 bigLg:hidden">
+
+      <div onClick={handleToggle} className=" z-20 exl:hidden">
         {toggleIcon ? (
-          <XMarkIcon width={35} />
+          <XMarkIcon width={35} className=" text-white" />
         ) : (
-          <Bars3BottomRightIcon width={35} />
+          <Bars3BottomRightIcon width={35} className=" text-white" />
         )}
       </div>
 
       {toggleIcon && <MobileNav handleToggle={handleToggle} />}
 
-      <nav className=" hidden bigLg:flex bigLg:items-center bigLg:gap-x-[68px]">
+      <nav className=" hidden exl:flex exl:items-center exl:gap-x-[68px]">
         <a href="#about" className=" text-lg font-semibold font-['Inter']">
           About us
         </a>
@@ -46,14 +49,14 @@ export default function Navbar() {
           Testimonials
         </a>
       </nav>
-      <div className=" hidden bigLg:flex bigLg:items-center bigLg:gap-x-6">
+      <div className=" hidden exl:flex exl:items-center exl:gap-x-6">
         <Link to="login">
-          <button className=" text-lg py-2 px-5 text-black font-['Poppins] font-semibold">
+          <button className=" text-lg py-2 px-5 text-white font-['Poppins] font-semibold">
             Login
           </button>
         </Link>
         <Link to="signUp">
-          <button className=" bg-pink py-2 px-5 rounded-lg font-['Poppins'] text-lg font-semibold">
+          <button className=" bg-pink py-2 px-5 rounded-lg text-white font-['Poppins'] text-lg font-semibold">
             Signup
           </button>
         </Link>

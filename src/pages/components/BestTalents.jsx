@@ -28,7 +28,7 @@ export default function BestTalents() {
         return (
           <div
             key={id}
-            className={`relative w-[230px] h-[167px] rounded-2xl flex flex-col justify-center items-center bg-no-repeat bg-cover bg-center`}
+            className="relative w-[230px] h-[167px] rounded-2xl flex flex-col justify-center items-center bg-no-repeat bg-cover bg-center md:w-[200px]"
           >
             <img src={img} alt="" className=" absolute w-full h-full object-cover" />
             <div className=" w-full h-full bg-black/50 flex flex-col justify-center items-center z-20">
