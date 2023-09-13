@@ -6,6 +6,7 @@ import Categories from "./sections/Categories";
 import Grow from "./sections/Grow";
 import Testimonials from "./sections/Testimonials";
 import CTA from "./sections/CTA";
+import Skills from "./sections/Skills";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <TalentAndValues />
       <Categories />
       <Grow />
+      <Skills />
       <Testimonials />
       <CTA />
     </main>
