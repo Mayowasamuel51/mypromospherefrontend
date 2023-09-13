@@ -18,7 +18,7 @@ export default function Navbar() {
       <Link to="/">
         <img src={logo} alt="logo" className="w-20" />
       </Link>
-
+      
       <div onClick={handleToggle} className=" z-20 bigLg:hidden">
         {toggleIcon ? (
           <XMarkIcon width={35} />
@@ -57,7 +57,7 @@ export default function Navbar() {
             Signup
           </button>
         </Link>
-      </div>
+      </div> 
     </header>
   );
 }
