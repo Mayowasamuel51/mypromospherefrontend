@@ -19,8 +19,6 @@ export default function Navbar() {
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
         <h1 className=" text-sm font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
       </Link>
-      
-      <div onClick={handleToggle} className=" z-20 bigLg:hidden">
 
       <div onClick={handleToggle} className=" z-20 exl:hidden">
         {toggleIcon ? (
