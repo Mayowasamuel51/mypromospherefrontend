@@ -44,7 +44,7 @@ export default function CategoryContainer() {
     <div className=" grid gap-3 md:grid-cols-3 md:gap-5">
       {Categories.map(({ id, category, rating, skills }) => {
         return (
-          <div key={id} className=" bg-lightGrayishBlue px-4 py-3 rounded-md w-[220px] bigLg:w-[260px]">
+          <div key={id} className=" bg-lightGrayishBlue px-4 py-3 rounded-md w-[220px] bigLg:w-[260px] exl:w-[400px]">
             <h3 className=" capitalize font-medium">{category}</h3>
             <div className=' flex items-center justify-between'>
               <div className=' flex items-center gap-x-1'>
