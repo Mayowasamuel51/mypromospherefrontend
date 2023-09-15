@@ -49,7 +49,7 @@ const SignUp = () => {
               <h3
                 className={
                   toggleLight
-                    ? "text-[1rem] xs:text-[3rem] sm:text-[1.4rem] md:text-[1.6rem] font-500"
+                    ? "text-[1rem] xs:text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] font-500"
                     : "text-[1rem] xs:text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] font-500 text-white"
                 }
               >
