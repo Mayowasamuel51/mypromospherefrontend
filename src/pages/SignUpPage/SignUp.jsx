@@ -32,7 +32,7 @@ const SignUp = () => {
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
               </button>
             </Link>
-            
+
             <button onClick={toggleBtn}>
               {toggleLight ? (
                 <MdNightlight className="text-[2rem]" />
@@ -168,7 +168,7 @@ const SignUp = () => {
             <img
               src={or}
               alt=""
-              className="ml-3 sms:max-w-[360px] text-white colorize-img3"
+              className="ml-3 w-[90%] sms:max-w-[360px] text-white colorize-img3"
             />
             <button className="bg-white text-dark w-[90%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center ">
               <img src={google} alt="" className="px-3 " />
