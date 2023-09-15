@@ -29,7 +29,7 @@ const SignUp = () => {
           <article className="flex justify-between">
             <Link to={"/"}>
               <button className="px-2">
-                <p className={toggleLight ? "" : "text-white"}>Back</p>
+                <p className={toggleLight ? "" : "text-white"}>Bac</p>
               </button>
             </Link>
 
