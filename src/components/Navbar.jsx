@@ -58,7 +58,7 @@ export default function Navbar() {
             Signup
           </button>
         </Link>
-      </div>
+      </div> 
     </header>
   );
 }

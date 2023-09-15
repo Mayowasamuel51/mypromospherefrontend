@@ -14,17 +14,17 @@ const SignUp = () => {
     }
   return (
     // sign-up
-    <section className="bg-purple h-screen">
+    <section className="bg-purple h-screen w-[100%]">
       {/* sign-up-center  */}
       <div
         className={
           toggleLight
-            ? `inset bg-white w-[80%] flex justify-between rounded-3xl max-w-5xl`
-            : `inset bg-black w-[80%] flex justify-between rounded-3xl max-w-5xl`
+            ? `inset bg-white  w-[85%] lg:max-w-[800px]  flex justify-between rounded-3xl max-w-5xl`
+            : `inset bg-black  w-[80%] lg:max-w-[800px] flex justify-between rounded-3xl max-w-5xl`
         }
       >
         {/* sign-up-field  */}
-        <div className="px-12 py-4">
+        <div className="xs:px-4 smd:px-12 pt-2 ">
           {/* back  */}
           <article className="flex justify-between">
             <Link to={"/"}>
@@ -42,7 +42,7 @@ const SignUp = () => {
           </article>
 
           {/* form-field */}
-          <article className="mt-[0rem] px-4">
+          <article className="px-4">
             {/* create-account  */}
             <div>
               <h3
@@ -62,7 +62,7 @@ const SignUp = () => {
               </p>
             </div>
             {/* form  */}
-            <div className="mt-4">
+            <div className="mt-2">
               <form>
                 {/* Name-input  */}
                 <div className="flex flex-col">
@@ -77,14 +77,14 @@ const SignUp = () => {
                     spellCheck={false}
                     className={
                       toggleLight
-                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-2"
-                        : " bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-2 text-white "
+                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none"
+                        : " bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white mt-1 "
                     }
                     placeholder="Full name"
                   />
                 </div>
                 {/* Email-Address  */}
-                <div className="flex flex-col mt-4">
+                <div className="flex flex-col mt-2 ">
                   <label
                     htmlFor="email"
                     className={toggleLight ? " " : "text-white"}
@@ -96,14 +96,14 @@ const SignUp = () => {
                     spellCheck={false}
                     className={
                       toggleLight
-                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-2"
-                        : " text-white bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-2 "
+                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none"
+                        : " text-white bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-1 "
                     }
                     placeholder="example@gmail.com"
                   />
                 </div>
                 {/*Password*/}
-                <div className="flex flex-col mt-4">
+                <div className="flex flex-col mt-2">
                   <label
                     htmlFor="password"
                     className={toggleLight ? " " : "text-white"}
@@ -115,40 +115,42 @@ const SignUp = () => {
                     spellCheck={false}
                     className={
                       toggleLight
-                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-2"
-                        : " text-white bg-transparent  border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-2 "
+                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none "
+                        : " text-white bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none mt-1"
                     }
                     placeholder="Enter password"
                   />
                 </div>
                 {/*agreement*/}
-                <article className="flex items-center gap-[1rem]">
+                <article className="flex xs:flex-col sm:flex-row items-center gap-[1rem]">
                   {/* toggle  */}
                   <div
-                    className="bg-grey border relative mt-4 w-[2.6rem] xxs:w-16 h-6 md:w-[2.6rem] max-w-[40px] rounded-full cursor-pointer"
+                    className="xs:order-2 bg-grey border relative xs:mt-0  sm:mt-4 w-[2.6rem] xxs:w-16 h-6 md:w-[2.6rem] max-w-[40px] rounded-full cursor-pointer"
                     onClick={() => setSelected(!selected)}
                   >
                     <span
                       className={
                         selected
                           ? "w-2/5 h-4/5 bg-white absolute rounded-full left-[.2rem] top-[.15rem] transition-all duration-500"
-                          : "w-2/5 h-4/5 bg-white absolute rounded-full left-[.0rem]  ml-5 smd:top-[.15rem]  transition-all duration-500"
+                          : "w-2/5 h-4/5 bg-white absolute rounded-full left-[-.1rem] xsm:left-[.0rem] 380:left-[-.1rem] top-[.18rem] ml-5 smd:top-[.15rem]  transition-all duration-500"
                       }
                     ></span>
                   </div>
                   {/* text  */}
-                  <p
-                    className={
-                      toggleLight
-                        ? "mt-5 max-w-[20rem]"
-                        : "text-white mt-5 max-w-[20rem]"
-                    }
-                  >
-                    I agree to the{" "}
-                    <span className="text-blue"> Platforms Terms </span>of
-                    service and{" "}
-                    <span className="text-blue">Privacy policy</span>
-                  </p>
+                  <div className="sm:order-2">
+                    <p
+                      className={
+                        toggleLight
+                          ? "mt-2 max-w-[20rem]  "
+                          : "text-white mt-2  max-w-[20rem] "
+                      }
+                    >
+                      I agree to the{" "}
+                      <span className="text-blue"> Platforms Terms </span>of
+                      service and
+                      <span className="text-blue"> privacy policy </span>
+                    </p>
+                  </div>
                 </article>
               </form>
             </div>
@@ -156,10 +158,10 @@ const SignUp = () => {
           {/* end of form-field  */}
 
           {/* sign-up btn  */}
-          <article className="mt-0">
+          <article className="mt-3 pb-3">
             <Link to={"/layout"}>
-              <button className="bg-purple text-white w-[100%] sms:max-w-[360px] ml-3 mt-4 rounded-md ">
-                <p className="py-3 smax:text-[1.25rem] ">Sign up</p>
+              <button className="bg-purple text-white w-[100%] sms:max-w-[360px] ml-3 rounded-md ">
+                <p className="py-2 smax:text-[1.25rem] ">Sign up</p>
               </button>
             </Link>
             <img
@@ -167,9 +169,9 @@ const SignUp = () => {
               alt=""
               className="ml-3 sms:max-w-[360px] text-white colorize-img3"
             />
-            <button className="bg-white text-dark w-[100%] sms:max-w-[360px] ml-3 mt-0 rounded-full border border-black flex items-center ">
+            <button className="bg-white text-dark w-[100%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center ">
               <img src={google} alt="" className="px-3 " />
-              <p className="py-3 smax:text-[1.25rem] ml-7">
+              <p className="py-2 smax:text-[1.25rem] mx-auto ">
                 Continue with Google
               </p>
             </button>
@@ -181,8 +183,8 @@ const SignUp = () => {
           <h1 className="px-12 max-w-[20rem] mt-24 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>
-          <div className="absolute hidden top-[14rem] lg:left-[-3rem] xlg:left-[-5rem] large:left-[-8rem] large:top-[12rem] lg:block">
-            <img src={signup} alt="" className="w-[300px] large:w-[380px] " />
+          <div className="absolute hidden top-[14rem] lg:left-[-4rem] xlg:left-[-4rem] large:left-[-3rem] large:top-[12rem] lg:block">
+            <img src={signup} alt="" className="w-[270px] large:w-[290px] " />
           </div>
         </div>
       </div>
