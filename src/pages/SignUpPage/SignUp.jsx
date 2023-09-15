@@ -1,17 +1,17 @@
 import { useState } from "react";
-import or from "../../assests/images/or.png"
-import google from "../../assests/images/icon_google.png"
-import signup from "../../assests/images/signup-image.png"
+import or from "../../assests/images/or.png";
+import google from "../../assests/images/icon_google.png";
+import signup from "../../assests/images/signup-image.png";
 import { Link } from "react-router-dom";
-import {MdNightlight} from "react-icons/md"
-import {PiSunLight} from "react-icons/pi"
+import { MdNightlight } from "react-icons/md";
+import { PiSunLight } from "react-icons/pi";
 
 const SignUp = () => {
-    const[selected, setSelected] = useState(false)
-    const[toggleLight, setToggleLight] = useState(true)
-    const toggleBtn =()=>{
-      setToggleLight(!toggleLight)
-    }
+  const [selected, setSelected] = useState(false);
+  const [toggleLight, setToggleLight] = useState(true);
+  const toggleBtn = () => {
+    setToggleLight(!toggleLight);
+  };
   return (
     // sign-up
     <section className="bg-purple h-screen w-[100%]">
@@ -29,7 +29,7 @@ const SignUp = () => {
           <article className="flex justify-between">
             <Link to={"/"}>
               <button className="px-2">
-                <p className={toggleLight ? "" : "text-white"}>Bac</p>
+                <p className={toggleLight ? "" : "text-white"}>Back</p>
               </button>
             </Link>
 
@@ -49,7 +49,7 @@ const SignUp = () => {
               <h3
                 className={
                   toggleLight
-                    ? "text-[1rem] xs:text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] font-500"
+                    ? "text-[1rem] xs:text-[3rem] sm:text-[1.4rem] md:text-[1.6rem] font-500"
                     : "text-[1rem] xs:text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] font-500 text-white"
                 }
               >
@@ -187,12 +187,15 @@ const SignUp = () => {
           <div className="absolute hidden top-[14rem] lg:left-[-4rem] xlg:left-[-4rem] large:left-[-3rem] large:top-[12rem] lg:block">
             <img src={signup} alt="" className="w-[270px] large:w-[290px] " />
           </div>
-        </div> 
+        </div>
       </div>
       {/* end of sign-up-center  */}
     </section>
     // end of sign-up
   );
-}
+};
 
-export default SignUp
+
+export default SignUp;
+
+
