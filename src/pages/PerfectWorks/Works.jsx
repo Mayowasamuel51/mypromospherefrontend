@@ -13,7 +13,7 @@ const Works = () => {
       {/* peferct works  */}
       <section className="p-6">
         {/* heading */}
-        <div className='px-6 bigLg:px-12 '>
+        <div className="px-5 bigLg:px-12 mt-12 md:mt-20 ">
           <h1 className="text-[2rem] md:text-[3rem] md:max-w-md font-600">
             {" "}
             Perfect works made for you
@@ -40,8 +40,11 @@ const Works = () => {
               </div>
             </article>
           </div>
+          {/* images  */}
+          <div className="mx-auto">
+            <Images />
+          </div>
         </div>
-        <Images/>
       </section>
     </>
   );

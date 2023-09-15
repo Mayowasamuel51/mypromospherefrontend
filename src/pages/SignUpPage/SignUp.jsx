@@ -28,7 +28,7 @@ const SignUp = () => {
           {/* back  */}
           <article className="flex justify-between">
             <Link to={"/"}>
-              <button>
+              <button className="px-2">
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
               </button>
             </Link>
@@ -77,7 +77,7 @@ const SignUp = () => {
                     spellCheck={false}
                     className={
                       toggleLight
-                        ? "border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none"
+                        ? "w-[100%] border border-black border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none"
                         : " bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white mt-1 "
                     }
                     placeholder="Full name"
@@ -160,7 +160,7 @@ const SignUp = () => {
           {/* sign-up btn  */}
           <article className="mt-3 pb-3">
             <Link to={"/layout"}>
-              <button className="bg-purple text-white w-[100%] sms:max-w-[360px] ml-3 rounded-md ">
+              <button className="bg-purple text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
                 <p className="py-2 smax:text-[1.25rem] ">Sign up</p>
               </button>
             </Link>
@@ -169,7 +169,7 @@ const SignUp = () => {
               alt=""
               className="ml-3 sms:max-w-[360px] text-white colorize-img3"
             />
-            <button className="bg-white text-dark w-[100%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center ">
+            <button className="bg-white text-dark w-[90%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center ">
               <img src={google} alt="" className="px-3 " />
               <p className="py-2 smax:text-[1.25rem] mx-auto ">
                 Continue with Google
@@ -186,7 +186,7 @@ const SignUp = () => {
           <div className="absolute hidden top-[14rem] lg:left-[-4rem] xlg:left-[-4rem] large:left-[-3rem] large:top-[12rem] lg:block">
             <img src={signup} alt="" className="w-[270px] large:w-[290px] " />
           </div>
-        </div>
+        </div> 
       </div>
       {/* end of sign-up-center  */}
     </section>
