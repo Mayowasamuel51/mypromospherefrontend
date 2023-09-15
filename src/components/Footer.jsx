@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // assests
-import logo from "../assests/SVGs/logo.svg";
+import logo from "../assests/images/logo black.png";
 
 export default function Footer() {
   const quickLinks = [
@@ -26,33 +26,6 @@ export default function Footer() {
       url: "/testimonials",
     },
   ];
-  // const resourceLinks = [
-  //   {
-  //     id: 1,
-  //     text: "support",
-  //     url: "/support",
-  //   },
-  //   {
-  //     id: 2,
-  //     text: "development",
-  //     url: "/development",
-  //   },
-  //   {
-  //     id: 3,
-  //     text: "contact",
-  //     url: "/contact",
-  //   },
-  //   {
-  //     id: 4,
-  //     text: "terms & conditions",
-  //     url: "/terms&conditions",
-  //   },
-  //   {
-  //     id: 5,
-  //     text: "safety & security",
-  //     url: "/safety&security",
-  //   },
-  // ];
   const categoriesLinks = [
     {
       id: 1,
@@ -119,7 +92,7 @@ export default function Footer() {
             +234-908-347-2391
           </p>
           <Link>
-            <img src={logo} alt="logo" className=" w-20 " />
+            <img src={logo} alt="logo" className=" w-16 " />
           </Link>
         </div>
 
