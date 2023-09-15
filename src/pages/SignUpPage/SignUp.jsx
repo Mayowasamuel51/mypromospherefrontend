@@ -32,6 +32,7 @@ const SignUp = () => {
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
               </button>
             </Link>
+            
             <button onClick={toggleBtn}>
               {toggleLight ? (
                 <MdNightlight className="text-[2rem]" />
