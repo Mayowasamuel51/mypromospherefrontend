@@ -42,7 +42,8 @@ const Detail = () => {
               alt=""
               className="w-[100rem] md:w-[80rem] md:h-[22rem] large:w-full large:h-[25rem]  rounded-b-[3rem]"
             />
-            <div className="w-[9rem] h-[9rem]  bg-white rounded-full absolute inseti"></div>
+            <div class="absolute inset-0 bg-black opacity-50 rounded-b-[2.75rem]"></div>
+            <div className=" xs:w-[4rem] xs:h-[4rem] bg-white rounded-full absolute inseti"></div>
             <img
               src={roundedImg}
               alt=""
@@ -54,7 +55,7 @@ const Detail = () => {
         {/* info  */}
         <div>
           {/* name & job  */}
-          <article className=" xs:mt-[6rem] md:mt-[7.8rem] lg:mt-[5.8rem] large:mt-[8rem] text-center">
+          <article className=" xs:mt-[4rem] md:mt-[7.8rem] lg:mt-[5.8rem] large:mt-[8rem] text-center">
             <div>
               <h1 className="font-700 text-[1.8rem] md:text-[2.4rem]">
                 {name}
@@ -84,13 +85,13 @@ const Detail = () => {
               {/* agent-tabs  */}
               <div className="flex">
                 {/* tab-btn  */}
-                <div className="flex items-center gap-x-4">
+                <div className="flex justify-center items-center gap-x-4">
                   <button
                     onClick={() => updateToggle(1)}
                     className={
                       toggle === 1
-                        ? " p-4 px-12 bg-[#3D217A] rounded-md z-10 text-[2rem] md:px-20  xlg:px-24  focus:outline-none flex gap-x-3"
-                        : "ml-8 flex gap-x-3 text-[2rem] border p-4 px-12 md:px-20 border-r-0 rounded-md"
+                        ? " xs:p-2 xs:pl-7 px-12 bg-[#3D217A] rounded-md z-10 text-[1.5rem] md:text-[2.2rem] md:px-10 md:pl-12 focus:outline-none flex gap-x-3"
+                        : "xs:p-2 xs:pl-8 ml-8 flex gap-x-3 text-[1.5rem] border p-2 px-12 md:px-10 md:text-[2.2rem] md:pl-12 border-r-0 rounded-md"
                     }
                   >
                     {" "}
@@ -104,8 +105,8 @@ const Detail = () => {
                   onClick={() => updateToggle(2)}
                   className={
                     toggle === 2
-                      ? "p-4 px-12 text-[2rem] rounded-md text-white  bg-[#3D217A] md:px-20 xlg:px-24 border-indigo-500  focus:outline-none"
-                      : "text-[2rem] border p-4 px-12 md:px-20 rounded-md ml-[-.4rem] z-0 "
+                      ? " xs:p-2 xs:pr-7 xs:pl-8 p-4 px-12 text-[1.5rem] rounded-md text-white  bg-[#3D217A] md:px-10 md:text-[2.2rem] border-indigo-500 focus:outline-none"
+                      : " xs:p-2 xs:pr-5 xs:pl-5 text-[1.5rem] border p-4 px-12 md:px-10 md:text-[2.2rem] rounded-md ml-[-.4rem] z-0 "
                   }
                 >
                   Works
@@ -123,7 +124,18 @@ const Detail = () => {
               </div>
 
               {/* onboarded-agent  */}
-              <div>{toggle === 2 ? <WorksInfo workImage1 ={workImage1} workImage2 ={workImage2} workImage3 ={workImage3} workImage4={workImage4} workImage5 ={workImage5} workImage6={workImage6}/> : null}</div>
+              <div>
+                {toggle === 2 ? (
+                  <WorksInfo
+                    workImage1={workImage1}
+                    workImage2={workImage2}
+                    workImage3={workImage3}
+                    workImage4={workImage4}
+                    workImage5={workImage5}
+                    workImage6={workImage6}
+                  />
+                ) : null}
+              </div>
               {/* end of tabs center  */}
             </div>
           </article>

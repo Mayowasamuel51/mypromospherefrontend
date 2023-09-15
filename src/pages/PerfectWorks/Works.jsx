@@ -13,7 +13,7 @@ const Works = () => {
       {/* peferct works  */}
       <section className="p-6">
         {/* heading */}
-        <div>
+        <div className="px-5 bigLg:px-12 mt-12 md:mt-20 ">
           <h1 className="text-[2rem] md:text-[3rem] md:max-w-md font-600">
             {" "}
             Perfect works made for you
@@ -31,17 +31,20 @@ const Works = () => {
               {/* end of searchbar  */}
               {/* filter-box  */}
               <div className="relative cursor-pointer">
-                <div className="border sm:w-[4rem] sm:h-[4rem] md:w-[4.3rem] md:h-[4.3rem] rounded-[1rem] bg-black"></div>
+                <div className="border sm:w-[3.5rem] sm:h-[3.4rem] md:w-[3.4rem] md:h-[3.5rem] rounded-[.8rem] bg-black"></div>
                 {/* filters */}
                 <div className="flex absolute inset">
-                  <img src={leftFilter} alt="" className="w-[45%]" />
-                  <img src={rightFilter} alt="" className="w-[45%]" />
+                  <img src={leftFilter} alt="" className="w-[45%] h-full" />
+                  <img src={rightFilter} alt="" className="w-[45%] h-[100%]" />
                 </div>
               </div>
             </article>
           </div>
+          {/* images  */}
+          <div className="mx-auto">
+            <Images />
+          </div>
         </div>
-        <Images/>
       </section>
     </>
   );

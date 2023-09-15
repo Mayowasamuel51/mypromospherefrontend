@@ -1,8 +1,12 @@
 // sections
-import { Link } from "react-router-dom";
 import Hero from "./sections/Hero";
 import Mission from "./sections/Mission";
 import TalentAndValues from "./sections/TalentAndValues";
+import Categories from "./sections/Categories";
+import Grow from "./sections/Grow";
+import Testimonials from "./sections/Testimonials";
+import CTA from "./sections/CTA";
+import Skills from "./sections/Skills";
 
 export default function Home() {
   return (
@@ -10,10 +14,11 @@ export default function Home() {
       <Hero />
       <Mission />
       <TalentAndValues />
-      <section className=" px-8 py-16 lg:px-16 lg:py-20">
-        <h3 className=" text-2xl font-medium">Browse talent by Category</h3>
-        <p className=" text-sm">Looking for a service provider? <Link className=" text-purple">Browse talents</Link></p>
-      </section>
+      <Categories />
+      <Grow />
+      <Skills />
+      <Testimonials />
+      <CTA />
     </main>
   );
 }
