@@ -31,7 +31,7 @@ const Works = () => {
               {/* end of searchbar  */}
               {/* filter-box  */}
               <div className="relative cursor-pointer">
-                <div className="border sm:w-[3.5rem] sm:h-[3.4rem] md:w-[3.4rem] md:h-[3.5rem] rounded-[.8rem] bg-black"></div>
+                <div className="border w-[3.5rem] h-[3.4rem] sm:w-[3.5rem] sm:h-[3.4rem] md:w-[3.4rem] md:h-[3.5rem] rounded-[.8rem] bg-black"></div>
                 {/* filters */}
                 <div className="flex absolute inset">
                   <img src={leftFilter} alt="" className="w-[45%] h-full" />
