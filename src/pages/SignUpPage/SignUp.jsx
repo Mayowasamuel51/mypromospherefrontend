@@ -18,16 +18,16 @@ const SignUp = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white w-[80%] max-w-3xl rounded-3xl px-8 flex justify-between"
-            : "inset bg-black w-[80%] max-w-3xl rounded-3xl px-8 flex justify-between"
+            ? "inset bg-white w-[85%] max-w-3xl rounded-3xl px-8 flex justify-between"
+            : "inset bg-black w-[85%] max-w-3xl rounded-3xl px-8 flex justify-between"
         }
       >
         {/* sign-up center  */}
         <div>
           {/* back  */}
           <article className="mt-1 xs:mt-4 flex items-center justify-between">
-            <Link to={"/"}>
-              <button>
+            <Link to={"/"} >
+              <button className='focus-outline-none'>
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
               </button>
             </Link>
