@@ -2,6 +2,9 @@ import {useState} from 'react'
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
 import { Link } from "react-router-dom";
+import signup from "../../assests/images/signup-image.png";
+import { MdNightlight } from "react-icons/md";
+import { PiSunLight } from "react-icons/pi";
 
 const SignUp = () => {
     const [selected, setSelected] = useState(false);
@@ -12,128 +15,189 @@ const SignUp = () => {
   return (
     <section className="bg-purple h-screen">
       {/* sign-up box  */}
-      <div className="inset bg-white w-[80%] rounded-md px-8">
-        {/* back  */}
-        <article className='mt-1'>
-          <p>Back</p>
-        </article>
-        {/* create-account  */}
-        <article className="mt-1">
-          <h3 className="font-500 text-[1.1rem] sm:text-[1.3rem]">
-            Create{" "}
-            <span className="font-500 text-[1.1rem] sm:text-[1.3rem] text-blue">
-              Account
-            </span>
-          </h3>
-          <p className="">
-            Already have an account? <span className="text-red">Login</span>{" "}
-          </p>
-        </article>
-        {/* form-field  */}
-        <article className="mt-1">
-          {/* form  */}
-          <form>
-            {/* name-input  */}
-            <div className="flex flex-col">
-              <label htmlFor="name" className={""}>
-                Name
-              </label>
-              <input
-                type="text"
-                className="w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none"
-              />
-            </div>
-            {/* email  */}
-            <div className="flex flex-col mt-1">
-              <label htmlFor="name" className={""}>
-                Email Address
-              </label>
-              <input
-                type="text"
-                className="w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none"
-              />
-            </div>
-            {/* password  */}
-            <div className="flex flex-col mt-1">
-              <label htmlFor="name" className={""}>
-                Password
-              </label>
-              <input
-                type="text"
-                className="w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none"
-              />
-            </div>
-            {/*agreement*/}
-            <article className="flex xs:flex-col sm:flex-row items-center gap-[1rem]">
-              {/* toggle  */}
-              <div
-                className="xs:order-2 bg-grey border relative xs:mt-0  sm:mt-2 w-[2.6rem] xxs:w-16 h-6 md:w-[2.6rem] max-w-[40px] rounded-full cursor-pointer"
-                onClick={() => setSelected(!selected)}
-              >
-                <span
-                  className={
-                    selected
-                      ? "w-2/5 h-4/5 bg-white absolute rounded-full left-[.2rem] top-[.15rem] transition-all duration-500"
-                      : "w-2/5 h-4/5 bg-white absolute rounded-full left-[-.1rem] xsm:left-[.0rem] 380:left-[-.1rem] top-[.18rem] ml-5 smd:top-[.15rem]  transition-all duration-500"
-                  }
-                ></span>
-              </div>
-              {/* text  */}
-              <div className="sm:order-2">
-                <p
+      <div
+        className={
+          toggleLight
+            ? "inset bg-white w-[80%] max-w-3xl rounded-3xl px-8 flex justify-between"
+            : "inset bg-black w-[80%] max-w-3xl rounded-3xl px-8 flex justify-between"
+        }
+      >
+        {/* sign-up center  */}
+        <div>
+          {/* back  */}
+          <article className="mt-1 xs:mt-4 flex items-center justify-between">
+            <Link to={"/"}>
+              <button>
+                <p className={toggleLight ? "" : "text-white"}>Back</p>
+              </button>
+            </Link>
+
+            <button onClick={toggleBtn}>
+              {toggleLight ? (
+                <MdNightlight className="text-[2rem]" />
+              ) : (
+                <PiSunLight className="text-white text-[2rem]" />
+              )}
+            </button>
+          </article>
+          {/* create-account  */}
+          <article className="mt-1">
+            <h3
+              className={
+                toggleLight
+                  ? "font-500 text-[1.1rem] sm:text-[1.3rem]"
+                  : "font-500 text-[1.1rem] sm:text-[1.3rem] text-white"
+              }
+            >
+              Create{" "}
+              <span className="font-500 text-[1.1rem] sm:text-[1.3rem] text-blue">
+                Account
+              </span>
+            </h3>
+            <p className={toggleLight ? "" : "text-white"}>
+              Already have an account? <span className="text-red">Login</span>{" "}
+            </p>
+          </article>
+          {/* form-field  */}
+          <article className="mt-1">
+            {/* form  */}
+            <form>
+              {/* name-input  */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="name"
+                  className={toggleLight ? "" : "text-white"}
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
                   className={
                     toggleLight
-                      ? "mt-1 max-w-[20rem]  "
-                      : "text-white mt-1  max-w-[20rem] "
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
+                      : "w-[90%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white mt-1"
                   }
-                >
-                  I agree to the{" "}
-                  <span className="text-blue"> Platforms Terms </span>of service
-                  and
-                  <span className="text-blue"> privacy policy </span>
-                </p>
+                  placeholder="Full name"
+                />
               </div>
-            </article>
-            {/* sign-up btn  */}
-            <article className="mt-2 pb-3">
-              <Link to={"/layout"}>
-                <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
-                  <p className="smax:text-[1.25rem] ">Sign up</p>
+              {/* email  */}
+              <div className="flex flex-col mt-1">
+                <label
+                  htmlFor="name"
+                  className={toggleLight ? "" : "text-white"}
+                >
+                  Email Address
+                </label>
+                <input
+                  type="text"
+                  className={
+                    toggleLight
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
+                      : "w-[90%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1"
+                  }
+                  placeholder="example@gmail.com"
+                />
+              </div>
+              {/* password  */}
+              <div className="flex flex-col mt-1">
+                <label
+                  htmlFor="name"
+                  className={toggleLight ? "" : "text-white"}
+                >
+                  Password
+                </label>
+                <input
+                  type="text"
+                  className={
+                    toggleLight
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
+                      : " bg-transparent w-[90%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                  }
+                  placeholder="Enter password"
+                />
+              </div>
+              {/*agreement*/}
+              <article className="flex xs:flex-col sm:flex-row items-center gap-[1rem]">
+                {/* toggle  */}
+                <div
+                  className="xs:order-2 bg-grey border relative xs:mt-0  sm:mt-2 w-[2.6rem] xxs:w-16 h-6 md:w-[2.6rem] max-w-[40px] rounded-full cursor-pointer"
+                  onClick={() => setSelected(!selected)}
+                >
+                  <span
+                    className={
+                      selected
+                        ? "w-2/5 h-4/5 bg-white absolute rounded-full left-[.2rem] top-[.15rem] transition-all duration-500"
+                        : "w-2/5 h-4/5 bg-white absolute rounded-full left-[-.1rem] xsm:left-[.0rem] 380:left-[-.1rem] xs:top-[.12rem] xs:left-[.0rem] ml-5 smd:top-[.15rem]  transition-all duration-500"
+                    }
+                  ></span>
+                </div>
+                {/* text  */}
+                <div className="sm:order-2">
+                  <p
+                    className={
+                      toggleLight
+                        ? "mt-1 max-w-[20rem]  "
+                        : "text-white mt-1  max-w-[20rem] "
+                    }
+                  >
+                    I agree to the{" "}
+                    <span className="text-blue"> Platforms Terms </span>of
+                    service and
+                    <span className="text-blue"> privacy policy </span>
+                  </p>
+                </div>
+              </article>
+              {/* sign-up btn  */}
+              <article className="mt-4 pb-3">
+                <Link to={"/layout"}>
+                  <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
+                    <p className="smax:text-[1.25rem] ">Sign up</p>
+                  </button>
+                </Link>
+                <img
+                  src={or}
+                  alt=""
+                  className="ml-3 w-[90%] sms:max-w-[360px] text-white colorize-img3"
+                />
+                <button className="bg-white py-[.4rem] text-dark w-[90%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center">
+                  <img src={google} alt="" className="px-3 " />
+                  <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto ">
+                    Continue with Google
+                  </p>
                 </button>
-              </Link>
-              <img
-                src={or}
-                alt=""
-                className="ml-3 w-[90%] sms:max-w-[360px] text-white colorize-img3"
-              />
-              <button className="bg-white py-[.4rem] text-dark w-[90%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center">
-                <img src={google} alt="" className="px-3 " />
-                <p className="text-[.8rem] smax:text-[1.25rem] mx-auto ">
-                  Continue with Google
-                </p>
-              </button>
-            </article>
-          </form>
-          {/* end of form  */}
-        </article>
+              </article>
+            </form>
+            {/* end of form  */}
+          </article>
+        </div>
+
+        {/* side  */}
+        <div className="hidden md:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] absolute right-[-2rem] rounded-3xl relative">
+          <h1 className="px-12 max-w-[20rem] mt-24 text-black font-700">
+            Find hundreds of services online and post your own content too.
+          </h1>
+          <div className="absolute hidden top-[12rem] lg:left-[-3rem] xlg:left-[-3rem] large:left-[-3rem] large:top-[12rem] lg:block">
+            <img src={signup} alt="" className="w-[270px] large:w-[280px] " />
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 export default SignUp;
 
+
 // import { useState } from "react";
 // import signup from "../../assests/images/signup-image.png";
 // import { Link } from "react-router-dom";
-// import { MdNightlight } from "react-icons/md";
-// import { PiSunLight } from "react-icons/pi";
+
 
 // const SignUp = () => {
-  // const [selected, setSelected] = useState(false);
-  // const [toggleLight, setToggleLight] = useState(true);
-  // const toggleBtn = () => {
-  //   setToggleLight(!toggleLight);
-  // };
+//   const [selected, setSelected] = useState(false);
+//   const [toggleLight, setToggleLight] = useState(true);
+//   const toggleBtn = () => {
+//     setToggleLight(!toggleLight);
+//   };
 //   return (
 //     // sign-up
 //     <section className="bg-purple h-screen w-[100%]">
