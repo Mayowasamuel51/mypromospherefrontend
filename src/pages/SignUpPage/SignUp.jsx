@@ -26,8 +26,8 @@ const SignUp = () => {
         <div>
           {/* back  */}
           <article className="mt-1 xs:mt-4 flex items-center justify-between">
-            <Link to={"/"} >
-              <button className='focus-outline-none'>
+            <Link to={"/"}>
+              <button className="focus-outline-none">
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
               </button>
             </Link>
@@ -149,11 +149,9 @@ const SignUp = () => {
               </article>
               {/* sign-up btn  */}
               <article className="mt-4 pb-3">
-                <Link to={"/layout"}>
                   <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
                     <p className="smax:text-[1.25rem] ">Sign up</p>
                   </button>
-                </Link>
                 <img
                   src={or}
                   alt=""
@@ -172,12 +170,16 @@ const SignUp = () => {
         </div>
 
         {/* side  */}
-        <div className="hidden md:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] absolute right-[-2rem] rounded-3xl relative">
-          <h1 className="px-12 max-w-[20rem] mt-24 text-black font-700">
+        <div className="hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] absolute right-[-2rem] rounded-3xl relative">
+          <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>
-          <div className="absolute hidden top-[12rem] lg:left-[-3rem] xlg:left-[-3rem] large:left-[-3rem] large:top-[12rem] lg:block">
-            <img src={signup} alt="" className="w-[270px] large:w-[280px] " />
+          <div className="absolute hidden md:top-[10rem] smax:left-[-2rem] smax:top-[11rem] md:left-[-3rem] lg:left-[-3rem] xlg:left-[-3rem] large:left-[-3rem] large:top-[9.5rem] smax:block">
+            <img
+              src={signup}
+              alt=""
+              className=" smax:w-[250px] md:w-[280px] large:w-[299px] "
+            />
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const Works = () => {
               <input
                 type="text"
                 placeholder="Search"
-                className=" pr-[1rem] pl-9 border placeholder:text-navToggle placeholder:text-md focus:outline-none p-[.7rem] rounded-md  w-[70%] bigLg:w-[60%] shadow-md "
+                className=" pr-[1rem] pl-9 border placeholder:text-navToggle placeholder:text-md focus:outline-none p-[.7rem] rounded-md  w-[80%] bigLg:w-[80%] shadow-md "
               />
               {/* end of searchbar  */}
               {/* filter-box  */}
