@@ -21,7 +21,7 @@ export default function Navbar() {
         </h1>
       </Link>
 
-      <div className="flex items-center gap-x-3">
+      <div className="hidden sm:block flex items-center gap-x-3">
         <Link to="login">
           <button className=" text-lg py-2 px-5 font-['Poppins] text-white font-semibold">
             Login
