@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { perfectWorksData } from "../../utils/data";
 import image2 from "../../assests/images/image2.png";
 import roundedImg from "../../assests/images/Ellipse 3.png"
-import Navbar from "../../components/Navbar"
+import Navbar from "../PerfectWorks/components/Navbar"
 import web from "../../assests/images/web.png"
 import phone from "../../assests/images/phone.png"
 import {BsTelephone} from "react-icons/bs"
@@ -33,7 +33,7 @@ const Detail = () => {
     <>
       <section>
         {/* image-header  */}
-        <Navbar />
+       <Navbar/>
         <article>
           {/* {job} */}
           <div className="w-full relative">
@@ -90,8 +90,8 @@ const Detail = () => {
                     onClick={() => updateToggle(1)}
                     className={
                       toggle === 1
-                        ? " xs:p-2 xs:pl-7 px-12 bg-[#3D217A] rounded-md z-10 text-[1.5rem] md:text-[2.2rem] md:px-10 md:pl-12 focus:outline-none flex gap-x-3"
-                        : "xs:p-2 xs:pl-8 ml-8 flex gap-x-3 text-[1.5rem] border p-2 px-12 md:px-10 md:text-[2.2rem] md:pl-12 border-r-0 rounded-md"
+                        ? " xs:p-2 xs:pl-7 px-12 bg-[#3D217A] rounded-md z-10 text-[1.5rem] md:text-[1.5rem]  focus:outline-none flex gap-x-3"
+                        : "xs:p-2 xs:pl-8 ml-8 flex gap-x-3 text-[1.5rem] border p-2 border-r-0 rounded-md"
                     }
                   >
                     {" "}
@@ -105,8 +105,8 @@ const Detail = () => {
                   onClick={() => updateToggle(2)}
                   className={
                     toggle === 2
-                      ? " xs:p-2 xs:pr-7 xs:pl-8 p-4 px-12 text-[1.5rem] rounded-md text-white  bg-[#3D217A] md:px-10 md:text-[2.2rem] border-indigo-500 focus:outline-none"
-                      : " xs:p-2 xs:pr-5 xs:pl-5 text-[1.5rem] border p-4 px-12 md:px-10 md:text-[2.2rem] rounded-md ml-[-.4rem] z-0 "
+                      ? "xs:p-2 xs:pr-7 xs:pl-8 p-4 text-[1.3rem] rounded-md text-white bg-[#3D217A] border-indigo-500 focus:outline-none"
+                      : "xs:p-2 xs:pr-5 xs:pl-5 text-[1.5rem] border p-4 rounded-md ml-[-.4rem] z-0 "
                   }
                 >
                   Works
