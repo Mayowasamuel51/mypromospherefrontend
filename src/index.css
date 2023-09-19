@@ -20,6 +20,12 @@
   left: 50%;
   transform : translate(-50%, -50%)
 }
+.new-inset{
+    position: absolute;
+  top:70%;
+  left: 50%;
+  transform : translate(-50%, -50%)
+}
 
 .inset-x {
   position: absolute;

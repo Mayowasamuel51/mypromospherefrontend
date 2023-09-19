@@ -49,10 +49,10 @@ const Login = () => {
                   : "font-500 text-[1.1rem] sm:text-[1.3rem] text-white"
               }
             >
-             Hello Again!
+              Hello Again!
             </h3>
             <p className={toggleLight ? "text-[#5F5D5D]" : "text-white"}>
-             Welcome Back
+              Welcome Back
             </p>
           </article>
           {/* form-field  */}
@@ -97,9 +97,11 @@ const Login = () => {
               </div>
               {/* sign-up btn  */}
               <article className="mt-7 pb-9">
+                <Link to={"UserProfile"}>
                   <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
-                    <p className="smax:text-[1.25rem] ">Sign up</p>
+                    <p className="smax:text-[1.25rem] ">Login</p>
                   </button>
+                </Link>
                 <img
                   src={or}
                   alt=""
@@ -123,7 +125,11 @@ const Login = () => {
             Find hundreds of services online and post your own content too.
           </h1>
           <div className="absolute hidden md:top-[10rem] smax:left-[-2rem] smax:top-[11rem] md:left-[-2rem] large:top-[9.5rem] smax:block">
-            <img src={signup} alt="" className=" smax:w-[220px] md:w-[270px] large:w-[280px] " />
+            <img
+              src={signup}
+              alt=""
+              className=" smax:w-[220px] md:w-[270px] large:w-[280px] "
+            />
           </div>
         </div>
       </div>

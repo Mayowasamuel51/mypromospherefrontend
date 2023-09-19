@@ -149,9 +149,11 @@ const SignUp = () => {
               </article>
               {/* sign-up btn  */}
               <article className="mt-4 pb-3">
+                <Link to={"layout"}>
                   <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
                     <p className="smax:text-[1.25rem] ">Sign up</p>
                   </button>
+                </Link>
                 <img
                   src={or}
                   alt=""
