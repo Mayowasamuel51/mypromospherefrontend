@@ -170,7 +170,7 @@ const Photography = () => {
         </div>
         <p className=" text-xs text-center md:text-start">MyPromoSphere has you covered for hiring, managing and scaling talents more strategically </p>
       </section>
-
+  <h1>hello</h1>
       <Footer />
     </main>
   );
