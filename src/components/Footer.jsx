@@ -151,8 +151,7 @@ export default function Footer() {
       <div className=" text-white md:text-center my-4">
         Copyright @ 2023{" "}
         <span className=" tracking-[-1.8px]">MyPromoSphere</span>
-      </div>;
-      <h1>hello </h1>
+      </div>
     </footer>
   );
 }
