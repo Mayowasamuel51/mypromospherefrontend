@@ -81,7 +81,6 @@ export default function Footer() {
           </button>
         </div>
       </form>
-
       {/* container for different links */}
       <div className=" flex flex-col items-start gap-y-6 mt-16 md:flex-row md:justify-between">
         <div className=" flex flex-col">
@@ -103,7 +102,11 @@ export default function Footer() {
           <ul className=" flex flex-col gap-y-2">
             {quickLinks.map(({ id, linkText, url }) => {
               return (
-                <Link to={url} key={id} className=" capitalize text-white/70 font-['Roboto'] font-medium ">
+                <Link
+                  to={url}
+                  key={id}
+                  className=" capitalize text-white/70 font-['Roboto'] font-medium "
+                >
                   {linkText}
                 </Link>
               );
@@ -133,7 +136,11 @@ export default function Footer() {
           <ul className=" flex flex-col gap-y-2">
             {categoriesLinks.map(({ id, text, url }) => {
               return (
-                <Link to={url} key={id} className=" capitalize text-white/70 font-['Roboto'] font-medium ">
+                <Link
+                  to={url}
+                  key={id}
+                  className=" capitalize text-white/70 font-['Roboto'] font-medium "
+                >
                   {text}
                 </Link>
               );
@@ -141,13 +148,12 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-       <h1>hello</h1>
-
+      <div className=" text-white md:text-center my-4">
+        Copyright @ 2023{" "}
+        <span className=" tracking-[-1.8px]">MyPromoSphere</span>
+      </div>
+      ;
     </footer>
   );
 }
 
-      // <div className=" text-white md:text-center my-4">
-      //   Copyright @ 2023{" "}
-      //   <span className=" tracking-[-1.8px]">MyPromoSphere</span>
-      // </div>;
