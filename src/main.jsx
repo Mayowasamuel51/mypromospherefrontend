@@ -15,7 +15,8 @@ import Login from "./pages/LoginPage/Login";
 import UserProfile from "./pages/LoginPage/UserProfile";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
-import Photography from "./pages/skills";
+import Photography from "./pages/skills/Index"
+
 
 
 const router = createBrowserRouter([
@@ -38,52 +39,49 @@ const router = createBrowserRouter([
     path: "signUp",
     element: <SignUp />,
   },
-
   {
     path: "Login",
     element: <Login />,
   },
-
   {
     path: "Login/UserProfile",
-    element: <UserProfile />,
+    element: <UserProfile/>,
   },
   {
     path: "Login/UserProfile/EditProfile",
-    element: <EditProfile />,
+    element: <EditProfile/>,
   },
   {
     path: "Login/UserProfile/post",
-    element: <PostAPicture />,
+    element: <PostAPicture/>,
   },
-
   {
     path: "layout",
-    element: <Layout />,
+    element: <Layout/>,
     children: [
       {
         index: true,
-        element: <Works />,
+        element: <Works/>,
       },
       {
         path: "signUp",
-        element: <SignUp />,
+        element: <SignUp/>,
       },
       {
         path: "Login",
-        element: <Login />,
+        element: <Login/>,
       },
       {
         path: "detail/:detailId",
-        element: <Detail />,
+        element: <Detail/>,
       },
       {
         path: "detail/:detailId/signUp",
-        element: <SignUp />,
+        element: <SignUp/>,
       },
       {
         path: "detail/:detailId/Login",
-        element: <Login />,
+        element: <Login/>,
       },
     ],
   },
