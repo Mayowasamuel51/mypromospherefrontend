@@ -141,6 +141,10 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
+      <div className=" text-white md:text-center my-4">
+        Copyright @ 2023 <span className=" tracking-[-1.8px]">MyPromoSphere</span>
+      </div>
     </footer>
   );
 }

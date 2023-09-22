@@ -15,6 +15,7 @@ import Login from "./pages/LoginPage/Login";
 import UserProfile from "./pages/LoginPage/UserProfile";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
+import Photography from "./pages/skills";
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: "/skills",
+    element: <Photography />,
+  },
   {
     path: "signUp",
     element: <SignUp />,
@@ -45,14 +50,12 @@ const router = createBrowserRouter([
   },
   {
     path: "Login/UserProfile/EditProfile",
-    element: <EditProfile/>,
+    element: <EditProfile />,
   },
-  
   {
-   path: "Login/UserProfile/post",
-   element: <PostAPicture />,
+    path: "Login/UserProfile/post",
+    element: <PostAPicture />,
   },
-    
 
   {
     path: "layout",
