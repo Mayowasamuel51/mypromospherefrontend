@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function MobileNav({ handleToggle }) {
   return (
-    <div className=" z-20 flex flex-col justify-center items-center absolute right-0 top-0 w-full h-screen bg-white bg-opacity-5 backdrop-blur-2xl">
+    <div className=" flex flex-col justify-center items-center absolute right-0 top-0 w-full h-screen bg-white bg-opacity-5 backdrop-blur-2xl">
       <div className=" flex flex-col items-center gap-y-5">
         <a href="#about" onClick={handleToggle} className="text-2xl text-white">
           About us
