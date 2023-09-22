@@ -32,7 +32,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/skills",
+    path: "skills",
     element: <Photography />,
   },
   {

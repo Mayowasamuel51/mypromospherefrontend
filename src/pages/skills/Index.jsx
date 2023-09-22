@@ -5,6 +5,7 @@ import Jane from "../../assests/SVGs/Jane Cooper.svg";
 import Esther from "../../assests/SVGs/esther howard.svg";
 import Wade from "../../assests/SVGs/wade warren.svg";
 import Footer from "../../components/Footer";
+import Navbar from "../PerfectWorks/components/Navbar"
 
 const Photography = () => {
   const photogrpahers = [
@@ -66,7 +67,8 @@ const Photography = () => {
   ];
   return (
     <main>
-      <section className=" px-2 md:px-8 bigLg:px-16">
+      <Navbar />
+      <section className=" mt-5 px-2 md:px-8 bigLg:px-16">
         <h1 className=" text-2xl font-medium md:text-3xl">
           Hire the best Photographers
         </h1>

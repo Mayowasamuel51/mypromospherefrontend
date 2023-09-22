@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className=" absolute w-full bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
+    <header className=" z-10 absolute w-full bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
       <Link to="/" className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
         <h1 className=" text-sm font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>

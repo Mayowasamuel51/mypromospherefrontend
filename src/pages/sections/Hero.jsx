@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Hero() {
   return (
     <section className=" pt-28 px-8 bg-gradient-to-r from-pink via-purple2 to-purple bigLg:pt-36 bigLg:px-16">
+      <div className=" absolute right-0 top-0 bg-purple h-full w-40 "></div>
       <div className=" flex flex-col items-center gap-y-10 bigLg:flex-row bigLg:gap-x-20">
         <div className=" flex flex-col items-center bigLg:items-start bigLg:basis-1/2">
           <h1 className=" font-['Poppins'] text-5xl font-bold leading-10 text-center bigLg:text-start bigLg:text-6xl">
