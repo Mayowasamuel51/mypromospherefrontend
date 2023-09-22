@@ -12,6 +12,7 @@ import Layout from "./pages/PerfectWorks/components/layout";
 import Works from "./pages/PerfectWorks/Works";
 import Detail from "./pages/PerfectWorks/Detail";
 import Login from "./pages/Login/Login";
+import Photography from "./pages/skills";
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
     ],
+  },
+  {
+    path: "/skills",
+    element: <Photography />
   },
   {
     path: "signUp",
