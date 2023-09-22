@@ -15,7 +15,6 @@ import Login from "./pages/LoginPage/Login";
 import UserProfile from "./pages/LoginPage/UserProfile";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
-import HeroTwo from "./pages/sections/Hero2";
 import Photography from "./pages/skills/Photographers";
 
 
@@ -30,10 +29,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
     ],
-  },
-  {
-    path: "hero",
-    element: <HeroTwo />
   },
 
   {
