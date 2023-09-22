@@ -8,13 +8,13 @@ export default function Hero() {
       <div className=" absolute right-0 top-0 bg-purple h-full w-40 "></div>
       <div className=" flex flex-col items-center gap-y-10 bigLg:flex-row bigLg:gap-x-20">
         <div className=" flex flex-col items-center bigLg:items-start bigLg:basis-1/2">
-          <h1 className=" font-['Poppins'] text-5xl font-bold leading-10 text-center bigLg:text-start bigLg:text-6xl">
+          <h1 className=" z-10 font-['Poppins'] text-5xl font-bold leading-10 text-center bigLg:text-start bigLg:text-6xl">
             Find your
           </h1>
-          <p className="font-['Poppins'] text-5xl font-bold leading-10 text-center bigLg:text-start bigLg:text-6xl">
+          <p className=" z-10 font-['Poppins'] text-5xl font-bold leading-10 text-center bigLg:text-start bigLg:text-6xl">
             desired services
           </p>
-          <p className=" font-['Poppins'] font-medium my-7 leading-5 text-center bigLg:text-start bigLg:text-xl bigLg:leading-6">
+          <p className=" z-10 font-['Poppins'] font-medium my-7 leading-5 text-center bigLg:text-start bigLg:text-xl bigLg:leading-6">
             <span className=" tracking-[-1.8px]">MyPromoSphere</span> is here to
             revolutionize your service discovery experience.
           </p>
