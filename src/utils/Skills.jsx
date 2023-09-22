@@ -3,62 +3,77 @@ export const topSkillsData = [
   {
     id: 1,
     skill: "Fashion Designer",
+    link: "skills"
   },
   {
     id: 2,
     skill: "Content Writer",
+    link: "skills"
   },
   {
     id: 3,
     skill: "Barber",
+    link: "skills"
   },
   {
     id: 4,
     skill: "Videography",
+    link: "skills"
   },
   {
     id: 5,
     skill: "Photography",
+    link: "skills"
   },
   {
     id: 7,
     skill: "Driver",
+    link: "skills"
   },
   {
     id: 8,
     skill: "Copywriter",
+    link: "skills"
   },
   {
     id: 9,
     skill: "Event Planner",
+    link: "skills"
   },
   {
     id: 10,
     skill: "Welder",
+    link: "skills"
   },
   {
     id: 11,
     skill: "Hair Dresser",
+    link: "skills"
   },
   {
     id: 12,
     skill: "Electrical Installer",
+    link: "skills"
   },
   {
     id: 13,
     skill: "Catering",
+    link: "skills"
   },
   {
     id: 14,
     skill: "Mechanics",
+    link: "skills"
   },
   {
     id: 15,
     skill: "Plumbing",
+    link: "skills"
   },
   {
     id: 16,
     skill: "Bricklayering",
+    link: "skills"
   },
 ];
 
