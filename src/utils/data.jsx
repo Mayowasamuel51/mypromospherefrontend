@@ -404,3 +404,36 @@ export const perfectWorksData = [
     },
   },
 ]; 
+
+export const EditProfileTabs = [
+  {
+    id: 1,
+    tab: "EditProfile",
+    component: "hello",
+  },
+  {
+    id: 2,
+    tab: "Personal Information",
+    component: "hell",
+  },
+  {
+    id: 3,
+    tab: "Password",
+    component: "hel",
+  },
+  {
+    id: 4,
+    tab: "Email Notifications",
+    component: "he",
+  },
+  {
+    id: 5,
+    tab: "Privacy and Data",
+    component: "h",
+  },
+  {
+    id: 6,
+    tab: "Security and logins",
+    component: "helloi",
+  }
+]

@@ -14,6 +14,7 @@ import Detail from "./pages/PerfectWorks/Detail";
 import Login from "./pages/LoginPage/Login";
 import UserProfile from "./pages/LoginPage/UserProfile";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
+import EditProfile from "./pages/LoginPage/EditProfile";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "Login/UserProfile",
     element: <UserProfile />,
+  },
+  {
+    path: "Login/UserProfile/EditProfile",
+    element: <EditProfile/>,
   },
   
   {

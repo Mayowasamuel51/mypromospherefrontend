@@ -3,7 +3,7 @@ import Navbar from "../LoginPage/component/Navbar"
 import roundedImg from "../../assests/images/Ellipse 3.png"
 import Post from './component/Post'
 import Saved from './component/Saved'
-
+import { Link } from 'react-router-dom'
 
 const UserProfile = () => {
    const [toggle, setToggle] = useState(1);
@@ -33,9 +33,11 @@ const UserProfile = () => {
               <p className="text-center">share</p>
             </button>
             {/* edit profile  */}
-            <button className="bg-[#BCB9B9] p-2 px-4 rounded-md">
-              <p className="text-center">Edit profile</p>
-            </button>
+            <Link to={'EditProfile'}>
+              <button className="bg-[#BCB9B9] p-2 px-4 rounded-md">
+                <p className="text-center">Edit profile</p>
+              </button>
+            </Link>
           </div>
         </article>
 
@@ -71,10 +73,10 @@ const UserProfile = () => {
           {/* tabs-center  */}
           <div className="mt-12">
             {/*post*/}
-            <div className="text-center">{toggle === 1 ? <Post/> : null}</div>
+            <div className="text-center">{toggle === 1 ? <Post /> : null}</div>
 
             {/* saved */}
-            <div className="text-center">{toggle === 2 ? <Saved/> : null}</div>
+            <div className="text-center">{toggle === 2 ? <Saved /> : null}</div>
             {/* end of tabs center  */}
           </div>
         </article>
