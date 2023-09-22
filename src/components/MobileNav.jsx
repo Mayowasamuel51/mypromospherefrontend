@@ -29,7 +29,7 @@ export default function MobileNav({ handleToggle }) {
         >
           Testimonials
         </a>
-        <Link to="login" onClick={handleToggle}>
+        <Link to="Login" onClick={handleToggle}>
           <button className=" text-2xl text-black font-['Poppins]">
             Login
           </button>

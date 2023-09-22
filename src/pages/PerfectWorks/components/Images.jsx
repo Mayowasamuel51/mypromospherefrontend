@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Images = () => {
   return (
     <>
-      <div className="mt-16  smax:grid smax:grid-cols-2 lg:grid-cols-3 lg:large:grid-cols-4 gap-[2.2rem]">
+      <div className="mt-16 smax:grid smax:grid-cols-2 lg:grid-cols-3 lg:large:grid-cols-4 gap-[2.2rem]">
         {perfectWorksData.map(function (work, index) {
           const { id, image, rounded, name } = work;
           return (
