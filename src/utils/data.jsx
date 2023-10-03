@@ -437,3 +437,7 @@ export const EditProfileTabs = [
     component: "helloi",
   }
 ]
+
+export const Languages =[
+  "English", "Francais", "Espanol", "Deutsch", "Italiano", 
+] 
