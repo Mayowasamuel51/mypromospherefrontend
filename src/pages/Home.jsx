@@ -7,12 +7,17 @@ import Grow from "./sections/Grow";
 import Testimonials from "./sections/Testimonials";
 import CTA from "./sections/CTA";
 import Skills from "./sections/Skills";
+import Services from "./sections/Services";
+import ServiceProviders from "./sections/ServiceProviders";
+import NewHero from "./sections/NewHero";
 
 export default function Home() {
   return (
     <main className=" ">
-      <Hero />
-      <Mission />
+      {/* <Hero /> */}
+      <NewHero/>
+      <Services/>
+      <ServiceProviders/>
       <TalentAndValues />
       <Categories />
       <Grow />
