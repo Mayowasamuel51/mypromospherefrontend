@@ -1,7 +1,7 @@
 import React from "react";
-import image1 from "../../assests/images/rectangle 479.png";
-import image2 from "../../assests/images/rectangle 480.png";
-import image3 from "../../assests/images/rectangle 478.png";
+import image1 from "../../assests/images/Rectangle 479.png";
+import image2 from "../../assests/images/Rectangle 480.png";
+import image3 from "../../assests/images/Rectangle 478.png";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 const Services = () => {
   const ServicesArr = [
