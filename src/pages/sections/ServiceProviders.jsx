@@ -1,6 +1,6 @@
 import React from "react";
-import image1 from "../../assests/images/rectangle 487.png";
-import image2 from "../../assests/images/rectangle 488.png";
+import image1 from "../../assests/images/Rectangle 487.png";
+import image2 from "../../assests/images/Rectangle 488.png";
 const ServiceProviders = () => {
   const ProvidersArr = [
     {
