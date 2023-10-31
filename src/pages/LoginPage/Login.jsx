@@ -37,6 +37,7 @@ const Login = () => {
       password: data.password,
       email: data.email
     }
+    console.log(payload)
     setError(null)
     axiosclinet.post('/api/login', payload, {
       headers: {
