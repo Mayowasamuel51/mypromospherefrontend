@@ -38,7 +38,7 @@ function DefualtLayout() {
                 </nav>
                 <div >
                     {/* <h1> {user.name}  {user.email} {user.avatar }</h1> */}
-                    <a className="btn btn-dark btn-small" onClick={onLogout}>logout</a>
+                  <button>  <a className="btn btn-dark btn-small" onClick={onLogout}>logout</a></button>
                 </div>
 
 
