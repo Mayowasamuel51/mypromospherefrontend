@@ -5,13 +5,63 @@ import { Link } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
-
+import axiosclinet from "../../https/axios-clinet";
+import { useStateContext } from "../../contexts/ContextProvider";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import { useMutation } from '@tanstack/react-query';
+import { useForm } from "react-hook-form"
 const Login = () => {
   const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
+  const [error, setError] = useState(null)
+  const { setUser, setToken } = useStateContext()
   const toggleBtn = () => {
     setToggleLight(!toggleLight);
   };
+
+  const schema = yup.object().shape({
+    email: yup.string().required(),
+    password: yup.string().required(),
+  });
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
+
+  const formSubmit = (data) => {
+    const payload = {
+      password: data.password,
+      email: data.email
+    }
+    setError(null)
+    axiosclinet.post('/api/login', payload, {
+      headers: {
+        Accept: "application/vnd.api+json",
+      }
+    }).then((res) => {
+      setUser(res.data.data.users)
+      console.log(res.data.data.token)
+      setToken(res.data.data.token)
+    }).catch(err => {
+
+      console.log(err.message)
+      const response = err.response;
+      if (response && response.status === 422) {
+        if (response.data.errors) {
+          setError(response.data.errors)
+        }
+        else {
+          setError({
+            email: [response.data.message]
+          })
+        }
+      }
+    })
+  }
   return (
     <section className="bg-purple h-screen">
       {/* sign-up box  */}
@@ -58,7 +108,7 @@ const Login = () => {
           {/* form-field  */}
           <article className="mt-3">
             {/* form  */}
-            <form>
+            <form onSubmit={handleSubmit(formSubmit)}>
               {/* email  */}
               <div className="flex flex-col mt-1">
                 <label
@@ -68,6 +118,7 @@ const Login = () => {
                   Email Address
                 </label>
                 <input
+                  {...register("email", { required: true })}
                   type="text"
                   className={
                     toggleLight
@@ -86,6 +137,7 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                  {...register("password", { required: true })}
                   type="text"
                   className={
                     toggleLight
@@ -97,11 +149,11 @@ const Login = () => {
               </div>
               {/* sign-up btn  */}
               <article className="mt-7 pb-9">
-                <Link to={"UserProfile"}>
-                  <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
-                    <p className="smax:text-[1.25rem] ">Login</p>
-                  </button>
-                </Link>
+
+                <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
+                  <p className="smax:text-[1.25rem] " type="submit">Login</p>
+                </button>
+
                 <img
                   src={or}
                   alt=""
@@ -113,6 +165,12 @@ const Login = () => {
                     Continue with Google
                   </p>
                 </button>
+
+                <hr />
+
+                <p className={toggleLight ? "" : "text-white pl-10"}>
+                  Don't have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}
+                </p>
               </article>
             </form>
             {/* end of form  */}

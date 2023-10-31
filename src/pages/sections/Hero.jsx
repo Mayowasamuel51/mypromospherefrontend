@@ -18,7 +18,7 @@ export default function Hero() {
             <span className=" tracking-[-1.8px]">MyPromoSphere</span> is here to
             revolutionize your service discovery experience.
           </p>
-          <Link to={"layout"} className="">
+          <Link to="layout" className="">
             <button className=" bg-purple py-3 px-4 rounded-md text-white flex items-center gap-x-5">
               Get Started
               <ArrowRightIcon width={20} />

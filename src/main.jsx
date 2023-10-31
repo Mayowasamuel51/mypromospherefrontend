@@ -16,8 +16,16 @@ import UserProfile from "./pages/LoginPage/UserProfile";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
 import Photography from "./pages/skills/Photographers";
+import DefualtLayout from "./pages/components/DefualtLayout";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import GoogleCallback from "./GoogleAuth/GoogleCallback";
+import { ContextProvider } from "./contexts/ContextProvider";
 
 
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -43,45 +51,72 @@ const router = createBrowserRouter([
     path: "Login",
     element: <Login />,
   },
+  // {
+  //   path: "Login/UserProfile",
+  //   element: <UserProfile />,
+  // },
+  // {
+  //   path: "Login/UserProfile/EditProfile",
+  //   element: <EditProfile />,
+  // },
+  // {
+  //   path: "Login/UserProfile/post",
+  //   element: <PostAPicture />,
+  // },
+
   {
-    path: "Login/UserProfile",
-    element: <UserProfile/>,
-  },
-  {
-    path: "Login/UserProfile/EditProfile",
-    element: <EditProfile/>,
-  },
-  {
-    path: "Login/UserProfile/post",
-    element: <PostAPicture/>,
+    path: "/",
+    element: <DefualtLayout />,
+    children: [
+      {
+        path: "dashboard",
+        element: <div>USER PROFILE</div>
+      },
+      {
+        path: "dashboard/UserProfile",
+        element: <UserProfile />,
+      }, 
+      {
+        path: "dashboard/UserProfile/EditProfile",
+        element: <EditProfile />,
+      },
+      {
+        path: "dashboard/UserProfile/post",
+        element: <PostAPicture />,
+      },
+    ]
   },
   {
     path: "layout",
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       {
         index: true,
-        element: <Works/>,
+        element: <Works />,
       },
       {
-        path: "signUp",
-        element: <SignUp/>,
+        path: "auth/google",
+        element: <GoogleCallback />
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
       },
       {
         path: "Login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "detail/:detailId",
-        element: <Detail/>,
+        element: <Detail />,
       },
       {
         path: "detail/:detailId/signUp",
-        element: <SignUp/>,
+        element: <SignUp />,
       },
       {
         path: "detail/:detailId/Login",
-        element: <Login/>,
+        element: <Login />,
       },
     ],
   },
@@ -90,7 +125,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ContextProvider>
+      {/* <QueryClientProvider client={queryClient}> */}
+        <RouterProvider router={router} />
+      {/* </QueryClientProvider> */}
+    </ContextProvider>
   </React.StrictMode>
 );
 

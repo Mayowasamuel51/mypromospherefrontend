@@ -1,17 +1,84 @@
-import {useState} from 'react'
+import { useEffect, useState } from 'react'
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
 import { Link } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
-
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import { useMutation } from '@tanstack/react-query';
+import { useForm } from "react-hook-form"
+import axiosclinet from '../../https/axios-clinet';
+import { useStateContext } from '../../contexts/ContextProvider';
 const SignUp = () => {
-    const [selected, setSelected] = useState(false);
-    const [toggleLight, setToggleLight] = useState(true);
-    const toggleBtn = () => {
-      setToggleLight(!toggleLight);
-    };
+  const [error, setError] = useState(null)
+  const { setUser, setToken } = useStateContext()
+  const [selected, setSelected] = useState(false);
+  const [toggleLight, setToggleLight] = useState(true);
+  const toggleBtn = () => {
+    setToggleLight(!toggleLight);
+  };
+  const [loginUrl, setLoginUrl] = useState(null);
+
+
+  const schema = yup.object().shape({
+    email: yup.string().required(),
+    password: yup.string().required(),
+    name: yup.string().required(),
+    password_confirmation: yup.string().required(),
+  });
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
+
+  const formSubmit = (data) => {
+    const payload = {
+      name: data.name,
+      password: data.password,
+      password_confirmation: data.password_confirmation,
+      email: data.email
+    }
+    axiosclinet.post('/api/register', payload, {
+      headers: {
+        Accept: "application/vnd.api+json",
+      }
+    }).then((res) => {
+      setUser(res.data.users)
+      setToken(res.data.token)
+    }).catch(err => {
+      console.log(payload)
+      console.log(err.message)
+      const response = err.response;
+      console.log(response)
+      if (response && response.status === 422) {
+        // response.data.errors
+        console.log(response.data.errors)
+        setError(response.data.errors)
+      }
+    })
+
+  }
+  useEffect(() => {
+    fetch('http://localhost:8000/api/auth', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Something went wrong!');
+    })
+      .then((data) => setLoginUrl(data.url))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <section className="bg-purple h-screen">
       {/* sign-up box  */}
@@ -55,13 +122,13 @@ const SignUp = () => {
               </span>
             </h3>
             <p className={toggleLight ? "" : "text-white"}>
-              Already have an account? <span className="text-red">Login</span>{" "}
+              Already have an account? <Link className="text-red" to="/login">Login</Link>{" "}
             </p>
           </article>
           {/* form-field  */}
           <article className="mt-1">
             {/* form  */}
-            <form>
+            <form onSubmit={handleSubmit(formSubmit)}>
               {/* name-input  */}
               <div className="flex flex-col">
                 <label
@@ -72,6 +139,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
+                  {...register("name", { required: true })}
                   className={
                     toggleLight
                       ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
@@ -79,6 +147,9 @@ const SignUp = () => {
                   }
                   placeholder="Full name"
                 />
+                <p className="text-red pt-2" >{errors.name?.message}</p>
+
+
               </div>
               {/* email  */}
               <div className="flex flex-col mt-1">
@@ -89,6 +160,7 @@ const SignUp = () => {
                   Email Address
                 </label>
                 <input
+                  {...register("email", { required: true })}
                   type="text"
                   className={
                     toggleLight
@@ -97,6 +169,8 @@ const SignUp = () => {
                   }
                   placeholder="example@gmail.com"
                 />
+                <p className="text-red pt-2" >{errors.email?.message}</p>
+
               </div>
               {/* password  */}
               <div className="flex flex-col mt-1">
@@ -107,6 +181,7 @@ const SignUp = () => {
                   Password
                 </label>
                 <input
+                  {...register("password", { required: true })}
                   type="text"
                   className={
                     toggleLight
@@ -115,6 +190,29 @@ const SignUp = () => {
                   }
                   placeholder="Enter password"
                 />
+                <p className="text-red pt-2" >{errors.password?.message}</p>
+
+              </div>
+
+              {/* password confirm */}
+              <div className="flex flex-col mt-1">
+                <label
+                  htmlFor="name"
+                  className={toggleLight ? "" : "text-white"}
+                >
+                  Password confrimation
+                </label>
+                <input
+                  {...register("password_confirmation", { required: true })}
+                  type="text"
+                  className={
+                    toggleLight
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
+                      : " bg-transparent w-[90%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                  }
+                  placeholder="Enter password"
+                />
+                <p className="text-red pt-2" >{errors.password_confirmation?.message}</p>
               </div>
               {/*agreement*/}
               <article className="flex xs:flex-col sm:flex-row items-center gap-[1rem]">
@@ -149,11 +247,11 @@ const SignUp = () => {
               </article>
               {/* sign-up btn  */}
               <article className="mt-4 pb-3">
-                <Link to={"layout"}>
-                  <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
-                    <p className="smax:text-[1.25rem] ">Sign up</p>
-                  </button>
-                </Link>
+
+                <button type='submit' className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
+                  <p className="smax:text-[1.25rem] ">Sign up</p>
+                </button>
+
                 <img
                   src={or}
                   alt=""
@@ -162,11 +260,14 @@ const SignUp = () => {
                 <button className="bg-white py-[.4rem] text-dark w-[90%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3 " />
                   <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto ">
-                    Continue with Google
+                    {loginUrl != null && (
+                      <a href={loginUrl}>Continue with Google</a>
+                    )}
                   </p>
                 </button>
               </article>
             </form>
+
             {/* end of form  */}
           </article>
         </div>
