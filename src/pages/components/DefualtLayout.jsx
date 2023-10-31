@@ -33,8 +33,8 @@ function DefualtLayout() {
                     <Link className="nav-link" to="dashboard/UserProfile">PROFILE</Link>
                     <Link className="nav-link" to="dashboard/UserProfile/EditProfile">EditProfile</Link>
                     <Link className="nav-link" to="dashboard/UserProfile/post">post something</Link>
-                    <Link className="nav-link" to="/videos">videos</Link>
-                    <Link className="nav-link" to="/views">views</Link>
+                    {/* <Link className="nav-link" to="/videos">videos</Link> */}
+                    {/* <Link className="nav-link" to="/views">views</Link> */}
                 </nav>
                 <div >
                     {/* <h1> {user.name}  {user.email} {user.avatar }</h1> */}
