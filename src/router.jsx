@@ -33,8 +33,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        // index: true,
-        path:'/',
+        index: true,
         element: <Home />,
       },
     ],
@@ -55,10 +54,10 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <DefualtLayout />,
     children: [
-      {
-        path: "dashboard",
-        element: <Navigate to="/dashboard" />
-      },
+      // {
+      //   path: "dashboard",
+      //   element: <Navigate    to="dashboard" />
+      // },
       {
         index: true,
         element: <UserProfile />,

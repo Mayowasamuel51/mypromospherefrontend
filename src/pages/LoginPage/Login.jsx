@@ -1,7 +1,7 @@
 import { useState } from "react";
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
@@ -12,6 +12,7 @@ import * as yup from "yup"
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from "react-hook-form"
 const Login = () => {
+  const navigate = useNavigate()
   const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
   const [error, setError] = useState(null)
@@ -47,7 +48,7 @@ const Login = () => {
       setToken(res.data.data.token)
       setUser(res.data.data.users)
       console.log(res.data.data.token)
-      res.data.data.token ? <Navigate to="dashboard"/> : alert('error something went worng ')
+      navigate("/dashboard")
      
     }).catch(err => {
 
