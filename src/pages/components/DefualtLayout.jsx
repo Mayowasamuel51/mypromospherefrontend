@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import axiosclinet from "../../https/axios-clinet"
 
 function DefualtLayout() {
-    const { user, token ,setUser,setToken} = useStateContext()
+    const { user, token, setUser, setToken } = useStateContext()
     if (!token) {
         return <Navigate to="/" />
     }
@@ -20,12 +20,12 @@ function DefualtLayout() {
     useEffect(() => {
         axiosclinet.get("/api/user").then(({ data }) => {
             setUser(data)
-        }) 
-        
+        })
+
         axiosclinet.get("/api/try").then(({ data }) => {
             console.log(data.hello)
-       }) 
-    },[])
+        })
+    }, [])
     return (
         <>
             <div className="">
@@ -38,14 +38,14 @@ function DefualtLayout() {
                 </nav>
                 <div >
                     {/* <h1> {user.name}  {user.email} {user.avatar }</h1> */}
-                  <button>  <a className="btn btn-dark btn-small" onClick={onLogout}>logout</a></button>
+                    <button>  <a className="btn btn-dark btn-small" onClick={onLogout}>logout</a></button>
                 </div>
 
 
 
-             <main>
+                <main>
                     <Outlet />
-                 </main>
+                </main>
             </div>
         </>
     )
