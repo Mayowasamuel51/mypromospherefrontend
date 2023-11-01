@@ -23,104 +23,105 @@ import {
 } from '@tanstack/react-query'
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
 import { ContextProvider } from "./contexts/ContextProvider";
+import router from "./router";
 
 
 const queryClient = new QueryClient()
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-    ],
-  },
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App/>,
+//     children: [
+//       {
+//         index:"/",
+//         element: <Home />,
+//       },
+//     ],
+//   },
 
-  {
-    path: "skills",
-    element: <Photography />,
-  },
-  {
-    path: "signUp",
-    element: <SignUp />,
-  },
-  {
-    path: "Login",
-    element: <Login />,
-  },
-  // {
-  //   path: "Login/UserProfile",
-  //   element: <UserProfile />,
-  // },
-  // {
-  //   path: "Login/UserProfile/EditProfile",
-  //   element: <EditProfile />,
-  // },
-  // {
-  //   path: "Login/UserProfile/post",
-  //   element: <PostAPicture />,
-  // },
+//   {
+//     path: "/skills",
+//     element: <Photography />,
+//   },
+//   {
+//     path: "/signUp",
+//     element: <SignUp />,
+//   },
+//   {
+//     path: "/Login",
+//     element: <Login />,
+//   },
+//   // {
+//   //   path: "Login/UserProfile",
+//   //   element: <UserProfile />,
+//   // },
+//   // {
+//   //   path: "Login/UserProfile/EditProfile",
+//   //   element: <EditProfile />,
+//   // },
+//   // {
+//   //   path: "Login/UserProfile/post",
+//   //   element: <PostAPicture />,
+//   // },
 
-  {
-    path: "/",
-    element: <DefualtLayout />,
-    children: [
-      {
-        path: "dashboard",
-        element: <div>USER PROFILE</div>
-      },
-      {
-        path: "dashboard/UserProfile",
-        element: <UserProfile />,
-      }, 
-      {
-        path: "dashboard/UserProfile/EditProfile",
-        element: <EditProfile />,
-      },
-      {
-        path: "dashboard/UserProfile/post",
-        element: <PostAPicture />,
-      },
-    ]
-  },
-  {
-    path: "layout",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <Works />,
-      },
-      {
-        path: "auth/google",
-        element: <GoogleCallback />
-      },
-      {
-        path: "signup",
-        element: <SignUp />,
-      },
-      {
-        path: "Login",
-        element: <Login />,
-      },
-      {
-        path: "detail/:detailId",
-        element: <Detail />,
-      },
-      {
-        path: "detail/:detailId/signUp",
-        element: <SignUp />,
-      },
-      {
-        path: "detail/:detailId/Login",
-        element: <Login />,
-      },
-    ],
-  },
-]);
+//   {
+//     path: "/dashboard",
+//     element: <DefualtLayout />,
+//     children: [
+//       // {
+//       //   path: "dashboard",
+//       //   element: <div>USER PROFILE</div>
+//       // },
+//       {
+//         path: "/dashboard/UserProfile",
+//         element: <UserProfile />,
+//       }, 
+//       {
+//         path: "/dashboard/UserProfile/EditProfile",
+//         element: <EditProfile />,
+//       },
+//       {
+//         path: "/dashboard/UserProfile/post",
+//         element: <PostAPicture />,
+//       },
+//     ]
+//   },
+//   // {
+//   //   path: "/layout",
+//   //   element: <Layout />,
+//   //   children: [
+//   //     // {
+//   //     //   index: true,
+//   //     //   element: <Works />,
+//   //     // },
+//   //     {
+//   //       path: "/auth/google",
+//   //       element: <GoogleCallback />
+//   //     },
+//   //     // {
+//   //     //   path: "/signup",
+//   //     //   element: <SignUp />,
+//   //     // },
+//   //     // {
+//   //     //   path: "/Login",
+//   //     //   element: <Login />,
+//   //     // },
+//   //     {
+//   //       path: "/detail/:detailId",
+//   //       element: <Detail />,
+//   //     },
+//   //     {
+//   //       path: "/detail/:detailId/signUp",
+//   //       element: <SignUp />,
+//   //     },
+//   //     {
+//   //       path: "/detail/:detailId/Login",
+//   //       element: <Login />,
+//   //     },
+//   //   ],
+//   // },
+// ]);
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -6,7 +6,7 @@ import axiosclinet from "../../https/axios-clinet"
 function DefualtLayout() {
     const { user, token ,setUser,setToken} = useStateContext()
     if (!token) {
-        return <Navigate to="login" />
+        return <Navigate to="/" />
     }
 
     const onLogout = (ev) => {
@@ -43,9 +43,9 @@ function DefualtLayout() {
 
 
 
-                <main>
+             <main>
                     <Outlet />
-                </main>
+                 </main>
             </div>
         </>
     )

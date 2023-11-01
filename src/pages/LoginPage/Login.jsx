@@ -1,7 +1,7 @@
 import { useState } from "react";
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
@@ -44,9 +44,11 @@ const Login = () => {
         Accept: "application/vnd.api+json",
       }
     }).then((res) => {
+      setToken(res.data.data.token)
       setUser(res.data.data.users)
       console.log(res.data.data.token)
-      setToken(res.data.data.token)
+      res.data.data.token ? <Navigate to="dashboard"/> : alert('error something went worng ')
+     
     }).catch(err => {
 
       console.log(err.message)
@@ -151,8 +153,8 @@ const Login = () => {
               {/* sign-up btn  */}
               <article className="mt-7 pb-9">
 
-                <button className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
-                  <p className="smax:text-[1.25rem] " type="submit">Login</p>
+                <button  type="submit" className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
+                  <p className="smax:text-[1.25rem] ">Login</p>
                 </button>
 
                 <img
