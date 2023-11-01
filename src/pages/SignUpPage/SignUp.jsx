@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form"
 import axiosclinet from '../../https/axios-clinet';
 import { useStateContext } from '../../contexts/ContextProvider';
 const SignUp = () => {
+  const navigate = useNavigate()
   const [error, setError] = useState(null)
   const { setUser, setToken } = useStateContext()
   const [selected, setSelected] = useState(false);
@@ -50,6 +51,7 @@ const SignUp = () => {
     }).then((res) => {
       setUser(res.data.users)
       setToken(res.data.token)
+      navigate("/dashboard")
     }).catch(err => {
       console.log(payload)
       console.log(err.message)
@@ -127,6 +129,11 @@ const SignUp = () => {
           </article>
           {/* form-field  */}
           <article className="mt-1">
+          {error && <div className="text-danger">{
+                Object.keys(error).map(key => (
+                    <p className='text-red' key={key}>{error[key][0]}</p>
+                ))
+            }</div>}
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)}>
               {/* name-input  */}

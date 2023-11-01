@@ -111,6 +111,11 @@ const Login = () => {
           </article>
           {/* form-field  */}
           <article className="mt-3">
+          {error && <div className="text-danger">{
+                Object.keys(error).map(key => (
+                    <p key={key}>{error[key][0]}</p>
+                ))
+            }</div>}
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)}>
               {/* email  */}
