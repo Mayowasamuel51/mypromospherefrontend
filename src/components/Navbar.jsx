@@ -5,6 +5,7 @@ import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 // assests
 import logo from "../assests/SVGs/logo.svg";
 import MobileNav from "./MobileNav";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Navbar() {
   const [toggleIcon, setToggleIcon] = useState(false);
@@ -12,6 +13,7 @@ export default function Navbar() {
   const handleToggle = () => {
     setToggleIcon(!toggleIcon);
   };
+  const {user, setToken, token,  setUser} = useStateContext()
   // bg-gradient-to-r from-pink to-purple2
   return (
     <header className=" bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
@@ -48,16 +50,16 @@ export default function Navbar() {
         </a>
       </nav>
       <div className=" hidden z-50 exl:flex exl:items-center exl:gap-x-6">
-        <Link to="login">
+       {token ? "sdafdafadfda" :  <Link to="login">
           <button className=" text-lg py-2 px-5 text-white font-['Poppins] font-semibold">
             Login
           </button>
-        </Link>
-        <Link to="signUp">
+        </Link>}
+        {token ? "sDASFADF" :<Link to="signUp">
           <button className=" bg-pink py-2 px-5 rounded-lg text-white font-['Poppins'] text-lg font-semibold">
             Signup
           </button>
-        </Link>
+        </Link>}
       </div> 
     </header>
   );

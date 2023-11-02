@@ -72,40 +72,40 @@ const router = createBrowserRouter([
       },
     ]
   },
-  // {
-  //   path: "/layout",
-  //   element: <Layout />,
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <Works />,
-  //     },
-  //     {
-  //       path: "auth/google",
-  //       element: <GoogleCallback />
-  //     },
-  //     {
-  //       path: "signup",
-  //       element: <SignUp />,
-  //     },
-  //     {
-  //       path: "Login",
-  //       element: <Login />,
-  //     },
-  //     {
-  //       path: "detail/:detailId",
-  //       element: <Detail />,
-  //     },
-  //     {
-  //       path: "detail/:detailId/signUp",
-  //       element: <SignUp />,
-  //     },
-  //     {
-  //       path: "detail/:detailId/Login",
-  //       element: <Login />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/layout",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Works />,
+      },
+      {
+        path: "auth/google",
+        element: <GoogleCallback />
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "Login",
+        element: <Login />,
+      },
+      {
+        path: "detail/:detailId",
+        element: <Detail />,
+      },
+      {
+        path: "detail/:detailId/signUp",
+        element: <SignUp />,
+      },
+      {
+        path: "detail/:detailId/Login",
+        element: <Login />,
+      },
+    ],
+  },
 ]);
 
 export default router;

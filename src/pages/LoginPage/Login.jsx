@@ -49,7 +49,7 @@ const Login = () => {
       setUser(res.data.data.users)
       console.log(res.data.data.token)
       navigate("/dashboard")
-     
+
     }).catch(err => {
 
       console.log(err.message)
@@ -111,10 +111,10 @@ const Login = () => {
           </article>
           {/* form-field  */}
           <article className="mt-3">
-          {error && <div className="text-danger">{
-                Object.keys(error).map(key => (
-                    <p key={key}>{error[key][0]}</p>
-                ))
+            {error && <div className="text-danger">{
+              Object.keys(error).map(key => (
+                <p key={key}>{error[key][0]}</p>
+              ))
             }</div>}
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)}>
@@ -136,6 +136,8 @@ const Login = () => {
                   }
                   placeholder="example@gmail.com"
                 />
+
+                <p className="text-red pt-2" >{errors.email?.message}</p>
               </div>
               {/* password  */}
               <div className="flex flex-col mt-6">
@@ -155,11 +157,12 @@ const Login = () => {
                   }
                   placeholder="Enter password"
                 />
+                   <p className="text-red pt-2" >{errors.password?.message}</p>
               </div>
               {/* sign-up btn  */}
               <article className="mt-7 pb-9">
 
-                <button  type="submit" className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
+                <button type="submit" className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
                   <p className="smax:text-[1.25rem] ">Login</p>
                 </button>
 
