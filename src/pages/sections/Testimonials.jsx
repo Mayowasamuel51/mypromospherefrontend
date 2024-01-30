@@ -98,14 +98,14 @@ export default function Testimonials() {
           {testimonies.map(({ id, img, name, location, testimony }) => {
             return (
               <SwiperSlide key={id}>
-                <div className=" m-10 flex items-start gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5">
+                <div className=" m-10 flex items-center gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5 group h-[190px] hover:scale-105">
                   {/* image container */}
                   <img src={img} alt="" className=" w-16" />
                   {/* details */}
                   <div className="">
                     <h6 className=" text-sm font-medium">{name}</h6>
                     <p className=" text-xs mb-3">{location}</p>
-                    <p className=" text-xs font-light line-clamp-4 hover:line-clamp-none hover:cursor-pointer">{testimony}</p>
+                    <p className=" text-xs font-light line-clamp-4 group-hover:line-clamp-none group-hover:cursor-pointer">{testimony}</p>
                   </div>
                 </div>
               </SwiperSlide>

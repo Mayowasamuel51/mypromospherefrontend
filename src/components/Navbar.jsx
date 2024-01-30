@@ -16,10 +16,10 @@ export default function Navbar() {
   const {user, setToken, token,  setUser} = useStateContext()
   // bg-gradient-to-r from-pink to-purple2
   return (
-    <header className=" bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-16">
+    <header className=" bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-7">
       <Link to="/" className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
-        <h1 className=" text-sm font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
+        <h1 className=" text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>
       </Link>
 
       <div onClick={handleToggle} className=" z-40 exl:hidden">
@@ -56,7 +56,7 @@ export default function Navbar() {
           </button>
         </Link>}
         {token ? "sDASFADF" :<Link to="signUp">
-          <button className=" bg-pink py-2 px-5 rounded-lg text-white font-['Poppins'] text-lg font-semibold">
+          <button className=" bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-lg font-semibold">
             Signup
           </button>
         </Link>}

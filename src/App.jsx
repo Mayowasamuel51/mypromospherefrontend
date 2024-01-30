@@ -9,7 +9,7 @@ import { useStateContext } from "./contexts/ContextProvider";
  function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Outlet />
       <Footer />
     </>
