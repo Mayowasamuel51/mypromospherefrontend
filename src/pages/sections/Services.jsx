@@ -5,13 +5,14 @@ import image3 from "../../assests/images/Rectangle 478.png";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { useStateContext } from "../../contexts/ContextProvider";
 import 'swiper/css'
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 // import 'swiper/css/autoplay';
 const Services = () => {
+  const {FullScreen} = useStateContext()
   const ServicesArr = [
     {
       serviceName: "Make-up Artist",
@@ -31,10 +32,10 @@ const Services = () => {
     },
   ];
   return (
-    <section className="services py-10  px-5 overflow-x-hidden">
-      <div className="container max-w-[88rem]   mx-auto">
+    <section className="services py-10 lg:py-20 px-4 lg:px-10 overflow-x-hidden">
+      <div className="">
         <div className="services-heading">
-          <h1 className="text-[1.7rem] md:text-[2.4rem] font-semibold">
+          <h1 className="text-base lg:text-5xl font-semibold lg:my-10">
             Trending Services
           </h1>
         </div>
@@ -50,7 +51,7 @@ const Services = () => {
               style={{paddingBottom: '50px'}}
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               spaceBetween={15}
-              slidesPerView={3}
+              slidesPerView={FullScreen ? 3 : 1}
               navigation
               autoplay
               pagination={{ clickable: true }}
@@ -63,7 +64,7 @@ const Services = () => {
               return (
                 <SwiperSlide key={i} className="flex  items-center justify-center flex-col cursor-pointer">
                   <div className="hover-img  relative w-full">
-                    <img src={service.serviceImg} alt="" className="h-[350px] w-full" />
+                    <img src={service.serviceImg} alt="" className="" />
                     <div className="rectangle-hover  bg-[#000000A6] hidden items-center justify-center absolute top-0 bottom-0 right-0 left-0">
                       <a href="" className="text-white font-semibold">
                         See More

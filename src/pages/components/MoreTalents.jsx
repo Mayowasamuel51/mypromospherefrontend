@@ -54,19 +54,19 @@ export default function MoreTalents() {
     },
   ];
   return (
-    <div className=" grid grid-cols-1 gap-3 md:grid-cols-4">
+    <div className="grid gap-x-3 gap-y-3 grid-cols-1 md:grid-cols-4">
       {moreTalents.map(({ id, text, img }) => {
         return (
           <div
             key={id}
-            className=" relative w-[230px] h-[90px] rounded-2xl flex flex-col justify-center items-center bg-no-repeat bg-cover bg-center md:w-[150px]"
+            className="w-full relative rounded-md lg:rounded-2xl items-center"
           >
             <img
               src={img}
               alt={text}
-              className=" absolute w-full h-full object-cover"
+              className="w-full rounded-md lg:rounded-2xl h-20 object-cover"
             />
-            <div className=" w-full h-full bg-black/50 flex flex-col justify-center items-center z-20">
+            <div className="rounded-md lg:rounded-2xl absolute inset-0 w-full h-full bg-black/50 flex justify-center items-center z-20">
               <Link className=" text-white font-semibold text-sm">{text}</Link>
             </div>
           </div>

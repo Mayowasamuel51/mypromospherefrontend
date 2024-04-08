@@ -41,17 +41,17 @@ export default function CategoryContainer() {
     }
   ];
   return (
-    <div className=" grid gap-3 md:grid-cols-3 md:gap-5">
+    <div className="grid gap-3 grid-cols-1 lg:grid-cols-3 md:gap-5">
       {Categories.map(({ id, category, rating, skills }) => {
         return (
-          <div key={id} className=" bg-lightGrayishBlue px-4 py-3 rounded-md w-[220px] bigLg:w-[260px] exl:w-[400px]">
-            <h3 className=" capitalize font-medium">{category}</h3>
+          <div key={id} className="bg-lightGrayishBlue px-4 py-3 rounded-md w-full bigLg:w-[260px] exl:w-[400px]">
+            <h3 className="capitalize font-medium">{category}</h3>
             <div className=' flex items-center justify-between'>
               <div className=' flex items-center gap-x-1'>
                 <img src={star} alt="star" className=' w-4' />
                 <p className=' text-xs font-extralight'>{rating}</p>
               </div>
-              <p className=' text-xs font-extralight'>{skills} skills</p>
+              <p className='text-xs font-extralight'>{skills} skills</p>
             </div>
           </div>
         );

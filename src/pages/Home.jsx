@@ -11,7 +11,7 @@ import Services from "./sections/Services";
 import ServiceProviders from "./sections/ServiceProviders";
 import NewHero from "./sections/NewHero";
 import { useStateContext } from "../contexts/ContextProvider";
-import { Navigate } from "react-router-dom";
+import SkillOutlet from "./sections/SkillOutlet";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
   //       return <Navigate to="dashboard"/>
   //   }
   const [myBackground, setMyBackground] = useState(true)
+  
 
   useEffect(() => {
     alternateColor()
@@ -48,14 +49,14 @@ export default function Home() {
         <NewHero/>
       </div>
       <Services/>
-      <ServiceProviders/>
       <TalentAndValues />
       <Categories />
       <Grow />
-      <Skills />
+      <SkillOutlet />
+      {/* <Skills /> */}
+      <ServiceProviders/>
       <Testimonials />
       <CTA /> {/* <Hero /> */}
-      
     </main>
   );
 }

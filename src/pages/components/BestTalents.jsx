@@ -23,15 +23,15 @@ export default function BestTalents() {
     },
   ];
   return (
-    <div className=" flex flex-col items-center gap-y-5 md:flex-row md:justify-center md:flex-wrap md:gap-x-5">
+    <div className="flex flex-col items-center gap-y-5 md:flex-row justify-center md:gap-x-4">
       {bestTalents.map(({ id, text, img }) => {
         return (
           <div
             key={id}
-            className="relative w-[230px] h-[167px] rounded-2xl flex flex-col justify-center items-center bg-no-repeat bg-cover bg-center md:w-[200px]"
+            className="relative rounded-md lg:rounded-2xl items-center bg-no-repeat bg-cover bg-center w-full"
           >
-            <img src={img} alt="" className=" absolute w-full h-full object-cover" />
-            <div className=" w-full h-full bg-black/50 flex flex-col justify-center items-center z-20">
+            <img src={img} alt={text} className="flex-1 aspect-square rounded-md lg:rounded-2xl object-cover" />
+            <div className="rounded-md lg:rounded-2xl absolute inset-0 w-full h-full bg-black/50 flex justify-center items-center z-20">
               <Link className=" text-white font-semibold text-xl">{text}</Link>
             </div>
           </div>

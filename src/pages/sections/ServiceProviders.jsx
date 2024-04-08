@@ -23,10 +23,10 @@ const ServiceProviders = () => {
           </h1>
         </div>
         <div className="prov-carousel mt-10 max-w-[62rem] mx-auto">
-          <div className="flex flex-wrap   justify-between gap-4 px-5 items-center">
-            {ProvidersArr.map((provider) => {
+          <div className="flex flex-wrap justify-between gap-4 px-5 items-center">
+            {ProvidersArr.map((provider, index) => {
               return (
-                <div>
+                <div key={index}>
                   <div  className="w-[372px] h-[372px]">
                   <img
                     src={provider.providerImg}

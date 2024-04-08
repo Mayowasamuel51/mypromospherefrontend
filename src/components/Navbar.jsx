@@ -16,10 +16,10 @@ export default function Navbar() {
   const {user, setToken, token,  setUser} = useStateContext()
   // bg-gradient-to-r from-pink to-purple2
   return (
-    <header className=" bg-transparent flex flex-row justify-between items-center py-2 px-8 bigLg:px-7">
+    <header className="bg-transparent flex flex-row justify-between items-center py-2 px-4 lg:px-10">
       <Link to="/" className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
-        <h1 className=" text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>
+        <h1 className="text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>
       </Link>
 
       <div onClick={handleToggle} className=" z-40 exl:hidden">
@@ -33,21 +33,21 @@ export default function Navbar() {
       {toggleIcon && <MobileNav handleToggle={handleToggle} />}
 
       <nav className=" hidden exl:flex exl:items-center exl:gap-x-[68px]">
-        <a href="#about" className=" text-lg font-semibold font-['Inter']">
+        <Link to="#about" className="md:text-lg font-semibold font-['Inter']">
           About us
-        </a>
-        <a href="#talents" className=" text-lg font-semibold font-['Inter']">
+        </Link>
+        <Link to="#talents" className="md:text-lg font-semibold font-['Inter']">
           Find talent
-        </a>
-        <a href="#skills" className=" text-lg font-semibold font-['Inter']">
+        </Link>
+        <Link to="#skills" className="md:text-lg font-semibold font-['Inter']">
           Top skills
-        </a>
-        <a
-          href="#testimonials"
-          className=" text-lg font-semibold font-['Inter']"
+        </Link>
+        <Link
+          to="#testimonials"
+          className=" md:text-lg font-semibold font-['Inter']"
         >
           Testimonials
-        </a>
+        </Link>
       </nav>
       <div className=" hidden z-50 exl:flex exl:items-center exl:gap-x-6">
        {token ? "sdafdafadfda" :  <Link to="login">
@@ -56,7 +56,7 @@ export default function Navbar() {
           </button>
         </Link>}
         {token ? "sDASFADF" :<Link to="signUp">
-          <button className=" bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-lg font-semibold">
+          <button className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-lg font-semibold">
             Signup
           </button>
         </Link>}

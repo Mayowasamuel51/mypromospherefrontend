@@ -1,7 +1,5 @@
 
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
-import ReactDOM from "react-dom/client";
-import React from "react";
+import { createBrowserRouter } from "react-router-dom";
 // global styles
 import "./index.css";
 // routes/pages
@@ -17,15 +15,14 @@ import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
 import Photography from "./pages/skills/Photographers";
 import DefualtLayout from "./pages/components/DefualtLayout";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
-import { ContextProvider } from "./contexts/ContextProvider";
 
 
-const queryClient = new QueryClient()
+import SkillOutlet from "./pages/sections/SkillOutlet.jsx";
+import TopServices from "./pages/components/TopServices.jsx"
+import TrendingSkills from "./pages/components/TrendingSkills.jsx"
+
+
 
 const router = createBrowserRouter([
   {
@@ -33,8 +30,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true,
+        path: "/",
         element: <Home />,
+        children: [
+          {
+            path: "/",
+            element: <SkillOutlet />,
+            children: [
+              {
+                index : true,
+                element: <TopServices />
+              }
+            ]
+          }
+        ]
       },
     ],
   },
