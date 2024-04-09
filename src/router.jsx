@@ -23,7 +23,6 @@ import TopServices from "./pages/components/TopServices.jsx"
 import TrendingSkills from "./pages/components/TrendingSkills.jsx"
 
 
-
 const router = createBrowserRouter([
   {
     path: "/",
