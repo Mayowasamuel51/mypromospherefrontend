@@ -11,9 +11,10 @@ import Services from "./sections/Services";
 import ServiceProviders from "./sections/ServiceProviders";
 import NewHero from "./sections/NewHero";
 import { useStateContext } from "../contexts/ContextProvider";
-import SkillOutlet from "./sections/SkillOutlet";
+import SkillsNav from "./sections/SkillsNav";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 export default function Home() {
   // const {  token } = useStateContext();
   //   if (token) {
@@ -52,8 +53,8 @@ export default function Home() {
       <TalentAndValues />
       <Categories />
       <Grow />
-      <SkillOutlet />
-      {/* <Skills /> */}
+      <SkillsNav />
+      <Outlet />
       <ServiceProviders/>
       <Testimonials />
       <CTA /> {/* <Hero /> */}

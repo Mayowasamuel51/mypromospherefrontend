@@ -32,31 +32,31 @@ export default function Navbar() {
 
       {toggleIcon && <MobileNav handleToggle={handleToggle} />}
 
-      <nav className=" hidden exl:flex exl:items-center exl:gap-x-[68px]">
-        <Link to="#about" className="md:text-lg font-semibold font-['Inter']">
+      <nav className="hidden exl:flex exl:items-center exl:gap-x-[68px]">
+        <Link to="#about" className="md:text-base font-medium">
           About us
         </Link>
-        <Link to="#talents" className="md:text-lg font-semibold font-['Inter']">
+        <Link to="#talents" className="md:text-base font-medium">
           Find talent
         </Link>
-        <Link to="#skills" className="md:text-lg font-semibold font-['Inter']">
+        <Link to="#skills" className="md:text-base font-medium">
           Top skills
         </Link>
         <Link
           to="#testimonials"
-          className=" md:text-lg font-semibold font-['Inter']"
+          className=" md:text-base font-medium"
         >
           Testimonials
         </Link>
       </nav>
       <div className=" hidden z-50 exl:flex exl:items-center exl:gap-x-6">
        {token ? "sdafdafadfda" :  <Link to="login">
-          <button className=" text-lg py-2 px-5 text-white font-['Poppins] font-semibold">
+          <button className=" text-lg py-2 px-5 text-white font-['Poppinbase font-medium">
             Login
           </button>
         </Link>}
         {token ? "sDASFADF" :<Link to="signUp">
-          <button className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-lg font-semibold">
+          <button className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
             Signup
           </button>
         </Link>}

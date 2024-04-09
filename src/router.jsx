@@ -18,33 +18,29 @@ import DefualtLayout from "./pages/components/DefualtLayout";
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
 
 
-import SkillOutlet from "./pages/sections/SkillOutlet.jsx";
 import TopServices from "./pages/components/TopServices.jsx"
 import TrendingSkills from "./pages/components/TrendingSkills.jsx"
+import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
     children: [
       {
-        path: "/",
-        element: <Home />,
-        children: [
-          {
-            path: "/",
-            element: <SkillOutlet />,
-            children: [
-              {
-                index : true,
-                element: <TopServices />
-              }
-            ]
-          }
-        ]
+        index: true,
+        element: <TopServices />
       },
-    ],
+      {
+        path: "/trendingSkills",
+        element: <TrendingSkills />
+      },
+      {
+        path: "/topSkillsLagos",
+        element: <TopSkillsLagos />
+      }
+    ]
   },
   {
     path: "skills",

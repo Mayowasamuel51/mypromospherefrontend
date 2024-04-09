@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 
-const SkillOutlet = () => {
+const SkillsNav = () => {
   return (
     <>
         <section className="bigLg:px-10 px-4">
@@ -16,7 +15,7 @@ const SkillOutlet = () => {
                 </p>
                 <p className=" text-base lg:text-lg text-black/50">
                 <Link
-                    to="/"
+                    to="/trendingSkills"
                     className="pb-2 focus:text-purple focus:border-2 focus:border-b-purple focus:border-x-0 focus:border-t-0"
                 >
                     Trending Skills
@@ -24,7 +23,7 @@ const SkillOutlet = () => {
                 </p>
                 <p className=" text-base lg:text-lg text-black/50">
                 <Link
-                    to="/"
+                    to="/topSkillsLagos"
                     className=" pb-2 focus:text-purple focus:border-2 focus:border-b-purple focus:border-x-0 focus:border-t-0"
                 >
                     Top Skills in Lagos
@@ -32,9 +31,8 @@ const SkillOutlet = () => {
                 </p>
             </div>
         </section>
-        {/* <Outlet /> */}
     </>
   )
 }
 
-export default SkillOutlet
+export default SkillsNav
