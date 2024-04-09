@@ -63,9 +63,7 @@
 .font-900 {
   font-weight: 900;
 }
-.hover-img:hover .rectangle-hover {
-  display: flex;
-}
+
 .scroll-container {
   overflow: auto;
   scrollbar-width: thin; 

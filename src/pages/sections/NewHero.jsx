@@ -7,9 +7,9 @@ import { CiSearch } from "react-icons/ci"
 
 const NewHero = () => {
   return (
-    <section className={`newhero min-h-screen bg-center bg-cover bg-no-repeat px-4 lg:px-10 py-20 lg:py-32`}>
-      <div className="flex items-center lg:flex-row flex-col justify-between gap-4">
-        <div className="hero-text relative z-50 flex flex-col gap-2">
+    <section className={`newhero min-h-screen bg-center bg-cover bg-no-repeat px-4 lg:px-10 py-32 lg:py-32 text-white`}>
+      <div className="flex lg:items-center lg:flex-row flex-col lg:justify-between gap-4">
+        <div className="hero-text relative z-50 flex flex-col gap-2 min-h-screen lg:min-h-max">
           <h1 className="lg:text-6xl text-3xl font-semibold text-white ">
             Find your <br />
             Desired Services
@@ -30,11 +30,11 @@ const NewHero = () => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-4">
-          <img src={img1} alt="" className="w-60 aspect-square object-cover object-center" />
+        <div className="flex lg:items-center lg:flex-row flex-col gap-4">
+          <img src={img1} alt="" className="w-full lg:w-60 lg:aspect-square lg:object-cover object-center" />
           <div className="flex flex-col gap-4">
-            <img src={img2} alt="" className="w-60 aspect-square object-cover object-center" />
-            <img src={img3} alt="" className="w-60 aspect-square object-cover object-center" />
+            <img src={img2} alt="" className="w-full lg:w-60 lg:aspect-square lg:object-cover object-center" />
+            <img src={img3} alt="" className="w-full lg:w-60 lg:aspect-square lg:object-cover object-center" />
           </div>
         </div>
       </div>

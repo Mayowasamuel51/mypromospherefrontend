@@ -1,18 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import image1 from "../../assests/images/Rectangle 479.png";
 import image2 from "../../assests/images/Rectangle 480.png";
 import image3 from "../../assests/images/Rectangle 478.png";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useStateContext } from "../../contexts/ContextProvider";
-import 'swiper/css'
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-// import 'swiper/css/autoplay';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import './pagination.css'
+
 const Services = () => {
-  const {FullScreen} = useStateContext()
+  const { FullScreen } = useStateContext()
   const ServicesArr = [
     {
       serviceName: "Make-up Artist",
@@ -30,6 +27,10 @@ const Services = () => {
       serviceName: "Wig Hubs",
       serviceImg: image2,
     },
+    {
+      serviceName: "Make-up Artist",
+      serviceImg: image3,
+    },
   ];
   return (
     <section className="services py-10 lg:py-20 px-4 lg:px-10 overflow-x-hidden">
@@ -39,48 +40,42 @@ const Services = () => {
             Trending Services
           </h1>
         </div>
-        <div className="services-carousel relative">
-          <div className="services-flex max-w-[88rem] mx-auto flex gap-5 mt-5  overflow-x-scroll scroll-container">
-            {/* <div className="arr-left w-14 md:w-16 h-14 md:h-16 rounded-full flex items-center justify-center absolute left-[-2rem] z-50 cursor-pointer top-[40%] bg-[#f8f4f4] text-black">
-              <FaAngleLeft className="text-[1.8rem] md:text-[2rem]" />
-            </div>
-            <div className="arr-left w-14 md:w-16 h-14 md:h-16  rounded-full flex items-center justify-center absolute right-[-2rem] z-50 cursor-pointer top-[40%] bg-[#f8f4f4] text-black">
-              <FaAngleRight className="text-[1.8rem] md:text-[2rem]" />
-            </div> */}
-            <Swiper
-              style={{paddingBottom: '50px'}}
-              modules={[Navigation, Pagination, Scrollbar, A11y]}
-              spaceBetween={15}
-              slidesPerView={FullScreen ? 3 : 1}
-              navigation
-              autoplay
-              pagination={{ clickable: true }}
-              loop
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log('slide change')}
-            >
-            {
-              ServicesArr.map((service, i) => {
-              return (
-                <SwiperSlide key={i} className="flex  items-center justify-center flex-col cursor-pointer">
-                  <div className="hover-img  relative w-full">
-                    <img src={service.serviceImg} alt="" className="" />
-                    <div className="rectangle-hover  bg-[#000000A6] hidden items-center justify-center absolute top-0 bottom-0 right-0 left-0">
-                      <a href="" className="text-white font-semibold">
-                        See More
-                      </a>
-                    </div>
+        <div className="py-10">
+          <Splide aria-label="services" options={{
+            type: 'loop',
+            perPage: FullScreen ? 3 : 1,
+            perMove: FullScreen ? 3 : 1,
+            gap: "20px",
+            focus: 1,
+            autoplay: true,
+            pagination: true,
+            arrows: true,
+            interval: 4000,
+            speed: 2000,
+            drag : 'free',
+            snap : true,
+          }}
+          >
+          {
+            ServicesArr.map((service) => {
+            return (
+              <SplideSlide key={service} className="">
+                <div className="group relative">
+                  <img src={service.serviceImg} alt="" className="w-full" />
+                  <div className="bg-[#000000A6] absolute inset-0 flex justify-center items-center invisible opacity-0 group-hover:visible group-hover:opacity-100 duration-300">
+                    <a href="" className="text-white font-semibold">
+                      See More
+                    </a>
                   </div>
-                  <h3 className="mt-5 text-sm md:text-lg font-semibold">
-                    {service.serviceName}
-                  </h3>
-                </SwiperSlide>
-              );
-              })
-            }
-
-            </Swiper>
-          </div>
+                </div>
+                <h3 className="mt-5 text-sm md:text-lg font-semibold">
+                  {service.serviceName}
+                </h3>
+              </SplideSlide>
+            );
+            })
+          }
+          </Splide>
         </div>
       </div>
     </section>

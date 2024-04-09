@@ -1,0 +1,35 @@
+
+li button.splide__pagination__page {
+    /* background-color: #6D6767; */
+    opacity: 1 !important;
+} 
+
+li button.splide__pagination__page.is-active {
+    opacity: 1 !important;
+    background-color: #3D217A;
+}
+
+div.mySwiper {
+    position: relative;
+}
+
+.testimonial div.splide__arrows.splide__arrows--ltr {
+    /* position: absolute; */
+    /* border: 2px solid purple; */
+    /* height: 30px; */
+    /* gap: 40px; */
+}
+
+.testimonial div.splide__arrows.splide__arrows--ltr > button:first-child {
+    /* border: 2px solid red; */
+    right: 0;
+    top: 0;
+    transform: translateY(0);
+    margin-left : 80%;
+}
+.testimonial div.splide__arrows.splide__arrows--ltr > button:last-child {
+    /* border: 2px solid green; */
+    top: 0;
+    right: 0;
+    transform: translateY(0);
+}

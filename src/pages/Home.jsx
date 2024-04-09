@@ -19,29 +19,9 @@ export default function Home() {
   //   if (token) {
   //       return <Navigate to="dashboard"/>
   //   }
-  const [myBackground, setMyBackground] = useState(true)
-
-  useEffect(() => {
-    alternateColor()
-    
-  }, [myBackground])
-
-  function alternateColor(){
-    const myInterval = setInterval(function(){
-      if(myBackground){
-        setMyBackground(false)
-      }else if(!myBackground){
-        setMyBackground(true)
-      }
-      clearInterval(myInterval)
-    }, 6000)
-  }
-  //  transition-all delay-150 duration-150`} style={{background: myBackground ? 'linear-gradient(90deg, #EC6A87 16.29%, #D815DF 85.71%)' : '#6F0E78'}
   return (
     <main className=" ">
-      <div className={`text-white`}>
-        <NewHero/>
-      </div>
+      <NewHero/>
       <Services/>
       <TalentAndValues />
       <Categories />
@@ -50,7 +30,7 @@ export default function Home() {
       <Outlet />
       <ServiceProviders/>
       <Testimonials />
-      <CTA /> {/* <Hero /> */}
+      <CTA />
     </main>
   );
 }

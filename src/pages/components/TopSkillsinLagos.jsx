@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const TopSkillsinLagos = () => {
   return (
-    <ul className=" grid grid-cols-3 justify-between gap-3 bg-mistyRose/50 p-5 bigLg:px-16">
+    <ul className="grid grid-cols-3 justify-between gap-3 bg-mistyRose/50 p-5 lg:py-20 bigLg:px-16">
         {NigeriaSkillsData.map(({ id, skill }) => (
-        <li key={id} className=" text-black/50 text-lg">
+        <li key={id} className="text-black/50 text-xs lg:text-lg">
             <Link to="/" className=" active:text-purple">
             {skill}
             </Link>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion';
 
 // assests
 import logo from "../assests/SVGs/logo.svg";
@@ -55,13 +55,14 @@ export default function Navbar() {
 
       <div onClick={handleToggle} className=" z-40 exl:hidden">
         {toggleIcon ? (
-          <XMarkIcon width={35} className=" text-white" />
+          <XMarkIcon width={35} className={`${bg ? "text-black" : "text-white"}`} />
         ) : (
-          <Bars3BottomRightIcon width={35} className=" text-white" />
+          <Bars3BottomRightIcon width={35} className={`${bg ? "text-black" : "text-white"}`} />
         )}
       </div>
-
-      {toggleIcon && <MobileNav handleToggle={handleToggle} />}
+      <AnimatePresence>
+        {toggleIcon && <MobileNav handleToggle={handleToggle} hidden={hidden} />}
+      </AnimatePresence>
 
       <nav className={`${bg ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
         <Link to="#about" className="md:text-base font-medium">

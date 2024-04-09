@@ -1,19 +1,14 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-// import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { useStateContext } from "../../contexts/ContextProvider";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import './pagination.css'
 
 // assests
 import testimonialOne from "../../assests/SVGs/testimonialOne.svg";
 import testimonialTwo from "../../assests/SVGs/testimonialTwo.svg";
 
 export default function Testimonials() {
+  const { FullScreen } = useStateContext()
   const testimonies = [
     {
       id: 1,
@@ -49,69 +44,73 @@ export default function Testimonials() {
     },
   ];
   return (
-    <section className=" px-8 pb-16 bigLg:px-16 bigLg:pb-20">
+    <section className="testimonial px-8 pb-16 bigLg:px-16 bigLg:pb-20">
       <h3 className=" text-2xl font-medium text-center mb-5 md:text-3xl">
         Testimonials
       </h3>
-      <div className=" bigLg:hidden">
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={false}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
+      <div className=" bigLg:hidden relative">
+        <Splide aria-label="testimonials" options={{
+          type: 'loop',
+          perPage: 1,
+          perMove: 1,
+          gap: "20px",
+          focus: 1,
+          autoplay: true,
+          pagination: true,
+          arrows: true,
+          interval: 4000,
+          speed: 2000,
+          drag : 'free',
+          snap : true
+        }}
+          className=""
         >
           {testimonies.map(({ id, img, name, location, testimony }) => {
             return (
-              <SwiperSlide key={id}>
-                <div className=" m-10 flex items-start gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5">
-                  {/* image container */}
+              <SplideSlide key={id}>
+                <div className=" m-10 flex items-start gap-x-3 max-w-screen-sm rounded-lg p-5">
                   <img src={img} alt="" className=" w-16" />
-                  {/* details */}
                   <div className="">
                     <h6 className=" text-sm font-medium">{name}</h6>
                     <p className=" text-xs mb-3">{location}</p>
                     <p className=" text-xs font-light">{testimony}</p>
                   </div>
                 </div>
-              </SwiperSlide>
+              </SplideSlide>
             );
           })}
-        </Swiper>
+        </Splide>
       </div>
-      <div className="hidden bigLg:block">
-        <Swiper
-          slidesPerView={2}
-          spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={false}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
+      <div className="hidden bigLg:block relative">
+        <Splide options={{
+          type: 'loop',
+          perPage: 2,
+          perMove: 1,
+          gap: "20px",
+          focus: 1,
+          autoplay: true,
+          pagination: true,
+          arrows: true,
+          interval: 4000,
+          speed: 2000,
+          drag : 'free',
+          snap : true
+        }}>
           {testimonies.map(({ id, img, name, location, testimony }) => {
             return (
-              <SwiperSlide key={id}>
-                <div className=" m-10 flex items-center gap-x-3 max-w-screen-sm mx-auto border-2 border-purple rounded-lg p-5 group h-[190px] hover:scale-105">
-                  {/* image container */}
+              <SplideSlide key={id}>
+                <div className=" m-10 flex items-center gap-x-3 max-w-screen-sm rounded-lg p-5 group h-[190px] hover:scale-105 duration-300">
                   <img src={img} alt="" className=" w-16" />
-                  {/* details */}
                   <div className="">
-                    <h6 className=" text-sm font-medium">{name}</h6>
-                    <p className=" text-xs mb-3">{location}</p>
-                    <p className=" text-xs font-light line-clamp-4 group-hover:line-clamp-none group-hover:cursor-pointer">{testimony}</p>
+                    <h6 className="text-sm font-medium">{name}</h6>
+                    <p className="text-xs mb-3">{location}</p>
+                    <p className="text-xs font-light line-clamp-4 group-hover:line-clamp-none duration-300 group-hover:cursor-pointer">{testimony}</p>
                   </div>
                 </div>
-              </SwiperSlide>
+              </SplideSlide>
             );
           })}
-        </Swiper>
+        </Splide>
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 import image1 from "../../assests/images/Rectangle 487.png";
 import image2 from "../../assests/images/Rectangle 488.png";
 const ServiceProviders = () => {
@@ -18,16 +17,16 @@ const ServiceProviders = () => {
     <section className="bg-[#EC6A872B] py-10  md:py-20 ">
       <div className=" max-w-[88rem]   mx-auto ">
         <div className="heading text-center">
-          <h1 className="text-[1.7rem] md:text-[2.4rem] font-semibold">
+          <h1 className="text-base md:text-xl font-semibold">
             Top service Providers of the Week
           </h1>
         </div>
-        <div className="prov-carousel mt-10 max-w-[62rem] mx-auto">
+        <div className="prov-carousel mt-10 mx-auto">
           <div className="flex flex-wrap justify-between gap-4 px-5 items-center">
             {ProvidersArr.map((provider, index) => {
               return (
                 <div key={index}>
-                  <div  className="w-[372px] h-[372px]">
+                  <div  className="">
                   <img
                     src={provider.providerImg}
                    
@@ -35,10 +34,10 @@ const ServiceProviders = () => {
                   />
                   </div>
                   <div className="flex flex-col gap-1 mt-3 items-center justify-center">
-                    <h2 className="text-[1.3rem] md:text-[1.7rem] font-semibold">
+                    <h2 className="text-base md:text-lg font-semibold">
                       {provider.providerName}
                     </h2>
-                    <h3 className="text-[1.1rem] md:text-[1.3rem]">
+                    <h3 className="text-sm md:text-base">
                       {provider.providerJob}
                     </h3>
                   </div>
