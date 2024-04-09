@@ -1,22 +1,53 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 
 // assests
 import logo from "../assests/SVGs/logo.svg";
 import MobileNav from "./MobileNav";
 import { useStateContext } from "../contexts/ContextProvider";
 
+
+const headerVariant = {
+  visible: { y: 0},
+  hidden: { y: "-100%",
+    transition:{ type: "linear", duration: .25}
+  }
+}
+
 export default function Navbar() {
   const [toggleIcon, setToggleIcon] = useState(false);
+  const [hidden, setHidden] = useState(false)
+  const [bg, setBg] = useState(false)
   //   this function is to change the toggle state
   const handleToggle = () => {
     setToggleIcon(!toggleIcon);
   };
-  const {user, setToken, token,  setUser} = useStateContext()
-  // bg-gradient-to-r from-pink to-purple2
+  const {user, setToken, token,  setUser,} = useStateContext()
+  
+  const { scrollY } = useScroll()
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious()
+    if (latest > previous && latest > 150) {
+      setHidden(true)
+    }
+    else {
+      setHidden(false)
+    }
+  })
+  useEffect(()=> {
+    const handleScroll = () => {
+        const scrollY = window.scrollY;
+        scrollY > 20 ? setBg(true) : setBg(false);
+      };
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, [])
   return (
-    <header className="bg-transparent flex flex-row justify-between items-center py-2 px-4 lg:px-10">
+    <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? "bg-white" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
       <Link to="/" className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
         <h1 className="text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>
@@ -32,7 +63,7 @@ export default function Navbar() {
 
       {toggleIcon && <MobileNav handleToggle={handleToggle} />}
 
-      <nav className="hidden exl:flex exl:items-center exl:gap-x-[68px]">
+      <nav className={`${bg ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
         <Link to="#about" className="md:text-base font-medium">
           About us
         </Link>
@@ -51,7 +82,7 @@ export default function Navbar() {
       </nav>
       <div className=" hidden z-50 exl:flex exl:items-center exl:gap-x-6">
        {token ? "sdafdafadfda" :  <Link to="login">
-          <button className=" text-lg py-2 px-5 text-white font-['Poppinbase font-medium">
+          <button className={`text-lg py-2 px-5 ${bg ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
             Login
           </button>
         </Link>}
@@ -61,6 +92,6 @@ export default function Navbar() {
           </button>
         </Link>}
       </div> 
-    </header>
+    </motion.header>
   );
 }

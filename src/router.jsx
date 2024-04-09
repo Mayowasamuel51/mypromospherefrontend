@@ -26,7 +26,7 @@ import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
     children: [
       {
         index: true,
@@ -58,10 +58,6 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <DefualtLayout />,
     children: [
-      // {
-      //   path: "dashboard",
-      //   element: <Navigate    to="dashboard" />
-      // },
       {
         index: true,
         element: <UserProfile />,

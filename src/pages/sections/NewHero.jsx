@@ -7,7 +7,7 @@ import { CiSearch } from "react-icons/ci"
 
 const NewHero = () => {
   return (
-    <section className="newhero min-h-screen bg-center bg-cover bg-no-repeat px-4 lg:px-10 py-10 lg:py-10">
+    <section className={`newhero min-h-screen bg-center bg-cover bg-no-repeat px-4 lg:px-10 py-20 lg:py-32`}>
       <div className="flex items-center lg:flex-row flex-col justify-between gap-4">
         <div className="hero-text relative z-50 flex flex-col gap-2">
           <h1 className="lg:text-6xl text-3xl font-semibold text-white ">
