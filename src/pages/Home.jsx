@@ -36,10 +36,10 @@ export default function Home() {
       clearInterval(myInterval)
     }, 6000)
   }
-
+  //  transition-all delay-150 duration-150`} style={{background: myBackground ? 'linear-gradient(90deg, #EC6A87 16.29%, #D815DF 85.71%)' : '#6F0E78'}
   return (
     <main className=" ">
-      <div className={` text-white bg-[#6F0E78] transition-all delay-150 duration-150`} style={{background: myBackground ? 'linear-gradient(90deg, #EC6A87 16.29%, #D815DF 85.71%)' : '#6F0E78'}}>
+      <div className={`text-white`}>
         <NewHero/>
       </div>
       <Services/>

@@ -92,3 +92,34 @@
 .scroll-container::-webkit-scrollbar-thumb {
   background: transparent; 
 }
+
+.newhero {
+  animation-name: change;
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background: linear-gradient(90deg , #ec6a87 , #6F0E78);
+  background-size: 300%;
+}
+
+@keyframes change {
+  0% {
+    background-position: top;
+  }
+  20% {
+    background-position: right;
+  }
+  40% {
+    background-position: bottom;
+  }
+  50% {
+    background-position: left;
+  }
+  80% {
+    background-position: right;
+  }
+  100% {
+    background-position: top;
+  }
+}

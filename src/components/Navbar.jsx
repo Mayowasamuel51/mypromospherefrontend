@@ -24,7 +24,7 @@ export default function Navbar() {
   const handleToggle = () => {
     setToggleIcon(!toggleIcon);
   };
-  const {user, setToken, token,  setUser,} = useStateContext()
+  const {token} = useStateContext()
   
   const { scrollY } = useScroll()
   useMotionValueEvent(scrollY, "change", (latest) => {
