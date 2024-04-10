@@ -4,7 +4,6 @@ import { createBrowserRouter } from "react-router-dom";
 import "./index.css";
 // routes/pages
 import App from "./App.jsx";
-import Home from "./pages/Home";
 import SignUp from "./pages/SignUpPage/SignUp";
 import Layout from "./pages/PerfectWorks/components/layout";
 import Works from "./pages/PerfectWorks/Works";

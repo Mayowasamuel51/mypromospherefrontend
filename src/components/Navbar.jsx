@@ -16,7 +16,7 @@ const headerVariant = {
   }
 }
 
-export default function Navbar() {
+export default function Navbar({profile}) {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [hidden, setHidden] = useState(false)
   const [bg, setBg] = useState(false)
@@ -47,7 +47,7 @@ export default function Navbar() {
     };
 }, [])
   return (
-    <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? "bg-white" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
+    <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile ? "bg-[#3D217A]" : "bg-white" : profile ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
       <Link to="/" className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
         <h1 className="text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>

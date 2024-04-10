@@ -11,6 +11,8 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from "react-hook-form"
+
+import axios from "axios"
 const Login = () => {
   const navigate = useNavigate()
   const [selected, setSelected] = useState(false);
@@ -33,38 +35,41 @@ const Login = () => {
     resolver: yupResolver(schema),
   })
 
-  const formSubmit = (data) => {
+  const formSubmit = async(data) => {
     const payload = {
       password: data.password,
       email: data.email
     }
-    console.log(payload)
-    setError(null)
-    axiosclinet.post('/api/login', payload, {
-      headers: {
-        Accept: "application/vnd.api+json",
-      }
-    }).then((res) => {
-      setToken(res.data.token)
-      setUser(res.data.users)
-      console.log(res.data.token)
-      navigate("/dashboard")
+    // console.log(payload)
+    // setError(null)
+    // axiosclinet.post('/api/login', payload, {
+    //   headers: {
+    //     Accept: "application/vnd.api+json",
+    //   }
+    // }).then((res) => {
+    //   setToken(res.data.token)
+    //   setUser(res.data.users)
+    //   console.log(res.data.token)
+    //   navigate("/dashboard")
 
-    }).catch(err => {
+    // }).catch(err => {
 
-      console.log(err.message)
-      const response = err.response;
-      if (response && response.status === 422) {
-        if (response.data.errors) {
-          setError(response.data.errors)
-        }
-        else {
-          setError({
-            email: [response.data.message]
-          })
-        }
-      }
-    })
+    //   console.log(err.message)
+    //   const response = err.response;
+    //   if (response && response.status === 422) {
+    //     if (response.data.errors) {
+    //       setError(response.data.errors)
+    //     }
+    //     else {
+    //       setError({
+    //         email: [response.data.message]
+    //       })
+    //     }
+    //   }
+    // })
+    // const response = await axios.post("https://apimypromospheretest.com.ng/login", payload)
+    // console.log(response)
+    navigate("/dashboard")
   }
   return (
     <section className="bg-purple h-screen">
@@ -72,8 +77,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white w-[85%] max-w-2xl rounded-3xl px-8 flex justify-between"
-            : "inset bg-black w-[85%] max-w-2xl rounded-3xl px-8 flex justify-between"
+            ? "inset bg-white w-[85%] max-w-2xl rounded-3xl px-4 lg:px-8 flex justify-between"
+            : "inset bg-black w-[85%] max-w-2xl rounded-3xl px-4 lg:px-8 flex justify-between"
         }
       >
         {/* sign-up center  */}
@@ -131,7 +136,7 @@ const Login = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
                       : "w-[90%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1"
                   }
                   placeholder="example@gmail.com"
@@ -152,7 +157,7 @@ const Login = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px]"
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
                       : " bg-transparent w-[90%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
                   }
                   placeholder="Enter password"
@@ -162,7 +167,7 @@ const Login = () => {
               {/* sign-up btn  */}
               <article className="mt-7 pb-9">
 
-                <button type="submit" className="bg-purple py-[.43rem] mx-auto text-white w-[90%] sms:max-w-[360px] ml-3 rounded-md ">
+                <button type="submit" className="bg-purple py-[.43rem] text-white w-full rounded-md ">
                   <p className="smax:text-[1.25rem] ">Login</p>
                 </button>
 
@@ -171,7 +176,7 @@ const Login = () => {
                   alt=""
                   className="ml-3 w-[90%] sms:max-w-[360px] text-white colorize-img3"
                 />
-                <button className="bg-white py-[.4rem] text-dark w-[90%] sms:max-w-[360px] ml-3 rounded-full border border-black flex items-center">
+                <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3 " />
                   <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto ">
                     Continue with Google
@@ -180,7 +185,7 @@ const Login = () => {
 
                 <hr />
 
-                <p className={toggleLight ? "" : "text-white pl-10"}>
+                <p className={toggleLight ? "" : "text-white"}>
                   Don't have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}
                 </p>
               </article>

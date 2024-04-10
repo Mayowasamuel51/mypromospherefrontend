@@ -13,7 +13,7 @@ const UserProfile = () => {
    };
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <section className="">
         {/* user-info  */}
         <article className="mt-12">
