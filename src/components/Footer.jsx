@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 // assests
 import logo from "../assests/images/logo black.png";
 
@@ -55,15 +54,15 @@ export default function Footer() {
   ];
 
   return (
-    <footer className=" bg-pink py-8 px-8 flex flex-col bigLg:px-16">
+    <footer className=" bg-pink py-8 px-4 flex flex-col bigLg:px-16">
       <form
         action=""
-        className=" flex flex-col items-center lg:max-w-screen-lg lg:mx-auto"
+        className=" flex flex-col lg:items-center lg:max-w-screen-lg lg:mx-auto"
       >
         <h1 className=" text-white font-['Inter'] text-2xl lg:text-5xl font-bold leading-normal">
           Subscribe to our newsletter
         </h1>
-        <p className=" text-white font-['Roboto'] text-sm text-center lg:text-start lg:text-xl lg:mt-2">
+        <p className=" text-white font-['Roboto'] text-sm lg:text-center lg:text-xl lg:mt-2">
           Subscribe now to our newsletter to be updated on our latest deals and
           offers!!!
         </p>
@@ -71,7 +70,7 @@ export default function Footer() {
           <input
             type="email"
             placeholder="Type your email"
-            className=" bg-transparent  placeholder:text-white placeholder:text-lg border-b-purple border-2 border-t-0 border-x-0 focus:border-x-0 focus:border-t-0 focus:outline-none md:pr-40"
+            className=" bg-transparent py-4 placeholder:text-white placeholder:text-lg border-b-purple border-2 border-t-0 border-x-0 focus:border-x-0 focus:border-t-0 focus:outline-none md:pr-40"
           />
           <button
             type="submit"
@@ -149,7 +148,7 @@ export default function Footer() {
         </div>
       </div>
       <div className=" text-white md:text-center my-4">
-        Copyright @ 2023{" "}
+        Copyright @{new Date().getFullYear()} {" "}
         <span className=" tracking-[-1.8px]">MyPromoSphere</span>
       </div>
     </footer>

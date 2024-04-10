@@ -41,8 +41,6 @@ function DefualtLayout() {
                     <button>  <a className="btn btn-dark btn-small" onClick={onLogout}>logout</a></button>
                 </div>
 
-
-
                 <main>
                     <Outlet />
                 </main>
