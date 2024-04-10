@@ -45,9 +45,9 @@ const Login = () => {
         Accept: "application/vnd.api+json",
       }
     }).then((res) => {
-      setToken(res.data.data.token)
-      setUser(res.data.data.users)
-      console.log(res.data.data.token)
+      setToken(res.data.token)
+      setUser(res.data.users)
+      console.log(res.data.token)
       navigate("/dashboard")
 
     }).catch(err => {

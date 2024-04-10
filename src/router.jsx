@@ -21,6 +21,7 @@ import GoogleCallback from "./GoogleAuth/GoogleCallback";
 import TopServices from "./pages/components/TopServices.jsx"
 import TrendingSkills from "./pages/components/TrendingSkills.jsx"
 import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
+import Post from "./testingpage/Post.jsx";
 
 
 const router = createBrowserRouter([
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         index: true,
         element: <UserProfile />,
       },
+      {
+        path:"post",
+        element:<Post/>
+      }, 
       {
         path: "UserProfile/EditProfile",
         element: <EditProfile />,
