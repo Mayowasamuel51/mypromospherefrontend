@@ -39,7 +39,7 @@ const SignUp = () => {
     resolver: yupResolver(schema),
   })
 
-  const formSubmit = async(data) => {
+  const formSubmit = async (data) => {
     const payload = {
       name: data.name,
       password: data.password,
@@ -47,13 +47,18 @@ const SignUp = () => {
       email: data.email
     }
     console.log(payload)
-    const response = await axios.post("https://apimypromospheretest.com.ng/sighup", payload, {
+    const response = await axios.post("https://apimypromospheretest.com.ng/api/sighup", payload, {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-      }
+      },
     })
-    console.log(response)
+    if (response.status === 200) {
+      setUser(response.data.users)
+      console.log(response)
+      setToken(response.data.token)
+      navigate("/dashboard")
+    }
     // axiosclinet.post('/api/register', payload, {
     //   headers: {
     //     Accept: "application/vnd.api+json",
@@ -134,10 +139,10 @@ const SignUp = () => {
           </article>
           {/* form-field  */}
           <article className="">
-          {error && <div className="text-danger">{
-                Object.keys(error).map(key => (
-                    <p className='text-red' key={key}>{error[key][0]}</p>
-                ))
+            {error && <div className="text-danger">{
+              Object.keys(error).map(key => (
+                <p className='text-red' key={key}>{error[key][0]}</p>
+              ))
             }</div>}
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)} className='text-sm md:text-lg'>
@@ -273,7 +278,7 @@ const SignUp = () => {
                   <img src={google} alt="" className="px-3 " />
                   <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto">
                     {/* {loginUrl != null && ( */}
-                      <a href={loginUrl}>Continue with Google</a>
+                    <a href={loginUrl}>Continue with Google</a>
                     {/* )} */}
                   </p>
                 </button>

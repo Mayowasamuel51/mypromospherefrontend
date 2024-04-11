@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import axios from "axios";
 import axiosclinet from "../https/axios-clinet";
 import { useState } from "react";
-
+// import firebase from '../../firebase'
 
 const Post = () => {
     const [token, setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
@@ -48,14 +48,14 @@ const Post = () => {
             }
         }).then((response) => {
             console.log(response)
-            let str= 'OKAY MAN '
+            let str = 'OKAY MAN '
             let repeatedString = 'Helll';
             for (let i = 0; i < 20; i++) {
                 repeatedString += str;
             }
             // return repeatedString;
             const second_payload = {
-                itemadsimagesurls:repeatedString 
+                itemadsimagesurls: repeatedString
             }
             axiosclinet.post(`/api/freeads/${response}`, second_payload, {
                 headers: {
@@ -66,6 +66,12 @@ const Post = () => {
                 if (res.status === 200) {
                     console.log('worked with second ...................')
                     console.log(res.data.item)
+                    firebase
+                        .storage()
+                        .ref("lintang_foto") // folder name in Firebase
+                        .child("")
+                        .getDownloadURL()
+                        .then(url => setAvatarURL(url));
                 }
                 else if (res.status === 500 || res.status === 401) {
                     console.log(res.data.message)
