@@ -13,6 +13,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from "react-hook-form"
 
 import axios from "axios"
+const api = import.meta.env.API_SIGHUP
+
 const Login = () => {
   const navigate = useNavigate()
   const [selected, setSelected] = useState(false);

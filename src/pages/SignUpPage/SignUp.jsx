@@ -13,6 +13,7 @@ import axiosclinet from '../../https/axios-clinet';
 import { useStateContext } from '../../contexts/ContextProvider';
 
 import axios from "axios"
+const api = import.meta.env.API_LOGIN
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ const SignUp = () => {
       email: data.email
     }
     console.log(payload)
-    const response = await axios.post("https://apimypromospheretest.com.ng/api/sighup", payload, {
+    const response = await axios.post(api, payload, {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
