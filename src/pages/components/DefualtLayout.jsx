@@ -7,9 +7,9 @@ import Navbar from "../../components/Navbar";
 
 function DefualtLayout() {
     const { user, token, setUser, setToken } = useStateContext()
-    // if (!token) {
-    //     return <Navigate to="/" />
-    // }
+    if (!token) {
+        return <Navigate to="/" />
+    }
 
     const onLogout = (ev) => {
         // ev.preventDefault()
