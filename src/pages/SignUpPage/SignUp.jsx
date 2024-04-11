@@ -13,7 +13,8 @@ import axiosclinet from '../../https/axios-clinet';
 import { useStateContext } from '../../contexts/ContextProvider';
 
 import axios from "axios"
-const api = import.meta.env.API_LOGIN
+
+const api = import.meta.env.VITE_API_LOGIN
 
 const SignUp = () => {
   const navigate = useNavigate()
