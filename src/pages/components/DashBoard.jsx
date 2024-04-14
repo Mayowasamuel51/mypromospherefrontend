@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
 import { useState } from "react"
 import {  motion, AnimatePresence  } from "framer-motion"
@@ -23,7 +23,7 @@ function DefualtLayout() {
                             className="w-[30%] md:w-[150px] mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-xl mt-6">
-                            {"User Name" || token["user-name"]}
+                            {token?.user ? token["user-name"] : "USER" }
                         </h1>
                         {/* btns  */}
                         <div className="flex items-center justify-center gap-x-3 mt-4">
@@ -58,7 +58,9 @@ function DefualtLayout() {
                             </button>
                         </div>
                         <div className="mt-12 text-center">
-                            {saved ? <Saved /> : <Post />}
+                            <AnimatePresence>
+                                {saved ? <Saved /> : <Post />}
+                            </AnimatePresence>
                         </div>
                     </article>
                 </section>

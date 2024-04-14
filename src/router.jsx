@@ -1,19 +1,26 @@
+/* eslint-disable react-refresh/only-export-components */
 
 import { createBrowserRouter } from "react-router-dom";
+import { Suspense } from "react";
 // global styles
 import "./index.css";
 // routes/pages
-import App from "./App.jsx";
-import SignUp from "./pages/SignUpPage/SignUp";
+import React from "react";
+import Loader from "./loader.jsx";
+
+const APP = React.lazy(()=> import("./App"))
+const SignUpPage = React.lazy(()=> import("./pages/SignUpPage/SignUp"))
+const LoginPage = React.lazy(()=> import("./pages/LoginPage/Login"))
+const DashBoard = React.lazy(()=> import("./pages/components/DashBoard.jsx"))
+
+// import SignUpPage from "./pages/SignUpPage/SignUp";
 import Layout from "./pages/PerfectWorks/components/layout";
 import Works from "./pages/PerfectWorks/Works";
 import Detail from "./pages/PerfectWorks/Detail";
-import Login from "./pages/LoginPage/Login";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
 import Photography from "./pages/skills/Photographers";
 import DashBoardLayout from "./pages/Layout/DashBoardLayout.jsx";
-import DashBoard from "./pages/components/DashBoard.jsx";
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
 
 
@@ -21,14 +28,12 @@ import TopServices from "./pages/components/TopServices.jsx"
 import TrendingSkills from "./pages/components/TrendingSkills.jsx"
 import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
 import Post from "./testingpage/Post.jsx";
-import AllPost from "./pages/LoginPage/component/Post.jsx";
-import Saved from "./pages/LoginPage/component/Saved.jsx";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Suspense fallback={<Loader />}><APP /></Suspense>,
     children: [
       {
         index: true,
@@ -49,12 +54,12 @@ const router = createBrowserRouter([
     element: <Photography />,
   },
   {
-    path: "signUp",
-    element: <SignUp />,
+    path: "Login",
+    element:  <Suspense fallback={<Loader/>}><LoginPage /></Suspense>,
   },
   {
-    path: "Login",
-    element: <Login />,
+    path: "signup",
+    element: <Suspense fallback={<Loader/>}><SignUpPage /></Suspense> ,
   },
   {
     path: "dashboard",
@@ -62,7 +67,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <DashBoard />,
+        element: <Suspense fallback={<Loader/>}><DashBoard /></Suspense>,
       },
       {
         path: "EditProfile",
@@ -72,40 +77,11 @@ const router = createBrowserRouter([
         path: "UserProfile/post",
         element: <PostAPicture />,
       },
+      {
+        path: "post",
+        element: <Post />
+      }
     ]
-    // children : [
-    //   {
-    //     path: "dashboard",
-    //     element: <DashBoard />,
-    //     children : [
-    //       {
-    //         index: true,
-    //         element: <AllPost />
-    //       },
-    //       {
-    //         path: "saved",
-    //         element: <Saved />
-    //       },
-    //       {
-    //         path:"post",
-    //         element:<Post/>
-    //       }, 
-    //       {
-    //         path: "EditProfile",
-    //         element: <EditProfile />,
-    //       },
-    //       {
-    //         path: "UserProfile/post",
-    //         element: <PostAPicture />,
-    //       },
-    //     ]
-    //   }
-    // ]
-  },
-  {
-    path: "dashboard",
-    element: <DashBoard />,
-   
   },
   {
     path: "/layout",
@@ -121,23 +97,23 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <SignUp />,
+        element: <Suspense fallback={<Loader/>}><SignUpPage /></Suspense> ,
       },
       {
         path: "Login",
-        element: <Login />,
+        element:  <Suspense fallback={<Loader/>}><LoginPage /></Suspense>,
       },
       {
         path: "detail/:detailId",
         element: <Detail />,
       },
-      {
-        path: "detail/:detailId/signUp",
-        element: <SignUp />,
-      },
+      // {
+      //   path: "detail/:detailId/signUp",
+      //   element: <SignUp />,
+      // },
       {
         path: "detail/:detailId/Login",
-        element: <Login />,
+        element:  <Suspense fallback={<Loader/>}><LoginPage /></Suspense>,
       },
     ],
   },

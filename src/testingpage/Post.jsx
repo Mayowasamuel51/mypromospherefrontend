@@ -85,9 +85,9 @@ const Post = () => {
 
     }
     return (
-        <div>
+        <div className="pt-32 px-4 lg:px-40">
 
-            <h1>UPLOAD YOUR DETAILS TO MYPROMOSPHERE</h1>
+            <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">UPLOAD YOUR DETAILS TO MYPROMOSPHERE</h1>
 
 
             <form onSubmit={handleSubmit(formSubmit)}>
@@ -97,32 +97,22 @@ const Post = () => {
 
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="categories"  {...register("categories", { required: true })} />
                 <p className="text-red pt-2" >{errors.categories?.message}</p>
-                <br />
-                <br />
+
 
 
 
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="description"  {...register("description", { required: true })} />
                 <p className="text-red pt-2" >{errors.description?.message}</p>
-                <br />
-                <br />
-
-
-
 
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="NEW COMING GOING  headlines"   {...register("headlines", { required: true })} />
                 <p className="text-red pt-2" >{errors.headlines?.message}</p>
-                <br />
-                <br />
-
 
 
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
                 tline" id="password" type="text" placeholder="******************" />
 
-                <br />
-                <br />
-                <button type="submit" >
+            
+                <button type="submit" className="px-4 py-2 bg-purple rounded-lg text-xl font-medium text-white">
                     Post
                 </button>
 

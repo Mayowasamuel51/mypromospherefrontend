@@ -1,14 +1,14 @@
-import { NavLink, Link, Outlet, useLocation } from "react-router-dom"
+import { Outlet, Navigate } from "react-router-dom"
 import DashBoardNav from "../../components/DashBoardNav";
-import DashBoard from "../components/DashBoard";
-import Footer from "../../components/Footer";
+import { useStateContext } from "../../contexts/ContextProvider";
+
 
 const DashBoardLayout = () => {
+  const {token} = useStateContext()
   return (
     <>
-        <DashBoardNav />
-        <Outlet/>
-        {/* <Footer /> */}
+      <DashBoardNav />
+      <Outlet/>
     </>
   )
 }

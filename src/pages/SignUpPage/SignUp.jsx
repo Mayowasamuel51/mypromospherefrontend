@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,7 +7,6 @@ import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useMutation } from '@tanstack/react-query';
 import { useForm } from "react-hook-form"
 // import axiosclinet from '../../https/axios-clinet';
 import { useStateContext } from '../../contexts/ContextProvider';
@@ -81,10 +80,7 @@ const SignUp = () => {
       setToken(response.data.token)
       navigate("/login")
     }
-    
   }
-
-
   return (
     <section className="newhero min-h-screen flex justify-center items-center">
       <Toaster position="top-center" />

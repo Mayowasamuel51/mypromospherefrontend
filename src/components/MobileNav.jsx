@@ -37,7 +37,7 @@ const divVariant = {
 
 const childVariant = {
   initial: {
-    y: '-50px',
+    y: '-10px',
     opacity: 0
   },
   animate: {
@@ -86,14 +86,14 @@ export default function MobileNav({ handleToggle, hidden }) {
           </Link>
         </motion.p>
         <motion.div variants={childVariant}>
-          <Link to="Login" onClick={handleToggle}>
+          <Link to="/Login" onClick={handleToggle}>
             <button className=" text-2xl text-black font-['Poppins]">
               Login
             </button>
           </Link>
         </motion.div>
         <motion.div variants={childVariant}>
-          <Link to="signUp" onClick={handleToggle}>
+          <Link to="/signUp" onClick={handleToggle}>
             <button className=" bg-pink py-2 px-5 rounded-lg font-['Poppins'] text-2xl">
               Signup
             </button>
