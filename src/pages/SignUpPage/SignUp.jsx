@@ -25,6 +25,12 @@ const SignUp = () => {
   const toggleBtn = () => {
     setToggleLight(!toggleLight);
   };
+
+  const toggler = (e)=> {
+    const {checked} = e.target
+    setSelected(checked)
+  };
+  
   const [loginUrl, setLoginUrl] = useState(null);
   const [loading, setLoading] = useState(false)
 
@@ -67,25 +73,35 @@ const SignUp = () => {
       "email": data.email,
       "password": data.password,
     }
-    console.log(payload)
-    const response = await axios.post(api, payload)
     if (!selected) {
       toast.error("Agree to the terms and conditions")
+      setLoading(false)
       return;
     }
-    console.log(response)
-    if (response.status === 201) {
-      setUser(response.data.users)
+
+    setLoading(true)
+    try {
+      const response = await axios.post(api, payload)
       console.log(response)
-      setToken(response.data.token)
-      navigate("/login")
+      if (response.status === 201) {
+        // setUser(response.data.users)
+        
+        // setToken(response.data.token)
+        // navigate("/login")
+        setLoading(false)
+      }
+    } catch(error) {
+      console.log(error)
+      setLoading(false)
+      toast.error("Error somewhere")
     }
+    console.log(payload)   
   }
   return (
     <section className="newhero min-h-screen flex justify-center items-center">
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "inset bg-white rounded-3xl flex w-[95%] lg:w-[60%]" : "inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
         }
       >
         {/* sign-up center  */}
@@ -217,18 +233,13 @@ const SignUp = () => {
               {/*agreement*/}
               <article className="flex sm:flex-row items-center gap-[1rem]">
                 {/* toggle  */}
-                <div
-                  className="xs:order-2 bg-grey border relative xs:mt-0  sm:mt-2 w-[2.6rem] xxs:w-16 h-6 md:w-[2.6rem] max-w-[40px] rounded-full cursor-pointer"
-                  onClick={() => setSelected(!selected)}
-                >
-                  <span
-                    className={
-                      selected
-                        ? "w-2/5 h-4/5 bg-white absolute rounded-full left-[.2rem] top-[.15rem] transition-all duration-500"
-                        : "w-2/5 h-4/5 bg-white absolute rounded-full left-[-.1rem] xsm:left-[.0rem] 380:left-[-.1rem] xs:top-[.12rem] xs:left-[.0rem] ml-5 smd:top-[.15rem]  transition-all duration-500"
-                    }
-                  ></span>
-                </div>
+                
+                <label className="toggle-switch">
+                  <input type="checkbox" onChange={toggler} />
+                  <div className="toggle-switch-background">
+                    <div className="toggle-switch-handle"></div>
+                  </div>
+                </label>
                 {/* text  */}
                 <div className="sm:order-2">
                   <p
@@ -248,7 +259,7 @@ const SignUp = () => {
               {/* sign-up btn  */}
               <article className="mt-4 pb-3">
 
-                <button type='submit' className="bg-purple py-4 text-white w-full rounded-md ">
+                <button type='submit' className="bg-purple h-12 py-4 text-white w-full rounded-md ">
                  {loading ? 
                  <p className="smax:text-[1.2rem] flex items-center justify-center">
                     <span className="loading loading-ring loading-md"></span>
@@ -256,7 +267,7 @@ const SignUp = () => {
                     <span className="loading loading-ring loading-md"></span>
                   </p>
                   :
-                  <p className="smax:text-[1.4rem]">SignUp</p>
+                  <p className="text-base smax:text-2xl">SignUp</p>
                   }
                 </button>
                 <img

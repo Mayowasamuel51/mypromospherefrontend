@@ -29,7 +29,6 @@ export const ContextProvider = ({ children }) => {
         setToken(null)
         setUser(null)
         toast.success("Successfull Logged Out")
-        window.refresh()
     }
     return (
         <StateContext.Provider value={{
