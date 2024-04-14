@@ -14,11 +14,10 @@ import { Toaster, toast } from 'sonner';
 
 import axios from "axios"
 
-const api = import.meta.env.VITE_API_SIGHUP
+const api = import.meta.env.VITE_API_SIGNUP
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const [error, setError] = useState(null)
   const { setUser, setToken } = useStateContext()
   const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
@@ -78,24 +77,20 @@ const SignUp = () => {
       setLoading(false)
       return;
     }
-
     setLoading(true)
     try {
-      const response = await axios.post(api, payload)
-      console.log(response)
-      if (response.status === 201) {
-        // setUser(response.data.users)
-        
-        // setToken(response.data.token)
-        // navigate("/login")
+      const response = await axios.post("https://apimypromospheretest.com.ng/api/sighup", payload)
+      if (response.status === 200) {
+        setUser(response.data.users)
+        setToken(response.data.token)
         setLoading(false)
+        toast.success("You have Successfull created an account")
+        navigate("/login")
       }
     } catch(error) {
-      console.log(error)
       setLoading(false)
-      toast.error("Error somewhere")
+      toast.error("Error")
     }
-    console.log(payload)   
   }
   return (
     <section className="newhero min-h-screen flex justify-center items-center">
@@ -142,11 +137,6 @@ const SignUp = () => {
           </article>
           {/* form-field  */}
           <article className="">
-          {error && <div className="text-danger">{
-                Object.keys(error).map(key => (
-                    <p className='text-red' key={key}>{error[key][0]}</p>
-                ))
-            }</div>}
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)} className='text-sm md:text-base'>
               {/* name-input  */}
@@ -299,7 +289,7 @@ const SignUp = () => {
             <img
               src={signup}
               alt=""
-              className=" smax:w-[200px] md:w-[250px] large:w-[209px] "
+              className=" smax:w-[200px] md:w-[250px] large:w-[249px] "
             />
           </div>
         </div>
