@@ -20,9 +20,10 @@ function DefualtLayout() {
     }
 
     useEffect(() => {
-        // axiosclinet.get("/api/user").then(({ data }) => {
-        //     setUser(data)
-        // })
+        axiosclinet.get("/api/getuser").then(({ data }) => {
+            console.log(data.message)
+            setUser(data.message)
+        })
 
         // axiosclinet.get("/api/try").then(({ data }) => {
         //     console.log(data.hello)

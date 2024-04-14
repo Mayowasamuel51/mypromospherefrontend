@@ -21,8 +21,8 @@ export const ContextProvider = ({ children }) => {
             localStorage.removeItem("ACCESS_TOKEN")
         }
     }
-    useEffect(()=> {
-        const handleResize = ()=> {
+    useEffect(() => {
+        const handleResize = () => {
             const size = window.innerWidth;
             size > 1024 ? setFullScreen(true) : setFullScreen(false)
         }
@@ -30,7 +30,7 @@ export const ContextProvider = ({ children }) => {
 
         window.addEventListener("resize", handleResize)
 
-        return ()=> window.removeEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
     }, [FullScreen])
     return (
         <StateContext.Provider value={{

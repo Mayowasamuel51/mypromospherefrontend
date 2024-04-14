@@ -11,8 +11,8 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from "react-hook-form"
+import axios  from "axios"
 
-import axios from "axios"
 const api = import.meta.env.API_SIGHUP
 
 const Login = () => {
@@ -44,34 +44,34 @@ const Login = () => {
     }
     // console.log(payload)
     // setError(null)
-    // axiosclinet.post('/api/login', payload, {
-    //   headers: {
-    //     Accept: "application/vnd.api+json",
-    //   }
-    // }).then((res) => {
-    //   setToken(res.data.token)
-    //   setUser(res.data.users)
-    //   console.log(res.data.token)
-    //   navigate("/dashboard")
+    axios.post('http://127.0.0.1:8000/api/login', payload, {
+      headers: {
+        Accept: "application/vnd.api+json",
+      }
+    }).then((res) => {
+      setToken(res.data.token)
+      setUser(res.data.users)
+      console.log(res.data.token)
+      navigate("/dashboard")
 
-    // }).catch(err => {
+    }).catch(err => {
 
-    //   console.log(err.message)
-    //   const response = err.response;
-    //   if (response && response.status === 422) {
-    //     if (response.data.errors) {
-    //       setError(response.data.errors)
-    //     }
-    //     else {
-    //       setError({
-    //         email: [response.data.message]
-    //       })
-    //     }
-    //   }
-    // })
+      console.log(err.message)
+      const response = err.response;
+      if (response && response.status === 422) {
+        if (response.data.errors) {
+          setError(response.data.errors)
+        }
+        else {
+          setError({
+            email: [response.data.message]
+          })
+        }
+      }
+    })
     // const response = await axios.post("https://apimypromospheretest.com.ng/login", payload)
     // console.log(response)
-    navigate("/dashboard")
+  
   }
   return (
     <section className="bg-purple h-screen">
