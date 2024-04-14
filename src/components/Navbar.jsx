@@ -20,11 +20,10 @@ export default function Navbar({profile}) {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [hidden, setHidden] = useState(false)
   const [bg, setBg] = useState(false)
-  //   this function is to change the toggle state
   const handleToggle = () => {
     setToggleIcon(!toggleIcon);
   };
-  const {token} = useStateContext()
+  const {token, LogOut} = useStateContext()
   
   const { scrollY } = useScroll()
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -81,18 +80,34 @@ export default function Navbar({profile}) {
           Testimonials
         </Link>
       </nav>
-      <div className=" hidden z-50 exl:flex exl:items-center exl:gap-x-6">
-       {token ? "sdafdafadfda" :  <Link to="login">
-          <button className={`text-lg py-2 px-5 ${bg ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
-            Login
+      
+       {token ?
+       <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
+        <Link to="/dashboard">
+            <button className={`text-base py-2 px-5 ${bg ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+              My DashBoard
+            </button>
+          </Link>
+        <Link to="signUp">
+          <button onClick={()=> LogOut()} className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
+            LogOut
           </button>
-        </Link>}
-        {token ? "sDASFADF" :<Link to="signUp">
-          <button className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
-            Signup
-          </button>
-        </Link>}
-      </div> 
+          </Link>
+        </div>
+       :
+       <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
+         <Link to="/login">
+            <button className={`text-lg py-2 px-5 ${bg ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+              Login
+            </button>
+          </Link>
+          <Link to="/signUp">
+            <button className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
+              Signup
+            </button>
+          </Link>
+        </div> 
+        }
     </motion.header>
   );
 }

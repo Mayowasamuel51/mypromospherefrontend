@@ -2,9 +2,9 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import axios from "axios";
-import axiosclinet from "../https/axios-clinet";
+// import axiosclinet from "../https/axios-clinet";
 import { useState } from "react";
-// import firebase from '../../firebase'
+import firebase from '../../firebase'
 
 const Post = () => {
     const [token, setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
@@ -32,7 +32,7 @@ const Post = () => {
             description: data.description,
         }
         console.log(payload)
-        axiosclinet.post('/api/freeads', payload, {
+        axios.post('/api/freeads', payload, {
             headers: {
                 Accept: "application/json",
                 Authorization: `Bearer ${token}`
@@ -57,7 +57,7 @@ const Post = () => {
             const second_payload = {
                 itemadsimagesurls: repeatedString
             }
-            axiosclinet.post(`/api/freeads/${response}`, second_payload, {
+            axios.post(`/api/freeads/${response}`, second_payload, {
                 headers: {
                     Accept: "application/json",
                     Authorization: `Bearer ${token}`

@@ -1,26 +1,25 @@
 import { useState } from "react";
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
-import axiosclinet from "../../https/axios-clinet";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useMutation } from '@tanstack/react-query';
 import { useForm } from "react-hook-form"
-
-import axios from "axios"
-const api = import.meta.env.API_SIGHUP
+import axios from "axios";
+import { toast } from 'sonner';
+const api = import.meta.env.VITE_API_LOGIN;
 
 const Login = () => {
   const navigate = useNavigate()
   const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
-  const [error, setError] = useState(null)
   const { setUser, setToken } = useStateContext()
+  const [loading, setLoading] = useState(false)
+
   const toggleBtn = () => {
     setToggleLight(!toggleLight);
   };
@@ -39,39 +38,27 @@ const Login = () => {
 
   const formSubmit = async(data) => {
     const payload = {
+      email: data.email,
       password: data.password,
-      email: data.email
     }
-    // console.log(payload)
-    // setError(null)
-    // axiosclinet.post('/api/login', payload, {
-    //   headers: {
-    //     Accept: "application/vnd.api+json",
-    //   }
-    // }).then((res) => {
-    //   setToken(res.data.token)
-    //   setUser(res.data.users)
-    //   console.log(res.data.token)
-    //   navigate("/dashboard")
+    try {
+      setLoading(true)
+      const response = await axios.post(api, payload)
+      console.log(response)
+      if (response.status === 200) {
+        setUser(response?.data)
+        setToken(response.data.token)
+        localStorage.setItem("user-details", JSON.stringify(response.data))
+        navigate("/dashboard")
+        toast.success("successfully Logged In")
+        setLoading(false)
+      }
 
-    // }).catch(err => {
-
-    //   console.log(err.message)
-    //   const response = err.response;
-    //   if (response && response.status === 422) {
-    //     if (response.data.errors) {
-    //       setError(response.data.errors)
-    //     }
-    //     else {
-    //       setError({
-    //         email: [response.data.message]
-    //       })
-    //     }
-    //   }
-    // })
-    // const response = await axios.post("https://apimypromospheretest.com.ng/login", payload)
-    // console.log(response)
-    navigate("/dashboard")
+    } catch (error) {
+      setLoading(false)
+      toast.error(error?.response.data.message)
+    }
+    // navigate("/dashboard")
   }
   return (
     <section className="bg-purple h-screen">
@@ -79,8 +66,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white w-[85%] max-w-2xl rounded-3xl px-4 lg:px-8 flex justify-between"
-            : "inset bg-black w-[85%] max-w-2xl rounded-3xl px-4 lg:px-8 flex justify-between"
+            ? "inset bg-white w-[90%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            : "inset bg-black w-[90%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
         }
       >
         {/* sign-up center  */}
@@ -118,11 +105,6 @@ const Login = () => {
           </article>
           {/* form-field  */}
           <article className="mt-3">
-            {error && <div className="text-danger">{
-              Object.keys(error).map(key => (
-                <p key={key}>{error[key][0]}</p>
-              ))
-            }</div>}
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)}>
               {/* email  */}
@@ -147,7 +129,7 @@ const Login = () => {
                 <p className="text-red pt-2" >{errors.email?.message}</p>
               </div>
               {/* password  */}
-              <div className="flex flex-col mt-6">
+              <div className="flex flex-col">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white"}
@@ -167,10 +149,18 @@ const Login = () => {
                    <p className="text-red pt-2" >{errors.password?.message}</p>
               </div>
               {/* sign-up btn  */}
-              <article className="mt-7 pb-9">
+              <article className="my-2">
 
-                <button type="submit" className="bg-purple py-[.43rem] text-white w-full rounded-md ">
-                  <p className="smax:text-[1.25rem] ">Login</p>
+                <button type="submit" className="bg-purple h-12 text-white w-full rounded-md  ">
+                {loading ? 
+                 <p className="smax:text-[1.2rem] flex items-center justify-center">
+                    <span className="loading loading-ring loading-md"></span>
+                    <span className="loading loading-ring loading-md"></span>
+                    <span className="loading loading-ring loading-md"></span>
+                  </p>
+                  :
+                  <p className="smax:text-[1.4rem]">Login</p>
+                }
                 </button>
 
                 <img
@@ -187,8 +177,8 @@ const Login = () => {
 
                 <hr />
 
-                <p className={toggleLight ? "" : "text-white"}>
-                  Don't have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}
+                <p className={toggleLight ? "my-2" : "my-2 text-white"}>
+                  Don&apos;t have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}
                 </p>
               </article>
             </form>
@@ -197,7 +187,7 @@ const Login = () => {
         </div>
 
         {/* side  */}
-        <div className="hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] absolute right-[-2rem] rounded-3xl relative">
+        <div className="hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-3xl">
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>

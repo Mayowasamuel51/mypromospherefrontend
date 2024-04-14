@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { Toaster, toast } from 'sonner';
 
 const StateContext = createContext({
     user: null,
@@ -8,19 +9,9 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({
-    })
+    const [user, setUser] = useState()
     const [FullScreen, setFullScreen] = useState(false)
-    const [token, _setToken] =
-        useState(localStorage.getItem("ACCESS_TOKEN"))
-    const setToken = (token) => {
-        _setToken(token)
-        if (token) {
-            localStorage.setItem("ACCESS_TOKEN", token);
-        } else {
-            localStorage.removeItem("ACCESS_TOKEN")
-        }
-    }
+    const [token, setToken] = useState(()=> localStorage.getItem("user-details") ? JSON.parse(localStorage.getItem("user-details")) : null)
     useEffect(()=> {
         const handleResize = ()=> {
             const size = window.innerWidth;
@@ -32,15 +23,25 @@ export const ContextProvider = ({ children }) => {
 
         return ()=> window.removeEventListener("resize", handleResize)
     }, [FullScreen])
+
+    const LogOut = ()=>{
+        localStorage.removeItem("user-details")
+        setToken(null)
+        setUser(null)
+        toast.success("Successfull Logged Out")
+        window.refresh()
+    }
     return (
         <StateContext.Provider value={{
             user,
             token,
             setUser,
             setToken,
-            FullScreen
+            FullScreen,
+            LogOut
         }}>
             {children}
+            <Toaster position="top-center" />
         </StateContext.Provider>
     )
 }

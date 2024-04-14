@@ -9,11 +9,11 @@ import Layout from "./pages/PerfectWorks/components/layout";
 import Works from "./pages/PerfectWorks/Works";
 import Detail from "./pages/PerfectWorks/Detail";
 import Login from "./pages/LoginPage/Login";
-import UserProfile from "./pages/LoginPage/UserProfile";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
 import EditProfile from "./pages/LoginPage/EditProfile";
 import Photography from "./pages/skills/Photographers";
-import DefualtLayout from "./pages/components/DefualtLayout";
+import DashBoardLayout from "./pages/Layout/DashBoardLayout.jsx";
+import DashBoard from "./pages/components/DashBoard.jsx";
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
 
 
@@ -21,6 +21,8 @@ import TopServices from "./pages/components/TopServices.jsx"
 import TrendingSkills from "./pages/components/TrendingSkills.jsx"
 import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
 import Post from "./testingpage/Post.jsx";
+import AllPost from "./pages/LoginPage/component/Post.jsx";
+import Saved from "./pages/LoginPage/component/Saved.jsx";
 
 
 const router = createBrowserRouter([
@@ -56,18 +58,14 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DefualtLayout />,
+    element: <DashBoardLayout />,
     children: [
       {
         index: true,
-        element: <UserProfile />,
+        element: <DashBoard />,
       },
       {
-        path:"post",
-        element:<Post/>
-      }, 
-      {
-        path: "UserProfile/EditProfile",
+        path: "EditProfile",
         element: <EditProfile />,
       },
       {
@@ -75,6 +73,39 @@ const router = createBrowserRouter([
         element: <PostAPicture />,
       },
     ]
+    // children : [
+    //   {
+    //     path: "dashboard",
+    //     element: <DashBoard />,
+    //     children : [
+    //       {
+    //         index: true,
+    //         element: <AllPost />
+    //       },
+    //       {
+    //         path: "saved",
+    //         element: <Saved />
+    //       },
+    //       {
+    //         path:"post",
+    //         element:<Post/>
+    //       }, 
+    //       {
+    //         path: "EditProfile",
+    //         element: <EditProfile />,
+    //       },
+    //       {
+    //         path: "UserProfile/post",
+    //         element: <PostAPicture />,
+    //       },
+    //     ]
+    //   }
+    // ]
+  },
+  {
+    path: "dashboard",
+    element: <DashBoard />,
+   
   },
   {
     path: "/layout",
