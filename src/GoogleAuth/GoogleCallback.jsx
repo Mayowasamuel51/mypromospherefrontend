@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useLocation} from "react-router-dom";
-import axiosclinet from '../https/axios-clinet';
+// import axiosclinet from '../https/axios-clinet';
+import axios from 'axios';
 import { useStateContext } from '../contexts/ContextProvider';
 
 function GoogleCallback() {
@@ -13,7 +14,7 @@ function GoogleCallback() {
     // and proxy them to /api/auth/callback on our Laravel API
     
     useEffect(() => {
-        axiosclinet.get(`http://localhost:8000/api/auth/callback${location.search}`).then((res) => {
+        axios.get(`http://localhost:8000/api/auth/callback${location.search}`).then((res) => {
             setUser(res.data.users)
             console.log(res.data.token)
             setToken(res.data.token)

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
+import { useStateContext } from "../contexts/ContextProvider";
 
 
 const MainCOntainerdivVariant = {
@@ -37,7 +38,7 @@ const divVariant = {
 
 const childVariant = {
   initial: {
-    y: '-50px',
+    y: '-10px',
     opacity: 0
   },
   animate: {
@@ -50,6 +51,7 @@ const childVariant = {
 }
 
 export default function MobileNav({ handleToggle, hidden }) {
+  const {token, LogOut} = useStateContext()
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`${hidden && "top-[57.63px]"} fixed  inset-0 z-30 flex flex-col justify-center items-center w-full min-h-screen bg-white bg-opacity-5 backdrop-blur-2xl`}>
       <motion.div variants={divVariant} className="flex flex-col items-center gap-y-5">
@@ -85,20 +87,25 @@ export default function MobileNav({ handleToggle, hidden }) {
             Testimonials
           </Link>
         </motion.p>
-        <motion.div variants={childVariant}>
-          <Link to="Login" onClick={handleToggle}>
+        {!token && <motion.div variants={childVariant}>
+          <Link to="/Login" onClick={handleToggle}>
             <button className=" text-2xl text-black font-['Poppins]">
               Login
             </button>
           </Link>
-        </motion.div>
-        <motion.div variants={childVariant}>
-          <Link to="signUp" onClick={handleToggle}>
+        </motion.div>}
+       {!token && <motion.div variants={childVariant}>
+          <Link to="/signUp" onClick={handleToggle}>
             <button className=" bg-pink py-2 px-5 rounded-lg font-['Poppins'] text-2xl">
               Signup
             </button>
           </Link>
-        </motion.div>
+        </motion.div>}
+        {token && <motion.div variants={childVariant}>
+          <button onClick={()=> LogOut()} className=" bg-pink py-2 px-5 rounded-lg font-['Poppins'] text-2xl">
+            LogOut
+          </button>
+        </motion.div>}
       </motion.div>
     </motion.div>
   );
