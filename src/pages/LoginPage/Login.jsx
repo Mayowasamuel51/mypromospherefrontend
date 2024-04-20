@@ -48,6 +48,7 @@ const Login = () => {
       if (response.status === 200) {
         setUser(response?.data)
         setToken(response.data.token)
+        // localStorage.setItem('ACCESS_TOKEN', response.data.token)
         localStorage.setItem("user-details", JSON.stringify(response.data))
         navigate("/dashboard")
         toast.success("successfully Logged In")

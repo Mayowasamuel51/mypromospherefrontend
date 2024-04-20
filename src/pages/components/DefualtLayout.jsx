@@ -20,14 +20,11 @@ function DefualtLayout() {
     }
 
     useEffect(() => {
-        axiosclinet.get("/api/getuser").then(({ data }) => {
+        axiosclinet.get("api/getuser").then(({ data }) => {
+            console.log('see messages')
             console.log(data.message)
             setUser(data.message)
         })
-
-        // axiosclinet.get("/api/try").then(({ data }) => {
-        //     console.log(data.hello)
-        // })
     }, [])
     return (
         <>
@@ -43,6 +40,7 @@ function DefualtLayout() {
                         <Link className="nav-link" to="dashboard/UserProfile/EditProfile">EditProfile</Link>
                         {/* <Link className="nav-link" to="dashboard/UserProfile/post">post something</Link> */}
                         <Link className="nav-link" to="/dashboard/post">post something</Link>
+                        <Link className="nav-link" to="/dashboard/video">Video something</Link>
                         {/* <Link className="nav-link" to="/videos">videos</Link> */}
                         {/* <Link className="nav-link" to="/views">views</Link> */}
                     </nav>

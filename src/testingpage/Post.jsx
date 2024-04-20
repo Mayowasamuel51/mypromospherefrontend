@@ -1,15 +1,29 @@
+// import axiosclinet from "../https/axios-clinet";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import axios from "axios";
-// import axiosclinet from "../https/axios-clinet";
-import { useState } from "react";
-import firebase from '../../firebase'
-
+import { useEffect, useState } from "react";
+import { storage } from '../../firebase'
+import { useStateContext } from "../contexts/ContextProvider";
+import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import axiosclinet from "../https/axios-clinet";
+import Select from "react-dropdown-select";
+import { categories } from "../../src/json/categories.jsx"
+import ImageUploader from 'react-image-upload'
+import 'react-image-upload/dist/index.css'
+import { headlines } from "../../src/json/headlines.jsx"
 const Post = () => {
-    const { user } = useStateContext()
-    const [token, setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
+    // console.log(categories)
+    const [categoriesValues, setCategoriesValues] = useState([categories])
+    const [headlinevalues, setHeadlinesValue] = useState(headlines)
+    const { user, setUser } = useStateContext()
+    const token = useStateContext()
+    console.log(token?.token.token)
     const [files, setFile] = useState(null)
+    const handleValues = (e) => {
+        setCategoriesValues(e.target.values)
+    }
     const schema = yup.object().shape({
         // price: yup.string().required(),
         categories: yup.string().required(),
@@ -35,9 +49,15 @@ const Post = () => {
         resolver: yupResolver(schema),
     })
     const [imageUpload, setImageUpload] = useState();
-
     const imagesListRef = ref(storage, "images/");
-
+    //// this one as to be global around the application
+    // useEffect(() => {
+    //     axiosclinet.get("api/getuser").then(({ data }) => {
+    //         console.log('see messages')
+    //         console.log(data.message)
+    //         setUser(data.message)
+    //     })
+    // }, [])
     const formSubmit = (data) => {
         const payload = {
             price_range: data.price,
@@ -46,10 +66,10 @@ const Post = () => {
             description: data.description,
         }
         console.log(payload)
-        axios.post('/api/freeads', payload, {
+        axios.post('http://localhost:8000/api/freeads', payload, {
             headers: {
                 Accept: "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token?.token.token}`
             }
         }).then((res) => {
             if (res.status === 200) {
@@ -63,7 +83,7 @@ const Post = () => {
         }).then((response) => {
             console.log(response)
             for (let i = 0; i < data.picture.length; i++) {
-                const imageRef = ref(storage, `/mulitpleFiles/${imageUpload[i].name}  ${user.email} `);
+                const imageRef = ref(storage, `/mulitpleFiles/${imageUpload[i].name}`);
                 const uploadTask = uploadBytesResumable(imageRef, imageUpload[i]);
                 uploadTask.on('state_changed',
                     (snapshot) => {
@@ -102,10 +122,10 @@ const Post = () => {
                             const second_payload = {
                                 itemadsimagesurls: downloadURL
                             }
-                            axios.post(`http://127.0.0.1:8000/api/freeads/${response}`, second_payload, {
+                            axios.post(`http://localhost:8000/api/freeads/${response}`, second_payload, {
                                 headers: {
                                     Accept: "application/json",
-                                    Authorization: `Bearer ${token}`
+                                    Authorization: `Bearer ${token?.token.token}`
                                 }
                             }).then((res) => {
                                 if (res.status === 200) {
@@ -118,32 +138,74 @@ const Post = () => {
                             }).catch((err) => console.log(err.message))
                         })
                     })
-
-
             }
-           
-        
 
         }).catch((err) => console.log(err.message))
     }
-
     //  uploadFiles()
+    function getImageFileObject(imageFile) {
+        console.log({ imageFile })
+    }
+
+    function runAfterImageDelete(file) {
+        console.log({ file })
+    }
     return (
         <div className="pt-32 px-4 lg:px-40">
 
             <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">UPLOAD YOUR DETAILS TO MYPROMOSPHERE</h1>
+            {/* 
 
+Input the price , 
+Input the categories, done --
+Input the state and location 
+The images must be shown before they upload it , just like jiji own
+also add tags relating to your ad post 
+adding headlines . the headline will be in select and option to make your own headline
+
+ */}
+            <ImageUploader
+                multiple
+                onFileAdded={(img) => getImageFileObject(img)}
+                onFileRemoved={(img) => runAfterImageDelete(img)}
+            />
+            <select className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+                {categories.map((option, index) => {
+                    return (
+                        <option key={index}>
+                            {option}
+                        </option>
+                    );
+                })}
+                onChange={(event) => {
+                    setCategoriesValues(event.target.value);
+                }}
+            </select>
+
+            {/* 
+            <select className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+                {headlines.map((option, index) => {
+                    return (
+                        <option key={index}>
+                            {option}
+                        </option>
+                    );
+                })}
+                onChange={(event) => {
+                    setHeadlinesValue(event.target.value);
+                }}
+            </select> */}
 
             <form onSubmit={handleSubmit(formSubmit)}>
                 <input
                     type="file"
-                    {...register("picture")} 
+                    {...register("picture")}
                     multiple
                     onChange={(event) => {
                         setImageUpload(event.target.files);
                     }}
                 />
-                
+
                 <p className='text-red-600  text-sm'>{errors.picture?.message}</p>
                 {/* <input type="file" multiple onChange={handleFile} /> */}
 
@@ -166,9 +228,9 @@ const Post = () => {
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
                 tline" id="password" type="text" placeholder="******************" />
 
-            
+
                 <button type="submit" className="px-4 py-2 bg-purple rounded-lg text-xl font-medium text-white">
-                    Post
+                    Post Noraml Ads
                 </button>
 
 
