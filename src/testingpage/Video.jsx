@@ -226,6 +226,6 @@ const Video = () => {
 // validation on all input 
 // proper UI interface 
 // Valiation errors 
-// 
+//  validate only videos should be uploaded not images 
 
 export default Video;

@@ -15,14 +15,14 @@ import 'react-image-upload/dist/index.css'
 import { headlines } from "../../src/json/headlines.jsx"
 const Post = () => {
     // console.log(categories)
-    const [categoriesValues, setCategoriesValues] = useState([categories])
+    const [categoriesValues, setCategoriesValues] = useState('')
     const [headlinevalues, setHeadlinesValue] = useState(headlines)
     const { user, setUser } = useStateContext()
     const token = useStateContext()
     console.log(token?.token.token)
     const [files, setFile] = useState(null)
     const handleValues = (e) => {
-        setCategoriesValues(e.target.values)
+        setCategoriesValues(e.target.value)
     }
     const schema = yup.object().shape({
         // price: yup.string().required(),
@@ -30,16 +30,16 @@ const Post = () => {
         description: yup.string().required(),
         headlines: yup.string().required(),
         // categories: yup.string().required(),
-        // picture: yup.mixed()
-        // .test('required', "You need to provide a muiple images ", (value) => {
-        //     return value && value.length
-        // })
-        // .test("fileSize", "The file is too large", (value, context) => {
-        //     return value && value[0] && value[0].size <= 200000;
-        // })
-        // .test("type", "We only support jpeg, ", function (value) {
-        //     return value && value[0] && value[0].type === "text/plain" || value && value[0] && value[0].type === "png" 
-        // }),
+        picture: yup.mixed()
+            .test('required', "You need to provide more then one  image ", (value) => {
+                return value && value.length
+            })
+            // .test("fileSize", "The file is too large", (value, context) => {
+            //     return value && value[0] && value[0].size <= 200000;
+            // })
+            .test("type", "We only support jpeg, ", function (value) {
+                return value && value[0] && value[0].type === "image/jpeg" || value && value[0] && value[0].type === "image/png"
+            }),
     });
     const {
         register,
@@ -48,7 +48,25 @@ const Post = () => {
     } = useForm({
         resolver: yupResolver(schema),
     })
-    const [imageUpload, setImageUpload] = useState();
+    const [imageUpload, setImageUpload] = useState([]);
+
+
+    const handleSetimageUpload = (e) => {
+        // setImageUpload(URL.createObjectURL(e.target.files[0]));
+        const selectedFiles = event.target.files;
+        if (!selectedFiles.length) return; // Handle empty selection
+
+        const newImages = [...imageUpload];
+
+        for (const file of selectedFiles) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                newImages.push(e.target.result);
+                setImageUpload(newImages);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
     const imagesListRef = ref(storage, "images/");
     //// this one as to be global around the application
     // useEffect(() => {
@@ -83,8 +101,8 @@ const Post = () => {
         }).then((response) => {
             console.log(response)
             for (let i = 0; i < data.picture.length; i++) {
-                const imageRef = ref(storage, `/mulitpleFiles/${imageUpload[i].name}`);
-                const uploadTask = uploadBytesResumable(imageRef, imageUpload[i]);
+                const imageRef = ref(storage, `/mulitpleFiles/${data.picture[i].name}`);
+                const uploadTask = uploadBytesResumable(imageRef, data.picture[i]);
                 uploadTask.on('state_changed',
                     (snapshot) => {
                         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -142,72 +160,39 @@ const Post = () => {
 
         }).catch((err) => console.log(err.message))
     }
-    //  uploadFiles()
-    function getImageFileObject(imageFile) {
-        console.log({ imageFile })
-    }
 
-    function runAfterImageDelete(file) {
-        console.log({ file })
-    }
     return (
         <div className="pt-32 px-4 lg:px-40">
-
             <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">UPLOAD YOUR DETAILS TO MYPROMOSPHERE</h1>
-            {/* 
-
-Input the price , 
-Input the categories, done --
-Input the state and location 
-The images must be shown before they upload it , just like jiji own
-also add tags relating to your ad post 
-adding headlines . the headline will be in select and option to make your own headline
-
- */}
-            <ImageUploader
-                multiple
-                onFileAdded={(img) => getImageFileObject(img)}
-                onFileRemoved={(img) => runAfterImageDelete(img)}
-            />
-            <select className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                {categories.map((option, index) => {
-                    return (
-                        <option key={index}>
-                            {option}
-                        </option>
-                    );
-                })}
-                onChange={(event) => {
-                    setCategoriesValues(event.target.value);
-                }}
-            </select>
-
-            {/* 
-            <select className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                {headlines.map((option, index) => {
-                    return (
-                        <option key={index}>
-                            {option}
-                        </option>
-                    );
-                })}
-                onChange={(event) => {
-                    setHeadlinesValue(event.target.value);
-                }}
-            </select> */}
 
             <form onSubmit={handleSubmit(formSubmit)}>
-                <input
-                    type="file"
-                    {...register("picture")}
-                    multiple
-                    onChange={(event) => {
-                        setImageUpload(event.target.files);
-                    }}
-                />
 
+                <select
+                    {...register("categories")}
+                    // onChange={handleValues}
+                    className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+                    {categories.map((option, index) => {
+                        return (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        );
+                    })}
+
+                </select>
+                <p className='text-red-600  text-sm'>{errors.categories?.message}</p>
+                {/* <h1 className="">{categories}</h1> */}
                 <p className='text-red-600  text-sm'>{errors.picture?.message}</p>
-                {/* <input type="file" multiple onChange={handleFile} /> */}
+
+                <input type="file"{...register("picture")} multiple onChange={handleSetimageUpload} />
+                {imageUpload.map((imageUrl, index) => (
+                    <img key={index} src={imageUrl} alt="Uploaded Image" />
+                ))}
+                {/* {imageUpload.map((item, index)=>{
+                    return ( 
+                        <img  key={index} src={item} />
+                    )
+                })} */}
 
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="price" />
 
@@ -243,3 +228,31 @@ adding headlines . the headline will be in select and option to make your own he
 
 
 export default Post
+
+{/* <ImageUploader
+multiple
+onFileAdded={(img) => getImageFileObject(img)}
+onFileRemoved={(img) => runAfterImageDelete(img)}
+/> */}
+//   //  uploadFiles()
+//   function getImageFileObject(imageFile) {
+//     console.log({ imageFile })
+// }
+
+// function runAfterImageDelete(file) {
+//     console.log({ file })
+// }
+
+{/* 
+            <select className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+                {headlines.map((option, index) => {
+                    return (
+                        <option key={index}>
+                            {option}
+                        </option>
+                    );
+                })}
+                onChange={(event) => {
+                    setHeadlinesValue(event.target.value);
+                }}
+            </select> */}

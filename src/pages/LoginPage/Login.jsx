@@ -15,7 +15,6 @@ const api = import.meta.env.VITE_API_LOGIN;
 
 const Login = () => {
   const navigate = useNavigate()
-  const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
   const { setUser, setToken } = useStateContext()
   const [loading, setLoading] = useState(false)
@@ -59,7 +58,6 @@ const Login = () => {
       setLoading(false)
       toast.error(error?.response.data.message)
     }
-    // navigate("/dashboard")
   }
   return (
     <section className="bg-purple h-screen">
@@ -139,7 +137,7 @@ const Login = () => {
                 </label>
                 <input
                   {...register("password", { required: true })}
-                  type="text"
+                  type="password"
                   className={
                     toggleLight
                       ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
@@ -192,7 +190,7 @@ const Login = () => {
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>
-          <div className="absolute hidden md:top-[10rem] smax:left-[-2rem] smax:top-[11rem] md:left-[-2rem] large:top-[9.5rem] smax:block">
+          <div className="absolute hidden md:top-[10rem] smax:left-[-2rem] smax:top-[11rem] md:left-[-1rem] large:top-[9.5rem] smax:block">
             <img
               src={signup}
               alt=""
