@@ -5,6 +5,7 @@ function repeatString(str) {
   }
   return repeatedString;
 }
+<<<<<<< HEAD
 
 // Example usage
 const originalString = 'Hello!';
@@ -299,3 +300,11 @@ const Video = () => {
 
 
 export default Video;
+=======
+  
+  // Example usage
+  const originalString = 'Hello!';
+  const repeatedString = repeatString(originalString);
+  console.log(repeatedString); // Output will be 'Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!Hello!'
+  
+>>>>>>> c0bd5aebc777658e7d6c6da08b9ca8a4f5153831

@@ -1,6 +1,6 @@
 import { Link, Navigate } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {  motion, AnimatePresence  } from "framer-motion"
 
 import roundedImg from "../../assests/images/Ellipse 3.png"
@@ -8,7 +8,7 @@ import Post from "../LoginPage/component/Post"
 import Saved from "../LoginPage/component/Saved"
 
 function DefualtLayout() {
-    const { token } = useStateContext()
+    const { user, token } = useStateContext()
     const [saved, setSaved] = useState(false)
     return (
         <>
@@ -23,7 +23,7 @@ function DefualtLayout() {
                             className="w-[30%] md:w-[150px] mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-xl mt-6">
-                            {token?.user ? token["user-name"] : "USER" }
+                            {user}
                         </h1>
                         {/* btns  */}
                         <div className="flex items-center justify-center gap-x-3 mt-4">

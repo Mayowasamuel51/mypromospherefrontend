@@ -8,10 +8,14 @@ import "./index.css";
 import React from "react";
 import Loader from "./loader.jsx";
 
+const FeedsHome = React.lazy(()=> import("./pages/Feeds/feedsHome.jsx"))
 const APP = React.lazy(()=> import("./App"))
 const SignUpPage = React.lazy(()=> import("./pages/SignUpPage/SignUp"))
 const LoginPage = React.lazy(()=> import("./pages/LoginPage/Login"))
 const DashBoard = React.lazy(()=> import("./pages/components/DashBoard.jsx"))
+
+import FeedsTopServices from "./pages/Feeds/components/topServices.jsx";
+import TrendingAds from "./pages/Feeds/components/trendingAds.jsx";
 
 // import SignUpPage from "./pages/SignUpPage/SignUp";
 import Layout from "./pages/PerfectWorks/components/layout";
@@ -34,6 +38,20 @@ import Video from "./testingpage/Video.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Suspense fallback={<Loader />}><FeedsHome /></Suspense>,
+    children: [
+      {
+        index: true,
+        element: <TrendingAds />
+      },
+      {
+        path: "/top-services",
+        element: <FeedsTopServices />
+      }
+    ]
+  },
+  {
+    path: "/home",
     element: <Suspense fallback={<Loader />}><APP /></Suspense>,
     children: [
       {
@@ -41,11 +59,11 @@ const router = createBrowserRouter([
         element: <TopServices />
       },
       {
-        path: "/trendingSkills",
+        path: "trendingSkills",
         element: <TrendingSkills />
       },
       {
-        path: "/topSkillsLagos",
+        path: "topSkillsLagos",
         element: <TopSkillsLagos />
       }
     ]
