@@ -186,7 +186,7 @@ const Post = () => {
 
                 <input type="file"{...register("picture")} multiple onChange={handleSetimageUpload} />
                 {imageUpload.map((imageUrl, index) => (
-                    <img key={index} src={imageUrl} alt="Uploaded Image" />
+                    <img key={index} src={imageUrl} alt="Uploaded Image" width={"200px"} height={"200px"} />
                 ))}
                 {/* {imageUpload.map((item, index)=>{
                     return ( 
@@ -197,9 +197,7 @@ const Post = () => {
                 <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="price" />
 
 
-                <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="categories"  {...register("categories", { required: true })} />
-
-
+               
                 <p className="text-red pt-2" >{errors.categories?.message}</p>
 
 
