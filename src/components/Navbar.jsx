@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion';
+import { Link as ScrollLink } from 'react-scroll';
+
 
 // assests
 import logo from "../assests/SVGs/logo.svg";
@@ -16,7 +18,8 @@ const headerVariant = {
   }
 }
 
-export default function Navbar({profile}) {
+export default function Navbar({profile, blue}) {
+  const location = useLocation()
   const [toggleIcon, setToggleIcon] = useState(false);
   const [hidden, setHidden] = useState(false)
   const [bg, setBg] = useState(false)
@@ -24,7 +27,6 @@ export default function Navbar({profile}) {
     setToggleIcon(!toggleIcon);
   };
   const {token, LogOut} = useStateContext()
-  
   const { scrollY } = useScroll()
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious()
@@ -46,10 +48,10 @@ export default function Navbar({profile}) {
     };
 }, [])
   return (
-    <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile ? "bg-[#3D217A]" : "bg-white" : profile ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
-      <Link to="/" className=" flex items-center">
+    <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile || blue ? "bg-[#3D217A]" : "bg-white" : profile || blue ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
+      <Link to="/home" className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-16 exl:w-20" />
-        <h1 className="text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>
+        <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
 
       <div onClick={handleToggle} className=" z-40 exl:hidden">
@@ -63,28 +65,34 @@ export default function Navbar({profile}) {
         {toggleIcon && <MobileNav handleToggle={handleToggle} hidden={hidden} />}
       </AnimatePresence>
 
-      <nav className={`${bg ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
+      <nav className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
         <Link to="#about" className="md:text-base font-medium">
           About us
         </Link>
         <Link to="#talents" className="md:text-base font-medium">
           Find talent
         </Link>
-        <Link to="#skills" className="md:text-base font-medium">
+        <ScrollLink 
+          to={location.pathname === "/home" ? "skills" : "/" } smooth={true} duration={1500}
+          className="md:text-base font-medium cursor-pointer"
+          spy={true}
+        >
+
           Top skills
-        </Link>
-        <Link
-          to="#testimonials"
-          className=" md:text-base font-medium"
+        </ScrollLink>
+        <ScrollLink
+          to={location.pathname === "/home" ? "testimonials" : "/"} smooth={true} duration={1500}
+          className=" md:text-base font-medium cursor-pointer"
+          spy={true}
         >
           Testimonials
-        </Link>
+        </ScrollLink>
       </nav>
       
        {token ?
        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
         <Link to="/dashboard">
-            <button className={`text-base py-2 px-5 ${bg ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+            <button className={`text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
               My DashBoard
             </button>
           </Link>
@@ -97,7 +105,7 @@ export default function Navbar({profile}) {
        :
        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
          <Link to="/login">
-            <button className={`text-lg py-2 px-5 ${bg ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+            <button className={`text-lg py-2 px-5 ${(bg && !profile && !blue)? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
               Login
             </button>
           </Link>

@@ -18,7 +18,7 @@ const api = import.meta.env.VITE_API_SIGNUP
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const { setUser, setToken } = useStateContext()
+  const { setToken } = useStateContext()
   const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
   const toggleBtn = () => {
@@ -81,7 +81,6 @@ const SignUp = () => {
     try {
       const response = await axios.post("https://apimypromospheretest.com.ng/api/sighup", payload)
       if (response.status === 200) {
-        setUser(response.data.users)
         setToken(response.data.token)
         setLoading(false)
         toast.success("You have Successfull created an account")
@@ -96,7 +95,7 @@ const SignUp = () => {
     <section className="newhero min-h-screen flex justify-center items-center">
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "overflow-hidden inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
         }
       >
         {/* sign-up center  */}
@@ -249,7 +248,7 @@ const SignUp = () => {
               {/* sign-up btn  */}
               <article className="mt-4 pb-3">
 
-                <button type='submit' className="bg-purple h-12 py-4 text-white w-full rounded-md ">
+                <button type='submit' className="bg-purple h-12 py-4 text-white w-full rounded-md flex justify-center items-center">
                  {loading ? 
                  <p className="smax:text-[1.2rem] flex items-center justify-center">
                     <span className="loading loading-ring loading-md"></span>
@@ -273,6 +272,9 @@ const SignUp = () => {
                     {/* )} */}
                   </p>
                 </div>
+                <p className={toggleLight ? "my-4" : "my-4 text-white"}>
+                  You alraedy have an account? <Link className="text-red" to="/login">Login</Link>{" "}
+                </p>
               </article>
             </form>
 
@@ -281,7 +283,7 @@ const SignUp = () => {
         </div>
 
         {/* side  */}
-        <div className="flex-[3] hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] rounded-3xl relative">
+        <div className="flex-[3] hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative">
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>

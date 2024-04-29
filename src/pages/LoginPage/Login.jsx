@@ -16,7 +16,7 @@ const api = import.meta.env.VITE_API_LOGIN;
 const Login = () => {
   const navigate = useNavigate()
   const [toggleLight, setToggleLight] = useState(true);
-  const { setUser, setToken } = useStateContext()
+  const { setToken } = useStateContext()
   const [loading, setLoading] = useState(false)
 
   const toggleBtn = () => {
@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   const schema = yup.object().shape({
-    email: yup.string().required(),
+    email: yup.string().email("Invalid email address").required(),
     password: yup.string().required(),
   });
   const {
@@ -34,7 +34,16 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   })
-
+  if (errors.email){
+      toast.error(errors.email?.message, {
+        duration : 3000
+    })
+  }
+  if (errors.password){
+    toast.error(errors.password?.message, {
+      duration : 3000
+  })
+  }
   const formSubmit = async(data) => {
     const payload = {
       email: data.email,
@@ -43,16 +52,13 @@ const Login = () => {
     try {
       setLoading(true)
       const response = await axios.post(api, payload)
-      console.log(response)
       if (response.status === 200) {
-        setUser(response?.data)
         setToken(response.data.token)
         localStorage.setItem("user-details", JSON.stringify(response.data))
         navigate("/dashboard")
         toast.success("successfully Logged In")
         setLoading(false)
       }
-
     } catch (error) {
       setLoading(false)
       toast.error(error?.response.data.message)
@@ -106,7 +112,7 @@ const Login = () => {
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)}>
               {/* email  */}
-              <div className="flex flex-col mt-1">
+              <div className="flex flex-col my-3">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white"}
@@ -118,16 +124,15 @@ const Login = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "w-[90%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1"
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
+                      : "w-[90%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
                   }
                   placeholder="example@gmail.com"
                 />
 
-                <p className="text-red pt-2" >{errors.email?.message}</p>
               </div>
               {/* password  */}
-              <div className="flex flex-col">
+              <div className="flex flex-col my-3">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white"}
@@ -139,17 +144,16 @@ const Login = () => {
                   type="password"
                   className={
                     toggleLight
-                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : " bg-transparent w-[90%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
+                      : " bg-transparent w-[90%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
                   }
                   placeholder="Enter password"
                 />
-                   <p className="text-red pt-2" >{errors.password?.message}</p>
               </div>
               {/* sign-up btn  */}
               <article className="my-2">
 
-                <button type="submit" className="bg-purple h-12 text-white w-full rounded-md  ">
+                <button type="submit" className="bg-purple h-10 text-white w-full rounded-md text-base smax:text-2xl">
                 {loading ? 
                  <p className="smax:text-[1.2rem] flex items-center justify-center">
                     <span className="loading loading-ring loading-md"></span>
@@ -157,7 +161,7 @@ const Login = () => {
                     <span className="loading loading-ring loading-md"></span>
                   </p>
                   :
-                  <p className="smax:text-[1.4rem]">Login</p>
+                  <p className="text-base smax:text-2xl">Login</p>
                 }
                 </button>
 
@@ -173,9 +177,7 @@ const Login = () => {
                   </p>
                 </button>
 
-                <hr />
-
-                <p className={toggleLight ? "my-2" : "my-2 text-white"}>
+                <p className={toggleLight ? "my-4" : "my-4 text-white"}>
                   Don&apos;t have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}
                 </p>
               </article>

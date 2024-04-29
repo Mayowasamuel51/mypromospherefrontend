@@ -1,5 +1,10 @@
 import image1 from "../../assests/images/Rectangle 487.png";
 import image2 from "../../assests/images/Rectangle 488.png";
+
+import male_unknown from "../../assests/images/male-unknown.png"
+import female_unknown from "../../assests/images/female-unknown.jpg"
+
+
 const ServiceProviders = () => {
   const ProvidersArr = [
     {
@@ -22,28 +27,41 @@ const ServiceProviders = () => {
           </h1>
         </div>
         <div className="prov-carousel mt-10 mx-auto">
-          <div className="flex flex-wrap justify-between gap-4 px-5 items-center">
-            {ProvidersArr.map((provider, index) => {
-              return (
-                <div key={index}>
-                  <div  className="">
-                  <img
-                    src={provider.providerImg}
-                   
-                    alt=""
-                  />
-                  </div>
-                  <div className="flex flex-col gap-1 mt-3 items-center justify-center">
-                    <h2 className="text-base md:text-lg font-semibold">
-                      {provider.providerName}
-                    </h2>
-                    <h3 className="text-sm md:text-base">
-                      {provider.providerJob}
-                    </h3>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="flex flex-wrap justify-evenly px-5 items-center">
+            <div>
+              <div  className="">
+              <img
+                src={female_unknown}
+                className="rounded-xl"
+                alt="Topm Service Provider Of the Week"
+              />
+              </div>
+              <div className="flex flex-col gap-2 mt-3 items-center justify-center">
+                <h2 className="text-base md:text-lg font-semibold">
+                  Your Name Could Be Here
+                </h2>
+                <h3 className="text-sm md:text-base">
+                  Your Profession Could Be Here
+                </h3>
+              </div>
+            </div>
+            <div>
+              <div  className="">
+              <img
+                src={female_unknown}
+                className="rounded-xl"
+                alt="Top Service Provider of the week"
+              />
+              </div>
+              <div className="flex flex-col gap-1 mt-3 items-center justify-center">
+                <h2 className="text-base md:text-lg font-semibold">
+                  Your Name Could Be Here
+                </h2>
+                <h3 className="text-sm md:text-base">
+                  Your Profession Could Be Here
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
