@@ -16,8 +16,8 @@ const FeedsHome = () => {
         <h1 className="text-2xl lg:text-6xl font-semibold mt-20 lg:mt-32 lg:w-[500px]">Perfect Works Made for You</h1>
         <div>
           <div className="flex  my-3 lg:my-5">
-            <input type="text" className="w-[90%] lg:w-[80%] rounded-tl-lg rounded-bl-lg shadow-lg h-10 lg:h-12 pl-4" placeholder="Search by title or tags"></input>
-            <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-xl rounded-br-xl">
+            <input type="text" className="w-[90%] lg:w-[80%] rounded-tl-sm rounded-bl-lg md:rounded-tl-lg md:rounded-bl-lg shadow-lg h-10 lg:h-12 pl-4" placeholder="Search by title or tags"></input>
+            <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-sm rounded-br-sm md:rounded-tr-xl md:rounded-br-xl">
               <IoFilterSharp color="white" size={30} />
             </button>
           </div>
