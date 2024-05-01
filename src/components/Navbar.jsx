@@ -49,7 +49,7 @@ export default function Navbar({profile, blue}) {
 }, [])
   return (
     <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile || blue ? "bg-[#3D217A]" : "bg-white" : profile || blue ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
-      <Link to={location.pathname === "/home" ? "/" : "/home"} className=" flex items-center">
+      <Link to={location.pathname === "/home" ? "/" : location.pathname === "/dashboard" ? "/" : "/home"} className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-16 exl:w-20" />
         <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
@@ -92,7 +92,7 @@ export default function Navbar({profile, blue}) {
        {token ?
        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
         <Link to="/dashboard">
-            <button className={`text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+            <button className={`italic text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
               My DashBoard
             </button>
           </Link>

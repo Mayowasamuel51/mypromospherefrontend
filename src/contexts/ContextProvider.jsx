@@ -11,14 +11,7 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState("")
     const [FullScreen, setFullScreen] = useState(false)
-    const [token, setToken] = useState(()=> localStorage.getItem("user-details") ? JSON.parse(localStorage.getItem("user-details")) : null)
-    useEffect(() => {
-        if (token) {
-            setUser(token["user-name"]);
-        } else {
-            setUser("?ANONYMOUS? ?USER?");
-        }
-    }, [token]);
+    const [token, setToken] = useState(JSON.parse(localStorage.getItem("user-details")))
     useEffect(()=> {
         const handleResize = ()=> {
             const size = window.innerWidth;

@@ -12,7 +12,7 @@ const feeds = () => {
       <div className="grid items-stretch md:grid-cols-2 lg:grid-cols-4 gap-10 grid-rows-1">
         <div className="flex flex-col gap-4">
           <div>
-            <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 1000 }} className="rounded-md w-full h-full object-cover" />
+            <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
           </div>
           <Link to="/profile/timilehin babade">
             <div className="flex items-center gap-2">
@@ -23,7 +23,7 @@ const feeds = () => {
         </div>
         <div className="flex flex-col gap-4">
           <div>
-            <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 1000 }} className="rounded-md w-full h-full object-cover" />
+            <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
           </div>
           <Link to="/profile/timilehin babade">
             <div className="flex items-center gap-2">
@@ -34,7 +34,7 @@ const feeds = () => {
         </div>
         <div className="flex flex-col gap-4">
           <div>
-            <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 1000 }} className="rounded-md w-full h-full object-cover" />
+            <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
           </div>
           <Link to="/profile/timilehin babade">
             <div className="flex items-center gap-2">
@@ -45,7 +45,7 @@ const feeds = () => {
         </div>
         <div className="flex flex-col gap-4">
           <div>
-            <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 1000 }} className="rounded-md w-full h-full object-cover" />
+            <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
           </div>
           <Link to="/profile/timilehin babade">
             <div className="flex items-center gap-2">

@@ -15,7 +15,7 @@ const TrendingAds = () => {
         <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed3} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -26,7 +26,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed4} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed4} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -37,7 +37,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed5} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed5} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -48,7 +48,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed1} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -59,7 +59,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed1} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -70,7 +70,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed6} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed6} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed2} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ const TrendingAds = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <div>
-                    <LazyLoadImage effect="blur" src={feed2} alt="" className="rounded-md w-full h-full object-cover" />
+                    <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                 </div>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
