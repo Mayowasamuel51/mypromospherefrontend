@@ -17,9 +17,9 @@ const handleSubmit = (e)=>{
    e.preventDefault()
    if (search) {
      const searchTerm = { id: new Date().getTime().toString(), search};
-           setSearchTerms((searchTerms) => {
-             return [...searchTerms, searchTerm];
-           });
+      setSearchTerms((searchTerms) => {
+        return [...searchTerms, searchTerm];
+      });
    }
    setSearch('')
   //  setSearchTerms([])

@@ -7,6 +7,7 @@ import feed3 from "../../../assests/images/feed3.svg";
 import feed4 from "../../../assests/images/feed4.svg";
 import feed5 from "../../../assests/images/feed5.svg";
 import feed6 from "../../../assests/images/feed6.svg";
+import { Link } from 'react-router-dom';
 
 
 const TrendingAds = () => {
@@ -16,76 +17,92 @@ const TrendingAds = () => {
                 <div>
                     <LazyLoadImage effect="blur" src={feed3} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed4} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed5} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed1} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed1} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed6} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed2} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed2} alt="" className="rounded-md w-full h-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2">
-                    <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                    <p className="text-sm">Timilehin babade</p>
-                </div>
+                <Link to="/profile/timilehin babade">
+                    <div className="flex items-center gap-2">
+                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                        <p className="text-sm">Timilehin babade</p>
+                    </div>
+                </Link>
             </div>
         </section>
     )
 }
 
-export default TrendingAds
+export default TrendingAds;
