@@ -8,8 +8,9 @@ import Post from "../LoginPage/component/Post"
 import Saved from "../LoginPage/component/Saved"
 
 function DefualtLayout() {
-    const { user, token } = useStateContext()
+    const { token } = useStateContext()
     const [saved, setSaved] = useState(false)
+    if (!token) return <Navigate  to="/profile/timilehin babade"/>
     return (
         <>
             <main className={`py-7 ${!token && "pt-32"}`}>
