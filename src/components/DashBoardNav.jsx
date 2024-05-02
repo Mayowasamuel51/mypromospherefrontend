@@ -1,17 +1,17 @@
 import { useStateContext } from "../contexts/ContextProvider"
-import { Link, Navigate } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import LOGO from "../../src/assests/SVGs/logo.svg";
 
 import Navbar from "./Navbar"
 
 const DashBoardNav = () => {
     const { token, LogOut } = useStateContext()
-    
+    const location = useLocation()
     return (
         <>
             {token ?
                 <header className="py-2 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A]">
-                    <Link to={"/home"}>
+                    <Link to={location.pathname === "/dashboard" ? "/" : "/home"}>
                         <div className="flex items-center gap-1">
                             <img src={LOGO} alt="" className="w-10 md:w-16 exl:w-20" />
                             <h1 className="text-xs font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>

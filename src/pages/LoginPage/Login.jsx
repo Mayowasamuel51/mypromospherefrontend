@@ -53,16 +53,24 @@ const Login = () => {
       setLoading(true)
       const response = await axios.post(api, payload)
       if (response.status === 200) {
-        setToken(response.data.token)
-        // localStorage.setItem('ACCESS_TOKEN', response.data.token)
+        console.log(response.data)
+        setToken(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
         navigate("/dashboard")
         toast.success("successfully Logged In")
         setLoading(false)
       }
     } catch (error) {
-      setLoading(false)
-      toast.error(error?.response.data.message)
+      if (error?.response?.status === 422) {
+        toast.error(error?.response.data.message)
+        setLoading(false)
+        return
+      }
+      if (error?.message === "Network Error") {
+        toast.error(`${error?.message} please check your internet connectivity`)
+        setLoading(false)
+      }
+      console.log(error)
     }
   }
   return (
@@ -75,7 +83,6 @@ const Login = () => {
             : "inset bg-black w-[90%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
         }
       >
-        {/* sign-up center  */}
         <div>
           {/* back  */}
           <article className="mt-1 xs:mt-4 flex items-center justify-between">
@@ -188,7 +195,7 @@ const Login = () => {
         </div>
 
         {/* side  */}
-        <div className="hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-3xl">
+        <div className="hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-tr-3xl rounded-br-3xl">
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>

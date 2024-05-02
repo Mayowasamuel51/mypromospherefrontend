@@ -8,30 +8,26 @@ import Post from "../LoginPage/component/Post"
 import Saved from "../LoginPage/component/Saved"
 
 function DefualtLayout() {
-    const { user, token } = useStateContext()
+    const { token } = useStateContext()
     const [saved, setSaved] = useState(false)
+    if (!token) return <Navigate  to="/profile/timilehin babade"/>
     return (
         <>
             <main className={`py-7 ${!token && "pt-32"}`}>
                 <section className="">
-                    {/* user-info  */}
                     <article className="">
-                        {/* image  */}
                         <img
                             src={roundedImg}
                             alt=""
                             className="w-[30%] md:w-[150px] mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-xl mt-6">
-                            {user}
+                            {token ? `${token["user-name"]}` : 'Anonymous'}
                         </h1>
-                        {/* btns  */}
                         <div className="flex items-center justify-center gap-x-3 mt-4">
-                            {/* share-btn  */}
                             <button className="bg-[#BCB9B9] p-2 px-4 rounded-md">
                                 <p className="text-center">share</p>
                             </button>
-                            {/* edit profile  */}
                             <Link to={'EditProfile'}>
                                 <button className="bg-[#BCB9B9] p-2 px-4 rounded-md">
                                     <p className="text-center">Edit profile</p>

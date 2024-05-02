@@ -12,13 +12,10 @@ import { categories } from "../../src/json/categories.jsx"
 import ImageUploader from 'react-image-upload'
 import 'react-image-upload/dist/index.css'
 import { headlines } from "../../src/json/headlines.jsx"
-import DropFileInput from '../components/drop-file-input/DropFileInput';
+import DropFileInput from '../components/drop-file-input/DropFileInput.jsx';
 import UploadButton from '../components/upload-button/UploadButton';
-import { Uploader } from "uploader"; // Installed by "react-uploader".
+// import { Uploader } from "uploader"; // Installed by "react-uploader".
 // import { UploadButton } from "react-uploader";
-const uploader = Uploader({
-    apiKey: "free" // Get production API keys from Bytescale
-});
 const options = { multi: true };
 const Video = () => {
     const { token } = useStateContext()

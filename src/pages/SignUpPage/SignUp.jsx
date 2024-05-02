@@ -95,7 +95,7 @@ const SignUp = () => {
     <section className="newhero min-h-screen flex justify-center items-center">
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "overflow-hidden inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "overflow-hidden inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
         }
       >
         {/* sign-up center  */}
@@ -267,17 +267,14 @@ const SignUp = () => {
                 <div className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3 " />
                   <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto">
-                    {/* {loginUrl != null && ( */}
-                      <a href={loginUrl}>Continue with Google</a>
-                    {/* )} */}
+                    <a href={loginUrl}>Continue with Google</a>
                   </p>
                 </div>
-                <p className={toggleLight ? "my-4" : "my-4 text-white"}>
+                <p className={toggleLight ? "my-2" : "my-2 text-white"}>
                   You alraedy have an account? <Link className="text-red" to="/login">Login</Link>{" "}
                 </p>
               </article>
             </form>
-
             {/* end of form  */}
           </article>
         </div>
