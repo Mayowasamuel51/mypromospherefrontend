@@ -175,7 +175,7 @@ const Post = () => {
                         return (
                             <option key={index} value={option}>
                                 {option}
-                            </option>
+                            </option> 
                         );
                     })}
 
