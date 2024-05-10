@@ -20,7 +20,7 @@ const NewHero = () => {
             experience.
           </p>
           <div className=" relative mb-4 w-11/12">
-            <input type="text" name="" id="" className="w-full h-12 lg:h-16 pl-10 bg-[#D9D9D9] rounded-lg text-black outline-none" placeholder="Search for any service"/>
+            <input type="text" name="" id="" className="w-full h-12 lg:h-16 pl-10 bg-[#D9D9D9] rounded-lg text-black outline-none" placeholder="Search for any service" />
             <i className="absolute top-1/2 left-2 -translate-y-1/2 text-3xl text-black"><CiSearch /></i>
           </div>
 

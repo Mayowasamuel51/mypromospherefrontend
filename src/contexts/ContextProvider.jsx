@@ -19,8 +19,10 @@ export const ContextProvider = ({ children }) => {
         }
         handleResize()
         window.addEventListener("resize", handleResize)
+
         return ()=> window.removeEventListener("resize", handleResize)
     }, [FullScreen])
+
     const LogOut = ()=>{
         localStorage.removeItem("user-details")
         setToken(null)

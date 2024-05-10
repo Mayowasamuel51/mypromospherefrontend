@@ -19,7 +19,7 @@ export default function Home() {
       <Grow />
       <SkillsNav />
       <Outlet />
-      <ServiceProviders/>
+      {/* <ServiceProviders/> */}
       <Testimonials />
       <CTA />
     </main>
