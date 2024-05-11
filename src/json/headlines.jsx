@@ -1,4 +1,5 @@
 export const headlines = [
+  
   "Unleash Your Productivity: Explore the Latest Laptop Innovations!",
   "Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!",
   "Stay Connected On-the-Go: Shop Phones and Tablets for Every Need!",
@@ -11,6 +12,8 @@ export const headlines = [
   "Adorable Fashion for Little Ones: Dress Your Kids in Style!",
   "Feel Confident Every Day: Explore the Latest in Women's Underwear!",
   "Step Out in Style: Shop the Hottest Women's Dresses Now!",
+
+
   "Walk with Confidence: Step into Chic Women's Shoes!",
   "Spoil Your Furry Friends: Discover Pet Essentials for Every Need!",
   "Upgrade Your Wardrobe: Find the Perfect Shirts for Men!",

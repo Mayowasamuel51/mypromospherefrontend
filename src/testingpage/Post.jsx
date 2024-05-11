@@ -20,6 +20,10 @@ import { categories } from "../../src/json/categories.jsx";
 import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
+
+
+const  api_freeads = import.meta.env.VITE_ADS_FREEADS
+
 const Post = () => {
   // console.log(categories)
   const [categoriesValues, setCategoriesValues] = useState("");
@@ -34,10 +38,10 @@ const Post = () => {
   };
   const schema = yup.object().shape({
     // price: yup.string().required(),
-    // categories: yup.string().required(),
-    // description: yup.string().required(),
-    // headlines: yup.string().required(),
-    // categories: yup.string().required(),
+    categories: yup.string().required(),
+    description: yup.string().required(),
+    headlines: yup.string().required(),
+    categories: yup.string().required(),
     picture: yup
       .mixed()
       .test(
@@ -114,7 +118,7 @@ const Post = () => {
     formData.append("price_range", data.price);
 
     axios
-      .post("http://localhost:8000/api/freeads", formData, {
+      .post( api_freeads, formData, {
         headers: {
           Accept: "application/json",
           "Content-Type": "multipart/form-data",
@@ -176,12 +180,11 @@ const Post = () => {
                 console.log("these are the images  ", [downloadURL]);
                 const second_payload = {
                   itemadsimagesurls: downloadURL,
-                  // titleImageurl: [downloadURL],
                   id: token?.token.id,
                 };
                 axios
                   .post(
-                    `http://localhost:8000/api/freeads/${response}`,
+                    `${api_freeads}${response}`,
                     second_payload,
                     {
                       headers: {
