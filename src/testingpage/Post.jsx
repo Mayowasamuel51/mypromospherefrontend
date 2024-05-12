@@ -21,8 +21,7 @@ import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 
-
-const  api_freeads = import.meta.env.VITE_ADS_FREEADS
+const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 
 const Post = () => {
   // console.log(categories)
@@ -118,7 +117,7 @@ const Post = () => {
     formData.append("price_range", data.price);
 
     axios
-      .post( api_freeads, formData, {
+      .post(api_freeads, formData, {
         headers: {
           Accept: "application/json",
           "Content-Type": "multipart/form-data",
@@ -183,16 +182,12 @@ const Post = () => {
                   id: token?.token.id,
                 };
                 axios
-                  .post(
-                    `${api_freeads}${response}`,
-                    second_payload,
-                    {
-                      headers: {
-                        Accept: "application/json",
-                        Authorization: `Bearer ${token?.token.token}`,
-                      },
-                    }
-                  )
+                  .post(`${api_freeads}${response}`, second_payload, {
+                    headers: {
+                      Accept: "application/json",
+                      Authorization: `Bearer ${token?.token.token}`,
+                    },
+                  })
                   .then((res) => {
                     if (res.status === 200) {
                       console.log("worked with second ...................");

@@ -10,7 +10,7 @@ import Saved from "../LoginPage/component/Saved"
 function DefualtLayout() {
     const { token } = useStateContext()
     const [saved, setSaved] = useState(false)
-    if (!token) return <Navigate  to="/profile/timilehin babade"/>
+    if (!token) return <Navigate  to="/"/>
     return (
         <>
             <main className={`py-7 ${!token && "pt-32"}`}>

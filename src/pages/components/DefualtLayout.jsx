@@ -21,9 +21,9 @@ function DefualtLayout() {
 
     useEffect(() => {
         axiosclinet.get("api/getuser").then(({ data }) => {
+            setUser(data.message)
             console.log('see messages')
             console.log(data.message)
-            setUser(data.message)
         })
     }, [])
     return (

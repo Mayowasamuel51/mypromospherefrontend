@@ -16,7 +16,7 @@ const api = import.meta.env.VITE_API_LOGIN;
 const Login = () => {
   const navigate = useNavigate()
   const [toggleLight, setToggleLight] = useState(true);
-  const { setToken } = useStateContext()
+  const { setToken ,setUser} = useStateContext()
   const [loading, setLoading] = useState(false)
 
   const toggleBtn = () => {
@@ -55,6 +55,7 @@ const Login = () => {
       if (response.status === 200) {
         console.log(response.data)
         setToken(response.data)
+        setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
         navigate("/dashboard")
         toast.success("successfully Logged In")

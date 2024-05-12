@@ -7,6 +7,7 @@ export const headlines = [
   "Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!",
   "Shop Smarter, Live Better: Stock Up on Quality Groceries Today!",
   "Transform Your Space: Elevate Your Home with Stunning Decor!",
+  
   "Make Every Corner Comfortable: Discover Furniture for Every Room!",
   "Dive into Summer: Find the Perfect Bikini for Your Beach Days!",
   "Adorable Fashion for Little Ones: Dress Your Kids in Style!",
@@ -15,7 +16,7 @@ export const headlines = [
 
 
   "Walk with Confidence: Step into Chic Women's Shoes!",
-  "just add",
+  
   "Spoil Your Furry Friends: Discover Pet Essentials for Every Need!",
   "Upgrade Your Wardrobe: Find the Perfect Shirts for Men!",
   "Step Up Your Style Game: Explore Trendy Men's Shoes!",
