@@ -30,7 +30,7 @@ const Post = () => {
   const { user, setUser } = useStateContext();
   const [makepic, setmakepic] = useState("");
   const token = useStateContext();
-  console.log(token?.token.user);
+  console.log(token?.token);
   const [files, setFile] = useState(null);
   const handleValues = (e) => {
     setCategoriesValues(e.target.value);
@@ -115,7 +115,7 @@ const Post = () => {
     formData.append("categories", data.categories);
     formData.append("description", data.description);
     formData.append("price_range", data.price);
-
+    formData.append("user_image",token?.token.profileImage )
     axios
       .post(api_freeads, formData, {
         headers: {
