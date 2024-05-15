@@ -226,3 +226,6 @@ const Video = () => {
 //  validate only videos should be uploaded not images 
 
 export default Video;
+
+
+// searcity auditor --- how to get there 

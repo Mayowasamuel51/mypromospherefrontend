@@ -79,7 +79,7 @@ const SignUp = () => {
     }
     setLoading(true)
     try {
-      const response = await axios.post("https://apimypromospheretest.com.ng/api/sighup", payload)
+      const response = await axios.post(api, payload)
       if (response.status === 200) {
         setToken(response.data.token)
         setLoading(false)

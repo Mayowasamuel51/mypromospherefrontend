@@ -101,6 +101,7 @@ const Post = () => {
     reader.readAsDataURL(file);
   };
   const formSubmit = (data) => {
+    
     console.log(makepic);
     // const payload = {
     //   price_range: data.price,
@@ -110,19 +111,39 @@ const Post = () => {
     //   description: data.description,
     // };
     const formData = new FormData();
+    const myArray = [
+      'Lagos',
+      'lagos', // Case-sensitive
+      'Oyo',
+      'Abuja',
+      'Ogun',
+      'Rivers',
+      'Kano',
+    ];
+    const randomIndex = Math.floor(Math.random() * myArray.length);
+  
+    // Access the random string using the index
+    const randomString = myArray[randomIndex];
+
     formData.append("titleImageurl", data.picture[0]);
     formData.append("headlines", data.headlines);
     formData.append("categories", data.categories);
     formData.append("description", data.description);
     formData.append("price_range", data.price);
+    formData.append("state", randomString);
+    formData.append("local_gov", 'local goverment ');
     formData.append("user_image",token?.token.profileImage )
     axios
       .post(api_freeads, formData, {
         headers: {
           Accept: "application/json",
+          Accept:"application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token.token}`,
+          
         },
+  
+        
       })
       .then((res) => {
         if (res.status === 200) {
@@ -182,9 +203,10 @@ const Post = () => {
                   id: token?.token.id,
                 };
                 axios
-                  .post(`${api_freeads}${response}`, second_payload, {
+                  .post(`${api_freeads}/${response}`, second_payload, {
                     headers: {
                       Accept: "application/json",
+                      Accept:"application/vnd.api+json",
                       Authorization: `Bearer ${token?.token.token}`,
                     },
                   })
