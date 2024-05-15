@@ -22,7 +22,7 @@ import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
-
+//note after the success post upload reload the componetns
 const Post = () => {
   // console.log(categories)
   const [categoriesValues, setCategoriesValues] = useState("");

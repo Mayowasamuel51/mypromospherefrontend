@@ -128,13 +128,17 @@ const ProfileEdit = () => {
           };
           console.log("these are the images  ", [downloadURL]);
           axios
-            .put(`${api_edit_profile_put_endpoint}${token?.token.id}`, payload, {
-              headers: {
-                Accept: "application/json",
-                // "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${token?.token.token}`,
-              },
-            })
+            .put(
+              `${api_edit_profile_put_endpoint}${token?.token.id}`,
+              payload,
+              {
+                headers: {
+                  Accept: "application/json",
+                  // "Content-Type": "multipart/form-data",
+                  Authorization: `Bearer ${token?.token.token}`,
+                },
+              }
+            )
             .then((res) => {
               if (res.data.status === 200) {
                 console.log("updated the profile image ...................");
@@ -150,7 +154,7 @@ const ProfileEdit = () => {
   };
 
   useEffect(() => {
-    axios(`${api_edit_profile_endpoint}${token?.token.id}`, {
+    axios(`${api_edit_profile_endpoint}/${token?.token.id}`, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${token?.token.token}`,

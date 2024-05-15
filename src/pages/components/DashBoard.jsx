@@ -11,14 +11,17 @@ function DefualtLayout() {
     const { token } = useStateContext()
     const [saved, setSaved] = useState(false)
     if (!token) return <Navigate  to="/"/>
+
+    console.log(token?.user)
+    console.log(token?.profileImage)
     return (
         <>
             <main className={`py-7 ${!token && "pt-32"}`}>
                 <section className="">
                     <article className="">
                         <img
-                            src={roundedImg}
-                            alt=""
+                            src={token?.profileImage}
+                            alt={roundedImg}
                             className="w-[30%] md:w-[150px] mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-xl mt-6">
