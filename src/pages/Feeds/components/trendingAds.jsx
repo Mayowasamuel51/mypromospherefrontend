@@ -15,8 +15,8 @@ const TrendingAds = () => {
     console.table(data?.data.normalads);
     return (
         <>
+            <h1 className='font-bold lg:my-4 my-2'>GET APARTMENTS NEAR YOU</h1> 
             <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <h1 className='font-bold lg:my-4 my-2'>GET APARTMENTS NEAR YOU</h1> 
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
@@ -31,8 +31,8 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
+            <h1 className='font-bold lg:my-4 my-2'>ALWAYS STAY IN VOGUE</h1>
             <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <h1 className='font-bold lg:my-4 my-2'>ALWAYS STAY IN VOGUE</h1> 
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
@@ -47,8 +47,8 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
+            <h1 className='font-bold lg:my-4 my-2'>YOU SKIN WILL THANK YOU</h1> 
             <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <h1 className='font-bold lg:my-4 my-2'>YOU SKIN WILL THANK YOU</h1> 
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
