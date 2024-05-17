@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar";
 import productView from "../../assests/images/product-view.svg";
-import frame from "../../assests/images/frame4.svg";
+import frame from "../../assests/images/feed4.svg";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
