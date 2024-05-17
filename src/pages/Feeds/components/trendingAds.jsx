@@ -8,100 +8,122 @@ import feed4 from "../../../assests/images/feed4.svg";
 import feed5 from "../../../assests/images/feed5.svg";
 import feed6 from "../../../assests/images/feed6.svg";
 import { Link } from 'react-router-dom';
-
+import FetchTrendingAds from "../../../hooks/fetchTrendingAds"
 
 const TrendingAds = () => {
+    const { data, isLoading, error } = FetchTrendingAds();
+    console.table(data?.data.normalads);
+    data?.data.normalads.filter((item) => item.categories === "Apartment")
     return (
-        <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-                </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+
+        <>
+            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <h1>Get ApartMents Near</h1> 
+                {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
+                    <div key={item.id} className="flex flex-col gap-4">
+                        <div>
+                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/api/trendingads/${item.titleImageurl}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                        </div>
+                        <Link to="/profile/timilehin babade">
+                            <div className="flex items-center gap-2">
+                                <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-10 aspect-square" />
+                                <p className="text-sm">Timilehin babade</p>
+                            </div>
+                        </Link>
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed4} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-                </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                ))}
+            </section>
+            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed5} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
                 </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed4} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
                 </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed5} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
                 </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed6} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
                 </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
                 </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed6} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-            <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
                 </div>
-                <Link to="/profile/timilehin babade">
-                    <div className="flex items-center gap-2">
-                        <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
-                        <p className="text-sm">Timilehin babade</p>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                     </div>
-                </Link>
-            </div>
-        </section>
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    </div>
+                    <Link to="/profile/timilehin babade">
+                        <div className="flex items-center gap-2">
+                            <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
+                            <p className="text-sm">Timilehin babade</p>
+                        </div>
+                    </Link>
+                </div>
+            </section>
+        </>
     )
 }
 
