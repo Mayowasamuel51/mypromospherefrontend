@@ -22,7 +22,7 @@ const TrendingAds = () => {
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
-                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/api/trendingads/${item.titleImageurl}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/${item.titleImageurl}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                         </div>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
