@@ -10,11 +10,11 @@ const EditProfile = () => {
        };
   return (
     // Edit-profile
-    <section className="pt-32">
+    <section className="">
       {/* edit-profile-center  */}
-      <div className="p-6  md:flex md:gap-x-[.2rem] mdxs:gap-[3rem] mdsm:gap-[4rem] lg:gap-[5rem] large:gap-[6rem] exl:gap-[9rem]  px-10 ">
+      <div className="p-6  md:flex md:gap-x-[.2rem] mdxs:gap-[3rem] mdsm:gap-[4rem] lg:gap-[5rem] large:gap-[6rem] exl:gap-[9rem] px-10 ">
         {/* each edit  */}
-        <article className="mt-[7rem] px-[5rem] md:px-0">
+        <article className="px-[5rem] md:px-0">
           {/* single-tab  */}
           <div className="">
             <button onClick={() => updateToggle(1)} className>

@@ -11,6 +11,7 @@ import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import axios from "axios";
 import { toast } from 'sonner'; 
+import Loader from "../../loader";
 const api = import.meta.env.VITE_API_LOGIN;
 
 const Login = () => {
@@ -75,7 +76,12 @@ const Login = () => {
     }
   }
   return (
-    <section className="bg-purple h-screen">
+    <section className="relative bg-purple h-screen">
+      {loading && 
+        <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
+          <Loader/>
+        </div>
+      }
       {/* sign-up box  */}
       <div
         className={

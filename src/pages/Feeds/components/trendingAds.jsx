@@ -1,6 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import user from "../../../assests/images/user.svg"
+import user from "../../../assests/images/user.svg";
 import feed1 from "../../../assests/images/feed1.svg";
 import feed2 from "../../../assests/images/feed2.svg";
 import feed3 from "../../../assests/images/feed3.svg";
