@@ -3,6 +3,7 @@ import { Toaster, toast } from 'sonner';
 
 const StateContext = createContext({
     user: null,
+    // userid:null, 
     token: null,
     setUser: () => { },
     setToken: () => { }
@@ -19,8 +20,10 @@ export const ContextProvider = ({ children }) => {
         }
         handleResize()
         window.addEventListener("resize", handleResize)
+
         return ()=> window.removeEventListener("resize", handleResize)
     }, [FullScreen])
+
     const LogOut = ()=>{
         localStorage.removeItem("user-details")
         setToken(null)

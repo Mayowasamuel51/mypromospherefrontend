@@ -34,6 +34,7 @@ import TopServices from "./pages/components/TopServices.jsx"
 import TrendingSkills from "./pages/components/TrendingSkills.jsx"
 import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
 import Post from "./testingpage/Post.jsx";
+import Video from "./testingpage/Video.jsx";
 
 
 const router = createBrowserRouter([
@@ -108,6 +109,10 @@ const router = createBrowserRouter([
       {
         path: "post",
         element: <Post />
+      },
+      {
+        path:'video',
+        element:<Video/>
       }
     ]
   },
