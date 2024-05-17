@@ -13,7 +13,6 @@ import FetchTrendingAds from "../../../hooks/fetchTrendingAds"
 const TrendingAds = () => {
     const { data, isLoading, error } = FetchTrendingAds();
     console.table(data?.data.normalads);
-    data?.data.normalads.filter((item) => item.categories === "Apartment")
     return (
 
         <>
