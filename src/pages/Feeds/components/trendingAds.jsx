@@ -16,7 +16,7 @@ const TrendingAds = () => {
     return (
         <>
             <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <h1 className='font-bold'>GET APARTMENTS NEAR YOU</h1> 
+                <h1 className='font-bold lg:my-4 my-2'>GET APARTMENTS NEAR YOU</h1> 
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
@@ -32,8 +32,24 @@ const TrendingAds = () => {
                 ))}
             </section>
             <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <h1 className='font-bold'>ALWAYS STAY IN VOGUE</h1> 
+                <h1 className='font-bold lg:my-4 my-2'>ALWAYS STAY IN VOGUE</h1> 
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
+                    <div key={item.id} className="flex flex-col gap-4">
+                        <div>
+                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/${item.titleImageurl}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                        </div>
+                        <Link to="/profile/timilehin babade">
+                            <div className="flex items-center gap-2">
+                                <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-10 aspect-square" />
+                                <p className="text-sm">Timilehin babade</p>
+                            </div>
+                        </Link>
+                    </div>
+                ))}
+            </section>
+            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <h1 className='font-bold lg:my-4 my-2'>YOU SKIN WILL THANK YOU</h1> 
+                {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
                             <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/${item.titleImageurl}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
