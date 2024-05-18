@@ -20,7 +20,7 @@ const TrendingAds = () => {
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
-                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                         </div>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
@@ -52,7 +52,7 @@ const TrendingAds = () => {
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
-                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                         </div>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
