@@ -18,11 +18,11 @@ const TrendingAds = () => {
 
         <>
             <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <h1>Get ApartMents Near</h1> 
+                <h1>Get ApartMents Near</h1>
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-4">
                         <div>
-                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/${item.titleImageurl}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                         </div>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
@@ -33,7 +33,7 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {/* <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
                 <div className="flex flex-col gap-4">
                     <div>
                         <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: "auto", objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
@@ -122,7 +122,7 @@ const TrendingAds = () => {
                         </div>
                     </Link>
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

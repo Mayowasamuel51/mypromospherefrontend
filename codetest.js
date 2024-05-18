@@ -1,18 +1,21 @@
-const myArray = [
-    'Lagos',
-    'lagos', // Case-sensitive
-    'Oyo',
-    'Abuja',
-    'Ogun',
-    'Rivers',
-    'Kano',
-  ];
-  
-  // Get a random index within the array length
-  const randomIndex = Math.floor(Math.random() * myArray.length);
-  
-  // Access the random string using the index
-  const randomString = myArray[randomIndex];
-  
-  // Display the random string
-  console.log(randomString);
+const testEndpoint = async () => {
+  try {
+    const response = await fetch('https://apimypromospheretest.com.ng/api/trendingads');
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Handle potential data structure (replace with actual keys)
+    const items = data.normalads || data.data || [];
+    const filteredData = items.filter((item) => item.categories === 'Skincare');
+
+    console.log(filteredData);
+  } catch (error) {
+    console.error('Error fetching or processing data:', error);
+  }
+};
+
+testEndpoint();
