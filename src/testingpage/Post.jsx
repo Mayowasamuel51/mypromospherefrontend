@@ -228,7 +228,7 @@ const Post = () => {
   };
 
   return (
-    <div className="pt-32 px-4 lg:px-40">
+    <div className="px-4 lg:px-40">
       <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">
         UPLOAD YOUR DETAILS TO MYPROMOSPHERE
       </h1>
@@ -312,7 +312,7 @@ const Post = () => {
           type="submit"
           className="px-4 py-2 bg-purple rounded-lg text-xl font-medium text-white"
         >
-          Post Noraml Ads
+          Post Normal Ads
         </button>
       </form>
     </div>

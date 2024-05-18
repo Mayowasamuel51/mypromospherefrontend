@@ -7,8 +7,8 @@ import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useForm } from "react-hook-form"
-// import axiosclinet from '../../https/axios-clinet';
+import { useForm } from "react-hook-form";
+import Loader from '../../loader';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { Toaster, toast } from 'sonner';
 
@@ -92,10 +92,15 @@ const SignUp = () => {
     }
   }
   return (
-    <section className="newhero min-h-screen flex justify-center items-center">
+    <section className="relative newhero min-h-screen flex justify-center items-center">
+      {loading && 
+        <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
+          <Loader/>
+        </div>
+      }
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "overflow-hidden inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-black rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "overflow-hidden inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-black rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]"
         }
       >
         {/* sign-up center  */}
@@ -156,9 +161,7 @@ const SignUp = () => {
                   }
                   placeholder="Full name"
                 />
-                {/* <p className="text-red pt-2" >{errors.name?.message}</p> */}
               </div>
-              {/* email  */}
               <div className="flex flex-col mt-1">
                 <label
                   htmlFor="name"
@@ -176,9 +179,7 @@ const SignUp = () => {
                   }
                   placeholder="example@gmail.com"
                 />
-                {/* <p className="text-red pt-2" >{errors.email?.message}</p> */}
               </div>
-              {/* password  */}
               <div className="flex flex-col mt-1">
                 <label
                   htmlFor="name"
@@ -196,7 +197,6 @@ const SignUp = () => {
                   }
                   placeholder="Enter password"
                 />
-                {/* <p className="text-red pt-2" >{errors.password?.message}</p> */}
               </div>
 
               {/* password confirm */}
@@ -265,13 +265,13 @@ const SignUp = () => {
                   className="w-full text-white colorize-img3"
                 />
                 <div className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
-                  <img src={google} alt="" className="px-3 " />
+                  <img src={google} alt="" className="px-3" />
                   <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto">
                     <a href={loginUrl}>Continue with Google</a>
                   </p>
                 </div>
                 <p className={toggleLight ? "my-2" : "my-2 text-white"}>
-                  You alraedy have an account? <Link className="text-red" to="/login">Login</Link>{" "}
+                  You already have an account? <Link className="text-red" to="/login">Login</Link>{" "}
                 </p>
               </article>
             </form>
