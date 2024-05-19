@@ -8,11 +8,11 @@ import "./index.css";
 import React from "react";
 import Loader from "./loader.jsx";
 
-const FeedsHome = React.lazy(()=> import("./pages/Feeds/feedsHome.jsx"))
-const APP = React.lazy(()=> import("./App"))
-const SignUpPage = React.lazy(()=> import("./pages/SignUpPage/SignUp"))
-const LoginPage = React.lazy(()=> import("./pages/LoginPage/Login"))
-const DashBoard = React.lazy(()=> import("./pages/components/DashBoard.jsx"))
+const FeedsHome = React.lazy(() => import("./pages/Feeds/feedsHome.jsx"))
+const APP = React.lazy(() => import("./App"))
+const SignUpPage = React.lazy(() => import("./pages/SignUpPage/SignUp"))
+const LoginPage = React.lazy(() => import("./pages/LoginPage/Login"))
+const DashBoard = React.lazy(() => import("./pages/components/DashBoard.jsx"))
 import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
@@ -83,12 +83,16 @@ const router = createBrowserRouter([
     element: <Photography />,
   },
   {
+    path: "auth/google",
+    element: <GoogleCallback />
+  },
+  {
     path: "Login",
-    element:  <Suspense fallback={<Loader/>}><LoginPage /></Suspense>,
+    element: <Suspense fallback={<Loader />}><LoginPage /></Suspense>,
   },
   {
     path: "signup",
-    element: <Suspense fallback={<Loader/>}><SignUpPage /></Suspense> ,
+    element: <Suspense fallback={<Loader />}><SignUpPage /></Suspense>,
   },
   {
     path: "dashboard",
@@ -96,7 +100,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Suspense fallback={<Loader/>}><DashBoard /></Suspense>,
+        element: <Suspense fallback={<Loader />}><DashBoard /></Suspense>,
       },
       {
         path: "EditProfile",
@@ -111,8 +115,8 @@ const router = createBrowserRouter([
         element: <Post />
       },
       {
-        path:'video',
-        element:<Video/>
+        path: 'video',
+        element: <Video />
       }
     ]
   },
@@ -130,11 +134,11 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <Suspense fallback={<Loader/>}><SignUpPage /></Suspense> ,
+        element: <Suspense fallback={<Loader />}><SignUpPage /></Suspense>,
       },
       {
         path: "Login",
-        element:  <Suspense fallback={<Loader/>}><LoginPage /></Suspense>,
+        element: <Suspense fallback={<Loader />}><LoginPage /></Suspense>,
       },
       {
         path: "detail/:detailId",
@@ -146,7 +150,7 @@ const router = createBrowserRouter([
       // },
       {
         path: "detail/:detailId/Login",
-        element:  <Suspense fallback={<Loader/>}><LoginPage /></Suspense>,
+        element: <Suspense fallback={<Loader />}><LoginPage /></Suspense>,
       },
     ],
   },

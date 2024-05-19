@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,14 +10,14 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import axios from "axios";
-import { toast } from 'sonner'; 
+import { toast } from 'sonner';
 import Loader from "../../loader";
 const api = import.meta.env.VITE_API_LOGIN;
-
+const api_server_auth = import.meta.env.VITE_SERVER_AUTH;
 const Login = () => {
   const navigate = useNavigate()
   const [toggleLight, setToggleLight] = useState(true);
-  const { setToken ,setUser} = useStateContext()
+  const { setToken, setUser } = useStateContext()
   const [loading, setLoading] = useState(false)
 
   const toggleBtn = () => {
@@ -35,17 +35,17 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   })
-  if (errors.email){
-      toast.error(errors.email?.message, {
-        duration : 3000
+  if (errors.email) {
+    toast.error(errors.email?.message, {
+      duration: 3000
     })
   }
-  if (errors.password){
+  if (errors.password) {
     toast.error(errors.password?.message, {
-      duration : 3000
-  })
+      duration: 3000
+    })
   }
-  const formSubmit = async(data) => {
+  const formSubmit = async (data) => {
     const payload = {
       email: data.email,
       password: data.password,
@@ -75,11 +75,36 @@ const Login = () => {
       console.log(error)
     }
   }
+  const [loginUrl, setLoginUrl] = useState(null);
+
+  useEffect(() => {
+    fetch(api_server_auth, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Something went wrong!');
+      })
+      .then((data) => {
+        // setToken(data.data)
+        // setUser(data.data)
+        setLoginUrl(data.url)
+        // navigate("/dashboard")
+        console.log(data)
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <section className="relative bg-purple h-screen">
-      {loading && 
+      {loading &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
-          <Loader/>
+          <Loader />
         </div>
       }
       {/* sign-up box  */}
@@ -169,15 +194,15 @@ const Login = () => {
               <article className="my-2">
 
                 <button type="submit" className="bg-purple h-10 text-white w-full rounded-md text-base smax:text-2xl">
-                {loading ? 
-                 <p className="smax:text-[1.2rem] flex items-center justify-center">
-                    <span className="loading loading-ring loading-md"></span>
-                    <span className="loading loading-ring loading-md"></span>
-                    <span className="loading loading-ring loading-md"></span>
-                  </p>
-                  :
-                  <p className="text-base smax:text-2xl">Login</p>
-                }
+                  {loading ?
+                    <p className="smax:text-[1.2rem] flex items-center justify-center">
+                      <span className="loading loading-ring loading-md"></span>
+                      <span className="loading loading-ring loading-md"></span>
+                      <span className="loading loading-ring loading-md"></span>
+                    </p>
+                    :
+                    <p className="text-base smax:text-2xl">Login</p>
+                  }
                 </button>
 
                 <img
@@ -185,18 +210,24 @@ const Login = () => {
                   alt=""
                   className="ml-3 w-[90%] sms:max-w-[360px] text-white colorize-img3"
                 />
-                <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
+                {/* <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3 " />
-                  <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto ">
-                    Continue with Google
-                  </p>
-                </button>
+                  {loginUrl != null && (
+                    <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
+                  )}
+                </button> */}
 
                 <p className={toggleLight ? "my-4" : "my-4 text-white"}>
                   Don&apos;t have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}
                 </p>
               </article>
             </form>
+            <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
+                  <img src={google} alt="" className="px-3 " />
+                  {loginUrl != null && (
+                    <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
+                  )}
+                </button>
             {/* end of form  */}
           </article>
         </div>

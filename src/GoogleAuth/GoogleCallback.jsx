@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 // import axiosclinet from '../https/axios-clinet';
 import axios from 'axios';
 import { useStateContext } from '../contexts/ContextProvider';
-
+import { toast } from 'sonner';
+const api = import.meta.env.VITE_SERVER_CALLBACK;
 function GoogleCallback() {
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate()
     const [data, setData] = useState({});
     // const [user, setUser] = useState(null);
     const location = useLocation();
@@ -14,10 +16,15 @@ function GoogleCallback() {
     // and proxy them to /api/auth/callback on our Laravel API
     
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/auth/callback${location.search}`).then((res) => {
-            setUser(res.data.users)
-            console.log(res.data.token)
-            setToken(res.data.token)
+        axios.get(`${api}${location.search}`).then((res) => {
+            console.log(res.data)
+            setToken(res.data)
+            setUser(res.data)
+            localStorage.setItem("user-details", JSON.stringify(res.data))
+            navigate("/dashboard")
+            toast.success("successfully Logged In")
+
+
         }).catch((err)=>console.log(err.message))
     },[])
     
