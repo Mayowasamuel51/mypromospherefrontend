@@ -16,11 +16,11 @@ function DefualtLayout() {
     console.log(token?.profileImage)
     return (
         <>
-            <main className={`py-7 ${!token && "pt-32"}`}>
+            <main className={`py-7`}>
                 <section className="">
                     <article className="">
                         <img
-                            src={token?.profileImage}
+                            src={token?.profileImage ?? roundedImg}
                             alt={roundedImg}
                             className="w-[30%] md:w-[150px] mx-auto"
                         />
