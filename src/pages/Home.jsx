@@ -17,8 +17,8 @@ export default function Home() {
       <TalentAndValues />
       <Categories />
       <Grow />
-      <SkillsNav />
-      <Outlet />
+      {/* <SkillsNav /> */}
+      {/* <Outlet /> */}
       {/* <ServiceProviders/> */}
       <Testimonials />
       <CTA />

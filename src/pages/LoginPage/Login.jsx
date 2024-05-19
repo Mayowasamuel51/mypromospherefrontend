@@ -58,7 +58,7 @@ const Login = () => {
         setToken(response.data)
         setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
-        navigate("/dashboard")
+        navigate("/")
         toast.success("successfully Logged In")
         setLoading(false)
       }

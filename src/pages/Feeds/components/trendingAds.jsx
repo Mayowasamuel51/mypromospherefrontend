@@ -12,12 +12,13 @@ import { Link } from 'react-router-dom';
 import FetchTrendingAds from "../../../hooks/fetchTrendingAds";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Loader from '../../../loader';
 
 
 const TrendingAds = () => {
     const { data, isLoading, error } = FetchTrendingAds();
     console.table(data?.data.normalads);
-    if (isLoading) return <Skeleton />
+    console.log(error)
     return (
         <section className="overflow-x-hidden">
             <div className="flex items-center gap-2">
@@ -33,11 +34,12 @@ const TrendingAds = () => {
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-10 aspect-square" />
-                                <p className="text-sm">Timilehin babade</p>
+                                <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
                     </div>
-                )) || <Skeleton />}
+                ))}
+                {isLoading && <div className='lg:col-span-4 md:col-span-2'><Loader /></div>}
             </section>
             <div className="flex items-center gap-2">
                 <img src={LOGO} className='w-10 h-10' alt="" />
@@ -52,11 +54,11 @@ const TrendingAds = () => {
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-10 aspect-square" />
-                                <p className="text-sm">Timilehin babade</p>
+                                <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
                     </div>
-                )) || <Skeleton />}
+                ))}
             </section>
             <div className="flex items-center gap-2">
                 <img src={LOGO} className='w-10 h-10' alt="" />
@@ -72,7 +74,7 @@ const TrendingAds = () => {
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-10 aspect-square" />
-                                <p className="text-sm">Timilehin babade</p>
+                                <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
                     </div>
@@ -92,7 +94,7 @@ const TrendingAds = () => {
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-10 aspect-square" />
-                                <p className="text-sm">Timilehin babade</p>
+                                <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
                     </div>

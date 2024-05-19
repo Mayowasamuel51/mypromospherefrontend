@@ -50,10 +50,10 @@ const childVariant = {
   },
 }
 
-export default function MobileNav({ handleToggle, hidden }) {
+export default function MobileNav({ handleToggle }) {
   const {token, LogOut} = useStateContext()
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`${hidden && "top-[57.63px]"} fixed md:hidden inset-0 z-30 flex flex-col justify-center items-center w-full min-h-screen bg-white bg-opacity-5 backdrop-blur-2xl`}>
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`fixed md:hidden inset-0 z-30 flex flex-col justify-center items-center w-full min-h-screen bg-white bg-opacity-5 backdrop-blur-2xl`}>
       <motion.div variants={divVariant} className="flex flex-col items-center gap-y-5">
         <motion.p variants={childVariant}>
           <Link to="/" onClick={handleToggle} className="text-2xl text-white">

@@ -61,7 +61,7 @@ const Services = () => {
             return (
               <SplideSlide key={service} className="">
                 <div className="group relative">
-                  <img src={service.serviceImg} alt="" className="w-full" />
+                  <img src={service.serviceImg} alt="" className="object-fill" />
                   <div className="bg-[#000000A6] absolute inset-0 flex justify-center items-center invisible opacity-0 group-hover:visible group-hover:opacity-100 duration-300">
                     <a href="" className="text-white font-semibold">
                       See More
