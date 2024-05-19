@@ -1,5 +1,4 @@
 export const headlines = [
-
   "Unleash Your Productivity: Explore the Latest Laptop Innovations!",
   "Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!",
   "Stay Connected On-the-Go: Shop Phones and Tablets for Every Need!",

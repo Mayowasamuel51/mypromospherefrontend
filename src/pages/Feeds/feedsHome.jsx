@@ -41,13 +41,13 @@ const FeedsHome = () => {
             <Feeds />
           </div>
           <section className="py-10 lg:py-20">
-            <div className="my-4 shadow-md py-3 px-4 md:p-6 w-fit mx-auto overflow-hidden bg-[#F0D8DD]">
-              <div className="flex justify-center items-center gapy-3 px-4 md:gap-10 font-bold">
+            <div className="my-4 shadow-md py-4 px-3 md:p-6 w-fit mx-auto overflow-hidden bg-[#F0D8DD]">
+              <div className="flex justify-center items-center gapy-3 px-4 md:gap-10 font-semibold">
                 <Link to="/">
-                  <motion.button whileTap={{scale: 1.05}} className={`px-2 md:px-6 py-2 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>Trending Ads</motion.button>
+                  <motion.button whileTap={{scale: 1.05}} className={`px-2 md:px-6 py-4 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>Trending Ads</motion.button>
                 </Link>
                 <Link to="/top-services">
-                  <motion.button whileTap={{scale: 1.05}}  className={`px-2 md:px-6 py-2 text-black ${location.pathname === "/top-services" && "bg-[#EC6A87] text-white"}`}>Top Services</motion.button>
+                  <motion.button whileTap={{scale: 1.05}}  className={`px-2 md:px-6 py-4 text-black ${location.pathname === "/top-services" && "bg-[#EC6A87] text-white"}`}>Top Services</motion.button>
                 </Link>
               </div>
             </div>

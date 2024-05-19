@@ -1,10 +1,5 @@
 
-
-
-
 export const categories = 
-
-
 [
     "Laptops",
 

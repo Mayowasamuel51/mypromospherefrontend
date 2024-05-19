@@ -66,10 +66,10 @@ export default function Navbar({profile, blue}) {
       </AnimatePresence>
 
       <nav className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
-        <Link to="#about" className="md:text-base font-medium">
+        <Link to={location.pathname !== "/home" ? "/home#about" : "#about"} className="md:text-base font-medium">
           About us
         </Link>
-        <Link to="#talents" className="md:text-base font-medium">
+        <Link to={location.pathname !== "/home" ? "/home#talents" : "#talents"} className="md:text-base font-medium">
           Find talent
         </Link>
         <ScrollLink 
