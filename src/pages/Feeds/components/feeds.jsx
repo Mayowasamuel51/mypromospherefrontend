@@ -14,7 +14,7 @@ const feeds = () => {
         <div className="flex flex-col gap-4">
           <Link to="/product">
             <div>
-              <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 500, height: 500, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+              <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 300, height: 300, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
           <Link to="/profile/timilehin babade">
@@ -27,7 +27,7 @@ const feeds = () => {
         <div className="flex flex-col gap-4">
           <Link to="/product">
             <div>
-              <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 500, height: 500, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+              <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 300, height: 300, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
           <Link to="/profile/timilehin babade">
@@ -40,7 +40,7 @@ const feeds = () => {
         <div className="flex flex-col gap-4">
           <Link to="/product">
             <div>
-              <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 500, height: 500, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+              <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 300, height: 300, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
           <Link to="/profile/timilehin babade">
@@ -53,7 +53,7 @@ const feeds = () => {
         <div className="flex flex-col gap-4">
           <Link to="/product">
             <div>
-              <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 500, height: 500, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+              <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 300, height: 300, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
           <Link to="/profile/timilehin babade">

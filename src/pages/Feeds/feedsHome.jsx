@@ -21,7 +21,7 @@ const FeedsHome = () => {
           <div className="flex my-3 lg:my-5">
             <input type="text" className="w-[90%] lg:w-[80%] rounded-tl-sm rounded-bl-sm md:rounded-tl-lg md:rounded-bl-lg shadow-lg focus:shadow-none h-10 lg:h-12 pl-4" placeholder="Search by title or tags"></input>
             <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-md rounded-br-md md:rounded-tr-xl md:rounded-br-xl">
-              <FaFilter color="white" size={30} />
+              <FaFilter color="white" size={20} />
             </button>
           </div>
           <Splide options={{
