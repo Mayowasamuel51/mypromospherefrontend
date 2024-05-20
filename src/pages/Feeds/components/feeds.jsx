@@ -10,7 +10,7 @@ const feeds = () => {
   return (
     <section>
       <h1 className="font-semibold lg:text-3xl text-base my-7">Personalized ads just for you</h1>
-      <div className="grid items-stretch md:grid-cols-2 lg:grid-cols-4 gap-10 grid-rows-1">
+      <div className="place-items-center grid items-stretch md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 grid-rows-1 overflow-x-hidden">
         <div className="flex flex-col gap-4">
           <Link to="/product">
             <div>

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const TopServices = () => {
     return (
-        <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 overflow-x-hidden">
+        <section className="grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 overflow-x-hidden">
             <div className="flex flex-col gap-4">
                 <div>
                     <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: 500, height: 500, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />

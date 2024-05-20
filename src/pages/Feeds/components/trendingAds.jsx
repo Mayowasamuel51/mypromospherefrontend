@@ -25,9 +25,9 @@ const TrendingAds = () => {
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-bold lg:my-10 my-2 text-base md:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div> 
-            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <section className="grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10">
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-4">
                         <div className='border-2 rounded-md'>
                             <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 400, height: 400, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                         </div>
@@ -37,17 +37,16 @@ const TrendingAds = () => {
                                 <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
-                {isLoading && <div className='lg:col-span-4 md:col-span-2'><Loader /></div>}
             </section>
             <div className="flex items-center gap-2">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-bold lg:my-10 my-2 text-base md:text-3xl'>ALWAYS STAY IN VOGUE</h1>
             </div>
-            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <section className="grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10">
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-4">
                         <div className='border-2 rounded-md'>
                             <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 400, height: 400, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
                         </div>
@@ -57,16 +56,16 @@ const TrendingAds = () => {
                                 <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
             <div className="flex items-center gap-2">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-bold lg:my-10 my-2 text-base md:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1> 
             </div>
-            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <section className="grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10">
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-4">
                         <div className='border-2 rounded-md'>
                             <LazyLoadImage effect="blur"
                              src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 400, height: 400, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
@@ -77,16 +76,16 @@ const TrendingAds = () => {
                                 <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
             <div className="flex items-center gap-2">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-bold lg:my-10 my-2 text-base md:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1> 
             </div>
-            <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <section className="grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10">
                 {data?.data.normalads.filter((item) => item.categories === "Laptops").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-4">
                         <div className='border-2 rounded-md'>
                             <LazyLoadImage effect="blur"
                              src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 400, height: 400, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
@@ -97,7 +96,7 @@ const TrendingAds = () => {
                                 <p className="text-sm">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
         </section>
