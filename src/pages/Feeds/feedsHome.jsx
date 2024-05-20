@@ -1,17 +1,34 @@
+import { useEffect, useRef } from "react";
 import Navbar from "../../components/Navbar";
-import { IoFilterSharp } from "react-icons/io5";
 import { FaFilter } from "react-icons/fa6";
 import Feeds from "./components/feeds";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import { useStateContext } from "../../contexts/ContextProvider";
+// import { useStateContext } from "../../contexts/ContextProvider"
 
 
 const FeedsHome = () => {
+
   const location = useLocation();
-  const { FullScreen } = useStateContext();
+  // const { FullScreen } = useStateContext();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    const updateStickyTop = () => {
+      if (ref.current) {
+        const elementHeight = ref.current.offsetHeight;
+        ref.current.style.setProperty('--sticky-top', `${window.innerHeight - elementHeight}px`);
+      }
+    };
+    updateStickyTop();
+    window.addEventListener('resize', updateStickyTop);
+    return () => {
+      window.removeEventListener('resize', updateStickyTop);
+    };
+  }, []);
   return (
     <div>
       <Navbar blue={true} />
@@ -76,17 +93,17 @@ const FeedsHome = () => {
           <div>
             <Feeds />
           </div>
-          <section className="py-10 lg:py-20">
-            <div className="my-4 shadow-md py-4 px-3 md:p-6 w-fit mx-auto overflow-hidden bg-[#F0D8DD]">
-              <div className="flex justify-center items-center gapy-3 px-4 md:gap-10 font-semibold">
-                <Link to="/">
-                  <motion.button whileTap={{ scale: 1.05 }} className={`px-2 md:px-6 py-4 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>Trending Ads</motion.button>
+          <section className="py-4 lg:py-20">
+            <motion.div ref={ref} className={`z-[999999] ${isInView ? "stickyy" : ""} md:static left-0 right-0 my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}>
+              <div className="flex md:justify-center items-center md:gap-10 font-semibold">
+                <Link to="/" className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>
+                  <motion.button whileTap={{ scale: 1.05 }} className={`whitespace-nowrap px-3 md:px-6 py-4 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>Trending Ads</motion.button>
                 </Link>
-                <Link to="/top-services">
-                  <motion.button whileTap={{ scale: 1.05 }} className={`px-2 md:px-6 py-4 text-black ${location.pathname === "/top-services" && "bg-[#EC6A87] text-white"}`}>Top Services</motion.button>
+                <Link to="/top-services" className={`text-center flex-1 ${location.pathname === "/top-services" && "bg-[#EC6A87] text-white"}`}>
+                  <motion.button whileTap={{ scale: 1.05 }} className={`whitespace-nowrap px-3 md:px-6 py-4 text-black ${location.pathname === "/top-services" && "bg-[#EC6A87] text-white"}`}>Top Services</motion.button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
             <div className="lg:py-5">
               <Outlet />
             </div>

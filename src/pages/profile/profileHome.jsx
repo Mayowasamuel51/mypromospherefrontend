@@ -54,66 +54,60 @@ const ProfileHome = () => {
                 </article>
 
                 {/* info  */}
-                <div>
-                    {/* name & job  */}
+                <div className="my-10">
                     <article className=" xs:mt-[4rem] md:mt-[7.8rem] lg:mt-[5.8rem] large:mt-[8rem] text-center">
                         <div>
-                            <h1 className="font-700 text-[1.8rem] md:text-[2.4rem]">
+                            <h1 className="font-700 md:text-xl text-lg">
                                 {cusName}
                             </h1>
-                            <p className="text-[1.4rem]">{job}</p>
+                            <p className="md:text-base text-base">{job}</p>
                         </div>
-                        {/* <div className="">hello</div> */}
                     </article>
-
                     {/* web & phone  */}
-                    <div className="mt-12 md:px-2 lg:px-[2rem] large:px-[5rem]">
+                    <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
                         {/* web */}
                         <article className="px-4 md:px-10 flex items-center gap-x-2">
-                            <BsGlobe className="text-[1.9rem] md:text-[2.5rem]" />
+                            <BsGlobe className="md:text-base text-sm" />
                             <p>{website}</p>
                         </article>
-                        <article className="mt-8 px-4 md:px-10 flex items-center gap-x-2">
-                            <BsTelephone className="text-[1.9rem] md:text-[2.5rem]" />
+                        <article className="px-4 md:px-10 flex items-center gap-x-2">
+                            <BsTelephone className="md:text-base text-sm" />
                             <p>{phone}</p>
                         </article>
                     </div>
 
                     {/* about and works  */}
-                    <article className="mt-12">
+                    <article className="">
                         <div className="flex items-center justify-center ">
                             {/* agent-tabs  */}
-                            <div className="flex">
-                                {/* tab-btn  */}
+                            <div className="flex gap-2 my-2">
                                 <div className="flex justify-center items-center gap-x-4">
                                     <button
                                         onClick={() => updateToggle(1)}
                                         className={
                                             toggle === 1
-                                                ? " xs:p-2 xs:pl-7 px-12 bg-[#3D217A] rounded-md z-10 text-[1.5rem] md:text-[1.5rem]  focus:outline-none flex gap-x-3"
-                                                : "xs:p-2 xs:pl-8 ml-8 flex gap-x-3 text-[1.5rem] border p-2 border-r-0 rounded-md"
+                                                ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2"
+                                                : "flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"
                                         }
                                     >
                                         {" "}
                                         <p className={toggle === 1 ? "text-white" : "text-black"}>
                                             Info
                                         </p>
-                                        <div className="bg-indigo-500 w-[1.45rem] rounded-2xl "></div>
                                     </button>
                                 </div>
                                 <button
                                     onClick={() => updateToggle(2)}
                                     className={
                                         toggle === 2
-                                            ? "xs:p-2 xs:pr-7 xs:pl-8 p-4 text-[1.3rem] rounded-md text-white bg-[#3D217A] border-indigo-500 focus:outline-none"
-                                            : "xs:p-2 xs:pr-5 xs:pl-5 text-[1.5rem] border p-4 rounded-md ml-[-.4rem] z-0 "
+                                            ? "rounded-md text-white bg-[#3D217A] border-indigo-500 focus:outline-none  md:px-4 md:py-2 px-3 py-2"
+                                            : "border rounded-md z-0  md:px-4 md:py-2 px-3 py-2"
                                     }
                                 >
                                     Works
                                 </button>
                             </div>
                             {/* end of agent tabs  */}
-                            <div className="bg-gray-300 h-[1px] mt-[0rem] md:max-w-3xl lg:max-w-5xl"></div>
                         </div>
 
                         {/* tabs-center  */}
