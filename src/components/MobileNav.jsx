@@ -54,7 +54,7 @@ export default function MobileNav({ handleToggle }) {
   const {token, LogOut} = useStateContext()
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`fixed exl:hidden inset-0 z-30 flex flex-col justify-center items-center w-full min-h-screen bg-white bg-opacity-5 backdrop-blur-2xl`}>
-      <motion.div variants={divVariant} className="flex flex-col items-center gap-y-5">
+      <motion.div variants={divVariant} className="flex flex-col items-center gap-y-10">
         <motion.p variants={childVariant}>
           <Link to="/" onClick={handleToggle} className="text-2xl text-white">
             About us
@@ -85,6 +85,13 @@ export default function MobileNav({ handleToggle }) {
             className="text-2xl text-white"
           >
             Testimonials
+          </Link>
+        </motion.p>
+        <motion.p variants={childVariant}>
+          <Link to="/dashboard">
+            <button className={`italic text-white text-base py-2 px-5 font-['Poppinbase'] font-medium`}>
+              My DashBoard
+            </button>
           </Link>
         </motion.p>
         {!token && <motion.div variants={childVariant}>

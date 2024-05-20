@@ -92,10 +92,10 @@ export default function Navbar({profile, blue}) {
        {token ?
        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
         <Link to="/dashboard">
-            <button className={`italic text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
-              My DashBoard
-            </button>
-          </Link>
+          <button className={`italic text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+            My DashBoard
+          </button>
+        </Link>
         <Link to="signUp">
           <button onClick={()=> LogOut()} className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
             LogOut
