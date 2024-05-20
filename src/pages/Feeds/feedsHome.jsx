@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import LOGO from "../../assests/SVGs/logo.svg"
 // import { useStateContext } from "../../contexts/ContextProvider"
 
 
@@ -33,9 +34,12 @@ const FeedsHome = () => {
     <div>
       <Navbar blue={true} />
       <section className="lg:px-10">
-        <h1 className="px-4 text-2xl lg:text-6xl font-semibold mt-20 lg:mt-32 lg:w-[500px]">Perfect Works Made for You</h1>
+        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
+          <img src={LOGO} className='w-10 h-10 lg:w-20 lg:h-20' alt="" />
+          <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">Perfect Works Made for You</h1>
+        </div>
         <div className="">
-          <section className="px-4 lg:px-10">
+          <section className="lg:px-10 px-4">
             <div className="flex my-3 lg:my-5">
               <input type="text" className="w-[90%] lg:w-[80%] rounded-tl-sm rounded-bl-sm md:rounded-tl-lg md:rounded-bl-lg md:shadow-lg border-2 border-black md:border-none focus:shadow-none h-10 lg:h-12 pl-4" placeholder="Search by title or tags"></input>
               <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-md rounded-br-md md:rounded-tr-xl md:rounded-br-xl">
@@ -97,7 +101,7 @@ const FeedsHome = () => {
           </section>
           <section className="py-4 lg:py-20">
             <motion.div ref={ref} className={`${isInView ? "stickyy w-full" : ""} md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}>
-              <div className="flex md:justify-center items-center md:gap-10 font-semibold">
+              <div className="flex md:justify-center items-center md:gap-4 font-semibold">
                 <Link to="/" className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>
                   <motion.button whileTap={{ scale: 1.05 }} className={`whitespace-nowrap px-3 md:px-6 py-4 ${location.pathname === "/" && "bg-[#EC6A87] text-white"}`}>Trending Ads</motion.button>
                 </Link>
@@ -106,7 +110,7 @@ const FeedsHome = () => {
                 </Link>
               </div>
             </motion.div>
-            <div className="lg:py-5 px-4 lg:px-10">
+            <div className="lg:py-5 px-4">
               <Outlet />
             </div>
           </section>

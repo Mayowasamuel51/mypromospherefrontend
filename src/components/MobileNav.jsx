@@ -89,14 +89,14 @@ export default function MobileNav({ handleToggle }) {
         </motion.p>
         <motion.p variants={childVariant}>
           <Link to="/dashboard">
-            <button className={`italic text-white text-base py-2 px-5 font-['Poppinbase'] font-medium`}>
+            <button className={`italic text-white text-2xl py-2 px-5 font-['Poppinbase'] font-medium`}>
               My DashBoard
             </button>
           </Link>
         </motion.p>
         {!token && <motion.div variants={childVariant}>
           <Link to="/Login" onClick={handleToggle}>
-            <button className=" text-2xl text-black font-['Poppins]">
+            <button className="text-2xl text-black font-['Poppins]">
               Login
             </button>
           </Link>
