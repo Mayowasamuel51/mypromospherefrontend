@@ -239,12 +239,21 @@ const Post = () => {
   const result = Object.entries(data.full)
 
   function selectState(e) {
+    setLocalGvt()
+
     const selectedState = e.target.value
 
-    const filterState = result.filter(x => {
-      return x[0].toLowerCase() === selectedState.toLowerCase()
-    })
-    setLocalGvt(filterState[0][1]);
+    if(selectedState){
+      const filterState = result.filter(x => {
+        return x[0].toLowerCase() === selectedState.toLowerCase()
+      })
+
+      setLocalGvt(filterState[0][1]);
+    } else {
+      setLocalGvt([])
+    }
+
+    
     
   }
 
