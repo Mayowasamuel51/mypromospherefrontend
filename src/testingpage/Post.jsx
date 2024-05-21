@@ -21,6 +21,9 @@ import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 import PostButtons from "../components/PostButtons.jsx";
+import data from '../../state.json'
+
+
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
@@ -230,25 +233,18 @@ const Post = () => {
       .catch((err) => console.log(err.message));
   };
 
-  const [states, setStates] = useState()
   const [localGvt, setLocalGvt] = useState()
 
-  useEffect(() => {
-    axios.create({
-      baseURL: "http://localhost:8000/"
-    }).get('States')
-    .then((res) => {
-      setStates(res.data)
-    })
-  }, [])
+
+  const result = Object.entries(data.full)
 
   function selectState(e) {
-    console.log(e.target.value);
-    axios.create({
-      baseURL: "http://localhost:8000/"
-    }).get(e.target.value)
-    .then((res) => setLocalGvt(res.data))
+    const selectedState = e.target.value
 
+    const filterState = result.filter(x => {
+      return x[0].toLowerCase() === selectedState.toLowerCase()
+    })
+    setLocalGvt(filterState[0][1]);
     
   }
 
@@ -320,7 +316,7 @@ const Post = () => {
         <select {...register("state")} name="" id="" className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white" onChange={selectState}>
           <option value="">--Select State--</option>
           {
-            states && states.map((state, i) => (
+            data.States.map((state, i) => (
               <option key={i}>{state.state}</option>
             ))
           }

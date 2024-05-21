@@ -15,8 +15,11 @@ import { headlines } from "../../src/json/headlines.jsx"
 import DropFileInput from '../components/drop-file-input/DropFileInput.jsx';
 import UploadButton from '../components/upload-button/UploadButton';
 import PostButtons from "../components/PostButtons.jsx";
+import data from '../../state.json'
 // import { Uploader } from "uploader"; // Installed by "react-uploader".
 // import { UploadButton } from "react-uploader";
+
+console.log(data.States);
 const options = { multi: true };
 const Video = () => {
     const { token } = useStateContext()
