@@ -35,7 +35,7 @@ const FeedsHome = () => {
       <Navbar blue={true} />
       <section className="lg:px-10">
         <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
-          <img src={LOGO} className='w-10 h-10 lg:w-20 lg:h-20' alt="" />
+          {/* <img src={LOGO} className='w-10 h-10 lg:w-20 lg:h-20' alt="" /> */}
           <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">Perfect Works Made for You</h1>
         </div>
         <div className="">
