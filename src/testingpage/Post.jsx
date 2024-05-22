@@ -20,6 +20,10 @@ import { categories } from "../../src/json/categories.jsx";
 import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
+import PostButtons from "../components/PostButtons.jsx";
+import data from '../../state.json'
+
+
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
@@ -41,6 +45,8 @@ const Post = () => {
     description: yup.string().required(),
     headlines: yup.string().required(),
     categories: yup.string().required(),
+    state: yup.string().required(),
+    localGovernment: yup.string().required(),
     picture: yup
       .mixed()
       .test(
@@ -130,8 +136,8 @@ const Post = () => {
     formData.append("categories", data.categories);
     formData.append("description", data.description);
     formData.append("price_range", data.price);
-    formData.append("state", randomString);
-    formData.append("local_gov", 'local goverment ');
+    formData.append("state", data.state);
+    formData.append("local_gov", data.localGovernment);
     formData.append("user_image",token?.token.profileImage )
     axios
       .post(api_freeads, formData, {
@@ -227,8 +233,33 @@ const Post = () => {
       .catch((err) => console.log(err.message));
   };
 
+  const [localGvt, setLocalGvt] = useState()
+
+
+  const result = Object.entries(data.full)
+
+  function selectState(e) {
+    setLocalGvt()
+
+    const selectedState = e.target.value
+
+    if(selectedState){
+      const filterState = result.filter(x => {
+        return x[0].toLowerCase() === selectedState.toLowerCase()
+      })
+
+      setLocalGvt(filterState[0][1]);
+    } else {
+      setLocalGvt([])
+    }
+
+    
+    
+  }
+
   return (
     <div className="px-4 lg:px-40">
+      <PostButtons />
       <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">
         UPLOAD YOUR DETAILS TO MYPROMOSPHERE
       </h1>
@@ -290,6 +321,24 @@ const Post = () => {
           {...register("description", { required: true })}
         />
         <p className="text-red pt-2">{errors.description?.message}</p>
+
+        <select {...register("state")} name="" id="" className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white" onChange={selectState}>
+          <option value="">--Select State--</option>
+          {
+            data.States.map((state, i) => (
+              <option key={i}>{state.state}</option>
+            ))
+          }
+        </select>
+
+        <select {...register("localGovernment")} name="" id="" className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white">
+          <option value="">--Select Local Government--</option>
+          {
+            localGvt && localGvt.map((x, i) => (
+              <option key={i}>{x.lga}</option>
+            ))
+          }
+        </select>
 
         <input
           className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"

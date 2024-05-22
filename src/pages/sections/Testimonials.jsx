@@ -46,7 +46,7 @@ export default function Testimonials() {
   ];
   return (
     <Element name="testimonials">
-      <section id="testimonials" className="testimonial px-8 bigLg:px-16 bigLg:pb-20">
+      <section id="testimonials" className="testimonial px-8 bigLg:px-16 bigLg:py-20">
         <h3 className=" text-2xl font-medium text-center mb-5 md:text-3xl">
           Testimonials
         </h3>

@@ -1,18 +1,21 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import PersonalInfo from './component/PersonalInfo';
 import ProfileEdit from './component/ProfileEdit';
+import { Navigate } from "react-router-dom"
+import { useStateContext } from "../../contexts/ContextProvider"
 
 const EditProfile = () => {
-       const [toggle, setToggle] = useState(1);
-
-       const updateToggle = (id) => {
-         setToggle(id);
-       };
+  const { token } = useStateContext()
+  const [toggle, setToggle] = useState(1);
+  const updateToggle = (id) => {
+    setToggle(id);
+  };
+  if (!token) return <Navigate  to="/"/>
   return (
     // Edit-profile
     <section className="">
       {/* edit-profile-center  */}
-      <div className="p-6  md:flex md:gap-x-[.2rem] mdxs:gap-[3rem] mdsm:gap-[4rem] lg:gap-[5rem] large:gap-[6rem] exl:gap-[9rem] px-10 ">
+      <div className="p-6 md:flex md:gap-x-[.2rem] mdxs:gap-[3rem] mdsm:gap-[4rem] lg:gap-[5rem] large:gap-[6rem] exl:gap-[9rem] px-10 ">
         {/* each edit  */}
         <article className="px-[5rem] md:px-0">
           {/* single-tab  */}
@@ -77,7 +80,7 @@ const EditProfile = () => {
         {/* informations  */}
         <div className="md:mt-0 px-[2rem] md:px-0">
           {/*edit Profile*/}
-          <div>{toggle === 1 ? <ProfileEdit/> : null}</div>
+          <div>{toggle === 1 ? <ProfileEdit /> : null}</div>
 
           {/* Personal Information */}
           <div>{toggle === 2 ? <PersonalInfo /> : null}</div>

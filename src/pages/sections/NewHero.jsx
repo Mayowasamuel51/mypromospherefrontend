@@ -8,8 +8,8 @@ import {motion} from "framer-motion"
 
 const NewHero = () => {
   return (
-    <section className={`newhero bg-center bg-cover bg-no-repeat px-4 lg:px-10 pt-40 lg:pt-32 pt-5 lg:pb-10 text-white`}>
-      <div className="flex lg:items-center justify-center lg:flex-row flex-col lg:justify-between gap-4">
+    <section className={`newhero bg-center bg-cover bg-no-repeat px-4 lg:px-10 pt-40 lg:pt-32 lg:pb-10 text-white`}>
+      <div className="flex justify-center lg:flex-row flex-col lg:justify-between gap-4">
         <div className="hero-text relative z-50 flex flex-col gap-2 min-h-screen lg:min-h-max">
           <h1 className="lg:text-6xl text-3xl font-semibold text-white ">
             Find your <br />
@@ -31,11 +31,13 @@ const NewHero = () => {
           </Link>
         </div>
 
-        <div className="lg:flex lg:items-center lg:flex-row flex-col gap-4 hidden">
-          <img src={img1} alt="" className="w-full lg:w-60 lg:aspect-square lg:object-cover object-center" />
-          <div className="flex flex-col gap-4">
-            <img src={img2} alt="" className="w-full lg:w-60 lg:aspect-square lg:object-cover object-center" />
-            <img src={img3} alt="" className="w-full lg:w-60 lg:aspect-square lg:object-cover object-center" />
+        <div className="lg:flex lg:items-center gap-4 hidden">
+          <div className="flex-1">
+            <img src={img1} alt="" className="w-full" />
+          </div>
+          <div className="flex-1 flex flex-col gap-4">
+            <img src={img2} alt="" className="w-full" />
+            <img src={img3} alt="" className="w-full" />
           </div>
         </div>
       </div>

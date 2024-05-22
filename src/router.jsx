@@ -13,6 +13,7 @@ const APP = React.lazy(() => import("./App"))
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage/SignUp"))
 const LoginPage = React.lazy(() => import("./pages/LoginPage/Login"))
 const DashBoard = React.lazy(() => import("./pages/components/DashBoard.jsx"))
+const SingleFeedPage = React.lazy(() => import("./pages/Feeds/singleFeedPage.jsx"))
 import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
         path: "/top-services",
         element: <FeedsTopServices />
       }
-    ]
+    ],
+  },
+  {
+    path: "feed/:id",
+    element: <Suspense fallback={<Loader />}><SingleFeedPage /></Suspense>,
   },
   {
     path: "/profile/:cusName",

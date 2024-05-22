@@ -26,7 +26,7 @@ export default function Navbar({profile, blue}) {
   const handleToggle = () => {
     setToggleIcon(!toggleIcon);
   };
-  const {token, LogOut} = useStateContext()
+  const {token, LogOut, FullScreen} = useStateContext()
   const { scrollY } = useScroll()
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious()
@@ -48,7 +48,7 @@ export default function Navbar({profile, blue}) {
     };
 }, [])
   return (
-    <motion.header variants={headerVariant} animate={hidden ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile || blue ? "bg-[#3D217A]" : "bg-white" : profile || blue ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
+    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile || blue ? "bg-[#3D217A]" : "bg-white" : profile || blue ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center py-2 px-4 lg:px-10 duration-300`}>
       <Link to={location.pathname === "/home" ? "/" : location.pathname === "/dashboard" ? "/" : "/home"} className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-16 exl:w-20" />
         <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
@@ -66,10 +66,10 @@ export default function Navbar({profile, blue}) {
       </AnimatePresence>
 
       <nav className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
-        <Link to="#about" className="md:text-base font-medium">
+        <Link to={location.pathname !== "/home" ? "/home#about" : "#about"} className="md:text-base font-medium">
           About us
         </Link>
-        <Link to="#talents" className="md:text-base font-medium">
+        <Link to={location.pathname !== "/home" ? "/home#talents" : "#talents"} className="md:text-base font-medium">
           Find talent
         </Link>
         <ScrollLink 
@@ -92,10 +92,10 @@ export default function Navbar({profile, blue}) {
        {token ?
        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
         <Link to="/dashboard">
-            <button className={`italic text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
-              My DashBoard
-            </button>
-          </Link>
+          <button className={`italic text-base py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
+            My DashBoard
+          </button>
+        </Link>
         <Link to="signUp">
           <button onClick={()=> LogOut()} className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
             LogOut

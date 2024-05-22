@@ -58,7 +58,7 @@ const Login = () => {
         setToken(response.data)
         setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
-        navigate("/dashboard")
+        navigate("/")
         toast.success("successfully Logged In")
         setLoading(false)
       }
@@ -117,7 +117,7 @@ const Login = () => {
       >
         <div>
           {/* back  */}
-          <article className="mt-1 xs:mt-4 flex items-center justify-between">
+          <article className="xs:mt-4 flex items-center justify-between">
             <Link to={"/"}>
               <button className="focus-outline-none">
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
@@ -133,7 +133,7 @@ const Login = () => {
             </button>
           </article>
           {/* welcome back  */}
-          <article className="mt-1">
+          <article className="">
             <h3
               className={
                 toggleLight
@@ -148,7 +148,7 @@ const Login = () => {
             </p>
           </article>
           {/* form-field  */}
-          <article className="mt-3">
+          <article className="my-5">
             {/* form  */}
             <form onSubmit={handleSubmit(formSubmit)}>
               {/* email  */}

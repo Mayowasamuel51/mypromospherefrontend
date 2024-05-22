@@ -14,8 +14,12 @@ import 'react-image-upload/dist/index.css'
 import { headlines } from "../../src/json/headlines.jsx"
 import DropFileInput from '../components/drop-file-input/DropFileInput.jsx';
 import UploadButton from '../components/upload-button/UploadButton';
+import PostButtons from "../components/PostButtons.jsx";
+import data from '../../state.json'
 // import { Uploader } from "uploader"; // Installed by "react-uploader".
 // import { UploadButton } from "react-uploader";
+
+console.log(data.States);
 const options = { multi: true };
 const Video = () => {
     const { token } = useStateContext()
@@ -179,6 +183,7 @@ const Video = () => {
     // }, [])
     return (
         <div>
+            <PostButtons />
             <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">UPLOAD YOUR VIDEO  DETAILS TO MYPROMOSPHERE</h1>
 
             <form onSubmit={handleSubmit(formSubmit)}>
