@@ -25,17 +25,16 @@ const TrendingAds = () => {
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
-            <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
-                    <div to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
                         <Splide options={{
                             type: 'loop',
-                            focus: 1,
                             perPage: 1,
                             perMove: 1,
                             autoplay: true,
-                            interval: 1000 * item.id,
+                            interval: FullScreen ? 3000: 5000,
                             speed: 3000,
                             gap: "20px",
                             pauseOnHover: true,
@@ -44,14 +43,14 @@ const TrendingAds = () => {
                             drag: 'free',
                             snap: true,
                             width: "280px",
-                            height: "280px"
+                            height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
-                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
                             ))}
                         </Splide>
@@ -61,24 +60,23 @@ const TrendingAds = () => {
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>ALWAYS STAY IN VOGUE</h1>
             </div>
-            <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
-                    <div to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
                         <Splide options={{
                             type: 'loop',
-                            focus: 1,
                             perPage: 1,
                             perMove: 1,
                             autoplay: true,
-                            interval: 1000,
+                            interval: FullScreen ? 3000: 5000,
                             speed: 3000,
                             gap: "20px",
                             pauseOnHover: true,
@@ -87,14 +85,14 @@ const TrendingAds = () => {
                             drag: 'free',
                             snap: true,
                             width: "280px",
-                            height: "280px"
+                            height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
-                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
                             ))}
                         </Splide>
@@ -104,24 +102,23 @@ const TrendingAds = () => {
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
             </div>
-            <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
-                    <div to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
                         <Splide options={{
                             type: 'loop',
-                            focus: 1,
                             perPage: 1,
                             perMove: 1,
                             autoplay: true,
-                            interval: 1000 * item.id,
+                            interval: FullScreen ? 3000: 5000,
                             speed: 3000,
                             gap: "20px",
                             pauseOnHover: true,
@@ -130,14 +127,14 @@ const TrendingAds = () => {
                             drag: 'free',
                             snap: true,
                             width: "280px",
-                            height: "280px"
+                            height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
-                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
                             ))}
                         </Splide>
@@ -147,24 +144,23 @@ const TrendingAds = () => {
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
             </div>
-            <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
-                    <div to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
                         <Splide options={{
                             type: 'loop',
-                            focus: 1,
                             perPage: 1,
                             perMove: 1,
                             autoplay: true,
-                            interval: 1000 * item.id,
+                            interval: FullScreen ? 3000: 5000,
                             speed: 3000,
                             gap: "20px",
                             pauseOnHover: true,
@@ -173,14 +169,14 @@ const TrendingAds = () => {
                             drag: 'free',
                             snap: true,
                             width: "280px",
-                            height: "280px"
+                            height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
-                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 280 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
                             ))}
                         </Splide>
@@ -190,7 +186,7 @@ const TrendingAds = () => {
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
-                    </div>
+                    </Link>
                 ))}
             </section>
         </section>
