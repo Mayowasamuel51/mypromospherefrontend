@@ -96,7 +96,6 @@ const Post = () => {
   const onFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
-
     // Preview the selected image (optional)
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -229,19 +228,14 @@ const Post = () => {
   };
 
   const [localGvt, setLocalGvt] = useState();
-
   const result = Object.entries(data.full);
-
   function selectState(e) {
     setLocalGvt();
-
     const selectedState = e.target.value;
-
     if (selectedState) {
       const filterState = result.filter((x) => {
         return x[0].toLowerCase() === selectedState.toLowerCase();
       });
-
       setLocalGvt(filterState[0][1]);
     } else {
       setLocalGvt([]);
