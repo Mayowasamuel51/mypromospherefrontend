@@ -19,9 +19,10 @@ const Fulltext = () => {
     // the string searched and for the second the results.
     try {
       const response = await axios(`${api}${string}`);
-      const dataResponse = await response.data;
-      console.log(dataResponse.data);
-      items.push()
+      const dataResponse = await response.data.data;
+      
+      console.log(dataResponse);
+      items.push(dataResponse)
     } catch {}
     console.log(string, results);
   };
@@ -42,16 +43,24 @@ const Fulltext = () => {
   useEffect(() => {
     // fetchData();
   }, []);
+  const formatResult = (item) => {
+    return (
+      <>
+        <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span>
+        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.name}</span>
+      </>
+    )
+  }
   return (
     <div>
       <h1>Full-text-full</h1>
 
-      <span style={{ display: "block", textAlign: "left" }}>
-        id: {items.id}
+      {/* <span style={{ display: "block", textAlign: "left" }}>
+        id: {items.titleImageurl}
       </span>
       <span style={{ display: "block", textAlign: "left" }}>
-        name: {items.name}
-      </span>
+        name: {items.categories}
+      </span> */}
 
       <div className="App">
         <header className="App-header">
@@ -63,7 +72,7 @@ const Fulltext = () => {
               onSelect={handleOnSelect}
               onFocus={handleOnFocus}
               autoFocus
-              //   formatResult={formatResult}
+                // formatResult={formatResult}
             />
           </div>
         </header>
