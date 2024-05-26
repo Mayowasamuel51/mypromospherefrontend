@@ -274,15 +274,19 @@ const Post = () => {
           // onChange={onFileChange}
           onChange={handleSetimageUpload}
         />
-        {imageUpload.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt="Uploaded Image"
-            width={"200px"}
-            height={"200px"}
-          />
-        ))}
+        <div className="flex gap-4 flex-wrap my-3">
+          {imageUpload.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt="Uploaded Image"
+              className="w-[150px] h-[150px] rounded-md"
+              width={"200px"}
+              height={"200px"}
+            />
+          ))}
+        </div>
+        
         {/* {imageUpload.map((item, index)=>{
                     return ( 
                         <img  key={index} src={item} />
