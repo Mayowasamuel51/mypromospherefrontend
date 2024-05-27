@@ -32,19 +32,20 @@ const Post = () => {
   const { user, setUser } = useStateContext();
   const [makepic, setmakepic] = useState("");
   const token = useStateContext();
-  console.log(token?.token);
+  const [imageUpload, setImageUpload] = useState([]);
+  // console.log(token?.token);
   const [files, setFile] = useState(null);
   const handleValues = (e) => {
     setCategoriesValues(e.target.value);
   };
   const schema = yup.object().shape({
     // price: yup.string().required(),
-    categories: yup.string().required(),
-    description: yup.string().required(),
-    headlines: yup.string().required(),
-    categories: yup.string().required(),
-    state: yup.string().required(),
-    localGovernment: yup.string().required(),
+    // categories: yup.string().required(),
+    // description: yup.string().required(),
+    // headlines: yup.string().required(),
+    // categories: yup.string().required(),
+    // state: yup.string().required(),
+    // localGovernment: yup.string().required(),
     picture: yup
       .mixed()
       .test(
@@ -71,7 +72,7 @@ const Post = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const [imageUpload, setImageUpload] = useState([]);
+ 
 
   const handleSetimageUpload = (e) => {
     // setImageUpload(URL.createObjectURL(e.target.files[0]));
@@ -103,16 +104,24 @@ const Post = () => {
     };
     reader.readAsDataURL(file);
   };
+  const [localGvt, setLocalGvt] = useState();
+  const result = Object.entries(data.full);
+  function selectState(e) {
+    setLocalGvt();
+    const selectedState = e.target.value;
+    if (selectedState) {
+      const filterState = result.filter((x) => {
+        return x[0].toLowerCase() === selectedState.toLowerCase();
+      });
+      setLocalGvt(filterState[0][1]);
+    } else {
+      setLocalGvt([]);
+    }
+  }
   const formSubmit = (data) => {
-    console.log(data)
+  
+    console.log(data.state, data.localGovernment , 'use state loca=', localGvt)
     console.log(makepic);
-    // const payload = {
-    //   price_range: data.price,
-    //   headlines: data.headlines,
-    //   titleImageurl: oneimage,
-    //   categories: data.categories,
-    //   description: data.description,
-    // };
     const formData = new FormData();
     const myArray = [
       "Lagos",
@@ -123,7 +132,7 @@ const Post = () => {
       "Rivers",
       "Kano",
     ];
-    const randomIndex = Math.floor(Math.random() * myArray.length);
+  const randomIndex = Math.floor(Math.random() * myArray.length);
 
     // Access the random string using the index
     const randomString = myArray[randomIndex];
@@ -227,20 +236,7 @@ const Post = () => {
       .catch((err) => console.log(err.message));
   };
 
-  const [localGvt, setLocalGvt] = useState();
-  const result = Object.entries(data.full);
-  function selectState(e) {
-    setLocalGvt();
-    const selectedState = e.target.value;
-    if (selectedState) {
-      const filterState = result.filter((x) => {
-        return x[0].toLowerCase() === selectedState.toLowerCase();
-      });
-      setLocalGvt(filterState[0][1]);
-    } else {
-      setLocalGvt([]);
-    }
-  }
+  
 
   return (
     <div className="px-4 lg:px-40">
@@ -249,7 +245,8 @@ const Post = () => {
         UPLOAD YOUR DETAILS TO MYPROMOSPHERE
       </h1>
 
-      <form onSubmit={handleSubmit(formSubmit)}  encType="multipart/form-data">
+     
+      <form onSubmit={handleSubmit(formSubmit)}  encType="multipart/form-data" action="#">
         <select
           {...register("categories")}
           // onChange={handleValues}
@@ -264,7 +261,7 @@ const Post = () => {
           })}
         </select>
         <p className="text-red-600  text-sm">{errors.categories?.message}</p>
-        {/* <h1 className="">{categories}</h1> */}
+
         <p className="text-red-600  text-sm">{errors.picture?.message}</p>
 
         <input
@@ -283,11 +280,7 @@ const Post = () => {
             height={"200px"}
           />
         ))}
-        {/* {imageUpload.map((item, index)=>{
-                    return ( 
-                        <img  key={index} src={item} />
-                    )
-                })} */}
+
 
         <input
           className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -311,23 +304,25 @@ const Post = () => {
           {...register("state")}
           name=""
           id=""
+          {...register("state", { required: true })}
           className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
           onChange={selectState}
         >
           <option value="">--Select State--</option>
           {data.States.map((state, i) => (
-            <option key={i}>{state.state}</option>
+            <option key={i} value={state}>{state.state}</option>
           ))}
         </select>
 
         <select
           {...register("localGovernment")}
           name=""
+          {...register("localGovernment", { required: true })}
           id=""
           className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
         >
           <option value="">--Select Local Government--</option>
-          {localGvt && localGvt.map((x, i) => <option key={i}>{x.lga}</option>)}
+          {localGvt && localGvt.map((x, i) => <option key={i} >{x.lga}</option>)}
         </select>
 
         <input

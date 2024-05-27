@@ -25,7 +25,7 @@ const TrendingAds = () => {
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            {/* <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -62,12 +62,12 @@ const TrendingAds = () => {
                         </Link>
                     </Link>
                 ))}
-            </section>
-            <div className="flex items-center gap-2 lg:my-10 my-5">
+            </section> */}
+            {/* <div className="flex items-center gap-2 lg:my-10 my-5">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>ALWAYS STAY IN VOGUE</h1>
-            </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            </div> */}
+            {/* <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -188,7 +188,7 @@ const TrendingAds = () => {
                         </Link>
                     </Link>
                 ))}
-            </section>
+            </section> */}
         </section>
     )
 }

@@ -82,6 +82,9 @@ const DashBoardNav = () => {
                             <motion.p variants={childVariant} className="">
                                 <Link className="nav-link" to="/dashboard">Profile</Link>
                             </motion.p>
+                            <motion.p variants={childVariant} className="">
+                        <Link className="nav-link" to="/dashboard/myuploads">My uploads</Link>
+                        </motion.p>
                             <motion.p variants={childVariant}>
                                 <Link className="nav-link" to="/dashboard/EditProfile">EditProfile</Link>
                             </motion.p>
