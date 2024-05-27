@@ -182,7 +182,7 @@ const Video = () => {
     //     })
     // }, [])
     return (
-        <div>
+        <div className="px-4 lg:px-40">
             <PostButtons />
             <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">UPLOAD YOUR VIDEO  DETAILS TO MYPROMOSPHERE</h1>
 

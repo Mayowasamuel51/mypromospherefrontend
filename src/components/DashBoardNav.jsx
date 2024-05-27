@@ -66,11 +66,11 @@ const DashBoardNav = () => {
                 <header className="py-2 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A]">
                     <Link to={location.pathname === "/dashboard" ? "/" : "/home"}>
                         <div className="flex items-center gap-1">
-                            <img src={LOGO} alt="" className="w-10 md:w-16 exl:w-20" />
+                            <img src={LOGO} alt="" className="w-10 md:w-16 exl:w-15" />
                             <h1 className="text-xs font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
                         </div>
                     </Link>
-                    <div className=" z-40 lg:hidden">
+                    <div className="z-40 lg:hidden">
                         {toggleNav ? (
                         <XMarkIcon width={35} color="white"  onClick={handleToggle} />
                         ) : (

@@ -235,7 +235,6 @@ const Post = () => {
 
   const [localGvt, setLocalGvt] = useState()
 
-
   const result = Object.entries(data.full)
 
   function selectState(e) {
@@ -252,9 +251,6 @@ const Post = () => {
     } else {
       setLocalGvt([])
     }
-
-    
-    
   }
 
   return (
