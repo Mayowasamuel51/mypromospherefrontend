@@ -271,16 +271,24 @@ const Post = () => {
           // onChange={onFileChange}
           onChange={handleSetimageUpload}
         />
-        {imageUpload.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt="Uploaded Image"
-            width={"200px"}
-            height={"200px"}
-          />
-        ))}
-
+        <div className="flex gap-4 flex-wrap my-3">
+          {imageUpload.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt="Uploaded Image"
+              className="w-[150px] h-[150px] rounded-md"
+              width={"200px"}
+              height={"200px"}
+            />
+          ))}
+        </div>
+        
+        {/* {imageUpload.map((item, index)=>{
+                    return ( 
+                        <img  key={index} src={item} />
+                    )
+                })} */}
 
         <input
           className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
