@@ -21,9 +21,7 @@ import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 import PostButtons from "../components/PostButtons.jsx";
-import data from '../../state.json'
-
-
+import data from "../../state.json";
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
@@ -98,7 +96,6 @@ const Post = () => {
   const onFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
-
     // Preview the selected image (optional)
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -107,7 +104,7 @@ const Post = () => {
     reader.readAsDataURL(file);
   };
   const formSubmit = (data) => {
-    
+    console.log(data)
     console.log(makepic);
     // const payload = {
     //   price_range: data.price,
@@ -118,16 +115,16 @@ const Post = () => {
     // };
     const formData = new FormData();
     const myArray = [
-      'Lagos',
-      'lagos', // Case-sensitive
-      'Oyo',
-      'Abuja',
-      'Ogun',
-      'Rivers',
-      'Kano',
+      "Lagos",
+      "lagos", // Case-sensitive
+      "Oyo",
+      "Abuja",
+      "Ogun",
+      "Rivers",
+      "Kano",
     ];
     const randomIndex = Math.floor(Math.random() * myArray.length);
-  
+
     // Access the random string using the index
     const randomString = myArray[randomIndex];
 
@@ -138,18 +135,15 @@ const Post = () => {
     formData.append("price_range", data.price);
     formData.append("state", data.state);
     formData.append("local_gov", data.localGovernment);
-    formData.append("user_image",token?.token.profileImage )
+    formData.append("user_image", token?.token.profileImage);
     axios
       .post(api_freeads, formData, {
         headers: {
           Accept: "application/json",
-          Accept:"application/vnd.api+json",
+          Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token.token}`,
-          
         },
-  
-        
       })
       .then((res) => {
         if (res.status === 200) {
@@ -212,7 +206,7 @@ const Post = () => {
                   .post(`${api_freeads}/${response}`, second_payload, {
                     headers: {
                       Accept: "application/json",
-                      Accept:"application/vnd.api+json",
+                      Accept: "application/vnd.api+json",
                       Authorization: `Bearer ${token?.token.token}`,
                     },
                   })
@@ -235,21 +229,19 @@ const Post = () => {
 
   const [localGvt, setLocalGvt] = useState()
 
+
   const result = Object.entries(data.full)
 
   function selectState(e) {
-    setLocalGvt()
-
-    const selectedState = e.target.value
-
-    if(selectedState){
-      const filterState = result.filter(x => {
-        return x[0].toLowerCase() === selectedState.toLowerCase()
-      })
-
+    setLocalGvt();
+    const selectedState = e.target.value;
+    if (selectedState) {
+      const filterState = result.filter((x) => {
+        return x[0].toLowerCase() === selectedState.toLowerCase();
+      });
       setLocalGvt(filterState[0][1]);
     } else {
-      setLocalGvt([])
+      setLocalGvt([]);
     }
   }
 
@@ -260,7 +252,7 @@ const Post = () => {
         UPLOAD YOUR DETAILS TO MYPROMOSPHERE
       </h1>
 
-      <form onSubmit={handleSubmit(formSubmit)} encType="multipart/form-data">
+      <form onSubmit={handleSubmit(formSubmit)}  encType="multipart/form-data">
         <select
           {...register("categories")}
           // onChange={handleValues}
@@ -285,15 +277,19 @@ const Post = () => {
           // onChange={onFileChange}
           onChange={handleSetimageUpload}
         />
-        {imageUpload.map((imageUrl, index) => (
-          <img
-            key={index}
-            src={imageUrl}
-            alt="Uploaded Image"
-            width={"200px"}
-            height={"200px"}
-          />
-        ))}
+        <div className="flex gap-4 flex-wrap my-3">
+          {imageUpload.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt="Uploaded Image"
+              className="w-[150px] h-[150px] rounded-md"
+              width={"200px"}
+              height={"200px"}
+            />
+          ))}
+        </div>
+        
         {/* {imageUpload.map((item, index)=>{
                     return ( 
                         <img  key={index} src={item} />
@@ -318,22 +314,27 @@ const Post = () => {
         />
         <p className="text-red pt-2">{errors.description?.message}</p>
 
-        <select {...register("state")} name="" id="" className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white" onChange={selectState}>
+        <select
+          {...register("state")}
+          name=""
+          id=""
+          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+          onChange={selectState}
+        >
           <option value="">--Select State--</option>
-          {
-            data.States.map((state, i) => (
-              <option key={i}>{state.state}</option>
-            ))
-          }
+          {data.States.map((state, i) => (
+            <option key={i}>{state.state}</option>
+          ))}
         </select>
 
-        <select {...register("localGovernment")} name="" id="" className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white">
+        <select
+          {...register("localGovernment")}
+          name=""
+          id=""
+          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+        >
           <option value="">--Select Local Government--</option>
-          {
-            localGvt && localGvt.map((x, i) => (
-              <option key={i}>{x.lga}</option>
-            ))
-          }
+          {localGvt && localGvt.map((x, i) => <option key={i}>{x.lga}</option>)}
         </select>
 
         <input

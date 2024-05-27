@@ -36,6 +36,7 @@ import TrendingSkills from "./pages/components/TrendingSkills.jsx"
 import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
 import Post from "./testingpage/Post.jsx";
 import Video from "./testingpage/Video.jsx";
+import Fulltext from "./testingpage/Fulltext.jsx";
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,8 @@ const router = createBrowserRouter([
       {
         path: "/top-services",
         element: <FeedsTopServices />
-      }
+      },
+     
     ],
   },
   {
@@ -98,6 +100,10 @@ const router = createBrowserRouter([
   {
     path: "signup",
     element: <Suspense fallback={<Loader />}><SignUpPage /></Suspense>,
+  },
+  {
+    path:"/full",
+    element:<Fulltext/>
   },
   {
     path: "dashboard",
