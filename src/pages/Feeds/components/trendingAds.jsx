@@ -16,9 +16,7 @@ import "./trends.css"
 const TrendingAds = () => {
     const { FullScreen } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
-    console.log(data?.data.other_images.filter((img) => img.itemfree_ads_id === 8));
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
-
     return (
         <section className="overflow-x-hidden">
             <div className="flex items-center gap-2 lg:my-10 my-5">

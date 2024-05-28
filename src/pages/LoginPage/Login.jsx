@@ -58,7 +58,7 @@ const Login = () => {
         setToken(response.data)
         setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
-        navigate("/")
+        navigate("/dashboard")
         toast.success("successfully Logged In")
         setLoading(false)
       }
@@ -111,8 +111,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white w-[90%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
-            : "inset bg-black w-[90%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            ? "inset bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm py-2 px-4 lg:px-8 flex justify-between"
+            : "inset bg-black w-[95%] max-w-2xl md:rounded-3xl rounded-sm py-2 px-4 lg:px-8 flex justify-between"
         }
       >
         <div>
@@ -164,8 +164,8 @@ const Login = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : "w-[90%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
+                      ? "w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
+                      : "w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
                   }
                   placeholder="example@gmail.com"
                 />
@@ -184,8 +184,8 @@ const Login = () => {
                   type="password"
                   className={
                     toggleLight
-                      ? "w-[90%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : " bg-transparent w-[90%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
+                      ? "w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
+                      : " bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
                   }
                   placeholder="Enter password"
                 />
@@ -208,7 +208,7 @@ const Login = () => {
                 <img
                   src={or}
                   alt=""
-                  className="ml-3 w-[90%] sms:max-w-[360px] text-white colorize-img3"
+                  className="ml-3 w-[95%] sms:max-w-[360px] text-white colorize-img3"
                 />
                 {/* <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3 " />

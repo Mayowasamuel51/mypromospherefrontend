@@ -14,7 +14,6 @@ const PersonalInfo = () => {
      const changeCountry = (e)=>{
       setCountry(e.target.value)
      }
-
      const url = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
 
      const fetchCountry = async (url) => {
@@ -46,7 +45,7 @@ const PersonalInfo = () => {
       <div className="mt-7">
         <form>
           <div>
-            <label htmlFor="birthDate" className='font-700'>BirthDate</label> <br />
+            <label htmlhtmlFor="birthDate" className='font-700'>BirthDate</label> <br />
             <input
               type="text"
               className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
@@ -61,19 +60,19 @@ const PersonalInfo = () => {
         <form action="" className="mt-4 flex gap-x-4  ">
           {/* input-1  */}
           <div className="flex items-center gap-x-3 ">
-            <label for="Male" className="">
+            <label htmlFor="Male" className="">
               Male
             </label>
             <input type="radio" id="male" name="gender" className="" />
           </div>
           {/* input-2  */}
           <div className="flex items-center gap-x-3 ">
-            <label for="Female">Female</label>
+            <label htmlFor="Female">Female</label>
             <input type="radio" id="female" name="gender" />
           </div>
           {/* input-3  */}
           <div className="flex items-center gap-x-3 ">
-            <label for="Non-Binary">Non-Binary</label>
+            <label htmlFor="Non-Binary">Non-Binary</label>
             <input type="radio" id="non-binary" name="gender" />
           </div>
         </form>

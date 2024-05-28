@@ -1,14 +1,12 @@
 .drop-file-input {
     position: relative;
-    width: 400px;
+    width: 100%;
     height: 200px;
-    border: 2px dashed var(--border-color);
-    border-radius: 20px;
-
+    border: 2px dashed #3D217A;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: var(--input-bg);
 }
 
@@ -32,6 +30,7 @@
     color: var(--txt-second-color);
     font-weight: 600;
     padding: 10px;
+    
 }
 
 .drop-file-input__label img {
@@ -40,6 +39,7 @@
 
 .drop-file-preview {
     margin-top: 30px;
+    /* border: 2px solid; */
 }
 
 .drop-file-preview p {

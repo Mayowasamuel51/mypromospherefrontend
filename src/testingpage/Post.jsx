@@ -22,6 +22,8 @@ import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 import PostButtons from "../components/PostButtons.jsx";
 import data from "../../state.json";
+import Dropzone from 'react-dropzone';
+import uploadImg from '../assests/cloud-upload-regular-240.png';
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
@@ -72,10 +74,10 @@ const Post = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
- 
 
   const handleSetimageUpload = (e) => {
     // setImageUpload(URL.createObjectURL(e.target.files[0]));
+
     const selectedFiles = event.target.files;
     if (!selectedFiles.length) return; // Handle empty selection
 
@@ -90,6 +92,21 @@ const Post = () => {
       reader.readAsDataURL(file);
     }
   };
+  
+  const dragOrClick = (images)=> {
+    const selectedFiles = images;
+    if (!selectedFiles.length) return; // Handle empty selection
+    const newImages = [...imageUpload];
+    for (const file of selectedFiles) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        newImages.push(e.target.result);
+        setImageUpload(newImages);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   const imagesListRef = ref(storage, "images/");
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
@@ -118,9 +135,9 @@ const Post = () => {
       setLocalGvt([]);
     }
   }
+
   const formSubmit = (data) => {
-  
-    console.log(data.state, data.localGovernment , 'use state loca=', localGvt)
+    console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
     console.log(makepic);
     const formData = new FormData();
     const myArray = [
@@ -132,7 +149,7 @@ const Post = () => {
       "Rivers",
       "Kano",
     ];
-  const randomIndex = Math.floor(Math.random() * myArray.length);
+    const randomIndex = Math.floor(Math.random() * myArray.length);
 
     // Access the random string using the index
     const randomString = myArray[randomIndex];
@@ -148,7 +165,7 @@ const Post = () => {
     axios
       .post(api_freeads, formData, {
         headers: {
-          Accept: "application/json",
+          // Accept: "application/json",
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token.token}`,
@@ -214,7 +231,7 @@ const Post = () => {
                 axios
                   .post(`${api_freeads}/${response}`, second_payload, {
                     headers: {
-                      Accept: "application/json",
+                      // Accept: "application/json",
                       Accept: "application/vnd.api+json",
                       Authorization: `Bearer ${token?.token.token}`,
                     },
@@ -235,38 +252,44 @@ const Post = () => {
       })
       .catch((err) => console.log(err.message));
   };
-
-<<<<<<< HEAD
-  const [localGvt, setLocalGvt] = useState()
-
-
-  const result = Object.entries(data.full)
-
-  function selectState(e) {
-    setLocalGvt();
-    const selectedState = e.target.value;
-    if (selectedState) {
-      const filterState = result.filter((x) => {
-        return x[0].toLowerCase() === selectedState.toLowerCase();
-      });
-      setLocalGvt(filterState[0][1]);
-    } else {
-      setLocalGvt([]);
-    }
-  }
-=======
-  
->>>>>>> 11863e90cfdd63f66bc0450619dd317e0c2f47f9
-
   return (
     <div className="px-4 lg:px-40">
       <PostButtons />
-      <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">
+      {/* <h1 className="my-5 lg:text-3xl lg:font-bold font-['poppins']">
         UPLOAD YOUR DETAILS TO MYPROMOSPHERE
-      </h1>
-
-     
-      <form onSubmit={handleSubmit(formSubmit)}  encType="multipart/form-data" action="#">
+      </h1> */}
+      <form onSubmit={handleSubmit(formSubmit)} encType="multipart/form-data" action="#">
+        <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
+          {({ getRootProps, getInputProps }) => (
+            <section className="flex justify-center items-center h-[200px] border-2 border-[#3D217A] border-dashed rounded-2xl">
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                {/* <p className="text-sm">Drag 'n' drop some files here, or click to select files</p> */}
+                <img src={uploadImg} alt="" />
+              </div>
+            </section>
+          )}
+        </Dropzone>
+        {/* <input
+          type="file"
+          {...register("picture")}
+          multiple
+          id="photo-upload"
+          onChange={handleSetimageUpload}
+          className="hidden"
+        /> */}
+        <div className="flex gap-4 flex-wrap my-3">
+          {imageUpload.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt="Uploaded Image"
+              className="w-[150px] h-[150px] rounded-md"
+              width={"200px"}
+              height={"200px"}
+            />
+          ))}
+        </div>
         <select
           {...register("categories")}
           // onChange={handleValues}
@@ -284,31 +307,6 @@ const Post = () => {
 
         <p className="text-red-600  text-sm">{errors.picture?.message}</p>
 
-        <input
-          type="file"
-          {...register("picture")}
-          multiple
-          // onChange={onFileChange}
-          onChange={handleSetimageUpload}
-        />
-        <div className="flex gap-4 flex-wrap my-3">
-          {imageUpload.map((imageUrl, index) => (
-            <img
-              key={index}
-              src={imageUrl}
-              alt="Uploaded Image"
-              className="w-[150px] h-[150px] rounded-md"
-              width={"200px"}
-              height={"200px"}
-            />
-          ))}
-        </div>
-        
-        {/* {imageUpload.map((item, index)=>{
-                    return ( 
-                        <img  key={index} src={item} />
-                    )
-                })} */}
 
         <input
           className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -370,10 +368,7 @@ const Post = () => {
           placeholder="******************"
         />
 
-        <button
-          type="submit"
-          className="px-4 py-2 bg-purple rounded-lg text-xl font-medium text-white"
-        >
+        <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
           Post Normal Ads
         </button>
       </form>

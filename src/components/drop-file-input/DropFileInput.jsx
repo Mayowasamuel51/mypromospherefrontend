@@ -6,6 +6,7 @@ import './drop-file-input.css';
 import { ImageConfig } from '../../config/ImageConfig'; 
 // assets/cloud-upload-regular-240.png
 import uploadImg from '../../assests/cloud-upload-regular-240.png';
+import { FaXmark } from "react-icons/fa6";
 
 const DropFileInput = props => {
 
@@ -39,7 +40,7 @@ const DropFileInput = props => {
         <>
             <div
                 ref={wrapperRef}
-                className="drop-file-input"
+                className="drop-file-input border-2 border-green-500"
                 onDragEnter={onDragEnter}
                 onDragLeave={onDragLeave}
                 onDrop={onDrop}
@@ -64,7 +65,7 @@ const DropFileInput = props => {
                                         <p>{item.name}</p>
                                         <p>{item.size}B</p>
                                     </div>
-                                    <span className="drop-file-preview__item__del" onClick={() => fileRemove(item)}>x</span>
+                                    <span className="drop-file-preview__item__del" onClick={() => fileRemove(item)}><FaXmark /></span>
                                 </div>
                             ))
                         }

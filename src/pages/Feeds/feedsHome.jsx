@@ -119,7 +119,6 @@ const FeedsHome = () => {
       <Navbar blue={true} />
       <section className="lg:px-10">
         <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
-          {/* <img src={LOGO} className='w-10 h-10 lg:w-20 lg:h-20' alt="" /> */}
           <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">
             Perfect Works Made for You
           </h1>
@@ -127,10 +126,9 @@ const FeedsHome = () => {
         <div className="">
           <section className="lg:px-10 px-4">
             <div className="flex my-3 lg:my-5">
-              {/* <div style={{ width: 400 }}> */}
               <ReactSearchAutocomplete
                 items={items}
-                className="w-[90%] lg:w-[80%] rounded-tl-sm rounded-bl-sm md:rounded-tl-lg md:rounded-bl-lg md:shadow-lg border-2 border-black md:border-none focus:shadow-none h-10 lg:h-12 pl-4"
+                className="z-[9999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
                 onHover={handleOnHover}
@@ -139,14 +137,7 @@ const FeedsHome = () => {
                 autoFocus
                 // formatResult={formatResult}
               />
-              {/* </div> */}
-              {/* <input type="text" className="w-[90%] lg:w-[80%] rounded-tl-sm rounded-bl-sm md:rounded-tl-lg md:rounded-bl-lg md:shadow-lg border-2 border-black md:border-none focus:shadow-none h-10 lg:h-12 pl-4" placeholder="Search by title or tags , service"></input> */}
-              {/* <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-md rounded-br-md md:rounded-tr-xl md:rounded-br-xl">
-                <FaFilter color="white" size={20} />
-              </button> */}
             </div>
-            {/* <br/>  <br/>  <br/>  <br/>  <br/>  */}
-             {/* <br/>  <br/>  <br/>  <br/> */}
             {/* <Splide
               options={{
                 type: "loop",
