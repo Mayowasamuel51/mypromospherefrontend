@@ -24,6 +24,7 @@ import PostButtons from "../components/PostButtons.jsx";
 import data from "../../state.json";
 import Dropzone from 'react-dropzone';
 import uploadImg from '../assests/cloud-upload-regular-240.png';
+import { Toaster, toast } from 'sonner';
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
@@ -92,8 +93,8 @@ const Post = () => {
       reader.readAsDataURL(file);
     }
   };
-  
-  const dragOrClick = (images)=> {
+
+  const dragOrClick = (images) => {
     const selectedFiles = images;
     if (!selectedFiles.length) return; // Handle empty selection
     const newImages = [...imageUpload];
@@ -252,127 +253,146 @@ const Post = () => {
       })
       .catch((err) => console.log(err.message));
   };
+  if (errors.picture) {
+    toast.error(errors.picture?.message);
+  }
+  if (errors.categories) {
+    toast.error(errors.categories?.message)
+  }
+  if (errors.description) {
+    toast.error(errors.description?.message)
+  }
+  if (errors.headlines) {
+    toast.error(errors.headlines?.message)
+  }
+
   return (
-    <div className="px-4 lg:px-40">
-      <PostButtons />
-      {/* <h1 className="my-5 lg:text-3xl lg:font-bold font-['poppins']">
-        UPLOAD YOUR DETAILS TO MYPROMOSPHERE
-      </h1> */}
-      <form onSubmit={handleSubmit(formSubmit)} encType="multipart/form-data" action="#">
-        <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
-          {({ getRootProps, getInputProps }) => (
-            <section className="flex justify-center items-center h-[200px] border-2 border-[#3D217A] border-dashed rounded-2xl">
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                {/* <p className="text-sm">Drag 'n' drop some files here, or click to select files</p> */}
-                <img src={uploadImg} alt="" />
-              </div>
-            </section>
-          )}
-        </Dropzone>
-        {/* <input
-          type="file"
-          {...register("picture")}
-          multiple
-          id="photo-upload"
-          onChange={handleSetimageUpload}
-          className="hidden"
-        /> */}
-        <div className="flex gap-4 flex-wrap my-3">
-          {imageUpload.map((imageUrl, index) => (
-            <img
-              key={index}
-              src={imageUrl}
-              alt="Uploaded Image"
-              className="w-[150px] h-[150px] rounded-md"
-              width={"200px"}
-              height={"200px"}
+    <>
+      <Toaster position="top-center" />
+      <div className="px-4 lg:px-40">
+        <PostButtons />
+        {/* <h1 className="my-5 lg:text-3xl lg:font-bold font-['poppins']">
+          UPLOAD YOUR DETAILS TO MYPROMOSPHERE
+        </h1> */}
+        <form onSubmit={handleSubmit(formSubmit)} encType="multipart/form-data" action="#">
+          <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
+            {({ getRootProps, getInputProps }) => (
+              <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <div className="text-center py-2">
+                    <img src={uploadImg} className="mx-auto" alt="" />
+                    <p className="text-sm">Drag &apos;n&apos; drop some files here, or <span className="underline">click</span> to select files</p>
+                  </div>
+                </div>
+              </section>
+            )}
+          </Dropzone>
+          {/* <input
+            type="file"
+            {...register("picture")}
+            multiple
+            id="photo-upload"
+            onChange={handleSetimageUpload}
+            className="hidden"
+          /> */}
+          <div className="flex gap-4 flex-wrap my-3">
+            {imageUpload.map((imageUrl, index) => (
+              <img
+                key={index}
+                src={imageUrl}
+                alt="Uploaded Image"
+                className="w-[150px] h-[150px] rounded-md"
+                width={"200px"}
+                height={"200px"}
+              />
+            ))}
+          </div>
+          <select
+            {...register("categories")}
+            // onChange={handleValues}
+            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            {categories.map((option, index) => {
+              return (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              );
+            })}
+          </select>
+          {/* <p className="text-red-600  text-sm">{errors.categories?.message}</p> */}
+          <div>
+            <input
+              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="text"
+              placeholder="price"
             />
-          ))}
-        </div>
-        <select
-          {...register("categories")}
-          // onChange={handleValues}
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-        >
-          {categories.map((option, index) => {
-            return (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            );
-          })}
-        </select>
-        <p className="text-red-600  text-sm">{errors.categories?.message}</p>
-
-        <p className="text-red-600  text-sm">{errors.picture?.message}</p>
-
-
-        <input
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="password"
-          type="text"
-          placeholder="price"
-        />
-
-        <p className="text-red pt-2">{errors.categories?.message}</p>
-
-        <input
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="password"
-          type="text"
-          placeholder="description"
-          {...register("description", { required: true })}
-        />
-        <p className="text-red pt-2">{errors.description?.message}</p>
-
-        <select
-          {...register("state")}
-          name=""
-          id=""
-          {...register("state", { required: true })}
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
-          onChange={selectState}
-        >
-          <option value="">--Select State--</option>
-          {data.States.map((state, i) => (
-            <option key={i} value={state}>{state.state}</option>
-          ))}
-        </select>
-
-        <select
-          {...register("localGovernment")}
-          name=""
-          {...register("localGovernment", { required: true })}
-          id=""
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
-        >
-          <option value="">--Select Local Government--</option>
-          {localGvt && localGvt.map((x, i) => <option key={i} >{x.lga}</option>)}
-        </select>
-
-        <input
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="password"
-          type="text"
-          placeholder="NEW COMING GOING  headlines"
-          {...register("headlines", { required: true })}
-        />
-        <p className="text-red pt-2">{errors.headlines?.message}</p>
-
-        <input
-          className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
-                tline"
-          id="password"
-          type="text"
-          placeholder="******************"
-        />
-
-        <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
-          Post Normal Ads
-        </button>
-      </form>
-    </div>
+          </div>
+          {/* <p className="text-red pt-2">{errors.categories?.message}</p> */}
+          <div>
+            <input
+              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="text"
+              placeholder="description"
+              {...register("description", { required: true })}
+            />
+          </div>
+          {/* <p className="text-red pt-2">{errors.description?.message}</p> */}
+          <div>
+            <select
+              {...register("state")}
+              name=""
+              id=""
+              {...register("state", { required: true })}
+              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+              onChange={selectState}
+            >
+              <option value="">--Select State--</option>
+              {data.States.map((state, i) => (
+                <option key={i} value={state}>{state.state}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <select
+              {...register("localGovernment")}
+              name=""
+              {...register("localGovernment", { required: true })}
+              id=""
+              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+            >
+              <option value="">--Select Local Government--</option>
+              {localGvt && localGvt.map((x, i) => <option key={i} >{x.lga}</option>)}
+            </select>
+          </div>
+          <div>
+            <input
+              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="text"
+              placeholder="NEW COMING GOING  headlines"
+              {...register("headlines", { required: true })}
+            />
+          </div>
+          {/* <p className="text-red pt-2">{errors.headlines?.message}</p> */}
+          <div>
+            <input
+              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
+                    tline"
+              id="password"
+              type="text"
+              placeholder="******************"
+            />
+          </div>
+          <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
+            Post Normal Ad
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
