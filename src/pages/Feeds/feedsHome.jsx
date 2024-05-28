@@ -141,11 +141,13 @@ const FeedsHome = () => {
               />
               {/* </div> */}
               {/* <input type="text" className="w-[90%] lg:w-[80%] rounded-tl-sm rounded-bl-sm md:rounded-tl-lg md:rounded-bl-lg md:shadow-lg border-2 border-black md:border-none focus:shadow-none h-10 lg:h-12 pl-4" placeholder="Search by title or tags , service"></input> */}
-              <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-md rounded-br-md md:rounded-tr-xl md:rounded-br-xl">
+              {/* <button className="w-[10%] lg:w-[4%] flex justify-center items-center bg-black rounded-tr-md rounded-br-md md:rounded-tr-xl md:rounded-br-xl">
                 <FaFilter color="white" size={20} />
-              </button>
+              </button> */}
             </div>
-            <Splide
+            {/* <br/>  <br/>  <br/>  <br/>  <br/>  */}
+             {/* <br/>  <br/>  <br/>  <br/> */}
+            {/* <Splide
               options={{
                 type: "loop",
                 gap: "20px",
@@ -200,7 +202,7 @@ const FeedsHome = () => {
                   <p className="font-semibold md:text-base text-sm">Mechanic</p>
                 </div>
               </SplideSlide>
-            </Splide>
+            </Splide> */}
             <div>
               <Feeds />
             </div>
