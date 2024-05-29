@@ -24,7 +24,6 @@ const options = { multi: true };
 const Video = () => {
     const { token } = useStateContext()
     const [CategoriesValues, setCategoriesValues] = useState('')
-    // const [token, setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
     const [file, setFile] = useState(null)
 
     const onFileChange = (files) => {
@@ -33,10 +32,8 @@ const Video = () => {
         console.log(files);
     }
     const onChangecategories = (e) => {
-
         setCategoriesValues(e.target.value)
         console.log(CategoriesValues)
-
     }
 
     // const uploadToDatabase = (url) => {
@@ -113,7 +110,6 @@ const Video = () => {
         const uploadTask = uploadBytesResumable(fileRef, file)
         uploadTask.on('state_changed',
             (snapshot) => {
-                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
                 switch (snapshot.state) {
@@ -183,14 +179,7 @@ const Video = () => {
         toast.error(errors.description?.message)
         return;
     }
-    // useEffect(() => {
 
-    //     axiosclinet.get("api/getuser").then(({ data }) => {
-    //         console.log('see messages')
-    //         console.log(data.message)
-    //         setUser(data.message)
-    //     })
-    // }, [])
     return (
         <>
             <Toaster position="top-center" />

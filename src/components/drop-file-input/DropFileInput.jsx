@@ -9,7 +9,6 @@ import uploadImg from '../../assests/cloud-upload-regular-240.png';
 import { FaXmark } from "react-icons/fa6";
 
 const DropFileInput = props => {
-
     const wrapperRef = useRef(null);
 
     const [fileList, setFileList] = useState([]);
@@ -40,14 +39,14 @@ const DropFileInput = props => {
         <>
             <div
                 ref={wrapperRef}
-                className="drop-file-input border-2 border-green-500"
+                className="drop-file-input"
                 onDragEnter={onDragEnter}
                 onDragLeave={onDragLeave}
                 onDrop={onDrop}
             >
                 <div className="drop-file-input__label">
-                    <img src={uploadImg} alt="" />
-                    <p>Drag & Drop your files here</p>
+                    <img src={uploadImg} className="mx-auto w-[100px] md:w-full" alt="" />
+                    <p  className="font-semibold text-xs">Drag & Drop your files here</p>
                 </div>
                 <input type="file" value="" onChange={onFileDrop}/>
             </div>

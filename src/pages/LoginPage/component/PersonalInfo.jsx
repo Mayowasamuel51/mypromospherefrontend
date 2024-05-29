@@ -33,19 +33,19 @@ const PersonalInfo = () => {
   return (
     <div>
       {/* text  */}
-      <article className="mt-12 md:mt-5">
+      <article className="">
         <h1 className="text-[1.125rem] font-700">Personal Information</h1>
-        <p className="max-w-lg mt-3">
+        <p className="max-w-lg mt-2">
           Edit your basic personal info to improve recommendations. This
           information is private and won’t show up in your public profile
         </p>
       </article>
       {/* end of text  */}
       {/* birthdate  */}
-      <div className="mt-7">
+      <div className="mt-2">
         <form>
           <div>
-            <label htmlhtmlFor="birthDate" className='font-700'>BirthDate</label> <br />
+            <label htmlFor="birthDate" className='font-700'>BirthDate</label> <br />
             <input
               type="text"
               className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
@@ -55,7 +55,7 @@ const PersonalInfo = () => {
         </form>
       </div>
       {/*radio input*/}
-      <article className="mt-7">
+      <article className="mt-2">
         <h3 className='font-700'>Gender</h3>
         <form action="" className="mt-4 flex gap-x-4  ">
           {/* input-1  */}

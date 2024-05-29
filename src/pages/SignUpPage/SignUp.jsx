@@ -156,8 +156,8 @@ const SignUp = () => {
                   {...register("name", { required: true })}
                   className={
                     toggleLight
-                      ? "w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white mt-1"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white mt-1"
                   }
                   placeholder="Full name"
                 />
@@ -174,8 +174,8 @@ const SignUp = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1"
                   }
                   placeholder="example@gmail.com"
                 />
@@ -192,8 +192,8 @@ const SignUp = () => {
                   type="password"
                   className={
                     toggleLight
-                      ? "w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : " bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
                   }
                   placeholder="Enter password"
                 />
@@ -212,8 +212,8 @@ const SignUp = () => {
                   type="password"
                   className={
                     toggleLight
-                      ? "w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : " bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
                   }
                   placeholder="Enter password"
                 />
@@ -270,9 +270,9 @@ const SignUp = () => {
                     <a href={loginUrl}>Continue with Google</a>
                   </p>
                 </div>
-                <p className={toggleLight ? "my-2" : "my-2 text-white"}>
+                {/* <p className={toggleLight ? "my-2" : "my-2 text-white"}>
                   You already have an account? <Link className="text-red" to="/login">Login</Link>{" "}
-                </p>
+                </p> */}
               </article>
             </form>
             {/* end of form  */}

@@ -111,13 +111,13 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm py-2 px-4 lg:px-8 flex justify-between"
-            : "inset bg-black w-[95%] max-w-2xl md:rounded-3xl rounded-sm py-2 px-4 lg:px-8 flex justify-between"
+            ? "inset bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            : "inset bg-black w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
         }
       >
         <div>
           {/* back  */}
-          <article className="xs:mt-4 flex items-center justify-between">
+          <article className="flex items-center justify-between py-2">
             <Link to={"/"}>
               <button className="focus-outline-none">
                 <p className={toggleLight ? "" : "text-white"}>Back</p>
@@ -164,8 +164,8 @@ const Login = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : "w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
                   }
                   placeholder="example@gmail.com"
                 />
@@ -184,8 +184,8 @@ const Login = () => {
                   type="password"
                   className={
                     toggleLight
-                      ? "w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : " bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
                   }
                   placeholder="Enter password"
                 />

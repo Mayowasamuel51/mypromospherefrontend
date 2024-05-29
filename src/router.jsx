@@ -39,11 +39,14 @@ import Video from "./testingpage/Video.jsx";
 import Fulltext from "./testingpage/Fulltext.jsx";
 import Myuploads from "./testingpage/Myupload.jsx";
 
+import Error from "./error.jsx";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Suspense fallback={<Loader />}><FeedsHome /></Suspense>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
