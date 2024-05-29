@@ -9,7 +9,7 @@ export default function Categories() {
       <h3 className="text-center text-lg font-bold md:text-2xl mb-2">Browse talent by Category</h3>
       <p className="text-sm mb-14 text-center">
         Looking for a service provider?{" "}
-        <Link className=" text-purple">Browse talents</Link>
+        <Link to="/" className=" text-purple">Browse talents</Link>
       </p>
       <CategoryContainer />
     </section>

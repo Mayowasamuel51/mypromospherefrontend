@@ -25,7 +25,7 @@ export default function TalentAndValues() {
               alt="diamond"
               className=" bg-purple p-1 rounded-md w-8"
             />
-            <h3 className="font-semibold text-2xl md:text-3xl">Our Value To Help You</h3>
+            <h3 className="font-semibold text-xl md:text-3xl">Our Value To Help You</h3>
           </div>
           <p className="text-xs">
             We always want to provide the best value for you and make your

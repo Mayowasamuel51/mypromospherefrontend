@@ -41,7 +41,7 @@ export default function CategoryContainer() {
     }
   ];
   return (
-    <div className="grid gap-3 grid-cols-1 lg:grid-cols-3 md:gap-5">
+    <div className="md:mx-auto grid place-items-center gap-3 grid-cols-1 md:grid-cols-3 md:gap-5">
       {Categories.map(({ id, category, rating, skills }) => {
         return (
           <div key={id} className="bg-lightGrayishBlue px-4 py-3 rounded-md w-full bigLg:w-[260px] exl:w-[400px]">
