@@ -10,13 +10,13 @@ import Saved from "../LoginPage/component/Saved"
 function DefualtLayout() {
     const { token } = useStateContext()
     const [saved, setSaved] = useState(false)
-    if (!token) return <Navigate  to="/"/>
+    if (!token) return <Navigate  to="/" />
 
     console.log(token?.user)
     console.log(token?.profileImage)
     return (
         <>
-            <main className={`py-7`}>
+            <main className={``}>
                 <section className="">
                     <article className="">
                         <img

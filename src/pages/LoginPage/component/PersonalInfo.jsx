@@ -1,49 +1,49 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Languages } from '../../../utils/data';
+// import Calendar from 'react-calendar';
 
 
 const PersonalInfo = () => {
-     const [countries, setCountries] = useState([]);
-     const[country, setCountry] = useState("")
-     const[language, setLanguage] = useState("")
-     console.log(language)
-     const changeLanguage = (e)=>{
-      setLanguage(e.target.value)
-     }
-     const changeCountry = (e)=>{
-      setCountry(e.target.value)
-     }
+  const [value, onChange] = useState(new Date());
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("")
+  const [language, setLanguage] = useState("")
+  console.log(language)
+  const changeLanguage = (e) => {
+    setLanguage(e.target.value)
+  }
+  const changeCountry = (e) => {
+    setCountry(e.target.value)
+  }
+  const url = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
 
-     const url = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
-
-     const fetchCountry = async (url) => {
-       try {
-         const response = await axios.get(url);
-         const data = await response.data;
-         setCountries(data);
-       } catch (error) {
-         console.log(error.response);
-       }
-     };
-     useEffect(() => {
-       fetchCountry(url);
-     }, []);
-     const newCountry = [...new Set(countries.map((item) => item.country))];
+  const fetchCountry = async (url) => {
+    try {
+      const response = await axios.get(url);
+      const data = await response.data;
+      setCountries(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    fetchCountry(url);
+  }, []);
+  const newCountry = [...new Set(countries.map((item) => item.country))];
 
   return (
     <div>
       {/* text  */}
-      <article className="mt-12 md:mt-5">
-        <h1 className="text-[1.125rem] font-700">Personal Information</h1>
-        <p className="max-w-lg mt-3">
+      <article className="">
+        <h1 className="font-700 md:text-xl text-xl">Personal Information</h1>
+        <p className="max-w-lg mt-2 text-xs md:text-base">
           Edit your basic personal info to improve recommendations. This
           information is private and won’t show up in your public profile
         </p>
       </article>
-      {/* end of text  */}
-      {/* birthdate  */}
-      <div className="mt-7">
+
+      <div className="mt-2">
         <form>
           <div>
             <label htmlFor="birthDate" className='font-700'>BirthDate</label> <br />
@@ -52,28 +52,29 @@ const PersonalInfo = () => {
               className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
               placeholder="MM-DD-YY"
             />
+             {/* <Calendar onChange={onChange} value={value} /> */}
           </div>
         </form>
       </div>
       {/*radio input*/}
-      <article className="mt-7">
+      <article className="mt-2">
         <h3 className='font-700'>Gender</h3>
         <form action="" className="mt-4 flex gap-x-4  ">
           {/* input-1  */}
           <div className="flex items-center gap-x-3 ">
-            <label for="Male" className="">
+            <label htmlFor="Male" className="">
               Male
             </label>
             <input type="radio" id="male" name="gender" className="" />
           </div>
           {/* input-2  */}
           <div className="flex items-center gap-x-3 ">
-            <label for="Female">Female</label>
+            <label htmlFor="Female">Female</label>
             <input type="radio" id="female" name="gender" />
           </div>
           {/* input-3  */}
           <div className="flex items-center gap-x-3 ">
-            <label for="Non-Binary">Non-Binary</label>
+            <label htmlFor="Non-Binary">Non-Binary</label>
             <input type="radio" id="non-binary" name="gender" />
           </div>
         </form>

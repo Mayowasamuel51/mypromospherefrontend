@@ -1,14 +1,12 @@
 .drop-file-input {
     position: relative;
-    width: 400px;
-    height: 200px;
-    border: 2px dashed var(--border-color);
-    border-radius: 20px;
-
+    width: 100%;
+    /* height: 200px; */
+    border: 2px dashed #3D217A;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: var(--input-bg);
 }
 
@@ -25,18 +23,16 @@
 .drop-file-input:hover,
 .drop-file-input.dragover {
     opacity: 0.6;
+    transition: all 300ms ease-in-out;
 }
 
 .drop-file-input__label {
     text-align: center;
     color: var(--txt-second-color);
     font-weight: 600;
-    padding: 10px;
+    padding-block: 16px;
 }
 
-.drop-file-input__label img {
-    width: 100px;
-}
 
 .drop-file-preview {
     margin-top: 30px;

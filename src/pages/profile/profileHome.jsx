@@ -13,8 +13,6 @@ import web from "../../assests/images/web.png"
 import phone from "../../assests/images/phone.png"
 import { BsTelephone } from "react-icons/bs"
 import { BsGlobe } from "react-icons/bs"
-// import About from './components/About';
-// import WorksInfo from './components/worksInfo';
 
 
 const ProfileHome = () => {

@@ -10,7 +10,10 @@ const SingleFeedPage = () => {
     const { id } = useParams();
     const navigate = useNavigate()
     const { data, isLoading, error } = FetchSingleAd(id);
+    console.log(data);
     if (isLoading) return <Loader />
+    if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
+
     return (
         <>
             <Navbar blue={true} />

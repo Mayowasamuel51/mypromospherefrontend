@@ -44,15 +44,15 @@ const ProfileEdit = () => {
   };
 
   const schema = yup.object().shape({
-    aboutMe:yup.string().required(),
+    aboutMe: yup.string().required(),
     messageCompany: yup.string().required(),
-    brandName: yup.string().required(),
+    brandName: yup.string().required("Please enter your Brand Name"),
     websiteName: yup.string().required(),
     picture: yup
       .mixed()
       .test(
         "required",
-        "You need to provide more then one  image ",
+        "You need to provide more than one image",
         (value) => {
           return value && value.length;
         }
@@ -67,7 +67,7 @@ const ProfileEdit = () => {
         );
       }),
   });
-  const token = useStateContext();
+  const {token} = useStateContext();
   console.log(token?.token);
 
   const {
@@ -123,15 +123,15 @@ const ProfileEdit = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const payload = {
             profileImage: downloadURL,
-            aboutMe:data.aboutMe,
-            brandName:data.brandName,
-            websiteName:data.websiteName,
+            aboutMe: data.aboutMe,
+            brandName: data.brandName,
+            websiteName: data.websiteName,
             messageCompany: "i sell anything goood ",
           };
-          console.log("Updated edit profile successfully  ", [downloadURL]);
+          console.log("Updated edit profile successfully", [downloadURL]);
           axios
             .put(
-              `${api_edit_profile_put_endpoint}${token?.token.id}`,
+              `${api_edit_profile_put_endpoint}${token?.token?.id}`,
               payload,
               {
                 headers: {
@@ -168,28 +168,26 @@ const ProfileEdit = () => {
       }
     });
   }, []);
-  // we need the
+
+
   return (
-    <section className="md:w-[500px] large:w-[600px]">
-      {/* header  */}
+    <section className="">
       <header>
-        <h3 className="md:text-[1.5rem] font-600 mt-[3rem] md:mt-0">
+        <h3 className="font-600 md:text-xl text-xl">
           Edit Profile
         </h3>
         <p className="font-400">Set up your presence and hiring needs</p>
-
         {/* upload-image  */}
       </header>
       {/* form  */}
-
-      <article className="mt-5">
+      <article className="">
         <form onSubmit={handleSubmit(formSubmit)}>
-          <article className="mt-7 flex items-center gap-[1.25rem] ml-[-.rem]">
+          <article className="flex items-center">
             {/* image  */}
             {data.map((item) => {
               return (
                 <div key={item.id}>
-                  {/* {item.profileImage ? (
+                  {item.profileImage ? (
                     <img
                       href={item.profileImage}
                       src={item.profileImage}
@@ -197,7 +195,7 @@ const ProfileEdit = () => {
                     />
                   ) : (
                     ""
-                  )} */}
+                  )}
 
                   {image ? (
                     <img
@@ -220,7 +218,7 @@ const ProfileEdit = () => {
                     <button className="relative cursor-pointer ml-[.4rem]">
                       <input
                         type="file"
-                        className="relative ml-[-3rem] max-w-[230px] z-20 opacity-[0] cursor-pointer"
+                        className="relative z-20 opacity-[0] cursor-pointer"
                         ref={inputRef}
                         onChange={handleImageChange}
                       />
@@ -245,32 +243,7 @@ const ProfileEdit = () => {
               );
             })}
           </article>
-
-          {/* name  */}
-          {/* <div>
-            <label htmlFor="name" className="font-600">
-              Name
-            </label>{" "}
-            <br />
-            <input
-              type="text"
-              className="border border-[#3D217A] mt-1 w-[100%] focus:outline-none p-3 text-[1rem] rounded-md"
-            />
-            
-          </div> */}
-          {/* location  */}
-          {/* <div className="mt-6">
-            <label htmlFor="location" className="font-600">
-              Location
-            </label>{" "}
-            <br />
-            <input
-              type="text"
-              className="border border-[#3D217A] mt-1 w-[100%] focus:outline-none p-3 text-[1rem] rounded-md"
-            />
-          </div> */}
-          {/*About*/}
-          <div className="mt-6">
+          <div className="">
             <label htmlFor="About" className="font-600">
               About
             </label>{" "}
@@ -281,10 +254,10 @@ const ProfileEdit = () => {
               placeholder="Tell Us About You"
               {...register("aboutMe", { required: true })}
             />
-             <p className="text-red  text-sm">{errors.aboutMe?.message}</p>
+            <p className="text-red  text-sm">{errors.aboutMe?.message}</p>
           </div>
           {/* Website  */}
-          <div className="mt-6">
+          <div className="">
             <label htmlFor="website" className="font-600">
               Website
             </label>{" "}
@@ -295,10 +268,10 @@ const ProfileEdit = () => {
               {...register("websiteName", { required: true })}
               placeholder="Add a link to drive traffic to your site "
             />
-             <p className="text-red  text-sm">{errors.websiteName?.message}</p>
+            <p className="text-red  text-sm">{errors.websiteName?.message}</p>
           </div>
           {/*Brand Name*/}
-          <div className="mt-6">
+          <div className="">
             <label htmlFor="website" className="font-600">
               Brand Name
             </label>{" "}
@@ -308,10 +281,10 @@ const ProfileEdit = () => {
               className="border border-[#3D217A] mt-1 w-[100%] focus:outline-none p-3 text-[1rem] rounded-md placeholder:text-black"
               {...register("brandName", { required: true })}
             />
-              <p className="text-red  text-sm">{errors.brandName?.message}</p>
+            <p className="text-red  text-sm">{errors.brandName?.message}</p>
           </div>
 
-          <button type="submit" className="btn ">
+          <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2">
             Edit
           </button>
         </form>

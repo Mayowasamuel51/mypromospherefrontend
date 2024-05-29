@@ -15,28 +15,25 @@ import { headlines } from "../../src/json/headlines.jsx"
 import DropFileInput from '../components/drop-file-input/DropFileInput.jsx';
 import UploadButton from '../components/upload-button/UploadButton';
 import PostButtons from "../components/PostButtons.jsx";
-import data from '../../state.json'
-// import { Uploader } from "uploader"; // Installed by "react-uploader".
-// import { UploadButton } from "react-uploader";
+import data from '../../state.json';
+import { Toaster, toast } from 'sonner';
+
 
 console.log(data.States);
 const options = { multi: true };
 const Video = () => {
     const { token } = useStateContext()
     const [CategoriesValues, setCategoriesValues] = useState('')
-    // const [token, setToken] = useState(localStorage.getItem('ACCESS_TOKEN'))
     const [file, setFile] = useState(null)
-  
+
     const onFileChange = (files) => {
         const currentFile = files[0]
         setFile(currentFile)
         console.log(files);
     }
-    const onChangecategories =(e)=>{
-       
+    const onChangecategories = (e) => {
         setCategoriesValues(e.target.value)
         console.log(CategoriesValues)
-      
     }
 
     // const uploadToDatabase = (url) => {
@@ -104,14 +101,15 @@ const Video = () => {
 
     const formSubmit = (data) => {
         console.log("logging file", CategoriesValues)
-        if (file === null) return;
-
+        if (file === null) {
+            toast.error("You have not uploaded any file")
+            return;
+        }
         const fileRef = ref(storage, `videos/${file.name}`)
 
         const uploadTask = uploadBytesResumable(fileRef, file)
         uploadTask.on('state_changed',
             (snapshot) => {
-                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
                 switch (snapshot.state) {
@@ -147,7 +145,7 @@ const Video = () => {
                         price_range: data.price,
                         headlines: data.headlines,
                         categories: CategoriesValues,
-                        
+
                         titlevideourl: downloadURL,
                         description: data.description,
                     }
@@ -162,7 +160,7 @@ const Video = () => {
                             console.log('worked in database for vidoes ')
                             console.log(CategoriesValues)
                             // console.log(res.data.item)
-                        
+
                             return res.data.item
                         }
                         else if (res.status === 500 || res.status === 401) {
@@ -173,53 +171,54 @@ const Video = () => {
             })
 
     }
-    // useEffect(() => {
+    if (errors.price) {
+        toast.error(errors.price?.message)
+        return;
+    }
+    if (errors.description) {
+        toast.error(errors.description?.message)
+        return;
+    }
 
-    //     axiosclinet.get("api/getuser").then(({ data }) => {
-    //         console.log('see messages')
-    //         console.log(data.message)
-    //         setUser(data.message)
-    //     })
-    // }, [])
     return (
-        <div>
-            <PostButtons />
-            <h1 className="my-5 lg:text-3xl lg:font-bold font=['poppins']">UPLOAD YOUR VIDEO  DETAILS TO MYPROMOSPHERE</h1>
-
-            <form onSubmit={handleSubmit(formSubmit)}>
-                <select onChange={ onChangecategories} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                    {categories.map((option, index) => {
-                        return (
-                            <option key={index}   value={option} >
-                                {option}
-                            </option>
-                        );
-                    })}
-                    
-                </select>
-                {CategoriesValues}
-
-                <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="price" type="text" placeholder="price" {...register("price", { required: true })} />
-
-                <p className='text-red  text-sm'>{errors.price?.message}</p>
-
-                <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="description"  {...register("description", { required: true })} />
-                <p className="text-red pt-2" >{errors.description?.message}</p>
-
-
-                <DropFileInput
-                    onFileChange={(files) => onFileChange(files)}
-                />
-                {/* <UploadButton
-                    type="submit"
-                // onClick={() => handleClick()}
-                > </UploadButton> */}
-                {/* <p className='text-red  text-sm'>{errors.picture?.message}</p> */}
-                <br></br>
-                <button type="sumbit">upload button</button>
-
-            </form>
-        </div>
+        <>
+            <Toaster position="top-center" />
+            <div className="px-4 lg:px-40">
+                <PostButtons />
+                {/* <h1 className="my-5 lg:text-3xl text-sm font-semibold lg:font-bold font-['poppins']">UPLOAD YOUR VIDEO  DETAILS TO MYPROMOSPHERE</h1> */}
+                <form onSubmit={handleSubmit(formSubmit)}>
+                    <div className="flex flex-col gap-3">
+                        <div className="">
+                            <DropFileInput
+                                onFileChange={(files) => onFileChange(files)}
+                                className=""
+                            />
+                        </div>
+                        <div>
+                            <select onChange={onChangecategories} className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+                                {categories.map((option, index) => {
+                                    return (
+                                        <option key={index} value={option} >
+                                            {option}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                        {CategoriesValues}
+                        <div>
+                            <input className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="price" type="text" placeholder="Price" {...register("price", { required: true })} />
+                        </div>
+                        {/* <p className='text-red  text-sm'>{errors.price?.message}</p> */}
+                        <div>
+                            <input className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Description"  {...register("description", { required: true })} />
+                        </div>
+                        {/* <p className="text-red pt-2" >{errors.description?.message}</p> */}
+                        <button type="sumbit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">Upload Button</button>
+                    </div>
+                </form>
+            </div>
+        </>
     )
 }
 // What  remamins in this component is 
