@@ -14,7 +14,7 @@ const EditProfile = () => {
   return (
     // Edit-profile
     <section className="">
-      <div className="flex gap-10 px-4 lg:px-10">
+      <div className="flex lg:flex-row flex-col gap-10 px-4 lg:px-10">
         <article className="flex flex-row lg:flex-col gap-4">
           <div className="">
             <button onClick={() => updateToggle(1)} className>
