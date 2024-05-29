@@ -6,7 +6,7 @@ import MoreTalents from "../components/MoreTalents";
 
 export default function TalentAndValues() {
   return (
-    <section className="bg-[#F6EFEF] px-4 py-20 flex flex-col items-center gap-y-10 lg:px-10 exl:flex-row exl:gap-x-10">
+    <section className="bg-[#F6EFEF] px-4 py-16 flex flex-col items-center gap-y-10 lg:px-10 exl:flex-row exl:gap-x-10">
       <div className=" bg-[#F3E4E6] p-5 w-full flex flex-col exl:basis-1/2">
         <h5 className="text-center my-2 text-base md:text-xl">
           Explore the best of{" "}
@@ -32,7 +32,7 @@ export default function TalentAndValues() {
             search for services easy.
           </p>
         </div>
-        <div className=" flex flex-col gap-y-1">
+        <div className=" flex flex-col gap-y-2">
           <h4 className="font-semibold text-xl md:text-2xl">Discover</h4>
           <p className="text-xs">
             M&E opens the doors to a vast network of services providers across
@@ -41,7 +41,7 @@ export default function TalentAndValues() {
             range of services.
           </p>
         </div>
-        <div>
+        <div  className=" flex flex-col gap-y-2">
           <h4 className="font-semibold text-xl md:text-2xl">Experience</h4>
           <p className="text-xs">
             Refine your search and discover the perfect service providers for
