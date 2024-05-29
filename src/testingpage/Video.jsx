@@ -17,7 +17,7 @@ import UploadButton from '../components/upload-button/UploadButton';
 import PostButtons from "../components/PostButtons.jsx";
 import data from '../../state.json';
 import { Toaster, toast } from 'sonner';
-
+const api_freeads = import.meta.env.VITE_ADS_VIDEO_FREEADS;
 
 console.log(data.States);
 const options = { multi: true };
@@ -149,7 +149,7 @@ const Video = () => {
                         titlevideourl: downloadURL,
                         description: data.description,
                     }
-                    axios.post('http://127.0.0.1:8000/api/vidoesfreeads', payload, {
+                    axios.post(api_freeads, payload, {
                         headers: {
                             Accept: "application/json",
                             Authorization: `Bearer ${token?.token}`
