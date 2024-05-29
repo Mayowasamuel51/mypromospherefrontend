@@ -7,15 +7,14 @@ const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS
 const api_load_v2 =  import.meta.env.VITE_POSTS_UPLOADS
 const Myuploads =  ()  =>{
     const token = useStateContext();
-    console.log(token.token?.id)
+    console.log(token.token.token)
     const userPostUploads = async  () => {
         const response = await axios.get(`${api_load_v2}${token.token?.id}`,{
             Accept: "application/json",
-            Authorization: `Bearer ${token?.token.token}`,
+            Authorization: `Bearer ${token.token.token}`,
         })
         const data = await response.data.posts
-        if(response.status === 200){
-         
+        if(response.data.status === 200){
             console.log(data)
         }else if (response.data.status === 404){
             console.log('SOMETHING IS WONRG SOMEWELL ')

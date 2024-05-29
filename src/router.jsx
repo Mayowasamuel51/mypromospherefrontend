@@ -8,12 +8,14 @@ import "./index.css";
 import React from "react";
 import Loader from "./loader.jsx";
 
-const FeedsHome = React.lazy(() => import("./pages/Feeds/feedsHome.jsx"))
-const APP = React.lazy(() => import("./App"))
-const SignUpPage = React.lazy(() => import("./pages/SignUpPage/SignUp"))
-const LoginPage = React.lazy(() => import("./pages/LoginPage/Login"))
-const DashBoard = React.lazy(() => import("./pages/components/DashBoard.jsx"))
-const SingleFeedPage = React.lazy(() => import("./pages/Feeds/singleFeedPage.jsx"))
+const FeedsHome = React.lazy(() => import("./pages/Feeds/feedsHome.jsx"));
+const APP = React.lazy(() => import("./App"));
+const SignUpPage = React.lazy(() => import("./pages/SignUpPage/SignUp"));
+const LoginPage = React.lazy(() => import("./pages/LoginPage/Login"));
+const DashBoard = React.lazy(() => import("./pages/components/DashBoard.jsx"));
+const SingleFeedPage = React.lazy(() =>
+  import("./pages/Feeds/singleFeedPage.jsx")
+);
 import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
@@ -30,61 +32,70 @@ import Photography from "./pages/skills/Photographers";
 import DashBoardLayout from "./pages/Layout/DashBoardLayout.jsx";
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
 
-
-import TopServices from "./pages/components/TopServices.jsx"
-import TrendingSkills from "./pages/components/TrendingSkills.jsx"
-import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx"
+import TopServices from "./pages/components/TopServices.jsx";
+import TrendingSkills from "./pages/components/TrendingSkills.jsx";
+import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx";
 import Post from "./testingpage/Post.jsx";
 import Video from "./testingpage/Video.jsx";
 import Fulltext from "./testingpage/Fulltext.jsx";
 import Myuploads from "./testingpage/Myupload.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Suspense fallback={<Loader />}><FeedsHome /></Suspense>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <FeedsHome />
+      </Suspense>
+    ),
     children: [
       {
         index: true,
-        element: <TrendingAds />
+        element: <TrendingAds />,
       },
       {
         path: "/top-services",
-        element: <FeedsTopServices />
+        element: <FeedsTopServices />,
       },
-     
     ],
   },
   {
     path: "feed/:id",
-    element: <Suspense fallback={<Loader />}><SingleFeedPage /></Suspense>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <SingleFeedPage />
+      </Suspense>
+    ),
   },
   {
     path: "/profile/:cusName",
-    element: <ProfileHome />
+    element: <ProfileHome />,
   },
   {
     path: "/product",
-    element: <ProductView />
+    element: <ProductView />,
   },
   {
     path: "/home",
-    element: <Suspense fallback={<Loader />}><APP /></Suspense>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <APP />
+      </Suspense>
+    ),
     children: [
       {
         index: true,
-        element: <TopServices />
+        element: <TopServices />,
       },
       {
         path: "trendingSkills",
-        element: <TrendingSkills />
+        element: <TrendingSkills />,
       },
       {
         path: "topSkillsLagos",
-        element: <TopSkillsLagos />
-      }
-    ]
+        element: <TopSkillsLagos />,
+      },
+    ],
   },
   {
     path: "skills",
@@ -92,19 +103,27 @@ const router = createBrowserRouter([
   },
   {
     path: "auth/google",
-    element: <GoogleCallback />
+    element: <GoogleCallback />,
   },
   {
     path: "Login",
-    element: <Suspense fallback={<Loader />}><LoginPage /></Suspense>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <LoginPage />
+      </Suspense>
+    ),
   },
   {
     path: "signup",
-    element: <Suspense fallback={<Loader />}><SignUpPage /></Suspense>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <SignUpPage />
+      </Suspense>
+    ),
   },
   {
-    path:"/full",
-    element:<Fulltext/>
+    path: "/full",
+    element: <Fulltext />,
   },
   {
     path: "dashboard",
@@ -112,7 +131,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Suspense fallback={<Loader />}><DashBoard /></Suspense>,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <DashBoard />
+          </Suspense>
+        ),
       },
       {
         path: "EditProfile",
@@ -124,17 +147,17 @@ const router = createBrowserRouter([
       },
       {
         path: "post",
-        element: <Post/>
+        element: <Post />,
       },
       {
-        path:'myuploads',
-        element:<Myuploads/>
+        path: "myuploads",
+        element: <Myuploads />,
       },
       {
-        path: 'video',
-        element: <Video />
-      }
-    ]
+        path: "video",
+        element: <Video />,
+      },
+    ],
   },
   {
     path: "/layout",
@@ -146,15 +169,23 @@ const router = createBrowserRouter([
       },
       {
         path: "auth/google",
-        element: <GoogleCallback />
+        element: <GoogleCallback />,
       },
       {
         path: "signup",
-        element: <Suspense fallback={<Loader />}><SignUpPage /></Suspense>,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <SignUpPage />
+          </Suspense>
+        ),
       },
       {
         path: "Login",
-        element: <Suspense fallback={<Loader />}><LoginPage /></Suspense>,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <LoginPage />
+          </Suspense>
+        ),
       },
       {
         path: "detail/:detailId",
@@ -166,14 +197,14 @@ const router = createBrowserRouter([
       // },
       {
         path: "detail/:detailId/Login",
-        element: <Suspense fallback={<Loader />}><LoginPage /></Suspense>,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <LoginPage />
+          </Suspense>
+        ),
       },
     ],
   },
 ]);
 
 export default router;
-
-
-
-
