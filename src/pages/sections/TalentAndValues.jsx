@@ -8,7 +8,7 @@ export default function TalentAndValues() {
   return (
     <section className="bg-[#F6EFEF] px-4 py-16 flex flex-col items-center gap-y-10 lg:px-10 exl:flex-row exl:gap-x-10">
       <div className=" bg-[#F3E4E6] p-5 w-full flex flex-col exl:basis-1/2">
-        <h5 className="text-center my-2 text-base md:text-xl">
+        <h5 className="text-center text-base md:text-xl my-4">
           Explore the best of{" "}
           <span className=" tracking-[-1.8px] font-bold">MyPromoSphere</span>
         </h5>
