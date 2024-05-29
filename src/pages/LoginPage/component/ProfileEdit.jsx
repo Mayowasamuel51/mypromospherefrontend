@@ -173,7 +173,7 @@ const ProfileEdit = () => {
   return (
     <section className="">
       <header>
-        <h3 className="md:text-[1.5rem] font-600 md:text-xl text-xl">
+        <h3 className="font-600 md:text-xl text-xl">
           Edit Profile
         </h3>
         <p className="font-400">Set up your presence and hiring needs</p>

@@ -34,7 +34,7 @@ const PersonalInfo = () => {
     <div>
       {/* text  */}
       <article className="">
-        <h1 className="text-[1.125rem] font-700">Personal Information</h1>
+        <h1 className="font-700 md:text-xl text-xl">Personal Information</h1>
         <p className="max-w-lg mt-2">
           Edit your basic personal info to improve recommendations. This
           information is private and won’t show up in your public profile
