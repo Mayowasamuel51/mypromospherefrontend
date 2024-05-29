@@ -45,7 +45,7 @@ export default function CategoryContainer() {
       {Categories.map(({ id, category, rating, skills }) => {
         return (
           <div key={id} className="bg-lightGrayishBlue px-4 py-3 rounded-md w-full bigLg:w-[260px] exl:w-[400px]">
-            <h3 className="capitalize font-medium">{category}</h3>
+            <h3 className="capitalize font-medium text-sm">{category}</h3>
             <div className=' flex items-center justify-between'>
               <div className=' flex items-center gap-x-1'>
                 <img src={star} alt="star" className=' w-4' />
