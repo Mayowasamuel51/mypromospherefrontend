@@ -67,10 +67,10 @@ const router = createBrowserRouter([
     path: "/profile/:cusName",
     element: <ProfileHome />
   },
-  {
-    path: "/product",
-    element: <ProductView />
-  },
+  // {
+  //   path: "/product",
+  //   element: <ProductView />
+  // },
   {
     path: "/home",
     element: <Suspense fallback={<Loader />}><APP /></Suspense>,

@@ -13,9 +13,11 @@ const TopServices = () => {
     return (
         <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 overflow-x-hidden">
             <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-                </div>
+                <Link to="/feed/1">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed3} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    </div>
+                </Link>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
                         <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
@@ -24,9 +26,11 @@ const TopServices = () => {
                 </Link>
             </div>
             <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed4} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-                </div>
+                <Link to="/feed/2">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed4} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    </div>
+                </Link>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
                         <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
@@ -35,9 +39,11 @@ const TopServices = () => {
                 </Link>
             </div>
             <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed5} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-                </div>
+                <Link to="/feed/3">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed5} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    </div>
+                </Link>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
                         <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />
@@ -46,9 +52,11 @@ const TopServices = () => {
                 </Link>
             </div>
             <div className="flex flex-col gap-4">
-                <div>
-                    <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-                </div>
+                <Link to="/feed/4">
+                    <div>
+                        <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
+                    </div>
+                </Link>
                 <Link to="/profile/timilehin babade">
                     <div className="flex items-center gap-2">
                         <LazyLoadImage effect="blur" src={user} alt="" className="w-10 aspect-square" />

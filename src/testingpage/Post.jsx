@@ -27,7 +27,6 @@ import data from "../../state.json";
 import Dropzone from 'react-dropzone';
 import uploadImg from '../assests/cloud-upload-regular-240.png';
 import { Toaster, toast } from 'sonner';
-import { useDropzone } from 'react-dropzone'
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
@@ -281,7 +280,7 @@ const Post = () => {
                     <div {...getRootProps()}>
                       <input id="dragOrDrop" {...getInputProps()} />
                       <div className="text-center py-4">
-                        <img src={uploadImg} className="mx-auto w-[100px] md:w-full" alt="" />
+                        <img src={uploadImg} className="mx-auto w-[100px] md:w-[200px]" alt="" />
                         <p className="font-semibold text-xs">Drag &apos;n&apos; drop some files here, or <span className="underline">click</span> to select files</p>
                       </div>
                     </div>

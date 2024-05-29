@@ -56,9 +56,9 @@ export default function Navbar({profile, blue}) {
 
       <div onClick={handleToggle} className=" z-40 exl:hidden">
         {toggleIcon ? (
-          <XMarkIcon width={35} className={`${bg ? "text-black" : "text-white"}`} />
+          <XMarkIcon width={35} className={`${bg ? "text-black" : location.pathname === "/home" ? "text-white" : ""}`} />
         ) : (
-          <Bars3BottomRightIcon width={35} className={`${bg ? "text-black" : "text-white"}`} />
+          <Bars3BottomRightIcon width={35} className={`${bg ? "text-black" : location.pathname === "/home" ? "text-white" : ""}`} />
         )}
       </div>
       <AnimatePresence>
@@ -77,7 +77,6 @@ export default function Navbar({profile, blue}) {
           className="md:text-base font-medium cursor-pointer"
           spy={true}
         >
-
           Top skills
         </ScrollLink>
         <ScrollLink

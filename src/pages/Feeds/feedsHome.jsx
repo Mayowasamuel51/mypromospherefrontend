@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
-import { FaFilter } from "react-icons/fa6";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
 import { Link, Outlet, useLocation } from "react-router-dom";
@@ -85,7 +85,7 @@ const FeedsHome = () => {
   };
 
   const handleOnSelect = (item) => {
-    axios(`${api}${item.name}`).then((response) => {
+    axios.get(`${api}${item.name}`).then((response) => {
       if (response.status === 200) {
         console.log(response.data.data);
       }

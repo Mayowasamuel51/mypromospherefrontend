@@ -10,7 +10,7 @@ const EditProfile = () => {
   const updateToggle = (id) => {
     setToggle(id);
   };
-  // if (!token) return <Navigate  to="/"/>
+  if (!token) return <Navigate  to="/"/>
   return (
     // Edit-profile
     <section className="">

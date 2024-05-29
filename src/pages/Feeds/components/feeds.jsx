@@ -12,7 +12,7 @@ const feeds = () => {
       <h1 className="font-semibold lg:text-3xl text-base my-7">Personalized ads just for you</h1>
       <div className="place-items-center grid items-stretch md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 grid-rows-1 overflow-x-hidden">
         <div className="flex flex-col gap-4">
-          <Link to="/product">
+          <Link to="/feed/1">
             <div>
               <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
@@ -25,7 +25,7 @@ const feeds = () => {
           </Link>
         </div>
         <div className="flex flex-col gap-4">
-          <Link to="/product">
+          <Link to="/feed/1">
             <div>
               <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
@@ -38,7 +38,7 @@ const feeds = () => {
           </Link>
         </div>
         <div className="flex flex-col gap-4">
-          <Link to="/product">
+          <Link to="/feed/1">
             <div>
               <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
@@ -51,7 +51,7 @@ const feeds = () => {
           </Link>
         </div>
         <div className="flex flex-col gap-4">
-          <Link to="/product">
+          <Link to="/feed/1">
             <div>
               <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>

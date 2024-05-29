@@ -192,7 +192,6 @@ const Video = () => {
                             <DropFileInput
                                 onFileChange={(files) => onFileChange(files)}
                                 className=""
-                                style={{ width: "100%" }}
                             />
                         </div>
                         <div>
