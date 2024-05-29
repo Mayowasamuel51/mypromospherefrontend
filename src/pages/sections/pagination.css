@@ -24,7 +24,7 @@ div.mySwiper {
     right: 0;
     top: 0;
     transform: translateY(0);
-    margin-left : 80vw;
+    margin-left : 70vw;
 }
 .testimonial div.splide__arrows.splide__arrows--ltr > button:last-child {
     top: 0;
@@ -32,8 +32,11 @@ div.mySwiper {
     transform: translateY(0);
 }
 
-@media only screen and(max-width:700px) {
+@media only screen and (max-width:700px) {
     .testimonial div.splide__arrows.splide__arrows--ltr > button:first-child {
+        right: 0;
+        top: 0;
+        transform: translateY(0);
         margin-left : 50vw;
     }
 }

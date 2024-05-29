@@ -1,47 +1,48 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Languages } from '../../../utils/data';
+// import Calendar from 'react-calendar';
 
 
 const PersonalInfo = () => {
-     const [countries, setCountries] = useState([]);
-     const[country, setCountry] = useState("")
-     const[language, setLanguage] = useState("")
-     console.log(language)
-     const changeLanguage = (e)=>{
-      setLanguage(e.target.value)
-     }
-     const changeCountry = (e)=>{
-      setCountry(e.target.value)
-     }
-     const url = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
+  const [value, onChange] = useState(new Date());
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("")
+  const [language, setLanguage] = useState("")
+  console.log(language)
+  const changeLanguage = (e) => {
+    setLanguage(e.target.value)
+  }
+  const changeCountry = (e) => {
+    setCountry(e.target.value)
+  }
+  const url = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
 
-     const fetchCountry = async (url) => {
-       try {
-         const response = await axios.get(url);
-         const data = await response.data;
-         setCountries(data);
-       } catch (error) {
-         console.log(error.response);
-       }
-     };
-     useEffect(() => {
-       fetchCountry(url);
-     }, []);
-     const newCountry = [...new Set(countries.map((item) => item.country))];
+  const fetchCountry = async (url) => {
+    try {
+      const response = await axios.get(url);
+      const data = await response.data;
+      setCountries(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    fetchCountry(url);
+  }, []);
+  const newCountry = [...new Set(countries.map((item) => item.country))];
 
   return (
     <div>
       {/* text  */}
       <article className="">
         <h1 className="font-700 md:text-xl text-xl">Personal Information</h1>
-        <p className="max-w-lg mt-2 text-sm md:text-base">
+        <p className="max-w-lg mt-2 text-xs md:text-base">
           Edit your basic personal info to improve recommendations. This
           information is private and won’t show up in your public profile
         </p>
       </article>
-      {/* end of text  */}
-      {/* birthdate  */}
+
       <div className="mt-2">
         <form>
           <div>
@@ -51,6 +52,7 @@ const PersonalInfo = () => {
               className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
               placeholder="MM-DD-YY"
             />
+             {/* <Calendar onChange={onChange} value={value} /> */}
           </div>
         </form>
       </div>
