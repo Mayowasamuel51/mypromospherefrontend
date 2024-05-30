@@ -11,15 +11,18 @@ import image2 from "../../assests/images/image2.png";
 import roundedImg from "../../assests/images/Ellipse 3.png"
 import web from "../../assests/images/web.png"
 import phone from "../../assests/images/phone.png"
-import { BsTelephone } from "react-icons/bs"
-import { BsGlobe } from "react-icons/bs"
+import anon from "../../assests/images/anon.png"
+import { BsTelephone } from "react-icons/bs";
+import { BsGlobe } from "react-icons/bs";
+import { useStateContext } from "../../contexts/ContextProvider";
 
 
 const ProfileHome = () => {
     // getting each id 
+    const { token } = useStateContext()
     const { cusName } = useParams();
     const eachDetail = perfectWorksData.find(function (each) {
-        return each.id == 1;
+        return each.id == 4;
     });
     const [pending, setPending] = useState(0);
     const [toggle, setToggle] = useState(1);
@@ -37,31 +40,29 @@ const ProfileHome = () => {
                 <article>
                     <div className="w-full relative">
                         <img
-                            src={infoHeader}
+                            src={token?.profileImage ?? photoHeader}
                             alt=""
-                            className="rounded-b-[3rem] object-cover object-top"
+                            className="md:rounded-b-[60px] rounded-b-2xl object-center"
                         />
-                        <div className="absolute inset-0 bg-black opacity-50 rounded-b-[2.75rem]"></div>
-                        <div className=" xs:w-[4rem] xs:h-[4rem] bg-white rounded-full absolute inseti"></div>
+                        <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
                         <img
-                            src={roundedImg}
+                            src={token?.profileImage ?? anon}
                             alt=""
-                            className="w-[25%] inseti lg:w-[15%]"
+                            className="w-[25%] inseti lg:w-[15%] rounded-full"
                         />
                     </div>
                 </article>
 
                 {/* info  */}
                 <div className="my-10">
-                    <article className=" xs:mt-[4rem] md:mt-[7.8rem] lg:mt-[5.8rem] large:mt-[8rem] text-center">
-                        <div>
-                            <h1 className="font-700 md:text-xl text-lg">
+                    <article className="text-center md:mt-20">
+                        <div className="flex flex-col gap-2">
+                            <h1 className="font-700 md:text-2xl text-lg capitalize">
                                 {cusName}
                             </h1>
-                            <p className="md:text-base text-base">{job}</p>
+                            <p className="md:text-lg text-base">{job}</p>
                         </div>
                     </article>
-                    {/* web & phone  */}
                     <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
                         {/* web */}
                         <article className="px-4 md:px-10 flex items-center gap-x-2">

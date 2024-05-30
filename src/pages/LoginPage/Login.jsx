@@ -169,7 +169,6 @@ const Login = () => {
                   }
                   placeholder="example@gmail.com"
                 />
-
               </div>
               <div className="flex flex-col my-3">
                 <label
