@@ -58,7 +58,7 @@ const Login = () => {
         setToken(response.data)
         setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
-        navigate("/dashboard")
+        navigate("/")
         toast.success("successfully Logged In")
         setLoading(false)
       }
@@ -94,7 +94,7 @@ const Login = () => {
         // setToken(data.data)
         // setUser(data.data)
         setLoginUrl(data.url)
-        // navigate("/dashboard")
+        // navigate("/")
         console.log(data)
       })
       .catch((error) => console.error(error));
@@ -171,7 +171,6 @@ const Login = () => {
                 />
 
               </div>
-              {/* password  */}
               <div className="flex flex-col my-3">
                 <label
                   htmlFor="name"

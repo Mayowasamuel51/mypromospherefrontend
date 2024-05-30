@@ -29,11 +29,11 @@ import uploadImg from '../assests/cloud-upload-regular-240.png';
 import { Toaster, toast } from 'sonner';
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import Loader from '../loader.jsx';
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
 const Post = () => {
-  // console.log(categories)
   const [categoriesValues, setCategoriesValues] = useState("");
   const [headlinevalues, setHeadlinesValue] = useState(headlines);
   const { user, setUser } = useStateContext();
@@ -121,6 +121,7 @@ const Post = () => {
   }
 
   const formSubmit = (data) => {
+    console.log("i was clicked")
     setLoading(true)
     console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
     console.log(makepic);
