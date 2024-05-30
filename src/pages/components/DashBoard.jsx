@@ -25,11 +25,11 @@ function DefualtLayout() {
                             alt={roundedImg}
                             className="w-[30%] md:w-[150px] mx-auto"
                         />
-                        <h1 className="text-center font-700 text-lg md:text-xl">
+                        <h1 className="text-center font-700 text-lg md:text-3xl capitalize">
                             {token ? `${token["user-name"]}` : 'Anonymous'}
                         </h1>
                         <div className="flex items-center justify-center gap-x-3">
-                            <button className="bg-[#BCB9B9] p-2 px-4 rounded-md cursor-pointer">
+                            <button className="bg-slate-300 hover:bg-slate-400 duration-200 p-2 px-4 rounded-md cursor-pointer">
                                 <p className="text-center">share</p>
                             </button>
                             <Link to={'EditProfile'} className="bigLg:hidden">
