@@ -12,7 +12,6 @@ const EditProfile = () => {
   };
   if (!token) return <Navigate  to="/"/>
   return (
-    // Edit-profile
     <section className="">
       <div className="flex lg:flex-row flex-col gap-4 md:gap-10 px-4 lg:px-10">
         <article className="flex flex-row lg:flex-col gap-4 mt-4">

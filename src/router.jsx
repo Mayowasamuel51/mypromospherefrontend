@@ -19,7 +19,7 @@ const SingleFeedPage = React.lazy(() =>
 import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
-import FeedsTopServices from "./pages/Feeds/components/topServices.jsx";
+import FeedsTopServices from "./pages/Feeds/components/topVideos.jsx";
 import TrendingAds from "./pages/Feeds/components/trendingAds.jsx";
 
 // import SignUpPage from "./pages/SignUpPage/SignUp";
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <TrendingAds />,
       },
       {
-        path: "/top-services",
+        path: "/top-videos",
         element: <FeedsTopServices />,
       },
     ],
