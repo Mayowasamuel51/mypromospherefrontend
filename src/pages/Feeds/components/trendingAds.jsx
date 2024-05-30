@@ -62,7 +62,7 @@ const TrendingAds = () => {
                 ))}
             </section>
             <div className="flex items-center gap-2 lg:my-10 my-5">
-                <img src={LOGO} className='w-10 h-10' alt="" />
+                {/* <img src={LOGO} className='w-10 h-10' alt="" /> */}
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>ALWAYS STAY IN VOGUE</h1>
             </div> 
             <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
@@ -104,7 +104,7 @@ const TrendingAds = () => {
                 ))}
             </section>
             <div className="flex items-center gap-2 lg:my-10 my-5">
-                <img src={LOGO} className='w-10 h-10' alt="" />
+                {/* <img src={LOGO} className='w-10 h-10' alt="" /> */}
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
             </div>
             <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
@@ -146,7 +146,7 @@ const TrendingAds = () => {
                 ))}
             </section>
             <div className="flex items-center gap-2 lg:my-10 my-5">
-                <img src={LOGO} className='w-10 h-10' alt="" />
+                {/* <img src={LOGO} className='w-10 h-10' alt="" /> */}
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
             </div>
             <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
