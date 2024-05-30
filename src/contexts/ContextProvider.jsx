@@ -9,14 +9,15 @@ const StateContext = createContext({
     setToken: () => { }
 });
 
+// eslint-disable-next-line react/prop-types
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState()
     const [FullScreen, setFullScreen] = useState(false)
     const [token, setToken] = useState(JSON.parse(localStorage.getItem("user-details")))
     useEffect(()=> {
         const handleResize = ()=> {
             const size = window.innerWidth;
-            size > 1024 ? setFullScreen(true) : setFullScreen(false)
+            size > 1026 ? setFullScreen(true) : setFullScreen(false)
         }
         handleResize()
         window.addEventListener("resize", handleResize)
@@ -25,9 +26,9 @@ export const ContextProvider = ({ children }) => {
     }, [FullScreen])
 
     const LogOut = ()=>{
-        localStorage.removeItem("user-details")
         setToken(null)
         setUser(null)
+        localStorage.removeItem("user-details")
         toast.success("Successfull Logged Out")
     }
     return (

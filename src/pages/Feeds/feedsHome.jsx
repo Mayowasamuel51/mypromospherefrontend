@@ -2,15 +2,38 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useSpring } from "framer-motion";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import LOGO from "../../assests/SVGs/logo.svg";
 // import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { IoMdArrowUp } from "react-icons/io";
 
 const FeedsHome = () => {
+  const [scrollValue, setScrollValue] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const pos = document.documentElement.scrollTop;
+      const calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollValue = Math.round((pos * 100) / calcHeight);
+      setScrollValue(scrollValue);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  console.log(scrollValue)
+
+  const handleClick = () => {
+    document.documentElement.scrollTop = 0;
+  };
   const location = useLocation();
   // const { FullScreen } = useStateContext();
   const ref = useRef(null);
@@ -69,7 +92,7 @@ const FeedsHome = () => {
       const dataResponse = await response.data.data;
       setData(dataResponse);
       console.log(dataResponse);
-    } catch {}
+    } catch { }
   };
 
   const handleOnSearch = (string, results) => {
@@ -97,6 +120,7 @@ const FeedsHome = () => {
   const handleOnFocus = () => {
     console.log("Focused");
   };
+
   useEffect(() => {
     const updateStickyTop = () => {
       if (ref.current) {
@@ -114,10 +138,11 @@ const FeedsHome = () => {
     };
   }, []);
 
+
   return (
-    <div>
+    <div className="scroll-smooth">
       <Navbar blue={true} />
-      <section className="lg:px-10">
+      <section className="lg:px-10 scroll-smooth">
         <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
           <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">
             Perfect Works Made for You
@@ -135,65 +160,9 @@ const FeedsHome = () => {
                 onSelect={handleOnSelect}
                 onFocus={handleOnFocus}
                 autoFocus
-                // formatResult={formatResult}
+              // formatResult={formatResult}
               />
             </div>
-            {/* <Splide
-              options={{
-                type: "loop",
-                gap: "20px",
-                focus: 1,
-                autoplay: true,
-                pagination: false,
-                arrows: false,
-                interval: 4000,
-                speed: 2000,
-                drag: "free",
-                snap: true,
-                autoWidth: true,
-              }}
-              className="py-2 md:py-10"
-            >
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">Tailors</p>
-                </div>
-              </SplideSlide>
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">
-                    Online Vendor
-                  </p>
-                </div>
-              </SplideSlide>
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">DEV</p>
-                </div>
-              </SplideSlide>
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">
-                    Hair Stylist
-                  </p>
-                </div>
-              </SplideSlide>
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">Baker</p>
-                </div>
-              </SplideSlide>
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">MakeUp</p>
-                </div>
-              </SplideSlide>
-              <SplideSlide className="border-2 border-black bg-black text-white rounded-md cursor-pointer">
-                <div className="py-2 px-2 md:py-3 md:px-4">
-                  <p className="font-semibold md:text-base text-sm">Mechanic</p>
-                </div>
-              </SplideSlide>
-            </Splide> */}
             <div>
               <Feeds />
             </div>
@@ -201,41 +170,36 @@ const FeedsHome = () => {
           <section className="py-4 lg:py-20">
             <motion.div
               ref={ref}
-              className={`${
-                isInView ? "stickyy w-full" : ""
-              } md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
+              className={`${isInView ? "stickyy w-full" : ""
+                } md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
             >
               <div className="flex md:justify-center items-center md:gap-4 font-semibold">
                 <Link
                   to="/"
-                  className={`text-center flex-1 ${
-                    location.pathname === "/" && "bg-[#EC6A87] text-white"
-                  }`}
+                  className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+                    }`}
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 ${
-                      location.pathname === "/" && "bg-[#EC6A87] text-white"
-                    }`}
+                    className={`whitespace-nowrap px-3 md:px-6 py-4 ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+                      }`}
                   >
                     Trending Ads
                   </motion.button>
                 </Link>
                 <Link
-                  to="/top-services"
-                  className={`text-center flex-1 ${
-                    location.pathname === "/top-services" &&
+                  to="/top-videos"
+                  className={`text-center flex-1 ${location.pathname === "/top-videos" &&
                     "bg-[#EC6A87] text-white"
-                  }`}
+                    }`}
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black ${
-                      location.pathname === "/top-services" &&
+                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black ${location.pathname === "/top-videos" &&
                       "bg-[#EC6A87] text-white"
-                    }`}
+                      }`}
                   >
-                    Top Services
+                    Browse Our Top Video Ads
                   </motion.button>
                 </Link>
               </div>
@@ -246,6 +210,15 @@ const FeedsHome = () => {
           </section>
         </div>
       </section>
+
+      <div className={`${scrollValue > 2 ? 'block' : 'hidden'} duration-300 delay-150 grid place-items-center fixed bottom-10 right-10 w-[50px] aspect-square rounded-full`}
+        style={{
+          background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`,
+        }}
+        onClick={handleClick}
+      >
+        <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
+      </div>
     </div>
   );
 };

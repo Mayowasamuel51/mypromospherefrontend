@@ -8,8 +8,11 @@ import feed4 from "../../../assests/images/feed4.svg";
 import feed5 from "../../../assests/images/feed5.svg";
 import feed6 from "../../../assests/images/feed6.svg";
 import { Link } from 'react-router-dom';
+import FetchVideos from '../../../hooks/fetchVideos';
 
-const TopServices = () => {
+const TopVideos = () => {
+    const { data, isLoading, error } = FetchVideos();
+    console.log(data?.data?.videos)
     return (
         <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 overflow-x-hidden">
             <div className="flex flex-col gap-4">
@@ -112,4 +115,4 @@ const TopServices = () => {
     )
 }
 
-export default TopServices
+export default TopVideos;
