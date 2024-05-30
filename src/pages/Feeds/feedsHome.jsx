@@ -7,35 +7,14 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import LOGO from "../../assests/SVGs/logo.svg";
-// import { useStateContext } from "../../contexts/ContextProvider"
+import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
 
 const FeedsHome = () => {
-  const [scrollValue, setScrollValue] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const pos = document.documentElement.scrollTop;
-      const calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrollValue = Math.round((pos * 100) / calcHeight);
-      setScrollValue(scrollValue);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  console.log(scrollValue)
-
-  const handleClick = () => {
-    document.documentElement.scrollTop = 0;
-  };
+  
   const location = useLocation();
-  // const { FullScreen } = useStateContext();
+  const { scrollValue, handleClick } = useStateContext();
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
@@ -211,7 +190,7 @@ const FeedsHome = () => {
         </div>
       </section>
 
-      <div className={`${scrollValue > 2 ? 'block' : 'hidden'} duration-300 delay-150 grid place-items-center fixed bottom-10 right-10 w-[50px] aspect-square rounded-full`}
+      <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} duration-300 grid place-items-center fixed bottom-10 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}
         style={{
           background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`,
         }}

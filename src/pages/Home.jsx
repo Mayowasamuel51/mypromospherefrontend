@@ -1,17 +1,17 @@
-// sections
 import TalentAndValues from "./sections/TalentAndValues";
 import Categories from "./sections/Categories";
 import Grow from "./sections/Grow";
 import Testimonials from "./sections/Testimonials";
 import CTA from "./sections/CTA";
 import Services from "./sections/Services";
-import ServiceProviders from "./sections/ServiceProviders";
 import NewHero from "./sections/NewHero";
-import SkillsNav from "./sections/SkillsNav";
-import { Outlet } from "react-router-dom";
+import { IoMdArrowUp } from "react-icons/io";
+
+import { useStateContext } from "../contexts/ContextProvider";
 export default function Home() {
+  const {scrollValue, handleClick} = useStateContext()
   return (
-    <main className=" ">
+    <main className="">
       <NewHero/>
       <Services/>
       <TalentAndValues />
@@ -22,6 +22,14 @@ export default function Home() {
       {/* <ServiceProviders/> */}
       <Testimonials />
       <CTA />
+      <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} duration-300 grid place-items-center fixed bottom-10 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}
+        style={{
+          background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`,
+        }}
+        onClick={handleClick}
+      >
+        <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
+      </div>
     </main>
   );
 }
