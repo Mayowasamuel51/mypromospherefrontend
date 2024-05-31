@@ -80,13 +80,18 @@ export default function Navbar({profile, blue}) {
         >
           Top skills
         </ScrollLink>
+        {location.pathname === "/home" ? 
+        <a href="#testimonials" className=" md:text-base font-medium cursor-pointer">
+          Testimonials
+        </a> :
         <ScrollLink
-          to={location.pathname === "/home" ? "testimonials" : "/"} smooth={true} duration={1500}
+          to={"testimonials"} smooth={true} duration={1500}
           className=" md:text-base font-medium cursor-pointer"
           spy={true}
         >
-          Testimonials
+        Testimonials
         </ScrollLink>
+      }
       </nav>
       
        {token ?

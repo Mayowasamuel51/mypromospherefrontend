@@ -55,7 +55,7 @@ const childVariant = {
 const DashboardMobileNav = ({ toggleNav, LogOut }) => {
   const location = useLocation()
   return (
-    <motion.div variants={MainCOntainerdivVariant} animate={toggleNav ? "animate" : "initial"} exit="exit" className={`text-black fixed inset-0 flex justify-between items-center gap-10`}>
+    <motion.div variants={MainCOntainerdivVariant} animate={toggleNav ? "animate" : "initial"} exit="exit" className={`lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10`}>
       <motion.nav variants={navVariant} className={`text-black min-h-screen w-full lg:py-0 py-10 nav flex flex-col justify-between items-center gap-10 bg-white bg-transparent bg-opacity-5 backdrop-blur-2xl`}>
         {location.pathname !== "/dashboard" && <motion.div className="">
           <Link to="/dashboard">

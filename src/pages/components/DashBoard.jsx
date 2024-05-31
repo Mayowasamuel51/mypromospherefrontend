@@ -33,7 +33,7 @@ function DefualtLayout() {
                                 <p className="text-center">share</p>
                             </button>
                             <Link to={'EditProfile'} className="bigLg:hidden">
-                                <button className="bg-[#BCB9B9] p-2 px-4 rounded-md cursor-pointer">
+                                <button className="bg-slate-300 hover:bg-slate-400 duration-200 p-2 px-4 rounded-md cursor-pointer">
                                     <p className="text-center">Edit profile</p>
                                 </button>
                             </Link>
