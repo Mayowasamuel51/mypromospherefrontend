@@ -6,7 +6,7 @@ const DashBoardLayout = () => {
   return (
     <>
       <DashBoardNav />
-      <div className="py-16 md:py-8">
+      <div className="py-10 md:py-8 border-2">
         <Outlet/>
       </div>
     </>

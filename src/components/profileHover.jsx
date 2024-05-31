@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import anon from "../assests/images/anon.png"
 import { useStateContext } from '../contexts/ContextProvider';
@@ -39,6 +39,7 @@ const liVariant = {
 }
 
 const ProfileHover = ({ LogOut }) => {
+    const location = useLocation();
     const { token } = useStateContext();
     const [profileNav, setProfileNav] = useState(false)
     const mouseOver = () => {
@@ -62,7 +63,7 @@ const ProfileHover = ({ LogOut }) => {
                         </Link>
                     </motion.li>
                     <motion.li  variants={liVariant}>
-                        <Link to={'EditProfile'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">Edit Profile</Link>
+                        <Link to={location.pathname === "/" ? 'dashboard/EditProfile' : 'EditProfile'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">Edit Profile</Link>
                     </motion.li>
                     <motion.li variants={liVariant}>
                         <p onClick={() => LogOut()} className="w-fit cursor-pointer text-red font-['Poppins'] text-base font-medium">logout</p>

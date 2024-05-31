@@ -75,28 +75,28 @@ const router = createBrowserRouter([
   //   path: "/product",
   //   element: <ProductView />
   // },
-  {
-    path: "/home",
-    element: (
-      <Suspense fallback={<Loader />}>
-        <APP />
-      </Suspense>
-    ),
-    children: [
-      {
-        index: true,
-        element: <TopServices />,
-      },
-      {
-        path: "trendingSkills",
-        element: <TrendingSkills />,
-      },
-      {
-        path: "topSkillsLagos",
-        element: <TopSkillsLagos />,
-      },
-    ],
-  },
+  // {
+  //   path: "/home",
+  //   element: (
+  //     <Suspense fallback={<Loader />}>
+  //       <APP />
+  //     </Suspense>
+  //   ),
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <TopServices />,
+  //     },
+  //     {
+  //       path: "trendingSkills",
+  //       element: <TrendingSkills />,
+  //     },
+  //     {
+  //       path: "topSkillsLagos",
+  //       element: <TopSkillsLagos />,
+  //     },
+  //   ],
+  // },
   {
     path: "skills",
     element: <Photography />,
