@@ -29,48 +29,54 @@ import uploadImg from '../assests/cloud-upload-regular-240.png';
 import { Toaster, toast } from 'sonner';
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import {
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query'
 import Loader from '../loader.jsx';
+
+
 
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 //note after the success post upload reload the componetns
 const Post = () => {
+  const queryClient = useQueryClient()
   const [categoriesValues, setCategoriesValues] = useState("");
   const [headlinevalues, setHeadlinesValue] = useState(headlines);
   const { user, setUser } = useStateContext();
   const [makepic, setmakepic] = useState("");
-  const token = useStateContext();
+  const { token } = useStateContext();
   const [imageUpload, setImageUpload] = useState([]);
   const [files, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const handleValues = (e) => {
     setCategoriesValues(e.target.value);
   };
-  const [loading, setLoading] = useState(false)
+  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
+
   const schema = yup.object().shape({
-    // price: yup.string().required(),
-    // categories: yup.string().required(),
-    // description: yup.string().required(),
-    // headlines: yup.string().required(),
-    // categories: yup.string().required(),
-    // state: yup.string().required(),
-    // localGovernment: yup.string().required(),
-    // picture: yup
-      // .mixed()
-      // .test(
-      //   "required",
-      //   "You need to provide more than one image ",
-      //   (value) => {
-      //     return value && value.length > 1;
-      //   }
-      // )
+    price: yup.string().required("Price is required"),
+    categories: yup.string().required("Category is required"),
+    description: yup.string().required("Description is required"),
+    // headlines: yup.string().required("Headline is required"),
+    state: yup.string().required("State is required"),
+    localGovernment: yup.string().required("Local Government is required"),
+    picture: yup
+      .mixed()
+      .test(
+        "required",
+        "You need to provide more than one image ",
+        (value) => {
+          return value && value.length > 1;
+        }
+      )
       // .test("fileSize", "The file is too large", (value, context) => {
-      //     return value && value[0] && value[0].size <= 200000;
+      //   return value && value[0] && value[0].size <= 200000;
       // })
-      // .test("type", "We only support jpeg, ", function (value) {
-      //   return (
-      //     (value && value[0] && value[0].type === "image/jpeg") ||
-      //     (value && value[0] && value[0].type === "image/png")
-      //   );
-      // }),
+      .test("type", "We only support jpeg and png", (value) =>
+        value ? SUPPORTED_FORMATS.includes(value[0].type) : true
+      ),
   });
   const {
     register,
@@ -80,15 +86,15 @@ const Post = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const [testfile, setTestFile]= useState(null)
+  const [testfile, setTestFile] = useState(null)
 
   function handleChange(e) {
-      console.log(e.target.files);
-      setTestFile(URL.createObjectURL(e.target.files[0]));
+    console.log(e.target.files);
+    setTestFile(URL.createObjectURL(e.target.files[0]));
   }
   const dragOrClick = (images) => {
     const selectedFiles = images;
-    if (!selectedFiles.length) return; // Handle empty selection
+    if (!selectedFiles.length) return;
     const newImages = [...imageUpload];
     for (const file of selectedFiles) {
       const reader = new FileReader();
@@ -99,13 +105,13 @@ const Post = () => {
       };
       reader.readAsDataURL(file);
     }
-   
+
   }
+
   const fileRemove = (file) => {
     const updatedList = [...imageUpload];
     updatedList.splice(imageUpload.indexOf(file), 1);
     setImageUpload(updatedList);
-    // props.onFileChange(updatedList);
   }
 
   const imagesListRef = ref(storage, "images/");
@@ -114,6 +120,7 @@ const Post = () => {
 
   const [localGvt, setLocalGvt] = useState();
   const result = Object.entries(data.full);
+
   function selectState(e) {
     setLocalGvt();
     const selectedState = e.target.value;
@@ -121,127 +128,185 @@ const Post = () => {
       const filterState = result.filter((x) => {
         return x[0].toLowerCase() === selectedState.toLowerCase();
       });
-      // setLocalGvt(filterState[0][1]);
+      setLocalGvt(filterState[0][1]);
     } else {
-      // setLocalGvt([]);
+      setLocalGvt([]);
     }
   }
 
-  const formSubmit = (e) => {
-    e.preventDefault()
-    console.log("i was clicked")
-    setLoading(true)
-    console.log('Images picked one ',imageUpload[0])
-    console.log(makepic);
-    const formData = new FormData();
-    const myArray = [
-      "Lagos",
-      "lagos", // Case-sensitive
-      "Oyo",
-      "Abuja",
-      "Ogun",
-      "Rivers",
-      "Kano",
-    ];
-    const randomIndex = Math.floor(Math.random() * myArray.length);
-    // Access the random string using the index
-    const randomString = myArray[randomIndex];
-    // formData.append("titleImageurl",data.picture[0])
-    formData.append("titleImageurl",imageUpload[0]);
-    // formData.append("headlines", data.headlines);
-    // formData.append("categories", data.categories);
-    // formData.append("description", data.description);
-    // formData.append("price_range", data.price);
-    // formData.append("state", data.state);
-    // formData.append("local_gov", data.localGovernment);
-    // formData.append("user_image", token?.token.profileImage);
-    axios
-      .post(api_freeads, formData, {
+  // const formSubmit = (data) => {
+  //   console.log("i was clicked")
+  //   setLoading(true)
+  //   console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
+  //   console.log(makepic);
+  //   const formData = new FormData();
+  //   const myArray = [
+  //     "Lagos",
+  //     "lagos", // Case-sensitive
+  //     "Oyo",
+  //     "Abuja",
+  //     "Ogun",
+  //     "Rivers",
+  //     "Kano",
+  //   ];
+  //   const randomIndex = Math.floor(Math.random() * myArray.length);
+
+  //   // Access the random string using the index
+  //   const randomString = myArray[randomIndex];
+  //   formData.append("titleImageurl", data.picture[0]);
+  //   formData.append("headlines", data.headlines);
+  //   formData.append("categories", data.categories);
+  //   formData.append("description", data.description);
+  //   formData.append("price_range", data.price);
+  //   formData.append("state", data.state);
+  //   formData.append("local_gov", data.localGovernment);
+  //   formData.append("user_image", token?.token.profileImage);
+  //   axios
+  //     .post(api_freeads, formData, {
+  //       headers: {
+  //         // Accept: "application/json",
+  //         Accept: "application/vnd.api+json",
+  //         "Content-Type": "multipart/form-data",
+  //         Authorization: `Bearer ${token?.token.token}`,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         console.log("worked");
+  //         console.log(res.data.item);
+  //         setLoading(false)
+  //         return res.data.item;
+
+  //       } else if (res.status === 500 || res.status === 401) {
+  //         setLoading(false)
+  //         console.log(res.data.message);
+  //       }
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       for (let i = 0; i < data.picture.length; i++) {
+  //         const imageRef = ref(
+  //           storage,
+  //           `/mulitpleFiles/${data.picture[i].name} ${token?.token.user}`
+  //         );
+  //         const uploadTask = uploadBytesResumable(imageRef, data.picture[i]);
+  //         uploadTask.on(
+  //           "state_changed",
+  //           (snapshot) => {
+  //             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+  //             const progress =
+  //               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //             console.log("Upload is " + progress + "% done");
+  //             switch (snapshot.state) {
+  //               case "paused":
+  //                 console.log("Upload is paused");
+  //                 break;
+  //               case "running":
+  //                 console.log("Upload is running");
+  //                 break;
+  //             }
+  //           },
+  //           (error) => {
+  //             // A full list of error codes is available at
+  //             // https://firebase.google.com/docs/storage/web/handle-errors
+  //             switch (error.code) {
+  //               case "storage/unauthorized":
+  //                 // User doesn't have permission to access the object
+  //                 break;
+  //               case "storage/canceled":
+  //                 // User canceled the upload
+  //                 break;
+  //               // ..
+  //               case "storage/unknown":
+  //                 // Unknown error occurred, inspect error.serverResponse
+  //                 break;
+  //             }
+  //           },
+  //           () => {
+  //             // Upload completed successfully, now we can get the download URL
+  //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //               console.log("these are the images  ", [downloadURL]);
+  //               const second_payload = {
+  //                 itemadsimagesurls: downloadURL,
+  //                 id: token?.token.id,
+  //               };
+  //               axios
+  //                 .post(`${api_freeads}/${response}`, second_payload, {
+  //                   headers: {
+  //                     // Accept: "application/json",
+  //                     Accept: "application/vnd.api+json",
+  //                     Authorization: `Bearer ${token?.token.token}`,
+  //                   },
+  //                 })
+  //                 .then((res) => {
+  //                   if (res.status === 200) {
+  //                     console.log("worked with second ...................");
+  //                     console.log(res.data.item);
+  //                   } else if (res.status === 500 || res.status === 401) {
+  //                     console.log(res.data.message);
+  //                   }
+  //                 })
+  //                 .catch((err) => console.log(err.message));
+  //             });
+  //           }
+  //         );
+  //       }
+  //     })
+  //     .catch((err) => console.log(err.message));
+  // };
+
+  const uploadPostMutation = useMutation({
+    mutationFn: (payload) => {
+      const response = axios.post(api_freeads, payload, {
         headers: {
-          // Accept: "application/json",
+          Accept: "application/json",
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token?.token.token}`,
+          Authorization: `Bearer ${token?.token}`,
         },
       })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("worked");
-          // console.log(res.data.item);
-          // setLoading(false)
-          return res.data.item;
-        } else if (res.status === 500 || res.status === 401) {
-          setLoading(false)
-          console.log(res.data.message);
-        }
-      })
-      .then((response) => {
-        console.log(response);
-        const formData = new FormData();
-       
-         for (let i = 0; i < imageUpload.length; i++) {
-          formData.append("itemadsimagesurls", imageUpload[i]);
-          formData.append("id", token?.token.id);
-          axios
-          .post(`${api_freeads}/${response}`, formData, {
-            headers: {
-              Accept: "application/vnd.api+json",
-              Authorization: `Bearer ${token?.token.token}`,
-            },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              console.log("worked with second ...................");
-              console.log(res.data.item);
-            } else if (res.status === 500 || res.status === 401) {
-              console.log(res.data.message);
-            }
-          })
-          .catch((err) => console.log(err.message));
-         }
-      })
-    
-      .catch((err) => console.log(err.message));
-    
-    
-  };
-
-  // if (errors.picture) {
-  //   toast.error(errors.picture?.message);
+      console.log(response)
+    }
+  })
+  const uploadPost = (e, data) => {
+    e.preventDefault()
+    console.log(data)
+    uploadPostMutation.mutate({
+      titleImageurl: data.picture[0],
+      // headlines: data.headlines,
+      categories: data.categories,
+      description: data.description,
+      price_range: data.price,
+      state: data.state,
+      local_gov: data.localGovernment,
+      user_image: token?.profileImage,
+    })
+  }
+  // if (errors.categories) {
+  //   toast.error(errors.categories?.message)
   // }
-  if (errors.categories) {
-    toast.error(errors.categories?.message)
-  }
-  if (errors.description) {
-    toast.error(errors.description?.message)
-  }
-  if (errors.headlines) {
-    toast.error(errors.headlines?.message)
-  }
+  // if (errors.description) {
+  //   toast.error(errors.description?.message)
+  // }
+  // if (errors.headlines) {
+  //   toast.error(errors.headlines?.message)
+  // }
   return (
     <>
       <Toaster position="top-center" />
-       {loading &&
+      {uploadPostMutation.isPending &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
         </div>
-      } 
+      }
       <div className="px-4 lg:px-40">
         <PostButtons />
-        {/* <h1 className="my-5 lg:text-3xl lg:font-bold font-['poppins']">
+        <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
-        </h1> */}
-        <form onSubmit={
-          // handleSubmit(
-          formSubmit
-          // )
-          
-          } encType="multipart/form-data" action="#">
-
-<p className="text-red-600  text-sm">{errors.picture?.message}</p>
-
+        </h1>
+        <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
-            <Dropzone  onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
+            <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
                 <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
                   <div {...getRootProps()}>
@@ -256,7 +321,7 @@ const Post = () => {
             </Dropzone>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
-                <div key={index}  className="relative">
+                <div key={index} className="relative">
                   <img
                     src={imageUrl}
                     alt="Uploaded Image"
@@ -281,13 +346,13 @@ const Post = () => {
               {categories.map((option, index) => {
                 return (
                   <option key={index} value={option}>
-                  {option}
+                    {option}
                   </option>
                 );
               })}
             </select>
 
-            
+
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
@@ -309,7 +374,7 @@ const Post = () => {
               />
             </div>
             {/* <p className="text-red pt-2">{errors.categories?.message}</p> */}
-         
+
             <div>
               <select
                 {...register("state")}
@@ -317,11 +382,11 @@ const Post = () => {
                 id=""
                 {...register("state", { required: true })}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
-                onChange={selectState}
+                onChange={(e) => selectState(e)}
               >
                 <option value="">--Select State--</option>
                 {data.States.map((state, i) => (
-                  <option key={i} value={state}>{state.state}</option>
+                  <option key={i} value={state.state}>{state.state}</option>
                 ))}
               </select>
             </div>
@@ -345,10 +410,10 @@ const Post = () => {
                 <option value="">Discount</option>
                 <option value="">Yes</option>
                 <option value="">No</option>
-                
+
               </select>
             </div>
-         
+
             <div>
               <textarea
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -374,7 +439,7 @@ const Post = () => {
 export default Post;
 
 
-   {/* <div>
+{/* <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
@@ -383,4 +448,4 @@ export default Post;
                 {...register("headlines", { required: true })}
               />
             </div> */}
-            {/* <p className="text-red pt-2">{errors.headlines?.message}</p> */}
+{/* <p className="text-red pt-2">{errors.headlines?.message}</p> */ }

@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -19,6 +21,11 @@ const Login = () => {
   const [toggleLight, setToggleLight] = useState(true);
   const { setToken, setUser } = useStateContext()
   const [loading, setLoading] = useState(false)
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const viewPassword = ()=> {
+    setPasswordVisible(prev => !prev)
+  }
 
   const toggleBtn = () => {
     setToggleLight(!toggleLight);
@@ -170,7 +177,7 @@ const Login = () => {
                   placeholder="example@gmail.com"
                 />
               </div>
-              <div className="flex flex-col my-3">
+              <div className="relative flex flex-col my-3">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white"}
@@ -179,7 +186,7 @@ const Login = () => {
                 </label>
                 <input
                   {...register("password", { required: true })}
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
@@ -187,6 +194,7 @@ const Login = () => {
                   }
                   placeholder="Enter password"
                 />
+                {passwordVisible ? <FaEyeSlash onClick={viewPassword} size={20} className="cursor-pointer absolute right-4 bottom-2" /> : <FaEye onClick={viewPassword} size={20} className="cursor-pointer absolute right-4 bottom-2" />}
               </div>
               {/* sign-up btn  */}
               <article className="my-2">

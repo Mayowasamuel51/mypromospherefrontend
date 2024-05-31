@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import signup from "../../assests/images/signup-image.png";
 import { MdNightlight } from "react-icons/md";
 import { PiSunLight } from "react-icons/pi";
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useForm } from "react-hook-form";
@@ -21,6 +23,11 @@ const SignUp = () => {
   const { setToken } = useStateContext()
   const [selected, setSelected] = useState(false);
   const [toggleLight, setToggleLight] = useState(true);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const viewPassword = ()=> {
+    setPasswordVisible(prev => !prev)
+  }
   const toggleBtn = () => {
     setToggleLight(!toggleLight);
   };
@@ -189,7 +196,7 @@ const SignUp = () => {
                 </label>
                 <input
                   {...register("password", { required: true })}
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
@@ -198,9 +205,8 @@ const SignUp = () => {
                   placeholder="Enter password"
                 />
               </div>
-
               {/* password confirm */}
-              <div className="flex flex-col mt-1">
+              <div className="relative flex flex-col mt-1">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white"}
@@ -209,7 +215,7 @@ const SignUp = () => {
                 </label>
                 <input
                   {...register("password_confirmation", { required: true })}
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
@@ -217,7 +223,7 @@ const SignUp = () => {
                   }
                   placeholder="Enter password"
                 />
-                {/* <p className="text-red pt-2" >{errors.password_confirmation?.message}</p> */}
+                {passwordVisible ? <FaEyeSlash onClick={viewPassword} size={20} className="cursor-pointer absolute right-4 bottom-2" /> : <FaEye onClick={viewPassword} size={20} className="cursor-pointer absolute right-4 bottom-2" />}
               </div>
               {/*agreement*/}
               <article className="flex sm:flex-row items-center gap-[1rem]">

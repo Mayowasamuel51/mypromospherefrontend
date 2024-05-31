@@ -185,7 +185,9 @@ const Video = () => {
             <Toaster position="top-center" />
             <div className="px-4 lg:px-40">
                 <PostButtons />
-                {/* <h1 className="my-5 lg:text-3xl text-sm font-semibold lg:font-bold font-['poppins']">UPLOAD YOUR VIDEO  DETAILS TO MYPROMOSPHERE</h1> */}
+                <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
+                    UPLOAD YOUR VIDEO DETAILS TO MYPROMOSPHERE
+                </h1>
                 <form onSubmit={handleSubmit(formSubmit)}>
                     <div className="flex flex-col gap-3">
                         <div className="">
