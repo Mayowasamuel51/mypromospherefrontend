@@ -123,9 +123,9 @@ const FeedsHome = () => {
       <Navbar blue={true} />
       <section className="lg:px-10 scroll-smooth">
         <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
-          <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">
+          {/* <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">
             Perfect Works Made for You
-          </h1>
+          </h1> */}
         </div>
         <div className="">
           <section className="lg:px-10 px-4">

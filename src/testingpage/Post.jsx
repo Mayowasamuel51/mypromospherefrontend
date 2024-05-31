@@ -55,12 +55,13 @@ const Post = () => {
   };
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
   const schema = yup.object().shape({
-    price: yup.string().required("Price is required"),
-    categories: yup.string().required("Category is required"),
-    description: yup.string().required("Description is required"),
-    headlines: yup.string().required("Headline is required"),
-    state: yup.string().required("State is required"),
-    localGovernment: yup.string().required("Local Government is required"),
+    // price: yup.string().required(),
+    // categories: yup.string().required(),
+    // description: yup.string().required(),
+    // headlines: yup.string().required(),
+    // categories: yup.string().required(),
+    // state: yup.string().required(),
+    // localGovernment: yup.string().required(),
     picture: yup
       .mixed()
       .test(
@@ -70,15 +71,15 @@ const Post = () => {
           return value && value.length > 1;
         }
       )
-      .test("fileSize", "The file is too large", (value) =>
-        value ? value[0].size <= 200000 : true
-      )
       // .test("fileSize", "The file is too large", (value, context) => {
       //   return value && value[0] && value[0].size <= 200000;
       // })
-      .test("type", "We only support jpeg and png", (value) =>
-        value ? SUPPORTED_FORMATS.includes(value[0].type) : true
-      ),
+      .test("type", "We only support jpeg, ", function (value) {
+        return (
+          (value && value[0] && value[0].type === "image/jpeg") ||
+          (value && value[0] && value[0].type === "image/png")
+        );
+      }),
   });
   const {
     register,
@@ -88,7 +89,12 @@ const Post = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [testfile, setTestFile]= useState(null)
 
+  function handleChange(e) {
+      console.log(e.target.files);
+      setTestFile(URL.createObjectURL(e.target.files[0]));
+  }
   const dragOrClick = (images) => {
     const selectedFiles = images;
     if (!selectedFiles.length) return; // Handle empty selection
@@ -97,10 +103,12 @@ const Post = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         newImages.push(e.target.result);
+        setTestFile(newImages)
         setImageUpload(newImages);
       };
       reader.readAsDataURL(file);
     }
+   
   }
 
   const fileRemove = (file) => {
@@ -123,155 +131,135 @@ const Post = () => {
       const filterState = result.filter((x) => {
         return x[0].toLowerCase() === selectedState.toLowerCase();
       });
-      setLocalGvt(filterState[0][1]);
+      // setLocalGvt(filterState[0][1]);
     } else {
-      setLocalGvt([]);
+      // setLocalGvt([]);
     }
   }
 
+  const formSubmit = (data) => {
+    console.log("i was clicked")
+    setLoading(true)
+    console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
+    console.log(makepic);
+    const formData = new FormData();
+    const myArray = [
+      "Lagos",
+      "lagos", // Case-sensitive
+      "Oyo",
+      "Abuja",
+      "Ogun",
+      "Rivers",
+      "Kano",
+    ];
+    const randomIndex = Math.floor(Math.random() * myArray.length);
 
-  // const formSubmit = (data) => {
-  //   console.log("i was clicked")
-  //   setLoading(true)
-  //   console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
-  //   console.log(makepic);
-  //   const formData = new FormData();
-  //   const myArray = [
-  //     "Lagos",
-  //     "lagos", // Case-sensitive
-  //     "Oyo",
-  //     "Abuja",
-  //     "Ogun",
-  //     "Rivers",
-  //     "Kano",
-  //   ];
-  //   const randomIndex = Math.floor(Math.random() * myArray.length);
+    // Access the random string using the index
+    const randomString = myArray[randomIndex];
+    formData.append("titleImageurl", data.picture[0]);
+    formData.append("headlines", data.headlines);
+    formData.append("categories", data.categories);
+    formData.append("description", data.description);
+    formData.append("price_range", data.price);
+    formData.append("state", data.state);
+    formData.append("local_gov", data.localGovernment);
+    formData.append("user_image", token?.token.profileImage);
+    axios
+      .post(api_freeads, formData, {
+        headers: {
+          // Accept: "application/json",
+          Accept: "application/vnd.api+json",
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token?.token.token}`,
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("worked");
+          console.log(res.data.item);
+          setLoading(false)
+          return res.data.item;
 
-  //   // Access the random string using the index
-  //   const randomString = myArray[randomIndex];
-  //   formData.append("titleImageurl", data.picture[0]);
-  //   formData.append("headlines", data.headlines);
-  //   formData.append("categories", data.categories);
-  //   formData.append("description", data.description);
-  //   formData.append("price_range", data.price);
-  //   formData.append("state", data.state);
-  //   formData.append("local_gov", data.localGovernment);
-  //   formData.append("user_image", token?.profileImage);
-  //   axios
-  //     .post(api_freeads, formData, {
-  //       headers: {
-  //         // Accept: "application/json",
-  //         Accept: "application/vnd.api+json",
-  //         "Content-Type": "multipart/form-data",
-  //         Authorization: `Bearer ${token?.token.token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         console.log("worked");
-  //         console.log(res.data.item);
-  //         setLoading(false)
-  //         return res.data.item;
-
-  //       } else if (res.status === 500 || res.status === 401) {
-  //         setLoading(false)
-  //         console.log(res.data.message);
-  //       }
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //       for (let i = 0; i < data.picture.length; i++) {
-  //         const imageRef = ref(
-  //           storage,
-  //           `/mulitpleFiles/${data.picture[i].name} ${token?.token.user}`
-  //         );
-  //         const uploadTask = uploadBytesResumable(imageRef, data.picture[i]);
-  //         uploadTask.on(
-  //           "state_changed",
-  //           (snapshot) => {
-  //             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-  //             const progress =
-  //               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  //             console.log("Upload is " + progress + "% done");
-  //             switch (snapshot.state) {
-  //               case "paused":
-  //                 console.log("Upload is paused");
-  //                 break;
-  //               case "running":
-  //                 console.log("Upload is running");
-  //                 break;
-  //             }
-  //           },
-  //           (error) => {
-  //             // A full list of error codes is available at
-  //             // https://firebase.google.com/docs/storage/web/handle-errors
-  //             switch (error.code) {
-  //               case "storage/unauthorized":
-  //                 // User doesn't have permission to access the object
-  //                 break;
-  //               case "storage/canceled":
-  //                 // User canceled the upload
-  //                 break;
-  //               // ..
-  //               case "storage/unknown":
-  //                 // Unknown error occurred, inspect error.serverResponse
-  //                 break;
-  //             }
-  //           },
-  //           () => {
-  //             // Upload completed successfully, now we can get the download URL
-  //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-  //               console.log("these are the images  ", [downloadURL]);
-  //               const second_payload = {
-  //                 itemadsimagesurls: downloadURL,
-  //                 id: token?.token.id,
-  //               };
-  //               axios
-  //                 .post(`${api_freeads}/${response}`, second_payload, {
-  //                   headers: {
-  //                     // Accept: "application/json",
-  //                     Accept: "application/vnd.api+json",
-  //                     Authorization: `Bearer ${token?.token.token}`,
-  //                   },
-  //                 })
-  //                 .then((res) => {
-  //                   if (res.status === 200) {
-  //                     console.log("worked with second ...................");
-  //                     console.log(res.data.item);
-  //                   } else if (res.status === 500 || res.status === 401) {
-  //                     console.log(res.data.message);
-  //                   }
-  //                 })
-  //                 .catch((err) => console.log(err.message));
-  //             });
-  //           }
-  //         );
-  //       }
-  //     })
-  //     .catch((err) => console.log(err.message));
-  // };
-
-  const uploadPostMutation = useMutation({
-    mutationFn: (payload) => {
-      console.log("payload", payload);
-    }
-  })
-
-  const uploadPost = (data) => {
-    console.log(data)
-    uploadPostMutation.mutate({
-      titleImageurl: data.picture[0],
-      description: data.description,
-      headlines : data.headlines,
-      categories : data.categories,
-      price_range : data.price,
-      state : data.state,
-      user_image : token?.profileImage,
-      local_gov : data.localGovernment
-    })
-  }
-
-
+        } else if (res.status === 500 || res.status === 401) {
+          setLoading(false)
+          console.log(res.data.message);
+        }
+      })
+      .then((response) => {
+        console.log(response);
+        for (let i = 0; i < data.picture.length; i++) {
+          const imageRef = ref(
+            storage,
+            `/mulitpleFiles/${data.picture[i].name} ${token?.token.user}`
+          );
+          const uploadTask = uploadBytesResumable(imageRef, data.picture[i]);
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log("Upload is " + progress + "% done");
+              switch (snapshot.state) {
+                case "paused":
+                  console.log("Upload is paused");
+                  break;
+                case "running":
+                  console.log("Upload is running");
+                  break;
+              }
+            },
+            (error) => {
+              // A full list of error codes is available at
+              // https://firebase.google.com/docs/storage/web/handle-errors
+              switch (error.code) {
+                case "storage/unauthorized":
+                  // User doesn't have permission to access the object
+                  break;
+                case "storage/canceled":
+                  // User canceled the upload
+                  break;
+                // ..
+                case "storage/unknown":
+                  // Unknown error occurred, inspect error.serverResponse
+                  break;
+              }
+            },
+            () => {
+              // Upload completed successfully, now we can get the download URL
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log("these are the images  ", [downloadURL]);
+                const second_payload = {
+                  itemadsimagesurls: downloadURL,
+                  id: token?.token.id,
+                };
+                axios
+                  .post(`${api_freeads}/${response}`, second_payload, {
+                    headers: {
+                      // Accept: "application/json",
+                      Accept: "application/vnd.api+json",
+                      Authorization: `Bearer ${token?.token.token}`,
+                    },
+                  })
+                  .then((res) => {
+                    if (res.status === 200) {
+                      console.log("worked with second ...................");
+                      console.log(res.data.item);
+                    } else if (res.status === 500 || res.status === 401) {
+                      console.log(res.data.message);
+                    }
+                  })
+                  .catch((err) => console.log(err.message));
+              });
+            }
+          );
+        }
+      })
+      .catch((err) => console.log(err.message));
+  };
+  // if (errors.picture) {
+  //   toast.error(errors.picture?.message);
+  // }
   if (errors.categories) {
     toast.error(errors.categories?.message)
   }
@@ -284,20 +272,19 @@ const Post = () => {
   return (
     <>
       <Toaster position="top-center" />
-      {loading &&
+       {loading &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
         </div>
-      }
+      } 
       <div className="px-4 lg:px-40">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
-        </h1>
-        {/* onSubmit={handleSubmit(formSubmit)}  */}
-        <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
+        </h1> */}
+        <form onSubmit={handleSubmit(formSubmit)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
-            <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
+            <Dropzone  onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
                 <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
                   <div {...getRootProps()}>
@@ -312,7 +299,7 @@ const Post = () => {
             </Dropzone>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
-                <div key={index} className="relative">
+                <div key={index}  className="relative">
                   <img
                     src={imageUrl}
                     alt="Uploaded Image"
@@ -337,11 +324,24 @@ const Post = () => {
               {categories.map((option, index) => {
                 return (
                   <option key={index} value={option}>
-                    {option}
+                  {option}
                   </option>
                 );
               })}
             </select>
+
+            
+            <div>
+              <input
+                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
+                      tline"
+                id="productName"
+                type="text"
+                placeholder="Product Name"
+              />
+            </div>
+
+
             {/* <p className="text-red-600  text-sm">{errors.categories?.message}</p> */}
             <div>
               <input
@@ -352,16 +352,7 @@ const Post = () => {
               />
             </div>
             {/* <p className="text-red pt-2">{errors.categories?.message}</p> */}
-            <div>
-              <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="text"
-                placeholder="description"
-                {...register("description", { required: true })}
-              />
-            </div>
-            {/* <p className="text-red pt-2">{errors.description?.message}</p> */}
+         
             <div>
               <select
                 {...register("state")}
@@ -389,25 +380,30 @@ const Post = () => {
                 {localGvt && localGvt.map((x, i) => <option key={i} >{x.lga}</option>)}
               </select>
             </div>
+
             <div>
-              <input
+              <select
+                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+              >
+                <option value="">Discount</option>
+                <option value="">Yes</option>
+                <option value="">No</option>
+                
+              </select>
+            </div>
+         
+            <div>
+              <textarea
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="text"
-                placeholder="NEW COMING GOING  headlines"
-                {...register("headlines", { required: true })}
+                placeholder="description"
+                {...register("description", { required: true })}
               />
             </div>
-            {/* <p className="text-red pt-2">{errors.headlines?.message}</p> */}
-            <div>
-              <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
-                      tline"
-                id="password"
-                type="text"
-                placeholder="******************"
-              />
-            </div>
+            {/* <p className="text-red pt-2">{errors.description?.message}</p> */}
+
+
             <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
               Post Normal Ad
             </button>
@@ -419,3 +415,15 @@ const Post = () => {
 };
 
 export default Post;
+
+
+   {/* <div>
+              <input
+                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="password"
+                type="text"
+                placeholder="NEW COMING GOING  headlines"
+                {...register("headlines", { required: true })}
+              />
+            </div> */}
+            {/* <p className="text-red pt-2">{errors.headlines?.message}</p> */}

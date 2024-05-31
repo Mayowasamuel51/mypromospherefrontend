@@ -208,6 +208,17 @@ const Video = () => {
                             </select>
                         </div>
                         {CategoriesValues}
+                        
+            <div>
+              <input
+                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
+                      tline"
+                id="productName"
+                type="text"
+                placeholder="Product Name"
+              />
+            </div>
+
                         <div>
                             <input className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="price" type="text" placeholder="Price" {...register("price", { required: true })} />
                         </div>
@@ -216,7 +227,7 @@ const Video = () => {
                             <input className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Description"  {...register("description", { required: true })} />
                         </div>
                         {/* <p className="text-red pt-2" >{errors.description?.message}</p> */}
-                        <button type="sumbit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">Upload Button</button>
+                        <button type="sumbit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">Release</button>
                     </div>
                 </form>
             </div>
