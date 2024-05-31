@@ -131,135 +131,141 @@ const Post = () => {
       const filterState = result.filter((x) => {
         return x[0].toLowerCase() === selectedState.toLowerCase();
       });
-      // setLocalGvt(filterState[0][1]);
+      setLocalGvt(filterState[0][1]);
     } else {
-      // setLocalGvt([]);
+      setLocalGvt([]);
     }
   }
 
-  const formSubmit = (data) => {
-    console.log("i was clicked")
-    setLoading(true)
-    console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
-    console.log(makepic);
-    const formData = new FormData();
-    const myArray = [
-      "Lagos",
-      "lagos", // Case-sensitive
-      "Oyo",
-      "Abuja",
-      "Ogun",
-      "Rivers",
-      "Kano",
-    ];
-    const randomIndex = Math.floor(Math.random() * myArray.length);
+  // const formSubmit = (data) => {
+  //   console.log("i was clicked")
+  //   setLoading(true)
+  //   console.log(data.state, data.localGovernment, 'use state loca=', localGvt)
+  //   console.log(makepic);
+  //   const formData = new FormData();
+  //   const myArray = [
+  //     "Lagos",
+  //     "lagos", // Case-sensitive
+  //     "Oyo",
+  //     "Abuja",
+  //     "Ogun",
+  //     "Rivers",
+  //     "Kano",
+  //   ];
+  //   const randomIndex = Math.floor(Math.random() * myArray.length);
 
-    // Access the random string using the index
-    const randomString = myArray[randomIndex];
-    formData.append("titleImageurl", data.picture[0]);
-    formData.append("headlines", data.headlines);
-    formData.append("categories", data.categories);
-    formData.append("description", data.description);
-    formData.append("price_range", data.price);
-    formData.append("state", data.state);
-    formData.append("local_gov", data.localGovernment);
-    formData.append("user_image", token?.token.profileImage);
-    axios
-      .post(api_freeads, formData, {
-        headers: {
-          // Accept: "application/json",
-          Accept: "application/vnd.api+json",
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token?.token.token}`,
-        },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("worked");
-          console.log(res.data.item);
-          setLoading(false)
-          return res.data.item;
+  //   // Access the random string using the index
+  //   const randomString = myArray[randomIndex];
+  //   formData.append("titleImageurl", data.picture[0]);
+  //   formData.append("headlines", data.headlines);
+  //   formData.append("categories", data.categories);
+  //   formData.append("description", data.description);
+  //   formData.append("price_range", data.price);
+  //   formData.append("state", data.state);
+  //   formData.append("local_gov", data.localGovernment);
+  //   formData.append("user_image", token?.token.profileImage);
+  //   axios
+  //     .post(api_freeads, formData, {
+  //       headers: {
+  //         // Accept: "application/json",
+  //         Accept: "application/vnd.api+json",
+  //         "Content-Type": "multipart/form-data",
+  //         Authorization: `Bearer ${token?.token.token}`,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         console.log("worked");
+  //         console.log(res.data.item);
+  //         setLoading(false)
+  //         return res.data.item;
 
-        } else if (res.status === 500 || res.status === 401) {
-          setLoading(false)
-          console.log(res.data.message);
-        }
-      })
-      .then((response) => {
-        console.log(response);
-        for (let i = 0; i < data.picture.length; i++) {
-          const imageRef = ref(
-            storage,
-            `/mulitpleFiles/${data.picture[i].name} ${token?.token.user}`
-          );
-          const uploadTask = uploadBytesResumable(imageRef, data.picture[i]);
-          uploadTask.on(
-            "state_changed",
-            (snapshot) => {
-              // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-              const progress =
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              console.log("Upload is " + progress + "% done");
-              switch (snapshot.state) {
-                case "paused":
-                  console.log("Upload is paused");
-                  break;
-                case "running":
-                  console.log("Upload is running");
-                  break;
-              }
-            },
-            (error) => {
-              // A full list of error codes is available at
-              // https://firebase.google.com/docs/storage/web/handle-errors
-              switch (error.code) {
-                case "storage/unauthorized":
-                  // User doesn't have permission to access the object
-                  break;
-                case "storage/canceled":
-                  // User canceled the upload
-                  break;
-                // ..
-                case "storage/unknown":
-                  // Unknown error occurred, inspect error.serverResponse
-                  break;
-              }
-            },
-            () => {
-              // Upload completed successfully, now we can get the download URL
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log("these are the images  ", [downloadURL]);
-                const second_payload = {
-                  itemadsimagesurls: downloadURL,
-                  id: token?.token.id,
-                };
-                axios
-                  .post(`${api_freeads}/${response}`, second_payload, {
-                    headers: {
-                      // Accept: "application/json",
-                      Accept: "application/vnd.api+json",
-                      Authorization: `Bearer ${token?.token.token}`,
-                    },
-                  })
-                  .then((res) => {
-                    if (res.status === 200) {
-                      console.log("worked with second ...................");
-                      console.log(res.data.item);
-                    } else if (res.status === 500 || res.status === 401) {
-                      console.log(res.data.message);
-                    }
-                  })
-                  .catch((err) => console.log(err.message));
-              });
-            }
-          );
-        }
-      })
-      .catch((err) => console.log(err.message));
-  };
-  // if (errors.picture) {
-  //   toast.error(errors.picture?.message);
-  // }
+  //       } else if (res.status === 500 || res.status === 401) {
+  //         setLoading(false)
+  //         console.log(res.data.message);
+  //       }
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       for (let i = 0; i < data.picture.length; i++) {
+  //         const imageRef = ref(
+  //           storage,
+  //           `/mulitpleFiles/${data.picture[i].name} ${token?.token.user}`
+  //         );
+  //         const uploadTask = uploadBytesResumable(imageRef, data.picture[i]);
+  //         uploadTask.on(
+  //           "state_changed",
+  //           (snapshot) => {
+  //             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+  //             const progress =
+  //               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //             console.log("Upload is " + progress + "% done");
+  //             switch (snapshot.state) {
+  //               case "paused":
+  //                 console.log("Upload is paused");
+  //                 break;
+  //               case "running":
+  //                 console.log("Upload is running");
+  //                 break;
+  //             }
+  //           },
+  //           (error) => {
+  //             // A full list of error codes is available at
+  //             // https://firebase.google.com/docs/storage/web/handle-errors
+  //             switch (error.code) {
+  //               case "storage/unauthorized":
+  //                 // User doesn't have permission to access the object
+  //                 break;
+  //               case "storage/canceled":
+  //                 // User canceled the upload
+  //                 break;
+  //               // ..
+  //               case "storage/unknown":
+  //                 // Unknown error occurred, inspect error.serverResponse
+  //                 break;
+  //             }
+  //           },
+  //           () => {
+  //             // Upload completed successfully, now we can get the download URL
+  //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //               console.log("these are the images  ", [downloadURL]);
+  //               const second_payload = {
+  //                 itemadsimagesurls: downloadURL,
+  //                 id: token?.token.id,
+  //               };
+  //               axios
+  //                 .post(`${api_freeads}/${response}`, second_payload, {
+  //                   headers: {
+  //                     // Accept: "application/json",
+  //                     Accept: "application/vnd.api+json",
+  //                     Authorization: `Bearer ${token?.token.token}`,
+  //                   },
+  //                 })
+  //                 .then((res) => {
+  //                   if (res.status === 200) {
+  //                     console.log("worked with second ...................");
+  //                     console.log(res.data.item);
+  //                   } else if (res.status === 500 || res.status === 401) {
+  //                     console.log(res.data.message);
+  //                   }
+  //                 })
+  //                 .catch((err) => console.log(err.message));
+  //             });
+  //           }
+  //         );
+  //       }
+  //     })
+  //     .catch((err) => console.log(err.message));
+  // };
+
+  const uploadPostMutation = useMutation({
+    mutationFn: (payload)=> console.log(payload)
+  })
+  const uploadPost = (data)=> {
+    console.log(data)
+    // uploadPostMutation.mutate({})
+
+  }
   if (errors.categories) {
     toast.error(errors.categories?.message)
   }
@@ -281,8 +287,8 @@ const Post = () => {
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
-        </h1> */}
-        <form onSubmit={handleSubmit(formSubmit)} encType="multipart/form-data" action="#">
+        </h1>
+        <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <Dropzone  onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
