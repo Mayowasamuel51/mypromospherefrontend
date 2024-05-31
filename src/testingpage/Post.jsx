@@ -54,14 +54,14 @@ const Post = () => {
     setCategoriesValues(e.target.value);
   };
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
+
   const schema = yup.object().shape({
-    // price: yup.string().required(),
-    // categories: yup.string().required(),
-    // description: yup.string().required(),
-    // headlines: yup.string().required(),
-    // categories: yup.string().required(),
-    // state: yup.string().required(),
-    // localGovernment: yup.string().required(),
+    price: yup.string().required("Price is required"),
+    categories: yup.string().required("Category is required"),
+    description: yup.string().required("Description is required"),
+    // headlines: yup.string().required("Headline is required"),
+    state: yup.string().required("State is required"),
+    localGovernment: yup.string().required("Local Government is required"),
     picture: yup
       .mixed()
       .test(
@@ -74,12 +74,9 @@ const Post = () => {
       // .test("fileSize", "The file is too large", (value, context) => {
       //   return value && value[0] && value[0].size <= 200000;
       // })
-      .test("type", "We only support jpeg, ", function (value) {
-        return (
-          (value && value[0] && value[0].type === "image/jpeg") ||
-          (value && value[0] && value[0].type === "image/png")
-        );
-      }),
+      .test("type", "We only support jpeg and png", (value) =>
+        value ? SUPPORTED_FORMATS.includes(value[0].type) : true
+      ),
   });
   const {
     register,
@@ -89,15 +86,15 @@ const Post = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const [testfile, setTestFile]= useState(null)
+  const [testfile, setTestFile] = useState(null)
 
   function handleChange(e) {
-      console.log(e.target.files);
-      setTestFile(URL.createObjectURL(e.target.files[0]));
+    console.log(e.target.files);
+    setTestFile(URL.createObjectURL(e.target.files[0]));
   }
   const dragOrClick = (images) => {
     const selectedFiles = images;
-    if (!selectedFiles.length) return; // Handle empty selection
+    if (!selectedFiles.length) return;
     const newImages = [...imageUpload];
     for (const file of selectedFiles) {
       const reader = new FileReader();
@@ -108,7 +105,7 @@ const Post = () => {
       };
       reader.readAsDataURL(file);
     }
-   
+
   }
 
   const fileRemove = (file) => {
@@ -259,30 +256,49 @@ const Post = () => {
   // };
 
   const uploadPostMutation = useMutation({
-    mutationFn: (payload)=> console.log(payload)
+    mutationFn: (payload) => {
+      const response = axios.post(api_freeads, payload, {
+        headers: {
+          Accept: "application/json",
+          Accept: "application/vnd.api+json",
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token?.token}`,
+        },
+      })
+      console.log(response)
+    }
   })
-  const uploadPost = (data)=> {
+  const uploadPost = (e, data) => {
+    e.preventDefault()
     console.log(data)
-    // uploadPostMutation.mutate({})
-
+    uploadPostMutation.mutate({
+      titleImageurl: data.picture[0],
+      // headlines: data.headlines,
+      categories: data.categories,
+      description: data.description,
+      price_range: data.price,
+      state: data.state,
+      local_gov: data.localGovernment,
+      user_image: token?.profileImage,
+    })
   }
-  if (errors.categories) {
-    toast.error(errors.categories?.message)
-  }
-  if (errors.description) {
-    toast.error(errors.description?.message)
-  }
-  if (errors.headlines) {
-    toast.error(errors.headlines?.message)
-  }
+  // if (errors.categories) {
+  //   toast.error(errors.categories?.message)
+  // }
+  // if (errors.description) {
+  //   toast.error(errors.description?.message)
+  // }
+  // if (errors.headlines) {
+  //   toast.error(errors.headlines?.message)
+  // }
   return (
     <>
       <Toaster position="top-center" />
-       {loading &&
+      {uploadPostMutation.isPending &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
         </div>
-      } 
+      }
       <div className="px-4 lg:px-40">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
@@ -290,7 +306,7 @@ const Post = () => {
         </h1>
         <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
-            <Dropzone  onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
+            <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
                 <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
                   <div {...getRootProps()}>
@@ -305,7 +321,7 @@ const Post = () => {
             </Dropzone>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
-                <div key={index}  className="relative">
+                <div key={index} className="relative">
                   <img
                     src={imageUrl}
                     alt="Uploaded Image"
@@ -330,13 +346,13 @@ const Post = () => {
               {categories.map((option, index) => {
                 return (
                   <option key={index} value={option}>
-                  {option}
+                    {option}
                   </option>
                 );
               })}
             </select>
 
-            
+
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
@@ -358,7 +374,7 @@ const Post = () => {
               />
             </div>
             {/* <p className="text-red pt-2">{errors.categories?.message}</p> */}
-         
+
             <div>
               <select
                 {...register("state")}
@@ -366,7 +382,7 @@ const Post = () => {
                 id=""
                 {...register("state", { required: true })}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
-                onChange={(e)=>selectState(e)}
+                onChange={(e) => selectState(e)}
               >
                 <option value="">--Select State--</option>
                 {data.States.map((state, i) => (
@@ -394,10 +410,10 @@ const Post = () => {
                 <option value="">Discount</option>
                 <option value="">Yes</option>
                 <option value="">No</option>
-                
+
               </select>
             </div>
-         
+
             <div>
               <textarea
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -423,7 +439,7 @@ const Post = () => {
 export default Post;
 
 
-   {/* <div>
+{/* <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
@@ -432,4 +448,4 @@ export default Post;
                 {...register("headlines", { required: true })}
               />
             </div> */}
-            {/* <p className="text-red pt-2">{errors.headlines?.message}</p> */}
+{/* <p className="text-red pt-2">{errors.headlines?.message}</p> */ }
