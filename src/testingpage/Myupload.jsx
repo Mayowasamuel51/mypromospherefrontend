@@ -4,7 +4,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 
 const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS
-const api_load_v2 =  import.meta.env.VITE_POSTS_UPLOADS
+const api_load_v2 =  import.meta.env.VITE_POSTS_UPLOADS;
 const Myuploads =  ()  =>{
     const token = useStateContext();
     console.log(token.token.token)

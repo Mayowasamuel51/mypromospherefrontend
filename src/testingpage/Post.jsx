@@ -56,22 +56,22 @@ const Post = () => {
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
 
   const schema = yup.object().shape({
-    price: yup.string().required("Price is required"),
-    categories: yup.string().required("Category is required"),
-    description: yup.string().required("Description is required"),
-    // headlines: yup.string().required("Headline is required"),
-    state: yup.string().required("State is required"),
-    localGovernment: yup.string().required("Local Government is required"),
+    // price: yup.string().required("Price is required"),
+    // categories: yup.string().required("Category is required"),
+    // description: yup.string().required("Description is required"),
+    // // headlines: yup.string().required("Headline is required"),
+    // state: yup.string().required("State is required"),
+    // localGovernment: yup.string().required("Local Government is required"),
     picture: yup
       .mixed()
-      .test(
-        "required",
-        "You need to provide more than one image ",
-        (value) => {
-          return value && value.length > 1;
-        }
-      )
-      // .test("fileSize", "The file is too large", (value, context) => {
+      // .test(
+      //   "required",
+      //   "You need to provide more than one image ",
+      //   (value) => {
+      //     return value && value.length > 1;
+      //   }
+      // )
+      // // .test("fileSize", "The file is too large", (value, context) => {
       //   return value && value[0] && value[0].size <= 200000;
       // })
       .test("type", "We only support jpeg and png", (value) =>
@@ -100,12 +100,11 @@ const Post = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         newImages.push(e.target.result);
-        setTestFile(newImages)
         setImageUpload(newImages);
       };
       reader.readAsDataURL(file);
     }
-
+ 
   }
 
   const fileRemove = (file) => {
@@ -268,9 +267,12 @@ const Post = () => {
       console.log(response)
     }
   })
-  const uploadPost = (e, data) => {
-    console.log("it working!!!!")
+  const uploadPost = ( e) => {
     e.preventDefault()
+    console.log()
+    console.log("it working!!!!")
+  console.log(data.picture[0])
+    // e.preventDefault()
     console.log(data)
     uploadPostMutation.mutate({
       titleImageurl: data.picture[0],
@@ -306,12 +308,14 @@ const Post = () => {
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
         <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
+          
+        <p className="text-red-600  text-sm">{errors.picture?.message}</p>
           <div className="flex flex-col gap-3">
             <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
                 <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
                   <div {...getRootProps()}>
-                    <input id="dragOrDrop" {...getInputProps()} />
+                    <input     {...register("picture")}  type='file' multiple     id="dragOrDrop" {...getInputProps()} />
                     <div className="text-center py-4">
                       <img src={uploadImg} className="mx-auto w-[100px] md:w-[200px]" alt="" />
                       <p className="font-semibold text-xs">Drag &apos;n&apos; drop some files here, or <span className="underline">click</span> to select files</p>
