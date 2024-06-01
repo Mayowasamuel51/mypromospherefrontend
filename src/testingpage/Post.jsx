@@ -269,6 +269,7 @@ const Post = () => {
     }
   })
   const uploadPost = (e, data) => {
+    console.log("it working!!!!")
     e.preventDefault()
     console.log(data)
     uploadPostMutation.mutate({
@@ -364,7 +365,7 @@ const Post = () => {
             </div>
 
 
-            {/* <p className="text-red-600  text-sm">{errors.categories?.message}</p> */}
+            <p className="text-red-600  text-sm">{errors.categories?.message}</p>
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
