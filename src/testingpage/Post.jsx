@@ -252,8 +252,8 @@ const Post = () => {
   }
 
   const uploadPostMutation = useMutation({
-    mutationFn: (payload) => {
-      const response = axios.post(api_freeads, payload, {
+    mutationFn: async(payload) => {
+      const response = await axios.post(api_freeads, payload, {
         headers: {
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
