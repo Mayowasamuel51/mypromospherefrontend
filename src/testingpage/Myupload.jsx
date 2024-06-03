@@ -47,7 +47,7 @@ const Myuploads = () => {
     return <span>Loading...</span>;
   }
 
-  if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
+  if (error) return <div className='min-h-screen grid place-items-center'><p><h1>Sorry you dont have any uploads</h1></p></div>
 
   return (
     <div className="overflow-x-hidden">

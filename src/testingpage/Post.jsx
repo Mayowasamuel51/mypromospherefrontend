@@ -273,8 +273,8 @@ const Post = () => {
       console.log(response)
     }
   })
-  const uploadPost = (e, data) => {
-    e.preventDefault()
+  const uploadPost = (data) => {
+    // e.preventDefault()
     console.log(data)
     uploadPostMutation.mutate({
       titleImageurl: data.picture[0],
