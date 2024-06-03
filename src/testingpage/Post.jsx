@@ -252,8 +252,8 @@ const Post = () => {
   }
 
   const uploadPostMutation = useMutation({
-    mutationFn: async(payload) => {
-      const response = await axios.post(api_freeads, payload, {
+    mutationFn: (payload) => {
+      const response = axios.post(api_freeads, payload, {
         headers: {
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
@@ -261,7 +261,6 @@ const Post = () => {
         },
       });
       console.log(response);
-
     }
   })
 
@@ -315,9 +314,7 @@ const Post = () => {
     }
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
-      if (index === 0) {
-        formData.append(`titleImageurl`, image);
-      }
+      formData.append(`image_${index}`, image);
     });
     formData.append("category", uploadData?.category);
     formData.append("description", uploadData?.description);

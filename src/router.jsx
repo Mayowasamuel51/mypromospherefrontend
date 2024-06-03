@@ -41,6 +41,7 @@ import Fulltext from "./testingpage/Fulltext.jsx";
 import Myuploads from "./testingpage/Myupload.jsx";
 
 import Error from "./error.jsx";
+import MyVideos from "./testingpage/MyVideos.jsx";
 
 
 const router = createBrowserRouter([
@@ -152,6 +153,10 @@ const router = createBrowserRouter([
       {
         path: "myuploads",
         element: <Myuploads />,
+      },
+      {
+        path: "myvideos",
+        element: <MyVideos />,
       },
       {
         path: "video",
