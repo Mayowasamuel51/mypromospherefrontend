@@ -50,7 +50,6 @@ const Post = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
 
   const fileRemove = (file) => {
     const updatedList = [...imageUpload];
@@ -59,7 +58,7 @@ const Post = () => {
   }
 
   const imagesListRef = ref(storage, "images/");
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
 
   const [localGvt, setLocalGvt] = useState();
@@ -193,6 +192,7 @@ const Post = () => {
   const [uploadData, setUploadData] = useState({
     images: [],
     category: "",
+    productName : "",
     description: "",
     price_range: "",
     state: "",
@@ -202,25 +202,45 @@ const Post = () => {
   });
 
   useEffect(() => {
-    if (uploadData.state) {
-      const filterState = result.filter(x => x[0].toLowerCase() === uploadData.state.toLowerCase());
+    if (uploadData?.state) {
+      const filterState = result.filter(x => x[0].toLowerCase() === uploadData?.state.toLowerCase());
       if (filterState.length > 0) {
         setLocalGvt(filterState[0][1]);
       }
     }
-  }, [uploadData.state]);
+  }, [uploadData?.state]);
 
 
   const handleInputChange = (event) => {
     const { name, value, type, checked, files } = event.target;
     setUploadData(prevState => {
       if (name === 'images') {
-        const imagesArray = Array.from(files);
-        return {
+        const selectedFilesArray = Array.from(files);
+        setSelectedFiles(selectedFilesArray);
+        if (!selectedFilesArray.length) return;
+        const newImages = [...imageUpload];
+        for (const file of selectedFilesArray) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            newImages.push(e.target.result);
+            setImageUpload(newImages);
+          };
+          reader.readAsDataURL(file);
+        }
+        setUploadData((prevState) => ({
           ...prevState,
-          images: imagesArray,
-        };
-      } else if (type === "checkbox") {
+          images: selectedFilesArray,
+        }));
+        return;
+      }
+      // if (name === 'images') {
+      //   const imagesArray = Array.from(files);
+      //   return {
+      //     ...prevState,
+      //     images: imagesArray,
+      //   };
+      // } 
+      else if (type === "checkbox") {
         return {
           ...prevState,
           [name]: checked,
@@ -237,18 +257,31 @@ const Post = () => {
     mutationFn: (payload) => {
       const response = axios.post(api_freeads, payload, {
         headers: {
-          // Accept: "application/json",
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token}`,
         },
-      })
-      console.log(response)
+      });
+      console.log(response);
     }
   })
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
+
+    const formData = new FormData();
+    uploadData?.images.forEach((image, index) => {
+      formData.append(`image_${index}`, image);
+    });
+    formData.append("category", uploadData?.category);
+    formData.append("description", uploadData?.description);
+    formData.append("price_range", uploadData?.price_range);
+    formData.append("state", uploadData?.state);
+    formData.append("local_gov", uploadData?.local_gov);
+    formData.append("discount", uploadData?.discount);
+    formData.append("user_image", uploadData?.user_image);
+
+    // uploadPostMutation.mutate(formData);
   }
 
   return (
@@ -267,7 +300,7 @@ const Post = () => {
         <form onSubmit={uploadPost} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
-              <input type="file" multiple onChange={handleInputChange} name="image-files" id="" />
+              <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
             </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
@@ -290,7 +323,7 @@ const Post = () => {
             </div>
             <select
               onChange={handleInputChange}
-              value={uploadData.category}
+              value={uploadData?.category}
               name='category'
               id='category'
               className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -313,6 +346,7 @@ const Post = () => {
                 name='productName'
                 type="text"
                 onChange={handleInputChange}
+                value={uploadData?.productName}
                 placeholder="Product Name"
               />
             </div>
@@ -322,7 +356,7 @@ const Post = () => {
                 id="price_range"
                 name='price_range'
                 onChange={handleInputChange}
-                value={uploadData.price_range}
+                value={uploadData?.price_range}
                 type="text"
                 placeholder="price"
               />
@@ -334,9 +368,9 @@ const Post = () => {
                 id="state"
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
                 onChange={handleInputChange}
-                value={uploadData.state}
+                value={uploadData?.state}
               >
-                <option value="">--Select State--</option>
+                <option value="">--Select your State--</option>
                 {data.States.map((state, i) => (
                   <option key={i} value={state.state}>{state.state}</option>
                 ))}
@@ -346,7 +380,7 @@ const Post = () => {
               <select
                 id="local_gov"
                 name="local_gov"
-                value={uploadData.local_gov}
+                value={uploadData?.local_gov}
                 onChange={handleInputChange}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
@@ -360,7 +394,7 @@ const Post = () => {
                 id='discount'
                 name='discount'
                 onChange={handleInputChange}
-                value={uploadData.discount}
+                value={uploadData?.discount}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">Discount</option>
@@ -374,7 +408,7 @@ const Post = () => {
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name='description'
-                value={uploadData.description}
+                value={uploadData?.description}
                 onChange={handleInputChange}
                 type="text"
                 placeholder="description"
