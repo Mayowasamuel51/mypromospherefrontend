@@ -233,13 +233,6 @@ const Post = () => {
         }));
         return;
       }
-      // if (name === 'images') {
-      //   const imagesArray = Array.from(files);
-      //   return {
-      //     ...prevState,
-      //     images: imagesArray,
-      //   };
-      // } 
       else if (type === "checkbox") {
         return {
           ...prevState,
@@ -281,7 +274,7 @@ const Post = () => {
     formData.append("discount", uploadData?.discount);
     formData.append("user_image", uploadData?.user_image);
 
-    // uploadPostMutation.mutate(formData);
+    uploadPostMutation.mutate(formData);
   }
 
   return (
@@ -361,7 +354,6 @@ const Post = () => {
                 placeholder="price"
               />
             </div>
-
             <div>
               <select
                 name="state"
