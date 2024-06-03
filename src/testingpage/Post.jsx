@@ -258,9 +258,47 @@ const Post = () => {
       console.log(response);
     }
   })
+
+  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
+
+    if (!uploadData.images || uploadData.images.length === 0) {
+      toast.error("Please select at least one image.");
+      return;
+    }
+
+    uploadData.images.forEach((image) => {
+      if (!SUPPORTED_FORMATS.includes(image.type)) {
+        toast.error(`Unsupported image format: ${image.name}`);
+      }
+      return;
+    });
+    if (!uploadData.category) {
+      toast.error("Category is required.");
+      return;
+    }
+    if (!uploadData.description) {
+      toast.error("Description is required.");
+      return;
+    }
+    if (!uploadData.price_range) {
+      toast.error("Price range is required.");
+      return;
+    }
+    if (!uploadData.state) {
+      toast.error("State is required.");
+      return;
+    }
+    if (!uploadData.local_gov) {
+      toast.error("Local government is required.");
+      return;
+    }
+    if (!uploadData.discount) {
+      toast.error("Discount is required.");
+      return;
+    }
 
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
