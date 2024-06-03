@@ -275,6 +275,10 @@ const Post = () => {
       }
       return;
     });
+    if (!uploadData.productName) {
+      toast.error("You have not added your product name.");
+      return;
+    }
     if (!uploadData.category) {
       toast.error("Category is required.");
       return;
