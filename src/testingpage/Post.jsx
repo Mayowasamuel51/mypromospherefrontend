@@ -49,58 +49,7 @@ const Post = () => {
   const [loading, setLoading] = useState(false);
 
 
-  const handleValues = (e) => {
-    setCategoriesValues(e.target.value);
-  };
-
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
-
-  const schema = yup.object().shape({
-    // price: yup.string().required("Price is required"),
-    // categories: yup.string().required("Category is required"),
-    // description: yup.string().required("Description is required"),
-    // // headlines: yup.string().required("Headline is required"),
-    // state: yup.string().required("State is required"),
-    // localGovernment: yup.string().required("Local Government is required"),
-    picture: yup
-      .mixed()
-      // .test(
-      //   "required",
-      //   "You need to provide more than one image ",
-      //   (value) => {
-      //     return value && value.length > 1;
-      //   }
-      // )
-      // // .test("fileSize", "The file is too large", (value, context) => {
-      //   return value && value[0] && value[0].size <= 200000;
-      // })
-      .test("type", "We only support jpeg and png", (value) =>
-        value ? SUPPORTED_FORMATS.includes(value[0].type) : true
-      ),
-  });
-
-
-  const [testfile, setTestFile] = useState(null)
-
-  function handleChange(e) {
-    console.log(e.target.files);
-    setTestFile(URL.createObjectURL(e.target.files[0]));
-  }
-
-  const dragOrClick = (images) => {
-    const selectedFiles = images;
-    if (!selectedFiles.length) return;
-    const newImages = [...imageUpload];
-    for (const file of selectedFiles) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        newImages.push(e.target.result);
-        setImageUpload(newImages);
-      };
-      reader.readAsDataURL(file);
-    }
-
-  }
 
   const fileRemove = (file) => {
     const updatedList = [...imageUpload];
@@ -260,32 +209,42 @@ const Post = () => {
     description: "",
     price_range: "",
     state: "",
-    local_gov: "",
+    discount: "",
+    local_gov: null,
     user_image: token?.profileImage,
-
-  })
+  });
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target
     setUploadData(prevState => {
       if (name === 'images') {
-        // Handle images input
         const imagesArray = Array.from(files);
         return {
           ...prevState,
           images: imagesArray,
-        };
-      } else if (name === 'categories') {
-        // Handle categories input
-        return {
-          ...prevState,
-          categories: value,
-        };
-      } else {
-        // Handle other inputs
+        }
+      } 
+      if (name === "state") {
+        const selectedState = value
+        if (selectedState) {
+          const filterState = result.filter((x) => {
+            return x[0].toLowerCase() === selectedState.toLowerCase();
+          });
+          return {
+            ...prevState,
+            local_gov : filterState[0][1]
+          }
+        }
+      }
+      else if (type === "checkbox") {
         return {
           ...prevState,
           [name]: type === 'checkbox' ? checked : value,
+        };
+      } else {
+        return {
+          ...prevState,
+          [name]: value,
         };
       }
     });
@@ -294,7 +253,7 @@ const Post = () => {
     mutationFn: (payload) => {
       const response = axios.post(api_freeads, payload, {
         headers: {
-          Accept: "application/json",
+          // Accept: "application/json",
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token}`,
@@ -303,18 +262,19 @@ const Post = () => {
       console.log(response)
     }
   })
-  const uploadPost = (e, data) => {
+  const uploadPost = (e) => {
     e.preventDefault()
-    console.log(data)
-    uploadPostMutation.mutate({
-      titleImageurl: data.picture[0],
-      categories: data.categories,
-      description: data.description,
-      price_range: data.price,
-      state: data.state,
-      local_gov: data.localGovernment,
-      user_image: token?.profileImage,
-    })
+    console.log(uploadData)
+    // console.log(data)
+    // uploadPostMutation.mutate({
+    //   titleImageurl: data.picture[0],
+    //   categories: data.categories,
+    //   description: data.description,
+    //   price_range: data.price,
+    //   state: data.state,
+    //   local_gov: data.localGovernment,
+    //   user_image: token?.profileImage,
+    // })
   }
 
   return (
@@ -330,10 +290,10 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form encType="multipart/form-data" action="#">
+        <form onSubmit={uploadPost} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
-              <input type="file" name="" id="" />
+              <input type="file"  multiple onChange={handleInputChange} name="image-files" id="" />
             </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
@@ -355,6 +315,10 @@ const Post = () => {
               ))}
             </div>
             <select
+              onChange={handleInputChange}
+              value={uploadData.categories}
+              name='category'
+              id='category'
               className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             >
               {categories.map((option, index) => {
@@ -369,19 +333,20 @@ const Post = () => {
 
             <div>
               <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
-                      tline"
+                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="productName"
+                name='productName'
                 type="text"
+                onChange={handleInputChange}
                 placeholder="Product Name"
               />
             </div>
-
-
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
+                id="price"
+                name='price'
+                onChange={handleInputChange}
                 type="text"
                 placeholder="price"
               />
@@ -389,10 +354,11 @@ const Post = () => {
 
             <div>
               <select
-                name=""
-                id=""
+                name="state"
+                id="state"
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
-                onChange={(e) => selectState(e)}
+                onChange={handleInputChange}
+                value={uploadData.state}
               >
                 <option value="">--Select State--</option>
                 {data.States.map((state, i) => (
@@ -413,6 +379,10 @@ const Post = () => {
 
             <div>
               <select
+                id='discount'
+                name='discount'
+                onChange={handleInputChange}
+                value={uploadData.discount}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">Discount</option>
@@ -424,7 +394,10 @@ const Post = () => {
             <div>
               <textarea
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
+                id="description"
+                name='description'
+                value={uploadData.description} 
+                onChange={handleInputChange}
                 type="text"
                 placeholder="description"
               />
