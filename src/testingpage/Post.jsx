@@ -261,7 +261,14 @@ const Post = () => {
         },
       });
       console.log(response);
-    }
+    },
+    onSuccess: ()=> {
+      queryClient.invalidateQueries(["trendingAds"])
+      toast.success("You have just made a post")
+    },
+    onError: () => {
+      toast.error('Failed to upload post');
+  },
   })
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
@@ -325,6 +332,7 @@ const Post = () => {
     formData.append("user_image", uploadData?.user_image);
 
     uploadPostMutation.mutate(formData);
+
   }
 
   return (
@@ -340,7 +348,7 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={uploadPost} encType="multipart/form-data" action="#">
+        <form onSubmit={()=> uploadPost()} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
