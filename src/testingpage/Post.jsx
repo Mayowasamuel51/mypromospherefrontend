@@ -1,5 +1,6 @@
 // import axiosclinet from "../https/axios-clinet";
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -62,21 +63,7 @@ const Post = () => {
   const [previewImage, setPreviewImage] = useState(null);
 
   const [localGvt, setLocalGvt] = useState();
-
   const result = Object.entries(data.full);
-
-  function selectState(e) {
-    setLocalGvt();
-    const selectedState = e.target.value;
-    if (selectedState) {
-      const filterState = result.filter((x) => {
-        return x[0].toLowerCase() === selectedState.toLowerCase();
-      });
-      setLocalGvt(filterState[0][1]);
-    } else {
-      setLocalGvt([]);
-    }
-  }
 
   // const formSubmit = (data) => {
   //   console.log("i was clicked")
@@ -205,41 +192,38 @@ const Post = () => {
 
   const [uploadData, setUploadData] = useState({
     images: [],
-    categories: "",
+    category: "",
     description: "",
     price_range: "",
     state: "",
     discount: "",
-    local_gov: null,
+    local_gov: "",
     user_image: token?.profileImage,
   });
 
+  useEffect(() => {
+    if (uploadData.state) {
+      const filterState = result.filter(x => x[0].toLowerCase() === uploadData.state.toLowerCase());
+      if (filterState.length > 0) {
+        setLocalGvt(filterState[0][1]);
+      }
+    }
+  }, [uploadData.state]);
+
+
   const handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target
+    const { name, value, type, checked, files } = event.target;
     setUploadData(prevState => {
       if (name === 'images') {
         const imagesArray = Array.from(files);
         return {
           ...prevState,
           images: imagesArray,
-        }
-      } 
-      if (name === "state") {
-        const selectedState = value
-        if (selectedState) {
-          const filterState = result.filter((x) => {
-            return x[0].toLowerCase() === selectedState.toLowerCase();
-          });
-          return {
-            ...prevState,
-            local_gov : filterState[0][1]
-          }
-        }
-      }
-      else if (type === "checkbox") {
+        };
+      } else if (type === "checkbox") {
         return {
           ...prevState,
-          [name]: type === 'checkbox' ? checked : value,
+          [name]: checked,
         };
       } else {
         return {
@@ -265,16 +249,6 @@ const Post = () => {
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
-    // console.log(data)
-    // uploadPostMutation.mutate({
-    //   titleImageurl: data.picture[0],
-    //   categories: data.categories,
-    //   description: data.description,
-    //   price_range: data.price,
-    //   state: data.state,
-    //   local_gov: data.localGovernment,
-    //   user_image: token?.profileImage,
-    // })
   }
 
   return (
@@ -293,7 +267,7 @@ const Post = () => {
         <form onSubmit={uploadPost} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
-              <input type="file"  multiple onChange={handleInputChange} name="image-files" id="" />
+              <input type="file" multiple onChange={handleInputChange} name="image-files" id="" />
             </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
@@ -316,11 +290,12 @@ const Post = () => {
             </div>
             <select
               onChange={handleInputChange}
-              value={uploadData.categories}
+              value={uploadData.category}
               name='category'
               id='category'
               className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             >
+              <option value="">--Select a Category--</option>
               {categories.map((option, index) => {
                 return (
                   <option key={index} value={option}>
@@ -344,9 +319,10 @@ const Post = () => {
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="price"
-                name='price'
+                id="price_range"
+                name='price_range'
                 onChange={handleInputChange}
+                value={uploadData.price_range}
                 type="text"
                 placeholder="price"
               />
@@ -368,12 +344,14 @@ const Post = () => {
             </div>
             <div>
               <select
-                name="lga"
-                id="lga"
+                id="local_gov"
+                name="local_gov"
+                value={uploadData.local_gov}
+                onChange={handleInputChange}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">--Select Local Government--</option>
-                {localGvt && localGvt.map((x, i) => <option key={i} >{x.lga}</option>)}
+                {localGvt && localGvt.map((x, i) => <option key={i} value={x.lga} >{x.lga}</option>)}
               </select>
             </div>
 
@@ -386,8 +364,8 @@ const Post = () => {
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">Discount</option>
-                <option value="">Yes</option>
-                <option value="">No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
               </select>
             </div>
 
@@ -396,7 +374,7 @@ const Post = () => {
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name='description'
-                value={uploadData.description} 
+                value={uploadData.description}
                 onChange={handleInputChange}
                 type="text"
                 placeholder="description"
