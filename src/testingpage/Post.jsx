@@ -267,7 +267,28 @@ const Post = () => {
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target
-    setUploadData()
+    setUploadData(prevState => {
+      if (name === 'images') {
+        // Handle images input
+        const imagesArray = Array.from(files);
+        return {
+          ...prevState,
+          images: imagesArray,
+        };
+      } else if (name === 'categories') {
+        // Handle categories input
+        return {
+          ...prevState,
+          categories: value,
+        };
+      } else {
+        // Handle other inputs
+        return {
+          ...prevState,
+          [name]: type === 'checkbox' ? checked : value,
+        };
+      }
+    });
   }
   const uploadPostMutation = useMutation({
     mutationFn: (payload) => {
@@ -287,7 +308,6 @@ const Post = () => {
     console.log(data)
     uploadPostMutation.mutate({
       titleImageurl: data.picture[0],
-      // headlines: data.headlines,
       categories: data.categories,
       description: data.description,
       price_range: data.price,
