@@ -19,7 +19,7 @@ import data from '../../state.json';
 import { Toaster, toast } from 'sonner';
 const api_freeads = import.meta.env.VITE_ADS_VIDEO_FREEADS;
 
-console.log(data.States);
+// console.log(data.States);
 const options = { multi: true };
 const Video = () => {
     const { token } = useStateContext()

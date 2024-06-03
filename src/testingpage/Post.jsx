@@ -55,22 +55,22 @@ const Post = () => {
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
 
   const schema = yup.object().shape({
-    price: yup.string().required("Price is required"),
-    categories: yup.string().required("Category is required"),
-    description: yup.string().required("Description is required"),
-    // headlines: yup.string().required("Headline is required"),
-    state: yup.string().required("State is required"),
-    localGovernment: yup.string().required("Local Government is required"),
+    // price: yup.string().required("Price is required"),
+    // categories: yup.string().required("Category is required"),
+    // description: yup.string().required("Description is required"),
+    // // headlines: yup.string().required("Headline is required"),
+    // state: yup.string().required("State is required"),
+    // localGovernment: yup.string().required("Local Government is required"),
     picture: yup
       .mixed()
-      .test(
-        "required",
-        "You need to provide more than one image ",
-        (value) => {
-          return value && value.length > 1;
-        }
-      )
-      // .test("fileSize", "The file is too large", (value, context) => {
+      // .test(
+      //   "required",
+      //   "You need to provide more than one image ",
+      //   (value) => {
+      //     return value && value.length > 1;
+      //   }
+      // )
+      // // .test("fileSize", "The file is too large", (value, context) => {
       //   return value && value[0] && value[0].size <= 200000;
       // })
       .test("type", "We only support jpeg and png", (value) =>
@@ -94,12 +94,11 @@ const Post = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         newImages.push(e.target.result);
-        setTestFile(newImages)
         setImageUpload(newImages);
       };
       reader.readAsDataURL(file);
     }
-
+ 
   }
 
   const fileRemove = (file) => {
@@ -262,36 +261,32 @@ const Post = () => {
   } = useForm()
 
   const uploadPostMutation = useMutation({
-    mutationFn: payload => {
-      try {
-        const response = axios.post(api_freeads, payload, {
-          headers: {
-            Authorization: `Bearer ${token?.token}`,
-          },
-        });
-        console.log('Response:', response);
-        return response;
-      } catch (error) {
-        console.error('Error uploading post:', error);
-      }
-    },
+    mutationFn: (payload) => {
+      const response = axios.post(api_freeads, payload, {
+        headers: {
+          Accept: "application/json",
+          Accept: "application/vnd.api+json",
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token?.token}`,
+        },
+      })
+      console.log(response)
+    }
   })
-
-  // const onSubmit = (data) => {
-  //   console.log("working")
-  //   uploadPostMutation.mutate({
-  //     titleImageurl: data.picture[0],
-  //     categories: data.categories,
-  //     description: data.description,
-  //     price_range: data.price,
-  //     state: data.state,
-  //     local_gov: data.localGovernment,
-  //     user_image: token?.profileImage,
-  //   })
-  // }
-
-  const onSubmit = (data) => console.log(data)
-
+  const uploadPost = (e, data) => {
+    e.preventDefault()
+    console.log(data)
+    uploadPostMutation.mutate({
+      titleImageurl: data.picture[0],
+      // headlines: data.headlines,
+      categories: data.categories,
+      description: data.description,
+      price_range: data.price,
+      state: data.state,
+      local_gov: data.localGovernment,
+      user_image: token?.profileImage,
+    })
+  }
   // if (errors.categories) {
   //   toast.error(errors.categories?.message)
   // }
@@ -315,13 +310,13 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
                 <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
                   <div {...getRootProps()}>
-                    <input id="dragOrDrop" {...getInputProps()} />
+                    <input     {...register("picture")}  type='file' multiple     id="dragOrDrop" {...getInputProps()} />
                     <div className="text-center py-4">
                       <img src={uploadImg} className="mx-auto w-[100px] md:w-[200px]" alt="" />
                       <p className="font-semibold text-xs">Drag &apos;n&apos; drop some files here, or <span className="underline">click</span> to select files</p>
@@ -375,7 +370,7 @@ const Post = () => {
             </div>
 
 
-            {/* <p className="text-red-600  text-sm">{errors.categories?.message}</p> */}
+            <p className="text-red-600  text-sm">{errors.categories?.message}</p>
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
