@@ -1,5 +1,6 @@
 // import axiosclinet from "../https/axios-clinet";
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -48,58 +49,7 @@ const Post = () => {
   const [files, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleValues = (e) => {
-    setCategoriesValues(e.target.value);
-  };
 
-  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
-
-  const schema = yup.object().shape({
-    // price: yup.string().required("Price is required"),
-    // categories: yup.string().required("Category is required"),
-    // description: yup.string().required("Description is required"),
-    // // headlines: yup.string().required("Headline is required"),
-    // state: yup.string().required("State is required"),
-    // localGovernment: yup.string().required("Local Government is required"),
-    picture: yup
-      .mixed()
-      // .test(
-      //   "required",
-      //   "You need to provide more than one image ",
-      //   (value) => {
-      //     return value && value.length > 1;
-      //   }
-      // )
-      // // .test("fileSize", "The file is too large", (value, context) => {
-      //   return value && value[0] && value[0].size <= 200000;
-      // })
-      .test("type", "We only support jpeg and png", (value) =>
-        value ? SUPPORTED_FORMATS.includes(value[0].type) : true
-      ),
-  });
-  
-
-  const [testfile, setTestFile] = useState(null)
-
-  function handleChange(e) {
-    console.log(e.target.files);
-    setTestFile(URL.createObjectURL(e.target.files[0]));
-  }
-
-  const dragOrClick = (images) => {
-    const selectedFiles = images;
-    if (!selectedFiles.length) return;
-    const newImages = [...imageUpload];
-    for (const file of selectedFiles) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        newImages.push(e.target.result);
-        setImageUpload(newImages);
-      };
-      reader.readAsDataURL(file);
-    }
- 
-  }
 
   const fileRemove = (file) => {
     const updatedList = [...imageUpload];
@@ -108,25 +58,11 @@ const Post = () => {
   }
 
   const imagesListRef = ref(storage, "images/");
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
 
   const [localGvt, setLocalGvt] = useState();
-
   const result = Object.entries(data.full);
-
-  function selectState(e) {
-    setLocalGvt();
-    const selectedState = e.target.value;
-    if (selectedState) {
-      const filterState = result.filter((x) => {
-        return x[0].toLowerCase() === selectedState.toLowerCase();
-      });
-      setLocalGvt(filterState[0][1]);
-    } else {
-      setLocalGvt([]);
-    }
-  }
 
   // const formSubmit = (data) => {
   //   console.log("i was clicked")
@@ -253,49 +189,93 @@ const Post = () => {
   //   resolver: yupResolver(schema),
   // });
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+  const [uploadData, setUploadData] = useState({
+    images: [],
+    category: "",
+    productName : "",
+    description: "",
+    price_range: "",
+    state: "",
+    discount: "",
+    local_gov: "",
+    user_image: token?.profileImage,
+  });
 
+  useEffect(() => {
+    if (uploadData?.state) {
+      const filterState = result.filter(x => x[0].toLowerCase() === uploadData?.state.toLowerCase());
+      if (filterState.length > 0) {
+        setLocalGvt(filterState[0][1]);
+      }
+    }
+  }, [uploadData?.state]);
+
+
+  const handleInputChange = (event) => {
+    const { name, value, type, checked, files } = event.target;
+    setUploadData(prevState => {
+      if (name === 'images') {
+        const selectedFilesArray = Array.from(files);
+        setSelectedFiles(selectedFilesArray);
+        if (!selectedFilesArray.length) return;
+        const newImages = [...imageUpload];
+        for (const file of selectedFilesArray) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            newImages.push(e.target.result);
+            setImageUpload(newImages);
+          };
+          reader.readAsDataURL(file);
+        }
+        setUploadData((prevState) => ({
+          ...prevState,
+          images: selectedFilesArray,
+        }));
+        return;
+      }
+      else if (type === "checkbox") {
+        return {
+          ...prevState,
+          [name]: checked,
+        };
+      } else {
+        return {
+          ...prevState,
+          [name]: value,
+        };
+      }
+    });
+  }
   const uploadPostMutation = useMutation({
     mutationFn: (payload) => {
       const response = axios.post(api_freeads, payload, {
         headers: {
-          Accept: "application/json",
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token}`,
         },
-      })
-      console.log(response)
+      });
+      console.log(response);
     }
   })
-  const uploadPost = (data) => {
-    // e.preventDefault()
-    console.log(data)
-    uploadPostMutation.mutate({
-      titleImageurl: data.picture[0],
-      // headlines: data.headlines,
-      categories: data.categories,
-      description: data.description,
-      price_range: data.price,
-      state: data.state,
-      local_gov: data.localGovernment,
-      user_image: token?.profileImage,
-    })
+  const uploadPost = (e) => {
+    e.preventDefault()
+    console.log(uploadData)
+
+    const formData = new FormData();
+    uploadData?.images.forEach((image, index) => {
+      formData.append(`image_${index}`, image);
+    });
+    formData.append("category", uploadData?.category);
+    formData.append("description", uploadData?.description);
+    formData.append("price_range", uploadData?.price_range);
+    formData.append("state", uploadData?.state);
+    formData.append("local_gov", uploadData?.local_gov);
+    formData.append("discount", uploadData?.discount);
+    formData.append("user_image", uploadData?.user_image);
+
+    uploadPostMutation.mutate(formData);
   }
-  // if (errors.categories) {
-  //   toast.error(errors.categories?.message)
-  // }
-  // if (errors.description) {
-  //   toast.error(errors.description?.message)
-  // }
-  // if (errors.headlines) {
-  //   toast.error(errors.headlines?.message)
-  // }
 
   return (
     <>
@@ -310,21 +290,11 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
+        <form onSubmit={uploadPost} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
-            <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
-              {({ getRootProps, getInputProps }) => (
-                <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
-                  <div {...getRootProps()}>
-                    <input     {...register("picture")}  type='file' multiple     id="dragOrDrop" {...getInputProps()} />
-                    <div className="text-center py-4">
-                      <img src={uploadImg} className="mx-auto w-[100px] md:w-[200px]" alt="" />
-                      <p className="font-semibold text-xs">Drag &apos;n&apos; drop some files here, or <span className="underline">click</span> to select files</p>
-                    </div>
-                  </div>
-                </section>
-              )}
-            </Dropzone>
+            <label htmlFor="">
+              <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
+            </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
                 <div key={index} className="relative">
@@ -345,10 +315,13 @@ const Post = () => {
               ))}
             </div>
             <select
-              {...register("categories")}
-              // onChange={handleValues}
+              onChange={handleInputChange}
+              value={uploadData?.category}
+              name='category'
+              id='category'
               className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             >
+              <option value="">--Select a Category--</option>
               {categories.map((option, index) => {
                 return (
                   <option key={index} value={option}>
@@ -361,36 +334,35 @@ const Post = () => {
 
             <div>
               <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-ou
-                      tline"
+                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="productName"
+                name='productName'
                 type="text"
+                onChange={handleInputChange}
+                value={uploadData?.productName}
                 placeholder="Product Name"
               />
             </div>
-
-
-            <p className="text-red-600  text-sm">{errors.categories?.message}</p>
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
+                id="price_range"
+                name='price_range'
+                onChange={handleInputChange}
+                value={uploadData?.price_range}
                 type="text"
                 placeholder="price"
               />
             </div>
-            {/* <p className="text-red pt-2">{errors.categories?.message}</p> */}
-
             <div>
               <select
-                {...register("state")}
-                name=""
-                id=""
-                {...register("state", { required: true })}
+                name="state"
+                id="state"
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
-                onChange={(e) => selectState(e)}
+                onChange={handleInputChange}
+                value={uploadData?.state}
               >
-                <option value="">--Select State--</option>
+                <option value="">--Select your State--</option>
                 {data.States.map((state, i) => (
                   <option key={i} value={state.state}>{state.state}</option>
                 ))}
@@ -398,39 +370,42 @@ const Post = () => {
             </div>
             <div>
               <select
-                {...register("localGovernment")}
-                name=""
-                {...register("localGovernment", { required: true })}
-                id=""
+                id="local_gov"
+                name="local_gov"
+                value={uploadData?.local_gov}
+                onChange={handleInputChange}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">--Select Local Government--</option>
-                {localGvt && localGvt.map((x, i) => <option key={i} >{x.lga}</option>)}
+                {localGvt && localGvt.map((x, i) => <option key={i} value={x.lga} >{x.lga}</option>)}
               </select>
             </div>
 
             <div>
               <select
+                id='discount'
+                name='discount'
+                onChange={handleInputChange}
+                value={uploadData?.discount}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">Discount</option>
-                <option value="">Yes</option>
-                <option value="">No</option>
-
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
               </select>
             </div>
 
             <div>
               <textarea
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
+                id="description"
+                name='description'
+                value={uploadData?.description}
+                onChange={handleInputChange}
                 type="text"
                 placeholder="description"
-                {...register("description", { required: true })}
               />
             </div>
-
-            
           </div>
           <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
             Post Normal Ad
@@ -442,15 +417,3 @@ const Post = () => {
 };
 
 export default Post;
-
-
-{/* <div>
-              <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="text"
-                placeholder="NEW COMING GOING  headlines"
-                {...register("headlines", { required: true })}
-              />
-            </div> */}
-{/* <p className="text-red pt-2">{errors.headlines?.message}</p> */ }
