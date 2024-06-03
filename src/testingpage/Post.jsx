@@ -247,15 +247,18 @@ const Post = () => {
     });
   }
   const uploadPostMutation = useMutation({
-    mutationFn: (payload) => {
-      const response = axios.post(api_freeads, payload, {
+    mutationFn:async (payload) => {
+      const response =await  axios.post(api_freeads, payload, {
         headers: {
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token}`,
         },
       });
-      console.log(response);
+      if(response.data.status === 201){
+        console.log(response);
+      }
+     
     }
   })
 
@@ -306,7 +309,13 @@ const Post = () => {
 
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
-      formData.append(`image_${index}`, image);
+      // formData.append(`titleImageurl`, image[0]);
+      if(index === 0 ){
+        formData.append(`titleImageurl`, image);
+        console.log(image[0])
+      }
+
+   
     });
     formData.append("category", uploadData?.category);
     formData.append("description", uploadData?.description);
