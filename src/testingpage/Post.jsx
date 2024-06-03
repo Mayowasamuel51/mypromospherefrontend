@@ -48,6 +48,7 @@ const Post = () => {
   const [files, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
+
   const handleValues = (e) => {
     setCategoriesValues(e.target.value);
   };
@@ -77,7 +78,7 @@ const Post = () => {
         value ? SUPPORTED_FORMATS.includes(value[0].type) : true
       ),
   });
-  
+
 
   const [testfile, setTestFile] = useState(null)
 
@@ -98,7 +99,7 @@ const Post = () => {
       };
       reader.readAsDataURL(file);
     }
- 
+
   }
 
   const fileRemove = (file) => {
@@ -253,13 +254,21 @@ const Post = () => {
   //   resolver: yupResolver(schema),
   // });
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+  const [uploadData, setUploadData] = useState({
+    images: [],
+    categories: "",
+    description: "",
+    price_range: "",
+    state: "",
+    local_gov: "",
+    user_image: token?.profileImage,
 
+  })
+
+  const handleInputChange = (event) => {
+    const { name, value, type, checked } = event.target
+    setUploadData()
+  }
   const uploadPostMutation = useMutation({
     mutationFn: (payload) => {
       const response = axios.post(api_freeads, payload, {
@@ -287,15 +296,6 @@ const Post = () => {
       user_image: token?.profileImage,
     })
   }
-  // if (errors.categories) {
-  //   toast.error(errors.categories?.message)
-  // }
-  // if (errors.description) {
-  //   toast.error(errors.description?.message)
-  // }
-  // if (errors.headlines) {
-  //   toast.error(errors.headlines?.message)
-  // }
 
   return (
     <>
@@ -310,21 +310,11 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={handleSubmit(uploadPost)} encType="multipart/form-data" action="#">
+        <form encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
-            <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
-              {({ getRootProps, getInputProps }) => (
-                <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
-                  <div {...getRootProps()}>
-                    <input     {...register("picture")}  type='file' multiple     id="dragOrDrop" {...getInputProps()} />
-                    <div className="text-center py-4">
-                      <img src={uploadImg} className="mx-auto w-[100px] md:w-[200px]" alt="" />
-                      <p className="font-semibold text-xs">Drag &apos;n&apos; drop some files here, or <span className="underline">click</span> to select files</p>
-                    </div>
-                  </div>
-                </section>
-              )}
-            </Dropzone>
+            <label htmlFor="">
+              <input type="file" name="" id="" />
+            </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
               {imageUpload.map((imageUrl, index) => (
                 <div key={index} className="relative">
@@ -345,8 +335,6 @@ const Post = () => {
               ))}
             </div>
             <select
-              {...register("categories")}
-              // onChange={handleValues}
               className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             >
               {categories.map((option, index) => {
@@ -370,7 +358,6 @@ const Post = () => {
             </div>
 
 
-            <p className="text-red-600  text-sm">{errors.categories?.message}</p>
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -379,14 +366,11 @@ const Post = () => {
                 placeholder="price"
               />
             </div>
-            {/* <p className="text-red pt-2">{errors.categories?.message}</p> */}
 
             <div>
               <select
-                {...register("state")}
                 name=""
                 id=""
-                {...register("state", { required: true })}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
                 onChange={(e) => selectState(e)}
               >
@@ -398,10 +382,8 @@ const Post = () => {
             </div>
             <div>
               <select
-                {...register("localGovernment")}
-                name=""
-                {...register("localGovernment", { required: true })}
-                id=""
+                name="lga"
+                id="lga"
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">--Select Local Government--</option>
@@ -416,7 +398,6 @@ const Post = () => {
                 <option value="">Discount</option>
                 <option value="">Yes</option>
                 <option value="">No</option>
-
               </select>
             </div>
 
@@ -426,11 +407,8 @@ const Post = () => {
                 id="password"
                 type="text"
                 placeholder="description"
-                {...register("description", { required: true })}
               />
             </div>
-
-            
           </div>
           <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
             Post Normal Ad
@@ -442,15 +420,3 @@ const Post = () => {
 };
 
 export default Post;
-
-
-{/* <div>
-              <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="text"
-                placeholder="NEW COMING GOING  headlines"
-                {...register("headlines", { required: true })}
-              />
-            </div> */}
-{/* <p className="text-red pt-2">{errors.headlines?.message}</p> */ }
