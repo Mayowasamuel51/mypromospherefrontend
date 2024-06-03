@@ -58,7 +58,7 @@ export default function Navbar({ profile, blue }) {
         <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
 
-      <div onClick={handleToggle} className=" z-40 exl:hidden cursor-pointer ">
+      <div onClick={handleToggle} className=" z-[999999999999999999] exl:hidden cursor-pointer ">
         {toggleIcon ? (
           <XMarkIcon width={35} className={`text-white`} />
         ) : (

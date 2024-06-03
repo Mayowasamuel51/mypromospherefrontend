@@ -6,9 +6,8 @@ import "./index.css";
 // routes/pages
 import { ContextProvider } from "./contexts/ContextProvider";
 import router from "./router";
+
 import {
-  useQuery,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'

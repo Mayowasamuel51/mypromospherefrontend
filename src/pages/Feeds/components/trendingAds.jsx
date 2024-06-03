@@ -16,7 +16,7 @@ import "./trends.css"
 const TrendingAds = () => {
     const { FullScreen } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
-    if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
+    if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error.message}</p></div>
     return (
         <section className="overflow-x-hidden">
             <div className="flex items-center gap-2 lg:my-10 my-5">

@@ -24,7 +24,7 @@ const DashBoardNav = () => {
               <h1 className="text-xs font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
             </div>
           </Link>
-          <div className="z-40 lg:hidden">
+          <div className="z-[9999999999999999999999] lg:hidden">
             {toggleNav ? (
               <XMarkIcon width={35} color="white" onClick={handleToggle} />
             ) : (
