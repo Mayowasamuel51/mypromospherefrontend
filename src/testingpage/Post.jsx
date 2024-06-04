@@ -49,8 +49,6 @@ const Post = () => {
   const [files, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-
-
   const fileRemove = (file) => {
     const updatedList = [...imageUpload];
     updatedList.splice(imageUpload.indexOf(file), 1);
@@ -223,7 +221,13 @@ const Post = () => {
           const reader = new FileReader();
           reader.onload = (e) => {
             newImages.push(e.target.result);
-            setImageUpload(newImages);
+            if (newImages.length < 5) {
+              setImageUpload(newImages);
+            }
+            else {
+              toast.error("You can only upload four images")
+              return;
+            }
           };
           reader.readAsDataURL(file);
         }
@@ -246,35 +250,44 @@ const Post = () => {
       }
     });
   }
+
   const uploadPostMutation = useMutation({
-    mutationFn:async (payload) => {
-      const response =await  axios.post(api_freeads, payload, {
+    mutationFn: async(payload) => {
+      const response = await axios.post(api_freeads, payload, {
         headers: {
           Accept: "application/vnd.api+json",
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token?.token}`,
         },
       });
-      if(response.data.status === 201){
-        console.log(response);
-      }
-     
-    }
+      console.log(response);
+    },
+    onSuccess: ()=> {
+      queryClient.invalidateQueries(["trendingAds"])
+      toast.success("You have just made a post")
+    },
+    onError: () => {
+      toast.error('Failed to upload post');
+  },
   })
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
+
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
-
+    if (uploadData.images.length > 5) {
+      toast.error(`You can upload a maximum of 5 images.`);
+      return;
+    }
     if (!uploadData.images || uploadData.images.length === 0) {
       toast.error("Please select at least one image.");
       return;
     }
-
     uploadData.images.forEach((image) => {
       if (!SUPPORTED_FORMATS.includes(image.type)) {
         toast.error(`Unsupported image format: ${image.name}`);
+        return;
       }
       return;
     });
@@ -306,16 +319,9 @@ const Post = () => {
       toast.error("Discount is required.");
       return;
     }
-
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
-      // formData.append(`titleImageurl`, image[0]);
-      if(index === 0 ){
-        formData.append(`titleImageurl`, image);
-        console.log(image[0])
-      }
-
-   
+      formData.append(`image_${index}`, image);
     });
     formData.append("category", uploadData?.category);
     formData.append("description", uploadData?.description);
@@ -326,6 +332,7 @@ const Post = () => {
     formData.append("user_image", uploadData?.user_image);
 
     uploadPostMutation.mutate(formData);
+
   }
 
   return (
@@ -341,7 +348,7 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={uploadPost} encType="multipart/form-data" action="#">
+        <form onSubmit={()=> uploadPost()} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
