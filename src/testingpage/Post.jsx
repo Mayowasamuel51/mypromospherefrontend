@@ -348,7 +348,7 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={(e)=> uploadPost(e)} encType="multipart/form-data" action="#">
+        <form onSubmit={(e)=> uploadPost()} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
