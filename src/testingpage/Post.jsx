@@ -321,7 +321,7 @@ const Post = () => {
     }
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
-      formData.append(`image_${index}`, image);
+      formData.append(`titleImageurl`, image);
     });
     formData.append("category", uploadData?.category);
     formData.append("description", uploadData?.description);
@@ -348,7 +348,7 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={()=> uploadPost()} encType="multipart/form-data" action="#">
+        <form onSubmit={(e)=> uploadPost(e)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
