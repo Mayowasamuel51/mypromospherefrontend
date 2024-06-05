@@ -45,6 +45,7 @@ const Post = () => {
   const { user, setUser } = useStateContext();
   const [makepic, setmakepic] = useState("");
   const { token } = useStateContext();
+  // console.log(token.token)
   const [imageUpload, setImageUpload] = useState([]);
   const [files, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -272,25 +273,11 @@ const Post = () => {
   })
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
-
+  
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
-    if (uploadData.images.length > 5) {
-      toast.error(`You can upload a maximum of 5 images.`);
-      return;
-    }
-    if (!uploadData.images || uploadData.images.length === 0) {
-      toast.error("Please select at least one image.");
-      return;
-    }
-    uploadData.images.forEach((image) => {
-      if (!SUPPORTED_FORMATS.includes(image.type)) {
-        toast.error(`Unsupported image format: ${image.name}`);
-        return;
-      }
-      return;
-    });
+    
     if (!uploadData.productName) {
       toast.error("You have not added your product name.");
       return;
