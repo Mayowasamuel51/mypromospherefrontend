@@ -189,7 +189,7 @@ const Post = () => {
   // });
 
   const [uploadData, setUploadData] = useState({
-    images: [],
+    images: [] || null,
     category: "",
     productName : "",
     description: "",
@@ -224,19 +224,21 @@ const Post = () => {
             newImages.push(e.target.result);
             if (newImages.length < 5) {
               setImageUpload(newImages);
+              return {
+                ...prevState,
+                images: selectedFilesArray,
+              }
             }
             else {
               toast.error("You can only upload four images")
-              return;
             }
           };
           reader.readAsDataURL(file);
         }
-        setUploadData((prevState) => ({
+        return {
           ...prevState,
-          images: selectedFilesArray,
-        }));
-        return;
+          images: selectedFilesArray
+        }
       }
       else if (type === "checkbox") {
         return {
@@ -282,54 +284,58 @@ const Post = () => {
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
-    if (uploadData.images.length > 5) {
+    if (imageUpload?.length > 5) {
       toast.error(`You can upload a maximum of 5 images.`);
       return;
     }
-    if (!uploadData.images || uploadData.images.length === 0) {
+    if (!imageUpload || imageUpload?.length === 0) {
       toast.error("Please select at least one image.");
       return;
     }
-    uploadData.images.forEach((image) => {
+    uploadData?.images?.forEach((image) => {
       if (!SUPPORTED_FORMATS.includes(image.type)) {
         toast.error(`Unsupported image format: ${image.name}`);
         return;
       }
       return;
     });
-    if (!uploadData.productName) {
+    if (!uploadData?.productName) {
       toast.error("You have not added your product name.");
       return;
     }
-    if (!uploadData.category) {
+    if (!uploadData?.category) {
       toast.error("Category is required.");
       return;
     }
-    if (!uploadData.description) {
+    if (!uploadData?.description) {
       toast.error("Description is required.");
       return;
     }
-    if (!uploadData.price_range) {
+    if (!uploadData?.price_range) {
       toast.error("Price range is required.");
       return;
     }
-    if (!uploadData.state) {
+    if (!uploadData?.state) {
       toast.error("State is required.");
       return;
     }
-    if (!uploadData.local_gov) {
+    if (!uploadData?.local_gov) {
       toast.error("Local government is required.");
       return;
     }
-    if (!uploadData.discount) {
+    if (!uploadData?.discount) {
       toast.error("Discount is required.");
       return;
     }
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
-      formData.append(`titleImageurl`, image);
+      if (index === 0) {
+        formData.append(`titleImageurl`, image);
+      }
+      else {
+        console.log(image)
+      }
     });
-    
     formData.append("category", uploadData?.category);
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
@@ -337,6 +343,8 @@ const Post = () => {
     formData.append("local_gov", uploadData?.local_gov);
     formData.append("discount", uploadData?.discount);
     formData.append("user_image", uploadData?.user_image);
+
+    console.log(formData)
 
     // uploadPostMutation.mutate(formData);
 
@@ -357,7 +365,7 @@ const Post = () => {
         </h1>
         <form onSubmit={(e)=> uploadPost(e)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
-            <label htmlFor="">
+            <label htmlFor="" className=''>
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
             </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
@@ -372,7 +380,7 @@ const Post = () => {
                 </div>
               ))}
               {4 - imageUpload.length > 0 && Array.from({ length: 4 - imageUpload.length }).map((_, index) => (
-                <label key={index} htmlFor="dragOrDrop" className="cursor-pointer duration-300 hover:scale-110">
+                <label key={index} htmlFor="images" className="cursor-pointer duration-300 hover:scale-110">
                   <div className="w-[300px] h-[300px] md:w-[200px] md:h-[200px] rounded-md bg-slate-200 flex items-center justify-center">
                     <FaPlus size={25} />
                   </div>
@@ -381,7 +389,7 @@ const Post = () => {
             </div>
             <select
               onChange={handleInputChange}
-              value={uploadData?.category}
+              value={uploadData?.category || ""}
               name='category'
               id='category'
               className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -395,8 +403,6 @@ const Post = () => {
                 );
               })}
             </select>
-
-
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -404,7 +410,7 @@ const Post = () => {
                 name='productName'
                 type="text"
                 onChange={handleInputChange}
-                value={uploadData?.productName}
+                value={uploadData?.productName || ""}
                 placeholder="Product Name"
               />
             </div>
@@ -414,7 +420,7 @@ const Post = () => {
                 id="price_range"
                 name='price_range'
                 onChange={handleInputChange}
-                value={uploadData?.price_range}
+                value={uploadData?.price_range || ""}
                 type="text"
                 placeholder="price"
               />
@@ -425,7 +431,7 @@ const Post = () => {
                 id="state"
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
                 onChange={handleInputChange}
-                value={uploadData?.state}
+                value={uploadData?.state || ""}
               >
                 <option value="">--Select your State--</option>
                 {data.States.map((state, i) => (
@@ -437,7 +443,7 @@ const Post = () => {
               <select
                 id="local_gov"
                 name="local_gov"
-                value={uploadData?.local_gov}
+                value={uploadData?.local_gov || ""}
                 onChange={handleInputChange}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
@@ -451,7 +457,7 @@ const Post = () => {
                 id='discount'
                 name='discount'
                 onChange={handleInputChange}
-                value={uploadData?.discount}
+                value={uploadData?.discount || ""}
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">Discount</option>
@@ -465,8 +471,8 @@ const Post = () => {
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name='description'
-                value={uploadData?.description}
                 onChange={handleInputChange}
+                value={uploadData?.description || ""}
                 type="text"
                 placeholder="description"
               />
