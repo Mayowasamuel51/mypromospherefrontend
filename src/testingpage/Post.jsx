@@ -270,45 +270,43 @@ const Post = () => {
     // console.log(uploadData)
   }
 
-  // console.log(imageUpload)
-  // console.log(uploadData)
-
-  const uploadPostMutation = useMutation({
-    mutationFn: async (payload) => {
-      try {
-        const response = await axios.post(api_freeads, payload, {
-          headers: {
-            Accept: "application/vnd.api+json",
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token?.token}`,
-          },
-        });
-        console.log(response);
-      } catch (error) {
-        console.log(error)
-      }
-
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["trendingAds"])
-      toast.success("You have just made a post")
-      setUploadData(prev => ({
-        ...prev,
-        images: null,
-        category: "",
-        productName: "",
-        description: "",
-        price_range: "",
-        state: "",
-        discount: "",
-        local_gov: "",
-        user_image: token?.profileImage,
-      }))
-},
-  onError: () => {
-      toast.error('Failed to upload post');
-    },
-  })
+const uploadPostMutation = useMutation({
+  mutationFn: async (payload) => {
+    try {
+      const response = await axios.post(api_freeads, payload, {
+        headers: {
+          Accept: "application/vnd.api+json",
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token?.token}`,
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ["trendingAds"] })
+    toast.success("You have just made a post")
+    setUploadData(prev => ({
+      ...prev,
+      images: null,
+      category: "",
+      productName: "",
+      description: "",
+      price_range: "",
+      state: "",
+      discount: "",
+      local_gov: "",
+      user_image: token?.profileImage,
+    }))
+    setImageUpload([]);
+  },
+  onError: (error) => {
+    console.log(error);
+    toast.error('Failed to upload post');
+  },
+})
 
 const uploadPost = (e) => {
   e.preventDefault()
@@ -321,7 +319,7 @@ const uploadPost = (e) => {
     toast.error("Please select at least one image.");
     return;
   }
-  uploadData?.images?.forEach((image) => {
+  imageUpload?.forEach((image) => {
     if (!SUPPORTED_FORMATS.includes(image.type)) {
       toast.error(`Unsupported image format: ${image.name}`);
       return;
@@ -373,8 +371,6 @@ const uploadPost = (e) => {
   formData.append("discount", uploadData?.discount);
   formData.append("user_image", uploadData?.user_image);
 
-  console.log(formData)
-
   uploadPostMutation.mutate(formData);
 
 }
@@ -408,7 +404,7 @@ return (
                 <FaXmark size={25} color='#3D217A' onClick={() => fileRemove(image)} className="absolute top-2 right-2" />
               </div>
             ))}
-            {4 - imageUpload.length > 0 && Array.from({ length: 4 - imageUpload.length }).map((_, index) => (
+            {5 - imageUpload.length > 0 && Array.from({ length: 5 - imageUpload.length }).map((_, index) => (
               <label key={index} htmlFor="images" className="cursor-pointer duration-300 hover:scale-110">
                 <div className="w-[300px] h-[300px] md:w-[200px] md:h-[200px] rounded-md bg-slate-200 flex items-center justify-center">
                   <FaPlus size={25} />
