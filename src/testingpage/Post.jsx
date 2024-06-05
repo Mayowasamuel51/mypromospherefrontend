@@ -267,11 +267,11 @@ const Post = () => {
   const fileRemove = (file) => {
     setImageUpload((prevImages) => prevImages.filter((img) => img.name !== file.name));
     // setUploadData()
-    console.log(uploadData)
+    // console.log(uploadData)
   }
 
-  console.log(imageUpload)
-  console.log(uploadData)
+  // console.log(imageUpload)
+  // console.log(uploadData)
 
   const uploadPostMutation = useMutation({
     mutationFn: async (payload) => {
@@ -363,7 +363,7 @@ const Post = () => {
 
     console.log(formData)
 
-    // uploadPostMutation.mutate(formData);
+    uploadPostMutation.mutate(formData);
 
   }
 
