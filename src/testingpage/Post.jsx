@@ -50,12 +50,6 @@ const Post = () => {
   const [files, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fileRemove = (file) => {
-    const updatedList = [...imageUpload];
-    updatedList.splice(imageUpload.indexOf(file), 1);
-    setImageUpload(updatedList);
-  }
-
   const imagesListRef = ref(storage, "images/");
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
@@ -82,7 +76,7 @@ const Post = () => {
 
   //   // Access the random string using the index
   //   const randomString = myArray[randomIndex];
-  //   formData.append("titleImageurl", data.picture[0]);
+  //   formData.append("titleImage", data.picture[0]);
   //   formData.append("headlines", data.headlines);
   //   formData.append("categories", data.categories);
   //   formData.append("description", data.description);
@@ -191,7 +185,7 @@ const Post = () => {
   const [uploadData, setUploadData] = useState({
     images: [] || null,
     category: "",
-    productName : "",
+    productName: "",
     description: "",
     price_range: "",
     state: "",
@@ -210,34 +204,50 @@ const Post = () => {
   }, [uploadData?.state]);
 
 
+  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
+
   const handleInputChange = (event) => {
     const { name, value, type, checked, files } = event.target;
     setUploadData(prevState => {
       if (name === 'images') {
-        const selectedFilesArray = Array.from(files);
-        setSelectedFiles(selectedFilesArray);
-        if (!selectedFilesArray.length) return;
-        const newImages = [...imageUpload];
-        for (const file of selectedFilesArray) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            newImages.push(e.target.result);
-            if (newImages.length < 5) {
-              setImageUpload(newImages);
-              return {
-                ...prevState,
-                images: selectedFilesArray,
-              }
+        const selectedFilesArray = Array.from(files)
+        setSelectedFiles(selectedFilesArray)
+        if (!selectedFilesArray.length) return
+        const newImages = [...imageUpload]
+        selectedFilesArray.forEach((image)=> {
+          if (SUPPORTED_FORMATS.includes(image.type)) {
+            for (const file of selectedFilesArray) {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                newImages.push({url : e.target.result, type : file.type, name : file.name});
+                selectedFilesArray.forEach((image) => {
+                  console.log(image)
+                  if (newImages.length < 5) {
+                    setImageUpload(newImages);
+                    return {
+                      ...prevState,
+                      images: selectedFilesArray,
+                    }
+                  }
+                  else {
+                    toast.error("You can only upload four images")
+                  }
+                })
+              };
+              reader.readAsDataURL(file);
             }
-            else {
-              toast.error("You can only upload four images")
+          } else {
+            // console.log("no")
+            toast.error("Invalid file Format")
+            return {
+              ...prevState,
+              images: selectedFilesArray.filter((image)=> SUPPORTED_FORMATS.includes(image.type)),
             }
-          };
-          reader.readAsDataURL(file);
-        }
+          }
+        })
         return {
           ...prevState,
-          images: selectedFilesArray
+          images: selectedFilesArray.filter((image)=> SUPPORTED_FORMATS.includes(image.type)),
         }
       }
       else if (type === "checkbox") {
@@ -254,8 +264,17 @@ const Post = () => {
     });
   }
 
+  const fileRemove = (file) => {
+    setImageUpload((prevImages) => prevImages.filter((img) => img.name !== file.name));
+    // setUploadData()
+    console.log(uploadData)
+  }
+
+  console.log(imageUpload)
+  console.log(uploadData)
+
   const uploadPostMutation = useMutation({
-    mutationFn: async(payload) => {
+    mutationFn: async (payload) => {
       try {
         const response = await axios.post(api_freeads, payload, {
           headers: {
@@ -268,19 +287,17 @@ const Post = () => {
       } catch (error) {
         console.log(error)
       }
-      
+
     },
-    onSuccess: ()=> {
+    onSuccess: () => {
       queryClient.invalidateQueries(["trendingAds"])
       toast.success("You have just made a post")
     },
     onError: () => {
       toast.error('Failed to upload post');
-  },
+    },
   })
 
-  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
-  
   const uploadPost = (e) => {
     e.preventDefault()
     console.log(uploadData)
@@ -330,7 +347,7 @@ const Post = () => {
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
       if (index === 0) {
-        formData.append(`titleImageurl`, image);
+        formData.append(`titleImage`, image);
       }
       else {
         console.log(image)
@@ -363,20 +380,20 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={(e)=> uploadPost(e)} encType="multipart/form-data" action="#">
+        <form onSubmit={(e) => uploadPost(e)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="" className=''>
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
             </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">
-              {imageUpload.map((imageUrl, index) => (
-                <div key={index} className="relative">
+              {imageUpload.map((image, index) => (
+                <div key={index} className={`relative ${(image?.type ==="image/jpeg" || image?.type === "image/png") ? "" : "border-2 border-red"}`}>
                   <img
-                    src={imageUrl}
-                    alt="Uploaded Image"
+                    src={image.url}
+                    alt={`${(image?.type === "image/jpeg" || image?.type === "image/png") ? "Uploaded Image" : `Please Remove wrong image format`}`}
                     className="md:w-[200px] md:h-[200px] rounded-md object-cover"
                   />
-                  <FaXmark size={25} color='#3D217A' onClick={() => fileRemove(imageUrl)} className="absolute top-2 right-2" />
+                  <FaXmark size={25} color='#3D217A' onClick={() => fileRemove(image)} className="absolute top-2 right-2" />
                 </div>
               ))}
               {4 - imageUpload.length > 0 && Array.from({ length: 4 - imageUpload.length }).map((_, index) => (
