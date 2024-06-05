@@ -253,14 +253,19 @@ const Post = () => {
 
   const uploadPostMutation = useMutation({
     mutationFn: async(payload) => {
-      const response = await axios.post(api_freeads, payload, {
-        headers: {
-          Accept: "application/vnd.api+json",
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token?.token}`,
-        },
-      });
-      console.log(response);
+      try {
+        const response = await axios.post(api_freeads, payload, {
+          headers: {
+            Accept: "application/vnd.api+json",
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token?.token}`,
+          },
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error)
+      }
+      
     },
     onSuccess: ()=> {
       queryClient.invalidateQueries(["trendingAds"])
@@ -275,7 +280,7 @@ const Post = () => {
 
   const uploadPost = (e) => {
     e.preventDefault()
-    console.log(uploadData)
+    // console.log(uploadData)
     if (uploadData.images.length > 5) {
       toast.error(`You can upload a maximum of 5 images.`);
       return;
@@ -323,6 +328,7 @@ const Post = () => {
     uploadData?.images.forEach((image, index) => {
       formData.append(`image_${index}`, image);
     });
+    
     formData.append("category", uploadData?.category);
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
@@ -331,14 +337,14 @@ const Post = () => {
     formData.append("discount", uploadData?.discount);
     formData.append("user_image", uploadData?.user_image);
 
-    uploadPostMutation.mutate(formData);
+    // uploadPostMutation.mutate(formData);
 
   }
 
   return (
     <>
       <Toaster position="top-center" />
-      {loading &&
+      {uploadPostMutation.isPending &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
         </div>
@@ -348,7 +354,7 @@ const Post = () => {
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
         </h1>
-        <form onSubmit={()=> uploadPost()} encType="multipart/form-data" action="#">
+        <form onSubmit={(e)=> uploadPost(e)} encType="multipart/form-data" action="#">
           <div className="flex flex-col gap-3">
             <label htmlFor="">
               <input type="file" multiple onChange={handleInputChange} name="images" id="images" />
