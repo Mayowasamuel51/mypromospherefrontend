@@ -211,18 +211,21 @@ const Post = () => {
         const newImages = [...imageUpload];
         selectedFilesArray.forEach((image) => {
           if (SUPPORTED_FORMATS.includes(image.type)) {
-            for (const file of selectedFilesArray) {
+            // for (const file of selectedFilesArray) {
               const reader = new FileReader();
               reader.onload = (e) => {
+                // console.log(image)
                 newImages.push({
                   url: e.target.result,
-                  type: file.type,
-                  name: file.name,
+                  type: image.type,
+                  name: image.name,
                 });
                 selectedFilesArray.forEach((image) => {
                   console.log(image);
                   if (newImages.length < 5) {
                     setImageUpload(newImages);
+                    console.log("new image",newImages)
+                    console.log("image upload",imageUpload)
                     return {
                       ...prevState,
                       images: selectedFilesArray,
@@ -232,8 +235,8 @@ const Post = () => {
                   }
                 });
               };
-              reader.readAsDataURL(file);
-            }
+              reader.readAsDataURL(image);
+            // }
           } else {
             // console.log("no")
             toast.error("Invalid file Format");
@@ -269,8 +272,9 @@ const Post = () => {
       prevImages.filter((img) => img.name !== file.name)
     );
     // setUploadData()
-    // console.log(uploadData)
   };
+  console.log("image upload",imageUpload)
+
   const uploadPostMutation = useMutation({
     mutationFn: async (payload) => {
       try {
@@ -280,10 +284,10 @@ const Post = () => {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token?.token}`,
           },
-        });    
+        });
         console.log(response.data.item);
-        // for (let i = 0; i < uploadData?.images.length; i++) {
-          uploadData?.images.forEach((image, index) => {
+        // for (let i = 0; i < imageUpload.length; i++) {
+        uploadData?.images.forEach((image, index) => {
           const imageRef = ref(
             storage,
             `/newuploads/${image.name} ${token?.user}`
@@ -479,20 +483,18 @@ const Post = () => {
               {imageUpload.map((image, index) => (
                 <div
                   key={index}
-                  className={`relative ${
-                    image?.type === "image/jpeg" || image?.type === "image/png"
+                  className={`relative ${image?.type === "image/jpeg" || image?.type === "image/png"
                       ? ""
                       : "border-2 border-red"
-                  }`}
+                    }`}
                 >
                   <img
                     src={image.url}
-                    alt={`${
-                      image?.type === "image/jpeg" ||
-                      image?.type === "image/png"
+                    alt={`${image?.type === "image/jpeg" ||
+                        image?.type === "image/png"
                         ? "Uploaded Image"
                         : `Please Remove wrong image format`
-                    }`}
+                      }`}
                     className="md:w-[200px] md:h-[200px] rounded-md object-cover"
                   />
                   <FaXmark

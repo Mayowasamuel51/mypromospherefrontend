@@ -1,6 +1,7 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import user from "../../../assests/images/user.svg";
+import anon from "../../../assests/images/anon.png"
 import LOGO from "../../../assests/SVGs/logo.svg"
 import { Link } from 'react-router-dom';
 import FetchTrendingAds from "../../../hooks/fetchTrendingAds";
@@ -16,7 +17,8 @@ import "./trends.css"
 const TrendingAds = () => {
     const { FullScreen } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
-    if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error.message}</p></div>
+    console.log(data?.data.normalads)
+    if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
             <div className="flex items-center gap-2 lg:my-10 my-5">
@@ -54,7 +56,7 @@ const TrendingAds = () => {
                         </Splide>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
-                                <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
+                                <LazyLoadImage effect="blur" src={item.user_image === "null" ? anon : item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
@@ -96,7 +98,7 @@ const TrendingAds = () => {
                         </Splide>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
-                                <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
+                                <LazyLoadImage effect="blur" src={item.user_image === "null" ? anon : item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
@@ -138,7 +140,7 @@ const TrendingAds = () => {
                         </Splide>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
-                                <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
+                                <LazyLoadImage effect="blur" src={item.user_image === "null" ? anon : item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
@@ -180,7 +182,7 @@ const TrendingAds = () => {
                         </Splide>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
-                                <LazyLoadImage effect="blur" src={item.user_image || user} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
+                                <LazyLoadImage effect="blur" src={item.user_image === "null" ? anon : item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
                                 <p className="text-sm font-medium">USER-ID {item.user_id}</p>
                             </div>
                         </Link>
