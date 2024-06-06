@@ -316,6 +316,7 @@ const uploadPost = (e) => {
     return;
   }
   if (!imageUpload || imageUpload?.length === 0) {
+
     toast.error("Please select at least one image.");
     return;
   }
@@ -326,38 +327,39 @@ const uploadPost = (e) => {
     }
     return;
   });
-  if (!uploadData?.productName) {
-    toast.error("You have not added your product name.");
-    return;
-  }
-  if (!uploadData?.category) {
-    toast.error("Category is required.");
-    return;
-  }
-  if (!uploadData?.description) {
-    toast.error("Description is required.");
-    return;
-  }
-  if (!uploadData?.price_range) {
-    toast.error("Price range is required.");
-    return;
-  }
-  if (!uploadData?.state) {
-    toast.error("State is required.");
-    return;
-  }
-  if (!uploadData?.local_gov) {
-    toast.error("Local government is required.");
-    return;
-  }
-  if (!uploadData?.discount) {
-    toast.error("Discount is required.");
-    return;
-  }
+  // if (!uploadData?.productName) {
+  //   toast.error("You have not added your product name.");
+  //   return;
+  // }
+  // if (!uploadData?.category) {
+  //   toast.error("Category is required.");
+  //   return;
+  // }
+  // if (!uploadData?.description) {
+  //   toast.error("Description is required.");
+  //   return;
+  // }
+  // if (!uploadData?.price_range) {
+  //   toast.error("Price range is required.");
+  //   return;
+  // }
+  // if (!uploadData?.state) {
+  //   toast.error("State is required.");
+  //   return;
+  // }
+  // if (!uploadData?.local_gov) {
+  //   toast.error("Local government is required.");
+  //   return;
+  // }
+  // if (!uploadData?.discount) {
+  //   toast.error("Discount is required.");
+  //   return;
+  // }
   const formData = new FormData();
   uploadData?.images.forEach((image, index) => {
     if (index === 0) {
-      formData.append(`titleImage`, image);
+      console.log(image.name)
+      formData.append(`titleImageurl`, image);
     }
     else {
       console.log(image)
