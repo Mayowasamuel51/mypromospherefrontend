@@ -179,7 +179,6 @@ const Post = () => {
   // const { register, formState: { errors }, handleSubmit, reset} = useForm({
   //   resolver: yupResolver(schema),
   // });
-
   const [uploadData, setUploadData] = useState({
     images: [] || null,
     category: "",
@@ -191,7 +190,6 @@ const Post = () => {
     local_gov: "",
     user_image: token?.profileImage,
   });
-
   useEffect(() => {
     if (uploadData?.state) {
       const filterState = result.filter(
@@ -202,9 +200,7 @@ const Post = () => {
       }
     }
   }, [uploadData?.state]);
-
   const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
-
   const handleInputChange = (event) => {
     const { name, value, type, checked, files } = event.target;
     setUploadData((prevState) => {
@@ -268,7 +264,6 @@ const Post = () => {
       }
     });
   };
-
   const fileRemove = (file) => {
     setImageUpload((prevImages) =>
       prevImages.filter((img) => img.name !== file.name)
@@ -276,7 +271,6 @@ const Post = () => {
     // setUploadData()
     // console.log(uploadData)
   };
-
   const uploadPostMutation = useMutation({
     mutationFn: async (payload) => {
       try {
@@ -288,13 +282,14 @@ const Post = () => {
           },
         });    
         console.log(response.data.item);
-        // for (let i = 0; i < imageUpload.length; i++) {
+        // for (let i = 0; i < uploadData?.images.length; i++) {
           uploadData?.images.forEach((image, index) => {
           const imageRef = ref(
             storage,
             `/newuploads/${image.name} ${token?.user}`
           );
           const uploadTask = uploadBytesResumable(imageRef, image);
+          console.log(image)
           uploadTask.on(
             "state_changed",
             (snapshot) => {
@@ -355,7 +350,8 @@ const Post = () => {
               });
             }
           );
-        })
+        }
+      )
 
         // const second_repsone = await axios.post();
       } catch (error) {
@@ -384,7 +380,6 @@ const Post = () => {
       toast.error("Failed to upload post");
     },
   });
-
   const uploadPost = (e) => {
     e.preventDefault();
     console.log(uploadData);
@@ -451,7 +446,7 @@ const Post = () => {
 
     uploadPostMutation.mutate(formData);
   };
-
+ 
   return (
     <>
       <Toaster position="top-center" />
