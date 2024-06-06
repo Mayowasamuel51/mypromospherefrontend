@@ -46,11 +46,11 @@ const TrendingAds = () => {
                             <SplideSlide className='rounded-md w-fit border-2'>
                                 <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
-                            {/* {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
+                            {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
                                     <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
-                            ))} */}
+                            ))}
                         </Splide>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
@@ -61,7 +61,7 @@ const TrendingAds = () => {
                     </Link>
                 ))}
             </section>
-            {/* <div className="flex items-center gap-2 lg:my-10 my-5">
+            <div className="flex items-center gap-2 lg:my-10 my-5">
           
                 <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>ALWAYS STAY IN VOGUE</h1>
             </div> 
@@ -186,7 +186,7 @@ const TrendingAds = () => {
                         </Link>
                     </Link>
                 ))}
-            </section>  */}
+            </section> 
         </section>
     )
 }
