@@ -403,34 +403,34 @@ const Post = () => {
       }
       return;
     });
-    // if (!uploadData?.productName) {
-    //   toast.error("You have not added your product name.");
-    //   return;
-    // }
-    // if (!uploadData?.category) {
-    //   toast.error("Category is required.");
-    //   return;
-    // }
-    // if (!uploadData?.description) {
-    //   toast.error("Description is required.");
-    //   return;
-    // }
-    // if (!uploadData?.price_range) {
-    //   toast.error("Price range is required.");
-    //   return;
-    // }
-    // if (!uploadData?.state) {
-    //   toast.error("State is required.");
-    //   return;
-    // }
-    // if (!uploadData?.local_gov) {
-    //   toast.error("Local government is required.");
-    //   return;
-    // }
-    // if (!uploadData?.discount) {
-    //   toast.error("Discount is required.");
-    //   return;
-    // }
+    if (!uploadData?.productName) {
+      toast.error("You have not added your product name.");
+      return;
+    }
+    if (!uploadData?.category) {
+      toast.error("Category is required.");
+      return;
+    }
+    if (!uploadData?.description) {
+      toast.error("Description is required.");
+      return;
+    }
+    if (!uploadData?.price_range) {
+      toast.error("Price range is required.");
+      return;
+    }
+    if (!uploadData?.state) {
+      toast.error("State is required.");
+      return;
+    }
+    if (!uploadData?.local_gov) {
+      toast.error("Local government is required.");
+      return;
+    }
+    if (!uploadData?.discount) {
+      toast.error("Discount is required.");
+      return;
+    }
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
       if (index === 0) {
@@ -440,7 +440,8 @@ const Post = () => {
         console.log(image);
       }
     });
-    formData.append("category", uploadData?.category);
+    formData.append("categories", uploadData?.category);
+
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
     formData.append("state", uploadData?.state);
