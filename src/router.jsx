@@ -42,6 +42,8 @@ import Myuploads from "./testingpage/Myupload.jsx";
 
 import Error from "./error.jsx";
 import MyVideos from "./testingpage/MyVideos.jsx";
+import ProfileEdit from "./pages/LoginPage/component/ProfileEdit.jsx";
+import PersonalInfo from "./pages/LoginPage/component/PersonalInfo.jsx";
 
 
 const router = createBrowserRouter([
@@ -72,32 +74,6 @@ const router = createBrowserRouter([
     path: "/profile/:cusName",
     element: <ProfileHome />,
   },
-  // {
-  //   path: "/product",
-  //   element: <ProductView />
-  // },
-  // {
-  //   path: "/home",
-  //   element: (
-  //     <Suspense fallback={<Loader />}>
-  //       <APP />
-  //     </Suspense>
-  //   ),
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <TopServices />,
-  //     },
-  //     {
-  //       path: "trendingSkills",
-  //       element: <TrendingSkills />,
-  //     },
-  //     {
-  //       path: "topSkillsLagos",
-  //       element: <TopSkillsLagos />,
-  //     },
-  //   ],
-  // },
   {
     path: "skills",
     element: <Photography />,
@@ -141,6 +117,16 @@ const router = createBrowserRouter([
       {
         path: "EditProfile",
         element: <EditProfile />,
+        children: [
+          {
+            index: true,
+            element: <ProfileEdit />
+          },
+          {
+            path: "personal-Info",
+            element: <PersonalInfo />
+          }
+        ]
       },
       {
         path: "UserProfile/post",

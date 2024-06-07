@@ -43,8 +43,8 @@ const Links = () => {
                     {selected && <Content dir={dir} selected={selected} />}
                 </AnimatePresence>
             </div>
-            <Link className={`nav-active px-2 py-1.5`} href="/">Products on Discount</Link>
-            <Link className={`nav-active px-2 py-1.5`} href="/">Baby Products</Link>
+            <Link className={`nav-active px-2 py-1.5`} to="/">Products on Discount</Link>
+            <Link className={`nav-active px-2 py-1.5`} to="/">Baby Products</Link>
         </ul>
     )
 }
@@ -92,7 +92,7 @@ const Content = ({ selected, dir }) => {
 
             {TABS.map((T) => {
                 return (
-                    <div className="overflow-hidden text-black font-semibold leading-9" key={T.id}>
+                    <div className="overflow-hidden text-black font-medium leading-9" key={T.id}>
                         {selected === T.id && (
                             <motion.div
                                 initial={{
@@ -154,10 +154,10 @@ const Nub = ({ selected }) => {
 const SubHot = () => {
     return (
         <ul className="flex flex-col">
-            <Link href="/">Property</Link>
-            <Link href="/">Apartment</Link>
-            <Link href="/">Cars</Link>
-            <Link href="/">Laptops</Link>
+            <Link to="/">Property</Link>
+            <Link to="/">Apartment</Link>
+            <Link to="/">Cars</Link>
+            <Link to="/">Laptops</Link>
         </ul>
     )
 }
@@ -165,9 +165,9 @@ const SubHot = () => {
 const SubFashion = () => {
     return (
         <ul className="flex flex-col">
-            <Link href="/">Womens-shirts</Link>
-            <Link href="/">Womens-watches</Link>
-            <Link href="/">Mens-watches</Link>
+            <Link to="/">Womens-shirts</Link>
+            <Link to="/">Womens-watches</Link>
+            <Link to="/">Mens-watches</Link>
         </ul>
     )
 }
