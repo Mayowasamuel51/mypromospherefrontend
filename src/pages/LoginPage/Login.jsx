@@ -62,6 +62,7 @@ const Login = () => {
       const response = await axios.post(api, payload)
       if (response.status === 200) {
         console.log(response.data)
+        console.log(response.data.token)
         setToken(response.data)
         setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
