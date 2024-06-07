@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
+import Links from "./links";
 import ProfileHover from "./profileHover";
 
 
@@ -70,12 +71,7 @@ export default function Navbar({ profile, blue }) {
       </AnimatePresence>
 
       <nav className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
-        <p>Fashion</p>
-        <p>Property</p>
-        <p>Apartment</p>
-        <p>Cars</p>
-        <p>Laptops</p>
-        <p>Products on Discount</p>
+        <Links />
       </nav>
 
       {token ?
