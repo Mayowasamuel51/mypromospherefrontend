@@ -18,6 +18,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import axiosclinet from "../../../https/axios-clinet";
+import { toast, Toaster } from 'sonner';
 
 const api_edit_profile_endpoint = import.meta.env.VITE_EDIT_PROFILE;
 const api_edit_profile_put_endpoint = import.meta.env.VITE_EDIT_PROFILE_PUT;
@@ -58,28 +59,28 @@ const ProfileEdit = () => {
   };
 
   const schema = yup.object().shape({
-    // aboutMe: yup.string().required(),
-    // messageCompany: yup.string().required(),
-    // brandName: yup.string().required("Please enter your Brand Name"),
-    // websiteName: yup.string().required(),
-    // picture: yup
-    //   .mixed()
-    //   .test(
-    //     "required",
-    //     "You need to provide more than one image",
-    //     (value) => {
-    //       return value && value.length;
-    //     }
-    //   )
-    // .test("fileSize", "The file is too large", (value, context) => {
-    //     return value && value[0] && value[0].size <= 200000;
-    // })
-    // .test("type", "We only support jpeg, ", function (value) {
-    //   return (
-    //     (value && value[0] && value[0].type === "image/jpeg") ||
-    //     (value && value[0] && value[0].type === "image/png")
-    //   );
-    // }),
+    aboutMe: yup.string().required("Write what you want people to know about You and Your Business"),
+    messageCompany: yup.string().required(),
+    brandName: yup.string().required("Enter your Brand Name"),
+    websiteName: yup.string().required(),
+    picture: yup
+      .mixed()
+      .test(
+        "required",
+        "You need to provide more than one image",
+        (value) => {
+          return value && value.length;
+        }
+      )
+    .test("fileSize", "The file is too large", (value, context) => {
+        return value && value[0] && value[0].size <= 200000;
+    })
+    .test("type", "We only support jpeg & png, ", function (value) {
+      return (
+        (value && value[0] && value[0].type === "image/jpeg") ||
+        (value && value[0] && value[0].type === "image/png")
+      );
+    }),
   });
   const { token } = useStateContext();
   const {
@@ -253,8 +254,19 @@ const ProfileEdit = () => {
     console.log("seeing things.//");
   }, []);
 
+  if (errors?.aboutMe) {
+    toast.error(errors?.aboutMe.message)
+  }
+  if (errors?.websiteName) {
+    toast.error(errors?.websiteName.message)
+  }
+  if (errors?.brandName) {
+    toast.error(errors?.brandName.message)
+  }
+
   return (
     <section className="relative">
+      <Toaster position="top-center" />
       {loading &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
@@ -267,7 +279,7 @@ const ProfileEdit = () => {
       {/* form  */}
       <article className="">
         <form onSubmit={handleSubmit(formSubmit1)}>
-          <h1>Backgrond Image</h1>
+          <h1 className="font-medium my-1">👇Click to changeBackgrond Image</h1>
           <article className="flex items-center">
             {backgroundImage.map((item) => {
               return (
@@ -279,17 +291,20 @@ const ProfileEdit = () => {
                       className="w-[100px] aspect-square rounded-full object-cover"
                     />
                   ) : (
-                    <img
-                      src={token?.backgroundimage || blankImage}
-                      alt="blankImage"
-                      className="w-[100px] aspect-square rounded-full"
-                    />
+                    <label htmlFor="background-image">
+                      <img
+                        src={token?.backgroundimage ?? blankImage}
+                        alt="blankImage"
+                        className="w-[100px] aspect-square rounded-full border duration-200 hover:scale-110 cursor-pointer"
+                      />
+                    </label>
                   )}
                   <div className="flex gap-x-[.5rem] items-center">
-                    <button className="relative cursor-pointer">
+                    <button className="cursor-pointer">
                       <input
                         type="file"
-                        className="relative cursor-pointer"
+                        id="background-image"
+                        className="cursor-pointer hidden"
                         ref={secoundRef}
                         onChange={backgroundHandle}
                       />
@@ -315,17 +330,20 @@ const ProfileEdit = () => {
                       className="w-[100px] aspect-square rounded-full object-cover"
                     />
                   ) : (
-                    <img
-                      src={token?.profileImage ?? anon}
-                      alt="blankImage"
-                      className="w-[100px] aspect-square rounded-full object-cover"
-                    />
+                    <label htmlFor="profile-image">
+                      <img
+                        src={token?.profileImage ?? anon}
+                        alt="blankImage"
+                        className="w-[100px] aspect-square rounded-full object-cover border duration-200 hover:scale-110 cursor-pointer"
+                      />
+                    </label>
                   )}
                   <div className="flex gap-x-[.5rem] items-center">
                     <button className="relative cursor-pointer ml-[.4rem]">
                       <input
                         type="file"
-                        className="relative cursor-pointer"
+                        id="profile-image"
+                        className="cursor-pointer hidden"
                         ref={inputRef}
                         onChange={handleImageChange}
                       />
@@ -342,55 +360,53 @@ const ProfileEdit = () => {
               );
             })}
           </article>
-          <div className="">
-            <label htmlFor="About" className="font-600">
-              About
-            </label>{" "}
-            <br />
-            <input
-              type="text"
-              className="border border-[#3D217A] mt-1 w-[100%] focus:outline-none p-3 text-[1rem] rounded-md pb-20 placeholder:text-black "
-              placeholder="Tell Us About You"
-              {...register("aboutMe", { required: true })}
-            />
-            <p className="text-red  text-sm">{errors.aboutMe?.message}</p>
+          <div className="flex flex-col gap-4 my-2">
+            <div className="">
+              <div>
+                <label htmlFor="About" className="font-medium my-2">
+                  About
+                </label>{" "}
+                <textarea
+                  type="text"
+                  className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
+                  placeholder="Tell Us About You"
+                  {...register("aboutMe", { required: true })}
+                ></textarea>
+              </div>
+            </div>
+            <div className="">
+              <div>
+                <label htmlFor="website" className="font-medium my-2">
+                  Website
+                </label>{" "}
+                <input
+                  type="text"
+                  className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                  {...register("websiteName", { required: true })}
+                  placeholder="Add a link to drive traffic to your site"
+                />
+              </div>
+            </div>
+            <div className="">
+              <label htmlFor="website" className="font-medium my-2">
+                Brand Name
+              </label>{" "}
+              <input
+                type="text"
+                className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                {...register("brandName", { required: true })}
+                placeholder="Enter Your Brand Name"
+              />
+            </div>
           </div>
-          {/* Website  */}
-          <div className="">
-            <label htmlFor="website" className="font-600">
-              Website
-            </label>{" "}
-            <br />
-            <input
-              type="text"
-              className="border border-[#3D217A] mt-1 w-[100%] focus:outline-none p-3 text-[1rem] rounded-md placeholder:text-black"
-              {...register("websiteName", { required: true })}
-              placeholder="Add a link to drive traffic to your site "
-            />
-            <p className="text-red  text-sm">{errors.websiteName?.message}</p>
-          </div>
-          {/*Brand Name*/}
-          <div className="">
-            <label htmlFor="website" className="font-600">
-              Brand Name
-            </label>{" "}
-            <br />
-            <input
-              type="text"
-              className="border border-[#3D217A] mt-1 w-[100%] focus:outline-none p-3 text-[1rem] rounded-md placeholder:text-black"
-              {...register("brandName", { required: true })}
-            />
-            <p className="text-red  text-sm">{errors.brandName?.message}</p>
-          </div>
+          {/* <p className="text-red  text-sm">{errors.brandName?.message}</p> */}
           <button
             type="submit"
-            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2"
-          >
+            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2">
             Edit
           </button>
         </form>
       </article>
-      {/* end of form  */}
     </section>
   );
 };

@@ -9,8 +9,8 @@ const EditProfile = () => {
   return (
     <section className="">
       <div className="flex lg:flex-row flex-col gap-4 md:gap-10 px-4 lg:px-10">
-        <article className="flex flex-row lg:flex-col gap-10 mt-4">
-          <div className="border-b-2 border-black py-5 md:py-4 md:block hidden">
+        <article className="flex flex-row lg:flex-col gap-20">
+          <div className="border-b-2 border-black md:block hidden py-4">
             <img src={token?.profileImage} className="w-20 aspect-square rounded-full object-cover" alt="" />
             <div className='flex flex-col gap-2 my-2'>
               <p className='text-base font-medium capitalize'>{token && token["user-name"]}</p>
@@ -36,7 +36,7 @@ const EditProfile = () => {
         </article>
 
         <div className="flex-1">
-          <div>
+          <div className="md:px-32">
             <Outlet />
           </div>
         </div>
