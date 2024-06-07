@@ -227,6 +227,7 @@ const ProfileEdit = () => {
               if (res.data.status === 200) {
                 console.log("updated the profile image ...................");
                 console.log(res.data.item);
+                reset()
               } else if (res.data.status === 500 || res.data.status === 422) {
                 console.log(res.data.message);
               }
@@ -368,6 +369,7 @@ const ProfileEdit = () => {
                 </label>{" "}
                 <textarea
                   type="text"
+                  // value={token?.aboutMe}
                   className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
                   {...register("aboutMe", { required: true })}
@@ -381,6 +383,7 @@ const ProfileEdit = () => {
                 </label>{" "}
                 <input
                   type="text"
+                  // value={token?.user_website}
                   className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   {...register("websiteName", { required: true })}
                   placeholder="Add a link to drive traffic to your site"
@@ -393,13 +396,13 @@ const ProfileEdit = () => {
               </label>{" "}
               <input
                 type="text"
+                // value={token?.brandName}
                 className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 {...register("brandName", { required: true })}
                 placeholder="Enter Your Brand Name"
               />
             </div>
           </div>
-          {/* <p className="text-red  text-sm">{errors.brandName?.message}</p> */}
           <button
             type="submit"
             className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2">
