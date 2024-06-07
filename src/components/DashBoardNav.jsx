@@ -7,6 +7,7 @@ import Navbar from "./Navbar"
 import { motion } from 'framer-motion';
 import DashboardMobileNav from "./DashboardMobileNav";
 import ProfileHover from "./profileHover";
+import Links from "./links";
 
 const DashBoardNav = () => {
   const { token, LogOut, } = useStateContext()
@@ -20,7 +21,7 @@ const DashBoardNav = () => {
         <header className="relative py-2 lg:py-0 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A] ">
           <Link to="/">
             <div className="flex items-center gap-1">
-              <img src={LOGO} alt="" className="w-8 md:w-16 exl:w-15" />
+              <img src={LOGO} alt="" className="w-10 lg:w-14 exl:w-20" />
               <h1 className="text-xs font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
             </div>
           </Link>
@@ -31,10 +32,12 @@ const DashBoardNav = () => {
               <Bars3BottomRightIcon width={35} color="white" onClick={handleToggle} />
             )}
           </div>
+          <div className="lg:block hidden">
+            <Links />
+          </div>
           <DashboardMobileNav toggleNav={toggleNav} LogOut={LogOut} handleToggle={handleToggle} />
           <motion.div className={`hidden text-black fixed inset-0 lg:static lg:flex flex-col justify-between lg:flex-row items-center gap-10`}>
             <motion.nav  className={`min-h-fit lg:py-0 py-10 flex justify-between items-center gap-10 text-white bg-transparent bg-opacity-5`}>
-              
               <ProfileHover LogOut={LogOut} />
             </motion.nav>
           </motion.div>

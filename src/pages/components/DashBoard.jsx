@@ -13,8 +13,6 @@ function DefualtLayout() {
     const [saved, setSaved] = useState(false)
     if (!token) return <Navigate  to="/" />
 
-    console.log(token?.user)
-    console.log(token?.profileImage)
     return (
         <>
             <main className={``}>
