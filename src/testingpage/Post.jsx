@@ -214,7 +214,6 @@ const Post = () => {
             // for (const file of selectedFilesArray) {
               const reader = new FileReader();
               reader.onload = (e) => {
-                // console.log(image)
                 newImages.push({
                   url: e.target.result,
                   type: image.type,

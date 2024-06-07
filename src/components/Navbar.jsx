@@ -70,8 +70,12 @@ export default function Navbar({ profile, blue }) {
       </AnimatePresence>
 
       <nav className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
-        <p>Hello</p>
-        <p>How are you?!</p>
+        <p>Fashion</p>
+        <p>Property</p>
+        <p>Apartment</p>
+        <p>Cars</p>
+        <p>Laptops</p>
+        <p>Products on Discount</p>
       </nav>
 
       {token ?

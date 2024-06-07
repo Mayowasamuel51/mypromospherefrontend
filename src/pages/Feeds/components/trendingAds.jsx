@@ -29,6 +29,7 @@ const TrendingAds = () => {
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                        {data?.data?.other_images.length > 1 ? 
                         <Splide options={{
                             type: 'loop',
                             perPage: 1,
@@ -53,7 +54,11 @@ const TrendingAds = () => {
                                     <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
                             ))}
-                        </Splide>
+                        </Splide> : 
+                        <div>
+                             <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                        </div>
+                        }
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image === "null" ? anon : item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square" />
@@ -71,6 +76,7 @@ const TrendingAds = () => {
                 {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                        {data?.data?.other_images.length > 1 ? 
                         <Splide options={{
                             type: 'loop',
                             perPage: 1,
@@ -95,7 +101,11 @@ const TrendingAds = () => {
                                     <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                                 </SplideSlide>
                             ))}
-                        </Splide>
+                        </Splide> : 
+                        <div>
+                            <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                        </div>
+                        }
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image === "null" ? anon : item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square" />

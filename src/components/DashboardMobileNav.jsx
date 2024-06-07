@@ -58,22 +58,34 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   return (
     <motion.div variants={MainCOntainerdivVariant} animate={toggleNav ? "animate" : "initial"} exit="exit" className={`lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
       <motion.nav variants={navVariant} className={`p-8 text-black min-h-screen w-full lg:py-0 py-10 flex flex-col justify-between bg-white bg-transparent bg-opacity-5 backdrop-blur-2xl`}>
-        <motion.div className="flex flex-col gap-4">
+        <motion.div className="flex flex-col gap-6">
           {token &&
-          <motion.div variants={childVariant} className="">
-            <Link to="/dashboard" onClick={handleToggle} className="my-4 group flex items-center gap-2 py-4 border-b-2 border-black">
-              <img src={token?.profileImage ?? anon} alt="" className="group-hover:scale-125 duration-200 w-10 aspect-square rounded-full" />
-              <div className='flex flex-col gap-1'>
-                <p className='text-sm'>{token && token["user-name"]}</p>
-                <p className='text-xs text-slate-400'>{token.user}</p>
-              </div>
-            </Link>
-          </motion.div>}
+            <motion.div variants={childVariant} className="">
+              <Link to="/dashboard" onClick={handleToggle} className="my-4 group flex items-center gap-2 py-4 border-b-2 border-black">
+                <img src={token?.profileImage ?? anon} alt="" className="group-hover:scale-125 duration-200 w-10 aspect-square rounded-full" />
+                <div className='flex flex-col gap-1'>
+                  <p className='text-sm'>{token && token["user-name"]}</p>
+                  <p className='text-xs text-slate-400'>{token.user}</p>
+                </div>
+              </Link>
+            </motion.div>}
           <motion.p variants={childVariant} onClick={handleToggle} className="">
-            <Link className="nav-link" to="/dashboard/myuploads">My uploads</Link>
+            <p>Fashion</p>
           </motion.p>
           <motion.p variants={childVariant} onClick={handleToggle}>
-            <Link className="nav-link" to="/dashboard/post">post something</Link>
+            <p>Property</p>
+          </motion.p>
+          <motion.p variants={childVariant} onClick={handleToggle}>
+            <p>Apartment</p>
+          </motion.p>
+          <motion.p variants={childVariant} onClick={handleToggle}>
+            <p>Cars</p>
+          </motion.p>
+          <motion.p variants={childVariant} onClick={handleToggle}>
+            <p>Laptops</p>
+          </motion.p>
+          <motion.p variants={childVariant} onClick={handleToggle}>
+            <p>Products on Discount</p>
           </motion.p>
         </motion.div>
         <motion.div variants={childVariant} onClick={handleToggle} className="text-red flex items-center gap-2">

@@ -55,7 +55,7 @@ const childVariant = {
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`fixed exl:hidden inset-0 z-30 flex flex-col w-full min-h-screen bg-white bg-opacity-5 backdrop-blur-2xl`}>
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
       <motion.div variants={divVariant} className="flex flex-col min-h-screen justify-between p-8">
         <motion.div className="flex flex-col gap-8">
           {token &&
@@ -69,12 +69,23 @@ export default function MobileNav({ handleToggle }) {
               </Link>
             </motion.div>
           }
-
           <motion.div variants={childVariant}>
-            <p>Hello</p>
+            <p>Fashion</p>
           </motion.div>
           <motion.div variants={childVariant}>
-            <p>How are you?!</p>
+            <p>Property</p>
+          </motion.div>
+          <motion.div variants={childVariant}>
+            <p>Apartment</p>
+          </motion.div>
+          <motion.div variants={childVariant}>
+            <p>Cars</p>
+          </motion.div>
+          <motion.div variants={childVariant}>
+            <p>Laptops</p>
+          </motion.div>
+          <motion.div variants={childVariant}>
+            <p>Products on Discount</p>
           </motion.div>
 
         </motion.div>
@@ -94,7 +105,7 @@ export default function MobileNav({ handleToggle }) {
             </Link>
           </motion.div>}
           {token && <motion.div variants={childVariant} onClick={handleToggle}>
-            <button onClick={() => LogOut()} className="py-2 border-2 border-pink bg-pink text-whi w-full font-['Poppins'] text-2xl">
+            <button onClick={() => LogOut()} className="font-semibold text-white py-2 border-2 border-pink bg-pink text-whi w-full font-['Poppins'] text-2xl">
               LogOut
             </button>
           </motion.div>}
