@@ -18,7 +18,7 @@ const DashBoardNav = () => {
   return (
     <>
       {token ?
-        <header className="relative py-2 lg:py-0 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A] ">
+        <header className="z-[9999999999] py-2 lg:py-0 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A] fixed w-full top-0 right-0 left-0">
           <Link to="/">
             <div className="flex items-center gap-1">
               <img src={LOGO} alt="" className="w-10 lg:w-14 exl:w-20" />
@@ -32,7 +32,7 @@ const DashBoardNav = () => {
               <Bars3BottomRightIcon width={35} color="white" onClick={handleToggle} />
             )}
           </div>
-          <div className="lg:block hidden">
+          <div className="lg:block hidden text-white">
             <Links />
           </div>
           <DashboardMobileNav toggleNav={toggleNav} LogOut={LogOut} handleToggle={handleToggle} />

@@ -21,7 +21,7 @@ function DefualtLayout() {
                         <img
                             src={token?.profileImage ?? anon}
                             alt={roundedImg}
-                            className="w-[30%] md:w-[150px] mx-auto"
+                            className="w-[200px] aspect-square rounded-full object-cover object-top mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-3xl capitalize">
                             {token ? `${token["user-name"]}` : 'Anonymous'}

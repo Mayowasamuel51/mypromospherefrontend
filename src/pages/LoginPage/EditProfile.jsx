@@ -1,93 +1,46 @@
-import { useState } from 'react'
-import PersonalInfo from './component/PersonalInfo';
-import ProfileEdit from './component/ProfileEdit';
-import { Navigate } from "react-router-dom"
-import { useStateContext } from "../../contexts/ContextProvider"
+import { Navigate, useLocation } from "react-router-dom"
+import { useStateContext } from "../../contexts/ContextProvider";
+import { Outlet, NavLink } from "react-router-dom"
 
 const EditProfile = () => {
   const { token } = useStateContext()
-  const [toggle, setToggle] = useState(1);
-  const updateToggle = (id) => {
-    setToggle(id);
-  };
-  if (!token) return <Navigate  to="/"/>
+  const { pathname } = useLocation()
+  if (!token) return <Navigate to="/" />
   return (
     <section className="">
       <div className="flex lg:flex-row flex-col gap-4 md:gap-10 px-4 lg:px-10">
-        <article className="flex flex-row lg:flex-col gap-4 mt-4">
-          <div className="">
-            <button onClick={() => updateToggle(1)} className>
-              <p className={toggle === 1 ? "font-700" : ""}>EditProfile</p>
-            </button>
+        <article className="flex flex-row lg:flex-col gap-10 mt-4">
+          <div className="border-b-2 border-black py-5 md:py-4 md:block hidden">
+            <img src={token?.profileImage} className="w-20 aspect-square rounded-full object-cover" alt="" />
+            <div className='flex flex-col gap-2 my-2'>
+              <p className='text-base font-medium capitalize'>{token && token["user-name"]}</p>
+              <p className='text-xs text-slate-400'>{token.user}</p>
+            </div>
           </div>
-
-          <div className="">
-            <button
-              onClick={() => updateToggle(2)}
-              className={toggle === 2 ? "" : null}
-            >
-              <p className={toggle === 2 ? "font-700" : ""}> Personal Information</p>
-            </button>
+          <div className="flex flex-row lg:flex-col gap-4">
+            <div className="">
+              <NavLink to="/dashboard/EditProfile" className={({ isActive }) => (isActive && pathname === "/dashboard/EditProfile") && "font-bold text-purple"}>
+                <button>
+                  <p>EditProfile</p>
+                </button>
+              </NavLink>
+            </div>
+            <div className="">
+              <NavLink to="/dashboard/EditProfile/personal-Info" className={({ isActive }) => isActive && "font-bold text-purple"}>
+                <button>
+                  <p> Personal Information</p>
+                </button>
+              </NavLink>
+            </div>
           </div>
-          {/* single-tab  */}
-          {/* <div className="">
-            <button
-              onClick={() => updateToggle(3)}
-              className={toggle === 3 ? "" : null}
-            >
-              <p className={toggle === 3 ? "font-700" : ""}>Password</p>
-            </button>
-          </div>
-          <div className="">
-            <button
-              onClick={() => updateToggle(4)}
-              className={toggle === 4 ? "" : null}
-            >
-              <p className={toggle === 4 ? "font-700" : ""}>
-                Email Notification
-              </p>
-            </button>
-          </div>
-          <div className="">
-            <button
-              onClick={() => updateToggle(5)}
-              className={toggle === 5 ? "" : null}
-            >
-              <p className={toggle === 5 ? "font-700" : ""}>Privacy and data</p>
-            </button>
-          </div>
-          <div className="">
-            <button
-              onClick={() => updateToggle(6)}
-              className={toggle === 6 ? "" : null}
-            >
-              <p className={toggle === 6 ? "font-700" : ""}>
-                Security and Logins
-              </p>
-            </button>
-          </div> */}
         </article>
-        {/* end of each edit  */}
 
         <div className="flex-1">
-          <div>{toggle === 1 ? <ProfileEdit /> : null}</div>
-
-          <div>{toggle === 2 ? <PersonalInfo /> : null}</div>
-
-          <div>{toggle === 3 ? "tru" : null}</div>
-
-          {/*Email Notification*/}
-          <div>{toggle === 4 ? "true" : null}</div>
-
-          {/*Privacy and data*/}
-          <div>{toggle === 5 ? "hi" : null}</div>
-
-          {/*Security and Logins*/}
-          <div>{toggle === 6 ? "hello" : null}</div>
-          {/* end of tabs center  */}
+          <div>
+            <Outlet />
+          </div>
         </div>
       </div>
-      {/* end of edit profile center  */}
     </section>
   );
 }

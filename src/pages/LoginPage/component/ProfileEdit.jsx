@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import blankImage from "../../../assests/images/blank Image.png";
+import anon from "../../../assests/images/anon.png";
 // import axiosclinet from "../https/axios-clinet";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -8,6 +9,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { storage } from "../../../../firebase";
 import { useStateContext } from "../../../contexts/ContextProvider";
+import Loader from "../../../loader";
 import {
   getStorage,
   ref,
@@ -37,6 +39,7 @@ const ProfileEdit = () => {
   const [background, setBackground] = useState("");
   const [backgroundImage, setBackgroundImage] = useState([]);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   const handleImageChange = (e) => {
     const file = e.target.files;
@@ -83,11 +86,13 @@ const ProfileEdit = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset
   } = useForm({
     resolver: yupResolver(schema),
   });
   const formSubmit = (data) => {
     // e.preventDefault();
+    setLoading(true)
     console.log(data);
     console.log(image.name);
     console.log("hello");
@@ -110,6 +115,7 @@ const ProfileEdit = () => {
         }
       },
       (error) => {
+        setLoading(false)
         // A full list of error codes is available at
         // https://firebase.google.com/docs/storage/web/handle-errors
         switch (error.code) {
@@ -148,12 +154,14 @@ const ProfileEdit = () => {
             .then((res) => {
               if (res.data.status === 200) {
                 console.log("updated the profile image ...................");
+                setLoading(false)
                 console.log(res.data.item);
               } else if (res.data.status === 500 || res.data.status === 422) {
                 console.log(res.data.message);
+                setLoading(false)
               }
             })
-            .catch((err) => console.log(err.message));
+            .catch((err) => console.log(err.message)); setLoading(false)
         });
       }
     );
@@ -161,7 +169,7 @@ const ProfileEdit = () => {
 
   const formSubmit1 = (data) => {
     // e.preventDefault();
-
+    setLoading(true)
     console.log("hello formsumbit 21");
     const imageRef = ref(storage, `/profile/${background.name} ${token?.user}`);
     const uploadTask = uploadBytesResumable(imageRef, background);
@@ -182,6 +190,7 @@ const ProfileEdit = () => {
         }
       },
       (error) => {
+        setLoading(false)
         // A full list of error codes is available at
         // https://firebase.google.com/docs/storage/web/handle-errors
         switch (error.code) {
@@ -221,7 +230,7 @@ const ProfileEdit = () => {
                 console.log(res.data.message);
               }
             })
-            .catch((err) => console.log(err.message));
+            .catch((err) => console.log(err.message)); setLoading(false)
         });
       }
     );
@@ -238,121 +247,88 @@ const ProfileEdit = () => {
         console.log(res.data.data);
         setData(res.data.data);
         setBackgroundImage(res.data.data);
+        setLoading(false)
       }
     });
-
-    console.log("seeing things./////////////");
+    console.log("seeing things.//");
   }, []);
 
   return (
-    <section className="">
+    <section className="relative">
+      {loading &&
+        <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
+          <Loader />
+        </div>
+      }
       <header>
         <h3 className="font-600 md:text-xl text-xl">Edit Profile</h3>
         <p className="font-400">Set up your presence and hiring needs</p>
-        {/* upload-image  */}
       </header>
       {/* form  */}
       <article className="">
         <form onSubmit={handleSubmit(formSubmit1)}>
           <h1>Backgrond Image</h1>
           <article className="flex items-center">
-            {/* image  */}
             {backgroundImage.map((item) => {
               return (
                 <div key={item.id}>
-             
-
                   {background ? (
                     <img
                       src={URL.createObjectURL(background)}
-                      alt="profilephoto"
-                      className="w-[88px] h-[84.56px] rounded-[5rem]"
+                      alt="Background-photo"
+                      className="w-[100px] aspect-square rounded-full object-cover"
                     />
                   ) : (
                     <img
-                      // src={blankImage}
+                      src={token?.backgroundimage || blankImage}
                       alt="blankImage"
-                      src={item.backgroundimage}
-                      className="w-[80px]"
+                      className="w-[100px] aspect-square rounded-full"
                     />
                   )}
-                  {/* btns  */}
                   <div className="flex gap-x-[.5rem] items-center">
-                    {/* upload button */}
-                    <button className="relative cursor-pointer ml-[.4rem]">
+                    <button className="relative cursor-pointer">
                       <input
                         type="file"
-                        className="relative z-20 opacity-[0] cursor-pointer"
+                        className="relative cursor-pointer"
                         ref={secoundRef}
                         onChange={backgroundHandle}
                       />
-                      {/* upload  */}
-                      <button
-                        className={`flex gap-x-2 border px-3 py-2 rounded-md absolute top-[-.3rem] left-0 z-10 cursor-pointer`}
-                      >
-                        <h3>Upload Background Image</h3>
-                      </button>
-                      {/* end of upload  */}
                     </button>
                   </div>
                 </div>
               );
             })}
           </article>
-          <button
-            type="submit"
-            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2"
-          >
+          <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md my-2">
             Change Backgorund Image
           </button>
         </form>
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
-            {/* image  */}
             {data.map((item) => {
               return (
                 <div key={item.id}>
-                  {/* {item.profileImage ? (
-                    <img
-                      href={item.profileImage}
-                      src={item.profileImage}
-                      className="w-[88px] h-[84.56px] rounded-[5rem]"
-                    />
-                  ) : (
-                    ""
-                  )} */}
-
                   {image ? (
                     <img
                       src={URL.createObjectURL(image)}
                       alt="profilephoto"
-                      className="w-[88px] h-[84.56px] rounded-[5rem]"
+                      className="w-[100px] aspect-square rounded-full object-cover"
                     />
                   ) : (
                     <img
-                      // src={blankImage}
+                      src={token?.profileImage ?? anon}
                       alt="blankImage"
-                      src={item.profileImage}
-                      className="w-[80px]"
+                      className="w-[100px] aspect-square rounded-full object-cover"
                     />
                   )}
-                  {/* btns  */}
                   <div className="flex gap-x-[.5rem] items-center">
-                    {/* upload button */}
                     <button className="relative cursor-pointer ml-[.4rem]">
                       <input
                         type="file"
-                        className="relative z-20 opacity-[0] cursor-pointer"
+                        className="relative cursor-pointer"
                         ref={inputRef}
                         onChange={handleImageChange}
                       />
-                      {/* upload  */}
-                      <button
-                        className={`flex gap-x-2 border px-3 py-2 rounded-md absolute top-[-.3rem] left-0 z-10 cursor-pointer`}
-                      >
-                        <h3>Upload new picture</h3>
-                      </button>
-                      {/* end of upload  */}
                     </button>
                     {/* end of upload-button  */}
                     {/* delete  */}
@@ -366,9 +342,6 @@ const ProfileEdit = () => {
               );
             })}
           </article>
-          <br /> <br />
-          <br />
-          <br />
           <div className="">
             <label htmlFor="About" className="font-600">
               About
