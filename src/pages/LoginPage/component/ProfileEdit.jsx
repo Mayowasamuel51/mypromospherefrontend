@@ -159,7 +159,7 @@ const ProfileEdit = () => {
     axios(`${api_edit_profile_endpoint}/${token?.token.id}`, {
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token?.token.token}`,
+        Authorization: `Bearer ${token?.token}`,
       },
     }).then((res) => {
       if (res.data.status === 200) {

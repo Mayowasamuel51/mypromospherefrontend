@@ -200,7 +200,7 @@ const Post = () => {
       }
     }
   }, [uploadData?.state]);
-  const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
+  const SUPPORTED_FORMATS = ["image/jpeg", "image/png" , "image/webp", "image/"];
   const handleInputChange = (event) => {
     const { name, value, type, checked, files } = event.target;
     setUploadData((prevState) => {
