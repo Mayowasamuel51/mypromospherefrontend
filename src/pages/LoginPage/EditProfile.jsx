@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider";
 import { Outlet, NavLink } from "react-router-dom"
+import { FaUserEdit, FaInfo } from "react-icons/fa";
 
 const EditProfile = () => {
   const { token } = useStateContext()
@@ -17,17 +18,19 @@ const EditProfile = () => {
               <p className='text-xs text-slate-400'>{token.user}</p>
             </div>
           </div>
-          <div className="flex flex-row lg:flex-col gap-4">
+          <div className="flex flex-row lg:flex-col gap-5">
             <div className="">
               <NavLink to="/dashboard/EditProfile" className={({ isActive }) => (isActive && pathname === "/dashboard/EditProfile") && "font-bold text-purple"}>
-                <button>
+                <button className="flex items-center gap-2"> 
+                  <FaUserEdit size={30} />
                   <p>EditProfile</p>
                 </button>
               </NavLink>
             </div>
             <div className="">
               <NavLink to="/dashboard/EditProfile/personal-Info" className={({ isActive }) => isActive && "font-bold text-purple"}>
-                <button>
+                <button className="flex items-center gap-2">
+                  <FaInfo size={20} />
                   <p> Personal Information</p>
                 </button>
               </NavLink>
