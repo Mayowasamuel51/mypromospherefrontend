@@ -18,7 +18,7 @@ const EditProfile = () => {
               <p className='text-xs text-slate-400'>{token.user}</p>
             </div>
           </div>
-          <div className="flex flex-row lg:flex-col gap-5">
+          <div className="flex items-center flex-row lg:flex-col gap-5">
             <div className="">
               <NavLink to="/dashboard/EditProfile" className={({ isActive }) => (isActive && pathname === "/dashboard/EditProfile") && "font-bold text-purple"}>
                 <button className="flex items-center gap-2"> 
