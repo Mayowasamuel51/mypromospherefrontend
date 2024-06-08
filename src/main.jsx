@@ -1,7 +1,8 @@
 import { RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import React from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react";
 // global styles
 import "./index.css";
