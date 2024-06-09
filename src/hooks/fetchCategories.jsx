@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useQuery } from '@tanstack/react-query'
+// const api_fetch_single_ad = import.meta.env.VITE_SINGLE_AD;
 
 const FetchCategories = () => {
   return useQuery({

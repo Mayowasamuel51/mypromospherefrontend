@@ -12,7 +12,6 @@ function DefualtLayout() {
     const { token } = useStateContext()
     const [saved, setSaved] = useState(false)
     if (!token) return <Navigate  to="/" />
-
     return (
         <>
             <main className={``}>
@@ -20,8 +19,8 @@ function DefualtLayout() {
                     <article className="flex flex-col gap-2">
                         <img
                             src={token?.profileImage ?? anon}
-                            alt={roundedImg}
-                            className="w-[200px] aspect-square rounded-full object-cover object-top mx-auto"
+                            alt={"profile-picture"}
+                            className="w-[150px] aspect-square rounded-full object-cover object-top mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-3xl capitalize">
                             {token ? `${token["user-name"]}` : 'Anonymous'}

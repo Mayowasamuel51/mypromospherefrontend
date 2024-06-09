@@ -273,5 +273,6 @@ html {
   position: -webkit-sticky;
   position: sticky;
   top: var(--sticky-top, 0);
+  border: 2px solid red;
   z-index: 999999;
 }

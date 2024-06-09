@@ -75,8 +75,6 @@ const FeedsHome = () => {
   };
 
   const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
     setData(results);
     console.log(string, results);
   };
@@ -132,7 +130,7 @@ const FeedsHome = () => {
             <div className="flex my-3 lg:my-5">
               <ReactSearchAutocomplete
                 items={items}
-                className="z-[9999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
+                className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
                 onHover={handleOnHover}
@@ -152,7 +150,7 @@ const FeedsHome = () => {
               className={`${isInView ? "stickyy w-full" : ""
                 } md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
             >
-              <div className="flex md:justify-center items-center md:gap-4 font-semibold">
+              <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
                 <Link
                   to="/"
                   className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"

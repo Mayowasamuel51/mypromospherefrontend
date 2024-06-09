@@ -5,7 +5,7 @@ import anon from "../../../assests/images/anon.png"
 import LOGO from "../../../assests/SVGs/logo.svg"
 import { Link } from 'react-router-dom';
 import FetchTrendingAds from "../../../hooks/fetchTrendingAds";
-// import Skeleton from 'react-loading-skeleton'
+// import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
