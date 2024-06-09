@@ -56,7 +56,7 @@ const TrendingAds = () => {
                             ))}
                         </Splide> : 
                         <div>
-                             <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                            <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                         </div>
                         }
                         <Link to="/profile/timilehin babade">
