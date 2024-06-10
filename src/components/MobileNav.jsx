@@ -102,7 +102,7 @@ export default function MobileNav({ handleToggle }) {
         <motion.div className="flex flex-col gap-2">
           {!token && <motion.div variants={childVariant}>
             <Link to="/Login" onClick={handleToggle}>
-              <button className="py-2 border-2 border-pink w-full text-black font-['Poppins]">
+              <button className="py-2 border-2 border-pink text-pink w-full font-['Poppins]">
                 Login
               </button>
             </Link>
