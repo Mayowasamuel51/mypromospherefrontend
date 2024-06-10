@@ -64,6 +64,7 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
     } else {
       document.body.classList.remove('no-scroll');
     }
+    return ()=> document.body.classList.remove('no-scroll');
   }, [handleToggle]);
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`h-[100dvh] lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>

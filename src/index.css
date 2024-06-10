@@ -7,7 +7,7 @@ html {
   scroll-behavior: smooth;
 }
 
-.no-scroll {
+body.no-scroll {
   overflow: hidden;
 }
 

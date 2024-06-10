@@ -65,6 +65,7 @@ export default function MobileNav({ handleToggle }) {
     } else {
       document.body.classList.remove('no-scroll');
     }
+    return ()=> document.body.classList.remove('no-scroll');
   }, [handleToggle]);
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100dvh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
