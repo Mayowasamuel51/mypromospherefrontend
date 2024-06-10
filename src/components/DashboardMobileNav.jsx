@@ -7,10 +7,12 @@ import { FaPowerOff } from "react-icons/fa6";
 const MainCOntainerdivVariant = {
   initial: {
     opacity: 0,
-    zIndex: -1
+    zIndex: -10,
+    border: "0px solid #3D217A",
   },
   animate: {
-    opacity: 1
+    opacity: 1,
+    zIndex: 10,
   },
   exit: {
     translateX: "-150%",
@@ -56,7 +58,7 @@ const childVariant = {
 const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   const { token } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} animate={toggleNav ? "animate" : "initial"} exit="exit" className={`lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`min-h-screen lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
       <motion.nav variants={navVariant} className={`p-8 text-black min-h-screen w-full lg:py-0 py-10 flex flex-col justify-between bg-white bg-transparent bg-opacity-5 backdrop-blur-2xl`}>
         <motion.div className="flex flex-col gap-6">
           {token &&

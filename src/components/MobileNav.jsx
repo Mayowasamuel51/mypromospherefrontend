@@ -3,13 +3,17 @@ import { motion } from 'framer-motion';
 import { useStateContext } from "../contexts/ContextProvider";
 import LOGO from "../../src/assests/SVGs/logo.svg";
 import anon from "../assests/images/anon.png"
+import { FaPowerOff } from "react-icons/fa6";
 
 const MainCOntainerdivVariant = {
   initial: {
-    scale: 0
+    scale: 0,
+    zIndex: -10,
+    border: "0px solid #3D217A",
   },
   animate: {
-    scale: 1
+    scale: 1,
+    zIndex: 10
   },
   exit: {
     translateX: "-150%",
@@ -55,9 +59,9 @@ const childVariant = {
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`min-h-screen fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
       <motion.div variants={divVariant} className="flex flex-col min-h-screen justify-between p-8">
-        <motion.div className="flex flex-col gap-8">
+        <motion.div className="flex flex-col lg:gap-8 gap-5">
           {token &&
             <motion.div variants={childVariant}>
               <Link to="/dashboard" onClick={handleToggle} className="my-4 group flex items-center gap-2 py-4 border-b-2 border-black">
@@ -104,11 +108,12 @@ export default function MobileNav({ handleToggle }) {
               </button>
             </Link>
           </motion.div>}
-          {token && <motion.div variants={childVariant} onClick={handleToggle}>
-            <button onClick={() => LogOut()} className="font-semibold text-white py-2 border-2 border-pink bg-pink text-whi w-full font-['Poppins'] text-2xl">
-              LogOut
-            </button>
-          </motion.div>}
+          {token &&
+            <motion.div variants={childVariant} onClick={handleToggle} className="text-red flex items-center gap-2">
+              <FaPowerOff onClick={() => LogOut()} />
+              <p onClick={() => LogOut()}>  <a className="text-base font-medium">logout</a></p>
+            </motion.div>
+          }
         </motion.div>
       </motion.div>
     </motion.div>
