@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import axios from "axios";
 import { toast } from 'sonner';
 import Loader from "../../loader";
+import { Helmet } from "react-helmet";
 const api = import.meta.env.VITE_API_LOGIN;
 const api_server_auth = import.meta.env.VITE_SERVER_AUTH;
 const Login = () => {
@@ -110,6 +111,27 @@ const Login = () => {
 
   return (
     <section className="relative bg-purple h-screen">
+         <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login</title>
+        <meta
+          name="keywords"
+          content="Affordable prices , Buy and sell ,Online shopping,Product listings, Digital marketplace, Fast shipping"
+        />
+        <link rel="canonical" href="https://www.mypromosphere.com" />
+        <meta
+          name="description"
+          content={
+            "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
+          }
+        />
+          <meta
+          property="og:description"
+          content={
+            "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
+          }
+        />
+      </Helmet>
       {loading &&
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />

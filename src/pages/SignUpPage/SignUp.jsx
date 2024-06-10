@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import or from "../../assests/images/or.png";
 import google from "../../assests/images/icon_google.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,10 +13,11 @@ import { useForm } from "react-hook-form";
 import Loader from '../../loader';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { Toaster, toast } from 'sonner';
-
+import { Helmet } from "react-helmet";
 import axios from "axios"
 
 const api = import.meta.env.VITE_API_SIGNUP
+const api_server_auth = import.meta.env.VITE_SERVER_AUTH;
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ const SignUp = () => {
     setSelected(checked)
   };
   
-  const [loginUrl, setLoginUrl] = useState(null);
+
   const [loading, setLoading] = useState(false)
 
   const schema = yup.object().shape({
@@ -98,8 +99,53 @@ const SignUp = () => {
       toast.error("Error")
     }
   }
+  const [loginUrl, setLoginUrl] = useState(null);
+  useEffect(() => {
+    fetch(api_server_auth, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Something went wrong!');
+      })
+      .then((data) => {
+        // setToken(data.data)
+        // setUser(data.data)
+        setLoginUrl(data.url)
+        // navigate("/")
+        console.log(data)
+      })
+      .catch((error) => console.error(error));
+  }, []);
   return (
+    
     <section className="relative newhero min-h-screen flex justify-center items-center">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>SignUp</title>
+        <meta
+          name="keywords"
+          content="Affordable prices , Buy and sell ,Online shopping,Product listings, Digital marketplace, Fast shipping"
+        />
+        <link rel="canonical" href="https://www.mypromosphere.com" />
+        <meta
+          name="description"
+          content={
+            "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
+          }
+        />
+          <meta
+          property="og:description"
+          content={
+            "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
+          }
+        />
+      </Helmet>
       {loading && 
         <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader/>
@@ -270,12 +316,18 @@ const SignUp = () => {
                   alt=""
                   className="w-full text-white colorize-img3"
                 />
-                <div className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
+                {/* <div className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3" />
                   <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto">
                     <a href={loginUrl}>Continue with Google</a>
                   </p>
-                </div>
+                </div> */}
+                  <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
+                  <img src={google} alt="" className="px-3 " />
+                  {loginUrl != null && (
+                    <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
+                  )}
+                </button>
                 {/* <p className={toggleLight ? "my-2" : "my-2 text-white"}>
                   You already have an account? <Link className="text-red" to="/login">Login</Link>{" "}
                 </p> */}
