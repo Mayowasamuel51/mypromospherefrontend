@@ -22,8 +22,8 @@ const EditProfile = () => {
             <div className="">
               <NavLink to="/dashboard/EditProfile" className={({ isActive }) => (isActive && pathname === "/dashboard/EditProfile") && "font-bold text-purple"}>
                 <button className="flex items-center gap-2"> 
-                  <FaUserEdit size={30} />
-                  <p>EditProfile</p>
+                  <FaUserEdit size={20} />
+                  <p className="md:text-base text-xs">EditProfile</p>
                 </button>
               </NavLink>
             </div>
@@ -31,7 +31,7 @@ const EditProfile = () => {
               <NavLink to="/dashboard/EditProfile/personal-Info" className={({ isActive }) => isActive && "font-bold text-purple"}>
                 <button className="flex items-center gap-2">
                   <FaInfo size={20} />
-                  <p> Personal Information</p>
+                  <p className="md:text-base text-xs"> Personal Information</p>
                 </button>
               </NavLink>
             </div>
