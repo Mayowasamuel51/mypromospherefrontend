@@ -6,7 +6,7 @@ import feed2 from "../../../assests/images/feed2.svg";
 import { Link } from "react-router-dom";
 
 
-const feeds = () => {
+const Feeds = () => {
   return (
     <section>
       <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
@@ -17,7 +17,7 @@ const feeds = () => {
               <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
-          <Link to="/profile/timilehin babade">
+          <Link to="/profile/user/1">
             <div className="flex items-center gap-2">
               <img src={user} alt="profile-picture" className="w-10 aspect-square" />
               <p className="text-sm">Timilehin babade</p>
@@ -30,7 +30,7 @@ const feeds = () => {
               <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
-          <Link to="/profile/timilehin babade">
+          <Link to="/profile/user/1">
             <div className="flex items-center gap-2">
               <img src={user} alt="profile-picture" className="w-10 aspect-square" />
               <p className="text-sm">Timilehin babade</p>
@@ -43,7 +43,7 @@ const feeds = () => {
               <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
-          <Link to="/profile/timilehin babade">
+          <Link to="/profile/user/1">
             <div className="flex items-center gap-2">
               <LazyLoadImage effect="blur" src={user} alt=""  className="w-10 aspect-square" />
               <p className="text-sm">Timilehin babade</p>
@@ -56,7 +56,7 @@ const feeds = () => {
               <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
             </div>
           </Link>
-          <Link to="/profile/timilehin babade">
+          <Link to="/profile/user/1">
             <div className="flex items-center gap-2">
               <img src={user} alt="profile-picture" className="w-10 aspect-square" />
               <p className="text-sm">Timilehin babade</p>
@@ -68,4 +68,4 @@ const feeds = () => {
   )
 }
 
-export default feeds
+export default Feeds

@@ -49,7 +49,7 @@ const Links = ({hidden, bg}) => {
     )
 }
 
-const Tab = ({ children, tab, handleSetSelected, selected, bg }) => {
+const Tab = ({ children, tab, handleSetSelected, selected, bg, hidden }) => {
     const { pathname } = useLocation()
     return (
         <button
@@ -58,7 +58,7 @@ const Tab = ({ children, tab, handleSetSelected, selected, bg }) => {
             onClick={() => handleSetSelected(tab)}
             className={`nav-active relative flex items-center gap-1 rounded-sm px-3 py-1.5 transition-colors ${selected === tab
                 ? "nav-others outline-black"
-                : bg ? "text-black" : "text-white"
+                : bg && hidden ? "text-black" : "text-white"
                 }`}
         >
             <span>{children}</span>

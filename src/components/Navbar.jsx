@@ -83,7 +83,7 @@ export default function Navbar({ profile, blue }) {
         <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
           <Link to="/login">
             <button className={`flex items-center gap-2 text-lg py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
-              <MdLogin size={30} />
+              <MdLogin size={25} />
               <p>Login</p>
             </button>
           </Link>
