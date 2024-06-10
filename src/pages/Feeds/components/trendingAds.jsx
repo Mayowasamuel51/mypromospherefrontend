@@ -13,6 +13,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { Helmet } from "react-helmet";
 import "./trends.css"
+import GoogleTag from '../../../Google';
 const lazyLoad = import.meta.env.VITE_LAZY_LOAD_IMAGES
 
 const TrendingAds = () => {
@@ -22,6 +23,7 @@ const TrendingAds = () => {
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
+            <GoogleTag/>
             <Helmet>
         <meta charSet="utf-8" />
         <title>Trending Ads</title>

@@ -10,6 +10,7 @@ import { ContextProvider } from "./contexts/ContextProvider";
 import router from "./router";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import GoogleTag from "./Google";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <ContextProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
+          <GoogleTag/>
           <SpeedInsights/>
           <Analytics />
         </QueryClientProvider>
