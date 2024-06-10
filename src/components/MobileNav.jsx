@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { useStateContext } from "../contexts/ContextProvider";
@@ -58,9 +59,16 @@ const childVariant = {
 // eslint-disable-next-line react/prop-types
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
+  useEffect(() => {
+    if (handleToggle) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [handleToggle]);
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100dvh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
-      <motion.div variants={divVariant} className="flex flex-col h-[100dvh] justify-between p-8">
+      <motion.div variants={divVariant} className="fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl flex flex-col h-[100dvh] justify-between p-8">
         <motion.div className="flex flex-col lg:gap-8 gap-5">
           {token &&
             <motion.div variants={childVariant}>
