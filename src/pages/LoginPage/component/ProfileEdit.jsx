@@ -72,15 +72,15 @@ const ProfileEdit = () => {
           return value && value.length;
         }
       )
-    .test("fileSize", "The file is too large", (value, context) => {
+      .test("fileSize", "The file is too large", (value, context) => {
         return value && value[0] && value[0].size <= 200000;
-    })
-    .test("type", "We only support jpeg & png, ", function (value) {
-      return (
-        (value && value[0] && value[0].type === "image/jpeg") ||
-        (value && value[0] && value[0].type === "image/png")
-      );
-    }),
+      })
+      .test("type", "We only support jpeg & png, ", function (value) {
+        return (
+          (value && value[0] && value[0].type === "image/jpeg") ||
+          (value && value[0] && value[0].type === "image/png")
+        );
+      }),
   });
   const { token } = useStateContext();
   const {
@@ -219,7 +219,7 @@ const ProfileEdit = () => {
             .put(`${api_backgroundimage}${token?.id}`, payload, {
               headers: {
                 Accept: "application/json",
-                // "Content-Type": "multipart/form-data",
+                "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token?.token}`,
               },
             })
@@ -252,8 +252,9 @@ const ProfileEdit = () => {
         setLoading(false)
       }
     });
-    console.log("seeing things.//");
+    console.log(data)
   }, []);
+
 
   if (errors?.aboutMe) {
     toast.error(errors?.aboutMe.message)
@@ -282,38 +283,34 @@ const ProfileEdit = () => {
         <form onSubmit={handleSubmit(formSubmit1)}>
           <h1 className="font-medium my-1">👇Click to changeBackgrond Image</h1>
           <article className="flex items-center">
-            {backgroundImage.map((item) => {
-              return (
-                <div key={item.id}>
-                  {background ? (
-                    <img
-                      src={URL.createObjectURL(background)}
-                      alt="Background-photo"
-                      className="w-[100px] aspect-square rounded-full object-cover"
-                    />
-                  ) : (
-                    <label htmlFor="background-image">
-                      <img
-                        src={token?.backgroundimage ?? blankImage}
-                        alt="blankImage"
-                        className="w-[100px] aspect-square rounded-full border duration-200 hover:scale-110 cursor-pointer"
-                      />
-                    </label>
-                  )}
-                  <div className="flex gap-x-[.5rem] items-center">
-                    <button className="cursor-pointer">
-                      <input
-                        type="file"
-                        id="background-image"
-                        className="cursor-pointer hidden"
-                        ref={secoundRef}
-                        onChange={backgroundHandle}
-                      />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+            <div>
+              {background ? (
+                <img
+                  src={URL.createObjectURL(background)}
+                  alt="Background-photo"
+                  className="w-[100px] aspect-square rounded-full object-cover"
+                />
+              ) : (
+                <label htmlFor="background-image">
+                  <img
+                    src={backgroundImage ? data[0]?.backgroundimage : blankImage}
+                    alt="blankImage"
+                    className="w-[100px] aspect-square rounded-full border duration-200 hover:scale-110 cursor-pointer"
+                  />
+                </label>
+              )}
+              <div className="flex gap-x-[.5rem] items-center">
+                <button className="cursor-pointer">
+                  <input
+                    type="file"
+                    id="background-image"
+                    className="cursor-pointer hidden"
+                    ref={secoundRef}
+                    onChange={backgroundHandle}
+                  />
+                </button>
+              </div>
+            </div>
           </article>
           <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md my-2">
             Change Backgorund Image
@@ -321,45 +318,34 @@ const ProfileEdit = () => {
         </form>
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
-            {data.map((item) => {
-              return (
-                <div key={item.id}>
-                  {image ? (
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt="profilephoto"
-                      className="w-[100px] aspect-square rounded-full object-cover"
-                    />
-                  ) : (
-                    <label htmlFor="profile-image">
-                      <img
-                        src={token?.profileImage ?? anon}
-                        alt="blankImage"
-                        className="w-[100px] aspect-square rounded-full object-cover border duration-200 hover:scale-110 cursor-pointer"
-                      />
-                    </label>
-                  )}
-                  <div className="flex gap-x-[.5rem] items-center">
-                    <button className="relative cursor-pointer ml-[.4rem]">
-                      <input
-                        type="file"
-                        id="profile-image"
-                        className="cursor-pointer hidden"
-                        ref={inputRef}
-                        onChange={handleImageChange}
-                      />
-                    </button>
-                    {/* end of upload-button  */}
-                    {/* delete  */}
-                    {/* <button
-                      className="bg-[#D9D9D9] text-[.8rem] smd:text-[1rem] h-[3.2rem] px-4 rounded-md"
-                      onClick={deleteImage}>
-                      <p>Delete</p>
-                    </button> */}
-                  </div>
-                </div>
-              );
-            })}
+            <div>
+              {image ? (
+                <img
+                  src={URL.createObjectURL(image)}
+                  alt="profilephoto"
+                  className="w-[100px] aspect-square rounded-full object-cover"
+                />
+              ) : (
+                <label htmlFor="profile-image">
+                  <img
+                    src={data ? data[0]?.profileImage : anon}
+                    alt="blank-Image"
+                    className="w-[100px] aspect-square rounded-full object-cover border duration-200 hover:scale-110 cursor-pointer"
+                  />
+                </label>
+              )}
+              <div className="flex gap-x-[.5rem] items-center">
+                <button className="relative cursor-pointer">
+                  <input
+                    type="file"
+                    id="profile-image"
+                    className="cursor-pointer hidden"
+                    ref={inputRef}
+                    onChange={handleImageChange}
+                  />
+                </button>
+              </div>
+            </div>
           </article>
           <div className="flex flex-col gap-4 my-2">
             <div className="">
@@ -369,7 +355,7 @@ const ProfileEdit = () => {
                 </label>{" "}
                 <textarea
                   type="text"
-                  // value={token?.aboutMe}
+                  value={data?.aboutMe && data?.aboutMe}
                   className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
                   {...register("aboutMe", { required: true })}
@@ -383,7 +369,7 @@ const ProfileEdit = () => {
                 </label>{" "}
                 <input
                   type="text"
-                  // value={token?.user_website}
+                  value={data?.user_website && data?.user_website}
                   className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   {...register("websiteName", { required: true })}
                   placeholder="Add a link to drive traffic to your site"
@@ -396,8 +382,8 @@ const ProfileEdit = () => {
               </label>{" "}
               <input
                 type="text"
-                // value={token?.brandName}
-                className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                value={token?.brandName && token?.brandName}
+                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 {...register("brandName", { required: true })}
                 placeholder="Enter Your Brand Name"
               />

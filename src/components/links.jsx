@@ -5,11 +5,10 @@ import { FiChevronDown } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion"
 
 
-const Links = () => {
+const Links = ({hidden, bg}) => {
     const [selected, setSelected] = useState(null);
     const [dir, setDir] = useState(null);
     const { pathname } = useLocation();
-
 
     const handleSetSelected = (val) => {
         if (typeof selected === "number" && typeof val === "number") {
@@ -17,12 +16,11 @@ const Links = () => {
         } else if (val === null) {
             setDir(null);
         }
-
         setSelected(val);
     };
 
     return (
-        <ul className="flex items-center gap-5 exl:gap-10 h-fit text-base">
+        <ul className={`flex items-center gap-5 exl:gap-10 h-fit text-base`}>
             <div onMouseLeave={() => handleSetSelected(null)} className="relative flex items-center gap-3 h-fit">
                 {
                     TABS.map((t) => {
@@ -33,6 +31,8 @@ const Links = () => {
                                 selected={selected}
                                 handleSetSelected={handleSetSelected}
                                 tab={t.id}
+                                hidden={hidden}
+                                bg={bg}
                             >
                                 {t.title}
                             </Tab>
@@ -43,13 +43,13 @@ const Links = () => {
                     {selected && <Content dir={dir} selected={selected} />}
                 </AnimatePresence>
             </div>
-            <Link className={`nav-active px-2 py-1.5`} to="/">Products on Discount</Link>
-            <Link className={`nav-active px-2 py-1.5`} to="/">Baby Products</Link>
+            <Link className={`nav-active px-2 py-1.5`} to="/category/discount">Products on Discount</Link>
+            <Link className={`nav-active px-2 py-1.5`} to="/category/Kids_Baby_dresses">Baby Products</Link>
         </ul>
     )
 }
 
-const Tab = ({ children, tab, handleSetSelected, selected }) => {
+const Tab = ({ children, tab, handleSetSelected, selected, bg }) => {
     const { pathname } = useLocation()
     return (
         <button
@@ -58,7 +58,7 @@ const Tab = ({ children, tab, handleSetSelected, selected }) => {
             onClick={() => handleSetSelected(tab)}
             className={`nav-active relative flex items-center gap-1 rounded-sm px-3 py-1.5 transition-colors ${selected === tab
                 ? "nav-others outline-black"
-                : "text-white"
+                : bg ? "text-black" : "text-white"
                 }`}
         >
             <span>{children}</span>
@@ -154,10 +154,10 @@ const Nub = ({ selected }) => {
 const SubHot = () => {
     return (
         <ul className="flex flex-col">
-            <Link to="/">Property</Link>
-            <Link to="/">Apartment</Link>
-            <Link to="/">Cars</Link>
-            <Link to="/">Laptops</Link>
+            <Link to="/category/property">Property</Link>
+            <Link to="/category/apartment">Apartment</Link>
+            <Link to="/category/cars">Cars</Link>
+            <Link to="/category/laptops">Laptops</Link>
         </ul>
     )
 }
@@ -165,9 +165,9 @@ const SubHot = () => {
 const SubFashion = () => {
     return (
         <ul className="flex flex-col">
-            <Link to="/">Womens-shirts</Link>
-            <Link to="/">Womens-watches</Link>
-            <Link to="/">Mens-watches</Link>
+            <Link to="/category/womens-shirts">Womens-shirts</Link>
+            <Link to="/category/womens-watches">Womens-watches</Link>
+            <Link to="/category/mens-watches">Mens-watches</Link>
         </ul>
     )
 }

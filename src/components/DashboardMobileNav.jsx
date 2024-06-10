@@ -71,24 +71,31 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
                 </div>
               </Link>
             </motion.div>}
-          <motion.p variants={childVariant} onClick={handleToggle} className="">
-            <p>Fashion</p>
-          </motion.p>
-          <motion.p variants={childVariant} onClick={handleToggle}>
-            <p>Property</p>
-          </motion.p>
-          <motion.p variants={childVariant} onClick={handleToggle}>
-            <p>Apartment</p>
-          </motion.p>
-          <motion.p variants={childVariant} onClick={handleToggle}>
-            <p>Cars</p>
-          </motion.p>
-          <motion.p variants={childVariant} onClick={handleToggle}>
-            <p>Laptops</p>
-          </motion.p>
-          <motion.p variants={childVariant} onClick={handleToggle}>
-            <p>Products on Discount</p>
-          </motion.p>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/property">
+              <p>Property</p>
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/apartment">
+              <p>Apartment</p>
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/cars">
+              <p>Cars</p>
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/laptops">
+              <p>Laptops</p>
+            </Link>
+          </motion.div>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/discount">
+              <p>Products on Discount</p>
+            </Link>
+          </motion.div>
         </motion.div>
         <motion.div variants={childVariant} onClick={handleToggle} className="text-red flex items-center gap-2">
           <FaPowerOff onClick={() => LogOut()} />

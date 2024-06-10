@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useQuery } from '@tanstack/react-query'
-// const api_fetch_single_ad = import.meta.env.VITE_SINGLE_AD;
+const api_category = import.meta.env.VITE_CATEGORIES;
 
-const FetchCategories = () => {
+const FetchCategories = (category) => {
   return useQuery({
-    queryKey: ["trendingAds", id],
-    queryFn: ({queryKey})=> axios.get(`https://apimypromospheretest.com.ng/api/trendingads/${queryKey[1]}`)
+    queryKey: ["categories", category],
+    queryFn: ({queryKey})=> axios.get(`${api_category}${queryKey[1]}`)
   })
 }
 
-export default FetchCategories
+export default FetchCategories;

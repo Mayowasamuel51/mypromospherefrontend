@@ -17,7 +17,6 @@ function GoogleCallback() {
     
     useEffect(() => {
         axios.get(`${api}${location.search}`).then((res) => {
-            console.log(res.data)
             setToken(res.data)
             setUser(res.data)
             localStorage.setItem("user-details", JSON.stringify(res.data))

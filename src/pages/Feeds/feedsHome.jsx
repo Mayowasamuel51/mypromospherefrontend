@@ -10,6 +10,7 @@ import LOGO from "../../assests/SVGs/logo.svg";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
+import Footer from "../../components/Footer";
 
 const FeedsHome = () => {
   
@@ -65,13 +66,16 @@ const FeedsHome = () => {
       name: "Mens-shirts",
     },
   ];
+
   const fetchData = async () => {
     try {
       const response = await axios(`${api}Apartment`);
       const dataResponse = await response.data.data;
       setData(dataResponse);
       console.log(dataResponse);
-    } catch { }
+    } catch(error) {
+      console.log(error)
+    }
   };
 
   const handleOnSearch = (string, results) => {
@@ -91,7 +95,6 @@ const FeedsHome = () => {
       }
     });
     console.log(data);
-    // console.log(item.name)
   };
 
   const handleOnFocus = () => {
@@ -115,15 +118,11 @@ const FeedsHome = () => {
     };
   }, []);
 
-
   return (
-    <div className="scroll-smooth">
+    <div className="">
       <Navbar blue={true} />
-      <section className="lg:px-10 scroll-smooth">
+      <section className="lg:px-10">
         <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
-          {/* <h1 className="text-2xl lg:text-6xl font-semibold lg:w-[500px]">
-            Perfect Works Made for You
-          </h1> */}
         </div>
         <div className="">
           <section className="lg:px-10 px-4">
@@ -187,8 +186,8 @@ const FeedsHome = () => {
           </section>
         </div>
       </section>
-
-      <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} duration-300 grid place-items-center fixed bottom-10 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}
+      <Footer />
+      <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}
         style={{
           background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`,
         }}

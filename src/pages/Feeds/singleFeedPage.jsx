@@ -5,35 +5,53 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Loader from '../../loader';
 import LOGO from "../../assests/SVGs/logo.svg"
+import { IoChevronBackCircleSharp } from "react-icons/io5";
+import { TbCurrencyNaira } from "react-icons/tb";
 
 const SingleFeedPage = () => {
     const { id } = useParams();
     const navigate = useNavigate()
     const { data, isLoading, error } = FetchSingleAd(id);
+    console.log(data?.data?.data)
     if (isLoading) return <Loader />
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
     return (
         <>
             <Navbar blue={true} />
-            <section className="pt-16 lg:pt-32 px-4 lg:px-10">
+            <section className="pt-16 lg:pt-20 px-4 lg:px-10">
                 <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
-                    Go Back
+                    <IoChevronBackCircleSharp size={30} />
                 </div>
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <div className="flex-1 flex flex-col gap-4">
-                        <div className='border-2 rounded-md w-fit h-fit'>
+                        <div className='rounded-md'>
                             <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} alt="img" className="rounded-md w-full h-full object-cover" />
                         </div>
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
-                                <LazyLoadImage effect="blur" src={data?.data?.data.user_image} alt="" className="rounded-full w-10 aspect-square" />
-                                <p className="text-sm">USER-ID {data?.data?.data.user_id}</p>
+                                <img src={data?.data?.data.user_image} alt="user-profile" className="rounded-full w-10 aspect-square" />
+                                {/* <p className="text-sm">USER-ID {data?.data?.data.user_id}</p> */}
                             </div>
                         </Link>
                     </div>
-                    <div className='flex-1'>
-                        <h1 className='md:text-3xl font-semibold text-xl'>{data?.data?.data?.headlines}</h1>
-                        <p>Date Posted: {new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                    <div className='flex-1 flex flex-col gap-2'>
+                        <p className='text-[#3D217A] font-medium text-lg my-4'>{data?.data?.data?.categories}</p>
+                        <p>{data?.data?.data?.productName || "No Name"}</p>
+                        <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1>
+                        <p className='p-4 border-l-2 border-black'>{data?.data?.data?.description}</p>
+                        <p><TbCurrencyNaira />{data?.data?.data?.price_range ?? 10000}</p>
+                        <div className='flex items-center gap-2'>
+                            <h1 className='font-semibold text-lg'>STATE</h1>
+                            <p className=''>{data?.data?.data?.state}</p>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                            <h1 className='font-semibold text-lg'>LGA</h1>
+                            <p className=''>{data?.data?.data?.local_gov}</p>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                            <h1 className='font-semibold text-lg'>Date Posted:</h1>
+                            <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -51,7 +69,7 @@ const SingleFeedPage = () => {
                         <Link to="/profile/timilehin babade">
                             <div className="flex items-center gap-2">
                                 <LazyLoadImage effect="blur" src={item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square border-2" />
-                                <p className="text-sm font-medium">USER-ID {item.user_id}</p>
+                                {/* <p className="text-sm font-medium">USER-ID {item.user_id}</p> */}
                             </div>
                         </Link>
                     </Link>
