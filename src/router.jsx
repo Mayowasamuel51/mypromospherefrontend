@@ -16,6 +16,8 @@ const DashBoard = React.lazy(() => import("./pages/components/DashBoard.jsx"));
 const SingleFeedPage = React.lazy(() =>
   import("./pages/Feeds/singleFeedPage.jsx")
 );
+
+const Categories = React.lazy(() => import("./pages/categories/categories.jsx"));
 import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
@@ -63,6 +65,10 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/category/:category",
+    element: <Suspense fallback={<Loader />}><Categories /></Suspense>,
+  },
+  {
     path: "feed/:id",
     element: (
       <Suspense fallback={<Loader />}>
@@ -71,8 +77,18 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/profile/:cusName",
+    path: "/profile/user/:id",
     element: <ProfileHome />,
+    children: [
+      {
+        index : true,
+        element : <h1>POSTS</h1>
+      },
+      {
+        path : "videos",
+        element: <h1>VIDEOS</h1>
+      }
+    ]
   },
   {
     path: "skills",

@@ -7,25 +7,15 @@ import Navbar from "../../components/Navbar";
 
 function DefualtLayout() {
     const { user, token, setUser, setToken } = useStateContext()
-    if (!token) {
-        return <Navigate to="/" />
-    }
-
-    const onLogout = (ev) => {
-        // ev.preventDefault()
-        // axiosclinet.post("/api/logout").then(() => {
-        //     setUser({})
-        //     setToken(null)
-        // })
-    }
-
+    
     useEffect(() => {
         axiosclinet.get("api/getuser").then(({ data }) => {
             setUser(data.message)
-            console.log('see messages')
-            console.log(data.message)
         })
     }, [])
+    if (!token) {
+        return <Navigate to="/" />
+    }
     return (
         <>
             {true ? 

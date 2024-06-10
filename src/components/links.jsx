@@ -43,8 +43,8 @@ const Links = () => {
                     {selected && <Content dir={dir} selected={selected} />}
                 </AnimatePresence>
             </div>
-            <Link className={`nav-active px-2 py-1.5`} to="/">Products on Discount</Link>
-            <Link className={`nav-active px-2 py-1.5`} to="/">Baby Products</Link>
+            <Link className={`nav-active px-2 py-1.5`} to="/category/discount">Products on Discount</Link>
+            <Link className={`nav-active px-2 py-1.5`} to="/category/Kids_Baby_dresses">Baby Products</Link>
         </ul>
     )
 }
@@ -154,10 +154,10 @@ const Nub = ({ selected }) => {
 const SubHot = () => {
     return (
         <ul className="flex flex-col">
-            <Link to="/">Property</Link>
-            <Link to="/">Apartment</Link>
-            <Link to="/">Cars</Link>
-            <Link to="/">Laptops</Link>
+            <Link to="/category/property">Property</Link>
+            <Link to="/category/apartment">Apartment</Link>
+            <Link to="/category/cars">Cars</Link>
+            <Link to="/category/laptops">Laptops</Link>
         </ul>
     )
 }
@@ -165,9 +165,9 @@ const SubHot = () => {
 const SubFashion = () => {
     return (
         <ul className="flex flex-col">
-            <Link to="/">Womens-shirts</Link>
-            <Link to="/">Womens-watches</Link>
-            <Link to="/">Mens-watches</Link>
+            <Link to="/category/womens-shirts">Womens-shirts</Link>
+            <Link to="/category/womens-watches">Womens-watches</Link>
+            <Link to="/category/mens-watches">Mens-watches</Link>
         </ul>
     )
 }

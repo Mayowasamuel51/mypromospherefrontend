@@ -477,6 +477,7 @@ const Post = () => {
                 onChange={handleInputChange}
                 name="images"
                 id="images"
+                className="hidden"
               />
             </label>
             <div className="flex items-center justify-center gap-4 flex-wrap my-4">

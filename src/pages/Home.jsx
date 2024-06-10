@@ -17,9 +17,6 @@ export default function Home() {
       <TalentAndValues />
       <Categories />
       <Grow />
-      {/* <SkillsNav /> */}
-      {/* <Outlet /> */}
-      {/* <ServiceProviders/> */}
       <Testimonials />
       <CTA />
       <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} duration-300 grid place-items-center fixed bottom-10 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}

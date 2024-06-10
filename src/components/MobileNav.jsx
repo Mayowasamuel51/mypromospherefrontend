@@ -73,25 +73,31 @@ export default function MobileNav({ handleToggle }) {
               </Link>
             </motion.div>
           }
-          <motion.div variants={childVariant}>
-            <p>Fashion</p>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/property">
+              <p>Property</p>
+            </Link>
           </motion.div>
-          <motion.div variants={childVariant}>
-            <p>Property</p>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/apartment">
+              <p>Apartment</p>
+            </Link>
           </motion.div>
-          <motion.div variants={childVariant}>
-            <p>Apartment</p>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/cars">
+              <p>Cars</p>
+            </Link>
           </motion.div>
-          <motion.div variants={childVariant}>
-            <p>Cars</p>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/laptops">
+              <p>Laptops</p>
+            </Link>
           </motion.div>
-          <motion.div variants={childVariant}>
-            <p>Laptops</p>
+          <motion.div variants={childVariant} onClick={handleToggle}>
+            <Link to="/category/discount">
+              <p>Products on Discount</p>
+            </Link>
           </motion.div>
-          <motion.div variants={childVariant}>
-            <p>Products on Discount</p>
-          </motion.div>
-
         </motion.div>
         <motion.div className="flex flex-col gap-2">
           {!token && <motion.div variants={childVariant}>
