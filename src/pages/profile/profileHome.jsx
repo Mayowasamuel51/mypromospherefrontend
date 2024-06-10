@@ -10,10 +10,9 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 
 const ProfileHome = () => {
-    const { token } = useStateContext()
     const {pathname} = useLocation()
     const { id } = useParams();
-    const { data, isLoading, error } = FetchUser(id);
+    const { data } = FetchUser(id);
     console.log(data?.data?.data)
     return (
         <>
@@ -30,7 +29,7 @@ const ProfileHome = () => {
                         <img
                             src={data?.data?.data[0].profileImage ?? anon}
                             alt=""
-                            className="w-[25%] inseti lg:w-[15%] aspect-square object-cover rounded-full"
+                            className="w-[25%] inseti lg:w-[15%] aspect-square object-cover object-top rounded-full"
                         />
                     </div>
                 </article>
@@ -58,11 +57,11 @@ const ProfileHome = () => {
                         <div className="flex items-center justify-center ">
                             <div className="flex gap-2 my-2">
                                 <div className="flex justify-center items-center gap-x-4">
-                                    <NavLink to={`/profile/user/${id}`} className={({isActive}) => isActive ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2" : "flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
+                                    <NavLink to={`/profile/user/${id}`} className={({isActive}) => isActive && pathname === `/profile/user/${id}` ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
                                         <p> Posts</p>
                                     </NavLink>
                                 </div>
-                                <NavLink to={`/profile/user/${id}/video`}  className={({isActive}) => isActive ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2" : "flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
+                                <NavLink to={`/profile/user/${id}/videos`}  className={({isActive}) => isActive && pathname === `/profile/user/${id}/videos` ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
                                     <p>Videos</p>
                                 </NavLink>
                             </div>

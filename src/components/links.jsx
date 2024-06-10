@@ -5,11 +5,10 @@ import { FiChevronDown } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion"
 
 
-const Links = () => {
+const Links = ({hidden, bg}) => {
     const [selected, setSelected] = useState(null);
     const [dir, setDir] = useState(null);
     const { pathname } = useLocation();
-
 
     const handleSetSelected = (val) => {
         if (typeof selected === "number" && typeof val === "number") {
@@ -17,12 +16,11 @@ const Links = () => {
         } else if (val === null) {
             setDir(null);
         }
-
         setSelected(val);
     };
 
     return (
-        <ul className="flex items-center gap-5 exl:gap-10 h-fit text-base">
+        <ul className={`flex items-center gap-5 exl:gap-10 h-fit text-base`}>
             <div onMouseLeave={() => handleSetSelected(null)} className="relative flex items-center gap-3 h-fit">
                 {
                     TABS.map((t) => {
@@ -33,6 +31,8 @@ const Links = () => {
                                 selected={selected}
                                 handleSetSelected={handleSetSelected}
                                 tab={t.id}
+                                hidden={hidden}
+                                bg={bg}
                             >
                                 {t.title}
                             </Tab>
@@ -49,7 +49,7 @@ const Links = () => {
     )
 }
 
-const Tab = ({ children, tab, handleSetSelected, selected }) => {
+const Tab = ({ children, tab, handleSetSelected, selected, bg }) => {
     const { pathname } = useLocation()
     return (
         <button
@@ -58,7 +58,7 @@ const Tab = ({ children, tab, handleSetSelected, selected }) => {
             onClick={() => handleSetSelected(tab)}
             className={`nav-active relative flex items-center gap-1 rounded-sm px-3 py-1.5 transition-colors ${selected === tab
                 ? "nav-others outline-black"
-                : "text-white"
+                : bg ? "text-black" : "text-white"
                 }`}
         >
             <span>{children}</span>

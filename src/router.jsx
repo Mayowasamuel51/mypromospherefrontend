@@ -82,11 +82,11 @@ const router = createBrowserRouter([
     children: [
       {
         index : true,
-        element : <h1>POSTS</h1>
+        element : <h1 className="text-center font-bold text-3xl my-4">POSTS</h1>
       },
       {
         path : "videos",
-        element: <h1>VIDEOS</h1>
+        element: <h1 className="text-center font-bold text-3xl my-4">VIDEOS</h1>
       }
     ]
   },
