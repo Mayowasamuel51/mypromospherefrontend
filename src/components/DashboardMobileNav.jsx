@@ -58,14 +58,14 @@ const childVariant = {
 // eslint-disable-next-line react/prop-types
 const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   const { token } = useStateContext();
-  useEffect(() => {
-    if (handleToggle) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-    return ()=> document.body.classList.remove('no-scroll');
-  }, [handleToggle]);
+  // useEffect(() => {
+  //   if (handleToggle) {
+  //     document.body.classList.add('no-scroll');
+  //   } else {
+  //     document.body.classList.remove('no-scroll');
+  //   }
+  //   return ()=> document.body.classList.remove('no-scroll');
+  // }, [handleToggle]);
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`h-[100dvh] lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
       <motion.nav variants={navVariant} className={`fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl p-8 text-black h-[100dvh] w-full lg:py-0 py-10 flex flex-col justify-between bg-transparent`}>
