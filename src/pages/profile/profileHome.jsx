@@ -4,7 +4,7 @@ import photoHeader from "../../assests/images/photo-header-crop.png"
 import anon from "../../assests/images/anon.png"
 import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
-import { useStateContext } from "../../contexts/ContextProvider";
+// import { useStateContext } from "../../contexts/ContextProvider";
 import FetchUser from "../../hooks/fetchUser";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
