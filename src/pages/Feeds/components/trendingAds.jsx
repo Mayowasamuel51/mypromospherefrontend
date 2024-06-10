@@ -11,16 +11,38 @@ import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { Helmet } from "react-helmet";
 import "./trends.css"
-
+const lazyLoad = import.meta.env.VITE_LAZY_LOAD_IMAGES
 
 const TrendingAds = () => {
     const { FullScreen } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
-    console.log(data?.data.normalads)
+    // console.log(data?.data.normalads)
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
+            <Helmet>
+        <meta charSet="utf-8" />
+        <title>Trending Ads</title>
+        <meta
+          name="keywords"
+          content="Affordable prices ,Customer reviews,  Buy and sell ,Online shopping,Product listings, Digital marketplace, Fast shipping"
+        />
+        <link rel="canonical" href="https://www.mypromosphere.com" />
+        <meta
+          name="description"
+          content={
+           "Mypromosphere is the premier online marketplace for effectively selling your products and services. Discover discounted and high-quality goods from real people and enjoy the best deals. Plus, you can upload your ads for free"
+          }
+        />
+          <meta
+          property="og:description"
+          content={
+            "Mypromosphere is the premier online marketplace for effectively selling your products and services. Discover discounted and high-quality goods from real people and enjoy the best deals. Plus, you can upload your ads for free"
+          }
+        />
+      </Helmet>
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <img src={LOGO} className='w-10 h-10' alt="" />
                 <h1 className='font-medium md:font-bold text-sm lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
@@ -47,7 +69,7 @@ const TrendingAds = () => {
                             height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`${lazyLoad}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
@@ -56,7 +78,7 @@ const TrendingAds = () => {
                             ))}
                         </Splide> : 
                         <div>
-                            <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                            <LazyLoadImage effect='blur' src={`${lazyLoad}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                         </div>
                         }
                         <Link to="/profile/timilehin babade">
@@ -94,7 +116,7 @@ const TrendingAds = () => {
                             height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`${lazyLoad}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
@@ -103,7 +125,7 @@ const TrendingAds = () => {
                             ))}
                         </Splide> : 
                         <div>
-                            <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                            <LazyLoadImage effect='blur' src={`${lazyLoad}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                         </div>
                         }
                         <Link to="/profile/timilehin babade">
@@ -140,7 +162,7 @@ const TrendingAds = () => {
                             height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`${lazyLoad}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
@@ -182,7 +204,7 @@ const TrendingAds = () => {
                             height: "400px"
                         }} className="p-2">
                             <SplideSlide className='rounded-md w-fit border-2'>
-                                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
+                                <LazyLoadImage effect='blur' src={`${lazyLoad}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
                             </SplideSlide>
                             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                 <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
