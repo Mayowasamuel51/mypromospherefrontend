@@ -59,14 +59,6 @@ const childVariant = {
 // eslint-disable-next-line react/prop-types
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
-  // useEffect(() => {
-  //   if (handleToggle) {
-  //     document.body.classList.add('no-scroll');
-  //   } else {
-  //     document.body.classList.remove('no-scroll');
-  //   }
-  //   return ()=> document.body.classList.remove('no-scroll');
-  // }, [handleToggle]);
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100dvh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
       <motion.div variants={divVariant} className="fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl flex flex-col h-[100dvh] justify-between p-8">
