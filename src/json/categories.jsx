@@ -49,6 +49,8 @@ export const categories =
 
     "Apartment",
 
+    "Luxury Apartment",
+
     "Fashion",
 
     "Sport Dresses"

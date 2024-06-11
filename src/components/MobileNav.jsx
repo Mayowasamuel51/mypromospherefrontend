@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { useStateContext } from "../contexts/ContextProvider";
@@ -59,8 +60,8 @@ const childVariant = {
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`min-h-screen fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
-      <motion.div variants={divVariant} className="flex flex-col min-h-screen justify-between p-8">
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100dvh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
+      <motion.div variants={divVariant} className="fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl flex flex-col h-[100dvh] justify-between p-8">
         <motion.div className="flex flex-col lg:gap-8 gap-5">
           {token &&
             <motion.div variants={childVariant}>
@@ -102,7 +103,7 @@ export default function MobileNav({ handleToggle }) {
         <motion.div className="flex flex-col gap-2">
           {!token && <motion.div variants={childVariant}>
             <Link to="/Login" onClick={handleToggle}>
-              <button className="py-2 border-2 border-pink w-full text-black font-['Poppins]">
+              <button className="py-2 border-2 border-pink text-pink w-full font-['Poppins]">
                 Login
               </button>
             </Link>

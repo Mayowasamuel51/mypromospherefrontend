@@ -267,7 +267,7 @@ const SignUp = () => {
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
                       : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
                   }
-                  placeholder="Enter password"
+                  placeholder="Confirm password"
                 />
                 {passwordVisible ? <FaEyeSlash onClick={viewPassword} size={20} className="cursor-pointer absolute right-4 bottom-2" /> : <FaEye onClick={viewPassword} size={20} className="cursor-pointer absolute right-4 bottom-2" />}
               </div>

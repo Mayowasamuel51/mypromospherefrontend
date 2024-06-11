@@ -1,60 +1,15 @@
 import { Link } from "react-router-dom";
 // assests
 import logo from "../assests/images/logo black.png";
+import {FashionLinks} from "../json/fashionLinks";
+import {HotLinks}  from "../json/hotLinks";
 
 export default function Footer() {
-  const quickLinks = [
-    {
-      id: 1,
-      linkText: "home",
-      url: "/",
-    },
-    {
-      id: 2,
-      linkText: "about us",
-      url: "/about",
-    },
-    {
-      id: 3,
-      linkText: "features",
-      url: "/features",
-    },
-    {
-      id: 4,
-      linkText: "Testimonials",
-      url: "/testimonials",
-    },
-  ];
-  const categoriesLinks = [
-    {
-      id: 1,
-      text: "support",
-      url: "/support",
-    },
-    {
-      id: 2,
-      text: "development",
-      url: "/development",
-    },
-    {
-      id: 3,
-      text: "contact",
-      url: "/contact",
-    },
-    {
-      id: 4,
-      text: "terms & conditions",
-      url: "/terms&conditions",
-    },
-    {
-      id: 5,
-      text: "safety & security",
-      url: "/safety&security",
-    },
-  ];
+  const quickLinks = FashionLinks
+  const categoriesLinks = HotLinks
 
   return (
-    <footer className=" bg-pink py-8 px-4 flex flex-col bigLg:px-16">
+    <footer className=" bg-pink pt-8 px-4 flex flex-col bigLg:px-16">
       <form
         action=""
         className=" flex flex-col lg:items-center lg:max-w-screen-lg lg:mx-auto"
@@ -96,37 +51,22 @@ export default function Footer() {
 
         <div className=" flex flex-col gap-y-5">
           <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
-            Quick links
+            Fashion
           </h2>
           <ul className=" flex flex-col gap-y-2">
-            {quickLinks.map(({ id, linkText, url }) => {
+            {quickLinks.map(({ id, text, url }) => {
               return (
                 <Link
                   to={url}
                   key={id}
                   className=" capitalize text-white/70 font-['Roboto'] font-medium "
                 >
-                  {linkText}
-                </Link>
-              );
-            })}
-          </ul>
-        </div>
-
-        {/* <div className=" flex flex-col gap-y-5">
-          <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
-            Resource
-          </h2>
-          <ul className=" flex flex-col gap-y-2">
-            {resourceLinks.map(({ id, text, url }) => {
-              return (
-                <Link to={url} key={id} className=" capitalize text-white/70 font-['Roboto'] font-medium ">
                   {text}
                 </Link>
               );
             })}
           </ul>
-        </div> */}
+        </div>
 
         <div className=" flex flex-col gap-y-5">
           <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom"
 import { motion } from 'framer-motion';
 import anon from "../assests/images/anon.png"
@@ -58,8 +59,8 @@ const childVariant = {
 const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   const { token } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`min-h-screen lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
-      <motion.nav variants={navVariant} className={`p-8 text-black min-h-screen w-full lg:py-0 py-10 flex flex-col justify-between bg-white bg-transparent bg-opacity-5 backdrop-blur-2xl`}>
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`h-[100dvh] lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
+      <motion.nav variants={navVariant} className={`fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl p-8 text-black h-[100dvh] w-full lg:py-0 py-10 flex flex-col justify-between bg-transparent`}>
         <motion.div className="flex flex-col gap-6">
           {token &&
             <motion.div variants={childVariant} className="">
@@ -106,4 +107,4 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   )
 }
 
-export default DashboardMobileNav
+export default DashboardMobileNav;

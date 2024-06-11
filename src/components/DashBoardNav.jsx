@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStateContext } from "../contexts/ContextProvider"
 import { Link } from "react-router-dom"
 import LOGO from "../../src/assests/SVGs/logo.svg";
@@ -15,6 +15,13 @@ const DashBoardNav = () => {
   const handleToggle = () => {
     setToggleNav(prev => !prev)
   }
+  useEffect(() => {
+    if (toggleNav) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [toggleNav]);
   return (
     <>
       {token ?

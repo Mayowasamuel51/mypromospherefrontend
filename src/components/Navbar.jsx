@@ -53,6 +53,13 @@ export default function Navbar({ profile, blue }) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [])
+  useEffect(() => {
+    if (toggleIcon) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [toggleIcon]);
   return (
     <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile || blue ? "bg-[#3D217A]" : "bg-white text-black" : profile || blue ? "bg-[#3D217A]" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-2 lg:py-0 duration-300`}>
       <Link to={"/"} className=" flex items-center">
@@ -83,7 +90,7 @@ export default function Navbar({ profile, blue }) {
         <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
           <Link to="/login">
             <button className={`flex items-center gap-2 text-lg py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
-              <MdLogin />
+              <MdLogin size={25} />
               <p>Login</p>
             </button>
           </Link>

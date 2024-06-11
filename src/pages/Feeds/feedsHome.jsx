@@ -157,7 +157,7 @@ const FeedsHome = () => {
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+                    className={`whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "bg-[#EC6A87] text-white"
                       }`}
                   >
                     Trending Ads
@@ -171,7 +171,7 @@ const FeedsHome = () => {
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black ${location.pathname === "/top-videos" &&
+                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
                       "bg-[#EC6A87] text-white"
                       }`}
                   >
@@ -187,7 +187,7 @@ const FeedsHome = () => {
         </div>
       </section>
       <Footer />
-      <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}
+      <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} cursor-pointer duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`}
         style={{
           background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`,
         }}
