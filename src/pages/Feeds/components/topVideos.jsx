@@ -18,7 +18,7 @@ const TopVideos = () => {
             {data?.data?.videos.map((video) => (
                 <div key={video.id} className='flex flex-col gap-4'>
                     <div className='border-2 border-red w-full'>
-                        <ReactPlayer style={{width: "280px"}} url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} playIcon={<FaPlay />} className="w-full" />
+                        <ReactPlayer url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} playIcon={<FaPlay />} className="w-fit" />
                     </div>
                     <Link to={`/profile/user/${video.user_id}`} className="w-fit">
                         <div className="flex items-center gap-2">
