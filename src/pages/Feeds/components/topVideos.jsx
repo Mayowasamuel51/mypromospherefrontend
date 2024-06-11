@@ -19,7 +19,7 @@ const TopVideos = () => {
             {data?.data?.videos.map((video) => (
                 <div key={video.id} className='flex flex-col gap-4'>
                     <div className='w-full'>
-                        <ReactPlayer style={{width: "280px"}} url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} className="w-fit border-2 border-red rounded-lg hover:outline hover:outline-2 hover:outline-red duration-300" />
+                        <ReactPlayer url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} className="w-fit rounded-lg hover:outline hover:outline-2 hover:outline-red duration-300" />
                     </div>
                     <Link to={`/profile/user/${video.user_id}`} className="w-fit">
                         <div className="flex items-center gap-2">
