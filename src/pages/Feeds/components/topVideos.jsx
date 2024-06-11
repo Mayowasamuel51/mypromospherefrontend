@@ -14,12 +14,12 @@ const TopVideos = () => {
     console.log(data?.data?.videos)
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
-        <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 overflow-x-hidden">
+        <section className="grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 overflow-x-hidden">
             {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
             {data?.data?.videos.map((video) => (
                 <div key={video.id} className='flex flex-col gap-4'>
-                    <div className='border-2 border-red w-full'>
-                        <ReactPlayer style={{width: "280px"}} url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} className="w-fit" />
+                    <div className='w-full'>
+                        <ReactPlayer style={{width: "280px"}} url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} className="w-fit border-2 border-red rounded-lg hover:outline hover:outline-2 hover:outline-red duration-300" />
                     </div>
                     <Link to={`/profile/user/${video.user_id}`} className="w-fit">
                         <div className="flex items-center gap-2">
