@@ -6,6 +6,7 @@ import FetchVideos from '../../../hooks/fetchVideos';
 import ReactPlayer from 'react-player'
 import { useStateContext } from '../../../contexts/ContextProvider';
 import { FaPlay } from "react-icons/fa6";
+import Loader from '../../../loader';
 
 const TopVideos = () => {
     const {token} = useStateContext();
@@ -13,10 +14,11 @@ const TopVideos = () => {
     console.log(data?.data?.videos)
     return (
         <section className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 overflow-x-hidden">
+            {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
             {data?.data?.videos.map((video) => (
                 <div key={video.id} className='flex flex-col gap-4'>
                     <div className='border-2 border-red w-full'>
-                        <ReactPlayer url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} playIcon={<FaPlay />} className="w-full" />
+                        <ReactPlayer style={{width: "280px"}} url={video?.titlevideourl} playing={true} light="true" loop={true} muted={true} playIcon={<FaPlay />} className="w-full" />
                     </div>
                     <Link to={`/profile/user/${video.user_id}`} className="w-fit">
                         <div className="flex items-center gap-2">
