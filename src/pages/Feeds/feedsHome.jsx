@@ -157,7 +157,7 @@ const FeedsHome = () => {
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 md:textbase text-xs ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+                    className={`whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "bg-[#EC6A87] text-white"
                       }`}
                   >
                     Trending Ads
@@ -171,7 +171,7 @@ const FeedsHome = () => {
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:textbase text-xs ${location.pathname === "/top-videos" &&
+                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
                       "bg-[#EC6A87] text-white"
                       }`}
                   >
