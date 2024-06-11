@@ -39,6 +39,8 @@ export const categories =
 
     "Womens-bags",
 
+    "Luxury-apartment",
+
     "Womens-jewellery",
    
     "Automotive , Vehicles",

@@ -81,7 +81,7 @@ const Video = () => {
   const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
 
   const schema = yup.object().shape({
-    video: yup.string().required(),
+    // video: yup.string().required(),
     productName: yup.string().required(),
     price: yup.string().required(),
     categories: yup.string().required("Category is required"),
@@ -157,10 +157,11 @@ const Video = () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
+          console.log(CategoriesValues)
           const payload = {
             price_range: data.price,
             headlines: data.headlines,
-            categories: CategoriesValues,
+            categories: data.categories,
             titlevideourl: downloadURL,
             description: data.description,
           };
