@@ -114,7 +114,6 @@ const Video = () => {
   }, [watchedState, data?.state]);
 
   const formSubmit = (data) => {
-    // event.preventDefault();
     console.log("logging file", CategoriesValues);
     if (file === null) {
       toast.error("You have not uploaded any file");
@@ -178,8 +177,6 @@ const Video = () => {
                 console.log("success!!");
                 console.log("worked in database for vidoes ");
                 console.log(CategoriesValues);
-                // console.log(res.data.item)
-
                 return res.data.item;
               } else if (res.status === 500 || res.status === 401) {
                 console.log(res.data.message);
