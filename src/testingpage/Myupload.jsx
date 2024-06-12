@@ -26,7 +26,9 @@ const Myuploads = () => {
           <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
             <div className="">
               <div className=''>
-                <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" />
+          {item.titleImageurl ?   <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" /> : 'NOTHING TO SHOW '}
+                {/* <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" /> */}
+
               </div>
             </div>
           </Link>

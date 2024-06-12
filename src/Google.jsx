@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 
+const google = import.meta.env.VITE_GOOGLE;
 const GoogleTag = () => {
   useEffect(() => {
     const script1 = document.createElement('script');
     script1.async = true;
-    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-LEY36V809L';
+    script1.src =google;
     document.head.appendChild(script1);
-
     const script2 = document.createElement('script');
     script2.innerHTML = `
       window.dataLayer = window.dataLayer || [];

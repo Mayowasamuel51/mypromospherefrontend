@@ -252,7 +252,7 @@ const Video = () => {
                 {...register("price", { required: true })}
               />
             </div>
-            {/* <p className='text-red  text-sm'>{errors.price?.message}</p> */}
+            <p className='text-red  text-sm'>{errors.price?.message}</p>
             <div>
               <select
                 name="state"
