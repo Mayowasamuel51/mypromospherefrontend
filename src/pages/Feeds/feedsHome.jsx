@@ -122,7 +122,7 @@ const FeedsHome = () => {
     <div className="">
       <Navbar blue={true} />
       <section className="lg:px-10">
-        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
+        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-28">
         </div>
         <div className="">
           <section className="lg:px-10 px-4">
