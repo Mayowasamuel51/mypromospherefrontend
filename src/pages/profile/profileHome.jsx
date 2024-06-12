@@ -24,7 +24,7 @@ const ProfileHome = () => {
                     <div className="w-full relative">
                         {data?.data?.data[0]?.backgroundimage ?
                             <img
-                            src={data?.data?.data[0]?.backgroundimage ?? photoHeader}
+                            src={data[0]?.backgroundimage ?? photoHeader}
                             alt=""
                             className="md:rounded-b-[60px] rounded-b-2xl object-center"
                         /> : 
@@ -32,7 +32,7 @@ const ProfileHome = () => {
                         }
                         <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
                         <img
-                            src={data?.data?.data[0]?.profileImage ?? anon}
+                            src={data[0]?.profileImage ?? anon}
                             alt=""
                             className="w-[25%] inseti lg:w-[15%] aspect-square object-cover object-top rounded-full"
                         />
@@ -42,7 +42,7 @@ const ProfileHome = () => {
                     <article className="text-center md:mt-20">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0]?.name}
+                                {data[0]?.name}
                             </h1>
                             <p className="md:text-lg text-base">JOB</p>
                         </div>
