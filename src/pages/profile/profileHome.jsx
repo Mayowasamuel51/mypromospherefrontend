@@ -10,10 +10,11 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 
 const ProfileHome = () => {
+
     const {pathname} = useLocation()
-    const { id } = useParams();
-    const { data } = FetchUser(id);
-    console.log(data?.data?.data)
+    const { id } = useParams()
+    const { data } = FetchUser(id)
+    console.log(data?.data)
     return (
         <>
             <Navbar />
