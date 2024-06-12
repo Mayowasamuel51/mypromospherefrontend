@@ -19,7 +19,7 @@ const Feeds = () => {
       <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
       <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
         {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
-        {data?.data.normalads.map((item, _, arr) => arr.length < 5 && (
+        {data?.data.normalads.slice(0, 4).map((item) => (
           <div key={item.id} className="flex flex-col gap-2 md:gap-4">
             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
               <Splide options={{
