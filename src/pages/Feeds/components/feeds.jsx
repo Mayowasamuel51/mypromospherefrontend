@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import FetchTrendingAds from '../../../hooks/fetchTrendingAds';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import { Link } from 'react-router-dom';
 import "./trends.css";
 import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
