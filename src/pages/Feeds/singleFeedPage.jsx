@@ -27,10 +27,9 @@ const SingleFeedPage = () => {
                         <div className='rounded-md'>
                             <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} alt="img" className="rounded-md w-full h-full object-cover" />
                         </div>
-                        <Link to="/profile/timilehin babade">
+                        <Link to=`/profie/user/${data?.data?.data.user_id}`>
                             <div className="flex items-center gap-2">
                                 <img src={data?.data?.data.user_image} alt="user-profile" className="rounded-full w-10 aspect-square" />
-                                {/* <p className="text-sm">USER-ID {data?.data?.data.user_id}</p> */}
                             </div>
                         </Link>
                     </div>
