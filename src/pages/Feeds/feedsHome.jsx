@@ -11,6 +11,7 @@ import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
 import Footer from "../../components/Footer";
+const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
   
