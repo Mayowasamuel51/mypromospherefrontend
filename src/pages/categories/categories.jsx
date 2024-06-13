@@ -37,7 +37,7 @@ const Categories = () => {
             ))
           }
           {category === "property" &&
-            data?.data.property.map((discount) => (
+            data?.data?.property.map((discount) => (
               <div key={discount.id} className="flex flex-col gap-2 md:gap-4">
                 <div>
                   <Link to={`/feed/${discount.id}`}>
