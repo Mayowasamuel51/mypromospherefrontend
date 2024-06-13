@@ -20,6 +20,7 @@ const FeedsHome = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
+
   const items = [
     {
       id: 0,
@@ -67,17 +68,6 @@ const FeedsHome = () => {
       name: "Mens-shirts",
     },
   ];
-
-  const fetchData = async () => {
-    try {
-      const response = await axios(`${api}Apartment`);
-      const dataResponse = await response.data.data;
-      setData(dataResponse);
-      console.log(dataResponse);
-    } catch(error) {
-      console.log(error)
-    }
-  };
 
   const handleOnSearch = (string, results) => {
     setData(results);
@@ -133,9 +123,9 @@ const FeedsHome = () => {
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
-                onHover={handleOnHover}
-                onSelect={handleOnSelect}
-                onFocus={handleOnFocus}
+                onHover={()=> handleOnHover()}
+                onSelect={()=> handleOnSelect()}
+                onFocus={()=> handleOnFocus()}
                 autoFocus
               // formatResult={formatResult}
               />
