@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import FetchCategories from "../../hooks/fetchCategories";
 import Loader from "../../loader";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
