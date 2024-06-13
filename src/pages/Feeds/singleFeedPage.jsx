@@ -5,6 +5,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Loader from '../../loader';
 import LOGO from "../../assests/SVGs/logo.svg"
+import anon from "../../assests/images/anon.png"
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { TbCurrencyNaira } from "react-icons/tb";
 
@@ -29,7 +30,7 @@ const SingleFeedPage = () => {
                         </div>
                         <Link to={`/profie/user/${data?.data?.data.user_id}`}>
                             <div className="flex items-center gap-2">
-                                <img src={data?.data?.data.user_image} alt="user-profile" className="rounded-full w-10 aspect-square" />
+                                <img src={data?.data?.data.user_image ?? anon} alt="user-profile" className="rounded-full w-10 aspect-square" />
                             </div>
                         </Link>
                     </div>
