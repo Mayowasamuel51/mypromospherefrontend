@@ -3,18 +3,37 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useStateContext } from "../contexts/ContextProvider";
 import { Link } from 'react-router-dom';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import Loader from "../loader";
+// import { Splide, SplideSlide } from '@splidejs/react-splide';
+// import Loader from "../loader";
 import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
 
 const ProfilePost = () => {
   const id = useOutletContext()
 
+  const { token } = useStateContext();
+  // const { data: userData, isLoading: userLoading, error: userError } = FetchUser(id);
+  const { data: userPostData, isLoading: userPostLoading, error: userPostError } = FetchOtherUserposts(id);
+
+  console.log(userPostData.data)
+  if (userPostError) return <div className='min-h-screen grid place-items-center'><p><h1>{userPostError?.message}</h1></p></div>
   return (
-    <div className="relative px-4 lg:px-10 py-2 lg:py-10">
-      <h1 className="text-center text-4xl">POSTS</h1>
+    <div className="overflow-x-hidden">
+      <section className="relative grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 exl:grid-cols-6 gap-4">
+        {/* {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-6'><Loader /></div>} */}
+        {!userPostData?.data.ads && <h1 className='text-center grid-cols-3 col-span-3 md:col-span-4 lg:col-span-4 exl:col-span-6'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
+        {(userPostData?.data.ads && !userPostLoading) &&
+          userPostData?.data.ads.map((item) => (
+            <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
+              <div className="">
+                <div className=''>
+                  <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" />
+                </div>
+              </div>
+            </Link>
+          ))}
+      </section>
     </div>
-  )
+  );
 }
 
 export default ProfilePost;
