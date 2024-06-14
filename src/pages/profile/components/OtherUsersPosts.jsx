@@ -13,8 +13,9 @@ const OtherUsersPosts = (id) => {
     const { data: userData, isLoading: userLoading, error: userError } = FetchUser(id);
     const { data: userPostData, isLoading: userPostLoading, error: userPostError } = FetchOtherUserposts(id);
 
-    console.log(data.data)
-    if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{userError?.message}</h1></p></div>
+    console.log(userData.data)
+    console.log(userPostData.data)
+    if (userError) return <div className='min-h-screen grid place-items-center'><p><h1>{userError?.message}</h1></p></div>
     return (
         <div className="overflow-x-hidden">
             <section className="relative grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 exl:grid-cols-6 gap-4">
