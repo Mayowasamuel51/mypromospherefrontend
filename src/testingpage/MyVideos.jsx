@@ -3,8 +3,13 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import FetchUserposts from "../hooks/UserPost";
+=======
+import { Link } from 'react-router-dom';
+import FetchUserposts from "../hooks/LoggedInUserPost";
+>>>>>>> 9e5173fa9c4c8d08a314745525aa0c75d65773c9
 import { useQuery } from "@tanstack/react-query";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Loader from "../loader";
@@ -20,7 +25,7 @@ const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
 const api_thumbnails  = import.meta.env.VITE_thumbnails;
 
 const MyVidoes = () => {
-  const { FullScreen } = useStateContext();
+  const { FullScreen } = useStateContext()
   const token = useStateContext();
   const { isPending, isError, data, isLoading, error } = useQuery({
     queryKey: ["todos"],
