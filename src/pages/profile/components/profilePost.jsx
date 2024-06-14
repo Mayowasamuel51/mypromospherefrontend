@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import Loader from "../loader";
 import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
+import anon from "../../../assests/images/anon.png"
 
 const ProfilePost = () => {
   const id = useOutletContext()
@@ -24,7 +25,7 @@ const ProfilePost = () => {
             <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
               <div className="">
                 <div className=''>
-                  <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" />
+                  <LazyLoadImage effect='blur' src={item.titleImageurl ? `https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}` : anon} alt="" className="w-full h-[100px] md:h-[200px] object-cover" />
                 </div>
               </div>
             </Link>
