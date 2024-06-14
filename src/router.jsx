@@ -9,7 +9,7 @@ import React from "react";
 import Loader from "./loader.jsx";
 
 const FeedsHome = React.lazy(() => import("./pages/Feeds/feedsHome.jsx"));
-const APP = React.lazy(() => import("./App"));
+// const APP = React.lazy(() => import("./App"));
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage/SignUp"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage/Login"));
 const DashBoard = React.lazy(() => import("./pages/components/DashBoard.jsx"));
@@ -21,7 +21,7 @@ const ProfilePostPage = React.lazy(() => import("./pages/profile/components/prof
 const ProfileVideoPage = React.lazy(() => import("./pages/profile/components/profileVideos.jsx"));
 
 const Categories = React.lazy(() => import("./pages/categories/categories.jsx"));
-import ProductView from "./pages/productView/productView.jsx";
+// import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
 import FeedsTopServices from "./pages/Feeds/components/topVideos.jsx";

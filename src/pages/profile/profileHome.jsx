@@ -77,4 +77,4 @@ const ProfileHome = () => {
     )
 }
 
-export default ProfileHome
+export default ProfileHome;

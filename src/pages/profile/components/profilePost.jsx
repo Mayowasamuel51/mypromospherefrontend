@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { useStateContext } from "../contexts/ContextProvider";
+import { useStateContext } from "../../../contexts/ContextProvider";
 import { Link } from 'react-router-dom';
 // import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import Loader from "../loader";
@@ -9,7 +9,6 @@ import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
 
 const ProfilePost = () => {
   const id = useOutletContext()
-  console.log(id)
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchOtherUserposts(id);
 
