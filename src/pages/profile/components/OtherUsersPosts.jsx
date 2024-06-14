@@ -10,19 +10,18 @@ import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
 
 const OtherUsersPosts = (id) => {
     const { token } = useStateContext();
-    const { data: userData, isLoading: userLoading, error: userError } = FetchUser(id);
+    // const { data: userData, isLoading: userLoading, error: userError } = FetchUser(id);
     const { data: userPostData, isLoading: userPostLoading, error: userPostError } = FetchOtherUserposts(id);
 
-    console.log(userData.data)
     console.log(userPostData.data)
-    if (userError) return <div className='min-h-screen grid place-items-center'><p><h1>{userError?.message}</h1></p></div>
+    if (userPostError) return <div className='min-h-screen grid place-items-center'><p><h1>{userError?.message}</h1></p></div>
     return (
         <div className="overflow-x-hidden">
             <section className="relative grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 exl:grid-cols-6 gap-4">
                 {/* {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-6'><Loader /></div>} */}
-                {!userData?.data.data && <h1 className='text-center grid-cols-3 col-span-3 md:col-span-4 lg:col-span-4 exl:col-span-6'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
-                {(userData?.data.data && !userLoading) &&
-                    userData?.data.data.map((item) => (
+                {!userPostData?.data.ads && <h1 className='text-center grid-cols-3 col-span-3 md:col-span-4 lg:col-span-4 exl:col-span-6'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
+                {(userPostData?.data.ads && !userPostLoading) &&
+                    userPostData?.data.ads.map((item) => (
                         <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
                             <div className="">
                                 <div className=''>
