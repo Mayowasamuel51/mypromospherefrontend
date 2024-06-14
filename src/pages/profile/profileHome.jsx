@@ -16,6 +16,7 @@ const ProfileHome = () => {
     const { id } = useParams()
     const { data } = FetchUser(id)
     console.log(data?.data)
+    
     return (
         <>
             <Navbar />
