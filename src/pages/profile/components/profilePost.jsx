@@ -9,8 +9,8 @@ import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
 
 const ProfilePost = () => {
   const id = useOutletContext()
+  console.log(id)
   const { token } = useStateContext();
-  // const { data: userData, isLoading: userLoading, error: userError } = FetchUser(id);
   const { data, isLoading, error } = FetchOtherUserposts(id);
 
   console.log(data.data)
