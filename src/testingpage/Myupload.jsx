@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Loader from "../loader";
 import FetchUserposts from '../hooks/UserPost';
-const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
-const api_load_v2 = import.meta.env.VITE_POSTS_UPLOADS;
 
 
 const Myuploads = () => {

@@ -13,7 +13,6 @@ const FetchUserposts = (token) => {
           Authorization: `Bearer ${queryKey[1]?.token}`,
         },
       }),
-      // retry: false
   });
 }
 

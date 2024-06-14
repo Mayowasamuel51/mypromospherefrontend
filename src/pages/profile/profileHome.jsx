@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import photoHeader from "../../assests/images/photo-header-crop.png"
+import bgLOGO from "../../assests/images/mypromosphere-logo.png"
 import anon from "../../assests/images/anon.png"
 import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
@@ -16,7 +17,7 @@ const ProfileHome = () => {
     const { id } = useParams()
     const { data } = FetchUser(id)
     console.log(data?.data)
-    
+
     return (
         <>
             <Navbar />
@@ -25,11 +26,11 @@ const ProfileHome = () => {
                     <div className="w-full relative">
                         {data?.data?.data[0]?.backgroundimage ?
                             <img
-                            src={data?.data?.data[0]?.backgroundimage ?? photoHeader}
+                            src={data?.data?.data[0]?.backgroundimage}
                             alt=""
                             className="md:rounded-b-[60px] rounded-b-2xl object-center"
                         /> : 
-                        <Skeleton />
+                            <img src={bgLOGO} alt="background"  className="md:rounded-b-[60px] rounded-b-2xl object-center"/>
                         }
                         <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
                         <img
