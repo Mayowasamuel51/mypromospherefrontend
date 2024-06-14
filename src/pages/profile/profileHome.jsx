@@ -6,15 +6,14 @@ import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
 import FetchUser from "../../hooks/fetchUser";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
+// import Skeleton from 'react-loading-skeleton';
+// import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const ProfileHome = () => {
     const {pathname} = useLocation()
     const { id } = useParams()
     const { data } = FetchUser(id)
-
     return (
         <>
             <Navbar />
