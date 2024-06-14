@@ -9,7 +9,7 @@ const Post = () => {
             <p className="text-white">Post an Ad</p>
           </button>
         </Link>
-        <div className=" px-4 lg:px-10 py-2 lg:py-10">
+        <div className="px-4 lg:px-10 py-2 lg:py-10">
           <Myuploads />
         </div>
       </div>
