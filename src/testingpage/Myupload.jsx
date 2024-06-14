@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Loader from "../loader";
-import FetchUserposts from '../hooks/UserPost';
+import FetchUserposts from '../hooks/LoggedInUserPost';
 
 
 // eslint-disable-next-line react/prop-types

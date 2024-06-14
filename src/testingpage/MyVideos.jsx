@@ -4,7 +4,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import FetchUserposts from "../hooks/UserPost";
+import FetchUserposts from "../hooks/LoggedInUserPost";
 import { useQuery } from "@tanstack/react-query";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Loader from "../loader";

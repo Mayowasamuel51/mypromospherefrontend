@@ -1,12 +1,11 @@
-import Myuploads from "../../../testingpage/Myupload"
+import OtherUsersPosts from "./OtherUsersPosts";
 import { useOutletContext } from "react-router-dom";
 
 const ProfilePost = () => {
     const id  = useOutletContext()
-    console.log(id)
   return (
     <div className="relative px-4 lg:px-10 py-2 lg:py-10">
-        <Myuploads id={id} />
+        <OtherUsersPosts id={id} />
     </div>
   )
 }
