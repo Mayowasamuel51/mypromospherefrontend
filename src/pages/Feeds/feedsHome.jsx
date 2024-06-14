@@ -11,6 +11,7 @@ import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
 import Footer from "../../components/Footer";
+const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
   
@@ -19,6 +20,7 @@ const FeedsHome = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
+
   const items = [
     {
       id: 0,
@@ -67,17 +69,6 @@ const FeedsHome = () => {
     },
   ];
 
-  const fetchData = async () => {
-    try {
-      const response = await axios(`${api}Apartment`);
-      const dataResponse = await response.data.data;
-      setData(dataResponse);
-      console.log(dataResponse);
-    } catch(error) {
-      console.log(error)
-    }
-  };
-
   const handleOnSearch = (string, results) => {
     setData(results);
     console.log(string, results);
@@ -122,7 +113,7 @@ const FeedsHome = () => {
     <div className="">
       <Navbar blue={true} />
       <section className="lg:px-10">
-        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-32">
+        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-28">
         </div>
         <div className="">
           <section className="lg:px-10 px-4">
@@ -132,9 +123,9 @@ const FeedsHome = () => {
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
-                onHover={handleOnHover}
-                onSelect={handleOnSelect}
-                onFocus={handleOnFocus}
+                onHover={()=> handleOnHover()}
+                onSelect={()=> handleOnSelect()}
+                onFocus={()=> handleOnFocus()}
                 autoFocus
               // formatResult={formatResult}
               />

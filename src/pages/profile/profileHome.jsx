@@ -7,27 +7,32 @@ import { BsGlobe } from "react-icons/bs";
 // import { useStateContext } from "../../contexts/ContextProvider";
 import FetchUser from "../../hooks/fetchUser";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const ProfileHome = () => {
     const {pathname} = useLocation()
-    const { id } = useParams();
-    const { data } = FetchUser(id);
-    console.log(data?.data?.data)
+    const { id } = useParams()
+    const { data } = FetchUser(id)
+    console.log(data?.data)
     return (
         <>
             <Navbar />
             <section>
                 <article>
                     <div className="w-full relative">
-                        <img
-                            src={data?.data?.data[0].backgroundimage ?? photoHeader}
+                        {data?.data?.data[0]?.backgroundimage ?
+                            <img
+                            src={data?.data?.data[0]?.backgroundimage ?? photoHeader}
                             alt=""
                             className="md:rounded-b-[60px] rounded-b-2xl object-center"
-                        />
+                        /> : 
+                        <Skeleton />
+                        }
                         <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
                         <img
-                            src={data?.data?.data[0].profileImage ?? anon}
+                            src={data?.data?.data[0]?.profileImage ?? anon}
                             alt=""
                             className="w-[25%] inseti lg:w-[15%] aspect-square object-cover object-top rounded-full"
                         />
@@ -37,7 +42,7 @@ const ProfileHome = () => {
                     <article className="text-center md:mt-20">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0].name}
+                                {data?.data?.data[0]?.name}
                             </h1>
                             <p className="md:text-lg text-base">JOB</p>
                         </div>
@@ -46,7 +51,7 @@ const ProfileHome = () => {
                         {/* web */}
                         <article className="px-4 md:px-10 flex items-center gap-x-2">
                             <BsGlobe className="md:text-base text-sm" />
-                            <p>Website</p>
+                            <p>Website </p>
                         </article>
                         <article className="px-4 md:px-10 flex items-center gap-x-2">
                             <BsTelephone className="md:text-base text-sm" />
