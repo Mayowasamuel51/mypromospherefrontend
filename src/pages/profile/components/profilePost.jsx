@@ -12,7 +12,7 @@ const ProfilePost = () => {
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchOtherUserposts(id);
 
-  console.log(data.data)
+  console.log(data)
   if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
   return (
     <div className="overflow-x-hidden">
