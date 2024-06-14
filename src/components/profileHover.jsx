@@ -66,6 +66,9 @@ const ProfileHover = ({ LogOut }) => {
                     <motion.li  variants={liVariant}>
                         <Link to={location.pathname === "/" ? 'dashboard/EditProfile' : '/dashboard/EditProfile'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">Edit Profile</Link>
                     </motion.li>
+                    <motion.li  variants={liVariant}>
+                        <Link to={location.pathname === "/" ? 'dashboard/myvideos' : '/dashboard/myvideos'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">My Videos</Link>
+                    </motion.li>
                     <motion.div variants={liVariant} className="text-red flex items-center gap-2 cursor-pointer w-fit duration-200 hover:scale-110">
                         <FaPowerOff onClick={() => LogOut()} />
                         <p onClick={() => LogOut()}>  <a className="text-base font-medium">logout</a></p>
