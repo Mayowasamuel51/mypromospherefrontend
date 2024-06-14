@@ -31,6 +31,12 @@ const Video = () => {
   const { token } = useStateContext();
   const [CategoriesValues, setCategoriesValues] = useState("");
   const [file, setFile] = useState(null);
+
+  const [imageUpload, setImageUpload] = useState([]);
+  const [files, setFiles] = useState(null);
+  
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const [localGvt, setLocalGvt] = useState();
   const result = Object.entries(data.full);
 
@@ -46,7 +52,6 @@ const Video = () => {
   const handleChange = (event) => {
     const { name, value, type, checked, files } = event.target;
   };
-
   const handleClick = (data) => {
     console.log(data);
     if (file === null || file === 0) return;
@@ -76,6 +81,22 @@ const Video = () => {
       }
     );
   };
+  const handleSetimageUpload = (e) => {
+    // setImageUpload(URL.createObjectURL(e.target.files[0]));
+    const selectedFiles = event.target.files;
+    if (!selectedFiles.length) return; // Handle empty selection
+
+    const newImages = [...imageUpload];
+
+    for (const file of selectedFiles) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        newImages.push(e.target.result);
+        setImageUpload(newImages);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const SUPPORTED_VIDEO_FORMATS = ["video/mp4", "video/avi", "video/mov"];
   const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
@@ -88,6 +109,24 @@ const Video = () => {
     description: yup.string().required("Description is required"),
     state: yup.string().required("State is required"),
     localGovernment: yup.string().required("Local Government is required"),
+    picture: yup
+    .mixed()
+    .test(
+      "required",
+      "You need to provide more then one  image ",
+      (value) => {
+        return value && value.length;
+      }
+    )
+    // .test("fileSize", "The file is too large", (value, context) => {
+    //     return value && value[0] && value[0].size <= 200000;
+    // })
+    .test("type", "We only support jpeg, ", function (value) {
+      return (
+        (value && value[0] && value[0].type === "image/jpeg") ||
+        (value && value[0] && value[0].type === "image/png")
+      );
+    }),
   });
   const {
     register,
@@ -122,7 +161,12 @@ const Video = () => {
     const fileRef = ref(storage, `videos/${file.name}`);
 
     const uploadTask = uploadBytesResumable(fileRef, file);
-    uploadTask.on(
+
+    // const fileThumnaill = ref(storage, `Thumnail/${files.name}`)
+
+    // const uploadThumnaill = uploadBytesResumable(fileThumnaill, files)
+
+     uploadTask.on(
       "state_changed",
       (snapshot) => {
         const progress =
@@ -157,16 +201,28 @@ const Video = () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
+          const formData = new FormData();
           console.log(CategoriesValues)
-          const payload = {
-            price_range: data.price,
-            headlines: data.headlines,
-            categories: data.categories,
-            titlevideourl: downloadURL,
-            description: data.description,
-          };
+          // const payload = {
+          //   price_range: data.price,
+          //   headlines: data.headlines,
+          //   categories: data.categories,
+          //   titlevideourl: downloadURL,
+
+          //   description: data.description,
+          // };
+          formData.append("categories",data.categories);
+          formData.append('titlevideourl', downloadURL)
+          formData.append("description",data.description);
+          formData.append("price_range",data.price_range);
+          
+          formData.append("thumbnails",data.picture[0]);
+          console.log(data.picture[0])
+          // formData.append("local_gov",data.local_gov);
+          // formData.append("discount",data.discount);
+          // formData.append("user_image",data.user_image)
           axios
-            .post(api_freeads, payload, {
+            .post(api_freeads,formData, {
               headers: {
                 Accept: "application/json",
                 Authorization: `Bearer ${token?.token}`,
@@ -186,6 +242,9 @@ const Video = () => {
         });
       }
     );
+
+   
+
   };
   if (errors.price) {
     toast.error(errors.price?.message);
@@ -230,7 +289,23 @@ const Video = () => {
               </select>
             </div>
             {CategoriesValues}
-
+                <div>
+                <input    
+          type="file"
+          {...register("picture")}
+          onChange={handleSetimageUpload}
+        />
+          <p className='text-red  text-sm'>{errors.picture?.message}</p>
+         {imageUpload.map((imageUrl, index) => (
+          <img
+            key={index}
+            src={imageUrl}
+            alt="Uploaded Image"
+            width={"200px"}
+            height={"200px"}
+          />
+        ))}
+                </div>
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"

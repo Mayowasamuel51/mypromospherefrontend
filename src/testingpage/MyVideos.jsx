@@ -41,7 +41,10 @@ const MyVidoes =()=>{
                         
                           <ReactPlayer           width='100%'
           height='100%'   className='react-player'
- url={`${item.titlevideourl}`} playing={true} controls={true}  />     
+           url={`${item.titlevideourl}`} 
+           playing={true} 
+           controls={true} 
+            />     
                                 {/* {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md w-fit border-2'>
                                         <LazyLoadImage effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 400 }} className="rounded-md object-cover" />
