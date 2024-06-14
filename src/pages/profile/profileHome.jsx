@@ -16,7 +16,6 @@ const ProfileHome = () => {
     const {pathname} = useLocation()
     const { id } = useParams()
     const { data } = FetchUser(id)
-    console.log(data?.data)
 
     return (
         <>
