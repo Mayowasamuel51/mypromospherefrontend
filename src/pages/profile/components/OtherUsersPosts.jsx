@@ -8,7 +8,8 @@ import Loader from "../loader";
 import FetchUser from '../../../hooks/fetchUser';
 import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
 
-const OtherUsersPosts = (id) => {
+// eslint-disable-next-line react/prop-types
+const OtherUsersPosts = ({id}) => {
     const { token } = useStateContext();
     // const { data: userData, isLoading: userLoading, error: userError } = FetchUser(id);
     const { data: userPostData, isLoading: userPostLoading, error: userPostError } = FetchOtherUserposts(id);
