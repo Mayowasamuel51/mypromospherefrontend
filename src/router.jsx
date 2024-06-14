@@ -17,6 +17,9 @@ const SingleFeedPage = React.lazy(() =>
   import("./pages/Feeds/singleFeedPage.jsx")
 );
 
+import ProfilePost from "./pages/profile/components/profilePost.jsx";
+import ProfileVideos from "./pages/profile/components/profileVideos.jsx";
+
 const Categories = React.lazy(() => import("./pages/categories/categories.jsx"));
 import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
@@ -82,11 +85,11 @@ const router = createBrowserRouter([
     children: [
       {
         index : true,
-        element : <h1 className="text-center font-bold text-3xl my-4">POSTS</h1>
+        element : <ProfilePost />
       },
       {
         path : "videos",
-        element: <h1 className="text-center font-bold text-3xl my-4">VIDEOS</h1>
+        element: <ProfileVideos />
       }
     ]
   },

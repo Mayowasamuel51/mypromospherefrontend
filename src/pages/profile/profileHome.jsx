@@ -1,11 +1,9 @@
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
-import photoHeader from "../../assests/images/photo-header-crop.png"
 import bgLOGO from "../../assests/images/mypromosphere-logo.png"
 import anon from "../../assests/images/anon.png"
 import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
-// import { useStateContext } from "../../contexts/ContextProvider";
 import FetchUser from "../../hooks/fetchUser";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Skeleton from 'react-loading-skeleton';
@@ -39,13 +37,13 @@ const ProfileHome = () => {
                         />
                     </div>
                 </article>
-                <div className="my-14">
+                <div className="my-18">
                     <article className="text-center md:mt-20">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
                                 {data?.data?.data[0]?.name}
                             </h1>
-                            <p className="md:text-lg text-base">JOB</p>
+                            <p className="md:text-lg text-base"> <Skeleton /> </p>
                         </div>
                     </article>
                     <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
