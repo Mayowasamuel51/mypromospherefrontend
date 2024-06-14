@@ -71,7 +71,7 @@ const ProfileHome = () => {
                             </div>
                         </div>
                     </article>
-                    <Outlet />
+                    <Outlet context={id} />
                 </div>
             </section>
         </>
