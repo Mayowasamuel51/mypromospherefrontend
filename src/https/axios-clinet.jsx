@@ -1,23 +1,21 @@
 import axios from "axios";
 import { useStateContext } from "../contexts/ContextProvider";
-
+const axiox_api     = import.meta.env.VITE_baseURL;
 
 const axiosclinet = axios.create({
     // baseURL:`${ import.meta.env.API_KEY}/api`
-    baseURL: "http://localhost:8000/"
-    // baseURL:"https://apimypromospheretest.com.ng/"
+    baseURL:axiox_api
 });
 
 axiosclinet.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
 axiosclinet.defaults.headers.post["Accept"] = "application/json";
-axiosclinet.defaults.withCredentials = true; // generate
+axiosclinet.defaults.withCredentials = true; // generate 
 
 axiosclinet.interceptors.request.use((config) => {
     const token = localStorage.getItem("ACCESS_TOKEN")
     config.headers.Authorization = token ? `Bearer ${  token?.token}` : "";
     return config
 })
-
 
 axiosclinet.interceptors.response.use((respone) => {
     return respone;

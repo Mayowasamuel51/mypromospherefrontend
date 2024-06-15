@@ -8,11 +8,22 @@ import Navbar from "../../components/Navbar";
 function DefualtLayout() {
     const { user, token, setUser, setToken } = useStateContext()
     
-    useEffect(() => {
-        axiosclinet.get("api/getuser").then(({ data }) => {
-            setUser(data.message)
-        })
-    }, [])
+    // useEffect(() => {
+    //     axiosclinet.get("api/getuser").then(({ data }) => { setUser(data.message) })
+    // }, [])
+
+useEffect(() => {
+    const fetchUserData = async () => {
+        try {
+            const response = await axios.get("api/getuser");
+            setUser(response.data.message);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    };
+
+    fetchUserData();
+}, []);
     if (!token) {
         return <Navigate to="/" />
     }

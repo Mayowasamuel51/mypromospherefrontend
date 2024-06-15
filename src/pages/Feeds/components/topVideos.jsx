@@ -1,10 +1,10 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import anon from "../../../assests/images/anon.png"
-import { Link } from 'react-router-dom';
-import FetchVideos from '../../../hooks/fetchVideos';
-import ReactPlayer from 'react-player'
-import { useStateContext } from '../../../contexts/ContextProvider';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import anon from "../../../assests/images/anon.png";
+import { Link } from "react-router-dom";
+import FetchVideos from "../../../hooks/fetchVideos";
+import ReactPlayer from "react-player";
+import { useStateContext } from "../../../contexts/ContextProvider";
 import { FaPlay } from "react-icons/fa6";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from '../../../loader';
@@ -14,10 +14,10 @@ import thumbnail3 from "../../../assests/images/feed3.svg"
 import thumbnail4 from "../../../assests/images/feed4.svg"
 
 const TopVideos = () => {
-    const {token} = useStateContext();
-    const { data, isLoading, error } = FetchVideos();
-    console.log(data?.data?.videos)
-    if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
+  const { token } = useStateContext();
+  const { data, isLoading, error } = FetchVideos();
+  console.log(data?.data?.videos);
+  if (error)
     return (
         <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
             {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}

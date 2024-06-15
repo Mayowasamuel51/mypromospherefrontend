@@ -41,7 +41,7 @@ export const categories =
 
     "Luxury-apartment",
 
-    "Womens-jewellery",
+    "jewellery",
    
     "Automotive , Vehicles",
 

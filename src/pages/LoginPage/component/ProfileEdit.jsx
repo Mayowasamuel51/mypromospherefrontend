@@ -23,16 +23,9 @@ import { toast, Toaster } from 'sonner';
 const api_edit_profile_endpoint = import.meta.env.VITE_EDIT_PROFILE;
 const api_edit_profile_put_endpoint = import.meta.env.VITE_EDIT_PROFILE_PUT;
 const api_backgroundimage = import.meta.env.VITE_EDIT_BACKGROUND;
-/*
-1) Able to update the profile images (Done)
-2) Able to view image after uploading in real time 
-3) Able to change Image anytime (Done)
-4) Error input validation form 
-5) Change all fetch to reactquery 
-6) Timi i am setting the Id manueliy ,make it automatic please
-*/
-
+const api_info     = import.meta.env.VITE_EDIT_PROFILE_EDIT;
 const ProfileEdit = () => {
+  const { token } = useStateContext();
   const { user, setUser } = useStateContext();
   const inputRef = useRef(null);
   const secoundRef = useRef(null);
@@ -42,47 +35,53 @@ const ProfileEdit = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
 
+  const [profileedit , setProfileEdit ] = useState({
+    brandName:token?.brandName,
+    aboutMe:token?.aboutMe,
+    websiteName:token?.websiteName
+  })
+
+  const handleProfileEdit = (  e   ) => {
+    const { name, value } = e.target;
+    setProfileEdit((prevProfileEdit)=>({...prevProfileEdit, [name]: value})); };
+
   const handleImageChange = (e) => {
     const file = e.target.files;
     const profilePhoto = e.target.files[0];
     setImage(profilePhoto);
   };
-
   const backgroundHandle = (e) => {
     const file = e.target.files;
     const profilePhot = e.target.files[0];
     setBackground(profilePhot);
   };
-
   const deleteImage = () => {
     setImage("");
   };
-
   const schema = yup.object().shape({
-    aboutMe: yup.string().required("Write what you want people to know about You and Your Business"),
-    messageCompany: yup.string().required(),
-    brandName: yup.string().required("Enter your Brand Name"),
-    websiteName: yup.string().required(),
-    picture: yup
-      .mixed()
-      .test(
-        "required",
-        "You need to provide more than one image",
-        (value) => {
-          return value && value.length;
-        }
-      )
-      .test("fileSize", "The file is too large", (value, context) => {
-        return value && value[0] && value[0].size <= 200000;
-      })
-      .test("type", "We only support jpeg & png, ", function (value) {
-        return (
-          (value && value[0] && value[0].type === "image/jpeg") ||
-          (value && value[0] && value[0].type === "image/png")
-        );
-      }),
+    // aboutMe: yup.string().required("Write what you want people to know about You and Your Business"),
+    // messageCompany: yup.string().required(),
+    // brandName: yup.string().required("Enter your Brand Name"),
+    // websiteName: yup.string().required(),
+    // picture: yup
+    //   .mixed()
+    //   .test(
+    //     "required",
+    //     "You need to provide more than one image",
+    //     (value) => {
+    //       return value && value.length;
+    //     }
+    //   )
+    //   .test("fileSize", "The file is too large", (value, context) => {
+    //     return value && value[0] && value[0].size <= 200000;
+    //   })
+    //   .test("type", "We only support jpeg & png, ", function (value) {
+    //     return (
+    //       (value && value[0] && value[0].type === "image/jpeg") ||
+    //       (value && value[0] && value[0].type === "image/png")
+    //     );
+    //   }),
   });
-  const { token } = useStateContext();
   const {
     register,
     formState: { errors },
@@ -92,6 +91,7 @@ const ProfileEdit = () => {
     resolver: yupResolver(schema),
   });
   const formSubmit = (data) => {
+    console.log('LOADING......................')
     // e.preventDefault();
     setLoading(true)
     console.log(data);
@@ -137,10 +137,9 @@ const ProfileEdit = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const payload = {
             profileImage: downloadURL,
-            aboutMe: data.aboutMe,
-            brandName: data.brandName,
-
-            websiteName: data.websiteName,
+            aboutMe:profileedit.aboutMe,
+            brandName: profileedit.brandName,
+            websiteName: profileedit.websiteName,
             messageCompany: "i sell anything goood ",
           };
           console.log("Updated edit profile successfully", [downloadURL]);
@@ -156,7 +155,8 @@ const ProfileEdit = () => {
               if (res.data.status === 200) {
                 console.log("updated the profile image ...................");
                 setLoading(false)
-                console.log(res.data.item);
+                toast.success("Your profile has been successfully updated for your client")
+                reset()
               } else if (res.data.status === 500 || res.data.status === 422) {
                 console.log(res.data.message);
                 setLoading(false)
@@ -167,13 +167,13 @@ const ProfileEdit = () => {
       }
     );
   };
-
-  const formSubmit1 = (data) => {
-    // e.preventDefault();
+  const formSubmit1 = (e) => {
+    e.preventDefault();
     setLoading(true)
     console.log("hello formsumbit 21");
     const imageRef = ref(storage, `/profile/${background.name} ${token?.user}`);
     const uploadTask = uploadBytesResumable(imageRef, background);
+    // console.log(background)
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -211,22 +211,21 @@ const ProfileEdit = () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const payload = {
-            backgroundimage: downloadURL,
-            messageCompany: "backgroundImage ",
+            backgroundimage:downloadURL,
+            // messageCompany: "backgroundImage wait ",
           };
           console.log("Updated edit profile successfully", [downloadURL]);
-          axios
-            .put(`${api_backgroundimage}${token?.id}`, payload, {
+          axios.put(`${api_backgroundimage}${token?.id}`, payload, {
               headers: {
-                Accept: "application/json",
-                "Content-Type": "multipart/form-data",
+                Accept: "application/vnd.api+json",
                 Authorization: `Bearer ${token?.token}`,
               },
             })
             .then((res) => {
               if (res.data.status === 200) {
-                console.log("updated the profile image ...................");
-                console.log(res.data.item);
+                console.log("updated the profile backgorund image ...................");
+                // console.log(res.data.item);
+                toast.success("Your background image profile has been successfully updated for your client.")
                 reset()
               } else if (res.data.status === 500 || res.data.status === 422) {
                 console.log(res.data.message);
@@ -237,7 +236,7 @@ const ProfileEdit = () => {
       }
     );
   };
-
+  // console.log(token)
   useEffect(() => {
     axios(`${api_edit_profile_endpoint}/${token?.id}`, {
       headers: {
@@ -252,19 +251,8 @@ const ProfileEdit = () => {
         setLoading(false)
       }
     });
-    console.log(data)
+  // console.log(data)
   }, []);
-
-
-  if (errors?.aboutMe) {
-    toast.error(errors?.aboutMe.message)
-  }
-  if (errors?.websiteName) {
-    toast.error(errors?.websiteName.message)
-  }
-  if (errors?.brandName) {
-    toast.error(errors?.brandName.message)
-  }
 
   return (
     <section className="relative">
@@ -280,7 +268,7 @@ const ProfileEdit = () => {
       </header>
       {/* form  */}
       <article className="">
-        <form onSubmit={handleSubmit(formSubmit1)}>
+        <form onSubmit={formSubmit1}  enctype="multipart/form-data"  >
           <h1 className="font-medium my-1">👇Click to changeBackgrond Image</h1>
           <article className="flex items-center">
             <div>
@@ -312,13 +300,16 @@ const ProfileEdit = () => {
               </div>
             </div>
           </article>
-          <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md my-2">
+          <button type="submit"
+           className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md my-2">
             Change Backgorund Image
           </button>
         </form>
+
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
             <div>
+
               {image ? (
                 <img
                   src={URL.createObjectURL(image)}
@@ -355,11 +346,15 @@ const ProfileEdit = () => {
                 </label>{" "}
                 <textarea
                   type="text"
-                  value={data?.aboutMe && data?.aboutMe}
+                  value={profileedit.aboutMe}
+                  onChange={handleProfileEdit}
+                  name="aboutMe"
+                  // value={token?.aboutMe  && token?.aboutMe}
                   className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
-                  {...register("aboutMe", { required: true })}
+
                 ></textarea>
+                     <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
               </div>
             </div>
             <div className="">
@@ -368,12 +363,15 @@ const ProfileEdit = () => {
                   Website
                 </label>{" "}
                 <input
-                  type="text"
-                  value={data?.user_website && data?.user_website}
+                  type="url"
+                  value={profileedit.websiteName}
+                  onChange={handleProfileEdit}
+                  name="websiteName"
+                  // value={token?.websiteName && token?.websiteName}
                   className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
-                  {...register("websiteName", { required: true })}
                   placeholder="Add a link to drive traffic to your site"
                 />
+                     <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
               </div>
             </div>
             <div className="">
@@ -381,12 +379,13 @@ const ProfileEdit = () => {
                 Brand Name
               </label>{" "}
               <input
+                value={profileedit.brandName}
+                onChange={handleProfileEdit}
                 type="text"
-                value={token?.brandName && token?.brandName}
+                name="brandName"
                 className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
-                {...register("brandName", { required: true })}
-                placeholder="Enter Your Brand Name"
-              />
+                placeholder="Enter Your Brand Name"/>
+               <p className='text-red  text-sm'>{errors.brandName?.message}</p>
             </div>
           </div>
           <button
@@ -401,3 +400,15 @@ const ProfileEdit = () => {
 };
 
 export default ProfileEdit;
+
+
+
+  // if (errors?.aboutMe) {
+  //   toast.error(errors?.aboutMe.message)
+  // }
+  // if (errors?.websiteName) {
+  //   toast.error(errors?.websiteName.message)
+  // }
+  // if (errors?.brandName) {
+  //   toast.error(errors?.brandName.message)
+  // }

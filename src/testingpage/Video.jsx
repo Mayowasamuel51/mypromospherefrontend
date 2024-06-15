@@ -23,6 +23,10 @@ import UploadButton from "../components/upload-button/UploadButton";
 import PostButtons from "../components/PostButtons.jsx";
 import data from "../../state.json";
 import { Toaster, toast } from "sonner";
+import { FaPlus } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
+import Loader from "../loader.jsx";
+// import { FaPlus, FaXmark } from "react-icons/fa6";
 const api_freeads = import.meta.env.VITE_ADS_VIDEO_FREEADS;
 
 // console.log(data.States);
@@ -31,6 +35,12 @@ const Video = () => {
   const { token } = useStateContext();
   const [CategoriesValues, setCategoriesValues] = useState("");
   const [file, setFile] = useState(null);
+
+  const [imageUpload, setImageUpload] = useState([]);
+  const [files, setFiles] = useState(null);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const [localGvt, setLocalGvt] = useState();
   const result = Object.entries(data.full);
 
@@ -46,7 +56,6 @@ const Video = () => {
   const handleChange = (event) => {
     const { name, value, type, checked, files } = event.target;
   };
-
   const handleClick = (data) => {
     console.log(data);
     if (file === null || file === 0) return;
@@ -76,18 +85,58 @@ const Video = () => {
       }
     );
   };
+  const fileRemove = (file) => {
+    const updatedList = [...imageUpload];
+    updatedList.splice(imageUpload.indexOf(file), 1);
+    setImageUpload(updatedList);
+    // props.onFileChange(updatedList);
+  };
+  const handleSetimageUpload = (e) => {
+    // setImageUpload(URL.createObjectURL(e.target.files[0]));
+    const selectedFiles = event.target.files;
+    if (!selectedFiles.length) return; // Handle empty selection
+
+    const newImages = [...imageUpload];
+
+    for (const file of selectedFiles) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        newImages.push(e.target.result);
+        setImageUpload(newImages);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const SUPPORTED_VIDEO_FORMATS = ["video/mp4", "video/avi", "video/mov"];
   const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
 
   const schema = yup.object().shape({
     // video: yup.string().required(),
-    productName: yup.string().required(),
-    price: yup.string().required(),
-    categories: yup.string().required("Category is required"),
-    description: yup.string().required("Description is required"),
-    state: yup.string().required("State is required"),
-    localGovernment: yup.string().required("Local Government is required"),
+    // productName: yup.string().required(),
+    // price: yup.string().required(),
+    // categories: yup.string().required("Category is required"),
+    // description: yup.string().required("Description is required"),
+    // state: yup.string().required("State is required"),
+    // localGovernment: yup.string().required("Local Government is required"),
+    // picture: yup
+    //   .mixed()
+    //   .test(
+    //     "required",
+    //     "You need to provide more then one  image ",
+    //     (value) => {
+    //       return value && value.length;
+    //     }
+    //   )
+    //   // .test("fileSize", "The file is too large", (value, context) => {
+    //   //     return value && value[0] && value[0].size <= 200000;
+    //   // })
+    //   .test("type", "We only support jpeg, ", function (value) {
+    //     return (
+    //       (value && value[0] && value[0].type === "image/jpeg") ||
+    //       (value && value[0] && value[0].type === "image/png")
+    //     );
+    //   }),
   });
   const {
     register,
@@ -98,6 +147,8 @@ const Video = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+
 
   const watchedState = watch("state");
 
@@ -120,8 +171,9 @@ const Video = () => {
       return;
     }
     const fileRef = ref(storage, `videos/${file.name}`);
-
     const uploadTask = uploadBytesResumable(fileRef, file);
+    // const fileThumnaill = ref(storage, `Thumnail/${files.name}`)
+    // const uploadThumnaill = uploadBytesResumable(fileThumnaill, files)
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -157,16 +209,19 @@ const Video = () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
-          console.log(CategoriesValues)
-          const payload = {
-            price_range: data.price,
-            headlines: data.headlines,
-            categories: data.categories,
-            titlevideourl: downloadURL,
-            description: data.description,
-          };
+          const formData = new FormData();
+          console.log(CategoriesValues);
+          formData.append("categories", data.categories);
+          formData.append("titlevideourl", downloadURL);
+          formData.append("description", data.description);
+          formData.append("price_range", data.price_range);
+          formData.append("thumbnails", data.picture[0]);
+          console.log(data.picture[0]);
+          // formData.append("local_gov",data.local_gov);
+          // formData.append("discount",data.discount);
+          // formData.append("user_image",data.user_image)
           axios
-            .post(api_freeads, payload, {
+            .post(api_freeads, formData, {
               headers: {
                 Accept: "application/json",
                 Authorization: `Bearer ${token?.token}`,
@@ -187,6 +242,8 @@ const Video = () => {
       }
     );
   };
+  
+
   if (errors.price) {
     toast.error(errors.price?.message);
     return;
@@ -195,10 +252,12 @@ const Video = () => {
     toast.error(errors.description?.message);
     return;
   }
-
   return (
     <>
       <Toaster position="top-center" />
+      {/* <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
+          <Loader />
+        </div> */}
       <div className="px-4 lg:px-40">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
@@ -208,9 +267,13 @@ const Video = () => {
           <div className="flex flex-col gap-3">
             <div className="">
               <DropFileInput
+                // id="video"
+                //   name="video"
+                //   {...register("video", { required: true })}
                 onFileChange={(files) => onFileChange(files)}
                 className=""
               />
+              {/* <p className="text-red  text-sm">{errors.video?.message}</p> */}
             </div>
             <div>
               <select
@@ -230,7 +293,38 @@ const Video = () => {
               </select>
             </div>
             {CategoriesValues}
-
+            <div className="">
+              <input
+                type="file"
+                {...register("picture")}
+                onChange={handleSetimageUpload}
+              />
+              <p className="text-red  text-sm">{errors.picture?.message}</p>
+              <div className="flex items-center justify-center gap-4 flex-wrap my-4">
+                {imageUpload.map((imageUrl, index) => (
+                  <div key={index} className="relative">
+                    <img
+                      src={imageUrl}
+                      alt="Uploaded Image"
+                      className="md:w-[200px] md:h-[200px] rounded-md object-cover"
+                    />
+                    <FaXmark
+                      size={25}
+                      color="#3D217A"
+                      onClick={() => fileRemove(imageUrl)}
+                      className="absolute top-2 right-2"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* {4 - imageUpload.length > 0 && Array.from({ length: 4 - imageUpload.length }).map((_, index) => (
+                  <label key={index} htmlFor="dragOrDrop" className="cursor-pointer duration-300 hover:scale-110">
+                    <div className="w-[300px] h-[300px] md:w-[200px] md:h-[200px] rounded-md bg-slate-200 flex items-center justify-center">
+                      <FaPlus size={25} />
+                    </div>
+                  </label>
+                ))} */}
             <div>
               <input
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -252,7 +346,7 @@ const Video = () => {
                 {...register("price", { required: true })}
               />
             </div>
-            {/* <p className='text-red  text-sm'>{errors.price?.message}</p> */}
+            <p className="text-red  text-sm">{errors.price?.message}</p>
             <div>
               <select
                 name="state"
