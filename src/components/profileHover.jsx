@@ -49,6 +49,7 @@ const ProfileHover = ({ LogOut }) => {
     const mouseOut = () => {
         setProfileNav(false)
     }
+
     return (
         <motion.div onMouseEnter={mouseOver} onMouseLeave={mouseOut} className="relative text-black">
             <motion.img whileHover={{scale: 0.90}} src={token?.profileImage || anon} alt="" className="w-10 aspect-square rounded-full cursor-pointer object-cover" />

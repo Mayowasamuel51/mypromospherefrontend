@@ -10,7 +10,9 @@ import Saved from "./Saved";
 
 function DefualtLayout() {
     const { token } = useStateContext()
+
     const [saved, setSaved] = useState(false)
+ 
     if (!token) return <Navigate  to="/" />
     return (
         <>
@@ -18,7 +20,7 @@ function DefualtLayout() {
                 <section className="flex flex-col gap-4">
                     <article className="flex flex-col gap-2">
                         <img
-                            src={token?.profileImage ?? anon}
+                            src={token?.profileImage  ?? anon}
                             alt={"profile-picture"}
                             className="w-[80px] md:w-[150px] aspect-square rounded-full object-cover object-top mx-auto"
                         />

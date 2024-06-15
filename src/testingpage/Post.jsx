@@ -451,6 +451,7 @@ const Post = () => {
     uploadPostMutation.mutate(formData);
   };
  
+  console.log(token)
   return (
     <>
       <Toaster position="top-center" />

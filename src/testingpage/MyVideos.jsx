@@ -61,7 +61,7 @@ const MyVidoes = () => {
               height={300}
               url={video?.titlevideourl}
               playing={true}
-              light={video.id % 2 === 0 ? `${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}` :`${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`}
+light={video.id % 2 === 0?`${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`:`${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`}
               // loop={true}
             controls={true}
               muted={true}

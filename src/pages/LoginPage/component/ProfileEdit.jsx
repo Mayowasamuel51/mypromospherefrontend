@@ -236,7 +236,10 @@ const ProfileEdit = () => {
       }
     );
   };
-  // console.log(token)
+  console.log(
+    token
+  )
+
   useEffect(() => {
     axios(`${api_edit_profile_endpoint}/${token?.id}`, {
       headers: {
