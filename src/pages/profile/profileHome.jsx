@@ -6,8 +6,8 @@ import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
 import FetchUser from "../../hooks/fetchUser";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-// import Skeleton from 'react-loading-skeleton';
-// import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const ProfileHome = () => {
@@ -40,7 +40,7 @@ const ProfileHome = () => {
                     <article className="text-center md:mt-24">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0]?.name}
+                                {data?.data?.data[0]?.name || <Skeleton/>}
                             </h1>
                             {/* <p className="md:text-lg text-base"> <Skeleton /> </p> */}
                         </div>

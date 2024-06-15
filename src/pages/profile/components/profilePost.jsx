@@ -12,7 +12,6 @@ const ProfilePost = () => {
   const id = useOutletContext()
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchOtherUserposts(id);
-
   console.log(data)
   if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
   return (
