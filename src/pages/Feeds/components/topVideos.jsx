@@ -5,13 +5,10 @@ import { Link } from "react-router-dom";
 import FetchVideos from "../../../hooks/fetchVideos";
 import ReactPlayer from "react-player";
 import { useStateContext } from "../../../contexts/ContextProvider";
-import { FaPlay } from "react-icons/fa6";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from '../../../loader';
 import thumbnail1 from "../../../assests/images/feed1.svg"
 import thumbnail2 from "../../../assests/images/feed2.svg"
-import thumbnail3 from "../../../assests/images/feed3.svg"
-import thumbnail4 from "../../../assests/images/feed4.svg"
 
 const TopVideos = () => {
   const { token } = useStateContext();
