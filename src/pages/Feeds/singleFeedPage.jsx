@@ -21,7 +21,7 @@ const SingleFeedPage = () => {
     return (
         <>
             <Navbar blue={true} />
-            <section className="pt-16 lg:pt-20 px-4 lg:px-10">
+            <section className="pt-16 lg:pt-24 px-4 lg:px-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <div className="flex-1 flex flex-col gap-2">
                         <div className='relative'>
@@ -65,8 +65,8 @@ const SingleFeedPage = () => {
                         </div>
                         <div className='flex items-center justify-between gap-2'>
                             <div className='flex items-center gap-3'>
-                                <button className="bg-[#3D217A] w-full py-2 md:py-4 text-white rounded-md">BUY</button>
-                                <button className="bg-[#3D217A] w-full py-2 md:py-4 text-white rounded-md">LIKE</button>
+                                <button className="bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">BUY</button>
+                                <button className="bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">LIKE</button>
                             </div>
                             <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
                                 <IoChevronBackCircleSharp size={30} />
