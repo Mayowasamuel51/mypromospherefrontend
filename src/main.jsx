@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <Analytics> */}
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    {/* <SkeletonTheme baseColor="#202020" highlightColor="#444"> */}
       <ContextProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Analytics />
         </QueryClientProvider>
       </ContextProvider>
-    </SkeletonTheme>
+    {/* </SkeletonTheme> */}
     {/* </Analytics> */}
   </React.StrictMode>
 );
