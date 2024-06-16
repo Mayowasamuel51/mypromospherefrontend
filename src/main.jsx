@@ -1,3 +1,4 @@
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import React from "react";
@@ -17,14 +18,16 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <Analytics> */}
+    <SkeletonTheme baseColor="#202020" highlightColor="#444">
       <ContextProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
-          <GoogleTag/>
-          <SpeedInsights/>
+          <GoogleTag />
+          <SpeedInsights />
           <Analytics />
         </QueryClientProvider>
       </ContextProvider>
+    </SkeletonTheme>
     {/* </Analytics> */}
   </React.StrictMode>
 );

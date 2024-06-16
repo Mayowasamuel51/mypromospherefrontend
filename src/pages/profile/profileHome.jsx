@@ -38,12 +38,11 @@ const ProfileHome = () => {
                     </div>
                 </article>
                 <div className="my-18">
-                    <article className="text-center mt-20 md:mt-24">
+                    <article className="text-center mt-16 md:mt-24">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
                                 {data?.data?.data[0]?.name || <Skeleton width={200}/>}
                             </h1>
-                            {/* <p className="md:text-lg text-base"> <Skeleton /> </p> */}
                         </div>
                     </article>
                     <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
