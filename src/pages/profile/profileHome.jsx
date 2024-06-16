@@ -29,6 +29,7 @@ const ProfileHome = () => {
                             <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[400px] rounded-b-2xl object-center object-cover"/>
                         }
                         <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
+                        {}
                         <img
                             src={data?.data?.data[0]?.profileImage ?? anon}
                             alt="profile picture"
