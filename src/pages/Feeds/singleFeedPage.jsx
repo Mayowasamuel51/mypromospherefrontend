@@ -42,9 +42,10 @@ const SingleFeedPage = () => {
                                 <AnimatePresence>
                                     {imageUrl && (
                                         <motion.img
-                                            initial={{ opacity: 0, left: "-100%" }}
-                                            animate={{ opacity: 1, left: 0 }}
-                                            exit={{ right: "-100%" }}
+                                            initial={{ opacity: 0, x: -100 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: 100 }}
+                                            transition={{ type: "spring", stiffness: 100 }}
                                             // effect="blur"
                                             src={imageUrl}
                                             style={{ width: FullScreen ? 600 : 280, height: 400 }}
