@@ -35,17 +35,17 @@ const TopVideos = () => {
               <ReactPlayer
                 width={280}
                 height={300}
-                url={video?.titlevideourl}
+                url={video?.titlevideourl	}
                 controls={true}
                 playing={true}
                 light={
                 //   video.id % 2 === 0 ? thumbnail1 : thumbnail2
                   video.id % 2 === 0
-                    ? `${api_thumbnails}/thumbnails/${video.thumbnails.slice(
-                        11
+                    ? `${api_thumbnails}/public/storage/${video.thumbnails.slice(
+                        7
                       )}`
-                    : `${api_thumbnails}/thumbnails/${video.thumbnails.slice(
-                        11
+                    : `${api_thumbnails}/public/storage/${video.thumbnails.slice(
+                        7
                       )}`
                 }
                 // loop={true}
@@ -54,7 +54,7 @@ const TopVideos = () => {
                 className="w-fit hover:outline hover:scale-105 duration-300"
               />
             </div>
-            <Link to={`/profile/user/${video.user_id}`} className="w-fit">
+            {/* <Link to={`/profile/user/${video.user_id}`} className="w-fit">
               <div className="flex items-center gap-2">
                 <img
                   src={video.user_image === null ? anon : video.user_image}
@@ -67,7 +67,7 @@ const TopVideos = () => {
                   </p>
                 )}
               </div>
-            </Link>
+            </Link> */}
           </div>
         ))}
       </section>
