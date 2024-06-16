@@ -20,7 +20,7 @@ const TopVideos = () => {
   if (error)
     return (
         <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
-            {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
+            {isLoading && <div  className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>} 
             {data?.data?.videos.map((video) => (
                 <div key={video.id} className='flex flex-col gap-4'>
                     <div className='w-full aspect-ratio-box rounded-lg overflow-hidden'>
