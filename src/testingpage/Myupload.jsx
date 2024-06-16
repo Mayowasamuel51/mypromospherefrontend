@@ -24,7 +24,6 @@ const Myuploads = ({ id }) => {
               <div className="">
                 <div className=''>
                   {item.titleImageurl ? <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" /> : 'NOTHING TO SHOW '}
-                  {/* <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[100px] md:h-[200px] object-cover" /> */}
                 </div>
               </div>
             </Link>
