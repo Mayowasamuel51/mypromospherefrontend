@@ -39,20 +39,20 @@ const Feeds = () => {
               }} className="p-2">
                 <SplideSlide className='rounded-md w-fit'>
                   <Link to={`/feed/${item.id}`}>
-                    <LazyLoadImage width={`100%`} visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ height: 300 }} className="rounded-md object-cover" />
+                    <LazyLoadImage width={`100%`} visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ height: 300 }} className="w-full rounded-md object-cover" />
                   </Link>
                 </SplideSlide>
                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                   <SplideSlide key={img.id} className='rounded-md w-fit'>
                     <Link to={`/feed/${item.id}`}>
-                      <LazyLoadImage width={`100%`} visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ height: 300 }} className="rounded-md object-cover" />
+                      <LazyLoadImage width={`100%`} visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ height: 300 }} className="w-full rounded-md object-cover" />
                     </Link>
                   </SplideSlide>
                 ))}
               </Splide> :
               <div>
                 <Link to={`/feed/${item.id}`}>
-                  <LazyLoadImage width={`100%`} visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ height: 300 }} className="rounded-md object-cover" />
+                  <LazyLoadImage width={`100%`} visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ height: 300 }} className="w-full rounded-md object-cover" />
                 </Link>
               </div>
             }
@@ -65,60 +65,6 @@ const Feeds = () => {
           </div>
         ))}
       </section>
-      {/* <div className="place-items-center grid items-stretch md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 grid-rows-1 overflow-x-hidden">
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage width={`100%`} effect="blur" src={feed1} alt="" style={{ height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <img src={user} alt="profile-picture" className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage width={`100%`} effect="blur" src={feed1} alt="" style={{ height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <img src={user} alt="profile-picture" className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage width={`100%`} effect="blur" src={feed2} alt="" style={{ height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <LazyLoadImage width={`100%`} effect="blur" src={user} alt=""  className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage width={`100%`} effect="blur" src={feed2} alt="" style={{ height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <img src={user} alt="profile-picture" className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-      </div> */}
     </section>
   )
 }
