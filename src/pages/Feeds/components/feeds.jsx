@@ -35,6 +35,7 @@ const Feeds = () => {
                 pagination: true,
                 drag: 'free',
                 snap: true,
+                width: "100%",
                 height: "300px"
               }} className="p-2">
                 <SplideSlide className='rounded-md w-fit'>
