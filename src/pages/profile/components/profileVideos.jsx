@@ -33,7 +33,7 @@ const ProfileVideos = () => {
       {(isLoading) && <VideoSkeleton posts={6} />}
       {data?.data?.videos.map((video) => (
         <div key={video.id} className='flex flex-col gap-4'>
-          <div className='w-full aspect-ratio-box rounded-lg overflow-hidden'>
+          <div className='w-full rounded-lg overflow-hidden'>
             <ReactPlayer width={280} height={300} url={video?.titlevideourl} playing={true} light={video.id % 2 === 0 ? thumbnail1 : thumbnail2} loop={true} muted={true} playIcon={<FaRegCirclePlay size={50} color='#fff' />} className="w-fit hover:outline hover:scale-105 duration-300" />
           </div>
           <Link to={`/profile/user/${video.user_id}`} className="w-fit">

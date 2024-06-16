@@ -16,6 +16,7 @@ import thumbnail2 from "../assests/images/feed2.svg";
 import thumbnail3 from "../assests/images/feed3.svg";
 import thumbnail4 from "../assests/images/feed4.svg";
 import { FaRegCirclePlay } from "react-icons/fa6";
+import Loader from "../loader";
 const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
 const api_thumbnails  = import.meta.env.VITE_thumbnails;
 
@@ -34,7 +35,7 @@ const MyVidoes = () => {
   });
 
   if (isPending) {
-    return <span>Loading...</span>;
+    return <Loader/>;
   }
 
   if (error)
