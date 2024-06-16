@@ -22,11 +22,8 @@ const SingleFeedPage = () => {
         <>
             <Navbar blue={true} />
             <section className="pt-16 lg:pt-20 px-4 lg:px-10">
-                <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
-                    <IoChevronBackCircleSharp size={30} />
-                </div>
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="flex-1 flex flex-col gap-4">
+                    <div className="flex-1 flex flex-col gap-2">
                         <div className='relative'>
                             <div className='rounded-md'>
                                 <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} style={{width: FullScreen ? 600 : 280, height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
@@ -44,7 +41,7 @@ const SingleFeedPage = () => {
                         </div>
                         <Link to={`/profile/user/${data?.data?.data.user_id}`}>
                             <div className="flex items-center gap-2">
-                                <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-10 aspect-square" />
+                                <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
                             </div>
                         </Link>
                     </div>
@@ -65,6 +62,15 @@ const SingleFeedPage = () => {
                         <div className='flex items-center gap-2'>
                             <h1 className='font-semibold text-lg'>Date Posted:</h1>
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                        </div>
+                        <div className='flex items-center justify-between gap-2'>
+                            <div className='flex items-center gap-3'>
+                                <button className="bg-[#3D217A] py-2 md:py-4 text-white rounded-md">BUY</button>
+                                <button className="bg-[#3D217A] py-2 md:py-4 text-white rounded-md">LIKE</button>
+                            </div>
+                            <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
+                                <IoChevronBackCircleSharp size={30} />
+                            </div>
                         </div>
                     </div>
                 </div>
