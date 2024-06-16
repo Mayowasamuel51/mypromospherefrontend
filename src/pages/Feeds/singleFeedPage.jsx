@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import FetchSingleAd from '../../hooks/fetchSingleAd';
@@ -17,7 +17,14 @@ const SingleFeedPage = () => {
     const navigate = useNavigate()
     const { data, isLoading, error } = FetchSingleAd(id);
     console.log(data?.data?.data)
-    const [imageUrl, setImageUrl] = useState(`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`)
+    const [imageUrl, setImageUrl] = useState("")
+
+    useEffect(() => {
+        if (data?.data?.data?.titleImageurl) {
+            setImageUrl(`https://apimypromospheretest.com.ng/public/storage/${data.data.data.titleImageurl.slice(7)}`);
+        }
+    }, [data]);
+    
     if (isLoading) return <Loader />
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
     return (
