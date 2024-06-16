@@ -94,11 +94,6 @@ export default function Navbar({ profile, blue }) {
               <p>Login</p>
             </button>
           </Link>
-          {/* <Link to="/signUp">
-            <button className="bg-pink py-2 px-5 rounded-lg text-black font-['Poppins'] text-base font-medium">
-              Signup
-            </button>
-          </Link> */}
         </div>
       }
     </motion.header>
