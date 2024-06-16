@@ -5,7 +5,8 @@ const api_fetch_other_user_videos = import.meta.env.VITE_OTHER_USER_VIDEOS;
 const OtherUsersVideos = (id) => {
     return useQuery({
         queryKey: ["user-videos", id],
-        queryFn: ({ queryKey }) => axios.get(`${api_fetch_other_user_videos}${queryKey[1]}`)
+        queryFn: ({ queryKey }) => axios.get(`${api_fetch_other_user_videos}${queryKey[1]}`),
+        retry: false
     });
 }
 
