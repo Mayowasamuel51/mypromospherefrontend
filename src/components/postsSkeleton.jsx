@@ -15,6 +15,6 @@ const PostsSkeleton = ({ posts }) => {
         </div>
     ))
 }
-}
+
 
 export default PostsSkeleton;
