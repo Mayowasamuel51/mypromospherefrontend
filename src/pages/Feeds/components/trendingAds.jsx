@@ -18,7 +18,7 @@ import PostsSkeleton from '../../../components/postsSkeleton';
 const TrendingAds = () => {
     const { token } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
-
+    const filteredAdsCount = data?.data.normalads.filter((item) => item.categories === "Apartment").length || 0;
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
@@ -28,7 +28,7 @@ const TrendingAds = () => {
             <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
 
                 {/* {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>} */}
-                {isLoading && <PostsSkeleton posts={data?.data.normalads.filter((item) => item.categories === "Apartment").length} />}
+                {isLoading && <PostsSkeleton posts={filteredAdsCount} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
