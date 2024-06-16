@@ -26,7 +26,7 @@ const ProfileHome = () => {
                             alt=""
                             className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover"
                         /> : 
-                            <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[400px] rounded-b-2xl object-center object-cover"/>
+                            <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover"/>
                         }
                         <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
                         {}
