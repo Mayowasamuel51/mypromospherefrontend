@@ -24,7 +24,7 @@ const ProfilePost = () => {
             <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col border-2 border-red">
               <div className="">
                 <div className=''>
-                  <LazyLoadImage width={200} height={200} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[200px] object-cover rounded-md" />
+                  <LazyLoadImage width={`100%`} height={200} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[200px] object-cover rounded-md" />
                 </div>
               </div>
             </Link>

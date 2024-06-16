@@ -40,7 +40,7 @@ const ProfileHome = () => {
                     <article className="text-center md:mt-24">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0]?.name || <Skeleton width={40}/>}
+                                {data?.data?.data[0]?.name || <Skeleton width={200}/>}
                             </h1>
                             {/* <p className="md:text-lg text-base"> <Skeleton /> </p> */}
                         </div>
