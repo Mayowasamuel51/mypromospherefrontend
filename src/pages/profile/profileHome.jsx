@@ -38,7 +38,7 @@ const ProfileHome = () => {
                     </div>
                 </article>
                 <div className="my-18">
-                    <article className="text-center mt-16 md:mt-24">
+                    <article className="text-center mt-12 md:mt-24">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
                                 {data?.data?.data[0]?.name || <Skeleton width={200}/>}
