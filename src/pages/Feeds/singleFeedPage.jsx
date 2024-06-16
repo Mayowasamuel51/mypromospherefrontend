@@ -65,8 +65,8 @@ const SingleFeedPage = () => {
                         </div>
                         <div className='flex items-center justify-between gap-2'>
                             <div className='flex items-center gap-3'>
-                                <button className="bg-[#3D217A] py-2 md:py-4 text-white rounded-md">BUY</button>
-                                <button className="bg-[#3D217A] py-2 md:py-4 text-white rounded-md">LIKE</button>
+                                <button className="bg-[#3D217A] w-full py-2 md:py-4 text-white rounded-md">BUY</button>
+                                <button className="bg-[#3D217A] w-full py-2 md:py-4 text-white rounded-md">LIKE</button>
                             </div>
                             <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
                                 <IoChevronBackCircleSharp size={30} />
