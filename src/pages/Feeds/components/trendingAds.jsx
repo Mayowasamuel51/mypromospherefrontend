@@ -12,6 +12,7 @@ import { useStateContext } from '../../../contexts/ContextProvider';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import "./trends.css"
+import PostsSkeleton from '../../../components/postsSkeleton';
 
 
 const TrendingAds = () => {
@@ -25,7 +26,9 @@ const TrendingAds = () => {
                 <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
             <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
-                {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
+
+                {/* {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>} */}
+                {isLoading && <PostsSkeleton posts={data?.data.normalads.filter((item) => item.categories === "Apartment").length} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
