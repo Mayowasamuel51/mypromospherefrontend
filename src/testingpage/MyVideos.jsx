@@ -63,8 +63,8 @@ const MyVidoes = () => {
               playing={true}
               light={
                 video.id % 2 === 0
-                  ? `${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`
-                  : `${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`
+                  ? `${api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
+                  : `${api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
               }
               // loop={true}
               controls={true}
