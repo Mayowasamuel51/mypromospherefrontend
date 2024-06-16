@@ -39,7 +39,7 @@ const SingleFeedPage = () => {
                     <div className="flex-1 flex flex-col gap-2">
                         <div className='relative'>
                             <div className='rounded-md'>
-                                <AnimatePresence>
+                                <AnimatePresence mode='popLayout'>
                                     {imageUrl && (
                                         <motion.img
                                             key={imageUrl}
