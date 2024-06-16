@@ -40,13 +40,9 @@ const TopVideos = () => {
                 playing={true}
                 light={
                 //   video.id % 2 === 0 ? thumbnail1 : thumbnail2
-                  video.id % 2 === 0
-                    ? `${api_thumbnails}/public/storage/${video.thumbnails.slice(
-                        7
-                      )}`
-                    : `${api_thumbnails}/public/storage/${video.thumbnails.slice(
-                        7
-                      )}`
+                  video.id % 2 === 0 
+                    ? `https://apimypromospheretest.com.ng/public/storage/${video.thumbnails.slice(7)}`
+                    : `https://apimypromospheretest.com.ng/public/storage/${video.thumbnails.slice(7)}`
                 }
                 // loop={true}
                 muted={true}
