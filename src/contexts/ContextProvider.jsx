@@ -63,7 +63,9 @@ export const ContextProvider = ({ children }) => {
             scrollValue,
             handleClick,
         }}>
-            {children}
+            <div className="dark:text-white">
+                {children}
+            </div>
             <Toaster position="top-center" />
         </StateContext.Provider>
     )

@@ -1,36 +1,74 @@
+import { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import FetchSingleAd from '../../hooks/fetchSingleAd';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Loader from '../../loader';
-import LOGO from "../../assests/SVGs/logo.svg"
 import anon from "../../assests/images/anon.png"
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { TbCurrencyNaira } from "react-icons/tb";
+import { useStateContext } from '../../contexts/ContextProvider';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SingleFeedPage = () => {
+    const { FullScreen } = useStateContext()
     const { id } = useParams();
     const navigate = useNavigate()
     const { data, isLoading, error } = FetchSingleAd(id);
     console.log(data?.data?.data)
+    const [imageUrl, setImageUrl] = useState("")
+
+    useEffect(() => {
+        if (data?.data?.data?.titleImageurl) {
+            setImageUrl(`https://apimypromospheretest.com.ng/public/storage/${data.data.data.titleImageurl.slice(7)}`);
+        }
+    }, [data]);
+
+    const handleImageChange = (img) => {
+        setImageUrl(img)
+    }
+
     if (isLoading) return <Loader />
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
     return (
         <>
             <Navbar blue={true} />
-            <section className="pt-16 lg:pt-20 px-4 lg:px-10">
-                <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
-                    <IoChevronBackCircleSharp size={30} />
-                </div>
+            <section className="pt-16 lg:pt-32 px-4 lg:px-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="flex-1 flex flex-col gap-4">
-                        <div className='rounded-md'>
-                            <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} alt="img" className="rounded-md w-full h-full object-cover" />
+                    <div className="flex-1 flex flex-col gap-2">
+                        <div className='relative'>
+                            <div className='rounded-md'>
+                                <AnimatePresence mode='popLayout'>
+                                    {imageUrl && (
+                                        <motion.img
+                                            key={imageUrl}
+                                            initial={{ opacity: 0, x: -100 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -100 }}
+                                            transition={{ type: "spring", stiffness: 100 }}
+                                            // effect="blur"
+                                            src={imageUrl}
+                                            style={{ width: FullScreen ? 600 : 280, height: 400 }}
+                                            alt="img"
+                                            className="rounded-md w-full h-[300px] md:h-[400px] object-cover"
+                                        />
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                            <div className="flex flex-col gap-2 absolute top-2 left-2">
+                                {data?.data?.other_data.map((item) => (
+                                    <motion.div onClick={() => handleImageChange(item.itemadsimagesurls)} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                                        <div className='rounded-md'>
+                                            <LazyLoadImage effect="blur" src={`${item.itemadsimagesurls}`} alt="" style={{ width: 80, height: 80, objectFit: "cover" }} className="rounded-md" />
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                        <Link to={`/profie/user/${data?.data?.data.user_id}`}>
+                        <Link to={`/profile/user/${data?.data?.data.user_id}`}>
                             <div className="flex items-center gap-2">
-                                <img src={data?.data?.data.user_image ?? anon} alt="user-profile" className="rounded-full w-10 aspect-square" />
+                                <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
                             </div>
                         </Link>
                     </div>
@@ -52,28 +90,17 @@ const SingleFeedPage = () => {
                             <h1 className='font-semibold text-lg'>Date Posted:</h1>
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                         </div>
+                        <div className='flex items-center justify-between gap-2'>
+                            <div className='flex items-center gap-3'>
+                                <button className="bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">BUY</button>
+                                <button className="bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">LIKE</button>
+                            </div>
+                            <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
+                                <IoChevronBackCircleSharp size={30} />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-            <div className="px-4 lg:px-10 flex items-center gap-2 lg:my-10 my-5">
-                <img src={LOGO} className='w-10 h-10' alt="" />
-                <h1 className='font-medium md:font-bold text-sm lg:text-2xl exl:text-3xl'>OTHERS</h1>
-            </div>
-            <section className="px-4 lg:px-10 grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
-                {data?.data?.other_data.map((item) => (
-                    <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
-                        <div className='border-2 rounded-md'>
-                            <LazyLoadImage effect="blur" src={`${item.itemadsimagesurls
-                                }`} alt="" style={{ width: 250, height: 250, objectFit: "cover" }} className="rounded-md" />
-                        </div>
-                        <Link to="/profile/timilehin babade">
-                            <div className="flex items-center gap-2">
-                                <LazyLoadImage effect="blur" src={item.user_image} alt="" className="rounded-full w-8 md:w-10 aspect-square border-2" />
-                                {/* <p className="text-sm font-medium">USER-ID {item.user_id}</p> */}
-                            </div>
-                        </Link>
-                    </Link>
-                ))}
             </section>
         </>
     )

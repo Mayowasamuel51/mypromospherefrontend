@@ -6,8 +6,8 @@ import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
 import FetchUser from "../../hooks/fetchUser";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-// import Skeleton from 'react-loading-skeleton';
-// import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const ProfileHome = () => {
@@ -25,11 +25,12 @@ const ProfileHome = () => {
                             <img
                             src={data?.data?.data[0]?.backgroundimage}
                             alt=""
-                            className="md:rounded-b-[60px] w-screen h-[400px] rounded-b-2xl object-center object-cover"
+                            className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover"
                         /> : 
-                            <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[400px] rounded-b-2xl object-center object-cover"/>
+                            <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover"/>
                         }
                         <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
+                        {}
                         <img
                             src={data?.data?.data[0]?.profileImage ?? anon}
                             alt="profile picture"
@@ -38,12 +39,11 @@ const ProfileHome = () => {
                     </div>
                 </article>
                 <div className="my-18">
-                    <article className="text-center md:mt-24">
+                    <article className="text-center mt-12 md:mt-24">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0]?.name}
+                                {data?.data?.data[0]?.name || <Skeleton width={200}/>}
                             </h1>
-                            {/* <p className="md:text-lg text-base"> <Skeleton /> </p> */}
                         </div>
                     </article>
                     <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
@@ -61,11 +61,11 @@ const ProfileHome = () => {
                         <div className="flex items-center justify-center ">
                             <div className="flex gap-2 my-2">
                                 <div className="flex justify-center items-center gap-x-4">
-                                    <NavLink to={`/profile/user/${id}`} className={({isActive}) => isActive && pathname === `/profile/user/${id}` ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
+                                    <NavLink to={`/profile/user/${id}`} className={({isActive}) => isActive && pathname === `/profile/user/${id}` ? "bg-[#3D217A] rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 rounded-md md:px-4 md:py-2 px-3 py-2"}>
                                         <p> Posts</p>
                                     </NavLink>
                                 </div>
-                                <NavLink to={`/profile/user/${id}/videos`}  className={({isActive}) => isActive && pathname === `/profile/user/${id}/videos` ? "bg-[#3D217A] rounded-md z-10 focus:outline-none flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 border border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
+                                <NavLink to={`/profile/user/${id}/videos`}  className={({isActive}) => isActive && pathname === `/profile/user/${id}/videos` ? "bg-[#3D217A] rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
                                     <p>Videos</p>
                                 </NavLink>
                             </div>

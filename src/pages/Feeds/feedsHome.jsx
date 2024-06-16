@@ -123,9 +123,9 @@ const FeedsHome = () => {
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
-                onHover={()=> handleOnHover()}
-                onSelect={()=> handleOnSelect()}
-                onFocus={()=> handleOnFocus()}
+                // onHover={()=> handleOnHover()}
+                // onSelect={()=> handleOnSelect()}
+                // onFocus={()=> handleOnFocus()}
                 autoFocus
               // formatResult={formatResult}
               />

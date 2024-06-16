@@ -5,13 +5,10 @@ import { Link } from "react-router-dom";
 import FetchVideos from "../../../hooks/fetchVideos";
 import ReactPlayer from "react-player";
 import { useStateContext } from "../../../contexts/ContextProvider";
-import { FaPlay } from "react-icons/fa6";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from '../../../loader';
 import thumbnail1 from "../../../assests/images/feed1.svg"
 import thumbnail2 from "../../../assests/images/feed2.svg"
-import thumbnail3 from "../../../assests/images/feed3.svg"
-import thumbnail4 from "../../../assests/images/feed4.svg"
 
 const TopVideos = () => {
   const { token } = useStateContext();
@@ -19,6 +16,10 @@ const TopVideos = () => {
   console.log(data?.data?.videos);
   if (error)
     return (
+<>
+<div>
+    HEAD WAY GONES THIS TO THE FORMAT
+</div>
         <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
             {isLoading && <div  className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>} 
             {data?.data?.videos.map((video) => (
@@ -35,6 +36,7 @@ const TopVideos = () => {
                 </div>
             ))}
         </section>
+        </>
     )
 }
 

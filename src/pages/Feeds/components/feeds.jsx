@@ -8,6 +8,7 @@ import '@splidejs/react-splide/css';
 import "./trends.css";
 import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
+import PostsSkeleton from '../../../components/postsSkeleton';
 
 
 const Feeds = () => {
@@ -18,7 +19,7 @@ const Feeds = () => {
     <section>
       <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
       <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
-        {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
+        {isLoading && <PostsSkeleton posts={4} />}
         {data?.data.normalads.slice(0, 4).map((item) => (
           <div key={item.id} className="flex flex-col gap-2 md:gap-4">
             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
@@ -26,12 +27,8 @@ const Feeds = () => {
                 type: 'loop',
                 perPage: 1,
                 perMove: 1,
-                autoplay: true,
-                interval: Math.floor(Math.random() * 5 + 3) * 1000,
-                speed: 3000,
                 gap: "20px",
-                pauseOnHover: true,
-                arrows: true,
+                arrows: false,
                 pagination: true,
                 drag: 'free',
                 snap: true,
@@ -40,20 +37,20 @@ const Feeds = () => {
               }} className="p-2">
                 <SplideSlide className='rounded-md w-fit'>
                   <Link to={`/feed/${item.id}`}>
-                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="w-full rounded-md object-cover" />
                   </Link>
                 </SplideSlide>
                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                   <SplideSlide key={img.id} className='rounded-md w-fit'>
                     <Link to={`/feed/${item.id}`}>
-                      <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                      <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 300 }} className="w-full rounded-md object-cover" />
                     </Link>
                   </SplideSlide>
                 ))}
               </Splide> :
               <div>
                 <Link to={`/feed/${item.id}`}>
-                  <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                  <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="w-full rounded-md object-cover" />
                 </Link>
               </div>
             }
@@ -66,60 +63,6 @@ const Feeds = () => {
           </div>
         ))}
       </section>
-      {/* <div className="place-items-center grid items-stretch md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 grid-rows-1 overflow-x-hidden">
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <img src={user} alt="profile-picture" className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage effect="blur" src={feed1} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <img src={user} alt="profile-picture" className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <LazyLoadImage effect="blur" src={user} alt=""  className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-4">
-          <Link to="/feed/1">
-            <div>
-              <LazyLoadImage effect="blur" src={feed2} alt="" style={{ width: 280, height: 280, objectFit: "cover" }} className="rounded-md w-full h-full object-cover" />
-            </div>
-          </Link>
-          <Link to="/profile/user/1">
-            <div className="flex items-center gap-2">
-              <img src={user} alt="profile-picture" className="w-10 aspect-square" />
-              <p className="text-sm">Timilehin babade</p>
-            </div>
-          </Link>
-        </div>
-      </div> */}
     </section>
   )
 }

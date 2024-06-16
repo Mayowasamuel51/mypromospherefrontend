@@ -1,5 +1,8 @@
 li button.splide__pagination__page {
     opacity: 1 !important;
+    border-radius: 0;
+    width: 20px;
+    border-radius: 4px;
 } 
 
 li button.splide__pagination__page.is-active {

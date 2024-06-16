@@ -6,26 +6,28 @@ import { Link } from 'react-router-dom';
 // import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import Loader from "../loader";
 import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
-import anon from "../../../assests/images/anon.png"
+import UploadSkeleton from "../../../components/uploadSkeleton";
 
 const ProfilePost = () => {
   const id = useOutletContext()
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchOtherUserposts(id);
-
-  console.log(data)
-  if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
+  if (error?.response?.status === 404) {
+    console.log(error)
+  } else {
+    <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
+  }
   return (
-    <div className="overflow-x-hidden">
-      <section className="relative grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 exl:grid-cols-6 gap-4">
-        {/* {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-6'><Loader /></div>} */}
-        {!data?.data.data && <h1 className='text-center grid-cols-3 col-span-3 md:col-span-4 lg:col-span-4 exl:col-span-6'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
-        {(data?.data.data && !isLoading) &&
-          data?.data.data.map((item) => (
-            <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
+    <div className="overflow-x-hidden px-4 lg:px-10 py-2 lg:py-10">
+      <section className="relative grid md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exl:grid-cols-6 gap-10">
+        {(!data?.data.ads && !isLoading) && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 exl:col-span-6 my-2'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
+        {(isLoading) && <UploadSkeleton posts={6} />}
+        {(data?.data.ads && !isLoading) &&
+          data?.data.ads.map((item) => (
+            <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col border-2 border-black">
               <div className="">
                 <div className=''>
-                  <LazyLoadImage effect='blur' src={item.titleImageurl ? `https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}` : anon} alt="" className="w-full h-[100px] md:h-[200px] object-cover" />
+                  <LazyLoadImage width={`100%`} height={200} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[200px] object-cover rounded-md" />
                 </div>
               </div>
             </Link>

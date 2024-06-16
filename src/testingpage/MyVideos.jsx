@@ -34,7 +34,7 @@ const MyVidoes = () => {
   });
 
   if (isPending) {
-    return <span>Loading...</span>;
+    return <Loader/>;
   }
 
   if (error)
