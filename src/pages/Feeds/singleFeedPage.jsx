@@ -24,7 +24,7 @@ const SingleFeedPage = () => {
             setImageUrl(`https://apimypromospheretest.com.ng/public/storage/${data.data.data.titleImageurl.slice(7)}`);
         }
     }, [data]);
-    
+
     if (isLoading) return <Loader />
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
     return (
@@ -36,12 +36,20 @@ const SingleFeedPage = () => {
                         <div className='relative'>
                             <AnimatePresence>
                                 <div className='rounded-md'>
-                                    <LazyLoadImage effect="blur" src={imageUrl} style={{width: FullScreen ? 600 : 280, height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
+                                    {imageUrl && (
+                                        <LazyLoadImage
+                                            effect="blur"
+                                            src={imageUrl}
+                                            style={{ width: FullScreen ? 600 : 280, height: 400 }}
+                                            alt="img"
+                                            className="rounded-md w-full h-[300px] md:h-[400px] object-cover"
+                                        />
+                                    )}
                                 </div>
                             </AnimatePresence>
                             <div className="flex flex-col gap-2 absolute top-2 left-2">
                                 {data?.data?.other_data.map((item) => (
-                                    <motion.div whileHover={{scale: 1.03}} whileTap={{scale: 0.97}} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} key={item.id} className="flex flex-col gap-2 md:gap-4">
                                         <div className='border-2 rounded-md'>
                                             <LazyLoadImage effect="blur" src={`${item.itemadsimagesurls
                                                 }`} alt="" style={{ width: 80, height: 80, objectFit: "cover" }} className="rounded-md" />
