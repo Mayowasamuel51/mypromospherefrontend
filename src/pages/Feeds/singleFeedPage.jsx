@@ -29,7 +29,7 @@ const SingleFeedPage = () => {
                     <div className="flex-1 flex flex-col gap-4">
                         <div className='relative'>
                             <div className='rounded-md'>
-                                <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} style={{width: FullScreen ? 400 : 280, height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
+                                <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} style={{width: FullScreen ? 600 : 280, height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
                             </div>
                             <div className="flex flex-col gap-2 absolute top-2 left-2">
                                 {data?.data?.other_data.map((item) => (
