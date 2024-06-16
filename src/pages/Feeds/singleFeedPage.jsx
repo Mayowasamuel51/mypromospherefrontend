@@ -1,14 +1,15 @@
+import { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import FetchSingleAd from '../../hooks/fetchSingleAd';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Loader from '../../loader';
-// import LOGO from "../../assests/SVGs/logo.svg"
 import anon from "../../assests/images/anon.png"
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { useStateContext } from '../../contexts/ContextProvider';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SingleFeedPage = () => {
     const { FullScreen } = useStateContext()
@@ -16,6 +17,7 @@ const SingleFeedPage = () => {
     const navigate = useNavigate()
     const { data, isLoading, error } = FetchSingleAd(id);
     console.log(data?.data?.data)
+    const [imageUrl, setImageUrl] = useState(`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`)
     if (isLoading) return <Loader />
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
     return (
@@ -25,17 +27,19 @@ const SingleFeedPage = () => {
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <div className="flex-1 flex flex-col gap-2">
                         <div className='relative'>
-                            <div className='rounded-md'>
-                                <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} style={{width: FullScreen ? 600 : 280, height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
-                            </div>
+                            <AnimatePresence>
+                                <div className='rounded-md'>
+                                    <LazyLoadImage effect="blur" src={imageUrl} style={{width: FullScreen ? 600 : 280, height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
+                                </div>
+                            </AnimatePresence>
                             <div className="flex flex-col gap-2 absolute top-2 left-2">
                                 {data?.data?.other_data.map((item) => (
-                                    <div to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                                    <motion.div whileHover={{scale: 1.03}} whileTap={{scale: 0.97}} key={item.id} className="flex flex-col gap-2 md:gap-4">
                                         <div className='border-2 rounded-md'>
                                             <LazyLoadImage effect="blur" src={`${item.itemadsimagesurls
                                                 }`} alt="" style={{ width: 80, height: 80, objectFit: "cover" }} className="rounded-md" />
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>
