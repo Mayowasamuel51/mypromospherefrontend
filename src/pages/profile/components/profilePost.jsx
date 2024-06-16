@@ -6,13 +6,12 @@ import { Link } from 'react-router-dom';
 // import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import Loader from "../loader";
 import FetchOtherUserposts from '../../../hooks/otherUsersPosts';
-import anon from "../../../assests/images/anon.png"
 
 const ProfilePost = () => {
   const id = useOutletContext()
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchOtherUserposts(id);
-  if (error.response.status === 404) {
+  if (error?.response?.status === 404) {
     console.log(error)
   } else {
     return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>

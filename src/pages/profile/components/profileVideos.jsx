@@ -20,7 +20,7 @@ const ProfileVideos = () => {
   const { data, isLoading, error } = FetchOtherUserVideos(id);
 
   console.log(data)
-  if (error.response.status === 404) {
+  if (error?.response?.status === 404) {
     console.log(error)
   } else {
     return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
