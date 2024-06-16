@@ -12,6 +12,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from '../../../loader';
 import thumbnail1 from "../../../assests/images/feed1.svg"
 import thumbnail2 from "../../../assests/images/feed2.svg"
+import UploadSkeleton from "../../../components/uploadSkeleton";
 
 
 const ProfileVideos = () => {
@@ -26,9 +27,9 @@ const ProfileVideos = () => {
     <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
   }
   return (
-    <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 px-4 lg:px-10 py-2 lg:py-10">
-    {(!data?.data.videos && !isLoading )&& <h1 className='text-center grid-cols-3 col-span-3 md:col-span-4 lg:col-span-4 exl:col-span-6 my-2'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
-      {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
+    <section className="relative grid md:gap-4 place-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exl:grid-cols-6 gap-10 px-4 lg:px-10 py-2 lg:py-10">
+    {(!data?.data.videos && !isLoading )&& <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 exl:col-span-6 my-2'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
+      {(isLoading) && <UploadSkeleton posts={6} />}
       {data?.data?.videos.map((video) => (
         <div key={video.id} className='flex flex-col gap-4'>
           <div className='w-full aspect-ratio-box rounded-lg overflow-hidden'>

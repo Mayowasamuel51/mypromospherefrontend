@@ -59,7 +59,7 @@ const SingleFeedPage = () => {
                             <div className="flex flex-col gap-2 absolute top-2 left-2">
                                 {data?.data?.other_data.map((item) => (
                                     <motion.div onClick={() => handleImageChange(item.itemadsimagesurls)} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} key={item.id} className="flex flex-col gap-2 md:gap-4">
-                                        <div className='border-2 rounded-md'>
+                                        <div className='rounded-md'>
                                             <LazyLoadImage effect="blur" src={`${item.itemadsimagesurls}`} alt="" style={{ width: 80, height: 80, objectFit: "cover" }} className="rounded-md" />
                                         </div>
                                     </motion.div>
