@@ -4,7 +4,7 @@ import FetchSingleAd from '../../hooks/fetchSingleAd';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Loader from '../../loader';
-import LOGO from "../../assests/SVGs/logo.svg"
+// import LOGO from "../../assests/SVGs/logo.svg"
 import anon from "../../assests/images/anon.png"
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { TbCurrencyNaira } from "react-icons/tb";
@@ -27,14 +27,14 @@ const SingleFeedPage = () => {
                     <div className="flex-1 flex flex-col gap-4">
                         <div className='relative'>
                             <div className='rounded-md'>
-                                <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
+                                <LazyLoadImage effect="blur" src={`https://apimypromospheretest.com.ng/public/storage/${data?.data?.data.titleImageurl.slice(7)}`} style={{height: 400}} alt="img" className="rounded-md w-full h-[300px] md:h-[400px] object-cover" />
                             </div>
-                            <div className="flex gap-2 absolute top-2 right-2">
+                            <div className="flex flex-col gap-2 absolute top-2 left-2">
                                 {data?.data?.other_data.map((item) => (
                                     <div to={`/feed/${item.id}`} key={item.id} className="flex flex-col gap-2 md:gap-4">
                                         <div className='border-2 rounded-md'>
                                             <LazyLoadImage effect="blur" src={`${item.itemadsimagesurls
-                                                }`} alt="" style={{ width: 30, height: 30, objectFit: "cover" }} className="rounded-md" />
+                                                }`} alt="" style={{ width: 80, height: 80, objectFit: "cover" }} className="rounded-md" />
                                         </div>
                                     </div>
                                 ))}
