@@ -12,8 +12,11 @@ const ProfilePost = () => {
   const id = useOutletContext()
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchOtherUserposts(id);
-  console.log(data)
-  if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
+  if (error.response.status === 404) {
+    console.log(error)
+  } else {
+    return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
+  }
   return (
     <div className="overflow-x-hidden px-4 lg:px-10 py-2 lg:py-10">
       <section className="relative grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 exl:grid-cols-6 gap-4">
