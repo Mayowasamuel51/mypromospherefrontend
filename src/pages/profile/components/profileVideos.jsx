@@ -12,6 +12,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from '../../../loader';
 import thumbnail1 from "../../../assests/images/feed1.svg"
 import thumbnail2 from "../../../assests/images/feed2.svg"
+import UploadSkeleton from "../../../components/uploadSkeleton";
 import VideoSkeleton from "../../../components/videoSkeleton"
 
 
@@ -35,12 +36,12 @@ const ProfileVideos = () => {
           <div className='w-full aspect-ratio-box rounded-lg overflow-hidden'>
             <ReactPlayer width={280} height={300} url={video?.titlevideourl} playing={true} light={video.id % 2 === 0 ? thumbnail1 : thumbnail2} loop={true} muted={true} playIcon={<FaRegCirclePlay size={50} color='#fff' />} className="w-fit hover:outline hover:scale-105 duration-300" />
           </div>
-          {/* <Link to={`/profile/user/${video.user_id}`} className="w-fit">
+          <Link to={`/profile/user/${video.user_id}`} className="w-fit">
             <div className="flex items-center gap-2">
               <img src={video.user_image === null ? anon : video.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square" />
               {token && <p className="text-sm font-medium">{video.user_id === token.id && "me"}</p>}
             </div>
-          </Link> */}
+          </Link>
         </div>
       ))}
     </section>
