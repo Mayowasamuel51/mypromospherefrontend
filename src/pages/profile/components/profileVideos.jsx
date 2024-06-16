@@ -23,7 +23,7 @@ const ProfileVideos = () => {
   if (error?.response?.status === 404) {
     console.log(error)
   } else {
-    return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
+    <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
   }
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 px-4 lg:px-10 py-2 lg:py-10">
