@@ -3,7 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import FetchUserposts from "../hooks/LoggedInUserPost";
 import { useQuery } from "@tanstack/react-query";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -17,10 +17,10 @@ import thumbnail3 from "../assests/images/feed3.svg";
 import thumbnail4 from "../assests/images/feed4.svg";
 import { FaRegCirclePlay } from "react-icons/fa6";
 const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
-const api_thumbnails  = import.meta.env.VITE_thumbnails;
+const api_thumbnails = import.meta.env.VITE_thumbnails;
 
 const MyVidoes = () => {
-  const { FullScreen } = useStateContext()
+  const { FullScreen } = useStateContext();
   const token = useStateContext();
   const { isPending, isError, data, isLoading, error } = useQuery({
     queryKey: ["todos"],
@@ -34,7 +34,7 @@ const MyVidoes = () => {
   });
 
   if (isPending) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   if (error)
@@ -61,9 +61,13 @@ const MyVidoes = () => {
               height={300}
               url={video?.titlevideourl}
               playing={true}
-light={video.id % 2 === 0?`${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`:`${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`}
+              light={
+                video.id % 2 === 0
+                  ? `${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`
+                  : `${api_thumbnails}/thumbnails/${video.thumbnails.slice(11)}`
+              }
               // loop={true}
-            controls={true}
+              controls={true}
               muted={true}
               playIcon={<FaRegCirclePlay size={50} color="#fff" />}
               className="w-fit hover:outline hover:scale-105 duration-300"
