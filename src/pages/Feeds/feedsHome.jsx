@@ -11,7 +11,7 @@ import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
 import Footer from "../../components/Footer";
-import category from "../../json/categories"
+import { categories } from "../../json/categories";
 const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
@@ -104,7 +104,7 @@ const FeedsHome = () => {
           <section className="lg:px-10 px-4">
             <div className="flex my-3 lg:my-5">
               <ReactSearchAutocomplete
-                items={category}
+                items={categories}
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
