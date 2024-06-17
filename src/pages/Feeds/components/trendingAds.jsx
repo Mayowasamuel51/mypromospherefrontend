@@ -37,10 +37,10 @@ const TrendingAds = () => {
                                 pauseOnHover: true,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
                                 width: "100%",
-                                height: "300px"
+                                height: "300px",
+                                focus: 1,
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
@@ -86,10 +86,10 @@ const TrendingAds = () => {
                                 pauseOnHover: true,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
                                 width: "100%",
-                                height: "300px"
+                                height: "300px",
+                                focus: 1,
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
@@ -135,10 +135,10 @@ const TrendingAds = () => {
                                 pauseOnHover: true,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
                                 width: "100%",
-                                height: "300px"
+                                height: "300px",
+                                focus: 1,
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
@@ -185,10 +185,10 @@ const TrendingAds = () => {
                                 pauseOnHover: true,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
                                 width: "100%",
-                                height: "300px"
+                                height: "300px",
+                                focus: 1,
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>

@@ -79,7 +79,7 @@ const SingleFeedPage = () => {
                         <p className='text-[#3D217A] font-medium text-lg my-4'>{data?.data?.data?.categories}</p>
                         <p>{data?.data?.data?.productName || "No Name"}</p>
                         <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1>
-                        <p className='p-4 border-l-2 border-black'>{data?.data?.data?.description}</p>
+                        <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
                         <p><TbCurrencyNaira />{data?.data?.data?.price_range ?? 10000}</p>
                         <div className='flex items-center gap-2'>
                             <h1 className='font-semibold text-lg'>STATE</h1>
