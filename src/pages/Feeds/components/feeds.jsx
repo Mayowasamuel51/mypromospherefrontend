@@ -33,7 +33,7 @@ const Feeds = () => {
                 snap: true,
                 width: "100%",
                 height: "300px"
-              }} className="p-2">
+              }} className="">
                 <SplideSlide className='rounded-md'>
                   <Link to={`/feed/${item.id}`}>
                     <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
