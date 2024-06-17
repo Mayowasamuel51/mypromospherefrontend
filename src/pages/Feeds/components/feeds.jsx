@@ -6,7 +6,6 @@ import FetchTrendingAds from '../../../hooks/fetchTrendingAds';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import "./trends.css";
-import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
 import PostsSkeleton from '../../../components/postsSkeleton';
 
@@ -35,13 +34,13 @@ const Feeds = () => {
                 width: "100%",
                 height: "300px"
               }} className="p-2">
-                <SplideSlide className='rounded-md w-fit'>
+                <SplideSlide className='rounded-md'>
                   <Link to={`/feed/${item.id}`}>
                     <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
                   </Link>
                 </SplideSlide>
                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                  <SplideSlide key={img.id} className='rounded-md w-fit'>
+                  <SplideSlide key={img.id} className='rounded-md'>
                     <Link to={`/feed/${item.id}`}>
                       <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
                     </Link>
