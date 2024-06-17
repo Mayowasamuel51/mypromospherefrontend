@@ -532,8 +532,8 @@ const Post = () => {
               <option value="">--Select a Category--</option>
               {categories.map((option, index) => {
                 return (
-                  <option key={index} value={option}>
-                    {option}
+                  <option key={index} value={option.name}>
+                    {option.name}
                   </option>
                 );
               })}
