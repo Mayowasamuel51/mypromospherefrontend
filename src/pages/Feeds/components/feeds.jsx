@@ -31,6 +31,7 @@ const Feeds = () => {
                 arrows: false,
                 pagination: true,
                 snap: true,
+                cloneStatus: false,
                 width: "100%",
                 height: "300px"
               }} className="">
