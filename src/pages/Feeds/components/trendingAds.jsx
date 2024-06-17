@@ -24,7 +24,7 @@ const TrendingAds = () => {
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
