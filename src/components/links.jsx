@@ -58,7 +58,7 @@ const Tab = ({ children, tab, handleSetSelected, selected, bg, hidden }) => {
             onClick={() => handleSetSelected(tab)}
             className={`duration-300 nav-active relative flex items-center gap-1 rounded-sm px-3 py-1.5 transition-colors ${selected === tab
                 ? "nav-others outline-black"
-                : bg && hidden ? "text-black" : ""
+                : bg && hidden ? "text-black dark:text-white" : ""
                 }`}
         >
             <span>{children}</span>

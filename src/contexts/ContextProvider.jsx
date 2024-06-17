@@ -15,6 +15,20 @@ export const ContextProvider = ({ children }) => {
     const [FullScreen, setFullScreen] = useState(false)
     const [token, setToken] = useState(JSON.parse(localStorage.getItem("user-details")))
     const [scrollValue, setScrollValue] = useState(0);
+    const [isDarkMode, setIsDarkMode] = useState(() =>
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const handleChange = (event) => {
+            setIsDarkMode(event.matches);
+        };
+        mediaQuery.addEventListener('change', handleChange);
+        return () => {
+            mediaQuery.removeEventListener('change', handleChange);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -62,6 +76,7 @@ export const ContextProvider = ({ children }) => {
             LogOut,
             scrollValue,
             handleClick,
+            isDarkMode,
         }}>
             <div className="dark:text-white">
                 {children}
