@@ -75,7 +75,6 @@ const FeedsHome = () => {
   };
 
   const handleOnHover = (result) => {
-    // the item hovered
     console.log(result);
   };
 
@@ -113,7 +112,7 @@ const FeedsHome = () => {
     <div className="">
       <Navbar blue={true} />
       <section className="lg:px-10">
-        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-28">
+        <div className="lg:px-10 px-4 flex items-center gap-2 pt-20 lg:mt-28">
         </div>
         <div className="">
           <section className="lg:px-10 px-4">
@@ -123,10 +122,6 @@ const FeedsHome = () => {
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
-                // onHover={()=> handleOnHover()}
-                // onSelect={()=> handleOnSelect()}
-                // onFocus={()=> handleOnFocus()}
-                autoFocus
               // formatResult={formatResult}
               />
             </div>
