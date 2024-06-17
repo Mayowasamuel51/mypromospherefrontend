@@ -44,20 +44,20 @@ const TrendingAds = () => {
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage  effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -93,20 +93,20 @@ const TrendingAds = () => {
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage  effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -142,20 +142,20 @@ const TrendingAds = () => {
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage  effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -192,20 +192,20 @@ const TrendingAds = () => {
                             }} className="p-2">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage  effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage  effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
