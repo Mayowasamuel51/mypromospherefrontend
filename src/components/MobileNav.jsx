@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { useStateContext } from "../contexts/ContextProvider";
-import LOGO from "../../src/assests/SVGs/logo.svg";
 import anon from "../assests/images/anon.png"
 import { FaPowerOff } from "react-icons/fa6";
 
