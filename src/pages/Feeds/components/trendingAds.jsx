@@ -1,13 +1,8 @@
-import { LazyLoadImage width={`100%`} } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import user from "../../../assests/images/user.svg";
 import anon from "../../../assests/images/anon.png"
-import LOGO from "../../../assests/SVGs/logo.svg"
 import { Link } from 'react-router-dom';
 import FetchTrendingAds from "../../../hooks/fetchTrendingAds";
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
-import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
