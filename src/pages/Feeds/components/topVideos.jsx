@@ -7,8 +7,6 @@ import ReactPlayer from "react-player";
 import { useStateContext } from "../../../contexts/ContextProvider";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from "../../../loader";
-import thumbnail1 from "../../../assests/images/feed1.svg";
-import thumbnail2 from "../../../assests/images/feed2.svg";
 const api_thumbnails = import.meta.env.VITE_thumbnails;
 const TopVideos = () => {
   const { token } = useStateContext();
@@ -36,7 +34,7 @@ const TopVideos = () => {
               <ReactPlayer
                 width={`100%`}
                 height={300}
-                url={video?.titlevideourl	}
+                url={video?.titlevideourl}
                 controls={true}
                 playing={true}
                 light={
@@ -44,7 +42,6 @@ const TopVideos = () => {
                     ? `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
                     : `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
                 }
-                // loop={true}
                 muted={true}
                 playIcon={<FaRegCirclePlay size={50} color="#fff" />}
                 className="hover:outline hover:scale-105 duration-300"
