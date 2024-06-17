@@ -46,8 +46,7 @@ const ProfileHome = () => {
                             </h1>
                         </div>
                     </article>
-                    <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
-                        {/* web */}
+                    <div className="my-2 flex flex-col gap-2 md:gap-4 md:px-2 lg:px-[2rem] large:px-[5rem]">
                         <article className="px-4 md:px-10 flex items-center gap-x-2">
                             <BsGlobe className="md:text-base text-sm" />
                             <p>Website </p>
