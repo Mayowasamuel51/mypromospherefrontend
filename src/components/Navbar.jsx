@@ -69,7 +69,7 @@ export default function Navbar({ profile, blue }) {
         {toggleIcon ? (
           <XMarkIcon width={35} color={bg ? "black" : "white"} />
         ) : (
-          <Bars3BottomRightIcon width={35} color={bg ? "black" : "white"} />
+          <Bars3BottomRightIcon width={35} color={bg ? "black" : "white"} className="dark:text-white" />
         )}
       </div>
       <AnimatePresence>
