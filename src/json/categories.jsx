@@ -1,57 +1,163 @@
 
 export const categories = 
 [
-    "Laptops",
+    {
+        id: 1,
+        name: "Laptops"
+    },
 
-    "Property", 
+    {
+        id: 2,
+        name: "Property"
 
-    "Phones, Tablets", 
+    }, 
 
-    "Fragrances",
+    {
+        id: 3,
+        name: "Phones, Tablets"
 
-    "Skincare",
+    }, 
 
-    "Groceries",
+    {
+        id: 4,
+        name: "Fragrances"
 
-    "home-decoration",
+    },
 
-    "Furniture ,Home ",
+    {
+        id: 5,
+        name: "Skincare"
+
+    },
+
+    {
+        id: 6,
+        name: "Groceries"
+
+    },
+
+    {
+        id: 7,
+        name: "home-decoration"
+
+    },
+
+    {
+        id: 8,
+        name: "Furniture ,Home "
+
+    },
    
-    "Womens bikins",
+    {
+        id: 9,
+        name: "Womens bikins"
 
-    "Kids , Baby dresses", 
+    },
 
-    "Womens under waress",
+    {
+        id: 10,
+        name: "Kids , Baby dresses"
 
-    "womens-dresses",
+    }, 
 
-    "womens-shoes",
+    {
+        id: 11,
+        name: "Womens under waress"
 
-    "Pets",
+    },
 
-    "Mens-shirts",
+    {
+        id: 12,
+        name: "womens-dresses"
 
-    "Mens-shoes",
+    },
 
-    "Mens-watches",
+    {
+        id: 13,
+        name: "womens-shoes"
 
-    "Womens-watches",
+    },
 
-    "Womens-bags",
+    {
+        id: 14,
+        name: "Pets"
 
-    "Luxury-apartment",
+    },
 
-    "jewellery",
+    {
+        id: 15,
+        name: "Mens-shirts"
+
+    },
+
+    {
+        id: 16,
+        name: "Mens-shoes"
+
+    },
+
+    {
+        id: 17,
+        name: "Mens-watches"
+
+    },
+
+    {
+        id: 18,
+        name: "Womens-watches"
+
+    },
+
+    {
+        id: 19,
+        name: "Womens-bags"
+
+    },
+
+    {
+        id: 20,
+        name: "Luxury-apartment"
+
+    },
+
+    {
+        id: 21,
+        name: "jewellery"
+
+    },
    
-    "Automotive , Vehicles",
+    {
+        id: 22,
+        name: "Automotive , Vehicles"
 
-    "Motorcycle",
+    },
 
-    "Apartment",
+    {
+        id: 23,
+        name: "Motorcycle"
 
-    "Luxury Apartment",
+    },
 
-    "Fashion",
+    {
+        id: 24,
+        name: "Apartment"
 
-    "Sport Dresses"
+    },
+
+    {
+        id: 25,
+        name: "Luxury Apartment"
+
+    },
+
+    {
+        id: 26,
+        name: "Fashion"
+
+    },
+
+    {
+        id: 27,
+        name: "Sport Dresses"
+    }
 ]
