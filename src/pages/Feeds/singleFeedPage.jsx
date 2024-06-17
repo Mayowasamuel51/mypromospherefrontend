@@ -49,7 +49,7 @@ const SingleFeedPage = () => {
                                             transition={{ type: "spring", stiffness: 100 }}
                                             // effect="blur"
                                             src={imageUrl}
-                                            style={{ width: FullScreen ? 600 : 280, height: 400 }}
+                                            style={{ width: FullScreen ? 600 : "100%", height: 400 }}
                                             alt="img"
                                             className="rounded-md w-full h-[300px] md:h-[400px] object-cover"
                                         />

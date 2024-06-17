@@ -60,7 +60,7 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   const { token } = useStateContext();
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`h-[100dvh] lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
-      <motion.nav variants={navVariant} className={`fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl p-8 text-black h-[100dvh] w-full lg:py-0 py-10 flex flex-col justify-between bg-transparent`}>
+      <motion.nav variants={navVariant} className={`fixed inset-0 bg-white p-8 text-black h-[100dvh] w-full lg:py-0 py-10 flex flex-col justify-between bg-transparent`}>
         <motion.div className="flex flex-col gap-6">
           {token &&
             <motion.div variants={childVariant} className="">
