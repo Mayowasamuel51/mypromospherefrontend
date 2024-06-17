@@ -26,7 +26,6 @@ const Feeds = () => {
                 type: 'loop',
                 perPage: 1,
                 perMove: 1,
-                gap: "20px",
                 arrows: false,
                 pagination: true,
                 drag: 'free',

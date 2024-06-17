@@ -74,19 +74,6 @@ const FeedsHome = () => {
     console.log(string, results);
   };
 
-  const handleOnHover = (result) => {
-    console.log(result);
-  };
-
-  const handleOnSelect = (item) => {
-    axios.get(`${api}${item.name}`).then((response) => {
-      if (response.status === 200) {
-        console.log(response.data.data);
-      }
-    });
-    console.log(data);
-  };
-
   const handleOnFocus = () => {
     console.log("Focused");
   };
@@ -130,7 +117,7 @@ const FeedsHome = () => {
           <section className="py-4 lg:py-20">
             <motion.div
               ref={ref}
-              className={`${isInView ? "stickyy w-full" : ""
+              className={`${isInView ? "fixed button-0 left-0 right-0 w-full" : ""
                 } md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
             >
               <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
