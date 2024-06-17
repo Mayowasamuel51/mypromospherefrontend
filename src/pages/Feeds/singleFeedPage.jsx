@@ -18,15 +18,17 @@ const SingleFeedPage = () => {
     const { data, isLoading, error } = FetchSingleAd(id);
     console.log(data?.data?.data)
     const [imageUrl, setImageUrl] = useState("")
+    const [imageKey, setImageKey] = useState(0);
 
     useEffect(() => {
         if (data?.data?.data?.titleImageurl) {
             setImageUrl(`https://apimypromospheretest.com.ng/public/storage/${data.data.data.titleImageurl.slice(7)}`);
         }
-    }, []);
+    }, [data]);
 
     const handleImageChange = (img) => {
         setImageUrl(img)
+        setImageKey(prevKey => prevKey + 1);
     }
     if (isLoading) return <Loader />
 
@@ -46,12 +48,11 @@ const SingleFeedPage = () => {
                                 <AnimatePresence mode='popLayout'>
                                     {imageUrl && (
                                         <motion.img
-                                            key={imageUrl}
+                                            key={`${imageUrl}-${imageKey}`}
                                             initial={{ opacity: 0, x: -100 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: -100 }}
                                             transition={{ type: "spring", stiffness: 100 }}
-                                            // effect="blur"
                                             src={imageUrl}
                                             style={{ width: FullScreen ? 600 : "100%", height: 400 }}
                                             alt="img"
