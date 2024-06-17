@@ -17,7 +17,7 @@ const Feeds = () => {
   return (
     <section>
       <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
-      <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+      <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
         {isLoading && <PostsSkeleton posts={4} />}
         {data?.data.normalads.slice(0, 4).map((item) => (
           <div key={item.id} className="flex flex-col gap-2 md:gap-4">

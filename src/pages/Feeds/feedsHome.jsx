@@ -111,9 +111,9 @@ const FeedsHome = () => {
   return (
     <div className="">
       <Navbar blue={true} />
-      <section className="lg:px-10">
+      <section className="lg:px-10 px-4 flex items-center gap-2 pt-20 lg:pt-24">
         <div className="">
-          <section className="lg:px-10">
+          <section className="lg:px-10 px-4">
             <div className="flex my-3 lg:my-5">
               <ReactSearchAutocomplete
                 items={items}
