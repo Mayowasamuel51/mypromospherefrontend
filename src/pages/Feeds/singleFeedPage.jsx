@@ -23,14 +23,15 @@ const SingleFeedPage = () => {
         if (data?.data?.data?.titleImageurl) {
             setImageUrl(`https://apimypromospheretest.com.ng/public/storage/${data.data.data.titleImageurl.slice(7)}`);
         }
-    }, [data]);
+    }, []);
 
     const handleImageChange = (img) => {
         setImageUrl(img)
     }
-
     if (isLoading) return <Loader />
+
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
+
     return (
         <>
             <Navbar blue={true} />
@@ -80,7 +81,10 @@ const SingleFeedPage = () => {
                         <p>{data?.data?.data?.productName || "No Name"}</p>
                         <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1>
                         <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
-                        <p><TbCurrencyNaira />{data?.data?.data?.price_range ?? 10000}</p>
+                        <p className='flex items-center gap-2'>
+                            <TbCurrencyNaira size={15} />
+                            <span>{data?.data?.data?.price_range ?? 10000}</span>
+                        </p>
                         <div className='flex items-center gap-2'>
                             <h1 className='font-semibold text-lg'>STATE</h1>
                             <p className=''>{data?.data?.data?.state}</p>
@@ -94,10 +98,8 @@ const SingleFeedPage = () => {
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                         </div>
                         <div className='flex items-center justify-between gap-2'>
-                            <div className='flex items-center gap-3'>
-                                <button className="bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">BUY</button>
-                                <button className="bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">LIKE</button>
-                            </div>
+                            <button className="flex-1 bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">BUY</button>
+                            <button className="flex-1 bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">LIKE</button>
                         </div>
                     </div>
                 </div>
