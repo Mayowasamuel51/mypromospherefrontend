@@ -23,12 +23,13 @@ const Feeds = () => {
           <div key={item.id} className="flex flex-col gap-2 md:gap-4">
             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
               <Splide options={{
-                type: 'loop',
+                type: 'slide',
+                focus: 1,
+                start: 1,
+                gap: "20px",
                 perPage: 1,
-                perMove: 1,
                 arrows: false,
                 pagination: true,
-                drag: 'free',
                 snap: true,
                 width: "100%",
                 height: "300px"
