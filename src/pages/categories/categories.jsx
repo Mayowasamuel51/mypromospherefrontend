@@ -25,7 +25,7 @@ const Categories = () => {
               <div key={discount.id} className="flex flex-col gap-2 md:gap-4">
                 <div>
                   <Link to={`/feed/${discount.id}`}>
-                    <LazyLoadImage visibleByDefault={discount.src === discount.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${discount.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                    <LazyLoadImage width={`100%`} visibleByDefault={discount.src === discount.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${discount.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                   </Link>
                 </div>
                 <Link to={`/profile/user/${discount.user_id}`} className="w-fit">
@@ -42,7 +42,7 @@ const Categories = () => {
               <div key={property.id} className="flex flex-col gap-2 md:gap-4">
                 <div>
                   <Link to={`/feed/${property.id}`}>
-                    <LazyLoadImage visibleByDefault={property.src === property.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${property.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                    <LazyLoadImage width={`100%`} visibleByDefault={property.src === property.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${property.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                   </Link>
                 </div>
                 <Link to={`/profile/user/${property.user_id}`} className="w-fit">
@@ -59,7 +59,7 @@ const Categories = () => {
               <div key={apartment.id} className="flex flex-col gap-2 md:gap-4">
                 <div>
                   <Link to={`/feed/${apartment.id}`}>
-                    <LazyLoadImage visibleByDefault={apartment.src === apartment.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${apartment.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                    <LazyLoadImage width={`100%`} visibleByDefault={apartment.src === apartment.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${apartment.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="rounded-md object-cover" />
                   </Link>
                 </div>
                 <Link to={`/profile/user/${apartment.user_id}`} className="w-fit">
