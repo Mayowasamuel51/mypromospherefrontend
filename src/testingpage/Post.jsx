@@ -30,10 +30,11 @@ import uploadImg from "../assests/cloud-upload-regular-240.png";
 import { Toaster, toast } from "sonner";
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Loader from "../loader.jsx";
-
+const api_edit_profile_endpoint = import.meta.env.VITE_EDIT_PROFILE;
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
+const api_fetch = import.meta.env.VITE_EDIT_PROFILE;
 //note after the success post upload reload the componetns
 const Post = () => {
   const queryClient = useQueryClient();
@@ -42,19 +43,27 @@ const Post = () => {
   const { user, setUser } = useStateContext();
   const [makepic, setmakepic] = useState("");
   const { token } = useStateContext();
-  // console.log(token?.user)
-  // console.log(token.token)
   const [imageUpload, setImageUpload] = useState([]);
   const [files, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const imagesListRef = ref(storage, "images/");
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
-
   const [localGvt, setLocalGvt] = useState();
   const result = Object.entries(data.full);
-
+  const [userEditProfile, setUserEditProfile] = useState([])
+  const { isPending, isError, data:profile , isLoading, error } = useQuery({
+    queryKey: ["fetch"],
+    queryFn: () =>
+      axios.get(`${api_fetch}/${token?.id}`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token?.token}`,
+        },
+      }),
+  });
+  
+  // console.log( profile.data.data.aboutMe    )
   // const formSubmit = (data) => {
   //   console.log("i was clicked")
   //   setLoading(true)
@@ -272,7 +281,7 @@ const Post = () => {
     );
     // setUploadData()
   };
-  console.log("image upload",imageUpload)
+  // console.log("image upload",imageUpload)
 
   const uploadPostMutation = useMutation({
     mutationFn: async (payload) => {
@@ -284,7 +293,7 @@ const Post = () => {
             Authorization: `Bearer ${token?.token}`,
           },
         });
-        console.log(response.data.item);
+        // console.log(response.data.item);
         // for (let i = 0; i < imageUpload.length; i++) {
         uploadData?.images.forEach((image, index) => {
           const imageRef = ref(
@@ -292,7 +301,7 @@ const Post = () => {
             `/newuploads/${image.name} ${token?.user}`
           );
           const uploadTask = uploadBytesResumable(imageRef, image);
-          console.log(image)
+          // console.log(image)
           uploadTask.on(
             "state_changed",
             (snapshot) => {
@@ -375,6 +384,10 @@ const Post = () => {
         state: "",
         discount: "",
         local_gov: "",
+        aboutMe:token?.aboutMe,
+        whatapp:token?.whatapp,
+        user_phone:token?.user_phone,
+        backgroundimage:token?.backgroundimage,
         user_image: token?.profileImage,
       }));
       setImageUpload([]);
@@ -386,7 +399,7 @@ const Post = () => {
   });
   const uploadPost = (e) => {
     e.preventDefault();
-    console.log(uploadData);
+    // console.log(uploadData);
     if (imageUpload?.length > 5) {
       toast.error(`You can upload a maximum of 5 images.`);
       return;
@@ -439,15 +452,17 @@ const Post = () => {
         console.log(image);
       }
     });
+    
+    formData.append('aboutMe',profile.data.data.aboutMe)
+    formData.append('whatapp',profile.data.data.whatapp)
+    formData.append('user_phone', profile.data.data.user_phone)
     formData.append("categories", uploadData?.category);
-
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
     formData.append("state", uploadData?.state);
     formData.append("local_gov", uploadData?.local_gov);
     formData.append("discount", uploadData?.discount);
     formData.append("user_image", uploadData?.user_image);
-
     uploadPostMutation.mutate(formData);
   };
  

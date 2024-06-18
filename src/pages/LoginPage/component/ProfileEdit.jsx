@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { storage } from "../../../../firebase";
 import { useStateContext } from "../../../contexts/ContextProvider";
 import Loader from "../../../loader";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   getStorage,
   ref,
@@ -34,17 +35,37 @@ const ProfileEdit = () => {
   const [backgroundImage, setBackgroundImage] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [userEditProfile, setUserEditProfile] = useState([])
+  useEffect(() => {
+    axios(`${api_edit_profile_endpoint}/${token?.id}`, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token?.token}`,
+      },
+    }).then((res) => {
+      if (res.data.status === 200) {
+        console.log(res.data.data);
+        setUserEditProfile(res.data.data)
+        // setData(res.data.data);
+        // setBackgroundImage(res.data.data);
+        setLoading(false)
+      }
+    });
+  // console.log(data)
+  }, []);
 
   const [profileedit , setProfileEdit ] = useState({
     brandName:token?.brandName,
     aboutMe:token?.aboutMe,
+    whatapp:token?.whatapp,
+    user_phone:token?.user_phone,
     websiteName:token?.websiteName
   })
 
+  console.log(profileedit)
   const handleProfileEdit = (  e   ) => {
     const { name, value } = e.target;
     setProfileEdit((prevProfileEdit)=>({...prevProfileEdit, [name]: value})); };
-
   const handleImageChange = (e) => {
     const file = e.target.files;
     const profilePhoto = e.target.files[0];
@@ -140,6 +161,8 @@ const ProfileEdit = () => {
             aboutMe:profileedit.aboutMe,
             brandName: profileedit.brandName,
             websiteName: profileedit.websiteName,
+            whatapp:profileedit.whatapp,
+            user_phone:profileedit.user_phone,
             messageCompany: "i sell anything goood ",
           };
           console.log("Updated edit profile successfully", [downloadURL]);
@@ -236,26 +259,8 @@ const ProfileEdit = () => {
       }
     );
   };
-  console.log(
-    token
-  )
+  // console.log(token)
 
-  useEffect(() => {
-    axios(`${api_edit_profile_endpoint}/${token?.id}`, {
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token?.token}`,
-      },
-    }).then((res) => {
-      if (res.data.status === 200) {
-        console.log(res.data.data);
-        setData(res.data.data);
-        setBackgroundImage(res.data.data);
-        setLoading(false)
-      }
-    });
-  // console.log(data)
-  }, []);
 
   return (
     <section className="relative">
@@ -377,6 +382,36 @@ const ProfileEdit = () => {
                      <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
               </div>
             </div>
+            <div className="">
+              <label htmlFor="website" className="font-medium my-2">
+                Contact Phone one
+              </label>{" "}
+              <input
+                value={profileedit.user_phone}
+                onChange={handleProfileEdit}
+                type="number"
+                name="user_phone"
+                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                placeholder="Enter Your  Contact number "/>
+               {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
+            </div>
+
+            <div className="">
+              <label htmlFor="website" className="font-medium my-2">
+                Contact phone Two  <div> <FaWhatsapp  height={220}    /></div>
+              </label>{" "}
+              <input
+                value={profileedit.whatapp}
+                onChange={handleProfileEdit}
+                type="number"
+                name="whatapp"
+                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                placeholder="Enter Your  Whatapp number"/>
+               {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
+            </div>
+
+
+
             <div className="">
               <label htmlFor="website" className="font-medium my-2">
                 Brand Name
