@@ -120,7 +120,7 @@ const FeedsHome = () => {
           <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
         </div>
         <motion.div
-          className={`z-[99999999999999] border-2 border-red md:hidden block fixed buttom-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
+          className={`z-[99999999999999] border-2 border-red md:hidden block fixed bottom-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
         >
           <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
             <Link
