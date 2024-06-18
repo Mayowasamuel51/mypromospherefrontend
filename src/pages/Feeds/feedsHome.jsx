@@ -115,9 +115,8 @@ const FeedsHome = () => {
               <Feeds />
             </div>
           </section>
-          <section ref={ref} className="py-4 lg:py-20">
+          <section className="py-4 lg:py-20">
             <motion.div
-              ref={ref}
               className={`md:static md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
             >
               <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
@@ -151,7 +150,7 @@ const FeedsHome = () => {
                 </Link>
               </div>
             </motion.div>
-            <div className="lg:py-5 px-4">
+            <div ref={ref} className="lg:py-5 px-4">
               <Outlet />
             </div>
           </section>
