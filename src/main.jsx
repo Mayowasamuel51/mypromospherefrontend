@@ -9,7 +9,6 @@ import "./index.css";
 // routes/pages
 import { ContextProvider } from "./contexts/ContextProvider";
 import router from "./router";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import GoogleTag from "./Google";
 

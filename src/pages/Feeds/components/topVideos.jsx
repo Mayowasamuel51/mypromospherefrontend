@@ -7,8 +7,6 @@ import ReactPlayer from "react-player";
 import { useStateContext } from "../../../contexts/ContextProvider";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import Loader from "../../../loader";
-import thumbnail1 from "../../../assests/images/feed1.svg";
-import thumbnail2 from "../../../assests/images/feed2.svg";
 const api_thumbnails = import.meta.env.VITE_thumbnails;
 const TopVideos = () => {
   const { token } = useStateContext();
@@ -23,8 +21,8 @@ const TopVideos = () => {
 
   return (
     <>
-      
-      <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
+        
+      <section className="relative grid md:gap-4 md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
         {isLoading && (
           <div className="md:col-span-2 lg:col-span-3 exl:col-span-4">
             <Loader />
@@ -33,23 +31,20 @@ const TopVideos = () => {
         {data?.data?.videos.map((video) => (
           <div key={video.id} className="flex flex-col gap-4">
             <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
-            
               <ReactPlayer
-                width={280}
+                width={`100%`}
                 height={300}
-                url={video?.titlevideourl	}
+                url={video?.titlevideourl}
                 controls={true}
                 playing={true}
                 light={
-                //   video.id % 2 === 0 ? thumbnail1 : thumbnail2
                   video.id % 2 === 0 
                     ? `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
                     : `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
                 }
-                // loop={true}
                 muted={true}
                 playIcon={<FaRegCirclePlay size={50} color="#fff" />}
-                className="w-fit hover:outline hover:scale-105 duration-300"
+                className="hover:outline hover:scale-105 duration-300"
               /> 
             </div>
             <Link to={`/profile/user/${video.user_id}`} className="w-fit">

@@ -11,6 +11,7 @@ import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
 import Footer from "../../components/Footer";
+import { categories } from "../../json/categories";
 const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
@@ -74,20 +75,6 @@ const FeedsHome = () => {
     console.log(string, results);
   };
 
-  const handleOnHover = (result) => {
-    // the item hovered
-    console.log(result);
-  };
-
-  const handleOnSelect = (item) => {
-    axios.get(`${api}${item.name}`).then((response) => {
-      if (response.status === 200) {
-        console.log(response.data.data);
-      }
-    });
-    console.log(data);
-  };
-
   const handleOnFocus = () => {
     console.log("Focused");
   };
@@ -112,21 +99,15 @@ const FeedsHome = () => {
   return (
     <div className="">
       <Navbar blue={true} />
-      <section className="lg:px-10">
-        <div className="lg:px-10 px-4 flex items-center gap-2 mt-20 lg:mt-28">
-        </div>
+      <section className="lg:px-10 px-4 flex items-center gap-2 pt-20 lg:pt-24">
         <div className="">
           <section className="lg:px-10 px-4">
             <div className="flex my-3 lg:my-5">
               <ReactSearchAutocomplete
-                items={items}
+                items={categories}
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
-                // onHover={()=> handleOnHover()}
-                // onSelect={()=> handleOnSelect()}
-                // onFocus={()=> handleOnFocus()}
-                autoFocus
               // formatResult={formatResult}
               />
             </div>
@@ -137,7 +118,7 @@ const FeedsHome = () => {
           <section className="py-4 lg:py-20">
             <motion.div
               ref={ref}
-              className={`${isInView ? "stickyy w-full" : ""
+              className={`${isInView ? "stickyy" : ""
                 } md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
             >
               <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">

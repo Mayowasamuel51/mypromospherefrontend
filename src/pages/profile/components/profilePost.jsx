@@ -19,12 +19,12 @@ const ProfilePost = () => {
   }
   return (
     <div className="overflow-x-hidden px-4 lg:px-10 py-2 lg:py-10">
-      <section className="relative grid md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exl:grid-cols-6 gap-10">
+      <section className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exl:grid-cols-6 gap-4 md:gap-10">
         {(!data?.data.ads && !isLoading) && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 exl:col-span-6 my-2'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
         {(isLoading) && <UploadSkeleton posts={6} />}
         {(data?.data.ads && !isLoading) &&
           data?.data.ads.map((item) => (
-            <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col border-2 border-black">
+            <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
               <div className="">
                 <div className=''>
                   <LazyLoadImage width={`100%`} height={200} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[200px] object-cover rounded-md" />

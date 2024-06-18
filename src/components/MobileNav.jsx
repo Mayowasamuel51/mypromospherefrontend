@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { useStateContext } from "../contexts/ContextProvider";
-import LOGO from "../../src/assests/SVGs/logo.svg";
 import anon from "../assests/images/anon.png"
 import { FaPowerOff } from "react-icons/fa6";
 
@@ -60,8 +58,8 @@ const childVariant = {
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100dvh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white bg-opacity-5 backdrop-blur-2xl`}>
-      <motion.div variants={divVariant} className="fixed inset-0 bg-white bg-opacity-5 backdrop-blur-2xl flex flex-col h-[100dvh] justify-between p-8">
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100dvh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white dark:bg-black dark:text-white`}>
+      <motion.div variants={divVariant} className="fixed inset-0 bg-white dark:bg-black dark:text-white bg-opacity-5 backdrop-blur-2xl flex flex-col h-[100dvh] justify-between p-8">
         <motion.div className="flex flex-col lg:gap-8 gap-5">
           {token &&
             <motion.div variants={childVariant}>

@@ -46,8 +46,7 @@ const ProfileHome = () => {
                             </h1>
                         </div>
                     </article>
-                    <div className="my-2 flex flex-col gap-4 md:gap-6 md:px-2 lg:px-[2rem] large:px-[5rem]">
-                        {/* web */}
+                    <div className="my-2 flex flex-col gap-2 md:gap-4 md:px-2 lg:px-[2rem] large:px-[5rem]">
                         <article className="px-4 md:px-10 flex items-center gap-x-2">
                             <BsGlobe className="md:text-base text-sm" />
                             <p>Website </p>
@@ -61,11 +60,11 @@ const ProfileHome = () => {
                         <div className="flex items-center justify-center ">
                             <div className="flex gap-2 my-2">
                                 <div className="flex justify-center items-center gap-x-4">
-                                    <NavLink to={`/profile/user/${id}`} className={({isActive}) => isActive && pathname === `/profile/user/${id}` ? "bg-[#3D217A] rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 rounded-md md:px-4 md:py-2 px-3 py-2"}>
+                                    <NavLink to={`/profile/user/${id}`} className={({isActive}) => isActive && pathname === `/profile/user/${id}` ? "bg-[#3D217A] border-2 border-[#3D217A] rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black dark:text-white dark:border-2 dark:border-white flex gap-x-3 rounded-md md:px-4 md:py-2 px-3 py-2"}>
                                         <p> Posts</p>
                                     </NavLink>
                                 </div>
-                                <NavLink to={`/profile/user/${id}/videos`}  className={({isActive}) => isActive && pathname === `/profile/user/${id}/videos` ? "bg-[#3D217A] rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black flex gap-x-3 border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
+                                <NavLink to={`/profile/user/${id}/videos`}  className={({isActive}) => isActive && pathname === `/profile/user/${id}/videos` ? "bg-[#3D217A] border-2 border-[#3D217A] rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black dark:text-white dark:border-2 dark:border-white flex gap-x-3 border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
                                     <p>Videos</p>
                                 </NavLink>
                             </div>

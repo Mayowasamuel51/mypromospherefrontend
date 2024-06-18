@@ -1,13 +1,8 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import user from "../../../assests/images/user.svg";
 import anon from "../../../assests/images/anon.png"
-import LOGO from "../../../assests/SVGs/logo.svg"
 import { Link } from 'react-router-dom';
 import FetchTrendingAds from "../../../hooks/fetchTrendingAds";
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
-import Loader from '../../../loader';
 import { useStateContext } from '../../../contexts/ContextProvider';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
@@ -24,40 +19,40 @@ const TrendingAds = () => {
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                             <Splide options={{
-                                type: 'loop',
-                                perPage: 1,
-                                perMove: 1,
+                                type: 'slide',
+                                focus: 1,
+                                start: 1,
                                 gap: "20px",
-                                pauseOnHover: true,
+                                perPage: 1,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
-                                width: "280px",
-                                height: "300px"
-                            }} className="p-2">
-                                <SplideSlide className='rounded-md w-fit'>
+                                cloneStatus: false,
+                                width: "100%",
+                                height: "300px",
+                            }} className="">
+                                <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md w-fit'>
+                                    <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -73,40 +68,40 @@ const TrendingAds = () => {
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>ALWAYS STAY IN VOGUE</h1>
             </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                             <Splide options={{
-                                type: 'loop',
-                                perPage: 1,
-                                perMove: 1,
+                                type: 'slide',
+                                focus: 1,
+                                start: 1,
                                 gap: "20px",
-                                pauseOnHover: true,
+                                perPage: 1,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
-                                width: "280px",
-                                height: "300px"
-                            }} className="p-2">
-                                <SplideSlide className='rounded-md w-fit'>
+                                cloneStatus: false,
+                                width: "100%",
+                                height: "300px",
+                            }} className="">
+                                <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md w-fit'>
+                                    <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -122,40 +117,40 @@ const TrendingAds = () => {
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
             </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                             <Splide options={{
-                                type: 'loop',
-                                perPage: 1,
-                                perMove: 1,
+                                type: 'slide',
+                                focus: 1,
+                                start: 1,
                                 gap: "20px",
-                                pauseOnHover: true,
+                                perPage: 1,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
-                                width: "280px",
-                                height: "300px"
-                            }} className="p-2">
-                                <SplideSlide className='rounded-md w-fit'>
+                                cloneStatus: false,
+                                width: "100%",
+                                height: "300px",
+                            }} className="">
+                                <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md w-fit'>
+                                    <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -172,40 +167,40 @@ const TrendingAds = () => {
 
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
             </div>
-            <section className="relative grid place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Laptops").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                             <Splide options={{
-                                type: 'loop',
-                                perPage: 1,
-                                perMove: 1,
+                                type: 'slide',
+                                focus: 1,
+                                start: 1,
                                 gap: "20px",
-                                pauseOnHover: true,
+                                perPage: 1,
                                 arrows: false,
                                 pagination: true,
-                                drag: 'free',
                                 snap: true,
-                                width: "280px",
-                                height: "300px"
-                            }} className="p-2">
-                                <SplideSlide className='rounded-md w-fit'>
+                                cloneStatus: false,
+                                width: "100%",
+                                height: "300px",
+                            }} className="">
+                                <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md w-fit'>
+                                    <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage visibleByDefault={img.src === img.itemadsimagesurls} effect='blur' src={img.itemadsimagesurls} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
                                 ))}
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage visibleByDefault={item.src === item.itemadsimagesurls} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 280, height: 300 }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
