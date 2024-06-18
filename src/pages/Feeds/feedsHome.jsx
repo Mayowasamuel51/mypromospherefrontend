@@ -15,60 +15,12 @@ import { categories } from "../../json/categories";
 const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
-
   const location = useLocation();
   const { scrollValue, handleClick } = useStateContext();
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
 
-  const items = [
-    {
-      id: 0,
-      name: "Cobol",
-    },
-
-    {
-      id: 1,
-      name: "Pets",
-    },
-    {
-      id: 2,
-      name: "Furniture ,Home",
-    },
-    {
-      id: 3,
-      name: "Apartment",
-    },
-    {
-      id: 4,
-      name: "Skincare",
-    },
-    {
-      id: 5,
-      name: "Groceries",
-    },
-    {
-      id: 6,
-      name: "home-decoration",
-    },
-    {
-      id: 7,
-      name: "Phones, Tablets",
-    },
-    {
-      id: 8,
-      name: "Property",
-    },
-    {
-      id: 9,
-      name: "Laptops",
-    },
-    {
-      id: 10,
-      name: "Mens-shirts",
-    },
-  ];
 
   const handleOnSearch = (string, results) => {
     setData(results);
@@ -117,7 +69,7 @@ const FeedsHome = () => {
           </section>
           <section className="py-4 lg:py-20">
             <motion.div
-              className={`md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit mx-auto overflow-hidden bg-[#F0D8DD]`}
+              className={`md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 w-fit mx-auto bg-[#F0D8DD]`}
             >
               <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
                 <Link
@@ -166,7 +118,7 @@ const FeedsHome = () => {
         <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
       </div>
       <motion.div
-        className={`${isInView ? "" : ""} md:hidden block fixed button-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
+        className={`${isInView ? "" : ""} border-2 border-red md:hidden block fixed button-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
       >
         <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
           <Link
