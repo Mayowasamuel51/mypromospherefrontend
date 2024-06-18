@@ -15,7 +15,7 @@ import { categories } from "../../json/categories";
 const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
-  
+
   const location = useLocation();
   const { scrollValue, handleClick } = useStateContext();
   const ref = useRef(null);
@@ -115,11 +115,10 @@ const FeedsHome = () => {
               <Feeds />
             </div>
           </section>
-          <section className="py-4 lg:py-20">
+          <section ref={ref} className="py-4 lg:py-20">
             <motion.div
               ref={ref}
-              className={`${isInView ? "stickyy" : ""
-                } md:static -left-10 -right-10  my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
+              className={`md:static md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit md:mx-auto overflow-hidden bg-[#F0D8DD]`}
             >
               <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
                 <Link
@@ -167,6 +166,40 @@ const FeedsHome = () => {
       >
         <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
       </div>
+      <motion.div
+        className={`${isInView ? "opacity-0" : "opacity-100"} md:hidden block fixed button-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
+      >
+        <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
+          <Link
+            to="/"
+            className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+              }`}
+          >
+            <motion.button
+              whileTap={{ scale: 1.05 }}
+              className={`whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+                }`}
+            >
+              Trending Ads
+            </motion.button>
+          </Link>
+          <Link
+            to="/top-videos"
+            className={`text-center flex-1 ${location.pathname === "/top-videos" &&
+              "bg-[#EC6A87] text-white"
+              }`}
+          >
+            <motion.button
+              whileTap={{ scale: 1.05 }}
+              className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
+                "bg-[#EC6A87] text-white"
+                }`}
+            >
+              Top Video Ads
+            </motion.button>
+          </Link>
+        </div>
+      </motion.div>
     </div>
   );
 };
