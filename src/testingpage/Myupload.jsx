@@ -23,7 +23,7 @@ const Myuploads = ({ id }) => {
             <Link to={`/feed/${item.id}`} key={item.id} className="">
               <div className="">
                 <div className=''>
-                  {item.titleImageurl ? <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[150px] md:h-[200px] object-cover" /> : 'NOTHING TO SHOW '}
+                  {item.titleImageurl ? <LazyLoadImage width={`100%`} effect='blur' style={{objectFit:"cover"}} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[150px] md:h-[200px] object-cover" /> : 'NOTHING TO SHOW '}
                 </div>
               </div>
             </Link>
