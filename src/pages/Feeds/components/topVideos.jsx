@@ -33,6 +33,8 @@ const TopVideos = () => {
             <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
               <ReactPlayer
                 width={`100%`}
+                playsinline={true}
+              playbackRate={1}
                 height={300}
                 url={video?.titlevideourl}
                 controls={true}

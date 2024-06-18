@@ -60,6 +60,8 @@ const MyVidoes = () => {
               width={280}
               height={300}
               url={video?.titlevideourl}
+              playsinline={true}
+              playbackRate={1}
               playing={true}
               light={
                 video.id % 2 === 0
