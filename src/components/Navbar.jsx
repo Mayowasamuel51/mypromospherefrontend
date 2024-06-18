@@ -59,13 +59,13 @@ export default function Navbar({ profile, blue }) {
     }
   }, [toggleIcon]);
   return (
-    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[999999999] ${bg ? profile || blue ? "bg-[#3D217A] dark:bg-black" : "bg-white text-black" : profile || blue ? "bg-[#3D217A] dark:bg-black" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
+    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[9999999] ${bg ? profile || blue ? "bg-[#3D217A] dark:bg-black" : "bg-white text-black" : profile || blue ? "bg-[#3D217A] dark:bg-black" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
       <Link to={"/"} className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-14 exl:w-20" />
         <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
 
-      <div onClick={handleToggle} className="z-20 exl:hidden cursor-pointer ">
+      <div onClick={handleToggle} className="z-[9999999999999] exl:hidden cursor-pointer ">
         {toggleIcon ? (
           <XMarkIcon width={35} className={`${bg && !blue && !profile && toggleIcon ? "text-black dark:text-white" : "text-white dark:text-black"} dark:text-black`} />
         ) : (
