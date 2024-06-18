@@ -28,7 +28,7 @@ export default function Navbar({ profile, blue }) {
   const [hidden, setHidden] = useState(false)
   const [bg, setBg] = useState(false)
   const handleToggle = () => {
-    setToggleIcon(!toggleIcon);
+    setToggleIcon(prev => !prev);
   };
   const { token, LogOut } = useStateContext()
   const { scrollY } = useScroll()
