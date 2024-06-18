@@ -67,9 +67,9 @@ export default function Navbar({ profile, blue }) {
 
       <div onClick={handleToggle} className="z-20 exl:hidden cursor-pointer ">
         {toggleIcon ? (
-          <XMarkIcon width={35} color={bg ? "black" : "white"} className={`${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
+          <XMarkIcon width={35} color={bg ? "black" : "white"} className={`${toggleIcon ? "text-black dark:text-white" : "text-white dark:text-black"} ${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
         ) : (
-          <Bars3BottomRightIcon width={35} color={bg ? "black" : "white"} className={`${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
+          <Bars3BottomRightIcon width={35} color={bg ? "black" : "white"} className={`${toggleIcon ? "text-black dark:text-white" : "text-white dark:text-black"} ${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
         )}
       </div>
       <AnimatePresence>
@@ -89,7 +89,7 @@ export default function Navbar({ profile, blue }) {
           <Link to="/login">
             <button className={`flex items-center gap-2 text-lg py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
               <MdLogin size={25} />
-              <p>Login</p>
+              <p>Post an Ad</p>
             </button>
           </Link>
         </div>
