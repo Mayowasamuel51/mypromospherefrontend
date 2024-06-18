@@ -76,31 +76,31 @@ export default function MobileNav({ handleToggle }) {
           }
           <motion.div variants={childVariant} onClick={handleToggle}>
             <Link to="/category/property" className="flex items-center gap-1">
-              <FaHouseChimneyWindow />
+              <FaHouseChimneyWindow size={20} />
               <p>Property</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
             <Link to="/category/apartment" className="flex items-center gap-1">
-              <MdApartment />
+              <MdApartment size={20} />
               <p>Apartment</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
             <Link to="/category/cars" className="flex items-center gap-1">
-              <FaCar />
+              <FaCar size={20} />
               <p>Cars</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
             <Link to="/category/laptops" className="flex items-center gap-1">
-              <FaLaptop />
+              <FaLaptop size={20} />
               <p>Laptops</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
             <Link to="/category/discount" className="flex items-center gap-1">
-              <MdDiscount />
+              <MdDiscount size={20} />
               <p>Products on Discount</p>
             </Link>
           </motion.div>
