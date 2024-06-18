@@ -466,7 +466,7 @@ const Post = () => {
     uploadPostMutation.mutate(formData);
   };
  
-  console.log(token)
+  // console.log(token)
   return (
     <>
       <Toaster position="top-center" />
@@ -637,9 +637,10 @@ const Post = () => {
           </div>
           <button
             type="submit"
-            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md"
+
+            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
           >
-            Post Normal Ad
+            Post 
           </button>
         </form>
       </div>

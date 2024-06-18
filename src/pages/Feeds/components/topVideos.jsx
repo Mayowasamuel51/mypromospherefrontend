@@ -30,7 +30,7 @@ const TopVideos = () => {
         )}
         {data?.data?.videos.map((video) => (
           <div key={video.id} className="flex flex-col gap-4">
-            <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
+          <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
               <ReactPlayer
                 width={`100%`}
                 playsinline={false}
@@ -38,7 +38,7 @@ const TopVideos = () => {
                 height={300}
                 url={video?.titlevideourl}
                 controls={true}
-                playing={true}
+                playing={false}
                 light={
                   video.id % 2 === 0 
                     ? `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
