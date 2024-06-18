@@ -116,7 +116,7 @@ const FeedsHome = () => {
         <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} cursor-pointer duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`} style={{background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`}} onClick={handleClick}>
           <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
         </div>
-        <motion.div className={`${isInView ? "opacity-100 visible" : "opacity-0 invisible"} duration-300 z-10 bg-white md:hidden block fixed bottom-0 left-0 right-0`} >
+        <motion.div className={`${isInView ? "opacity-100 visible" : "opacity-0 invisible"} fixed-shadow duration-300 z-10 bg-white md:hidden block fixed bottom-0 left-0 right-0`} >
           <div className="flex items-center justify-between font-light lg:font-medium lg:text-base text-xs">
             <Link
               to="/"
