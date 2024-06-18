@@ -132,7 +132,7 @@ const FeedsHome = () => {
             >
               <motion.button
                 whileTap={{ scale: 1.05 }}
-                className={`whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "text-[#EC6A87]"
+                className={`flex flex-col items-center gap-2 whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "text-[#EC6A87]"
                   }`}
               >
                 <MdOutlineDynamicFeed size={20} />
@@ -140,7 +140,7 @@ const FeedsHome = () => {
               </motion.button>
             </Link>
             <Link className="flex-1 text-center" to={`/`}>
-              <button>
+              <button className="flex flex-col items-center gap-2">
                 <FaPlus size={20} />
                 <p>Post an Ad</p>
               </button>
@@ -153,7 +153,7 @@ const FeedsHome = () => {
             >
               <motion.button
                 whileTap={{ scale: 1.05 }}
-                className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
+                className={`flex flex-col items-center gap-2 whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
                   "text-[#EC6A87]"
                   }`}
               >
