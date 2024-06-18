@@ -71,7 +71,7 @@ const FeedsHome = () => {
             <motion.div
               className={`md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 w-fit mx-auto bg-[#F0D8DD]`}
             >
-              <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
+              <div className="flex justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
                 <Link
                   to="/"
                   className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"
@@ -79,7 +79,7 @@ const FeedsHome = () => {
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "bg-[#EC6A87] text-white"
+                    className={`px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "bg-[#EC6A87] text-white"
                       }`}
                   >
                     Trending Ads
@@ -93,7 +93,7 @@ const FeedsHome = () => {
                 >
                   <motion.button
                     whileTap={{ scale: 1.05 }}
-                    className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
+                    className={`px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
                       "bg-[#EC6A87] text-white"
                       }`}
                   >
