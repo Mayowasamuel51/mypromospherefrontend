@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { useStateContext } from "../contexts/ContextProvider";
 import anon from "../assests/images/anon.png"
-import { FaPowerOff } from "react-icons/fa6";
+import { FaPowerOff, FaHouseChimneyWindow } from "react-icons/fa6";
+import { MdApartment, MdDiscount } from "react-icons/md";
+import { FaCar, FaLaptop } from "react-icons/fa";
 
 const MainCOntainerdivVariant = {
   initial: {
@@ -73,27 +75,32 @@ export default function MobileNav({ handleToggle }) {
             </motion.div>
           }
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/property">
+            <Link to="/category/property" className="flex items-center gap-1">
+              <FaHouseChimneyWindow />
               <p>Property</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/apartment">
+            <Link to="/category/apartment" className="flex items-center gap-1">
+              <MdApartment />
               <p>Apartment</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/cars">
+            <Link to="/category/cars" className="flex items-center gap-1">
+              <FaCar />
               <p>Cars</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/laptops">
+            <Link to="/category/laptops" className="flex items-center gap-1">
+              <FaLaptop />
               <p>Laptops</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/discount">
+            <Link to="/category/discount" className="flex items-center gap-1">
+              <MdDiscount />
               <p>Products on Discount</p>
             </Link>
           </motion.div>
