@@ -124,7 +124,7 @@ const FeedsHome = () => {
         <motion.div
           className={`z-[99999999999999] bg-white md:hidden block fixed bottom-0 left-0 right-0 md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden`}
         >
-          <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
+          <div className="flex justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
             <Link
               to="/"
               className={`text-center flex-1 ${location.pathname === "/" && "text-[#EC6A87]"
