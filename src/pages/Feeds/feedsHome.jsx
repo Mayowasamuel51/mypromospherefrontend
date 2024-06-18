@@ -54,9 +54,9 @@ const FeedsHome = () => {
 
   return (
     <>
-      <div className="relative">
+      <div className="">
         <Navbar blue={true} />
-        <section className="lg:px-10 px-4 flex items-center gap-2 pt-20 lg:pt-24">
+        <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           <div className="">
             <section className="lg:px-10 px-4">
               <div className="flex my-3 lg:my-5">
@@ -122,9 +122,9 @@ const FeedsHome = () => {
           <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
         </div>
         <motion.div
-          className={`z-10 border-2 border-red bg-white md:hidden block fixed bottom-0 left-0 right-0`}
+          className={` z-10 border-2 border-red bg-white md:hidden block fixed bottom-0 left-0 right-0`}
         >
-          <div className="font-light lg:font-medium lg:text-base text-xs">
+          <div className="flex items-center font-light lg:font-medium lg:text-base text-xs">
             <Link
               to="/"
               className={`block text-center flex-1 ${location.pathname === "/" && "text-[#EC6A87]"
