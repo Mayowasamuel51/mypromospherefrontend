@@ -49,7 +49,7 @@ const FeedsHome = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="relative">
       <Navbar blue={true} />
       <section className="lg:px-10 px-4 flex items-center gap-2 pt-20 lg:pt-24">
         <div className="">
@@ -70,7 +70,7 @@ const FeedsHome = () => {
             <motion.div
               className={`md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 w-fit mx-auto bg-[#F0D8DD]`}
             >
-              <div className="flex justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
+              <div className="flex items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
                 <Link
                   to="/"
                   className={`text-center flex-1 ${location.pathname === "/" && "bg-[#EC6A87] text-white"
@@ -117,7 +117,7 @@ const FeedsHome = () => {
         <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
       </div>
       <motion.div
-        className={`${isInView ? "" : ""} border-2 border-red md:hidden block fixed button-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
+        className={`${isInView ? "" : ""} z-50 border-2 border-red md:hidden block fixed button-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden bg-[#F0D8DD]`}
       >
         <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
           <Link
