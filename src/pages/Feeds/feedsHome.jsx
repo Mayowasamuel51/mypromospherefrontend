@@ -136,9 +136,9 @@ const FeedsHome = () => {
                 Trending Ads
               </motion.button>
             </Link>
-            <Link className="flex-1" to={`/`}>
+            <Link className="flex-1 text-center" to={`/`}>
               <button>
-                <FaPlus />
+                <FaPlus size={20} />
               </button>
             </Link>
             <Link
