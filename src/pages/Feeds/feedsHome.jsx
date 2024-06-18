@@ -60,7 +60,6 @@ const FeedsHome = () => {
                 className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                 placeholder="Search by title or tags , service"
                 onSearch={handleOnSearch}
-              // formatResult={formatResult}
               />
             </div>
             <div>
@@ -97,7 +96,7 @@ const FeedsHome = () => {
                       "bg-[#EC6A87] text-white"
                       }`}
                   >
-                    Browse Our Top Video Ads
+                    Top Video Ads
                   </motion.button>
                 </Link>
               </div>
