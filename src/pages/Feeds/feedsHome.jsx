@@ -2,15 +2,12 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
-import { motion, useInView, useScroll, useSpring } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import LOGO from "../../assests/SVGs/logo.svg";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
-import { FaUserPlus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { MdOutlineDynamicFeed } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
@@ -106,6 +103,7 @@ const FeedsHome = () => {
                   </Link>
                 </div>
               </motion.div>
+
               <div ref={ref} className="lg:py-5 px-4">
                 <Outlet />
               </div>
