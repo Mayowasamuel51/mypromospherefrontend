@@ -21,7 +21,6 @@ const TopVideos = () => {
 
   return (
     <>
-        
       <section className="relative grid md:gap-4 md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
         {isLoading && (
           <div className="md:col-span-2 lg:col-span-3 exl:col-span-4">
@@ -30,24 +29,28 @@ const TopVideos = () => {
         )}
         {data?.data?.videos.map((video) => (
           <div key={video.id} className="flex flex-col gap-4">
-          <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
+            <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
               <ReactPlayer
                 width={`100%`}
                 playsinline={false}
-              playbackRate={1}
+                playbackRate={1}
                 height={300}
                 url={video?.titlevideourl}
                 controls={true}
                 playing={false}
                 light={
-                  video.id % 2 === 0 
-                    ? `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
-                    : `${ api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
+                  video.id % 2 === 0
+                    ? `${api_thumbnails}/public/storage/${video.thumbnails.slice(
+                        7
+                      )}`
+                    : `${api_thumbnails}/public/storage/${video.thumbnails.slice(
+                        7
+                      )}`
                 }
                 muted={true}
                 playIcon={<FaRegCirclePlay size={50} color="#fff" />}
                 className="hover:outline hover:scale-105 duration-300"
-              /> 
+              />
             </div>
             <Link to={`/profile/user/${video.user_id}`} className="w-fit">
               <div className="flex items-center gap-2">
