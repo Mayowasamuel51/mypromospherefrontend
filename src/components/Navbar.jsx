@@ -67,9 +67,9 @@ export default function Navbar({ profile, blue }) {
 
       <div onClick={handleToggle} className="z-20 exl:hidden cursor-pointer ">
         {toggleIcon ? (
-          <XMarkIcon width={35} className={`${toggleIcon && bg ? "text-black dark:text-white" : "text-white dark:text-black"} ${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
+          <XMarkIcon width={35} className={`${bg ? toggleIcon && "text-black dark:text-white" : "text-white dark:text-black"} ${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
         ) : (
-          <Bars3BottomRightIcon width={35} className={`${toggleIcon && bg ? "text-black dark:text-white" : "text-white dark:text-black"} ${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
+          <Bars3BottomRightIcon width={35} className={`${bg ? toggleIcon && "text-black dark:text-white" : "text-white dark:text-black"} ${(bg && !profile && !blue) ? "text-black" : "text-white"}`} />
         )}
       </div>
       <AnimatePresence>

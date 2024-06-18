@@ -20,7 +20,7 @@ const Myuploads = ({ id }) => {
         {(!data?.data.posts && !isLoading) && <h1 className='text-center col-span-2 md:col-span-4 lg:col-span-4 exl:col-span-6'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
         {(data?.data.posts && !isLoading) &&
           data?.data.posts.map((item) => (
-            <Link to={`/feed/${item.id}`} key={item.id} className="flex flex-col">
+            <Link to={`/feed/${item.id}`} key={item.id} className="">
               <div className="">
                 <div className=''>
                   {item.titleImageurl ? <LazyLoadImage effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[150px] md:h-[200px] object-cover" /> : 'NOTHING TO SHOW '}
