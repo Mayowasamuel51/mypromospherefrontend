@@ -130,7 +130,7 @@ const FeedsHome = () => {
                 Trending Ads
               </motion.button>
             </Link>
-            <Link className="block text-center" to={`/`}>
+            <Link className="block text-center" to={`/dashboard/post`}>
               <button className="flex flex-col items-center gap-2">
                 <FaPlus size={20} />
                 <p>Post an Ad</p>
