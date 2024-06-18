@@ -127,7 +127,7 @@ const FeedsHome = () => {
           <div className="flex justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
             <Link
               to="/"
-              className={`text-center flex-1 ${location.pathname === "/" && "text-[#EC6A87]"
+              className={`block text-center flex-1 ${location.pathname === "/" && "text-[#EC6A87]"
                 }`}
             >
               <motion.button
@@ -139,7 +139,7 @@ const FeedsHome = () => {
                 Trending Ads
               </motion.button>
             </Link>
-            <Link className="flex-1 text-center" to={`/`}>
+            <Link className="block flex-1 text-center" to={`/`}>
               <button className="flex flex-col items-center gap-2">
                 <FaPlus size={20} />
                 <p>Post an Ad</p>
@@ -147,7 +147,7 @@ const FeedsHome = () => {
             </Link>
             <Link
               to="/top-videos"
-              className={`text-center flex-1 ${location.pathname === "/top-videos" &&
+              className={`block text-center flex-1 ${location.pathname === "/top-videos" &&
                 "text-[#EC6A87]"
                 }`}
             >
