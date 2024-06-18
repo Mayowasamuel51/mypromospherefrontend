@@ -12,6 +12,8 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
 import { FaUserPlus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import { MdOutlineDynamicFeed } from "react-icons/md";
+import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
 const api_search_query = import.meta.env.VITE_FULL_SEARCH;
@@ -120,7 +122,7 @@ const FeedsHome = () => {
           <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
         </div>
         <motion.div
-          className={`z-[99999999999999] bg-white md:hidden block fixed bottom-0 left-0 right-0 shadow-md md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden`}
+          className={`z-[99999999999999] bg-white md:hidden block fixed bottom-0 left-0 right-0 shadow-xl md:py-4 md:px-3 md:p-6 md:w-fit overflow-hidden`}
         >
           <div className="flex md:justify-center items-center md:gap-4 font-light lg:font-medium lg:text-base text-xs">
             <Link
@@ -133,26 +135,29 @@ const FeedsHome = () => {
                 className={`whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "text-[#EC6A87]"
                   }`}
               >
+                <MdOutlineDynamicFeed size={20} />
                 Trending Ads
               </motion.button>
             </Link>
             <Link className="flex-1 text-center" to={`/`}>
               <button>
                 <FaPlus size={20} />
+                <p>Post an Ad</p>
               </button>
             </Link>
             <Link
               to="/top-videos"
               className={`text-center flex-1 ${location.pathname === "/top-videos" &&
-                "bg-[#EC6A87] text-white"
+                "text-[#EC6A87]"
                 }`}
             >
               <motion.button
                 whileTap={{ scale: 1.05 }}
                 className={`whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
-                  "bg-[#EC6A87] text-white"
+                  "text-[#EC6A87]"
                   }`}
               >
+                <FaVideo size={20} />
                 Top Video Ads
               </motion.button>
             </Link>
