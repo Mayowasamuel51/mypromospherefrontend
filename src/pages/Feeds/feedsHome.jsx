@@ -97,7 +97,7 @@ const FeedsHome = () => {
         <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} cursor-pointer duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`} style={{background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`}} onClick={handleClick}>
           <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
         </div>
-        <motion.div className={`${isInView ? "opacity-80 visible" : "opacity-0 invisible"} fixed-shadow duration-300 z-10 bg-white md:hidden block fixed bottom-2 left-2 right-2 rounded-md`} >
+        <motion.div className={`${isInView ? "opacity-100 bg-opacity-90 visible" : "opacity-0 invisible"} fixed-shadow duration-300 z-10 bg-white md:hidden block fixed bottom-2 left-2 right-2 rounded-md`} >
           <div className="flex items-center justify-between font-light lg:font-medium lg:text-base text-xs">
             <Link
               to="/"
@@ -109,13 +109,13 @@ const FeedsHome = () => {
                 className={`flex flex-col items-center gap-2 whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "text-[#EC6A87]"
                   }`}
               >
-                <MdOutlineDynamicFeed size={20} />
+                <MdOutlineDynamicFeed size={20} className="text-black" />
                 Trending Ads
               </motion.button>
             </Link>
             <Link className="block text-center" to={`/dashboard/post`}>
               <button className="flex flex-col items-center gap-2">
-                <FiPlusSquare size={20} />
+                <FiPlusSquare size={20} className="text-black" />
                 <p>Post an Ad</p>
               </button>
             </Link>
@@ -131,7 +131,7 @@ const FeedsHome = () => {
                   "text-[#EC6A87]"
                   }`}
               >
-                <FaVideo size={20} />
+                <FaVideo size={20} className="text-black" />
                 Top Video Ads
               </motion.button>
             </Link>
