@@ -28,10 +28,10 @@ function DefualtLayout() {
                                 alt={"profile-picture"}
                                 className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top"
                             />
-                            <h1 className="font-700 text-xs md:text-sm capitalize">
+                            <h1 className="font-medium text-xs md:text-sm capitalize">
                                 {token ? `${token["user_name"]}` : 'Anonymous'}
                             </h1>
-                            <div className="flex flex-col justify-center gap-x-3">
+                            <div className="flex flex-col md:gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
                                     <p className="text-center">share</p>
@@ -43,14 +43,12 @@ function DefualtLayout() {
                                     </button>
                                 </Link>
                             </div>
-                            <div className="flex flex-col justify-center gap-x-6">
-                                <div className="flex items-center gap-x-4">
-                                    <button onClick={()=> setSaved(false)}
-                                    className={`${!saved && ""} cursor-pointer`}
-                                    >
-                                        Post
-                                    </button>
-                                </div>
+                            <div className="flex flex-col md:gap-4 justify-center gap-x-6">
+                                <button onClick={()=> setSaved(false)}
+                                className={`${!saved && ""} cursor-pointer`}
+                                >
+                                    Post
+                                </button>
                                 <button onClick={()=> setSaved(true)}
                                 className={`${saved && ""} cursor-pointer`}
                                 >
