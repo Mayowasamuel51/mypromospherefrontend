@@ -35,7 +35,7 @@ const MyVidoes = () => {
     return (
       <div className="min-h-screen grid place-items-center">
         <p>
-          <h1>Sorry you dont have any Video uploads</h1>
+          <h1 className="text-center">Sorry you dont have any Video uploads</h1>
         </p>
       </div>
     );
