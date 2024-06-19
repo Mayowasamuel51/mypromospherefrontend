@@ -14,7 +14,7 @@ import {  } from "react-icons/fa";
 
 function DefualtLayout() {
     const { token } = useStateContext()
-    const [saved, setSaved] = useState(false)
+    const [Video, setVideo] = useState(false)
     if (!token) return <Navigate  to="/" />
     return (
         <>
@@ -46,11 +46,11 @@ function DefualtLayout() {
                                 </Link>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-white md:text-[#3D217A]"} text-white md:text-black cursor-pointer flex items-center gap-2`}>
+                                <p onClick={()=> setVideo(false)} className={`${!Video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
                                     <MdDynamicFeed size={20} />
                                     <span className="md:block hidden">Post</span>
                                 </p>
-                                <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-white md:text-[#3D217A]"} text-white md:text-black cursor-pointer flex items-center gap-2`}>
+                                <p onClick={()=> setVideo(true)} className={`${Video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
                                     <FaVideo size={20} />
                                     <span className="md:block hidden">Video</span>
                                 </p>
@@ -67,7 +67,7 @@ function DefualtLayout() {
                     <article className="flex-1 flex">
                         <div className="md:px-10">
                             <AnimatePresence>
-                                {saved ? <Video /> : <Post />}
+                                {Video ? <Video /> : <Post />}
                             </AnimatePresence>
                         </div>
                     </article>
