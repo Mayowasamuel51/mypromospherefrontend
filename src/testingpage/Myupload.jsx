@@ -31,7 +31,7 @@ const Myuploads = ({ id }) => {
   );
 };
 
-Myuploads.PropTypes = {
+Myuploads.propTypes = {
   id : PropTypes.string.isRequired
 }
 
