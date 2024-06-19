@@ -16,18 +16,18 @@ function DefualtLayout() {
     if (!token) return <Navigate  to="/" />
     return (
         <>
-            <main className={``}>
+            <main className={`px-4`}>
                 <section className="flex">
-                    <article className="flex flex-col gap-2">
+                    <article className="flex flex-col gap-2 border-2">
                         <img
                             src={token?.profileImage  ?? anon}
                             alt={"profile-picture"}
                             className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top mx-auto"
                         />
-                        <h1 className="text-center font-700 text-lg md:text-3xl capitalize">
+                        <h1 className="text-center font-700 text-xs md:text-sm capitalize">
                             {token ? `${token["user_name"]}` : 'Anonymous'}
                         </h1>
-                        <div className="flex items-center justify-center gap-x-3">
+                        <div className="flex flex-col items-center justify-center gap-x-3">
                             <button className="bg-slate-300 hover:bg-slate-400 duration-200 p-2 px-4 rounded-md cursor-pointer">
                                 <p className="text-center">share</p>
                             </button>
@@ -37,7 +37,7 @@ function DefualtLayout() {
                                 </button>
                             </Link>
                         </div>
-                        <div className="flex items-center justify-center gap-x-6">
+                        <div className="flex flex-col items-center justify-center gap-x-6">
                             <div className="flex items-center gap-x-4">
                                 <button onClick={()=> setSaved(false)}
                                 className={`${!saved && "border-2 border-[#000000] border-t-0 border-r-0 border-l-0"} cursor-pointer`}
@@ -51,6 +51,11 @@ function DefualtLayout() {
                                 Saved
                             </button>
                         </div>
+                        <Link to={`post`}>
+                            <button className="bg-purple cursor-pointer p-2 px-4 rounded-md">
+                                <p className="text-white">Post an Ad</p>
+                            </button>
+                        </Link>
                     </article>
 
                     <article className="flex flex-col">
