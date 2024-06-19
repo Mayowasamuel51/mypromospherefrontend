@@ -10,7 +10,7 @@ import { FaEdit } from "react-icons/fa";
 import { FiPlusSquare } from "react-icons/fi";
 import { MdDynamicFeed } from "react-icons/md";
 
-function DefualtLayout() {
+function Dashboard() {
     const { token } = useStateContext()
     const [video, setVideo] = useState(false)
     if (!token) return <Navigate  to="/" />
@@ -75,4 +75,4 @@ function DefualtLayout() {
     )
 }
 
-export default DefualtLayout
+export default Dashboard;
