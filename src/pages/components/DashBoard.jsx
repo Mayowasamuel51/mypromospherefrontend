@@ -10,7 +10,6 @@ import { FaShare, FaVideo } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FiPlusSquare } from "react-icons/fi";
 import { MdDynamicFeed } from "react-icons/md";
-import {  } from "react-icons/fa";
 
 function DefualtLayout() {
     const { token } = useStateContext()
