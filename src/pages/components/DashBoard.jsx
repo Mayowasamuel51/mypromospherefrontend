@@ -21,7 +21,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="w-fit flex flex-col justify-between gap-16 bg-slate-100 rounded-lg py-2 px-2 md:py-10 md:px-6 text-center">
+                    <article className="w-fit flex flex-col justify-between gap-16 py-2 px-2 md:py-10 md:px-6 text-center">
                         <div className="flex flex-col gap-2">
                             <img
                                 src={token?.profileImage  ?? anon}
@@ -31,7 +31,7 @@ function DefualtLayout() {
                             <h1 className="font-medium text-xs md:text-sm capitalize">
                                 {token ? `${token["user_name"]}` : 'Anonymous'}
                             </h1>
-                            <div className="flex flex-col md:gap-4 justify-center">
+                            <div className="flex flex-col md:gap-6 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
                                     <p className="text-center">share</p>
@@ -43,17 +43,17 @@ function DefualtLayout() {
                                     </button>
                                 </Link>
                             </div>
-                            <div className="flex flex-col md:gap-4 justify-center gap-x-6">
-                                <button onClick={()=> setSaved(false)}
+                            <div className="flex flex-col md:gap-6 justify-center gap-x-6">
+                                <p onClick={()=> setSaved(false)}
                                 className={`${!saved && ""} cursor-pointer`}
                                 >
                                     Post
-                                </button>
-                                <button onClick={()=> setSaved(true)}
+                                </p>
+                                <p onClick={()=> setSaved(true)}
                                 className={`${saved && ""} cursor-pointer`}
                                 >
                                     Saved
-                                </button>
+                                </p>
                             </div>
                         </div>
                         <Link to={`post`}>
@@ -64,7 +64,7 @@ function DefualtLayout() {
                         </Link>
                     </article>
 
-                    <article className="flex-1 flex flex-col bg-slate-100 rounded-lg">
+                    <article className="flex-1 flex flex-col">
                         <div className="text-center my-4">
                             <AnimatePresence>
                                 {saved ? <Saved /> : <Post />}
