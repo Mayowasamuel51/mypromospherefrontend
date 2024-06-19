@@ -26,39 +26,39 @@ function DefualtLayout() {
                                 <img
                                     src={token?.profileImage  ?? anon}
                                     alt={"profile-picture"}
-                                    className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top"
+                                    className="w-[30px] md:w-[50px] aspect-square rounded-full object-cover object-top"
                                 />
-                                <h1 className="font-medium text-xs md:text-sm capitalize md:hidden block">
+                                <h1 className="font-medium text-xs md:text-sm capitalize md:block hidden">
                                     {token ? `${token["user_name"]}` : 'Anonymous'}
                                 </h1>
                             </div>
                             <div className="flex flex-col md:gap-6 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
-                                    <p className="text-center md:hidden block">share</p>
+                                    <p className="text-center md:block hidden">share</p>
                                 </button>
                                 <Link to={'EditProfile'} className="">
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <FaEdit size={20} />
-                                        <p className="text-center md:hidden block">Edit profile</p>
+                                        <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </Link>
                             </div>
                             <div className="flex flex-col md:gap-6 justify-center gap-x-6">
                                 <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
                                     <MdDynamicFeed size={20} />
-                                    <span className="md:hidden block">Post</span>
+                                    <span className="md:block hidden">Post</span>
                                 </p>
                                 <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
                                     <FaVideo size={20} />
-                                    <span className="md:hidden block">Video</span>
+                                    <span className="md:block hidden">Video</span>
                                 </p>
                             </div>
                         </div>
                         <Link to={`post`}>
                             <button className="text-[#3D217A] cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
-                                <p className="md:hidden block">Post an Ad</p>
+                                <p className="md:block hidden">Post an Ad</p>
                             </button>
                         </Link>
                     </article>
