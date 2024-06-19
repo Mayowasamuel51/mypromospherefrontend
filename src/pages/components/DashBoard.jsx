@@ -2,14 +2,15 @@ import { Link, Navigate } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
 import { useState } from "react"
 import { AnimatePresence  } from "framer-motion";
-
 import roundedImg from "../../assests/images/Ellipse 3.png";
 import anon from "../../assests/images/anon.png";
 import Post from "./Post";
 import Saved from "./Saved";
-import { FaShare } from "react-icons/fa";
+import { FaShare, FaVideo } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FiPlusSquare } from "react-icons/fi";
+import { MdDynamicFeed } from "react-icons/md";
+import {  } from "react-icons/fa";
 
 function DefualtLayout() {
     const { token } = useStateContext()
@@ -27,39 +28,37 @@ function DefualtLayout() {
                                     alt={"profile-picture"}
                                     className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top"
                                 />
-                                <h1 className="font-medium text-xs md:text-sm capitalize">
+                                <h1 className="font-medium text-xs md:text-sm capitalize md:hidden block">
                                     {token ? `${token["user_name"]}` : 'Anonymous'}
                                 </h1>
                             </div>
                             <div className="flex flex-col md:gap-6 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
-                                    <p className="text-center">share</p>
+                                    <p className="text-center md:hidden block">share</p>
                                 </button>
                                 <Link to={'EditProfile'} className="">
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <FaEdit size={20} />
-                                        <p className="text-center">Edit profile</p>
+                                        <p className="text-center md:hidden block">Edit profile</p>
                                     </button>
                                 </Link>
                             </div>
                             <div className="flex flex-col md:gap-6 justify-center gap-x-6">
-                                <p onClick={()=> setSaved(false)}
-                                className={`${!saved && "font-bold text-[#3D217A]"} cursor-pointer`}
-                                >
-                                    Post
+                                <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
+                                    <MdDynamicFeed size={20} />
+                                    <span className="md:hidden block">Post</span>
                                 </p>
-                                <p onClick={()=> setSaved(true)}
-                                className={`${saved && "font-bold text-[#3D217A]"} cursor-pointer`}
-                                >
-                                    Saved
+                                <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
+                                    <FaVideo size={20} />
+                                    <span className="md:hidden block">Video</span>
                                 </p>
                             </div>
                         </div>
                         <Link to={`post`}>
                             <button className="text-[#3D217A] cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
-                                <p className="">Post an Ad</p>
+                                <p className="md:hidden block">Post an Ad</p>
                             </button>
                         </Link>
                     </article>
