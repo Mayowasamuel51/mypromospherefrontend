@@ -1,4 +1,3 @@
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import React from "react";
