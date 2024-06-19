@@ -19,7 +19,7 @@ function DefualtLayout() {
     return (
         <>
             <main className={`px-4`}>
-                <section className="flex items-start md:gap-10">
+                <section className="flex items-start md:gap-10 gap-4">
                     <article className="w-fit flex text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
