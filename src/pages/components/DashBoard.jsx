@@ -17,8 +17,8 @@ function DefualtLayout() {
     return (
         <>
             <main className={`px-4`}>
-                <section className="flex">
-                    <article className="flex flex-col gap-2 border-2">
+                <section className="flex items-start gap-2">
+                    <article className="flex-1 flex flex-col gap-2 border-2">
                         <img
                             src={token?.profileImage  ?? anon}
                             alt={"profile-picture"}
@@ -58,7 +58,7 @@ function DefualtLayout() {
                         </Link>
                     </article>
 
-                    <article className="flex flex-col">
+                    <article className="flex-1 flex flex-col">
                         <div className="text-center my-4">
                             <AnimatePresence>
                                 {saved ? <Saved /> : <Post />}
