@@ -18,7 +18,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="flex-1 flex flex-col gap-2 border-2">
+                    <article className="flex-1 flex flex-col gap-2 border-2 text-center">
                         <img
                             src={token?.profileImage  ?? anon}
                             alt={"profile-picture"}
