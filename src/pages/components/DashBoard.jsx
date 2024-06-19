@@ -17,12 +17,12 @@ function DefualtLayout() {
     return (
         <>
             <main className={``}>
-                <section className="flex flex-col gap-4">
+                <section className="">
                     <article className="flex flex-col gap-2">
                         <img
                             src={token?.profileImage  ?? anon}
                             alt={"profile-picture"}
-                            className="w-[80px] md:w-[150px] aspect-square rounded-full object-cover object-top mx-auto"
+                            className="w-[20px] md:w-[100px] aspect-square rounded-full object-cover object-top mx-auto"
                         />
                         <h1 className="text-center font-700 text-lg md:text-3xl capitalize">
                             {token ? `${token["user-name"]}` : 'Anonymous'}
