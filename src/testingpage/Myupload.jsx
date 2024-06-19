@@ -4,6 +4,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { Link } from 'react-router-dom';
 import FetchUserposts from '../hooks/LoggedInUserPost';
 import UploadSkeleton from '../components/uploadSkeleton';
+import PropTypes from 'prop-types';
 
 
 const Myuploads = ({ id }) => {
@@ -29,5 +30,10 @@ const Myuploads = ({ id }) => {
     </div>
   );
 };
+
+Myuploads.PropTypes = {
+  id : PropTypes.string.isRequired
+}
+
 
 export default Myuploads;
