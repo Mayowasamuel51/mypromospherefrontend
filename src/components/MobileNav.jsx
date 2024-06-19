@@ -68,7 +68,7 @@ export default function MobileNav({ handleToggle }) {
               <Link to="/dashboard" onClick={handleToggle} className="my-4 group flex items-center gap-2 py-4 border-b-2 border-black">
                 <img src={token?.profileImage ?? anon} alt="" className="group-hover:scale-125 duration-200 w-10 aspect-square rounded-full" />
                 <div className='flex flex-col gap-1'>
-                  <p className='text-sm'>{token && token["user-name"]}</p>
+                  <p className='text-sm'>{token && token["user_name"]}</p>
                   <p className='text-xs text-slate-400'>{token.user}</p>
                 </div>
               </Link>
