@@ -19,9 +19,9 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start md:gap-10">
-                    <article className="w-fit flex flex-col justify-between gap-16 py-2 px-2 md:py-10 md:px-6">
+                    <article className="w-fit flex flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6 border-r-2 border-black">
                         <div className="flex flex-col md:gap-6">
-                            <div>
+                            <div className="flex flex-col gap-2">
                                 <img
                                     src={token?.profileImage  ?? anon}
                                     alt={"profile-picture"}
@@ -45,12 +45,12 @@ function DefualtLayout() {
                             </div>
                             <div className="flex flex-col md:gap-6 justify-center gap-x-6">
                                 <p onClick={()=> setSaved(false)}
-                                className={`${!saved && ""} cursor-pointer`}
+                                className={`${!saved && "font-bold text-[#3D217A]"} cursor-pointer`}
                                 >
                                     Post
                                 </p>
                                 <p onClick={()=> setSaved(true)}
-                                className={`${saved && ""} cursor-pointer`}
+                                className={`${saved && "font-bold text-[#3D217A]"} cursor-pointer`}
                                 >
                                     Saved
                                 </p>
@@ -58,7 +58,7 @@ function DefualtLayout() {
                         </div>
                         <Link to={`post`}>
                             <button className="text-[#3D217A] cursor-pointer flex items-center gap-2">
-                                <FiPlusSquare />
+                                <FiPlusSquare size={20} />
                                 <p className="">Post an Ad</p>
                             </button>
                         </Link>
