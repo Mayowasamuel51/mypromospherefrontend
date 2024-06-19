@@ -9,6 +9,7 @@ import Post from "./Post";
 import Saved from "./Saved";
 import { FaShare } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
+import { FiPlusSquare } from "react-icons/fi";
 
 function DefualtLayout() {
     const { token } = useStateContext()
@@ -20,29 +21,29 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="w-fit flex flex-col justify-between gap-16 bg-slate-100 rounded-lg py-2 md:py-10 text-center">
+                    <article className="w-fit flex flex-col justify-between gap-16 bg-slate-100 rounded-lg py-2 px-2 md:py-10 md:px-6 text-center">
                         <div className="flex flex-col gap-2">
                             <img
                                 src={token?.profileImage  ?? anon}
                                 alt={"profile-picture"}
-                                className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top mx-auto"
+                                className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top"
                             />
-                            <h1 className="text-center font-700 text-xs md:text-sm capitalize">
+                            <h1 className="font-700 text-xs md:text-sm capitalize">
                                 {token ? `${token["user_name"]}` : 'Anonymous'}
                             </h1>
-                            <div className="flex flex-col items-center justify-center gap-x-3">
+                            <div className="flex flex-col justify-center gap-x-3">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
                                     <p className="text-center">share</p>
                                 </button>
-                                <Link to={'EditProfile'} className="bigLg:hidden">
+                                <Link to={'EditProfile'} className="">
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <FaEdit size={20} />
                                         <p className="text-center">Edit profile</p>
                                     </button>
                                 </Link>
                             </div>
-                            <div className="flex flex-col items-center justify-center gap-x-6">
+                            <div className="flex flex-col justify-center gap-x-6">
                                 <div className="flex items-center gap-x-4">
                                     <button onClick={()=> setSaved(false)}
                                     className={`${!saved && ""} cursor-pointer`}
@@ -58,7 +59,8 @@ function DefualtLayout() {
                             </div>
                         </div>
                         <Link to={`post`}>
-                            <button className="bg-purple cursor-pointer p-2 px-4 rounded-md">
+                            <button className="cursor-pointer flex items-center gap-2">
+                                <FiPlusSquare />
                                 <p className="text-white">Post an Ad</p>
                             </button>
                         </Link>

@@ -8,7 +8,7 @@ import LOGO from "../../assests/SVGs/logo.svg";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
-import { FaPlus } from "react-icons/fa6";
+import { FiPlusSquare } from "react-icons/fi";
 import { MdOutlineDynamicFeed } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
@@ -31,23 +31,6 @@ const FeedsHome = () => {
   const handleOnFocus = () => {
     console.log("Focused");
   };
-
-  useEffect(() => {
-    const updateStickyTop = () => {
-      if (ref.current) {
-        const elementHeight = ref.current.offsetHeight;
-        ref.current.style.setProperty(
-          "--sticky-top",
-          `${window.innerHeight - elementHeight}px`
-        );
-      }
-    };
-    updateStickyTop();
-    window.addEventListener("resize", updateStickyTop);
-    return () => {
-      window.removeEventListener("resize", updateStickyTop);
-    };
-  }, []);
 
   return (
     <>
@@ -132,7 +115,7 @@ const FeedsHome = () => {
             </Link>
             <Link className="block text-center" to={`/dashboard/post`}>
               <button className="flex flex-col items-center gap-2">
-                <FaPlus size={20} />
+                <FiPlusSquare size={20} />
                 <p>Post an Ad</p>
               </button>
             </Link>
