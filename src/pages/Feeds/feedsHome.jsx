@@ -1,10 +1,9 @@
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+// import axios from "axios";
+import { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import LOGO from "../../assests/SVGs/logo.svg";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
@@ -13,7 +12,7 @@ import { MdOutlineDynamicFeed } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
-const api_search_query = import.meta.env.VITE_FULL_SEARCH;
+// const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
   const location = useLocation();

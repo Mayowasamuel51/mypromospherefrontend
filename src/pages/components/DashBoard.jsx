@@ -2,7 +2,6 @@ import { Link, Navigate } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
 import { useState } from "react"
 import { AnimatePresence  } from "framer-motion";
-import roundedImg from "../../assests/images/Ellipse 3.png";
 import anon from "../../assests/images/anon.png";
 import Post from "./Post";
 import Video from "./Video";
