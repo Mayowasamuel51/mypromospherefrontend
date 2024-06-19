@@ -20,8 +20,8 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start md:gap-10">
-                    <article className="w-fit flex flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
-                        <div className="flex flex-col md:gap-6">
+                    <article className="w-fit flex text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                        <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
                                     src={token?.profileImage  ?? anon}
@@ -32,7 +32,7 @@ function DefualtLayout() {
                                     {token ? `${token["user_name"]}` : 'Anonymous'}
                                 </h1>
                             </div>
-                            <div className="flex flex-col md:gap-6 justify-center">
+                            <div className="flex flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
                                     <p className="text-center md:block hidden">share</p>
@@ -44,7 +44,7 @@ function DefualtLayout() {
                                     </button>
                                 </Link>
                             </div>
-                            <div className="flex flex-col md:gap-6 justify-center gap-x-6">
+                            <div className="flex flex-col md:gap-6 gap-4 justify-center gap-x-6">
                                 <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
                                     <MdDynamicFeed size={20} />
                                     <span className="md:block hidden">Post</span>
