@@ -20,7 +20,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4 md:px-10`}>
                 <section className="flex items-start md:gap-10 gap-4">
-                    <article className="w-fit flex text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                    <article className="rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
@@ -45,11 +45,11 @@ function DefualtLayout() {
                                 </Link>
                             </div>
                             <div className="flex flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
+                                <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-white md:text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
                                     <MdDynamicFeed size={20} />
                                     <span className="md:block hidden">Post</span>
                                 </p>
-                                <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
+                                <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-white md:text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
                                     <FaVideo size={20} />
                                     <span className="md:block hidden">Video</span>
                                 </p>
