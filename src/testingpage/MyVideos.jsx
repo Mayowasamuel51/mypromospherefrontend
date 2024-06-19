@@ -5,13 +5,13 @@ import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Loader from "../loader";
 import ReactPlayer from "react-player";
 import anon from "../assests/images/anon.png";
 import { FaRegCirclePlay } from "react-icons/fa6";
 const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
 const api_thumbnails = import.meta.env.VITE_thumbnails;
+import VideoSkeleton from "../components/videoSkeleton";
 
 const MyVidoes = () => {
   const { FullScreen } = useStateContext();
@@ -43,9 +43,7 @@ const MyVidoes = () => {
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
       {isLoading && (
-        <div className="md:col-span-2 lg:col-span-3 exl:col-span-4">
-          <Loader />
-        </div>
+        <VideoSkeleton posts={4} />
       )}
       {data?.data.posts.map((video) => (
         <div key={video.id} className="flex flex-col gap-4">

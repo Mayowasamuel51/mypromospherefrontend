@@ -9,7 +9,7 @@ import UploadSkeleton from '../components/uploadSkeleton';
 // eslint-disable-next-line react/prop-types
 const Myuploads = ({ id }) => {
   const { token } = useStateContext();
-  const { data, isLoading, error } = FetchUserposts(token)
+  const { data, isLoading, error } = FetchUserposts(token);
   if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
   return (
     <div className="overflow-x-hidden">
