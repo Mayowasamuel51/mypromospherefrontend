@@ -46,11 +46,11 @@ function DefualtLayout() {
                                 </Link>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-white md:text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
+                                <p onClick={()=> setSaved(false)} className={`${!saved && "font-bold text-white md:text-[#3D217A]"} text-white md:text-black cursor-pointer flex items-center gap-2`}>
                                     <MdDynamicFeed size={20} />
                                     <span className="md:block hidden">Post</span>
                                 </p>
-                                <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-white md:text-[#3D217A]"} cursor-pointer flex items-center gap-2`}>
+                                <p onClick={()=> setSaved(true)} className={`${saved && "font-bold text-white md:text-[#3D217A]"} text-white md:text-black cursor-pointer flex items-center gap-2`}>
                                     <FaVideo size={20} />
                                     <span className="md:block hidden">Video</span>
                                 </p>
