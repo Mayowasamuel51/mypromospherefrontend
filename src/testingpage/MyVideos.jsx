@@ -1,4 +1,3 @@
-// this is the user upload page for the noraml ads (which is just images ) video ads
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useStateContext } from "../contexts/ContextProvider";
