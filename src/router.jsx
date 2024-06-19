@@ -35,14 +35,9 @@ import Layout from "./pages/PerfectWorks/components/layout";
 import Works from "./pages/PerfectWorks/Works";
 import Detail from "./pages/PerfectWorks/Detail";
 import PostAPicture from "./pages/LoginPage/PostAPicture";
-import EditProfile from "./pages/LoginPage/EditProfile";
 import Photography from "./pages/skills/Photographers";
-import DashBoardLayout from "./pages/Layout/DashBoardLayout.jsx";
 import GoogleCallback from "./GoogleAuth/GoogleCallback";
 
-// import TopServices from "./pages/components/TopServices.jsx";
-// import TrendingSkills from "./pages/components/TrendingSkills.jsx";
-// import TopSkillsLagos from "./pages/components/TopSkillsinLagos.jsx";
 import Post from "./testingpage/Post.jsx";
 import Video from "./testingpage/Video.jsx";
 import Fulltext from "./testingpage/Fulltext.jsx";
