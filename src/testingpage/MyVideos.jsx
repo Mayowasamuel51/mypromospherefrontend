@@ -4,17 +4,11 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import FetchUserposts from "../hooks/LoggedInUserPost";
 import { useQuery } from "@tanstack/react-query";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Loader from "../loader";
-import React from "react";
 import ReactPlayer from "react-player";
 import anon from "../assests/images/anon.png";
-import thumbnail1 from "../assests/images/feed1.svg";
-import thumbnail2 from "../assests/images/feed2.svg";
-import thumbnail3 from "../assests/images/feed3.svg";
-import thumbnail4 from "../assests/images/feed4.svg";
 import { FaRegCirclePlay } from "react-icons/fa6";
 const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
 const api_thumbnails = import.meta.env.VITE_thumbnails;
@@ -23,7 +17,7 @@ const MyVidoes = () => {
   const { FullScreen } = useStateContext();
   const token = useStateContext();
   const { isPending, isError, data, isLoading, error } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["myVideos"],
     queryFn: () =>
       axios.get(`${api_load_v1}${token.token?.id}`, {
         headers: {
@@ -57,7 +51,7 @@ const MyVidoes = () => {
         <div key={video.id} className="flex flex-col gap-4">
           <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
             <ReactPlayer
-              width={280}
+              width={`100%`}
               height={300}
               url={video?.titlevideourl}
               playsinline={true}
@@ -68,7 +62,6 @@ const MyVidoes = () => {
                   ? `${api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
                   : `${api_thumbnails}/public/storage/${video.thumbnails.slice(7)}`
               }
-              // loop={true}
               controls={true}
               muted={true}
               playIcon={<FaRegCirclePlay size={50} color="#fff" />}
