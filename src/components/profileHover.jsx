@@ -59,7 +59,7 @@ const ProfileHover = ({ LogOut }) => {
                         <Link  to="/dashboard" className='group flex items-center gap-2 py-2 border-b-2'>
                             <img src={token?.profileImage ?? anon} alt="" className="group-hover:scale-125 duration-200 w-10 aspect-square rounded-full object-cover" />
                             <div className='flex flex-col gap-1'>
-                                <p className='text-sm'>{token && token["user-name"]}</p>
+                                <p className='text-sm'>{token && token["user_name"]}</p>
                                 <p className='text-xs text-slate-400'>{token.user}</p>
                             </div>
                         </Link>

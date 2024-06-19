@@ -13,13 +13,14 @@ import PostsSkeleton from '../../../components/postsSkeleton';
 const TrendingAds = () => {
     const { token } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
+    console.log(data);
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
-            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -70,7 +71,7 @@ const TrendingAds = () => {
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>ALWAYS STAY IN VOGUE</h1>
             </div>
-            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -119,7 +120,7 @@ const TrendingAds = () => {
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
             </div>
-            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -169,7 +170,7 @@ const TrendingAds = () => {
 
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
             </div>
-            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
+            <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Laptops").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">

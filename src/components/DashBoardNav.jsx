@@ -34,9 +34,9 @@ const DashBoardNav = () => {
           </Link>
           <div className="z-20 lg:hidden">
             {toggleNav ? (
-              <XMarkIcon width={35} color={"white"} onClick={handleToggle} />
+              <XMarkIcon width={35} className="text-black dark:text-white" onClick={handleToggle} />
             ) : (
-              <Bars3BottomRightIcon width={35} color={"white"} onClick={handleToggle} />
+              <Bars3BottomRightIcon width={35} className="text-black dark:text-white" onClick={handleToggle} />
             )}
           </div>
           <div className="lg:block hidden text-white">

@@ -22,8 +22,10 @@ html {
   scroll-behavior: smooth;
 }
 
-body.no-scroll {
-  overflow: hidden;
+@media only screen and( max-width:1024px ){
+  body.no-scroll {
+    overflow: hidden;
+  }
 }
 
 * {
@@ -286,15 +288,7 @@ body.no-scroll {
   transform: translateX(9px);
 }
 
-
-/* STICKY NAV */
-.stickyy {
-  position: -webkit-sticky;
-  position: sticky;
-  top: var(--sticky-top, 0);
-  /* border: 2px solid red; */
-  z-index: 999999;
+.fixed-shadow {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-
-
 
