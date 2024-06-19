@@ -3,7 +3,7 @@ import Myuploads from "../../testingpage/Myupload";
 const Post = () => {
   return (
     <div>
-      <div className="">
+      <div className="md:p-4">
         <Myuploads />
       </div>
     </div>
