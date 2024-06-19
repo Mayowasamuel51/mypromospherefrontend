@@ -46,8 +46,8 @@ const ProfileEdit = () => {
       if (res.data.status === 200) {
         console.log(res.data.data);
         setUserEditProfile(res.data.data)
-        // setData(res.data.data);
-        // setBackgroundImage(res.data.data);
+        setData(res.data.data);
+        setBackgroundImage(res.data.data);
         setLoading(false)
       }
     });
