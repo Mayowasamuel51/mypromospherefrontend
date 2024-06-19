@@ -14,7 +14,6 @@ const Myuploads = ({ id }) => {
     <div className="">
       <section className="relative grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6">
         {(isLoading) && <UploadSkeleton posts={8} />}
-        {(isLoading) && <p>Loading....</p>}
         {(!data?.data.posts && !isLoading) && <h1 className='text-center col-span-2 md:col-span-4 lg:col-span-4'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
         {(data?.data.posts && !isLoading) &&
           data?.data.posts.map((item) => (
