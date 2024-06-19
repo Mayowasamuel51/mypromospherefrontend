@@ -1,14 +1,14 @@
 import { Link, Navigate } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
+import DashBoardNav from "../../components/DashBoardNav";
 import { useState } from "react"
 import { AnimatePresence  } from "framer-motion";
 import anon from "../../assests/images/anon.png";
-import Post from "./Post";
-import Video from "./Video";
 import { FaShare, FaVideo } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FiPlusSquare } from "react-icons/fi";
 import { MdDynamicFeed } from "react-icons/md";
+import { Outlet } from "react-router-dom"
 
 function Dashboard() {
     const { token } = useStateContext()
@@ -16,8 +16,8 @@ function Dashboard() {
     if (!token) return <Navigate  to="/" />
     return (
         <>
-            
-            <main className={`px-4 md:px-10`}>
+            <DashBoardNav />
+            <main className={`px-4 md:px-10 py-20 md:py-28`}>
                 <section className="flex items-start md:gap-10 gap-4">
                     <article className="rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
@@ -37,7 +37,7 @@ function Dashboard() {
                                     <FaShare size={20} className="text-white md:text-black"/>
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
-                                <Link to={'EditProfile'} className="">
+                                <Link to={'profileEdit'} className="">
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <FaEdit size={20} className="text-white md:text-black" />
                                         <p className="text-center md:block hidden">Edit profile</p>
@@ -45,14 +45,18 @@ function Dashboard() {
                                 </Link>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <p onClick={()=> setVideo(false)} className={`${!video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
-                                    <MdDynamicFeed size={20} />
-                                    <span className="md:block hidden">Post</span>
-                                </p>
-                                <p onClick={()=> setVideo(true)} className={`${video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
-                                    <FaVideo size={20} />
-                                    <span className="md:block hidden">Video</span>
-                                </p>
+                                <Link to="/dashboard">
+                                    <p onClick={()=> setVideo(false)} className={`${!video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
+                                        <MdDynamicFeed size={20} />
+                                        <span className="md:block hidden">Post</span>
+                                    </p>
+                                </Link>
+                                <Link to="/dashboard/video">
+                                    <p onClick={()=> setVideo(true)} className={`${video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
+                                        <FaVideo size={20} />
+                                        <span className="md:block hidden">Video</span>
+                                    </p>
+                                </Link>
                             </div>
                         </div>
                         <Link to={`post`}>
@@ -66,7 +70,7 @@ function Dashboard() {
                     <article className="flex-1 flex">
                         <div className="md:px-10">
                             <AnimatePresence>
-                                {video ? <Video /> : <Post />}
+                                <Outlet />
                             </AnimatePresence>
                         </div>
                     </article>
