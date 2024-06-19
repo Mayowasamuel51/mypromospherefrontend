@@ -383,7 +383,7 @@ const Video = () => {
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name="description"
-                type="text"
+        type="text"
                 placeholder="Description"
                 {...register("description", { required: true })}
               />
