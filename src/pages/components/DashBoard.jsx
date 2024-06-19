@@ -63,8 +63,8 @@ function DefualtLayout() {
                         </Link>
                     </article>
 
-                    <article className="flex-1 flex flex-col">
-                        <div className="text-center my-4">
+                    <article className="flex-1 flex">
+                        <div className="md:px-20">
                             <AnimatePresence>
                                 {saved ? <Saved /> : <Post />}
                             </AnimatePresence>
