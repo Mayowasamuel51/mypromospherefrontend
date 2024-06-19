@@ -18,7 +18,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="flex-1 flex flex-col justify-between min-h-screen gap-2 border-2 md:py-4 text-center">
+                    <article className="flex-1 flex flex-col justify-between gap-16 border-2 md:py-4 text-center">
                         <div className="flex flex-col gap-2">
                             <img
                                 src={token?.profileImage  ?? anon}
