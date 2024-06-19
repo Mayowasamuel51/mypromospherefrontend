@@ -28,9 +28,10 @@ function DefualtLayout() {
                                     alt={"profile-picture"}
                                     className="w-[30px] md:w-[50px] aspect-square rounded-full object-cover object-top"
                                 />
-                                <h1 className="font-medium text-xs md:text-sm capitalize md:block hidden">
+                                <h1 className="font-medium text-sm capitalize md:block hidden">
                                     {token ? `${token["user_name"]}` : 'Anonymous'}
                                 </h1>
+                                <p className="text-xs text-slate-400 md:block hidden">{token ? `${token["user"]}` : 'Anonymous'}</p>
                             </div>
                             <div className="flex flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
