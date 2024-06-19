@@ -6,7 +6,6 @@ import FetchUserposts from '../hooks/LoggedInUserPost';
 import UploadSkeleton from '../components/uploadSkeleton';
 
 
-// eslint-disable-next-line react/prop-types
 const Myuploads = ({ id }) => {
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchUserposts(token);
