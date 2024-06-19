@@ -37,7 +37,7 @@ function DefualtLayout() {
                                 </button>
                                 <Link to={'EditProfile'} className="bigLg:hidden">
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
-                                        <FaEdit />
+                                        <FaEdit size={20} />
                                         <p className="text-center">Edit profile</p>
                                     </button>
                                 </Link>
