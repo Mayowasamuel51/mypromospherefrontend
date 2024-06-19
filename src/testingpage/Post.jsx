@@ -452,10 +452,12 @@ const Post = () => {
         console.log(image);
       }
     });
-    
+    formData.append('user_name',token?.user_name)
     formData.append('aboutMe',profile.data.data.aboutMe)
     formData.append('whatapp',profile.data.data.whatapp)
     formData.append('user_phone', profile.data.data.user_phone)
+
+
     formData.append("categories", uploadData?.category);
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
@@ -466,7 +468,7 @@ const Post = () => {
     uploadPostMutation.mutate(formData);
   };
  
-  // console.log(token)
+  // console.log(token?.user_name)
   return (
     <>
       <Toaster position="top-center" />

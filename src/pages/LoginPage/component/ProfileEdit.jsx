@@ -429,7 +429,7 @@ const ProfileEdit = () => {
           <button
             type="submit"
             className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2">
-            Edit
+            Update
           </button>
         </form>
       </article>
