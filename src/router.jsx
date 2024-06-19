@@ -24,6 +24,9 @@ const Categories = React.lazy(() => import("./pages/categories/categories.jsx"))
 // import ProductView from "./pages/productView/productView.jsx";
 import ProfileHome from "./pages/profile/profileHome.jsx";
 
+import MyPost from "./pages/components/Post.jsx";
+import MyVideo from "./pages/components/Video.jsx";
+
 import FeedsTopServices from "./pages/Feeds/components/topVideos.jsx";
 import TrendingAds from "./pages/Feeds/components/trendingAds.jsx";
 
@@ -84,11 +87,11 @@ const router = createBrowserRouter([
     element: <ProfileHome />,
     children: [
       {
-        index : true,
-        element : <Suspense fallback={<Loader />}><ProfilePostPage /></Suspense>,
+        index: true,
+        element: <Suspense fallback={<Loader />}><ProfilePostPage /></Suspense>,
       },
       {
-        path : "videos",
+        path: "videos",
         element: <Suspense fallback={<Loader />}><ProfileVideoPage /></Suspense>,
       }
     ]
@@ -123,30 +126,28 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashBoardLayout />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <DashBoard />
+      </Suspense>
+    ),
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<Loader />}>
-            <DashBoard />
-          </Suspense>
-        ),
+        element: <MyPost />
       },
       {
-        path: "EditProfile",
-        element: <EditProfile />,
-        children: [
-          {
-            index: true,
-            element: <ProfileEdit />
-          },
-          {
-            path: "personal-Info",
-            element: <PersonalInfo />
-          }
-        ]
+        path: "video",
+        element: <MyVideo />
       },
+      {
+        path: "profileEdit",
+        element: <ProfileEdit />
+      },
+      {
+        path: "personal-Info",
+        element: <PersonalInfo />
+      }
       {
         path: "UserProfile/post",
         element: <PostAPicture />,
