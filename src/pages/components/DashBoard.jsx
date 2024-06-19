@@ -18,7 +18,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="flex-1 flex flex-col justify-between gap-16 bg-slate-300 rounded-lg md:py-4 text-center">
+                    <article className="flex-1 flex flex-col justify-between gap-16 bg-slate-100 rounded-lg md:py-4 text-center">
                         <div className="flex flex-col gap-2">
                             <img
                                 src={token?.profileImage  ?? anon}
@@ -29,11 +29,11 @@ function DefualtLayout() {
                                 {token ? `${token["user_name"]}` : 'Anonymous'}
                             </h1>
                             <div className="flex flex-col items-center justify-center gap-x-3">
-                                <button className="bg-black hover:bg-slate-400 duration-200 p-2 px-4 rounded-md cursor-pointer">
+                                <button className="bg-black text-white duration-200 p-2 px-4 rounded-md cursor-pointer">
                                     <p className="text-center">share</p>
                                 </button>
                                 <Link to={'EditProfile'} className="bigLg:hidden">
-                                    <button className="bg-black hover:bg-slate-400 duration-200 p-2 px-4 rounded-md cursor-pointer">
+                                    <button className="bg-black text-white duration-200 p-2 px-4 rounded-md cursor-pointer">
                                         <p className="text-center">Edit profile</p>
                                     </button>
                                 </Link>
