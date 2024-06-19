@@ -20,7 +20,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="w-fit flex-1 flex flex-col justify-between gap-16 bg-slate-100 rounded-lg py-2 md:py-10 text-center">
+                    <article className="w-fit flex flex-col justify-between gap-16 bg-slate-100 rounded-lg py-2 md:py-10 text-center">
                         <div className="flex flex-col gap-2">
                             <img
                                 src={token?.profileImage  ?? anon}
@@ -64,7 +64,7 @@ function DefualtLayout() {
                         </Link>
                     </article>
 
-                    <article className="flex-[5] flex flex-col">
+                    <article className="flex-1 flex flex-col">
                         <div className="text-center my-4">
                             <AnimatePresence>
                                 {saved ? <Saved /> : <Post />}
