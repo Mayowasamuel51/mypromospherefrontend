@@ -17,7 +17,7 @@ function DefualtLayout() {
     return (
         <>
             <main className={``}>
-                <section className="">
+                <section className="flex">
                     <article className="flex flex-col gap-2">
                         <img
                             src={token?.profileImage  ?? anon}
