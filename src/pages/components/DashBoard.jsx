@@ -5,7 +5,7 @@ import { AnimatePresence  } from "framer-motion";
 import roundedImg from "../../assests/images/Ellipse 3.png";
 import anon from "../../assests/images/anon.png";
 import Post from "./Post";
-import Saved from "./Saved";
+import Video from "./Video";
 import { FaShare, FaVideo } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FiPlusSquare } from "react-icons/fi";
@@ -66,7 +66,7 @@ function DefualtLayout() {
                     <article className="flex-1 flex">
                         <div className="md:px-20">
                             <AnimatePresence>
-                                {saved ? <Saved /> : <Post />}
+                                {saved ? <Video /> : <Post />}
                             </AnimatePresence>
                         </div>
                     </article>
