@@ -43,6 +43,12 @@ function Dashboard() {
                                         <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </Link>
+                                <Link to={'personal-Info'} className="">
+                                    <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
+                                        <FaEdit size={20} className="text-white md:text-black" />
+                                        <p className="text-center md:block hidden">Personal Info</p>
+                                    </button>
+                                </Link>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
                                 <Link to="/dashboard">

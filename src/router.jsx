@@ -147,7 +147,7 @@ const router = createBrowserRouter([
       {
         path: "personal-Info",
         element: <PersonalInfo />
-      }
+      },
       {
         path: "UserProfile/post",
         element: <PostAPicture />,
