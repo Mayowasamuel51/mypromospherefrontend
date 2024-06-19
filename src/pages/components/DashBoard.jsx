@@ -7,6 +7,8 @@ import roundedImg from "../../assests/images/Ellipse 3.png";
 import anon from "../../assests/images/anon.png";
 import Post from "./Post";
 import Saved from "./Saved";
+import { FaShare } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 
 function DefualtLayout() {
     const { token } = useStateContext()
@@ -29,11 +31,13 @@ function DefualtLayout() {
                                 {token ? `${token["user_name"]}` : 'Anonymous'}
                             </h1>
                             <div className="flex flex-col items-center justify-center gap-x-3">
-                                <button className="bg-black text-white duration-200 p-2 px-4 rounded-md cursor-pointer">
+                                <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
+                                    <FaShare size={20}/>
                                     <p className="text-center">share</p>
                                 </button>
                                 <Link to={'EditProfile'} className="bigLg:hidden">
-                                    <button className="bg-black text-white duration-200 p-2 px-4 rounded-md cursor-pointer">
+                                    <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
+                                        <FaEdit />
                                         <p className="text-center">Edit profile</p>
                                     </button>
                                 </Link>
@@ -41,13 +45,13 @@ function DefualtLayout() {
                             <div className="flex flex-col items-center justify-center gap-x-6">
                                 <div className="flex items-center gap-x-4">
                                     <button onClick={()=> setSaved(false)}
-                                    className={`${!saved && "border-2 border-[#000000] border-t-0 border-r-0 border-l-0"} cursor-pointer`}
+                                    className={`${!saved && ""} cursor-pointer`}
                                     >
                                         Post
                                     </button>
                                 </div>
                                 <button onClick={()=> setSaved(true)}
-                                className={`${saved && "border-2 border-[#000000] border-t-0 border-r-0 border-l-0"} cursor-pointer`}
+                                className={`${saved && ""} cursor-pointer`}
                                 >
                                     Saved
                                 </button>
