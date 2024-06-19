@@ -13,24 +13,24 @@ import { FiPlusSquare } from "react-icons/fi";
 
 function DefualtLayout() {
     const { token } = useStateContext()
-
     const [saved, setSaved] = useState(false)
- 
     if (!token) return <Navigate  to="/" />
     return (
         <>
             <main className={`px-4`}>
-                <section className="flex items-start gap-2">
+                <section className="flex items-start md:gap-10">
                     <article className="w-fit flex flex-col justify-between gap-16 py-2 px-2 md:py-10 md:px-6">
-                        <div className="flex flex-col gap-2">
-                            <img
-                                src={token?.profileImage  ?? anon}
-                                alt={"profile-picture"}
-                                className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top"
-                            />
-                            <h1 className="font-medium text-xs md:text-sm capitalize">
-                                {token ? `${token["user_name"]}` : 'Anonymous'}
-                            </h1>
+                        <div className="flex flex-col md:gap-6">
+                            <div>
+                                <img
+                                    src={token?.profileImage  ?? anon}
+                                    alt={"profile-picture"}
+                                    className="w-[20px] md:w-[50px] aspect-square rounded-full object-cover object-top"
+                                />
+                                <h1 className="font-medium text-xs md:text-sm capitalize">
+                                    {token ? `${token["user_name"]}` : 'Anonymous'}
+                                </h1>
+                            </div>
                             <div className="flex flex-col md:gap-6 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                     <FaShare size={20}/>
