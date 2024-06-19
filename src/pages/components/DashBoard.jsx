@@ -64,7 +64,7 @@ function DefualtLayout() {
                     </article>
 
                     <article className="flex-1 flex">
-                        <div className="md:px-14">
+                        <div className="md:px-10">
                             <AnimatePresence>
                                 {saved ? <Video /> : <Post />}
                             </AnimatePresence>
