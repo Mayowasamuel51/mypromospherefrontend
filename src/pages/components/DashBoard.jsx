@@ -16,6 +16,7 @@ function Dashboard() {
     if (!token) return <Navigate  to="/" />
     return (
         <>
+            
             <main className={`px-4 md:px-10`}>
                 <section className="flex items-start md:gap-10 gap-4">
                     <article className="rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">

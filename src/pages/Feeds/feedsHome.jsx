@@ -115,7 +115,7 @@ const FeedsHome = () => {
             <Link className="block text-center" to={`/dashboard/post`}>
               <button className="flex flex-col items-center gap-2">
                 <FiPlusSquare size={20} className="text-black" />
-                <p>Post an Ad</p>
+                <p className="text-black">Post an Ad</p>
               </button>
             </Link>
             <Link
