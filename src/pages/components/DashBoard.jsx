@@ -21,7 +21,7 @@ function DefualtLayout() {
         <>
             <main className={`px-4`}>
                 <section className="flex items-start gap-2">
-                    <article className="w-fit flex flex-col justify-between gap-16 py-2 px-2 md:py-10 md:px-6 text-center">
+                    <article className="w-fit flex flex-col justify-between gap-16 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col gap-2">
                             <img
                                 src={token?.profileImage  ?? anon}
@@ -57,9 +57,9 @@ function DefualtLayout() {
                             </div>
                         </div>
                         <Link to={`post`}>
-                            <button className="cursor-pointer flex items-center gap-2">
+                            <button className="text-[#3D217A] cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare />
-                                <p className="text-white">Post an Ad</p>
+                                <p className="">Post an Ad</p>
                             </button>
                         </Link>
                     </article>
