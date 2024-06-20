@@ -477,7 +477,7 @@ const Post = () => {
           <Loader />
         </div>
       )}
-      <div className="px-4 lg:px-40">
+      <div className="">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE

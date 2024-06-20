@@ -148,8 +148,12 @@ const router = createBrowserRouter([
         element: <PostAPicture />,
       },
       {
-        path: "post",
+        path: "postAd",
         element: <Post />,
+      },
+      {
+        path: "postVideo",
+        element: <Video />,
       },
       {
         path: "myuploads",
@@ -158,10 +162,6 @@ const router = createBrowserRouter([
       {
         path: "myvideos",
         element: <MyVideos />,
-      },
-      {
-        path: "video",
-        element: <Video />,
       },
     ],
   },
