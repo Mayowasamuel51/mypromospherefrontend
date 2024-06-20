@@ -118,8 +118,8 @@ const FeedsHome = () => {
                 className={`flex flex-col items-center gap-2 whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "text-[#EC6A87]"
                   }`}
               >
-                <MdOutlineDynamicFeed size={20} className="text-black" />
-                Trending Ads
+                <MdOutlineDynamicFeed size={20} className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`} />
+                <p className="text-black">Trending Ads</p>
               </motion.button>
             </Link>
             <div onClick={()=> goToPostPage()} className="block text-center">
@@ -140,8 +140,8 @@ const FeedsHome = () => {
                   "text-[#EC6A87]"
                   }`}
               >
-                <FaVideo size={20} className="text-black" />
-                Top Video Ads
+                <FaVideo size={20} className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`} />
+                <p>Top Video Ads</p>
               </motion.button>
             </Link>
           </div>
