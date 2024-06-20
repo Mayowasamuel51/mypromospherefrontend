@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
@@ -12,11 +12,12 @@ import { MdOutlineDynamicFeed } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
+import { toast } from "sonner";
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
   const location = useLocation();
-  const { scrollValue, handleClick } = useStateContext();
+  const { token, scrollValue, handleClick } = useStateContext();
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
@@ -30,6 +31,15 @@ const FeedsHome = () => {
   const handleOnFocus = () => {
     console.log("Focused");
   };
+
+  const goToPostPage = ()=> {
+    if (token) {
+      <Navigate to="/dashboard/postAd"/>
+    } else {
+      toast.error("You are not Logged in");
+      <Navigate to="/login"/>
+    }
+  }
 
   return (
     <>
@@ -112,12 +122,12 @@ const FeedsHome = () => {
                 Trending Ads
               </motion.button>
             </Link>
-            <Link className="block text-center" to={`/dashboard/post`}>
+            <div onClick={()=> goToPostPage()} className="block text-center">
               <button className="flex flex-col items-center gap-2">
                 <FiPlusSquare size={20} className="text-black" />
                 <p className="text-black">Post an Ad</p>
               </button>
-            </Link>
+            </div>
             <Link
               to="/top-videos"
               className={`block text-center ${location.pathname === "/top-videos" &&

@@ -1,7 +1,6 @@
-import { Link, Navigate } from "react-router-dom"
+import { NavLink, Navigate, useLocation } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
 import DashBoardNav from "../../components/DashBoardNav";
-import { useState } from "react"
 import { AnimatePresence  } from "framer-motion";
 import anon from "../../assests/images/anon.png";
 import { FaShare, FaVideo } from "react-icons/fa";
@@ -11,8 +10,8 @@ import { MdDynamicFeed } from "react-icons/md";
 import { Outlet } from "react-router-dom"
 
 function Dashboard() {
+    const { pathname } = useLocation()
     const { token } = useStateContext()
-    const [video, setVideo] = useState(false)
     if (!token) return <Navigate  to="/" />
     return (
         <>
@@ -37,40 +36,40 @@ function Dashboard() {
                                     <FaShare size={20} className="text-white md:text-black"/>
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
-                                <Link to={'profileEdit'} className="">
+                                <NavLink to={'profileEdit'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <FaEdit size={20} className="text-white md:text-black" />
                                         <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
-                                </Link>
-                                <Link to={'personal-Info'} className="">
+                                </NavLink>
+                                <NavLink to={'personal-Info'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <FaEdit size={20} className="text-white md:text-black" />
                                         <p className="text-center md:block hidden">Personal Info</p>
                                     </button>
-                                </Link>
+                                </NavLink>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <Link to="/dashboard">
-                                    <p onClick={()=> setVideo(false)} className={`${!video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
+                                <NavLink to="/dashboard" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <p>
                                         <MdDynamicFeed size={20} />
                                         <span className="md:block hidden">Post</span>
                                     </p>
-                                </Link>
-                                <Link to="/dashboard/video">
-                                    <p onClick={()=> setVideo(true)} className={`${video ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"} cursor-pointer flex items-center gap-2`}>
+                                </NavLink>
+                                <NavLink to="/dashboard/video" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <p>
                                         <FaVideo size={20} />
                                         <span className="md:block hidden">Video</span>
                                     </p>
-                                </Link>
+                                </NavLink>
                             </div>
                         </div>
-                        <Link to={`postAd`}>
+                        <NavLink to={`postAd`} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                             <button className="text-white md:text-black cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
                                 <p className="md:block hidden">Post an Ad</p>
                             </button>
-                        </Link>
+                        </NavLink>
                     </article>
 
                     <article className="flex-1">
