@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
-import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
@@ -21,7 +21,7 @@ const FeedsHome = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate()
 
   const handleOnSearch = (string, results) => {
     setData(results);
@@ -37,7 +37,9 @@ const FeedsHome = () => {
       <Navigate to="/dashboard/postAd"/>
     } else {
       toast.error("You are not Logged in");
-      <Navigate to="/login"/>
+      setTimeout(()=>{
+        <Navigate to="/login"/>
+      }, 3000)
     }
   }
 
