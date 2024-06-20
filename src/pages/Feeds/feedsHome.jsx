@@ -37,7 +37,7 @@ const FeedsHome = () => {
       toast.error("You are not Logged In")
       navigate('/login');
     } else {
-      navigate('/dashboard/postAds');
+      navigate('/dashboard/postAd');
     }
   }
 
