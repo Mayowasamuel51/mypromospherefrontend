@@ -20,7 +20,7 @@ const controlsVariant = {
         opacity: 1,
         x : 0,
         transition: {
-            type: "spring", duration: 0.5, staggerChildren: 0.3, when: "beforeChildren"
+            type: "spring", duration: 0.5, staggerChildren: 0.2, when: "beforeChildren"
         }
     },
     exit: {
@@ -41,7 +41,7 @@ const childVariant = {
         opacity: 1,
         scale: 1,
         transition: {
-            type: "spring", duration: 0.3, staggerChildren: 0.3, delayChildren: 0.3
+            type: "spring", duration: 0.3, staggerChildren: 0.2, delayChildren: 0.3
         }
     },
     exit: {
@@ -57,7 +57,6 @@ function Dashboard() {
     const { scrollY } = useScroll()
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious()
-        console.log(latest);
         if (latest > previous && latest > 50) {
           setHidden(false)
         }
@@ -65,7 +64,9 @@ function Dashboard() {
           setHidden(true)
         }
       })
+      
     if (!token) return <Navigate  to="/" />
+
     return (
         <>
             <DashBoardNav />
@@ -127,14 +128,14 @@ function Dashboard() {
                                 </motion.div>
                             </motion.div>
                         </motion.div>
-                        <div>
+                        <motion.div variants={childVariant}>
                             <NavLink to={`postAd`} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                 <button className="cursor-pointer flex items-center gap-2">
                                     <FiPlusSquare size={25} />
                                     <p className="md:block hidden">Post an Ad</p>
                                 </button>
                             </NavLink>
-                        </div>
+                        </motion.div>
                     </motion.article>
 
                     <article className="hidden sticky top-28 rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit md:flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
