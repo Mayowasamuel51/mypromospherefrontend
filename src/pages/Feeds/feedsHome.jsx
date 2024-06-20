@@ -118,7 +118,7 @@ const FeedsHome = () => {
                 <p className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`}>Trending Ads</p>
               </motion.button>
             </Link>
-            <div onClick={()=> goToPostPage()} className="block text-center">
+            <div onClick={()=> goToPostPage()} className="block text-center cursor-pointer">
               <button className="flex flex-col items-center gap-2">
                 <FiPlusSquare size={20} className="text-black" />
                 <p className="text-black">Post an Ad</p>
