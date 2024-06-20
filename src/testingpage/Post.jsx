@@ -511,7 +511,7 @@ const Post = () => {
                       ? "Uploaded Image"
                       : `Please Remove wrong image format`
                       }`}
-                    className="md:w-[200px] md:h-[200px] rounded-md object-cover"
+                    className="w-[200px] h-[200px] md:w-[150px] md:h-[150px] rounded-md object-cover"
                   />
                   <FaXmark
                     size={25}
