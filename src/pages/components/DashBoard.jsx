@@ -118,7 +118,7 @@ function Dashboard() {
                                 <img
                                     src={token?.profileImage  ?? anon}
                                     alt={"profile-picture"}
-                                    className="w-[30px] md:w-[50px] aspect-square rounded-full object-cover object-top"
+                                    className="w-[60px] aspect-square rounded-full object-cover object-center"
                                 />
                                 <h1 className="font-medium text-sm capitalize md:block hidden">
                                     {token ? `${token["user_name"]}` : 'Anonymous'}
