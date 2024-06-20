@@ -1,18 +1,13 @@
 import { useOutletContext } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useStateContext } from "../../../contexts/ContextProvider";
 import { Link } from 'react-router-dom';
-// import { Splide, SplideSlide } from '@splidejs/react-splide';
-// import Loader from "../loader";
 import FetchOtherUserVideos from '../../../hooks/otherUsersVideos';
 import anon from "../../../assests/images/anon.png"
 import ReactPlayer from "react-player";
 import { FaRegCirclePlay } from "react-icons/fa6";
-import Loader from '../../../loader';
 import thumbnail1 from "../../../assests/images/feed1.svg"
 import thumbnail2 from "../../../assests/images/feed2.svg"
-import UploadSkeleton from "../../../components/uploadSkeleton";
 import VideoSkeleton from "../../../components/videoSkeleton"
 
 

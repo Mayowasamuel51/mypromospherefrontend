@@ -5,7 +5,7 @@ const api_fetch_user = import.meta.env.VITE_FETCH_USER;
 
 const FetchUser = (userName) => {
   return useQuery({
-    queryKey: ["user_name", userName],
+    queryKey: ["userPost", userName],
     queryFn: ({queryKey})=> axios.get(`${api_fetch_user}${queryKey[1]}`)
   });
 }

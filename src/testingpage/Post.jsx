@@ -372,7 +372,7 @@ const Post = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["trendingAds"] });
-      queryClient.invalidateQueries({ queryKey: ["userposts"] });
+      queryClient.invalidateQueries({ queryKey: ["userPost"] });
       toast.success("You have just made a post");
       setUploadData((prev) => ({
         ...prev,
