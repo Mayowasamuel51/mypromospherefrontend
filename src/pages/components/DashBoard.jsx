@@ -73,7 +73,7 @@ function Dashboard() {
                         </Link>
                     </article>
 
-                    <article className="flex-1 flex">
+                    <article className="flex-1">
                         <div className="md:px-10">
                             <AnimatePresence>
                                 <Outlet />

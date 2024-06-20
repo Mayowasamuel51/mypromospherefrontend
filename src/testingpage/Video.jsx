@@ -76,7 +76,7 @@ const Video = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           axios
             .post("")
-            .then((response) => {})
+            .then((response) => { })
             .catch((err) => {
               console.log(err.message);
             });
@@ -242,7 +242,7 @@ const Video = () => {
       }
     );
   };
-  
+
 
   if (errors.price) {
     toast.error(errors.price?.message);
@@ -258,7 +258,7 @@ const Video = () => {
       {/* <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
         </div> */}
-      <div className="w-full">
+      <div className="w-full border-2 border-red">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR VIDEO DETAILS TO MYPROMOSPHERE
@@ -267,9 +267,6 @@ const Video = () => {
           <div className="flex flex-col gap-3">
             <div className="">
               <DropFileInput
-                // id="video"
-                //   name="video"
-                //   {...register("video", { required: true })}
                 onFileChange={(files) => onFileChange(files)}
                 className=""
               />
@@ -298,6 +295,7 @@ const Video = () => {
                 type="file"
                 {...register("picture")}
                 onChange={handleSetimageUpload}
+                className="w-full"
               />
               <p className="text-red  text-sm">{errors.picture?.message}</p>
               <div className="flex items-center justify-center gap-4 flex-wrap my-4">
@@ -383,7 +381,7 @@ const Video = () => {
                 className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name="description"
-        type="text"
+                type="text"
                 placeholder="Description"
                 {...register("description", { required: true })}
               />

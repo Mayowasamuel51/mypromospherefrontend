@@ -1,13 +1,18 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import './drop-file-input.css';
+
 import { ImageConfig } from '../../config/ImageConfig'; 
+// assets/cloud-upload-regular-240.png
 import uploadImg from '../../assests/cloud-upload-regular-240.png';
 import { FaXmark } from "react-icons/fa6";
 
 const DropFileInput = props => {
     const wrapperRef = useRef(null);
+
     const [fileList, setFileList] = useState([]);
+
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
 
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
@@ -40,7 +45,7 @@ const DropFileInput = props => {
                 onDrop={onDrop}
             >
                 <div className="drop-file-input__label">
-                    <img src={uploadImg} className="mx-auto w-full" alt="" />
+                    <img src={uploadImg} className="mx-auto w-full h-[200px]" alt="" />
                     <p  className="font-semibold text-xs">Drag & Drop your files here</p>
                 </div>
                 <input type="file" value="" onChange={onFileDrop}/>
