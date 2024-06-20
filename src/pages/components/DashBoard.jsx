@@ -33,39 +33,39 @@ function Dashboard() {
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                    <FaShare size={20} className="text-white md:text-black"/>
+                                    <FaShare size={20} className=""/>
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
                                 <NavLink to={'profileEdit'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
-                                        <FaEdit size={20} className="text-white md:text-black" />
+                                        <FaEdit size={20} className="" />
                                         <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </NavLink>
                                 <NavLink to={'personal-Info'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
-                                    <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
-                                        <FaEdit size={20} className="text-white md:text-black" />
+                                    <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
+                                        <FaEdit size={20} className="" />
                                         <p className="text-center md:block hidden">Personal Info</p>
                                     </button>
                                 </NavLink>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
                                 <NavLink to="/dashboard" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
-                                    <p>
+                                    <button className="flex items-center gap-2 duration-200">
                                         <MdDynamicFeed size={20} />
                                         <span className="md:block hidden">Post</span>
-                                    </p>
+                                    </button>
                                 </NavLink>
                                 <NavLink to="/dashboard/video" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
-                                    <p>
+                                    <button className="flex items-center gap-2 duration-200">
                                         <FaVideo size={20} />
                                         <span className="md:block hidden">Video</span>
-                                    </p>
+                                    </button>
                                 </NavLink>
                             </div>
                         </div>
                         <NavLink to={`postAd`} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
-                            <button className="text-white md:text-black cursor-pointer flex items-center gap-2">
+                            <button className="cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
                                 <p className="md:block hidden">Post an Ad</p>
                             </button>
