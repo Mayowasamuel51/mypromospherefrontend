@@ -258,7 +258,7 @@ const Video = () => {
       {/* <div className="z-[999999999999999] fixed inset-0 bg-black bg-opacity-60">
           <Loader />
         </div> */}
-      <div className="">
+      <div className="w-full">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR VIDEO DETAILS TO MYPROMOSPHERE

@@ -45,8 +45,8 @@ import Myuploads from "./testingpage/Myupload.jsx";
 
 import Error from "./error.jsx";
 import MyVideos from "./testingpage/MyVideos.jsx";
-import ProfileEdit from "./pages/LoginPage/component/ProfileEdit.jsx";
-import PersonalInfo from "./pages/LoginPage/component/PersonalInfo.jsx";
+import ProfileEdit from "./pages/profile/components/ProfileEdit.jsx";
+import PersonalInfo from "./pages/profile/components/PersonalInfo.jsx";
 
 
 const router = createBrowserRouter([
