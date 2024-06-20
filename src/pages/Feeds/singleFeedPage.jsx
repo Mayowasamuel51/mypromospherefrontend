@@ -71,7 +71,7 @@ const SingleFeedPage = () => {
                                 ))}
                             </div>
                         </div>
-                        <Link to={`/profile/user/${data?.data?.data.user_id}`}>
+                        <Link to={`/profile/user/${data?.data?.data.user_name}`}>
                             <div className="flex items-center gap-2">
                                 <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
                             </div>
