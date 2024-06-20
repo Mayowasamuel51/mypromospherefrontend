@@ -319,7 +319,6 @@ const ProfileEdit = () => {
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
             <div>
-
               {image ? (
                 <img
                   src={URL.createObjectURL(image)}
@@ -348,7 +347,7 @@ const ProfileEdit = () => {
               </div>
             </div>
           </article>
-          <div className="flex flex-col gap-4 my-2">
+          <div className="flex flex-col gap-5 my-4">
             <div className="">
               <div>
                 <label htmlFor="About" className="font-medium my-2">
@@ -359,12 +358,11 @@ const ProfileEdit = () => {
                   value={profileedit.aboutMe}
                   onChange={handleProfileEdit}
                   name="aboutMe"
-                  // value={token?.aboutMe  && token?.aboutMe}
                   className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
 
                 ></textarea>
-                     <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
+                <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
               </div>
             </div>
             <div className="">
@@ -399,8 +397,8 @@ const ProfileEdit = () => {
             </div>
 
             <div className="">
-              <label htmlFor="website" className="font-medium my-2">
-                Contact phone Two  <div> <FaWhatsapp  height={220}    /></div>
+              <label htmlFor="website" className="font-medium my-2 flex items-center gap-2">
+                <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
               </label>{" "}
               <input
                 value={profileedit.whatapp}
