@@ -14,11 +14,11 @@ import { Outlet } from "react-router-dom"
 const controlsVariant = {
     initial: {
         opacity: 0,
-        x : 0
+        x : "-200%"
     },
     animate: {
         opacity: 1,
-        x : "-200%",
+        x : 0,
         transition: {
             type: "spring", duration: 0.5
         }
@@ -28,16 +28,16 @@ const controlsVariant = {
 function Dashboard() {
     const { pathname } = useLocation()
     const { token } = useStateContext()
-    const [hidden, setHidden] = useState(false);
+    const [hidden, setHidden] = useState(true);
     const { scrollY } = useScroll()
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious()
         console.log(latest);
         if (latest > previous && latest > 50) {
-          setHidden(true)
+          setHidden(false)
         }
         else {
-          setHidden(false)
+          setHidden(true)
         }
       })
     if (!token) return <Navigate  to="/" />
