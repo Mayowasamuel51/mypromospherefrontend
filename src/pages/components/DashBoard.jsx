@@ -32,7 +32,8 @@ function Dashboard() {
     const { scrollY } = useScroll()
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious()
-        if (latest > previous && latest > 100) {
+        console.log(latest);
+        if (latest > previous && latest > 50) {
           setHidden(true)
         }
         else {
