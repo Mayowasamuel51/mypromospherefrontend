@@ -65,7 +65,7 @@ function Dashboard() {
                                 </Link>
                             </div>
                         </div>
-                        <Link to={`post`}>
+                        <Link to={`postAd`}>
                             <button className="text-white md:text-black cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
                                 <p className="md:block hidden">Post an Ad</p>
