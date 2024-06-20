@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { NavLink, Navigate, useLocation } from "react-router-dom"
 import { useStateContext } from "../../contexts/ContextProvider"
 import DashBoardNav from "../../components/DashBoardNav";
-import { AnimatePresence  } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion';
 import anon from "../../assests/images/anon.png";
 import { FaShare, FaVideo } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
@@ -10,16 +11,41 @@ import { MdDynamicFeed } from "react-icons/md";
 import { IoIosSettings } from "react-icons/io";
 import { Outlet } from "react-router-dom"
 
+const controlsVariant = {
+    initial: {
+        opacity: 0,
+        x : "-100%"
+    },
+    animate: {
+        opacity: 1,
+        x : 0,
+        transition: {
+            type: "spring", duration: 0.5
+        }
+    }
+}
+
 function Dashboard() {
     const { pathname } = useLocation()
     const { token } = useStateContext()
+    const [hidden, setHidden] = useState(false);
+    const { scrollY } = useScroll()
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious()
+        if (latest > previous && latest > 100) {
+          setHidden(true)
+        }
+        else {
+          setHidden(false)
+        }
+      })
     if (!token) return <Navigate  to="/" />
     return (
         <>
             <DashBoardNav />
             <main className={`px-4 md:px-10 py-20 md:py-28`}>
                 <section className="flex items-start md:gap-10 gap-4">
-                    <article className="top-20 right-0 border-2 border-red fixed md:static rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                    <motion.article variants={controlsVariant} animate={hidden ? "animate" : "initial"} className="top-20 left-4 fixed md:static z-10 rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
@@ -71,7 +97,7 @@ function Dashboard() {
                                 <p className="md:block hidden">Post an Ad</p>
                             </button>
                         </NavLink>
-                    </article>
+                    </motion.article>
 
                     <article className="flex-1">
                         <div className="md:px-10 w-full">
