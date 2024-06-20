@@ -20,13 +20,11 @@ import {
 import axiosclinet from "../https/axios-clinet";
 import Select from "react-dropdown-select";
 import { categories } from "../../src/json/categories.jsx";
-import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 import PostButtons from "../components/PostButtons.jsx";
 import data from "../../state.json";
 import Dropzone from "react-dropzone";
-import uploadImg from "../assests/cloud-upload-regular-240.png";
 import { Toaster, toast } from "sonner";
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
@@ -399,7 +397,6 @@ const Post = () => {
   });
   const uploadPost = (e) => {
     e.preventDefault();
-    // console.log(uploadData);
     if (imageUpload?.length > 5) {
       toast.error(`You can upload a maximum of 5 images.`);
       return;

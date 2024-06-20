@@ -358,7 +358,7 @@ const ProfileEdit = () => {
                   value={profileedit.aboutMe}
                   onChange={handleProfileEdit}
                   name="aboutMe"
-                  className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
+                  className="resize-none h-32 border border-[#3D217A] dark:border-slate-300 w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
 
                 ></textarea>
@@ -376,7 +376,7 @@ const ProfileEdit = () => {
                   onChange={handleProfileEdit}
                   name="websiteName"
                   // value={token?.websiteName && token?.websiteName}
-                  className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                  className="border border-[#3D217A] dark:border-slate-300 w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   placeholder="Add a link to drive traffic to your site"
                 />
                      <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
@@ -391,7 +391,7 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="number"
                 name="user_phone"
-                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Contact number "/>
                {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
@@ -405,7 +405,7 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="number"
                 name="whatapp"
-                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Whatapp number"/>
             </div>
 
@@ -420,7 +420,7 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="text"
                 name="brandName"
-                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your Brand Name"/>
                <p className='text-red  text-sm'>{errors.brandName?.message}</p>
             </div>

@@ -6,8 +6,10 @@ import FetchOtherUserVideos from '../../../hooks/otherUsersVideos';
 import anon from "../../../assests/images/anon.png"
 import ReactPlayer from "react-player";
 import { FaRegCirclePlay } from "react-icons/fa6";
-import thumbnail1 from "../../../assests/images/feed1.svg"
-import thumbnail2 from "../../../assests/images/feed2.svg"
+
+import thumbnail1 from "../../../assests/images/feed1.svg";
+import thumbnail2 from "../../../assests/images/feed2.svg";
+
 import VideoSkeleton from "../../../components/videoSkeleton"
 
 
@@ -24,7 +26,7 @@ const ProfileVideos = () => {
   }
   return (
     <section className="relative grid md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exl:grid-cols-6 gap-10 px-4 lg:px-10 py-2 lg:py-10">
-    {(!data?.data.videos && !isLoading )&& <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 exl:col-span-6 my-2'>{token?.user_name == user_name ? "You have" : "This User has"} not made any post Yet!</h1>}
+      {(!data?.data.videos && !isLoading) && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 exl:col-span-6 my-2'>{token?.user_name == user_name ? "You have" : "This User has"} not made any post Yet!</h1>}
       {(isLoading) && <VideoSkeleton posts={6} />}
       {data?.data?.videos.map((video) => (
         <div key={video.id} className='flex flex-col gap-4'>
