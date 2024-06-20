@@ -272,12 +272,12 @@ const ProfileEdit = () => {
       }
       <header>
         <h3 className="font-600 md:text-xl text-xl">Edit Profile</h3>
-        <p className="font-400 text-sm">Set up your presence and hiring needs</p>
+        <p className="font-400 text-sm my-2">Set up your presence and hiring needs</p>
       </header>
       {/* form  */}
       <article className="">
+        <h1 className="font-medium my-2 text-xs">👇Click to changeBackgrond Image</h1>
         <form onSubmit={formSubmit1}  encType="multipart/form-data" className="flex items-center gap-4">
-          <h1 className="font-medium my-1 text-xs">👇Click to changeBackgrond Image</h1>
           <article className="flex items-center">
             <div>
               {background ? (
