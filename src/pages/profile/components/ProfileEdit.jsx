@@ -276,7 +276,7 @@ const ProfileEdit = () => {
       </header>
       {/* form  */}
       <article className="">
-        <form onSubmit={formSubmit1}  encType="multipart/form-data">
+        <form onSubmit={formSubmit1}  encType="multipart/form-data" className="flex items-center gap-4">
           <h1 className="font-medium my-1 text-xs">👇Click to changeBackgrond Image</h1>
           <article className="flex items-center">
             <div>
@@ -309,7 +309,7 @@ const ProfileEdit = () => {
             </div>
           </article>
           <button type="submit"
-           className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md my-2">
+           className="bg-[#3D217A] py-2 md:py-3 md:px-4 text-white rounded-md my-2">
             Change Backgorund Image
           </button>
         </form>
