@@ -50,7 +50,7 @@ function Dashboard() {
                                 </NavLink>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <NavLink to="/dashboard" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to="/dashboard" className={({isActive})=> isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200">
                                         <MdDynamicFeed size={20} />
                                         <span className="md:block hidden">Post</span>
