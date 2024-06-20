@@ -14,11 +14,11 @@ import { Outlet } from "react-router-dom"
 const controlsVariant = {
     initial: {
         opacity: 0,
-        x : "-100%"
+        x : 0
     },
     animate: {
         opacity: 1,
-        x : 0,
+        x : "-100%",
         transition: {
             type: "spring", duration: 0.5
         }
