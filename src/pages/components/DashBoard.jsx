@@ -41,7 +41,7 @@ const childVariant = {
         opacity: 1,
         scale: 1,
         transition: {
-            type: "spring", duration: 0.3, delayChildren: 0.3
+            type: "spring", duration: 0.3, staggerChildren: 0.3, delayChildren: 0.3
         }
     },
     exit: {
