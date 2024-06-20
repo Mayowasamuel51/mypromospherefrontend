@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
-import { Link, Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
@@ -33,8 +33,12 @@ const FeedsHome = () => {
   };
 
   const goToPostPage = ()=> {
-    if (!token) {<Navigate to="/login"/>}
-    else {<Navigate to="/dashboard/postAds"/>}
+    if (!token) {
+      toast.error("You are not Logged In")
+      navigate('/login');
+    } else {
+      navigate('/dashboard/postAds');
+    }
   }
 
   return (

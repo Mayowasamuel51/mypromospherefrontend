@@ -14,30 +14,30 @@ import { Outlet } from "react-router-dom"
 const controlsVariant = {
     initial: {
         opacity: 0,
-        x : "-200%"
+        x: "-200%"
     },
     animate: {
         opacity: 1,
-        x : 0,
+        x: 0,
         transition: {
             type: "spring", duration: 0.5, staggerChildren: 0.2, when: "beforeChildren"
         }
     },
     exit: {
         opacity: 0,
-        x : "-200%",
-        transition : {
+        x: "-200%",
+        transition: {
             when: "afterChildren"
         }
     }
 }
 
 const childVariant = {
-    initial : {
+    initial: {
         opacity: 0,
         scale: 0,
     },
-    animate : {
+    animate: {
         opacity: 1,
         scale: 1,
         transition: {
@@ -58,14 +58,14 @@ function Dashboard() {
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious()
         if (latest > previous && latest > 50) {
-          setHidden(false)
+            setHidden(false)
         }
         else {
-          setHidden(true)
+            setHidden(true)
         }
-      })
+    })
 
-    if (!token) return <Navigate  to="/" />
+    if (!token) return <Navigate to="/" />
 
     return (
         <>
@@ -76,7 +76,7 @@ function Dashboard() {
                         <motion.div className="flex flex-col md:gap-6 gap-5">
                             <motion.div variants={childVariant} className="flex flex-col gap-2">
                                 <img
-                                    src={token?.profileImage  ?? anon}
+                                    src={token?.profileImage ?? anon}
                                     alt={"profile-picture"}
                                     className="w-[40px] aspect-square rounded-full object-cover object-center"
                                 />
@@ -88,12 +88,12 @@ function Dashboard() {
                             <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <motion.div variants={childVariant}>
                                     <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                        <FaShare size={20} className="text-white md:text-[#3D217A]"/>
+                                        <FaShare size={20} className="text-white md:text-[#3D217A]" />
                                         <p className="text-center md:block hidden">share</p>
                                     </button>
                                 </motion.div>
                                 <motion.div variants={childVariant}>
-                                    <NavLink to={'profileEdit'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                             <IoIosSettings size={25} className="" />
                                             <p className="text-center md:block hidden">Edit profile</p>
@@ -101,7 +101,7 @@ function Dashboard() {
                                     </NavLink>
                                 </motion.div>
                                 <motion.div variants={childVariant}>
-                                    <NavLink to={'personal-Info'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                             <FaEdit size={25} className="" />
                                             <p className="text-center md:block hidden">Personal Info</p>
@@ -111,7 +111,7 @@ function Dashboard() {
                             </motion.div>
                             <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
                                 <motion.div variants={childVariant}>
-                                    <NavLink to="/dashboard" className={({isActive})=> isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to="/dashboard" className={({ isActive }) => isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200">
                                             <MdDynamicFeed size={25} />
                                             <span className="md:block hidden">Post</span>
@@ -119,7 +119,7 @@ function Dashboard() {
                                     </NavLink>
                                 </motion.div>
                                 <motion.div variants={childVariant}>
-                                    <NavLink to="/dashboard/video" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to="/dashboard/video" className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200">
                                             <FaVideo size={25} />
                                             <span className="md:block hidden">Video</span>
@@ -129,7 +129,7 @@ function Dashboard() {
                             </motion.div>
                         </motion.div>
                         <motion.div variants={childVariant}>
-                            <NavLink to={`postAd`} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                            <NavLink to={`postAd`} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                 <button className="cursor-pointer flex items-center gap-2">
                                     <FiPlusSquare size={25} />
                                     <p className="md:block hidden">Post an Ad</p>
@@ -153,16 +153,16 @@ function Dashboard() {
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                    <FaShare size={20} className="text-white md:text-[#3D217A]"/>
+                                    <FaShare size={20} className="text-white md:text-[#3D217A]" />
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
-                                <NavLink to={'profileEdit'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <IoIosSettings size={20} className="" />
                                         <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </NavLink>
-                                <NavLink to={'personal-Info'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                         <FaEdit size={20} className="" />
                                         <p className="text-center md:block hidden">Personal Info</p>
@@ -170,13 +170,13 @@ function Dashboard() {
                                 </NavLink>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <NavLink to="/dashboard" className={({isActive})=> isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to="/dashboard" className={({ isActive }) => isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200">
                                         <MdDynamicFeed size={20} />
                                         <span className="md:block hidden">Post</span>
                                     </button>
                                 </NavLink>
-                                <NavLink to="/dashboard/video" className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to="/dashboard/video" className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200">
                                         <FaVideo size={20} />
                                         <span className="md:block hidden">Video</span>
@@ -184,7 +184,7 @@ function Dashboard() {
                                 </NavLink>
                             </div>
                         </div>
-                        <NavLink to={`postAd`} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                        <NavLink to={`postAd`} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                             <button className="cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
                                 <p className="md:block hidden">Post an Ad</p>
