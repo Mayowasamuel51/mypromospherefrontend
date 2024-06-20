@@ -407,7 +407,6 @@ const ProfileEdit = () => {
                 name="whatapp"
                 className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Whatapp number"/>
-               {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
 
 

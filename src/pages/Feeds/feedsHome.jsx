@@ -33,14 +33,8 @@ const FeedsHome = () => {
   };
 
   const goToPostPage = ()=> {
-    if (token) {
-      <Navigate to="/dashboard/postAd"/>
-    } else {
-      toast.error("You are not Logged in");
-      setTimeout(()=>{
-        <Navigate to="/login"/>
-      }, 3000)
-    }
+    if (!token) {<Navigate to="/login"/>}
+    else {<Navigate to="/dashboard/postAds"/>}
   }
 
   return (
@@ -143,7 +137,7 @@ const FeedsHome = () => {
                   }`}
               >
                 <FaVideo size={20} className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`} />
-                <p>Top Video Ads</p>
+                <p className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`}>Top Video Ads</p>
               </motion.button>
             </Link>
           </div>
