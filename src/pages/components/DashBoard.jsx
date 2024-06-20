@@ -84,7 +84,7 @@ function Dashboard() {
                                 </h1>
                                 <p className="text-xs text-slate-400 md:block hidden">{token ? `${token["user"]}` : 'Anonymous'}</p>
                             </motion.div>
-                            <motion.div variants={childVariant} className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
+                            <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <motion.div variants={childVariant}>
                                     <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                         <FaShare size={20} className="text-white md:text-[#3D217A]"/>
@@ -108,7 +108,7 @@ function Dashboard() {
                                     </NavLink>
                                 </motion.div>
                             </motion.div>
-                            <motion.div variants={childVariant} className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
+                            <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
                                 <motion.div variants={childVariant}>
                                     <NavLink to="/dashboard" className={({isActive})=> isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200">
