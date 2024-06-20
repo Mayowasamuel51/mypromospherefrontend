@@ -19,7 +19,7 @@ function Dashboard() {
             <DashBoardNav />
             <main className={`px-4 md:px-10 py-20 md:py-28`}>
                 <section className="flex items-start md:gap-10 gap-4">
-                    <article className="top-20 right-0 border-2 border-red md:static rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                    <article className="top-20 right-0 border-2 border-red fixed md:static rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
