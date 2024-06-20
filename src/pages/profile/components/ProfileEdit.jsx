@@ -309,10 +309,12 @@ const ProfileEdit = () => {
             </div>
           </article>
           <button type="submit"
-           className="bg-[#3D217A] py-2 md:py-3 md:px-4 text-white rounded-md my-2">
+           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2">
             Change Backgorund Image
           </button>
         </form>
+
+        <hr className="my-4" />
 
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
