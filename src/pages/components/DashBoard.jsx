@@ -7,6 +7,7 @@ import { FaShare, FaVideo } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FiPlusSquare } from "react-icons/fi";
 import { MdDynamicFeed } from "react-icons/md";
+import { IoIosSettings } from "react-icons/io";
 import { Outlet } from "react-router-dom"
 
 function Dashboard() {
@@ -38,7 +39,7 @@ function Dashboard() {
                                 </button>
                                 <NavLink to={'profileEdit'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
-                                        <FaEdit size={20} className="" />
+                                        <IoIosSettings size={20} className="" />
                                         <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </NavLink>
