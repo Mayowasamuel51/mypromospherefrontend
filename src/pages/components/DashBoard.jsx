@@ -74,7 +74,7 @@ function Dashboard() {
                     </article>
 
                     <article className="flex-1">
-                        <div className="md:px-10">
+                        <div className="md:px-10 w-full">
                             <AnimatePresence>
                                 <Outlet />
                             </AnimatePresence>
