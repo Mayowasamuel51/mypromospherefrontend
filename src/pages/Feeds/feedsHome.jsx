@@ -119,7 +119,7 @@ const FeedsHome = () => {
                   }`}
               >
                 <MdOutlineDynamicFeed size={20} className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`} />
-                <p className="text-black">Trending Ads</p>
+                <p className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`}>Trending Ads</p>
               </motion.button>
             </Link>
             <div onClick={()=> goToPostPage()} className="block text-center">
@@ -130,8 +130,8 @@ const FeedsHome = () => {
             </div>
             <Link
               to="/top-videos"
-              className={`block text-center ${location.pathname === "/top-videos" &&
-                "text-[#EC6A87]"
+              className={`block text-center ${location.pathname === "/top-videos" ?
+                "text-[#EC6A87]" : "text-black"
                 }`}
             >
               <motion.button
