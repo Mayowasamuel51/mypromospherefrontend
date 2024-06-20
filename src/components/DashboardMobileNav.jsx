@@ -60,7 +60,7 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   const { token } = useStateContext();
   return (
     <motion.div variants={MainCOntainerdivVariant} initial="initial" animate={toggleNav ? "animate" : "initial"} exit="exit" className={`h-[100dvh] lg:hidden text-black fixed inset-0 flex justify-between items-center gap-10 z-[99]`}>
-      <motion.nav variants={navVariant} className={`fixed inset-0 bg-white p-8 text-black h-[100dvh] w-full lg:py-0 py-10 flex flex-col justify-between bg-transparent`}>
+      <motion.nav variants={navVariant} className={`fixed inset-0 bg-white dark:bg-black p-8 text-black h-[100dvh] w-full lg:py-0 py-10 flex flex-col justify-between bg-transparent`}>
         <motion.div className="flex flex-col gap-6">
           {token &&
             <motion.div variants={childVariant} className="">
@@ -72,7 +72,7 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
                 </div>
               </Link>
             </motion.div>}
-          <motion.div variants={childVariant} onClick={handleToggle}>
+          <motion.div variants={childVariant} onClick={handleToggle} className="text-black dark:text-white">
             <Link to="/category/property">
               <p>Property</p>
             </Link>
