@@ -142,7 +142,7 @@ function Dashboard() {
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
-                                    src={token?.profileImage  ?? anon}
+                                    src={token?.profileImage ?? anon}
                                     alt={"profile-picture"}
                                     className="w-[60px] aspect-square rounded-full object-cover object-center"
                                 />

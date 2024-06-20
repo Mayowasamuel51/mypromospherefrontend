@@ -46,7 +46,6 @@ const TrendingAds = () => {
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                         {/* <Link to={`/feed/${item.name}`}> */}
                                             <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
