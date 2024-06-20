@@ -19,7 +19,7 @@ function Dashboard() {
             <DashBoardNav />
             <main className={`px-4 md:px-10 py-20 md:py-28`}>
                 <section className="flex items-start md:gap-10 gap-4">
-                    <article className="rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                    <article className="top-20 right-0 border-2 border-red md:static rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
@@ -34,7 +34,7 @@ function Dashboard() {
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                    <FaShare size={20} className=""/>
+                                    <FaShare size={20} className="text-white md:text-[#3D217A]"/>
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
                                 <NavLink to={'profileEdit'} className={({isActive})=> isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
