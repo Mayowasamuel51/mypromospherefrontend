@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import anon from "../assests/images/anon.png"
 import { FaPowerOff } from "react-icons/fa6";
 import { useStateContext } from '../contexts/ContextProvider';
+import PropTypes from 'prop-types'
 
 const ulVariant = {
     initial: {
@@ -78,6 +79,10 @@ const ProfileHover = ({ LogOut }) => {
             </AnimatePresence>
         </motion.div>
     )
+}
+
+ProfileHover.propTypes = {
+    LogOut: PropTypes.func
 }
 
 export default ProfileHover
