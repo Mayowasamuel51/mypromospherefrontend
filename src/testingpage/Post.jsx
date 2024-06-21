@@ -453,8 +453,8 @@ const Post = () => {
     formData.append('aboutMe', profile.data.data.aboutMe)
     formData.append('whatapp', profile.data.data.whatapp)
     formData.append('user_phone', profile.data.data.user_phone)
-
-
+    
+    
     formData.append("categories", uploadData?.category);
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
@@ -462,6 +462,7 @@ const Post = () => {
     formData.append("local_gov", uploadData?.local_gov);
     formData.append("discount", uploadData?.discount);
     formData.append("user_image", uploadData?.user_image);
+    formData.append('productName', uploadData?.productName)
     uploadPostMutation.mutate(formData);
   };
 
