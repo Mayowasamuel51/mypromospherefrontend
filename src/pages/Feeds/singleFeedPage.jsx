@@ -40,7 +40,7 @@ const SingleFeedPage = () => {
             <Navbar blue={true} />
             <section className="pt-16 lg:pt-32 px-4 lg:px-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="">
+                    <div className="flex-1">
                         <div className='relative'>
                             <div className='rounded-md'>
                                 <AnimatePresence mode='popLayout'>
@@ -70,7 +70,7 @@ const SingleFeedPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex-1 flex flex-col gap-2'>
                         <Link to={`/profile/user/${data?.data?.data.user_name}`} className='flex items-center gap-2'>
                             <div className="flex items-center gap-2">
                                 <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
@@ -102,10 +102,10 @@ const SingleFeedPage = () => {
                             <h1 className='font-semibold text-sm'>Date Posted:</h1>
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                         </div>
-                        <div className='flex items-center gap-4'>
+                        <div className='flex items-center gap-5 md:gap-10'>
                             <button className="flex-1 bg-[#3D217A] border border-[#3D217A] hover:bg-transparent hover:text-[#3D217A] duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
                             <div>
-                                <FaHeart color="red" size={20} />
+                                <FaHeart color="red" size={30} />
                             </div>
                         </div>
                     </div>
