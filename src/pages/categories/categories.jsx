@@ -24,7 +24,7 @@ const Categories = () => {
         <div className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
           {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
           {category === "discount"  &&
-            data?.data.discount.slice(0, 4).map((item) => (
+            data?.data?.discount.map((item) => (
               <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                 {data?.data?.other_image.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                   <Splide options={{
