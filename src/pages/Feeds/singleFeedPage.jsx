@@ -90,17 +90,19 @@ const SingleFeedPage = () => {
                             <TbCurrencyNaira size={35} />
                             <span>{data?.data?.data?.price_range ?? 10000}</span>
                         </p>
-                        <div className='flex flex-col'>
-                            <h1 className='font-semibold text-sm'>STATE</h1>
-                            <p className=''>{data?.data?.data?.state}</p>
-                        </div>
-                        <div className='flex flex-col'>
-                            <h1 className='font-semibold text-sm'>LGA</h1>
-                            <p className=''>{data?.data?.data?.local_gov}</p>
-                        </div>
-                        <div className='flex flex-col'>
-                            <h1 className='font-semibold text-sm'>Date Posted:</h1>
-                            <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                        <div className="flex items-center justify-between px-2 text-center divide-y-2">
+                            <div className='flex flex-col'>
+                                <h1 className='font-semibold text-sm'>STATE</h1>
+                                <p className=''>{data?.data?.data?.state}</p>
+                            </div>
+                            <div className='flex flex-col'>
+                                <h1 className='font-semibold text-sm'>LGA</h1>
+                                <p className=''>{data?.data?.data?.local_gov}</p>
+                            </div>
+                            <div className='flex flex-col'>
+                                <h1 className='font-semibold text-sm'>Date Posted:</h1>
+                                <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                            </div>
                         </div>
                         <div className='flex items-center gap-5 md:gap-10'>
                             <button className="flex-1 bg-[#3D217A] border border-[#3D217A] hover:bg-transparent hover:text-[#3D217A] duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
