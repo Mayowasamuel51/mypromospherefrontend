@@ -88,9 +88,9 @@ const SingleFeedPage = () => {
                         </div>
                         <p className='flex items-center'>
                             <TbCurrencyNaira size={35} />
-                            <span>{data?.data?.data?.price_range ?? 10000}</span>
+                            <span className="font-semibold text-base md:text-lg">{(data?.data?.data?.price_range) ? (+data?.data?.data?.price_range).toLocaleString() : 10000}</span>
                         </p>
-                        <div className="flex items-center justify-between px-2 text-center divide-x-2 border-x-black">
+                        <div className="flex items-center justify-between md:p-6 text-center divide-x-2 border-x-black">
                             <div className='flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>STATE</h1>
                                 <p className=''>{data?.data?.data?.state}</p>
