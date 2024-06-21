@@ -90,16 +90,16 @@ const SingleFeedPage = () => {
                             <TbCurrencyNaira size={35} />
                             <span>{data?.data?.data?.price_range ?? 10000}</span>
                         </p>
-                        <div className="flex items-center justify-between px-2 text-center divide-y-2">
-                            <div className='flex flex-col'>
+                        <div className="flex items-center justify-between px-2 text-center divide-x-2 border-x-black">
+                            <div className='flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>STATE</h1>
                                 <p className=''>{data?.data?.data?.state}</p>
                             </div>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>LGA</h1>
                                 <p className=''>{data?.data?.data?.local_gov}</p>
                             </div>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>Date Posted:</h1>
                                 <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                             </div>
