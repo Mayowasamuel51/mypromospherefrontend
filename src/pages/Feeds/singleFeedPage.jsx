@@ -54,7 +54,7 @@ const SingleFeedPage = () => {
                                             exit={{ opacity: 0, x: -100 }}
                                             transition={{ type: "spring", stiffness: 100 }}
                                             src={imageUrl}
-                                            style={{ width: FullScreen ? 600 : "100%", height: 400 }}
+                                            style={{ width: FullScreen ? 600 : "100%" }}
                                             alt="img"
                                             className="rounded-md w-full h-[400px] md:h-[500px] object-cover"
                                         />
