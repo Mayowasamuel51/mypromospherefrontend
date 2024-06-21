@@ -13,7 +13,7 @@ import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
 import { toast } from "sonner";
-import logoBg from "../../assests/images/mypromosphere-logo.png";
+import LogoBg from "../../assests/images/mypromosphere-logo.png";
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
@@ -48,8 +48,11 @@ const FeedsHome = () => {
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           {!token && 
-          <div>
-            <h1>Welcome To MyPromosphere</h1>
+          <div className="relative">
+            <div className="border-2 border-red absolute top-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2">
+              <h1 className="md:text-xl">Welcome To MyPromosphere</h1>
+            </div>
+            <img src={LogoBg} className="w-full h-[150px] md:h-[200px]" alt="" />
           </div>
           }
           <div className="">
