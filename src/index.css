@@ -298,9 +298,8 @@ html {
 .animate-banner {
   animation-name: changer;
   animation-timing-function: ease-in-out;
-  animation-duration: 2s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
-  background-size: 300%;
 }
 
 @keyframes changer {
