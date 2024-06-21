@@ -70,7 +70,7 @@ const SingleFeedPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex-1 flex flex-col gap-2'>
+                    <div className='flex-1 flex flex-col gap-2 py-4 md:py-0'>
                         <Link to={`/profile/user/${data?.data?.data.user_name}`} className='flex items-center gap-2'>
                             <div className="flex items-center gap-2">
                                 <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
@@ -93,15 +93,15 @@ const SingleFeedPage = () => {
                         <div className="flex items-center md:p-6 text-center divide-x-2 border-x-black">
                             <div className='flex-1 flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>STATE</h1>
-                                <p className=''>{data?.data?.data?.state}</p>
+                                <p className='text-xs'>{data?.data?.data?.state}</p>
                             </div>
                             <div className='flex-1 flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>LGA</h1>
-                                <p className=''>{data?.data?.data?.local_gov}</p>
+                                <p className='text-xs'>{data?.data?.data?.local_gov}</p>
                             </div>
                             <div className='flex-1 flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>Date Posted:</h1>
-                                <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                                <p className="text-xs">{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                             </div>
                         </div>
                         <div className='flex items-center gap-5 md:gap-10'>
