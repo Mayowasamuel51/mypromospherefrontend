@@ -309,7 +309,7 @@ const ProfileEdit = () => {
             </div>
           </article>
           <button type="submit"
-           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2">
+           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2 text-xs md:text-base">
             Change Backgorund Image
           </button>
         </form>
