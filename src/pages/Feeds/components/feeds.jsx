@@ -8,6 +8,7 @@ import '@splidejs/react-splide/css';
 import "./trends.css";
 import { useStateContext } from '../../../contexts/ContextProvider';
 import PostsSkeleton from '../../../components/postsSkeleton';
+import { TbCurrencyNaira } from "react-icons/tb";
 
 
 const Feeds = () => {
@@ -19,6 +20,7 @@ const Feeds = () => {
       <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
       <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
         {isLoading && <PostsSkeleton posts={4} />}
+        {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
         {data?.data.normalads.slice(0, 4).map((item) => (
           <div key={item.id} className="flex flex-col gap-2 md:gap-4">
             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
@@ -31,7 +33,7 @@ const Feeds = () => {
                 arrows: false,
                 pagination: true,
                 snap: true,
-                cloneStatus: false,
+                // cloneStatus: false,
                 width: "100%",
                 height: "300px"
               }} className="">
@@ -54,10 +56,17 @@ const Feeds = () => {
                 </Link>
               </div>
             }
+            <div className='flex items-center justify-between'>
+              <h1 className='font-semibold'>name</h1>
+              <div className="flex items-center">
+                <TbCurrencyNaira size={20} />
+                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+              </div>
+            </div>
             <Link to={`/profile/user/${item.user_name}`} className="w-fit">
               <div className="flex items-center gap-2">
                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                {token && <p className="text-sm font-medium">{item.user_id === token.id && "me"}</p>}
+                {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
               </div>
             </Link>
           </div>

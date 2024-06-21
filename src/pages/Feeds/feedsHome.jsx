@@ -13,6 +13,9 @@ import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
 import { toast } from "sonner";
+import LogoBg from "../../assests/images/mypromosphere-logo.png";
+import { FiPlusCircle } from "react-icons/fi";
+
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
@@ -46,6 +49,24 @@ const FeedsHome = () => {
       <div className="">
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
+          {!token && 
+          <div className="relative rounded-md overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center md:w-[600px]">
+              <div className="flex flex-col gap-1">
+                <h1 className="md:text-3xl text-white font-bold">Welcome To <span className="text-[#EC6A87] font-black tracking-tight">MyPromosphere</span></h1>
+                <p className="text-sm text-white">Where you are one tap closer to your customers</p>
+                <p className="text-sm text-white">Got Something To Sell</p>
+              </div>
+              <Link to={`/login`}>
+                <div className="flex flex-col items-center gap-1">
+                  <FiPlusCircle color="#3D217A" size={40} />
+                  <p className="underline text-[#3D217A] text-sm">Register Today</p>
+                </div>
+              </Link>
+            </div>
+            <img src={LogoBg} className="animate-banner w-full h-[200px] md:h-[250px] object-cover" alt="" />
+          </div>
+          }
           <div className="">
             <section className="lg:px-10 px-4">
               <div className="flex my-3 lg:my-3">

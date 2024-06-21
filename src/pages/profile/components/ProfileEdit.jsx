@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import blankImage from "../../../assests/images/blank Image.png";
+import bgLOGO from "../../../assests/images/mypromosphere-logo.png"
 import anon from "../../../assests/images/anon.png";
 // import axiosclinet from "../https/axios-clinet";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -311,9 +311,9 @@ const ProfileEdit = () => {
               ) : (
                 <label htmlFor="background-image">
                   <img
-                    src={backgroundImage ? data[0]?.backgroundimage : blankImage}
+                    src={data[0]?.backgroundImage ? data[0]?.backgroundimage : bgLOGO}
                     alt="blankImage"
-                    className="w-[100px] aspect-square rounded-full border duration-200 hover:scale-110 cursor-pointer"
+                    className="w-[100px] aspect-square rounded-full border duration-200 hover:scale-110 cursor-pointer object-cover"
                   />
                 </label>
               )}
@@ -331,7 +331,7 @@ const ProfileEdit = () => {
             </div>
           </article>
           <button type="submit"
-           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2">
+           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2 text-xs md:text-base">
             Change Backgorund Image
           </button>
         </form>
@@ -350,7 +350,7 @@ const ProfileEdit = () => {
               ) : (
                 <label htmlFor="profile-image">
                   <img
-                    src={data ? data[0]?.profileImage : anon}
+                    src={data[0]?.profileImage ? data[0]?.profileImage : anon}
                     alt="blank-Image"
                     className="w-[100px] aspect-square rounded-full object-cover border duration-200 hover:scale-110 cursor-pointer"
                   />

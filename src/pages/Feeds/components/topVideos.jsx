@@ -1,4 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import anon from "../../../assests/images/anon.png";
 import { Link } from "react-router-dom";
@@ -6,12 +5,15 @@ import FetchVideos from "../../../hooks/fetchVideos";
 import ReactPlayer from "react-player";
 import { useStateContext } from "../../../contexts/ContextProvider";
 import { FaRegCirclePlay } from "react-icons/fa6";
-import Loader from "../../../loader";
+import VideoSkeleton from "../../../components/videoSkeleton";
+
 const api_thumbnails = import.meta.env.VITE_thumbnails;
 const TopVideos = () => {
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchVideos();
+  
   console.log(data?.data?.videos);
+
   if (error)
     return (
       <div className="min-h-screen grid place-items-center text-red md:text-xl text-lg">
@@ -22,10 +24,14 @@ const TopVideos = () => {
   return (
     <>
       <section className="relative grid md:gap-4 md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
+        {data?.data?.videos.length === 0 && 
+        <div className='flex flex-col gap-2 md:col-span-2 lg:col-span-4 exl:col-span-4 text-center'>
+          <h1 className="text-semibold text-base md:text-xl">No post Yet!!!</h1>
+          <Link to={`/dashboard/postVideo`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+        </div>
+        }
         {isLoading && (
-          <div className="md:col-span-2 lg:col-span-3 exl:col-span-4">
-            <Loader />
-          </div>
+          <VideoSkeleton posts={8} />
         )}
         {data?.data?.videos.map((video) => (
           <div key={video.id} className="flex flex-col gap-4">
@@ -61,7 +67,7 @@ const TopVideos = () => {
                 />
                 {token && (
                   <p className="text-sm font-medium">
-                    {video.user_id === token.id && "me"}
+                    {video.user_id === token.id ? "me" : video.user_name}
                   </p>
                 )}
               </div>

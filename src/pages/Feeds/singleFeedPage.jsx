@@ -10,6 +10,7 @@ import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { useStateContext } from '../../contexts/ContextProvider';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaHeart } from "react-icons/fa";
 
 const SingleFeedPage = () => {
     const { FullScreen } = useStateContext()
@@ -39,10 +40,7 @@ const SingleFeedPage = () => {
             <Navbar blue={true} />
             <section className="pt-16 lg:pt-32 px-4 lg:px-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
-                        <IoChevronBackCircleSharp size={30} />
-                    </div>
-                    <div className="flex-1 flex flex-col gap-2">
+                    <div className="flex-1">
                         <div className='relative'>
                             <div className='rounded-md'>
                                 <AnimatePresence mode='popLayout'>
@@ -54,9 +52,9 @@ const SingleFeedPage = () => {
                                             exit={{ opacity: 0, x: -100 }}
                                             transition={{ type: "spring", stiffness: 100 }}
                                             src={imageUrl}
-                                            style={{ width: FullScreen ? 600 : "100%", height: 400 }}
+                                            style={{ width: FullScreen ? 700 : "100%" }}
                                             alt="img"
-                                            className="rounded-md w-full h-[300px] md:h-[400px] object-cover"
+                                            className="rounded-md w-full h-[400px] md:h-[500px] object-cover"
                                         />
                                     )}
                                 </AnimatePresence>
@@ -71,36 +69,46 @@ const SingleFeedPage = () => {
                                 ))}
                             </div>
                         </div>
-                        <Link to={`/profile/user/${data?.data?.data.user_name}`}>
+                    </div>
+                    <div className='flex-1 flex flex-col gap-2'>
+                        <Link to={`/profile/user/${data?.data?.data.user_name}`} className='flex items-center gap-2'>
                             <div className="flex items-center gap-2">
                                 <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
                             </div>
+                            <div>
+                                <p>{data?.data?.data.user_name}</p>
+                            </div>
                         </Link>
-                    </div>
-                    <div className='flex-1 flex flex-col gap-2'>
-                        <p className='text-[#3D217A] font-medium text-lg my-4'>{data?.data?.data?.categories}</p>
-                        <p>{data?.data?.data?.productName || "No Name"}</p>
-                        <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1>
-                        <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
-                        <p className='flex items-center gap-2'>
-                            <TbCurrencyNaira size={15} />
-                            <span>{data?.data?.data?.price_range ?? 10000}</span>
+                        <p className='text-[#3D217A] font-bold text-lg'>{data?.data?.data?.categories}</p>
+                        <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
+                        {/* <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1> */}
+                        <div>
+                            <h1 className='font-bold text-base'>Description</h1>
+                            <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
+                        </div>
+                        <p className='flex items-center'>
+                            <TbCurrencyNaira size={35} />
+                            <span className="font-semibold text-base md:text-lg">{(data?.data?.data?.price_range) ? (+data?.data?.data?.price_range).toLocaleString() : 10000}</span>
                         </p>
-                        <div className='flex items-center gap-2'>
-                            <h1 className='font-semibold text-lg'>STATE</h1>
-                            <p className=''>{data?.data?.data?.state}</p>
+                        <div className="flex items-center md:p-6 text-center divide-x-2 border-x-black">
+                            <div className='flex-1 flex flex-col gap-2'>
+                                <h1 className='font-semibold text-sm'>STATE</h1>
+                                <p className=''>{data?.data?.data?.state}</p>
+                            </div>
+                            <div className='flex-1 flex flex-col gap-2'>
+                                <h1 className='font-semibold text-sm'>LGA</h1>
+                                <p className=''>{data?.data?.data?.local_gov}</p>
+                            </div>
+                            <div className='flex-1 flex flex-col gap-2'>
+                                <h1 className='font-semibold text-sm'>Date Posted:</h1>
+                                <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
+                            </div>
                         </div>
-                        <div className='flex items-center gap-2'>
-                            <h1 className='font-semibold text-lg'>LGA</h1>
-                            <p className=''>{data?.data?.data?.local_gov}</p>
-                        </div>
-                        <div className='flex items-center gap-2'>
-                            <h1 className='font-semibold text-lg'>Date Posted:</h1>
-                            <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
-                        </div>
-                        <div className='flex items-center justify-between gap-2'>
-                            <button className="flex-1 bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">BUY</button>
-                            <button className="flex-1 bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">LIKE</button>
+                        <div className='flex items-center gap-5 md:gap-10'>
+                            <button className="flex-1 bg-[#3D217A] border border-[#3D217A] hover:bg-transparent hover:text-[#3D217A] duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
+                            <div>
+                                <FaHeart color="red" size={30} />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,3 +118,7 @@ const SingleFeedPage = () => {
 }
 
 export default SingleFeedPage;
+
+{/* <div onClick={() => navigate(-1)} className='cursor-pointer my-2'>
+    <IoChevronBackCircleSharp size={30} />
+</div> */}

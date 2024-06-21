@@ -16,6 +16,7 @@
 
 body {
   background-color: var(--background-color);
+  min-height: 100vh;
 }
 
 html {
@@ -292,3 +293,36 @@ html {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
+
+/* -------------------BANNER ANIMATION---------------------- */
+
+.animate-banner {
+  animation-name: changer;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-banner {
+    animation: none;
+  }
+}
+
+@keyframes changer {
+  0% {
+    object-position: top;
+  }
+  20% {
+    object-position: right;
+  }
+  40% {
+    object-position: bottom;
+  }
+  60% {
+    object-position: left;
+  }
+  100% {
+    object-position: top;
+  }
+}

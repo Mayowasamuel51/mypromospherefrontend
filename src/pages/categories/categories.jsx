@@ -1,11 +1,14 @@
 import Navbar from "../../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
 import FetchCategories from "../../hooks/fetchCategories";
-import Loader from "../../loader";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import anon from "../../assests/images/anon.png"
 import { useStateContext } from "../../contexts/ContextProvider";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import "../Feeds/components/trends.css";
+import PostsSkeleton from "../../components/postsSkeleton";
 
 const Categories = () => {
   const { token } = useStateContext()
@@ -15,23 +18,50 @@ const Categories = () => {
   return (
     <>
       <Navbar blue={true} />
-      <section className="py-20 lg:py-20 px-4">
-        {category === "discount" && <h1 className="font-semibold text-2xl capitalize mx-3 md:mx-8 my-4">Products/properties on discount</h1>}
+      <section className="py-20 lg:py-20 px-4 md:px-10">
+        {category === "discount" && <h1 className="font-semibold text-2xl capitalize mx-3 md:mx-4 my-3">Products/properties on discount</h1>}
         {error && <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>}
         <div className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-4">
-          {isLoading && <div className='md:col-span-2 lg:col-span-3 exl:col-span-4'><Loader /></div>}
-          {category === "discount" &&
-            data?.data.discount.map((discount) => (
-              <div key={discount.id} className="flex flex-col gap-2 md:gap-4">
-                <div>
-                  <Link to={`/feed/${discount.id}`}>
-                    <LazyLoadImage width={`100%`} visibleByDefault={discount.src === discount.titleImageurl} effect='blur' src={`https://apimypromospheretest.com.ng/public/storage/${discount.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                  </Link>
-                </div>
-                <Link to={`/profile/user/${discount.user_id}`} className="w-fit">
+          {isLoading && <PostsSkeleton posts={8} />}
+          {category === "discount"  &&
+            data?.data?.discount.map((item) => (
+              <div key={item.id} className="flex flex-col gap-2 md:gap-4">
+                {data?.data?.other_image.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
+                  <Splide options={{
+                    type: 'slide',
+                    focus: 1,
+                    start: 1,
+                    gap: "20px",
+                    perPage: 1,
+                    arrows: false,
+                    pagination: true,
+                    snap: true,
+                    width: "100%",
+                    height: "300px"
+                  }} className="">
+                    <SplideSlide className='rounded-md'>
+                      <Link to={`/feed/${item.id}`}>
+                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
+                      </Link>
+                    </SplideSlide>
+                    {data?.data?.other_image.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
+                      <SplideSlide key={img.id} className='rounded-md'>
+                        <Link to={`/feed/${item.id}`}>
+                          <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="w-full rounded-md object-cover" />
+                        </Link>
+                      </SplideSlide>
+                    ))}
+                  </Splide> :
+                  <div>
+                    <Link to={`/feed/${item.id}`}>
+                      <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
+                    </Link>
+                  </div>
+                }
+                <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                   <div className="flex items-center gap-2">
-                    <img src={discount.user_image === "null" || discount.user_image === "undefined" ? anon : discount.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square" />
-                    <p className="text-sm font-medium">{discount.user_id === token.id && "me"}</p>
+                    <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
+                    {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
                   </div>
                 </Link>
               </div>
