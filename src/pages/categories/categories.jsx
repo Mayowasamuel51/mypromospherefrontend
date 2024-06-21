@@ -26,7 +26,7 @@ const Categories = () => {
           {category === "discount"  &&
             data?.data.discount.slice(0, 4).map((item) => (
               <div key={item.id} className="flex flex-col gap-2 md:gap-4">
-                {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
+                {data?.data?.other_image.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                   <Splide options={{
                     type: 'slide',
                     focus: 1,
