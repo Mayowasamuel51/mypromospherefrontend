@@ -294,7 +294,9 @@ html {
 }
 
 
-/* BANNER ANIMATION */
+
+/* -------------------BANNER ANIMATION---------------------- */
+
 .animate-banner {
   animation-name: changer;
   animation-timing-function: ease-in-out;
