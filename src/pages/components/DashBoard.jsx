@@ -10,6 +10,7 @@ import { FiPlusSquare } from "react-icons/fi";
 import { MdDynamicFeed } from "react-icons/md";
 import { IoIosSettings } from "react-icons/io";
 import { Outlet } from "react-router-dom"
+import { useQuery } from "@tanstack/react-query";
 
 const controlsVariant = {
     initial: {
@@ -66,7 +67,16 @@ function Dashboard() {
     })
 
     if (!token) return <Navigate to="/" />
-
+    const { isPending, isError, data: profile, isLoading, error } = useQuery({
+        queryKey: ["fetch"],
+        queryFn: () =>
+          axios.get(`${api_fetch}/${token?.id}`, {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token?.token}`,
+            },
+          }),
+      });
     return (
         <>
             <DashBoardNav />
@@ -76,7 +86,8 @@ function Dashboard() {
                         <motion.div className="flex flex-col md:gap-6 gap-5">
                             <motion.div variants={childVariant} className="flex flex-col gap-2">
                                 <img
-                                    src={token?.profileImage ?? anon}
+                                    src={token?.profileImage ?? anon  }
+                                    // src={profile?.data?.data[0].profileImage ? profile?.data?.data[0].profileImage : anon}
                                     alt={"profile-picture"}
                                     className="w-[40px] aspect-square rounded-full object-cover object-center"
                                 />

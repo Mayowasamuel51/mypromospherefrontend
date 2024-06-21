@@ -64,6 +64,14 @@ const Post = () => {
       }),
   });
 
+  const [profileedit , setProfileEdit ] = useState({
+    brandName:profile?.data?.data[0].brandName,
+    aboutMe:profile?.data?.data[0].aboutMe,
+    whatapp:profile?.data?.data[0].whatapp,
+    user_phone:profile?.data?.data[0].user_phone,
+    websiteName:profile?.data?.data[0].websiteName
+  })
+
   // console.log( profile.data.data.aboutMe    )
   // const formSubmit = (data) => {
   //   console.log("i was clicked")
@@ -454,31 +462,19 @@ const Post = () => {
       }
     });
     formData.append('user_name', token?.user_name)
-<<<<<<< HEAD
-    formData.append('aboutMe', token?.aboutMe)
-    formData.append('whatapp', token?.whatapp)
-    formData.append('user_phone', token?.user_phone)
-
-=======
-    formData.append('aboutMe', profile.data.data.aboutMe)
-    formData.append('whatapp', profile.data.data.whatapp)
-    formData.append('user_phone', profile.data.data.user_phone)
+    formData.append('aboutMe', profile?.data?.data[0].aboutMe)
+    formData.append('whatapp', profile?.data?.data[0].whatapp)
+    formData.append('user_phone', profile?.data?.data[0].user_phone)
     
     
->>>>>>> 9c4d498d16e95798e88f03a492adf24747689f9e
     formData.append("categories", uploadData?.category);
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
     formData.append("state", uploadData?.state);
     formData.append("local_gov", uploadData?.local_gov);
     formData.append("discount", uploadData?.discount);
-
     formData.append("user_image", uploadData?.user_image);
-<<<<<<< HEAD
-    // formData.append("user_image", token?.user_image);
-=======
     formData.append('productName', uploadData?.productName)
->>>>>>> 9c4d498d16e95798e88f03a492adf24747689f9e
     uploadPostMutation.mutate(formData);
   };
 
@@ -656,7 +652,7 @@ const Post = () => {
 
             className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
           >
-            Post
+            Promote
           </button>
         </form>
       </div>

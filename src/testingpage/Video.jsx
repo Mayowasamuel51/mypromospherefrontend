@@ -26,6 +26,7 @@ import { Toaster, toast } from "sonner";
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import Loader from "../loader.jsx";
+import { useQuery } from "@tanstack/react-query";
 // import { FaPlus, FaXmark } from "react-icons/fa6";
 const api_freeads = import.meta.env.VITE_ADS_VIDEO_FREEADS;
 
@@ -43,6 +44,17 @@ const Video = () => {
   const [previewImage, setPreviewImage] = useState(null);
   const [localGvt, setLocalGvt] = useState();
   const result = Object.entries(data.full);
+
+  const { isPending, isError, data: profile, isLoading, error } = useQuery({
+    queryKey: ["fetch"],
+    queryFn: () =>
+      axios.get(`${api_fetch}/${token?.id}`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token?.token}`,
+        },
+      }),
+  });
 
   const onFileChange = (files) => {
     const currentFile = files[0];
@@ -216,6 +228,13 @@ const Video = () => {
           formData.append("description", data.description);
           formData.append("price_range", data.price_range);
           formData.append("thumbnails", data.picture[0]);
+          formData.append("productName", data.productName);
+
+          formData.append('user_name', token?.user_name)
+          // formData.append('aboutMe', profile?.data?.data[0].aboutMe)
+          formData.append('whatapp', profile?.data?.data[0].whatapp)
+          formData.append('user_phone', profile?.data?.data[0].user_phone)
+
           console.log(data.picture[0]);
           // formData.append("local_gov",data.local_gov);
           // formData.append("discount",data.discount);
