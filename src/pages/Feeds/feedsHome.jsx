@@ -49,11 +49,13 @@ const FeedsHome = () => {
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           {!token && 
-          <div className="relative rounded-md">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-              <h1 className="md:text-3xl text-white">Welcome To MyPromosphere</h1>
-              <p className="text-sm text-white">Where you are one tap closer to your customers</p>
-              <p className="text-sm text-white">Got Something To Sell</p>
+          <div className="relative rounded-md overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center md:w-[400px]">
+              <div className="flex flex-col gap-1">
+                <h1 className="md:text-3xl text-white font-bold">Welcome To <span className="text-[#EC6A87] font-black tracking-tight">MyPromosphere</span></h1>
+                <p className="text-sm text-white">Where you are one tap closer to your customers</p>
+                <p className="text-sm text-white">Got Something To Sell</p>
+              </div>
               <Link to={`/login`}>
                 <div className="flex flex-col items-center gap-1">
                   <FiPlusCircle color="#3D217A" size={40} />
@@ -61,7 +63,7 @@ const FeedsHome = () => {
                 </div>
               </Link>
             </div>
-            <img src={LogoBg} className="animate-banner w-full h-[150px] md:h-[250px] object-cover" alt="" />
+            <img src={LogoBg} className="animate-banner w-full h-[200px] md:h-[250px] object-cover" alt="" />
           </div>
           }
           <div className="">
