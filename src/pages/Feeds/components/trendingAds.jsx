@@ -17,12 +17,11 @@ const TrendingAds = () => {
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
-            {data?.data.normalads.filter((item) => item.categories === "Apartment").length && 
+            {data?.data.normalads.filter((item) => item.categories === "Apartment").length > 0 && 
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
-                {/* {data?.data.normalads.filter((item) => item.categories === "Apartment").length && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>} */}
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -69,13 +68,12 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Fashion").length && 
+            {data?.data.normalads.filter((item) => item.categories === "Fashion").length > 0 && 
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Always Stay in Vogue</h1>
             </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
-                {/* {data?.data.normalads.filter((item) => item.categories === "Fashion").length && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>} */}
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
@@ -120,12 +118,11 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Skincare").length && 
+            {data?.data.normalads.filter((item) => item.categories === "Skincare").length > 0 && 
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
             </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
-                {/* {!data?.data.normalads.filter((item) => item.categories === "Skincare").length && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>} */}
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -171,14 +168,13 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Laptops").length && 
+            {data?.data.normalads.filter((item) => item.categories === "Laptops").length > 0 && 
             <div className="flex items-center gap-2 lg:my-10 my-5">
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
             </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
-                {/* {!data?.data.normalads.filter((item) => item.categories === "Laptops").length && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>} */}
                 {isLoading && <PostsSkeleton posts={4} />}
-                {data?.data.normalads.filter((item) => item.categories === "Laptops").map((item) => (
+                {data?.data?.normalads.filter((item) => item.categories === "Laptops").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                             <Splide options={{
