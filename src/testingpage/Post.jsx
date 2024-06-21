@@ -511,7 +511,7 @@ const Post = () => {
                       ? "Uploaded Image"
                       : `Please Remove wrong image format`
                       }`}
-                    className="w-[200px] h-[200px] md:w-[150px] md:h-[150px] rounded-md object-cover"
+                    className=":w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-md object-cover"
                   />
                   <FaXmark
                     size={25}
@@ -529,7 +529,7 @@ const Post = () => {
                       htmlFor="images"
                       className="cursor-pointer duration-300 hover:scale-110"
                     >
-                      <div className="w-[200px] h-[200px] md:w-[150px] md:h-[150px] rounded-md bg-slate-200 flex items-center justify-center">
+                      <div className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-md bg-slate-200 flex items-center justify-center">
                         <FaPlus size={25} />
                       </div>
                     </label>
