@@ -8,6 +8,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import "./trends.css"
 import PostsSkeleton from '../../../components/postsSkeleton';
+import { TbCurrencyNaira } from "react-icons/tb";
 
 
 const TrendingAds = () => {
@@ -17,10 +18,10 @@ const TrendingAds = () => {
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
-            {data?.data.normalads.filter((item) => item.categories === "Apartment").length > 0 && 
-            <div className="flex items-center gap-2 lg:my-10 my-5">
-                <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
-            </div>}
+            {data?.data.normalads.filter((item) => item.categories === "Apartment").length > 0 &&
+                <div className="flex items-center gap-2 lg:my-10 my-5">
+                    <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
+                </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
@@ -58,6 +59,13 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
+                        <div className='flex items-center justify-between'>
+                            <h1 className='font-semibold'>name</h1>
+                            <div className="flex items-center">
+                                <TbCurrencyNaira size={20} />
+                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                            </div>
+                        </div>
                         <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             {/* <Link to={`/profile/user/${item.name}`} className="w-fit"> */}
                             <div className="flex items-center gap-2">
@@ -68,10 +76,10 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Fashion").length > 0 && 
-            <div className="flex items-center gap-2 lg:my-10 my-5">
-                <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Always Stay in Vogue</h1>
-            </div>}
+            {data?.data.normalads.filter((item) => item.categories === "Fashion").length > 0 &&
+                <div className="flex items-center gap-2 lg:my-10 my-5">
+                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Always Stay in Vogue</h1>
+                </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
@@ -109,6 +117,13 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
+                        <div className='flex items-center justify-between'>
+                            <h1 className='font-semibold'>name</h1>
+                            <div className="flex items-center">
+                                <TbCurrencyNaira size={20} />
+                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                            </div>
+                        </div>
                         <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
@@ -118,10 +133,10 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Skincare").length > 0 && 
-            <div className="flex items-center gap-2 lg:my-10 my-5">
-                <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
-            </div>}
+            {data?.data.normalads.filter((item) => item.categories === "Skincare").length > 0 &&
+                <div className="flex items-center gap-2 lg:my-10 my-5">
+                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
+                </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
@@ -159,6 +174,13 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
+                        <div className='flex items-center justify-between'>
+                            <h1 className='font-semibold'>name</h1>
+                            <div className="flex items-center">
+                                <TbCurrencyNaira size={20} />
+                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                            </div>
+                        </div>
                         <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
@@ -168,10 +190,10 @@ const TrendingAds = () => {
                     </div>
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Laptops").length > 0 && 
-            <div className="flex items-center gap-2 lg:my-10 my-5">
-                <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
-            </div>}
+            {data?.data.normalads.filter((item) => item.categories === "Laptops").length > 0 &&
+                <div className="flex items-center gap-2 lg:my-10 my-5">
+                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
+                </div>}
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data?.normalads.filter((item) => item.categories === "Laptops").map((item) => (
@@ -209,6 +231,13 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
+                        <div className='flex items-center justify-between'>
+                            <h1 className='font-semibold'>name</h1>
+                            <div className="flex items-center">
+                                <TbCurrencyNaira size={20} />
+                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                            </div>
+                        </div>
                         <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />

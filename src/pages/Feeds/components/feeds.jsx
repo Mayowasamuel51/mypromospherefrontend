@@ -58,7 +58,7 @@ const Feeds = () => {
             }
             <div className='flex items-center justify-between'>
               <h1 className='font-semibold'>name</h1>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center">
                 <TbCurrencyNaira size={20} />
                 <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
               </div>

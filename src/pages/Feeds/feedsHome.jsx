@@ -46,6 +46,11 @@ const FeedsHome = () => {
       <div className="">
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
+          {!token && 
+          <div>
+            <h1>Welcome To MyPromosphere</h1>
+          </div>
+          }
           <div className="">
             <section className="lg:px-10 px-4">
               <div className="flex my-3 lg:my-3">
