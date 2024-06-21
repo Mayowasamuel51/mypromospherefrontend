@@ -14,6 +14,7 @@ import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
 import { toast } from "sonner";
 import LogoBg from "../../assests/images/mypromosphere-logo.png";
+import { FiPlusCircle } from "react-icons/fi";
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
@@ -48,13 +49,19 @@ const FeedsHome = () => {
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           {!token && 
-          <div className="relative">
-            <div className="border-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+          <div className="relative rounded-sm">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
               <h1 className="md:text-3xl text-white">Welcome To MyPromosphere</h1>
-              <p className="text-sm text-white ">Where you are one tap closer to your customers</p>
-              <p className="underline text-[#3D217A] text-xs"></p>
+              <p className="text-sm text-white">Where you are one tap closer to your customers</p>
+              <p className="text-sm text-white">Got Something To Sell</p>
+              <Link>
+                <div className="flex flex-col items-center gap-2">
+                  <FiPlusCircle color="#3D217A" size={40} />
+                  <p className="underline text-[#3D217A] text-xs">Register Today</p>
+                </div>
+              </Link>
             </div>
-            <img src={LogoBg} className="w-full h-[150px] md:h-[200px] object-cover object-center" alt="" />
+            <img src={LogoBg} className="animate-banner w-full h-[150px] md:h-[250px] object-cover" alt="" />
           </div>
           }
           <div className="">
