@@ -13,6 +13,7 @@ import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
 import { toast } from "sonner";
+import logoBg from "../../assests/mypromosphere-logo.png";
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
