@@ -56,7 +56,7 @@ const SingleFeedPage = () => {
                                             src={imageUrl}
                                             style={{ width: FullScreen ? 600 : "100%", height: 400 }}
                                             alt="img"
-                                            className="rounded-md w-full h-[300px] md:h-[400px] object-cover"
+                                            className="rounded-md w-full h-[400px] md:h-[500px] object-cover"
                                         />
                                     )}
                                 </AnimatePresence>
