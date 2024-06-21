@@ -80,25 +80,25 @@ const SingleFeedPage = () => {
                         </Link>
                         <p className='text-[#3D217A] font-medium text-lg'>{data?.data?.data?.categories}</p>
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
-                        <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1>
+                        {/* <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1> */}
                         <div>
-                            <h1 className='font-bold text-base my-2'>Description</h1>
+                            <h1 className='font-bold text-base'>Description</h1>
                             <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
                         </div>
                         <p className='flex items-center'>
-                            <TbCurrencyNaira size={40} />
+                            <TbCurrencyNaira size={35} />
                             <span>{data?.data?.data?.price_range ?? 10000}</span>
                         </p>
                         <div className='flex flex-col'>
-                            <h1 className='font-bold text-lg'>STATE</h1>
+                            <h1 className='font-semibold text-sm'>STATE</h1>
                             <p className=''>{data?.data?.data?.state}</p>
                         </div>
                         <div className='flex flex-col'>
-                            <h1 className='font-bold text-lg'>LGA</h1>
+                            <h1 className='font-semibold text-sm'>LGA</h1>
                             <p className=''>{data?.data?.data?.local_gov}</p>
                         </div>
                         <div className='flex flex-col'>
-                            <h1 className='font-bold text-lg'>Date Posted:</h1>
+                            <h1 className='font-semibold text-sm'>Date Posted:</h1>
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                         </div>
                         <div className=''>
