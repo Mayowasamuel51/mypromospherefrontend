@@ -458,7 +458,6 @@ const Post = () => {
     formData.append('whatapp', token?.whatapp)
     formData.append('user_phone', token?.user_phone)
 
-
     formData.append("categories", uploadData?.category);
     formData.append("description", uploadData?.description);
     formData.append("price_range", uploadData?.price_range);
