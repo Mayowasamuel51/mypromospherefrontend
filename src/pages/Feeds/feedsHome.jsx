@@ -50,8 +50,8 @@ const FeedsHome = () => {
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           {!token && 
-          <div className="relative rounded-md overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center md:w-[600px]">
+          <div className="bg-black bg-opacity-80 relative rounded-md overflow-hidden">
+            <div className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center md:w-[600px] py-2">
               <div className="flex flex-col gap-1">
                 <h1 className="md:text-3xl text-white font-bold">Welcome To <span className="text-[#EC6A87] font-black tracking-tight">MyPromosphere</span></h1>
                 <p className="text-sm text-white">Where you are one tap closer to your customers</p>
