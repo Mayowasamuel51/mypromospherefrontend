@@ -542,7 +542,7 @@ const Post = () => {
               value={uploadData?.category || ""}
               name="category"
               id="category"
-              className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="md:h-20 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             >
               <option value="">--Select a Category--</option>
               {categories.map((option, index) => {
@@ -555,7 +555,7 @@ const Post = () => {
             </select>
             <div>
               <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-20 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="productName"
                 name="productName"
                 type="text"
@@ -566,7 +566,7 @@ const Post = () => {
             </div>
             <div>
               <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-20 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="price_range"
                 name="price_range"
                 onChange={handleInputChange}
@@ -579,7 +579,7 @@ const Post = () => {
               <select
                 name="state"
                 id="state"
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-20 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
                 onChange={handleInputChange}
                 value={uploadData?.state || ""}
               >
@@ -597,7 +597,7 @@ const Post = () => {
                 name="local_gov"
                 value={uploadData?.local_gov || ""}
                 onChange={handleInputChange}
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-20 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">--Select Local Government--</option>
                 {localGvt &&
@@ -615,7 +615,7 @@ const Post = () => {
                 name="discount"
                 onChange={handleInputChange}
                 value={uploadData?.discount || ""}
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-20 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">Discount</option>
                 <option value="Yes">Yes</option>
@@ -625,7 +625,7 @@ const Post = () => {
 
             <div>
               <textarea
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="resize-none md:h-20 h-16 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name="description"
                 onChange={handleInputChange}
