@@ -18,10 +18,17 @@ const TrendingAds = () => {
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
+            {data?.data?.normalads.length === 0 &&
+                <div className='flex flex-col gap-2 md:col-span-2 lg:col-span-4 exl:col-span-4 text-center'>
+                    <h1 className="text-semibold text-base md:text-xl">No post Yet!!!</h1>
+                    <Link to={`/dashboard/postAd`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+                </div>
+            }
             {data?.data.normalads.filter((item) => item.categories === "Apartment").length > 0 &&
                 <div className="flex items-center gap-2 lg:my-10 my-5">
                     <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
-                </div>}
+                </div>
+            }
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
