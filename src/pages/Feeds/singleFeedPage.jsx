@@ -70,7 +70,7 @@ const SingleFeedPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex-1 flex flex-col gap-2'>
+                    <div className='flex-1 flex flex-col gap-2 py-4 md:py-0'>
                         <Link to={`/profile/user/${data?.data?.data.user_name}`} className='flex items-center gap-2'>
                             <div className="flex items-center gap-2">
                                 <img src={data?.data?.data.user_image === "null" || data?.data?.data.user_image ? anon : data?.data?.data.user_image} alt="user-profile" className="rounded-full w-12 aspect-square" />
