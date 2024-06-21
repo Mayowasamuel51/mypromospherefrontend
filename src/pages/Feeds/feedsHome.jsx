@@ -49,15 +49,15 @@ const FeedsHome = () => {
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           {!token && 
-          <div className="relative rounded-sm">
+          <div className="relative rounded-md">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
               <h1 className="md:text-3xl text-white">Welcome To MyPromosphere</h1>
               <p className="text-sm text-white">Where you are one tap closer to your customers</p>
               <p className="text-sm text-white">Got Something To Sell</p>
-              <Link>
-                <div className="flex flex-col items-center gap-2">
+              <Link to={`/login`}>
+                <div className="flex flex-col items-center gap-1">
                   <FiPlusCircle color="#3D217A" size={40} />
-                  <p className="underline text-[#3D217A] text-xs">Register Today</p>
+                  <p className="underline text-[#3D217A] text-sm">Register Today</p>
                 </div>
               </Link>
             </div>
