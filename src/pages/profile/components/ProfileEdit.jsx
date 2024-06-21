@@ -20,13 +20,14 @@ import {
 } from "firebase/storage";
 import axiosclinet from "../../../https/axios-clinet";
 import { toast, Toaster } from 'sonner';
+import { useQuery } from "@tanstack/react-query";
 
 const api_edit_profile_endpoint = import.meta.env.VITE_EDIT_PROFILE;
 const api_edit_profile_put_endpoint = import.meta.env.VITE_EDIT_PROFILE_PUT;
 const api_backgroundimage = import.meta.env.VITE_EDIT_BACKGROUND;
 const api_info     = import.meta.env.VITE_EDIT_PROFILE_EDIT;
 const ProfileEdit = () => {
-  const { token } = useStateContext();
+  const { token  } = useStateContext();
   const { user, setUser } = useStateContext();
   const inputRef = useRef(null);
   const secoundRef = useRef(null);
@@ -36,36 +37,37 @@ const ProfileEdit = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false)
   const [userEditProfile, setUserEditProfile] = useState([])
-  useEffect(() => {
-    axios(`${api_edit_profile_endpoint}/${token?.id}`, {
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token?.token}`,
-      },
-    }).then((res) => {
-      if (res.data.status === 200) {
-        console.log(res.data.data);
-        setUserEditProfile(res.data.data)
-        setData(res.data.data);
-        setBackgroundImage(res.data.data);
-        setLoading(false)
-      }
-    });
-  // console.log(data)
-  }, []);
+  
+  const { isPending, isError, data: profile, isLoading, error } = useQuery({
+    queryKey: ["profile"],
+    queryFn: () =>
+      axios.get(`http://localhost:8000/api/getuser/${token?.id}`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token?.token}`,
+        },
+      }),
+  });
+ 
+
+  if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
+  // console.log(profile?.data?.data[0].whatapp)
 
   const [profileedit , setProfileEdit ] = useState({
-    brandName:token?.brandName,
-    aboutMe:token?.aboutMe,
-    whatapp:token?.whatapp,
-    user_phone:token?.user_phone,
-    websiteName:token?.websiteName
+    brandName:profile?.data?.data[0].brandName,
+    aboutMe:profile?.data?.data[0].aboutMe,
+    whatapp:profile?.data?.data[0].whatapp,
+    user_phone:profile?.data?.data[0].user_phone,
+    websiteName:profile?.data?.data[0].websiteName
   })
 
-  console.log(profileedit)
+  // console.log(token)
+  // console.log(user.id)
+  // console.log(profileedit)
   const handleProfileEdit = (  e   ) => {
     const { name, value } = e.target;
     setProfileEdit((prevProfileEdit)=>({...prevProfileEdit, [name]: value})); };
+
   const handleImageChange = (e) => {
     const file = e.target.files;
     const profilePhoto = e.target.files[0];
@@ -179,7 +181,8 @@ const ProfileEdit = () => {
                 console.log("updated the profile image ...................");
                 setLoading(false)
                 toast.success("Your profile has been successfully updated for your client")
-                reset()
+                reset()  
+
               } else if (res.data.status === 500 || res.data.status === 422) {
                 console.log(res.data.message);
                 setLoading(false)
@@ -260,7 +263,26 @@ const ProfileEdit = () => {
     );
   };
   // console.log(token)
+  useEffect(() => {
+    axios(`${api_edit_profile_endpoint}/${token?.id}`, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token?.token}`,
+      },
+    }).then((res) => {
+      if (res.data.status === 200) {
+        // setUser(res.data.data)
+        localStorage.setItem("user-d", JSON.stringify(res.data.data))
 
+        // console.log(res.data.data);
+        setUserEditProfile(res.data.data)
+        setData(res.data.data);
+        setBackgroundImage(res.data.data);
+        setLoading(false)
+      }
+    });
+  // console.log(data)
+  }, []);
 
   return (
     <section className="relative">
@@ -401,7 +423,7 @@ const ProfileEdit = () => {
                 <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
               </label>{" "}
               <input
-                value={profileedit.whatapp}
+                value={ profileedit.whatapp }
                 onChange={handleProfileEdit}
                 type="number"
                 name="whatapp"
@@ -413,7 +435,7 @@ const ProfileEdit = () => {
 
             <div className="">
               <label htmlFor="website" className="font-medium my-2">
-                Brand Name
+                Brand Name 
               </label>{" "}
               <input
                 value={profileedit.brandName}
