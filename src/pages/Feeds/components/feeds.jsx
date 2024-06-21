@@ -8,6 +8,7 @@ import '@splidejs/react-splide/css';
 import "./trends.css";
 import { useStateContext } from '../../../contexts/ContextProvider';
 import PostsSkeleton from '../../../components/postsSkeleton';
+import { TbCurrencyNaira } from "react-icons/tb";
 
 
 const Feeds = () => {
@@ -55,6 +56,13 @@ const Feeds = () => {
                 </Link>
               </div>
             }
+            <div className='flex items-center justify-between'>
+              <h1 className='font-semibold'>name</h1>
+              <div className="flex items-center gap-2">
+                <TbCurrencyNaira size={20} />
+                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+              </div>
+            </div>
             <Link to={`/profile/user/${item.user_name}`} className="w-fit">
               <div className="flex items-center gap-2">
                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
