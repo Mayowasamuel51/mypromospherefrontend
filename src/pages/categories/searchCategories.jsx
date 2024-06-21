@@ -1,8 +1,9 @@
 import FetchSearch from "../../hooks/fetchSearch";
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const SearchCategories = () => {
-    const {data, isLoading, error} = FetchSearch();
+    const { category } = useParams();
+    const {data} = FetchSearch(category);
 
     console.log(data)
     return (
