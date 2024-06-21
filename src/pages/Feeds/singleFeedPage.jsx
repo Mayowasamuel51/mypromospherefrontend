@@ -90,16 +90,16 @@ const SingleFeedPage = () => {
                             <TbCurrencyNaira size={35} />
                             <span className="font-semibold text-base md:text-lg">{(data?.data?.data?.price_range) ? (+data?.data?.data?.price_range).toLocaleString() : 10000}</span>
                         </p>
-                        <div className="flex items-center justify-between md:p-6 text-center divide-x-2 border-x-black">
-                            <div className='flex flex-col gap-2'>
+                        <div className="flex items-center md:p-6 text-center divide-x-2 border-x-black">
+                            <div className='flex-1 flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>STATE</h1>
                                 <p className=''>{data?.data?.data?.state}</p>
                             </div>
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex-1 flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>LGA</h1>
                                 <p className=''>{data?.data?.data?.local_gov}</p>
                             </div>
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex-1 flex flex-col gap-2'>
                                 <h1 className='font-semibold text-sm'>Date Posted:</h1>
                                 <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                             </div>
