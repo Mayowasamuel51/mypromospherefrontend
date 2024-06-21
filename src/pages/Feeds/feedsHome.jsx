@@ -31,9 +31,9 @@ const FeedsHome = () => {
     console.log(string, results);
   };
 
-  const handleOnFocus = () => {
-    console.log("Focused");
-  };
+  const handleOnSelect = (item) => {
+    console.log(item)
+  }
 
   const goToPostPage = ()=> {
     if (!token) {
@@ -75,6 +75,7 @@ const FeedsHome = () => {
                   className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                   placeholder="Search by title or tags , service"
                   onSearch={handleOnSearch}
+                  onSelect={handleOnSelect}
                 />
               </div>
               <div>
