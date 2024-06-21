@@ -278,7 +278,7 @@ const Video = () => {
                 id="categories"
                 name="categories"
                 {...register("categories", { required: true })}
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               >
                 {categories.map((option, index) => {
                   return (
@@ -325,7 +325,7 @@ const Video = () => {
                 ))} */}
             <div>
               <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="productName"
                 name="productName"
                 {...register("productName", { required: true })}
@@ -336,7 +336,7 @@ const Video = () => {
 
             <div>
               <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="price"
                 name="price"
                 type="text"
@@ -350,7 +350,7 @@ const Video = () => {
                 name="state"
                 id="state"
                 {...register("state", { required: true })}
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">--Select your State--</option>
                 {data.States.map((state, i) => (
@@ -365,7 +365,7 @@ const Video = () => {
                 id="localGovernment"
                 name="localGovernment"
                 {...register("localGovernment", { required: true })}
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
               >
                 <option value="">--Select Local Government--</option>
                 {localGvt &&
@@ -377,14 +377,14 @@ const Video = () => {
               </select>
             </div>
             <div>
-              <input
-                className="md:h-14 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              <textarea
+                className="resize-none md:h-20 h-16 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name="description"
                 type="text"
                 placeholder="Description"
                 {...register("description", { required: true })}
-              />
+              ></textarea>
             </div>
             {/* <p className="text-red pt-2" >{errors.description?.message}</p> */}
             <button
