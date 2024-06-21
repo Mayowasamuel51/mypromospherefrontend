@@ -303,6 +303,12 @@ html {
   animation-iteration-count: infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-banner {
+    animation: none;
+  }
+}
+
 @keyframes changer {
   0% {
     object-position: top;
