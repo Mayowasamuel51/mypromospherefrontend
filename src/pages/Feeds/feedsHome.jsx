@@ -49,10 +49,12 @@ const FeedsHome = () => {
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
           {!token && 
           <div className="relative">
-            <div className="border-2 border-red absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <h1 className="md:text-xl">Welcome To MyPromosphere</h1>
+            <div className="border-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+              <h1 className="md:text-3xl text-white">Welcome To MyPromosphere</h1>
+              <p className="text-sm text-white ">Where you are one tap closer to your customers</p>
+              <p className="underline text-[#3D217A] text-xs"></p>
             </div>
-            <img src={LogoBg} className="w-full h-[150px] md:h-[200px] object-cover" alt="" />
+            <img src={LogoBg} className="w-full h-[150px] md:h-[200px] object-cover object-center" alt="" />
           </div>
           }
           <div className="">
