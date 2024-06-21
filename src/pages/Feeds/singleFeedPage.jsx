@@ -78,7 +78,7 @@ const SingleFeedPage = () => {
                                 <p>{data?.data?.data.user_name}</p>
                             </div>
                         </Link>
-                        <p className='text-[#3D217A] font-medium text-lg my-1'>{data?.data?.data?.categories}</p>
+                        <p className='text-[#3D217A] font-medium text-lg'>{data?.data?.data?.categories}</p>
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
                         <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1>
                         <div>
@@ -86,23 +86,23 @@ const SingleFeedPage = () => {
                             <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
                         </div>
                         <p className='flex items-center'>
-                            <TbCurrencyNaira size={30} />
+                            <TbCurrencyNaira size={40} />
                             <span>{data?.data?.data?.price_range ?? 10000}</span>
                         </p>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col'>
                             <h1 className='font-bold text-lg'>STATE</h1>
                             <p className=''>{data?.data?.data?.state}</p>
                         </div>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col'>
                             <h1 className='font-bold text-lg'>LGA</h1>
                             <p className=''>{data?.data?.data?.local_gov}</p>
                         </div>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col'>
                             <h1 className='font-bold text-lg'>Date Posted:</h1>
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                         </div>
                         <div className=''>
-                            <button className="flex-1 bg-[#3D217A] w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
+                            <button className="flex-1 bg-[#3D217A] border border-[#3D217A] hover:bg-transparent hover:text-[#3D217A] duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
                         </div>
                     </div>
                 </div>
