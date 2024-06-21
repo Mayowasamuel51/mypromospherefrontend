@@ -10,6 +10,7 @@ import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { useStateContext } from '../../contexts/ContextProvider';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaHeart } from "react-icons/fa";
 
 const SingleFeedPage = () => {
     const { FullScreen } = useStateContext()
@@ -78,7 +79,7 @@ const SingleFeedPage = () => {
                                 <p>{data?.data?.data.user_name}</p>
                             </div>
                         </Link>
-                        <p className='text-[#3D217A] font-medium text-lg'>{data?.data?.data?.categories}</p>
+                        <p className='text-[#3D217A] font-bold text-lg'>{data?.data?.data?.categories}</p>
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
                         {/* <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1> */}
                         <div>
@@ -101,8 +102,11 @@ const SingleFeedPage = () => {
                             <h1 className='font-semibold text-sm'>Date Posted:</h1>
                             <p>{new Date(data?.data?.data?.created_at)?.toLocaleDateString()}</p>
                         </div>
-                        <div className=''>
+                        <div className='flex items-center gap-4'>
                             <button className="flex-1 bg-[#3D217A] border border-[#3D217A] hover:bg-transparent hover:text-[#3D217A] duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
+                            <div>
+                                <FaHeart color="red" size={20} />
+                            </div>
                         </div>
                     </div>
                 </div>
