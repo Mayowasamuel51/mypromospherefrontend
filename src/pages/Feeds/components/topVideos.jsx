@@ -62,7 +62,7 @@ const TopVideos = () => {
                 />
                 {token && (
                   <p className="text-sm font-medium">
-                    {video.user_id === token.id && "me"}
+                    {video.user_id === token.id ? "me" : video.user_name}
                   </p>
                 )}
               </div>
