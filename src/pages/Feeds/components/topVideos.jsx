@@ -22,6 +22,7 @@ const TopVideos = () => {
   return (
     <>
       <section className="relative grid md:gap-4 md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
+        {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
         {isLoading && (
           <div className="md:col-span-2 lg:col-span-3 exl:col-span-4">
             <Loader />

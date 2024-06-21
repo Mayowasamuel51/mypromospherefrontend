@@ -19,6 +19,7 @@ const Feeds = () => {
       <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
       <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
         {isLoading && <PostsSkeleton posts={4} />}
+        {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
         {data?.data.normalads.slice(0, 4).map((item) => (
           <div key={item.id} className="flex flex-col gap-2 md:gap-4">
             {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
@@ -31,7 +32,7 @@ const Feeds = () => {
                 arrows: false,
                 pagination: true,
                 snap: true,
-                cloneStatus: false,
+                // cloneStatus: false,
                 width: "100%",
                 height: "300px"
               }} className="">

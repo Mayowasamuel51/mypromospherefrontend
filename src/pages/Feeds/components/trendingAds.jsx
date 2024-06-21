@@ -21,6 +21,7 @@ const TrendingAds = () => {
                 <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
             </div>
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
+                {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -34,7 +35,7 @@ const TrendingAds = () => {
                                 arrows: false,
                                 pagination: true,
                                 snap: true,
-                                cloneStatus: false,
+                                // cloneStatus: false,
                                 width: "100%",
                                 height: "300px",
                             }} className="">
@@ -58,7 +59,7 @@ const TrendingAds = () => {
                             </div>
                         }
                         <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                        {/* <Link to={`/profile/user/${item.name}`} className="w-fit"> */}
+                            {/* <Link to={`/profile/user/${item.name}`} className="w-fit"> */}
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
                                 {token && <p className="text-sm font-medium">{item.user_id == token.id && "me"}</p>}
@@ -72,6 +73,7 @@ const TrendingAds = () => {
             </div>
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
                 {isLoading && <PostsSkeleton posts={4} />}
+                {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
                         {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
@@ -84,7 +86,7 @@ const TrendingAds = () => {
                                 arrows: false,
                                 pagination: true,
                                 snap: true,
-                                cloneStatus: false,
+                                // cloneStatus: false,
                                 width: "100%",
                                 height: "300px",
                             }} className="">
@@ -120,6 +122,7 @@ const TrendingAds = () => {
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
             </div>
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
+                {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -133,7 +136,7 @@ const TrendingAds = () => {
                                 arrows: false,
                                 pagination: true,
                                 snap: true,
-                                cloneStatus: false,
+                                // cloneStatus: false,
                                 width: "100%",
                                 height: "300px",
                             }} className="">
@@ -170,6 +173,7 @@ const TrendingAds = () => {
                 <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
             </div>
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
+                {!data && <h1 className='md:col-span-2 lg:col-span-4 exl:col-span-4 text-semibold text-base md:text-xl'>No post Yet!!!</h1>}
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Laptops").map((item) => (
                     <div key={item.id} className="flex flex-col gap-2 md:gap-4">
@@ -183,7 +187,7 @@ const TrendingAds = () => {
                                 arrows: false,
                                 pagination: true,
                                 snap: true,
-                                cloneStatus: false,
+                                // cloneStatus: false,
                                 width: "100%",
                                 height: "300px",
                             }} className="">
