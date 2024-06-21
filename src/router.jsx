@@ -45,8 +45,8 @@ import Myuploads from "./testingpage/Myupload.jsx";
 
 import Error from "./error.jsx";
 import MyVideos from "./testingpage/MyVideos.jsx";
-import ProfileEdit from "./pages/LoginPage/component/ProfileEdit.jsx";
-import PersonalInfo from "./pages/LoginPage/component/PersonalInfo.jsx";
+import ProfileEdit from "./pages/profile/components/ProfileEdit.jsx";
+import PersonalInfo from "./pages/profile/components/PersonalInfo.jsx";
 
 
 const router = createBrowserRouter([
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/profile/user/:id",
+    path: "/profile/user/:user_name",
     element: <ProfileHome />,
     children: [
       {
@@ -148,8 +148,12 @@ const router = createBrowserRouter([
         element: <PostAPicture />,
       },
       {
-        path: "post",
+        path: "postAd",
         element: <Post />,
+      },
+      {
+        path: "postVideo",
+        element: <Video />,
       },
       {
         path: "myuploads",
@@ -158,10 +162,6 @@ const router = createBrowserRouter([
       {
         path: "myvideos",
         element: <MyVideos />,
-      },
-      {
-        path: "video",
-        element: <Video />,
       },
     ],
   },

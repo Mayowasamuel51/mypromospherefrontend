@@ -3,9 +3,9 @@ import axios from "axios";
 const api_fetch_user = import.meta.env.VITE_FETCH_USER;
 
 
-const FetchUser = (id) => {
+const FetchUser = (userName) => {
   return useQuery({
-    queryKey: ["user", id],
+    queryKey: ["userPost", userName],
     queryFn: ({queryKey})=> axios.get(`${api_fetch_user}${queryKey[1]}`)
   });
 }

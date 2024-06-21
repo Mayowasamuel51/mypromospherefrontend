@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './drop-file-input.css';
@@ -45,7 +45,7 @@ const DropFileInput = props => {
                 onDrop={onDrop}
             >
                 <div className="drop-file-input__label">
-                    <img src={uploadImg} className="mx-auto w-[100px] md:w-[200px]" alt="" />
+                    <img src={uploadImg} className="mx-auto w-full h-[200px]" alt="" />
                     <p  className="font-semibold text-xs">Drag & Drop your files here</p>
                 </div>
                 <input type="file" value="" onChange={onFileDrop}/>

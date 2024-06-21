@@ -272,12 +272,12 @@ const ProfileEdit = () => {
       }
       <header>
         <h3 className="font-600 md:text-xl text-xl">Edit Profile</h3>
-        <p className="font-400">Set up your presence and hiring needs</p>
+        <p className="font-400 text-sm my-2">Set up your presence and hiring needs</p>
       </header>
       {/* form  */}
       <article className="">
-        <form onSubmit={formSubmit1}  enctype="multipart/form-data"  >
-          <h1 className="font-medium my-1">👇Click to changeBackgrond Image</h1>
+        <h1 className="font-medium my-2 text-xs">👇Click to changeBackgrond Image</h1>
+        <form onSubmit={formSubmit1}  encType="multipart/form-data" className="flex items-center gap-4">
           <article className="flex items-center">
             <div>
               {background ? (
@@ -309,15 +309,16 @@ const ProfileEdit = () => {
             </div>
           </article>
           <button type="submit"
-           className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md my-2">
+           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2">
             Change Backgorund Image
           </button>
         </form>
 
+        <hr className="my-4" />
+
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
             <div>
-
               {image ? (
                 <img
                   src={URL.createObjectURL(image)}
@@ -346,7 +347,7 @@ const ProfileEdit = () => {
               </div>
             </div>
           </article>
-          <div className="flex flex-col gap-4 my-2">
+          <div className="flex flex-col gap-5 my-4">
             <div className="">
               <div>
                 <label htmlFor="About" className="font-medium my-2">
@@ -357,12 +358,11 @@ const ProfileEdit = () => {
                   value={profileedit.aboutMe}
                   onChange={handleProfileEdit}
                   name="aboutMe"
-                  // value={token?.aboutMe  && token?.aboutMe}
-                  className="resize-none h-32 border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
+                  className="resize-none h-32 border border-[#3D217A] dark:border-slate-300 w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
 
                 ></textarea>
-                     <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
+                <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
               </div>
             </div>
             <div className="">
@@ -376,7 +376,7 @@ const ProfileEdit = () => {
                   onChange={handleProfileEdit}
                   name="websiteName"
                   // value={token?.websiteName && token?.websiteName}
-                  className="border border-[#3D217A] w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                  className="border border-[#3D217A] dark:border-slate-300 w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   placeholder="Add a link to drive traffic to your site"
                 />
                      <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
@@ -391,23 +391,22 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="number"
                 name="user_phone"
-                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Contact number "/>
                {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
 
             <div className="">
-              <label htmlFor="website" className="font-medium my-2">
-                Contact phone Two  <div> <FaWhatsapp  height={220}    /></div>
+              <label htmlFor="website" className="font-medium my-2 flex items-center gap-2">
+                <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
               </label>{" "}
               <input
                 value={profileedit.whatapp}
                 onChange={handleProfileEdit}
                 type="number"
                 name="whatapp"
-                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Whatapp number"/>
-               {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
 
 
@@ -421,7 +420,7 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="text"
                 name="brandName"
-                className="border border-[#3D217A] w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your Brand Name"/>
                <p className='text-red  text-sm'>{errors.brandName?.message}</p>
             </div>

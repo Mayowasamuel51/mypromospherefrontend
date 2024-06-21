@@ -52,7 +52,7 @@ const TopVideos = () => {
                 className="hover:outline hover:scale-105 duration-300"
               />
             </div>
-            <Link to={`/profile/user/${video.user_id}`} className="w-fit">
+            <Link to={`/profile/user/${video.user_name}`} className="w-fit">
               <div className="flex items-center gap-2">
                 <img
                   src={video.user_image === null ? anon : video.user_image}

@@ -20,18 +20,17 @@ import {
 import axiosclinet from "../https/axios-clinet";
 import Select from "react-dropdown-select";
 import { categories } from "../../src/json/categories.jsx";
-import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import { headlines } from "../../src/json/headlines.jsx";
 import PostButtons from "../components/PostButtons.jsx";
 import data from "../../state.json";
 import Dropzone from "react-dropzone";
-import uploadImg from "../assests/cloud-upload-regular-240.png";
 import { Toaster, toast } from "sonner";
 import { FaPlus } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Loader from "../loader.jsx";
+
 const api_edit_profile_endpoint = import.meta.env.VITE_EDIT_PROFILE;
 const api_freeads = import.meta.env.VITE_ADS_FREEADS;
 const api_fetch = import.meta.env.VITE_EDIT_PROFILE;
@@ -52,7 +51,9 @@ const Post = () => {
   const [localGvt, setLocalGvt] = useState();
   const result = Object.entries(data.full);
   const [userEditProfile, setUserEditProfile] = useState([])
-  const { isPending, isError, data:profile , isLoading, error } = useQuery({
+
+
+  const { isPending, isError, data: profile, isLoading, error } = useQuery({
     queryKey: ["fetch"],
     queryFn: () =>
       axios.get(`${api_fetch}/${token?.id}`, {
@@ -62,7 +63,7 @@ const Post = () => {
         },
       }),
   });
-  
+
   // console.log( profile.data.data.aboutMe    )
   // const formSubmit = (data) => {
   //   console.log("i was clicked")
@@ -197,6 +198,10 @@ const Post = () => {
     state: "",
     discount: "",
     local_gov: "",
+    aboutMe: token?.aboutMe,
+    whatapp: token?.whatapp,
+    user_phone: token?.user_phone,
+    backgroundimage: token?.backgroundimage,
     user_image: token?.profileImage,
   });
   useEffect(() => {
@@ -209,7 +214,7 @@ const Post = () => {
       }
     }
   }, [uploadData?.state]);
-  const SUPPORTED_FORMATS = ["image/jpeg", "image/png" , "image/webp", "image/"];
+  const SUPPORTED_FORMATS = ["image/jpeg", "image/png", "image/webp", "image/"];
   const handleInputChange = (event) => {
     const { name, value, type, checked, files } = event.target;
     setUploadData((prevState) => {
@@ -220,33 +225,30 @@ const Post = () => {
         const newImages = [...imageUpload];
         selectedFilesArray.forEach((image) => {
           if (SUPPORTED_FORMATS.includes(image.type)) {
-            // for (const file of selectedFilesArray) {
-              const reader = new FileReader();
-              reader.onload = (e) => {
-                newImages.push({
-                  url: e.target.result,
-                  type: image.type,
-                  name: image.name,
-                });
-                selectedFilesArray.forEach((image) => {
-                  console.log(image);
-                  if (newImages.length < 5) {
-                    setImageUpload(newImages);
-                    console.log("new image",newImages)
-                    console.log("image upload",imageUpload)
-                    return {
-                      ...prevState,
-                      images: selectedFilesArray,
-                    };
-                  } else {
-                    toast.error("You can only upload four images");
-                  }
-                });
-              };
-              reader.readAsDataURL(image);
-            // }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              newImages.push({
+                url: e.target.result,
+                type: image.type,
+                name: image.name,
+              });
+              selectedFilesArray.forEach((image) => {
+                console.log(image);
+                if (newImages.length < 5) {
+                  setImageUpload(newImages);
+                  console.log("new image", newImages)
+                  console.log("image upload", imageUpload)
+                  return {
+                    ...prevState,
+                    images: selectedFilesArray,
+                  };
+                } else {
+                  toast.error("You can only upload four images");
+                }
+              });
+            };
+            reader.readAsDataURL(image);
           } else {
-            // console.log("no")
             toast.error("Invalid file Format");
             return {
               ...prevState,
@@ -363,7 +365,7 @@ const Post = () => {
             }
           );
         }
-      )
+        )
 
         // const second_repsone = await axios.post();
       } catch (error) {
@@ -372,7 +374,7 @@ const Post = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["trendingAds"] });
-      queryClient.invalidateQueries({ queryKey: ["userposts"] });
+      queryClient.invalidateQueries({ queryKey: ["userPost"] });
       toast.success("You have just made a post");
       setUploadData((prev) => ({
         ...prev,
@@ -384,10 +386,10 @@ const Post = () => {
         state: "",
         discount: "",
         local_gov: "",
-        aboutMe:token?.aboutMe,
-        whatapp:token?.whatapp,
-        user_phone:token?.user_phone,
-        backgroundimage:token?.backgroundimage,
+        aboutMe: token?.aboutMe,
+        whatapp: token?.whatapp,
+        user_phone: token?.user_phone,
+        backgroundimage: token?.backgroundimage,
         user_image: token?.profileImage,
       }));
       setImageUpload([]);
@@ -399,7 +401,6 @@ const Post = () => {
   });
   const uploadPost = (e) => {
     e.preventDefault();
-    // console.log(uploadData);
     if (imageUpload?.length > 5) {
       toast.error(`You can upload a maximum of 5 images.`);
       return;
@@ -452,10 +453,10 @@ const Post = () => {
         console.log(image);
       }
     });
-    formData.append('user_name',token?.user_name)
-    formData.append('aboutMe',profile.data.data.aboutMe)
-    formData.append('whatapp',profile.data.data.whatapp)
-    formData.append('user_phone', profile.data.data.user_phone)
+    formData.append('user_name', token?.user_name)
+    formData.append('aboutMe', token?.aboutMe)
+    formData.append('whatapp', token?.whatapp)
+    formData.append('user_phone', token?.user_phone)
 
 
     formData.append("categories", uploadData?.category);
@@ -464,10 +465,12 @@ const Post = () => {
     formData.append("state", uploadData?.state);
     formData.append("local_gov", uploadData?.local_gov);
     formData.append("discount", uploadData?.discount);
+
     formData.append("user_image", uploadData?.user_image);
+    // formData.append("user_image", token?.user_image);
     uploadPostMutation.mutate(formData);
   };
- 
+
   // console.log(token?.user_name)
   return (
     <>
@@ -477,7 +480,7 @@ const Post = () => {
           <Loader />
         </div>
       )}
-      <div className="px-4 lg:px-40">
+      <div className="">
         <PostButtons />
         <h1 className="my-5 lg:text-2xl lg:font-semibold text-center">
           UPLOAD YOUR DETAILS TO MYPROMOSPHERE
@@ -503,16 +506,16 @@ const Post = () => {
                 <div
                   key={index}
                   className={`relative ${image?.type === "image/jpeg" || image?.type === "image/png"
-                      ? ""
-                      : "border-2 border-red"
+                    ? ""
+                    : "border-2 border-red"
                     }`}
                 >
                   <img
                     src={image.url}
                     alt={`${image?.type === "image/jpeg" ||
-                        image?.type === "image/png"
-                        ? "Uploaded Image"
-                        : `Please Remove wrong image format`
+                      image?.type === "image/png"
+                      ? "Uploaded Image"
+                      : `Please Remove wrong image format`
                       }`}
                     className="md:w-[200px] md:h-[200px] rounded-md object-cover"
                   />
@@ -642,7 +645,7 @@ const Post = () => {
 
             className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
           >
-            Post 
+            Post
           </button>
         </form>
       </div>

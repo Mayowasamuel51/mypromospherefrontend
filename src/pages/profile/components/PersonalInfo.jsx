@@ -16,6 +16,7 @@ const PersonalInfo = () => {
   const changeCountry = (e) => {
     setCountry(e.target.value)
   }
+
   const url = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
 
   const fetchCountry = async (url) => {
@@ -30,6 +31,7 @@ const PersonalInfo = () => {
   useEffect(() => {
     fetchCountry(url);
   }, []);
+
   const newCountry = [...new Set(countries.map((item) => item.country))];
 
   return (
@@ -37,7 +39,7 @@ const PersonalInfo = () => {
       {/* text  */}
       <article className="">
         <h1 className="font-700 md:text-xl text-xl">Personal Information</h1>
-        <p className="max-w-lg mt-2 text-xs md:text-base">
+        <p className="max-w-lg my-2 text-xs md:text-base">
           Edit your basic personal info to improve recommendations. This
           information is private and won’t show up in your public profile
         </p>
@@ -49,7 +51,7 @@ const PersonalInfo = () => {
             <label htmlFor="birthDate" className='font-700'>BirthDate</label> <br />
             <input
               type="text"
-              className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
+              className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md w-full"
               placeholder="MM-DD-YY"
             />
              {/* <Calendar onChange={onChange} value={value} /> */}
@@ -93,7 +95,7 @@ const PersonalInfo = () => {
                 id="countries"
                 name="countries"
                 placeholder="Select Country"
-                className="border border-[#3D217A] mt-3 w-[13.8rem] md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
+                className="border border-[#3D217A] mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
                 value={country}
                 onChange={changeCountry}
               >
@@ -125,7 +127,7 @@ const PersonalInfo = () => {
                 id="countries"
                 name="countries"
                 placeholder="Select Country"
-                className="border border-[#3D217A] mt-3 w-[13.8rem] md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md"
+                className="border border-[#3D217A] mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
                 value={language}
                 onChange={changeLanguage}
               >
@@ -140,9 +142,7 @@ const PersonalInfo = () => {
               </select>
             </div>
           </form>
-          {/* end of country input  */}
         </div>
-        {/*end of country */}
       </article>
     </div>
   );

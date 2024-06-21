@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
@@ -12,15 +12,16 @@ import { MdOutlineDynamicFeed } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
 import Footer from "../../components/Footer";
 import { categories } from "../../json/categories";
+import { toast } from "sonner";
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
 const FeedsHome = () => {
   const location = useLocation();
-  const { scrollValue, handleClick } = useStateContext();
+  const { token, scrollValue, handleClick } = useStateContext();
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate()
 
   const handleOnSearch = (string, results) => {
     setData(results);
@@ -30,6 +31,15 @@ const FeedsHome = () => {
   const handleOnFocus = () => {
     console.log("Focused");
   };
+
+  const goToPostPage = ()=> {
+    if (!token) {
+      toast.error("You are not Logged In")
+      navigate('/login');
+    } else {
+      navigate('/dashboard/postAd');
+    }
+  }
 
   return (
     <>
@@ -108,20 +118,20 @@ const FeedsHome = () => {
                 className={`flex flex-col items-center gap-2 whitespace-nowrap px-3 md:px-6 py-4 md:text-base text-xs ${location.pathname === "/" && "text-[#EC6A87]"
                   }`}
               >
-                <MdOutlineDynamicFeed size={20} className="text-black" />
-                Trending Ads
+                <MdOutlineDynamicFeed size={20} className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`} />
+                <p className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`}>Trending Ads</p>
               </motion.button>
             </Link>
-            <Link className="block text-center" to={`/dashboard/post`}>
+            <div onClick={()=> goToPostPage()} className="block text-center cursor-pointer">
               <button className="flex flex-col items-center gap-2">
                 <FiPlusSquare size={20} className="text-black" />
                 <p className="text-black">Post an Ad</p>
               </button>
-            </Link>
+            </div>
             <Link
               to="/top-videos"
-              className={`block text-center ${location.pathname === "/top-videos" &&
-                "text-[#EC6A87]"
+              className={`block text-center ${location.pathname === "/top-videos" ?
+                "text-[#EC6A87]" : "text-black"
                 }`}
             >
               <motion.button
@@ -130,8 +140,8 @@ const FeedsHome = () => {
                   "text-[#EC6A87]"
                   }`}
               >
-                <FaVideo size={20} className="text-black" />
-                Top Video Ads
+                <FaVideo size={20} className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`} />
+                <p className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`}>Top Video Ads</p>
               </motion.button>
             </Link>
           </div>

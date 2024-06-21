@@ -46,7 +46,6 @@ const TrendingAds = () => {
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                                     <SplideSlide key={img.id} className='rounded-md'>
                                         <Link to={`/feed/${item.id}`}>
-                                         {/* <Link to={`/feed/${item.name}`}> */}
                                             <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                         </Link>
                                     </SplideSlide>
@@ -58,7 +57,7 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
-                        <Link to={`/profile/user/${item.user_id}`} className="w-fit">
+                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                         {/* <Link to={`/profile/user/${item.name}`} className="w-fit"> */}
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
@@ -108,7 +107,7 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
-                        <Link to={`/profile/user/${item.user_id}`} className="w-fit">
+                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
                                 {token && <p className="text-sm font-medium">{item.user_id == token.id && "me"}</p>}
@@ -157,7 +156,7 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
-                        <Link to={`/profile/user/${item.user_id}`} className="w-fit">
+                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
                                 {token && <p className="text-sm font-medium">{item.user_id == token.id && "me"}</p>}
@@ -207,7 +206,7 @@ const TrendingAds = () => {
                                 </Link>
                             </div>
                         }
-                        <Link to={`/profile/user/${item.user_id}`} className="w-fit">
+                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                             <div className="flex items-center gap-2">
                                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
                                 {token && <p className="text-sm font-medium">{item.user_id == token.id && "me"}</p>}

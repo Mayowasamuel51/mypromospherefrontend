@@ -20,13 +20,13 @@ const Links = ({hidden, bg}) => {
     };
 
     return (
-        <ul className={`flex items-center gap-5 exl:gap-10 h-fit text-base`}>
+        <ul className={`flex items-center gap-5 exl:gap-6 h-fit text-base`}>
             <div onMouseLeave={() => handleSetSelected(null)} className="relative flex items-center gap-3 h-fit">
                 {
                     TABS.map((t) => {
                         return (
                             <Tab
-                                className="flex items-center gap-2"
+                                className="flex items-center gap-6"
                                 key={t.id}
                                 selected={selected}
                                 handleSetSelected={handleSetSelected}
