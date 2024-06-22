@@ -24,10 +24,12 @@ const FeedsHome = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
+  const[ searchModal, setSearchModal] = useState(false);
+
   const navigate = useNavigate()
 
   const handleOnSearch = (string, results) => {
-    setData(results);
+    // setData(results);
     console.log(string, results);
   };
 
@@ -80,6 +82,9 @@ const FeedsHome = () => {
               </div>
               <div>
                 <Feeds />
+              </div>
+              <div>
+
               </div>
             </section>
             <section className="py-4 lg:py-20">
