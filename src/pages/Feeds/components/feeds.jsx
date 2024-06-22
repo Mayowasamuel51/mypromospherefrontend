@@ -67,6 +67,7 @@ const Feeds = () => {
               <div className="flex items-center gap-2">
                 <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
                 {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                {!token &&<p className="text-sm font-medium">{item.user_name}</p>}
               </div>
             </Link>
           </div>
