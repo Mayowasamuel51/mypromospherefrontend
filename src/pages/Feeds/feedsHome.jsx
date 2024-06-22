@@ -97,22 +97,6 @@ const FeedsHome = () => {
     refetch();
   };
 
-  // const handleOnSearch = useCallback(
-  //   (string) => {
-  //     debouncedSearch(string);
-  //   },
-  //   [debouncedSearch]
-  // );
-  // const handleOnSelect = useCallback(
-  //   (item) => {
-  //     setSearchQuery(item.name);
-  //     refetch();
-  //   },
-  //   [refetch]
-  // );
-
-  console.log(searchQuery);
-
   useEffect(() => {
     if (searchResults && searchResults.data && searchResults.data.length > 0) {
       setModal(true)
@@ -200,7 +184,7 @@ const FeedsHome = () => {
                     ))}
                   </motion.div>
                 }
-                {(!searchResults?.data && searchResults.data.length === 0) &&
+                {(!searchResults?.data && searchResults?.data?.length === 0) &&
                   <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md z-[9999999999] shadow-md">
                     <motion.p variants={childVariant}>No result Found!!</motion.p>
                   </motion.div>

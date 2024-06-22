@@ -18,8 +18,10 @@ const SingleFeedPage = () => {
     const navigate = useNavigate()
     const { data, isLoading, error } = FetchSingleAd(id);
     console.log(data?.data?.data)
+    
     const [imageUrl, setImageUrl] = useState("")
     const [imageKey, setImageKey] = useState(0);
+
 
     useEffect(() => {
         if (data?.data?.data?.titleImageurl) {
