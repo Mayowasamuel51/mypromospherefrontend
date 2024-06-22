@@ -104,7 +104,7 @@ const FeedsHome = () => {
     else {
       setModal(false)
     }
-  }, [searchResults, searchQuery])
+  }, [searchResults])
 
   console.log('Search Results:', searchResults)
 
@@ -156,7 +156,7 @@ const FeedsHome = () => {
               </div>
             </section>
             <AnimatePresence mode='popLayout'>
-              <motion.div variants={containerVariant} animate={(modal && searchResults?.data) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
+              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
                 {(searchQuery && searchResults && searchResults?.data?.length > 0) &&
                   <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md flex items-center gap-4">
                     {searchResults?.data.map((item) => (
