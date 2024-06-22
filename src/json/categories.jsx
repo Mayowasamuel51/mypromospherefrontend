@@ -144,33 +144,29 @@ export const categories =
 
     },
 
+   
+
     {
         id: 25,
-        name: "Luxury Apartment"
-
-    },
-
-    {
-        id: 26,
         name: "Fashion"
 
     },
 
     {
-        id: 27,
+        id: 26,
         name: "Sport Dresses"
     }, 
 
     {
-        id: 28,
+        id: 27,
         name: "Products on Discount"
     },
     {
-        id:29,
+        id:28,
         name:"Gold"
     },
     {
-        id:30,
+        id:29,
         name:"Vehicles Upgrade"
     }
 ]
