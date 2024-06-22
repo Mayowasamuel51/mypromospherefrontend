@@ -29,7 +29,7 @@ const containerVariant = {
   animate: {
     opacity: 1,
     transition: {
-      duration: 0.5
+      duration: 0.5, delayChildren: 0.5
     }
   }
 }
@@ -43,7 +43,7 @@ const divVariant = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring", staggerChildren: 0.35, duration: 0.4, stiffness: 250, when: "beforeChildren"
+      type: "spring", staggerChildren: 0.35, delayChildren: 0.4, duration: 0.4, stiffness: 250, when: "beforeChildren"
     }
   }
 }
@@ -104,6 +104,8 @@ const FeedsHome = () => {
   //   },
   //   [refetch]
   // );
+
+  console.log(searchQuery);
 
   useEffect(() => {
     if (searchResults && searchResults.data && searchResults.data.length > 0) {
@@ -171,7 +173,7 @@ const FeedsHome = () => {
                       <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                         <div>
                           <Link to={`/feed/${item.id}`}>
-                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 250 }} className="w-full rounded-md object-cover" />
+                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
                           </Link>
                         </div>
                         <div className='flex items-center justify-between'>
