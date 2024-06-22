@@ -102,7 +102,7 @@ const FeedsHome = () => {
       setModal(true)
     }
     else {
-      setModal(true)
+      setModal(false)
     }
   }, [searchResults])
 
