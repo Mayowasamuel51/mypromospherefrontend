@@ -82,20 +82,28 @@ const FeedsHome = () => {
     [refetch]
   );
 
-  const handleOnSearch = useCallback(
-    (string) => {
-      debouncedSearch(string);
-    },
-    [debouncedSearch]
-  );
+  const handleOnSearch = useCallback((string) => {
+    debouncedSearch(string);
+  }, [debouncedSearch]);
 
-  const handleOnSelect = useCallback(
-    (item) => {
-      setSearchQuery(item.name);
-      refetch();
-    },
-    [refetch]
-  );
+  const handleOnSelect = (item) => {
+    setSearchQuery(item.name);
+    refetch();
+  };
+
+  // const handleOnSearch = useCallback(
+  //   (string) => {
+  //     debouncedSearch(string);
+  //   },
+  //   [debouncedSearch]
+  // );
+  // const handleOnSelect = useCallback(
+  //   (item) => {
+  //     setSearchQuery(item.name);
+  //     refetch();
+  //   },
+  //   [refetch]
+  // );
 
   useEffect(() => {
     if (searchQuery.length > 0 && searchResults && searchResults.length > 0) {
