@@ -6,7 +6,6 @@
       "main": true
     }
   },
-
   "github": {
     "autoJobCancelation": true,
     "silent": true,
