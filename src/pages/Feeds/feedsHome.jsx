@@ -38,7 +38,8 @@ const FeedsHome = () => {
   // };
 
   const handleOnSelect = (item) => {
-    const { data: selectResults, refetch } = FetchSearch(item.name);
+    console.log(item.name)
+    // const { data: selectResults, refetch } = FetchSearch(item.name);
     // refetch({ queryKey: ['search', item.name] });
     console.log(selectResults)
   }
