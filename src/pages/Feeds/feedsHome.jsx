@@ -280,7 +280,7 @@ const FeedsHome = () => {
               className={`block text-center ${location.pathname === "/top-videos" ?
                 "text-[#EC6A87]" : "text-black"
                 }`}
-            >
+            >                          
               <motion.button
                 whileTap={{ scale: 1.05 }}
                 className={`flex flex-col items-center gap-2 whitespace-nowrap px-3 md:px-6 py-4 text-black md:text-base text-xs ${location.pathname === "/top-videos" &&
