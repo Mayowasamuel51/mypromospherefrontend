@@ -101,15 +101,15 @@ const FeedsHome = () => {
   };
 
   useEffect(() => {
-    if (searchResults && searchResults.data && searchResults.data.length > 0) {
+    if (!searchQuery.trim() && searchResults && searchResults.data && searchResults.data.length > 0) {
       setModal(true)
     }
     else {
       setModal(false)
     }
-  }, [searchResults])
+  }, [searchResults, searchQuery])
 
-  const removeModal = ()=> {
+  const removeModal = () => {
     setModal(false)
     setSearchQuery("")
   }
@@ -161,11 +161,11 @@ const FeedsHome = () => {
                 <Feeds />
               </div>
             </section>
-            <AnimatePresence mode='popLayout'>
-              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
-                {(modal && searchResults?.data && searchResults.data.length > 0 ) &&
-                  <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
-                    <FaXmark size={20} className="text-black absolute top-4 right-4" onClick={()=> removeModal()}/>
+            <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
+              {(modal && searchResults?.data && searchResults.data.length > 0) &&
+                <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
+                  <FaXmark size={20} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
+                  <AnimatePresence mode='popLayout'>
                     {searchResults?.data.map((item) => (
                       <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                         <div>
@@ -189,15 +189,15 @@ const FeedsHome = () => {
                         </Link>
                       </motion.div>
                     ))}
-                  </motion.div>
-                }
-                {(!searchResults?.data && searchResults?.data?.length === 0) &&
-                  <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md z-[9999999999] shadow-md">
-                    <motion.p variants={childVariant}>No result Found!!</motion.p>
-                  </motion.div>
-                }
-              </motion.div>
-            </AnimatePresence>
+                  </AnimatePresence>
+                </motion.div>
+              }
+              {(!searchResults?.data && searchResults?.data?.length === 0) &&
+                <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md z-[9999999999] shadow-md">
+                  <motion.p variants={childVariant}>No result Found!!</motion.p>
+                </motion.div>
+              }
+            </motion.div>
             <section className="py-4 lg:py-20">
               <motion.div
                 className={`md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 w-fit mx-auto bg-[#F0D8DD]`}
