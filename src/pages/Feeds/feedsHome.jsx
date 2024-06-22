@@ -15,6 +15,7 @@ import { categories } from "../../json/categories";
 import { toast } from "sonner";
 import LogoBg from "../../assests/images/mypromosphere-logo.png";
 import { FiPlusCircle } from "react-icons/fi";
+import FetchSearch from "../../hooks/fetchSearch";
 
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
 
@@ -28,13 +29,19 @@ const FeedsHome = () => {
 
   const navigate = useNavigate()
 
+  
+
   const handleOnSearch = (string, results) => {
-    // setData(results);
     console.log(string, results);
+    const { data: searchResults, refetch } = FetchSearch(string);
+    refetch({ queryKey: ['search', string] });
+    console.log(searchResults)
   };
 
   const handleOnSelect = (item) => {
-    console.log(item)
+    const { data: selectResults, refetch } = FetchSearch(item.name);
+    refetch({ queryKey: ['search', item.name] });
+    console.log(selectResults)
   }
 
   const goToPostPage = ()=> {
