@@ -161,7 +161,7 @@ const FeedsHome = () => {
                 <Feeds />
               </div>
             </section>
-            <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
+            <motion.div variants={containerVariant} animate={(modal && searchResults?.data && searchResults.data.length > 0) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
               {(modal && searchResults?.data && searchResults.data.length > 0) &&
                 <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
                   <FaXmark size={20} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
