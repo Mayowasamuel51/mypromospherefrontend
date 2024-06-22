@@ -14,7 +14,6 @@ import { TbCurrencyNaira } from "react-icons/tb";
 const TrendingAds = () => {
     const { token } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
-    console.log(data);
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">

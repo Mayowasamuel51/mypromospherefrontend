@@ -23,13 +23,13 @@ import debounce from 'lodash.debounce';
 import FetchSearch from "../../hooks/fetchSearch";
 
 const containerVariant = {
-  initial : {
+  initial: {
     opacity: 0
   },
   animate: {
     opacity: 1
   },
-  transition:{
+  transition: {
     duration: 0.5
   }
 }
@@ -93,10 +93,12 @@ const FeedsHome = () => {
 
   useEffect(() => {
     if (searchResults) {
-      console.log('Search Results:', searchResults);
+      setData(searchResults?.data)
+      // console.log('Search Results:', searchResults);
     }
   }, [searchResults])
 
+  console.log('Search Results:', searchResults)
   const goToPostPage = () => {
     if (!token) {
       toast.error("You are not Logged In")
@@ -143,38 +145,38 @@ const FeedsHome = () => {
               <div>
                 <Feeds />
               </div>
-              <AnimatePresence mode='popLayout'>
-                {searchResults?.length > 0 &&
-                  <motion.div variants={containerVariant} initial="initial" animate="animate" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[9999999999]">
-                    <motion.div variants={divVariant} className="md:w-[600px] bg-white p-4 rounded-md">
-                      {searchResults.data.map((item) => (
-                        <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
-                          <div>
-                            <Link to={`/feed/${item.id}`}>
-                              <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
-                            </Link>
-                          </div>
-                          <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>name</h1>
-                            <div className="flex items-center">
-                              <TbCurrencyNaira size={20} />
-                              <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                            </div>
-                          </div>
-                          <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                            <div className="flex items-center gap-2">
-                              <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                              {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                              {!token && <p className="text-sm font-medium">{item.user_name}</p>}
-                            </div>
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </motion.div>
-                }
-              </AnimatePresence>
             </section>
+            <AnimatePresence mode='popLayout'>
+              {searchResults?.length > 0 &&
+                <motion.div variants={containerVariant} initial="initial" animate="animate" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[9999999999]">
+                  <motion.div variants={divVariant} className="md:w-[600px] bg-white p-4 rounded-md">
+                    {searchResults.data.map((item) => (
+                      <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                        <div>
+                          <Link to={`/feed/${item.id}`}>
+                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
+                          </Link>
+                        </div>
+                        <div className='flex items-center justify-between'>
+                          <h1 className='font-semibold'>name</h1>
+                          <div className="flex items-center">
+                            <TbCurrencyNaira size={20} />
+                            <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                          </div>
+                        </div>
+                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
+                          <div className="flex items-center gap-2">
+                            <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
+                            {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                            {!token && <p className="text-sm font-medium">{item.user_name}</p>}
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </motion.div>
+              }
+            </AnimatePresence>
             <section className="py-4 lg:py-20">
               <motion.div
                 className={`md:block hidden my-4 shadow-md md:py-4 md:px-3 md:p-6 w-fit mx-auto bg-[#F0D8DD]`}
