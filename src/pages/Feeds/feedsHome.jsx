@@ -184,7 +184,7 @@ const FeedsHome = () => {
                     ))}
                   </motion.div>
                 }
-                {(searchResults?.data?.length === 0 || !searchResults) &&
+                {(searchResults?.data?.length === 0) &&
                   <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md">
                     <motion.p variants={childVariant}>No result Found!!</motion.p>
                   </motion.div>
