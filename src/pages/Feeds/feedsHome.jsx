@@ -1,12 +1,16 @@
 // import axios from "axios";
 import { useRef, useEffect, useState, useCallback } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import anon from "../../assests/images/anon.png"
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { IoMdArrowUp } from "react-icons/io";
+import { TbCurrencyNaira } from "react-icons/tb";
 import { FiPlusSquare } from "react-icons/fi";
 import { MdOutlineDynamicFeed } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
@@ -101,9 +105,37 @@ const FeedsHome = () => {
               <div>
                 <Feeds />
               </div>
-              <div>
-
-              </div>
+              {searchResults.length > 0 && 
+                <div className="fixed flex justify-center items-center bg-black bg-opacity-80 z-[9999999999]">
+                  <AnimatePresence mode='popLayout'>
+                    <div className="md:w-[600px] bg-white p-4 rounded-md">
+                      {searchResults.data.map((item)=> (
+                        <div key={item.id} className="flex flex-col gap-2 md:gap-4">
+                          <div>
+                            <Link to={`/feed/${item.id}`}>
+                              <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
+                            </Link>
+                          </div>
+                        <div className='flex items-center justify-between'>
+                          <h1 className='font-semibold'>name</h1>
+                          <div className="flex items-center">
+                            <TbCurrencyNaira size={20} />
+                            <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                          </div>
+                        </div>
+                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
+                          <div className="flex items-center gap-2">
+                            <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
+                            {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                            {!token && <p className="text-sm font-medium">{item.user_name}</p>}
+                          </div>
+                        </Link>
+                      </div>
+                      ))}
+                    </div>
+                  </AnimatePresence>
+                </div>
+              }
             </section>
             <section className="py-4 lg:py-20">
               <motion.div
