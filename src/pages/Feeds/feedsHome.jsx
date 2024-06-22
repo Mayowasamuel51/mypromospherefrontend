@@ -98,7 +98,7 @@ const FeedsHome = () => {
   );
 
   useEffect(() => {
-    if (searchQuery && searchResults && searchResults.length > 0) {
+    if (searchQuery.length > 0 && searchResults && searchResults.length > 0) {
       setModal(true)
     }
     else {
@@ -156,7 +156,7 @@ const FeedsHome = () => {
               </div>
             </section>
             <AnimatePresence mode='popLayout'>
-              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
+              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="border-2 border-red fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
                 {(searchResults?.data?.length > 0) &&
                   <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md flex items-center gap-4">
                     {searchResults?.data.map((item) => (
