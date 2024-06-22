@@ -37,8 +37,8 @@ const FeedsHome = () => {
   //   console.log(searchResults)
   // };
 
-  const handleOnSelect = async(item) => {
-    const { data: selectResults, refetch } = await FetchSearch(item.name);
+  const handleOnSelect = (item) => {
+    const { data: selectResults, refetch } = FetchSearch(item.name);
     // refetch({ queryKey: ['search', item.name] });
     console.log(selectResults)
   }
