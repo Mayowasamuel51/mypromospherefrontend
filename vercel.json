@@ -7,6 +7,12 @@
         "deploymentEnabled": {
           "main": true
         }
-      }
+      },
+    
+      
+        "github": {
+          "autoJobCancelation": false
+        }
+      
     
   }
