@@ -24,10 +24,12 @@ import FetchSearch from "../../hooks/fetchSearch";
 
 const containerVariant = {
   initial: {
-    opacity: 0
+    opacity: 0,
+    zIndex: -1
   },
   animate: {
     opacity: 1,
+    zIndex: 99999999,
     transition: {
       duration: 0.5, delayChildren: 0.5
     }
@@ -156,7 +158,7 @@ const FeedsHome = () => {
               </div>
             </section>
             <AnimatePresence mode='popLayout'>
-              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
+              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                 {(modal && searchResults?.data && searchResults.data.length > 0 ) &&
                   <motion.div variants={divVariant} className="z-[9999999999] w-fit bg-white py-4 px-6 rounded-md flex flex-col md:flex-row items-center gap-4 ">
                     {searchResults?.data.map((item) => (
