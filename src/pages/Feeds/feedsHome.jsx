@@ -101,13 +101,13 @@ const FeedsHome = () => {
   };
 
   useEffect(() => {
-    if (!searchQuery.trim() && searchResults && searchResults.data && searchResults.data.length > 0) {
+    if (searchResults && searchResults.data && searchResults.data.length > 0) {
       setModal(true)
     }
     else {
       setModal(false)
     }
-  }, [searchResults, searchQuery])
+  }, [searchResults])
 
   const removeModal = () => {
     setModal(false)
