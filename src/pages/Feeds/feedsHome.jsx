@@ -68,7 +68,7 @@ const FeedsHome = () => {
           </div>
           }
           <div className="">
-            <section className="lg:px-10 px-4">
+            <section className="">
               <div className="flex my-3 lg:my-3">
                 <ReactSearchAutocomplete
                   items={categories}
