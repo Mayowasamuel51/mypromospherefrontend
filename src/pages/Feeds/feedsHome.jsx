@@ -108,13 +108,13 @@ const FeedsHome = () => {
   console.log(searchQuery);
 
   useEffect(() => {
-    if (searchResults && searchResults.data && searchResults.data.length > 0) {
+    if (!searchQuery.trim() && searchResults && searchResults.data && searchResults.data.length > 0) {
       setModal(true)
     }
     else {
       setModal(false)
     }
-  }, [searchResults])
+  }, [searchResults, searchQuery])
 
   console.log('Search Results:', searchResults)
 
