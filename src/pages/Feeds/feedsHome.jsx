@@ -164,14 +164,14 @@ const FeedsHome = () => {
               </div>
             </section>
             <AnimatePresence mode='popLayout'>
-              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="border-2 border-red fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
+              <motion.div variants={containerVariant} animate={(modal) ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
                 {(modal && searchResults?.data && searchResults.data.length > 0 ) &&
-                  <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md flex items-center gap-4">
+                  <motion.div variants={divVariant} className="w-fit bg-white py-4 px-6 rounded-md flex flex-col md:flex-row items-center gap-4 ">
                     {searchResults?.data.map((item) => (
                       <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                         <div>
                           <Link to={`/feed/${item.id}`}>
-                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
+                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 250 }} className="w-full rounded-md object-cover" />
                           </Link>
                         </div>
                         <div className='flex items-center justify-between'>
