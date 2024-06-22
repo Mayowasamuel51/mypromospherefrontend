@@ -145,7 +145,7 @@ const FeedsHome = () => {
               <div className="flex my-3 lg:my-3">
                 <ReactSearchAutocomplete
                   items={categories}
-                  className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
+                  className="z-[999999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                   placeholder="Search by title or tags , service"
                   onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
@@ -158,7 +158,7 @@ const FeedsHome = () => {
             <AnimatePresence mode='popLayout'>
               {searchResults?.data?.length > 0 &&
                 <motion.div variants={containerVariant} animate={modal ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
-                  <motion.div variants={divVariant} className="md:w-[600px] bg-white p-4 rounded-md">
+                  <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md flex items-center gap-4">
                     {searchResults?.data.map((item) => (
                       <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
                         <div>
