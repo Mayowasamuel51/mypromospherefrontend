@@ -67,8 +67,8 @@ const FeedsHome = () => {
   const { token, scrollValue, handleClick } = useStateContext();
   const ref = useRef(null);
   const isInView = useInView(ref);
-  const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [modal, setModal] = useState(false)
 
   const navigate = useNavigate();
 
@@ -81,7 +81,7 @@ const FeedsHome = () => {
     }, 300),
     [refetch]
   );
-  
+
   const handleOnSearch = useCallback(
     (string) => {
       debouncedSearch(string);
@@ -89,19 +89,25 @@ const FeedsHome = () => {
     [debouncedSearch]
   );
 
-  const handleOnSelect = (item) => {
-    setSearchQuery(item.name);
-    refetch();
-  };
+  const handleOnSelect = useCallback(
+    (item) => {
+      setSearchQuery(item.name);
+      refetch();
+    },
+    [refetch]
+  );
 
   useEffect(() => {
-    if (searchResults) {
-      setData(searchResults?.data)
-      // console.log('Search Results:', searchResults);
+    if (searchResults && searchResults.length > 0) {
+      setModal(true)
+    }
+    else {
+      setModal(true)
     }
   }, [searchResults])
 
   console.log('Search Results:', searchResults)
+
   const goToPostPage = () => {
     if (!token) {
       toast.error("You are not Logged In")
@@ -150,10 +156,10 @@ const FeedsHome = () => {
               </div>
             </section>
             <AnimatePresence mode='popLayout'>
-              {searchResults?.length > 0 &&
-                <motion.div variants={containerVariant} initial="initial" animate="animate" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[9999999999]">
+              {searchResults?.data?.length > 0 &&
+                <motion.div variants={containerVariant} animate={modal ? "animate" : "initial"} className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[99999999]">
                   <motion.div variants={divVariant} className="md:w-[600px] bg-white p-4 rounded-md">
-                    {searchResults.data.map((item) => (
+                    {searchResults?.data.map((item) => (
                       <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
                         <div>
                           <Link to={`/feed/${item.id}`}>
