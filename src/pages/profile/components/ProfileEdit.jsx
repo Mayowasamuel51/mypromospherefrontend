@@ -50,7 +50,7 @@ const ProfileEdit = () => {
   });
  
 
-  if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
+  // if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
   // console.log(profile?.data?.data[0].whatapp)
 
   const [profileedit , setProfileEdit ] = useState({

@@ -164,6 +164,14 @@ export const categories =
     {
         id: 28,
         name: "Products on Discount"
+    },
+    {
+        id:29,
+        name:"Gold"
+    },
+    {
+        id:30,
+        name:"Vehicles Upgrade"
     }
 ]
 
