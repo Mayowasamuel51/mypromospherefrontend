@@ -32,7 +32,7 @@ const containerVariant = {
     opacity: 1,
     zIndex: 99999999,
     transition: {
-      duration: 0.5, delayChildren: 0.5
+      duration: 0.5, delayChildren: 1
     }
   }
 }
@@ -40,13 +40,13 @@ const containerVariant = {
 const divVariant = {
   initial: {
     opacity: 0,
-    y: "-100%"
+    y: "-100%",
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring", staggerChildren: 0.35, delayChildren: 0.4, duration: 0.4, stiffness: 250, when: "beforeChildren"
+      type: "spring", staggerChildren: 0.5, delayChildren: 0.5, duration: 0.5, stiffness: 250
     }
   }
 }
