@@ -299,7 +299,7 @@ html {
 .animate-banner {
   animation-name: changer;
   animation-timing-function: ease-in-out;
-  animation-duration: 10s;
+  animation-duration: 15s;
   animation-iteration-count: infinite;
 }
 
@@ -313,14 +313,8 @@ html {
   0% {
     object-position: top;
   }
-  20% {
-    object-position: right;
-  }
-  40% {
+  50% {
     object-position: bottom;
-  }
-  60% {
-    object-position: left;
   }
   100% {
     object-position: top;
