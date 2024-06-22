@@ -1,5 +1,5 @@
 // import axios from "axios";
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView } from "framer-motion";
@@ -15,6 +15,7 @@ import { categories } from "../../json/categories";
 import { toast } from "sonner";
 import LogoBg from "../../assests/images/mypromosphere-logo.png";
 import { FiPlusCircle } from "react-icons/fi";
+import debounce from 'lodash.debounce';
 import FetchSearch from "../../hooks/fetchSearch";
 
 // const api_search_query = import.meta.env.VITE_FULL_SEARCH;
@@ -25,26 +26,36 @@ const FeedsHome = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
-  const[ searchModal, setSearchModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchModal, setSearchModal] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  
-  // const handleOnSearch = (string, results) => {
-  //   console.log(string, results);
-  //   const { data: searchResults, refetch } = FetchSearch(string);
-  //   // refetch({ queryKey: ['search', string] });
-  //   console.log(searchResults)
-  // };
+  const { data: searchResults, refetch } = FetchSearch(searchQuery);
+
+  const debouncedSearch = useCallback(
+    debounce((query) => {
+      setSearchQuery(query);
+      refetch();
+    }, 300),
+    [refetch]
+  );
+  const handleOnSearch = (string) => {
+    debouncedSearch(string);
+  };
 
   const handleOnSelect = (item) => {
-    console.log(item.name)
-    const { data: selectResults, refetch } = FetchSearch(item.name);
-    // refetch({ queryKey: ['search', item.name] });
-    console.log("search results", selectResults)
-  }
+    setSearchQuery(item.name);
+    refetch();
+  };
 
-  const goToPostPage = ()=> {
+  useEffect(() => {
+    if (searchResults) {
+      console.log('Search Results:', searchResults);
+    }
+  }, [searchResults])
+
+  const goToPostPage = () => {
     if (!token) {
       toast.error("You are not Logged In")
       navigate('/login');
@@ -58,23 +69,23 @@ const FeedsHome = () => {
       <div className="">
         <Navbar blue={true} />
         <section className="lg:px-10 px-4 pt-20 lg:pt-24">
-          {!token && 
-          <div className="bg-black bg-opacity-80 relative rounded-md overflow-hidden hidden md:block">
-            <div className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center md:w-[600px] py-2">
-              <div className="flex flex-col gap-1">
-                <h1 className="md:text-3xl text-white font-bold">Welcome To <span className="text-[#EC6A87] font-black tracking-tight">MyPromosphere</span></h1>
-                <p className="text-sm text-white">Where you are one tap closer to your customers</p>
-                <p className="text-sm text-white">Got Something To Sell</p>
-              </div>
-              <Link to={`/login`}>
-                <div className="flex flex-col items-center gap-1">
-                  <FiPlusCircle color="#3D217A" size={40} />
-                  <p className="underline text-[#3D217A] text-sm">Register Today</p>
+          {!token &&
+            <div className="bg-black bg-opacity-80 relative rounded-md overflow-hidden hidden md:block">
+              <div className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center md:w-[600px] py-2">
+                <div className="flex flex-col gap-1">
+                  <h1 className="md:text-3xl text-white font-bold">Welcome To <span className="text-[#EC6A87] font-black tracking-tight">MyPromosphere</span></h1>
+                  <p className="text-sm text-white">Where you are one tap closer to your customers</p>
+                  <p className="text-sm text-white">Got Something To Sell</p>
                 </div>
-              </Link>
+                <Link to={`/login`}>
+                  <div className="flex flex-col items-center gap-1">
+                    <FiPlusCircle color="#3D217A" size={40} />
+                    <p className="underline text-[#3D217A] text-sm">Register Today</p>
+                  </div>
+                </Link>
+              </div>
+              <img src={LogoBg} className="animate-banner w-full h-[200px] md:h-[250px] object-cover" alt="" />
             </div>
-            <img src={LogoBg} className="animate-banner w-full h-[200px] md:h-[250px] object-cover" alt="" />
-          </div>
           }
           <div className="">
             <section className="">
@@ -83,7 +94,7 @@ const FeedsHome = () => {
                   items={categories}
                   className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                   placeholder="Search by title or tags , service"
-                  // onSearch={handleOnSearch}
+                  onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
                 />
               </div>
@@ -137,7 +148,7 @@ const FeedsHome = () => {
           </div>
         </section>
         <Footer />
-        <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} cursor-pointer duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`} style={{background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)`}} onClick={handleClick}>
+        <div className={`${scrollValue > 2 ? 'visible opacity-100' : 'invisible opacity-0'} cursor-pointer duration-300 grid place-items-center fixed bottom-20 right-10 w-[50px] aspect-square rounded-full border-2 border-white`} style={{ background: `conic-gradient(#EC6A87 ${scrollValue}%, #3D217A ${scrollValue}%)` }} onClick={handleClick}>
           <div className="grid place-items-center bg-white w-[40px] aspect-square rounded-full"><IoMdArrowUp size={30} color="#3D217A" /></div>
         </div>
         <motion.div className={`${isInView ? "opacity-100 bg-opacity-90 visible" : "opacity-0 invisible"} fixed-shadow duration-300 z-10 bg-white md:hidden block fixed bottom-2 left-2 right-2 rounded-md`} >
@@ -156,7 +167,7 @@ const FeedsHome = () => {
                 <p className={`${location.pathname === "/" ? "text-[#EC6A87]" : "text-black"}`}>Trending Ads</p>
               </motion.button>
             </Link>
-            <div onClick={()=> goToPostPage()} className="block text-center cursor-pointer">
+            <div onClick={() => goToPostPage()} className="block text-center cursor-pointer">
               <button className="flex flex-col items-center gap-2">
                 <FiPlusSquare size={20} className="text-black" />
                 <p className="text-black">Post an Ad</p>
