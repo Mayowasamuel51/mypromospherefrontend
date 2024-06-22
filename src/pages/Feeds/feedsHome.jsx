@@ -82,7 +82,7 @@ const FeedsHome = () => {
                   items={categories}
                   className="z-[999999] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                   placeholder="Search by title or tags , service"
-                  onSearch={handleOnSearch}
+                  // onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
                 />
               </div>
