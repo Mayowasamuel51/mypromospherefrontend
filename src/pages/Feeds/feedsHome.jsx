@@ -27,10 +27,10 @@ const containerVariant = {
     opacity: 0
   },
   animate: {
-    opacity: 1
-  },
-  transition: {
-    duration: 0.5
+    opacity: 1,
+    transition: {
+      duration: 0.5
+    }
   }
 }
 
@@ -69,7 +69,6 @@ const FeedsHome = () => {
   const isInView = useInView(ref);
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchModal, setSearchModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -82,9 +81,13 @@ const FeedsHome = () => {
     }, 300),
     [refetch]
   );
-  const handleOnSearch = (string) => {
-    debouncedSearch(string);
-  };
+  
+  const handleOnSearch = useCallback(
+    (string) => {
+      debouncedSearch(string);
+    },
+    [debouncedSearch]
+  );
 
   const handleOnSelect = (item) => {
     setSearchQuery(item.name);
