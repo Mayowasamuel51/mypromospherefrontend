@@ -41,7 +41,7 @@ const FeedsHome = () => {
     console.log(item.name)
     // const { data: selectResults, refetch } = FetchSearch(item.name);
     // refetch({ queryKey: ['search', item.name] });
-    console.log(selectResults)
+    // console.log(selectResults)
   }
 
   const goToPostPage = ()=> {
