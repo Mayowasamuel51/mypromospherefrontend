@@ -9,6 +9,7 @@
   "github": {
     "autoJobCancelation": true,
     "silent": true,
+    "autoAlias": true,
     "enabled": true
   }
 }
