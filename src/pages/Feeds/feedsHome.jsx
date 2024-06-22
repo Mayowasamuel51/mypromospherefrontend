@@ -83,7 +83,13 @@ const FeedsHome = () => {
   );
 
   const handleOnSearch = useCallback((string) => {
-    debouncedSearch(string);
+    const trimmedQuery = string.trim();
+    if (trimmedQuery) {
+      debouncedSearch(trimmedQuery);
+    } else {
+      setSearchQuery('');
+      setModal(false);
+    }
   }, [debouncedSearch]);
 
   const handleOnSelect = (item) => {
@@ -194,8 +200,8 @@ const FeedsHome = () => {
                     ))}
                   </motion.div>
                 }
-                {(modal && searchResults?.data && searchResults.data.length === 0) &&
-                  <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md z-[9999999999]">
+                {(!searchResults?.data && searchResults.data.length === 0) &&
+                  <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md z-[9999999999] shadow-md">
                     <motion.p variants={childVariant}>No result Found!!</motion.p>
                   </motion.div>
                 }
