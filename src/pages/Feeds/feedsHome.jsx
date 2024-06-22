@@ -30,17 +30,16 @@ const FeedsHome = () => {
   const navigate = useNavigate()
 
   
-
   const handleOnSearch = (string, results) => {
     console.log(string, results);
     const { data: searchResults, refetch } = FetchSearch(string);
-    refetch({ queryKey: ['search', string] });
+    // refetch({ queryKey: ['search', string] });
     console.log(searchResults)
   };
 
   const handleOnSelect = (item) => {
     const { data: selectResults, refetch } = FetchSearch(item.name);
-    refetch({ queryKey: ['search', item.name] });
+    // refetch({ queryKey: ['search', item.name] });
     console.log(selectResults)
   }
 
