@@ -145,7 +145,7 @@ const FeedsHome = () => {
               </div>
               <AnimatePresence mode='popLayout'>
                 {searchResults?.length > 0 &&
-                  <motion.div variants={containerVariant} initial="initial" animate="animate" className="fixed flex justify-center items-center bg-black bg-opacity-80 z-[9999999999]">
+                  <motion.div variants={containerVariant} initial="initial" animate="animate" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 z-[9999999999]">
                     <motion.div variants={divVariant} className="md:w-[600px] bg-white p-4 rounded-md">
                       {searchResults.data.map((item) => (
                         <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
