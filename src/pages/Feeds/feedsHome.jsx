@@ -39,9 +39,9 @@ const FeedsHome = () => {
 
   const handleOnSelect = (item) => {
     console.log(item.name)
-    // const { data: selectResults, refetch } = FetchSearch(item.name);
+    const { data: selectResults, refetch } = FetchSearch(item.name);
     // refetch({ queryKey: ['search', item.name] });
-    // console.log(selectResults)
+    console.log("search results", selectResults)
   }
 
   const goToPostPage = ()=> {

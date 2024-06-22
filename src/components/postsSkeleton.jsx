@@ -11,10 +11,10 @@ const PostsSkeleton = ({ posts }) => {
                 <Skeleton baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"}  width={`100%`} height={300} />
             </div>
             <div className='flex items-center justify-between'>
-              <Skeleton baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
+              <Skeleton width={100} baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
               <div className="flex items-center">
                 <TbCurrencyNaira size={20} />
-                <Skeleton baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
+                <Skeleton width={70} baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
               </div>
             </div>
             <div>
