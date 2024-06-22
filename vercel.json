@@ -1,18 +1,15 @@
 {
-    "rewrites":  [
-      {"source": "/(.*)", "destination": "/"}
-    ],
-    
-      "git": {
-        "deploymentEnabled": {
-          "main": true
-        }
-      },
-    
-      
-        "github": {
-          "autoJobCancelation": true
-        }
-      
-    
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
+
+  "github": {
+    "autoJobCancelation": true,
+    "silent": true,
+    "enabled": true
   }
+}
