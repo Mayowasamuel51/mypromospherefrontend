@@ -16,22 +16,19 @@ export default function Home() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Mypromosphere</title>
-        <meta
-          name="keywords"
-          content="Affordable prices , Buy and sell ,Online shopping,Product listings, Digital marketplace, Fast shipping"
-        />
+        <meta name="keywords" content="affordable prices, buy and sell, online shopping, product listings, digital marketplace, fast shipping" />
         <link rel="canonical" href="https://www.mypromosphere.com" />
         <meta
           name="description"
           content={
-            "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
+            " Mypromosphere is the leading online marketplace for effectively promoting your products and services. Discover high-quality, discounted goods from real sellers and enjoy unbeatable deals. Plus, you can upload your ads with images and videos for free, enhancing your reach and visibility."
           }
         />
 
         <meta
           property="og:description"
           content={
-            "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
+            "Mypromosphere is the leading online marketplace for effectively promoting your products and services. Discover high-quality, discounted goods from real sellers and enjoy unbeatable deals. Plus, you can upload your ads with images and videos for free, enhancing your reach and visibility. "
           }
         />
       </Helmet>
