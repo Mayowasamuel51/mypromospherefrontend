@@ -62,7 +62,7 @@ const divVariant = {
     opacity: 0,
     y: "-100%",
     transition: {
-      when : "afterChildren", duration: 0.5, staggerChildren: 0.3,
+      when : "afterChildren", duration: 0.3, staggerChildren: 0.3,
     }
   }
 }
