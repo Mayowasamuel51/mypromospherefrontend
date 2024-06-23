@@ -10,7 +10,7 @@ import "./trends.css"
 import PostsSkeleton from '../../../components/postsSkeleton';
 import { TbCurrencyNaira } from "react-icons/tb";
 
-
+const api_gerenal = import.meta.env.VITE_GENERAL;
 const TrendingAds = () => {
     const { token } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
@@ -48,7 +48,7 @@ const TrendingAds = () => {
                             }} className="">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
@@ -61,12 +61,12 @@ const TrendingAds = () => {
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
                         <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>name</h1>
+                            <h1 className='font-semibold'>{item.productName}</h1>
                             <div className="flex items-center">
                                 <TbCurrencyNaira size={20} />
                                 <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
@@ -107,7 +107,7 @@ const TrendingAds = () => {
                             }} className="">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
@@ -120,7 +120,7 @@ const TrendingAds = () => {
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -165,7 +165,7 @@ const TrendingAds = () => {
                             }} className="">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
@@ -178,7 +178,7 @@ const TrendingAds = () => {
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
@@ -223,7 +223,7 @@ const TrendingAds = () => {
                             }} className="">
                                 <SplideSlide className='rounded-md'>
                                     <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                     </Link>
                                 </SplideSlide>
                                 {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
@@ -236,7 +236,7 @@ const TrendingAds = () => {
                             </Splide> :
                             <div>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </div>
                         }
