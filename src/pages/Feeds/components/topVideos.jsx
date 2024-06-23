@@ -11,8 +11,6 @@ const api_thumbnails = import.meta.env.VITE_thumbnails;
 const TopVideos = () => {
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchVideos();
-  
-  console.log(data?.data?.videos);
 
   if (error)
     return (
