@@ -85,7 +85,6 @@ const SingleFeedPage = () => {
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
                         {/* <h1 className='md:text-3xl font-semibold text-xl uppercase'>{data?.data?.data?.headlines}</h1> */}
                         <div>
-                            <h1 className='font-bold text-base'>Description</h1>
                             <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
                         </div>
                         <p className='flex items-center'>
