@@ -508,7 +508,7 @@ const Post = () => {
                 className="hidden"
               />
             </label>
-            <div className="flex items-center justify-center gap-4 flex-wrap my-4">
+            <div className="flex items-center gap-4 flex-wrap my-4">
               {imageUpload.map((image, index) => (
                 <div
                   key={index}
