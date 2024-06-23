@@ -22,7 +22,6 @@ import { FiPlusCircle } from "react-icons/fi";
 import debounce from 'lodash.debounce';
 import FetchSearch from "../../hooks/fetchSearch";
 import { FaXmark } from "react-icons/fa6";
-
 const api_gerenal = import.meta.env.VITE_GENERAL;
 
 const containerVariant = {
@@ -110,13 +109,13 @@ const FeedsHome = () => {
 
   const handleOnSearch = useCallback((string) => {
     const trimmedQuery = string.trim();
-    if (trimmedQuery) {
+    if (trimmedQuery && FullScreen) {
       debouncedSearch(trimmedQuery);
     } else {
       setSearchQuery('');
       setModal(false);
     }
-  }, [debouncedSearch]);
+  }, [debouncedSearch, FullScreen]);
 
   const handleOnSelect = (item) => {
     setSearchQuery(item.name);
@@ -176,11 +175,7 @@ const FeedsHome = () => {
                   items={categories}
                   className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                   placeholder="Search by categories, service"
-                  onSearch={() => {
-                    if (FullScreen) {
-                      handleOnSearch();
-                    }
-                  }}
+                  onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
                 />
               </div>
