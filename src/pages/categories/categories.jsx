@@ -1,19 +1,10 @@
 import Navbar from "../../components/Navbar";
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import FetchCategories from "../../hooks/fetchCategories";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import anon from "../../assests/images/anon.png"
-import { useStateContext } from "../../contexts/ContextProvider";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
-import "../Feeds/components/trends.css";
 import PostsSkeleton from "../../components/postsSkeleton";
 import ProductDisplay from "../../components/productDisplay";
-import { TbCurrencyNaira } from "react-icons/tb";
 
 const Categories = () => {
-  const { token } = useStateContext()
   const { category } = useParams();
   const { data, isLoading, error } = FetchCategories(category)
   console.log(data)
