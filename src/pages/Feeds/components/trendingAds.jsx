@@ -1,26 +1,19 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import anon from "../../../assests/images/anon.png"
 import { Link } from 'react-router-dom';
 import FetchTrendingAds from "../../../hooks/fetchTrendingAds";
-import { useStateContext } from '../../../contexts/ContextProvider';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
-import "./trends.css"
 import PostsSkeleton from '../../../components/postsSkeleton';
-import { TbCurrencyNaira } from "react-icons/tb";
+import ProductDisplay from '../../../components/productDisplay';
 
-const api_gerenal = import.meta.env.VITE_GENERAL;
 const TrendingAds = () => {
-    const { token } = useStateContext()
     const { data, isLoading, error } = FetchTrendingAds();
     if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
     return (
         <section className="overflow-x-hidden">
             {data?.data?.normalads.length === 0 &&
-                <div className='flex flex-col gap-2 md:col-span-2 lg:col-span-4 exl:col-span-4 text-center'>
-                    <h1 className="text-semibold text-base md:text-xl">No post Yet!!!</h1>
-                    <Link to={`/dashboard/postAd`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+                <div className="min-h-screen">
+                    <div className='flex flex-col gap-2 md:col-span-2 lg:col-span-4 exl:col-span-4 text-center'>
+                        <h1 className="text-semibold text-base md:text-xl">No post Yet!!!</h1>
+                        <Link to={`/dashboard/postAd`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+                    </div>
                 </div>
             }
             {data?.data.normalads.filter((item) => item.categories === "Apartment").length > 0 &&
@@ -31,56 +24,7 @@ const TrendingAds = () => {
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={12} />}
                 {data?.data.normalads.filter((item) => item.categories === "Apartment").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-2 md:gap-4">
-                        {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
-                            <Splide options={{
-                                type: 'slide',
-                                focus: 1,
-                                start: 1,
-                                gap: "20px",
-                                perPage: 1,
-                                arrows: false,
-                                pagination: true,
-                                snap: true,
-                                // cloneStatus: false,
-                                width: "100%",
-                                height: "300px",
-                            }} className="">
-                                <SplideSlide className='rounded-md'>
-                                    <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                    </Link>
-                                </SplideSlide>
-                                {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md'>
-                                        <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                        </Link>
-                                    </SplideSlide>
-                                ))}
-                            </Splide> :
-                            <div>
-                                <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                </Link>
-                            </div>
-                        }
-                        <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>{item.productName}</h1>
-                            <div className="flex items-center">
-                                <TbCurrencyNaira size={20} />
-                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                            </div>
-                        </div>
-                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                            {/* <Link to={`/profile/user/${item.name}`} className="w-fit"> */}
-                            <div className="flex items-center gap-2">
-                                <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                                {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                                {!token &&<p className="text-sm font-medium">{item.user_name}</p>}
-                            </div>
-                        </Link>
-                    </div>
+                    <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
             {data?.data.normalads.filter((item) => item.categories === "Fashion").length > 0 &&
@@ -90,55 +34,7 @@ const TrendingAds = () => {
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-2 md:gap-4">
-                        {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
-                            <Splide options={{
-                                type: 'slide',
-                                focus: 1,
-                                start: 1,
-                                gap: "20px",
-                                perPage: 1,
-                                arrows: false,
-                                pagination: true,
-                                snap: true,
-                                // cloneStatus: false,
-                                width: "100%",
-                                height: "300px",
-                            }} className="">
-                                <SplideSlide className='rounded-md'>
-                                    <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                    </Link>
-                                </SplideSlide>
-                                {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md'>
-                                        <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                        </Link>
-                                    </SplideSlide>
-                                ))}
-                            </Splide> :
-                            <div>
-                                <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                </Link>
-                            </div>
-                        }
-                        <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>name</h1>
-                            <div className="flex items-center">
-                                <TbCurrencyNaira size={20} />
-                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                            </div>
-                        </div>
-                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                            <div className="flex items-center gap-2">
-                                <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                                {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                                {!token &&<p className="text-sm font-medium">{item.user_name}</p>}
-                            </div>
-                        </Link>
-                    </div>
+                    <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
             {data?.data.normalads.filter((item) => item.categories === "Skincare").length > 0 &&
@@ -148,55 +44,7 @@ const TrendingAds = () => {
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-2 md:gap-4">
-                        {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
-                            <Splide options={{
-                                type: 'slide',
-                                focus: 1,
-                                start: 1,
-                                gap: "20px",
-                                perPage: 1,
-                                arrows: false,
-                                pagination: true,
-                                snap: true,
-                                // cloneStatus: false,
-                                width: "100%",
-                                height: "300px",
-                            }} className="">
-                                <SplideSlide className='rounded-md'>
-                                    <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                    </Link>
-                                </SplideSlide>
-                                {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md'>
-                                        <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                        </Link>
-                                    </SplideSlide>
-                                ))}
-                            </Splide> :
-                            <div>
-                                <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                </Link>
-                            </div>
-                        }
-                        <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>name</h1>
-                            <div className="flex items-center">
-                                <TbCurrencyNaira size={20} />
-                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                            </div>
-                        </div>
-                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                            <div className="flex items-center gap-2">
-                                <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                                {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                                {!token &&<p className="text-sm font-medium">{item.user_name}</p>}
-                            </div>
-                        </Link>
-                    </div>
+                    <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
             {data?.data.normalads.filter((item) => item.categories === "Laptops").length > 0 &&
@@ -206,55 +54,7 @@ const TrendingAds = () => {
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
                 {data?.data?.normalads.filter((item) => item.categories === "Laptops").map((item) => (
-                    <div key={item.id} className="flex flex-col gap-2 md:gap-4">
-                        {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
-                            <Splide options={{
-                                type: 'slide',
-                                focus: 1,
-                                start: 1,
-                                gap: "20px",
-                                perPage: 1,
-                                arrows: false,
-                                pagination: true,
-                                snap: true,
-                                // cloneStatus: false,
-                                width: "100%",
-                                height: "300px",
-                            }} className="">
-                                <SplideSlide className='rounded-md'>
-                                    <Link to={`/feed/${item.id}`}>
-                                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                    </Link>
-                                </SplideSlide>
-                                {data?.data?.other_images.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
-                                    <SplideSlide key={img.id} className='rounded-md'>
-                                        <Link to={`/feed/${item.id}`}>
-                                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                        </Link>
-                                    </SplideSlide>
-                                ))}
-                            </Splide> :
-                            <div>
-                                <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
-                                </Link>
-                            </div>
-                        }
-                        <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>name</h1>
-                            <div className="flex items-center">
-                                <TbCurrencyNaira size={20} />
-                                <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                            </div>
-                        </div>
-                        <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                            <div className="flex items-center gap-2">
-                                <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                                {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                                {!token &&<p className="text-sm font-medium">{item.user_name}</p>}
-                            </div>
-                        </Link>
-                    </div>
+                    <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
         </section>

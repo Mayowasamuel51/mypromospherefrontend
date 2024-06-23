@@ -27,9 +27,8 @@ const Feeds = () => {
             <Link to={`/dashboard/postAd`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
           </div>
         }
-        
         {data?.data.normalads.slice(0, 4).map((item) => (
-          <ProductDisplay item={item} other_images={data?.data?.other_images} />
+          <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
         ))}
       </section>
     </section>
