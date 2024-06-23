@@ -153,7 +153,7 @@ const SignUp = () => {
       }
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "overflow-hidden inset bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-black rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "overflow-hidden inset bg-white dark:bg-black rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-black dark:bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]"
         }
       >
         {/* sign-up center  */}

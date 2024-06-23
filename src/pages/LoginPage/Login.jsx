@@ -142,8 +142,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
-            : "inset bg-black w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            ? "inset bg-white dark:bg-black w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            : "inset bg-black dark:bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
         }
       >
         <div>
