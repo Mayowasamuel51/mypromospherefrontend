@@ -41,7 +41,7 @@ const containerVariant = {
     opacity: 0,
     zIndex: -1,
     transition: {
-      when : "afterChildren", staggerChildren: 0.3,
+      when : "afterChildren", staggerChildren: 0.3, duration: 0.3
     }
   }
 }
@@ -81,7 +81,7 @@ const childVariant = {
   },
   exit : {
     opacity: 0,
-    x: "-50px",
+    x: "-70px",
     transition: {
       duration: 0.3
     }
