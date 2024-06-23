@@ -1,19 +1,11 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import anon from "../../../assests/images/anon.png"
 import { Link } from "react-router-dom";
 import FetchTrendingAds from '../../../hooks/fetchTrendingAds';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
-import "./trends.css";
 import { useStateContext } from '../../../contexts/ContextProvider';
 import PostsSkeleton from '../../../components/postsSkeleton';
-import { TbCurrencyNaira } from "react-icons/tb";
 import ProductDisplay from "../../../components/productDisplay"
 
-const api_gerenal = import.meta.env.VITE_GENERAL;
+
 const Feeds = () => {
-  const { token } = useStateContext()
   const { data, isLoading, error } = FetchTrendingAds();
   if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
   return (

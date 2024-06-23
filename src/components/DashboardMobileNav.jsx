@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom"
 import { motion } from 'framer-motion';
 import anon from "../assests/images/anon.png"
 import { useStateContext } from '../contexts/ContextProvider';
 import { FaPowerOff } from "react-icons/fa6";
+import PropTypes from 'prop-types';
 
 const MainCOntainerdivVariant = {
   initial: {
@@ -55,7 +55,6 @@ const childVariant = {
   },
 }
 
-// eslint-disable-next-line react/prop-types
 const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
   const { token } = useStateContext();
   return (
@@ -105,6 +104,12 @@ const DashboardMobileNav = ({ toggleNav, LogOut, handleToggle }) => {
       </motion.nav>
     </motion.div>
   )
+}
+
+DashboardMobileNav.propTypes = {
+  toggleNav : PropTypes.bool,
+  LogOut : PropTypes.func,
+  handleToggle : PropTypes.func
 }
 
 export default DashboardMobileNav;

@@ -5,6 +5,7 @@ import anon from "../assests/images/anon.png"
 import { FaPowerOff, FaHouseChimneyWindow } from "react-icons/fa6";
 import { MdApartment, MdDiscount } from "react-icons/md";
 import { FaCar, FaLaptop } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 const MainCOntainerdivVariant = {
   initial: {
@@ -56,7 +57,6 @@ const childVariant = {
   },
 }
 
-// eslint-disable-next-line react/prop-types
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
@@ -130,4 +130,8 @@ export default function MobileNav({ handleToggle }) {
       </motion.div>
     </motion.div>
   );
+}
+
+MobileNav.propTypes = {
+  handleToggle : PropTypes.func
 }
