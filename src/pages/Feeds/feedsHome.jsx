@@ -34,14 +34,14 @@ const containerVariant = {
     opacity: 1,
     zIndex: 99999999,
     transition: {
-      duration: 0.5, delayChildren: 1
+      duration: 0.5, delayChildren: 0.4
     }
   },
   exit : {
     opacity: 0,
     zIndex: -1,
     transition: {
-      when : "afterChildren"
+      when : "afterChildren", staggerChildren: 0.3,
     }
   }
 }
@@ -62,7 +62,7 @@ const divVariant = {
     opacity: 0,
     y: "-100%",
     transition: {
-      when : "afterChildren", duration: 0.5
+      when : "afterChildren", duration: 0.5, staggerChildren: 0.3,
     }
   }
 }
