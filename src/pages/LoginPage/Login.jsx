@@ -15,15 +15,13 @@ import axios from "axios";
 import { toast } from 'sonner';
 import Loader from "../../loader";
 import { Helmet } from "react-helmet";
-import { useStateContext } from "../../contexts/ContextProvider";
 
 const api = import.meta.env.VITE_API_LOGIN;
 const api_server_auth = import.meta.env.VITE_SERVER_AUTH;
 const Login = () => {
-  const { isDarkMode } = useStateContext();
   const navigate = useNavigate()
   const [toggleLight, setToggleLight] = useState(true);
-  const { setToken, setUser } = useStateContext()
+  const { setToken, setUser, isDarkMode } = useStateContext()
   const [loading, setLoading] = useState(false)
   const [passwordVisible, setPasswordVisible] = useState(false);
 
