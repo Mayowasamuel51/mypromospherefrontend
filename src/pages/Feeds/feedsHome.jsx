@@ -36,6 +36,13 @@ const containerVariant = {
     transition: {
       duration: 0.5, delayChildren: 1
     }
+  },
+  exit : {
+    opacity: 0,
+    zIndex: -1,
+    transition: {
+      when : "afterChildren"
+    }
   }
 }
 
@@ -48,7 +55,14 @@ const divVariant = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring", staggerChildren: 0.3, delayChildren: 0.3, duration: 0.5, stiffness: 250
+      type: "spring", staggerChildren: 0.3, delayChildren: 0.5, duration: 0.5, stiffness: 250
+    }
+  },
+  exit : {
+    opacity: 0,
+    y: "-100%",
+    transition: {
+      when : "afterChildren", duration: 0.5
     }
   }
 }
@@ -63,6 +77,13 @@ const childVariant = {
     x: 0,
     transition: {
       type: "spring", duration: 0.3, stiffness: 250
+    }
+  },
+  exit : {
+    opacity: 0,
+    x: "-50px",
+    transition: {
+      duration: 0.3
     }
   }
 }
@@ -113,7 +134,7 @@ const FeedsHome = () => {
 
   const removeModal = () => {
     setModal(false)
-    setSearchQuery("")
+    // setSearchQuery("")
   }
 
   const goToPostPage = () => {
