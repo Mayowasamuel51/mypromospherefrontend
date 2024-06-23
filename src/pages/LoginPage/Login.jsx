@@ -21,7 +21,7 @@ const api_server_auth = import.meta.env.VITE_SERVER_AUTH;
 const Login = () => {
   const navigate = useNavigate()
   const [toggleLight, setToggleLight] = useState(true);
-  const { setToken, setUser, isDarkMode } = useStateContext()
+  const { setToken, setUser } = useStateContext()
   const [loading, setLoading] = useState(false)
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -241,12 +241,6 @@ const Login = () => {
                   alt=""
                   className="ml-3 w-[95%] sms:max-w-[360px] text-white colorize-img3"
                 />
-                {/* <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
-                  <img src={google} alt="" className="px-3 " />
-                  {loginUrl != null && (
-                    <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
-                  )}
-                </button> */}
 
                 <p className={toggleLight ? "my-4" : "my-4 text-white dark:text-black"}>
                   Don&apos;t have an account? <Link className="text-red" to="/signup">Signup</Link>{" "}

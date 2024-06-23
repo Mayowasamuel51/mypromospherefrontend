@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 // import '@splidejs/react-splide/css';
 import '@splidejs/react-splide/css/skyblue';
@@ -10,7 +10,7 @@ import '@splidejs/react-splide/css/skyblue';
 import { useInView } from 'react-intersection-observer';
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import anon from "../../assests/images/anon.png"
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider"
@@ -196,8 +196,47 @@ const FeedsHome = () => {
                     <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
                       <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
                       {/* splider here */}
-                      
-                      {searchResults?.data.map((item) => (
+                      <Splide hasTrack={false} option={{
+                        type: 'slide',
+                        rewind: true,
+                        gap: "20px",
+                        perPage: FullScreen ? 2 : 1,
+                        arrows: false,
+                        pagination: true,
+                        snap: true,
+                        width: "400px",
+                      }}>
+                        {searchResults?.data.map((item) => (
+                          <div key={item.id}>
+                            <SplideTrack>
+                              <SplideSlide>
+                                <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
+                                  <div>
+                                    <Link to={`/feed/${item.id}`}>
+                                      <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
+                                    </Link>
+                                  </div>
+                                  <div className='flex items-center justify-between'>
+                                    <h1 className='font-semibold'>{item.productName}</h1>
+                                    <div className="flex items-center">
+                                      <TbCurrencyNaira size={20} />
+                                      <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                                    </div>
+                                  </div>
+                                  <Link to={`/profile/user/${item.user_name}`} className="w-fit">
+                                    <div className="flex items-center gap-2">
+                                      <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
+                                      {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                                      {!token && <p className="text-sm font-medium">{item.user_name}</p>}
+                                    </div>
+                                  </Link>
+                                </motion.div>
+                              </SplideSlide>
+                            </SplideTrack>
+                          </div>
+                        ))}
+                      </Splide>
+                      {/* {searchResults?.data.map((item) => (
                         <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                           <div>
                             <Link to={`/feed/${item.id}`}>
@@ -219,7 +258,7 @@ const FeedsHome = () => {
                             </div>
                           </Link>
                         </motion.div>
-                      ))}
+                      ))} */}
                     </motion.div>
                   }
 
