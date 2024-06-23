@@ -48,7 +48,7 @@ const divVariant = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring", staggerChildren: 0.5, delayChildren: 0.5, duration: 0.5, stiffness: 250
+      type: "spring", staggerChildren: 0.3, delayChildren: 0.3, duration: 0.5, stiffness: 250
     }
   }
 }
@@ -62,14 +62,14 @@ const childVariant = {
     opacity: 1,
     x: 0,
     transition: {
-      type: "spring", duration: 0.4, stiffness: 250
+      type: "spring", duration: 0.3, stiffness: 250
     }
   }
 }
 
 const FeedsHome = () => {
   const location = useLocation();
-  const { token, scrollValue, handleClick } = useStateContext();
+  const { token, scrollValue, handleClick, FullScreen } = useStateContext();
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [searchQuery, setSearchQuery] = useState('');
@@ -155,7 +155,7 @@ const FeedsHome = () => {
                   items={categories}
                   className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
                   placeholder="Search by categories, service"
-                  onSearch={handleOnSearch}
+                  onSearch={()=> FullScreen && handleOnSearch()}
                   onSelect={handleOnSelect}
                 />
               </div>
