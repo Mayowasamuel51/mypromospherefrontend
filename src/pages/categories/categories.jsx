@@ -27,17 +27,17 @@ const Categories = () => {
           {isLoading && <PostsSkeleton posts={8} />}
           {category === "discount" &&
             data?.data?.discount.map((item) => (
-              <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
+              <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_image} />
             ))
           }
           {category === "property" &&
             data?.data?.property.map((property) => (
-              <ProductDisplay key={property.id} item={property} other_images={data?.data?.other_images} />
+              <ProductDisplay key={property.id} item={property} other_images={data?.data?.other_image} />
             ))
           }
           {category === "apartment" &&
             data?.data?.apartment.map((apartment) => (
-              <ProductDisplay key={apartment.id} item={apartment} other_images={data?.data?.other_images} />
+              <ProductDisplay key={apartment.id} item={apartment} other_images={data?.data?.other_image} />
             ))
           }
         </div>
