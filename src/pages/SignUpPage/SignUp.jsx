@@ -162,15 +162,15 @@ const SignUp = () => {
           <article className="flex items-center justify-between">
             <Link to={"/"}>
               <button className="focus-outline-none">
-                <p className={toggleLight ? "" : "text-white"}>Back</p>
+                <p className={toggleLight ? "" : "text-white dark:text-black"}>Back</p>
               </button>
             </Link>
 
             <button onClick={toggleBtn}>
               {toggleLight ? (
-                <MdNightlight className="text-[2rem]" />
+                <MdNightlight className="text-white dark:text-black text-[2rem]" />
               ) : (
-                <PiSunLight className="text-white text-[2rem]" />
+                <PiSunLight className="text-white dark:text-black text-[2rem]" />
               )}
             </button>
           </article>
@@ -180,7 +180,7 @@ const SignUp = () => {
               className={
                 toggleLight
                   ? "font-500 text-base sm:text-[1.3rem]"
-                  : "font-500 text-base sm:text-[1.3rem] text-white"
+                  : "font-500 text-base sm:text-[1.3rem] text-white dark:text-black"
               }
             >
               Create{" "}
@@ -188,7 +188,7 @@ const SignUp = () => {
                 Account
               </span>
             </h3>
-            <p className={toggleLight ? "" : "text-white"}>
+            <p className={toggleLight ? "" : "text-white dark:text-black"}>
               Already have an account? <Link className="text-red" to="/login">Login</Link>{" "}
             </p>
           </article>
@@ -200,7 +200,7 @@ const SignUp = () => {
               <div className="flex flex-col">
                 <label
                   htmlFor="name"
-                  className={toggleLight ? "" : "text-white"}
+                  className={toggleLight ? "" : "text-white dark:text-black"}
                 >
                   Name
                 </label>
@@ -218,7 +218,7 @@ const SignUp = () => {
               <div className="flex flex-col mt-1">
                 <label
                   htmlFor="name"
-                  className={toggleLight ? "" : "text-white"}
+                  className={toggleLight ? "" : "text-white dark:text-black"}
                 >
                   Email Address
                 </label>
@@ -236,7 +236,7 @@ const SignUp = () => {
               <div className="flex flex-col mt-1">
                 <label
                   htmlFor="name"
-                  className={toggleLight ? "" : "text-white"}
+                  className={toggleLight ? "" : "text-white dark:text-black"}
                 >
                   Password
                 </label>
@@ -255,7 +255,7 @@ const SignUp = () => {
               <div className="relative flex flex-col mt-1">
                 <label
                   htmlFor="name"
-                  className={toggleLight ? "" : "text-white"}
+                  className={toggleLight ? "" : "text-white dark:text-black"}
                 >
                   Password confrimation
                 </label>
@@ -287,7 +287,7 @@ const SignUp = () => {
                     className={
                       toggleLight
                         ? "mt-1 max-w-[20rem] text-sm md:text-base"
-                        : "text-white mt-1  max-w-[20rem] text-sm md:text-base"
+                        : "text-white dark:text-black mt-1  max-w-[20rem] text-sm md:text-base"
                     }
                   >
                     I agree to the{" "}

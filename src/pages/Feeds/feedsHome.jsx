@@ -2,6 +2,12 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+
+// import '@splidejs/react-splide/css';
+import '@splidejs/react-splide/css/skyblue';
+// import '@splidejs/react-splide/css/sea-green';
+import { useInView } from 'react-intersection-observer';
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
 import { motion, useInView, AnimatePresence } from "framer-motion";
@@ -36,11 +42,11 @@ const containerVariant = {
       duration: 0.5, delayChildren: 0.4
     }
   },
-  exit : {
+  exit: {
     opacity: 0,
     zIndex: -1,
     transition: {
-      when : "afterChildren", staggerChildren: 0.3, duration: 0.3
+      when: "afterChildren", staggerChildren: 0.3, duration: 0.3
     }
   }
 }
@@ -57,11 +63,11 @@ const divVariant = {
       type: "spring", staggerChildren: 0.3, delayChildren: 0.5, duration: 0.5, stiffness: 250
     }
   },
-  exit : {
+  exit: {
     opacity: 0,
     y: "-100%",
     transition: {
-      when : "afterChildren", duration: 0.3, staggerChildren: 0.3,
+      when: "afterChildren", duration: 0.3, staggerChildren: 0.3,
     }
   }
 }
@@ -78,7 +84,7 @@ const childVariant = {
       type: "spring", duration: 0.3, stiffness: 250
     }
   },
-  exit : {
+  exit: {
     opacity: 0,
     x: "-70px",
     transition: {
@@ -188,7 +194,9 @@ const FeedsHome = () => {
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
                     <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
-                      <FaXmark size={20} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
+                      <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
+                      {/* splider here */}
+                      
                       {searchResults?.data.map((item) => (
                         <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                           <div>
@@ -197,7 +205,7 @@ const FeedsHome = () => {
                             </Link>
                           </div>
                           <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>name</h1>
+                            <h1 className='font-semibold'>{item.productName}</h1>
                             <div className="flex items-center">
                               <TbCurrencyNaira size={20} />
                               <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
