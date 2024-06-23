@@ -8,12 +8,12 @@ import { FaCar, FaLaptop } from "react-icons/fa";
 
 const MainCOntainerdivVariant = {
   initial: {
-    scale: 0,
+    translateX: "-150%",
     zIndex: -10,
     border: "0px solid #3D217A",
   },
   animate: {
-    scale: 1,
+    translateX: 0,
     zIndex: 10
   },
   exit: {
@@ -60,8 +60,8 @@ const childVariant = {
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`h-[100vh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white dark:bg-black dark:text-white`}>
-      <motion.div variants={divVariant} className="fixed inset-0 bg-white dark:bg-black dark:text-white bg-opacity-5 backdrop-blur-2xl flex flex-col h-[100vh] justify-between p-8">
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`min-h-[100vh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white dark:bg-black dark:text-white`}>
+      <motion.div variants={divVariant} className="fixed inset-0 bg-white dark:bg-black dark:text-white bg-opacity-5 backdrop-blur-2xl flex flex-col min-h-[100vh] justify-between p-8">
         <motion.div className="flex flex-col lg:gap-8 gap-5">
           {token &&
             <motion.div variants={childVariant}>
