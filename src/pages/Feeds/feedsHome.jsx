@@ -203,9 +203,10 @@ const FeedsHome = () => {
                         pagination: true,
                         snap: true,
                         breakpoints: {
-                          640: { perPage: 1 },
+                          1200: { perPage: 2 },
+                          640: { perPage: 1}
                         },
-                      }} className="z-[9999999999] w-[80%] md:w-[600px] bg-white py-4 px-4 md:px-6 rounded-md relative">
+                      }} className="z-[9999999999] bg-white py-4 px-4 md:px-6 rounded-md relative">
                         <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
