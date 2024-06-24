@@ -199,7 +199,6 @@ const FeedsHome = () => {
                       <Splide option={{
                         type: 'slide',
                         perPage: 2,
-                        gap: "20px",
                         rewind: true,
                         arrows: true,
                         pagination: true,
@@ -211,7 +210,7 @@ const FeedsHome = () => {
                       }}>
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
-                            <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                            <motion.div variants={childVariant} className="flex flex-col gap-2 md:gap-4">
                               <div>
                                 <Link to={`/feed/${item.id}`}>
                                   <LazyLoadImage width={`400px`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "400px", height: 300 }} className="rounded-md object-cover" />
