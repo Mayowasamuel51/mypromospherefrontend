@@ -508,7 +508,7 @@ const Post = () => {
                 className="hidden"
               />
             </label>
-            <div className="flex items-center gap-4 flex-wrap my-4">
+            <div className="flex justify-center items-center gap-4 flex-wrap mb-4">
               {imageUpload.map((image, index) => (
                 <div
                   key={index}
@@ -554,7 +554,7 @@ const Post = () => {
               value={uploadData?.category || ""}
               name="category"
               id="category"
-              className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline"
             >
               <option value="">--Select a Category--</option>
               {categories.map((option, index) => {
@@ -567,7 +567,7 @@ const Post = () => {
             </select>
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
                 id="productName"
                 name="productName"
                 type="text"
@@ -578,7 +578,7 @@ const Post = () => {
             </div>
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline"
                 id="price_range"
                 name="price_range"
                 onChange={handleInputChange}
@@ -591,7 +591,7 @@ const Post = () => {
               <select
                 name="state"
                 id="state"
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline"
                 onChange={handleInputChange}
                 value={uploadData?.state || ""}
               >
@@ -609,7 +609,7 @@ const Post = () => {
                 name="local_gov"
                 value={uploadData?.local_gov || ""}
                 onChange={handleInputChange}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline bg-white"
               >
                 <option value="">--Select Local Government--</option>
                 {localGvt &&
@@ -627,7 +627,7 @@ const Post = () => {
                 name="discount"
                 onChange={handleInputChange}
                 value={uploadData?.discount || ""}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline bg-white"
               >
                 <option value="">Discount</option>
                 <option value="Yes">Yes</option>
@@ -637,7 +637,7 @@ const Post = () => {
 
             <div>
               <textarea
-                className="resize-none md:h-20 h-16 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="resize-none md:h-20 h-16 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline"
                 id="description"
                 name="description"
                 onChange={handleInputChange}
