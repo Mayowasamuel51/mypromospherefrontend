@@ -198,12 +198,12 @@ const FeedsHome = () => {
                         perPage: 2,
                         gap: "20px",
                         rewind: true,
-                        arrows: true,
+                        arrows: searchResults.data.length > 2 ? true : false,
                         pagination: true,
                         snap: true,
                         breakpoints: {
                           1200: { perPage: 2 },
-                          640: { perPage: 1}
+                          640: { perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
                         },
                       }} className="z-[9999999999] w-[90%] md:w-[700px] bg-white py-4 px-4 md:px-6 rounded-md relative">
                         <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
