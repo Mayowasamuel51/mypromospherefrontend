@@ -196,7 +196,7 @@ const FeedsHome = () => {
                     <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
                       <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
                       {/* splider here */}
-                      <Splide hasTrack={false} option={{
+                      <Splide option={{
                         type: 'slide',
                         rewind: true,
                         gap: "20px",
@@ -208,7 +208,7 @@ const FeedsHome = () => {
                       }}>
                         {searchResults?.data.map((item) => (
                           <div key={item.id}>
-                            <SplideTrack>
+                            {/* <SplideTrack> */}
                               <SplideSlide>
                                 <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                                   <div>
@@ -232,7 +232,7 @@ const FeedsHome = () => {
                                   </Link>
                                 </motion.div>
                               </SplideSlide>
-                            </SplideTrack>
+                            {/* </SplideTrack> */}
                           </div>
                         ))}
                       </Splide>
