@@ -205,14 +205,14 @@ const FeedsHome = () => {
                           1200: { perPage: 2 },
                           640: { perPage: 1}
                         },
-                      }} className="z-[9999999999] bg-white py-4 px-4 md:px-6 rounded-md relative">
+                      }} className="z-[9999999999] w-[90%] md:w-[600px] bg-white py-4 px-4 md:px-6 rounded-md relative">
                         <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
                             <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
                               <div>
                                 <Link to={`/feed/${item.id}`}>
-                                  <LazyLoadImage effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                  <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="w-full rounded-md object-cover" />
                                 </Link>
                               </div>
                               <div className='flex items-center justify-between'>
