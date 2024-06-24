@@ -203,7 +203,7 @@ const FeedsHome = () => {
                         pagination: true,
                         snap: true,
                         breakpoints: {
-                          640: { perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
+                          640: { width: "80vw" ,perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
                         },
                       }} className="z-[9999999999] w-[80%] md:w-[750px] bg-white py-4 px-4 md:px-6 rounded-md">
                         
