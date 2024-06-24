@@ -1,11 +1,11 @@
-li button.splide__pagination__page {
+.product-display li button.splide__pagination__page {
     opacity: 1 !important;
     border-radius: 0;
     width: 15px;
     border-radius: 4px;
 } 
 
-li button.splide__pagination__page.is-active {
+.product-display li button.splide__pagination__page.is-active {
     opacity: 1 !important;
     background-color: #3D217A;
 }
