@@ -192,7 +192,8 @@ const FeedsHome = () => {
               {modal &&
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
-                    <motion.div variants={divVariant}>
+                    <motion.div variants={divVariant} className="relative">
+                      <FaXmark size={40} className="z-[99999999999] text-black absolute -top-4 -right-4" onClick={() => removeModal()} />
                       <Splide options={{
                         type: 'slide',
                         perPage: 2,
@@ -205,8 +206,8 @@ const FeedsHome = () => {
                           1200: { perPage: 2 },
                           640: { perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
                         },
-                      }} className="z-[9999999999] w-[90%] md:w-[700px] bg-white py-4 px-4 md:px-6 rounded-md relative">
-                        <FaXmark size={40} className="z-[99999999999] text-black absolute -top-4 -right-4 border-2 border-red" onClick={() => removeModal()} />
+                      }} className="z-[9999999999] w-[90%] md:w-[750px] bg-white py-4 px-4 md:px-6 rounded-md">
+                        
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
                             <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
