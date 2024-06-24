@@ -233,6 +233,7 @@ const FeedsHome = () => {
                           </SplideSlide>
                         ))}
                       </Splide>
+                      <p className="text-base py-2 text-center text-white">{searchResults.data.length} {searchResults.data.length > 1 ? "Results" : "Result"} Found</p>
                     </motion.div>
                   }
                 </motion.div>
