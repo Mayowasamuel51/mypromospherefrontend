@@ -206,7 +206,7 @@ const FeedsHome = () => {
                           640: { perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
                         },
                       }} className="z-[9999999999] w-[90%] md:w-[700px] bg-white py-4 px-4 md:px-6 rounded-md relative">
-                        <FaXmark size={30} className="text-black absolute -top-4 -right-4" onClick={() => removeModal()} />
+                        <FaXmark size={40} className="z-[99999999999] text-black absolute -top-4 -right-4" onClick={() => removeModal()} />
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
                             <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
