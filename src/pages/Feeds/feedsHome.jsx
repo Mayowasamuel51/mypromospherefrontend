@@ -198,42 +198,38 @@ const FeedsHome = () => {
                       {/* splider here */}
                       <Splide option={{
                         type: 'slide',
-                        rewind: true,
                         gap: "20px",
                         perPage: FullScreen ? 2 : 1,
-                        arrows: false,
+                        rewind: true,
+                        arrows: true,
                         pagination: true,
                         snap: true,
                         width: "400px",
                       }}>
                         {searchResults?.data.map((item) => (
-                          <div key={item.id}>
-                            {/* <SplideTrack> */}
-                              <SplideSlide>
-                                <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
-                                  <div>
-                                    <Link to={`/feed/${item.id}`}>
-                                      <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
-                                    </Link>
-                                  </div>
-                                  <div className='flex items-center justify-between'>
-                                    <h1 className='font-semibold'>{item.productName}</h1>
-                                    <div className="flex items-center">
-                                      <TbCurrencyNaira size={20} />
-                                      <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                                    </div>
-                                  </div>
-                                  <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                                    <div className="flex items-center gap-2">
-                                      <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                                      {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                                      {!token && <p className="text-sm font-medium">{item.user_name}</p>}
-                                    </div>
-                                  </Link>
-                                </motion.div>
-                              </SplideSlide>
-                            {/* </SplideTrack> */}
-                          </div>
+                          <SplideSlide key={item.id}>
+                            <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
+                              <div>
+                                <Link to={`/feed/${item.id}`}>
+                                  <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
+                                </Link>
+                              </div>
+                              <div className='flex items-center justify-between'>
+                                <h1 className='font-semibold'>{item.productName}</h1>
+                                <div className="flex items-center">
+                                  <TbCurrencyNaira size={20} />
+                                  <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                                </div>
+                              </div>
+                              <Link to={`/profile/user/${item.user_name}`} className="w-fit">
+                                <div className="flex items-center gap-2">
+                                  <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
+                                  {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                                  {!token && <p className="text-sm font-medium">{item.user_name}</p>}
+                                </div>
+                              </Link>
+                            </motion.div>
+                          </SplideSlide>
                         ))}
                       </Splide>
                       {/* {searchResults?.data.map((item) => (
