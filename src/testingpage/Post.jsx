@@ -609,7 +609,7 @@ const Post = () => {
                 name="local_gov"
                 value={uploadData?.local_gov || ""}
                 onChange={handleInputChange}
-                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline bg-white"
+                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline"
               >
                 <option value="">--Select Local Government--</option>
                 {localGvt &&
@@ -627,7 +627,7 @@ const Post = () => {
                 name="discount"
                 onChange={handleInputChange}
                 value={uploadData?.discount || ""}
-                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline bg-white"
+                className="md:h-12 h-10 bg-slate-100 appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus bg-slate-100-outline"
               >
                 <option value="">Discount</option>
                 <option value="Yes">Yes</option>
