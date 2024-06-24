@@ -2,11 +2,6 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-
-// import '@splidejs/react-splide/css';
-import '@splidejs/react-splide/css/skyblue';
-// import '@splidejs/react-splide/css/sea-green';
 import { useInView } from 'react-intersection-observer';
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
@@ -28,6 +23,10 @@ import { FiPlusCircle } from "react-icons/fi";
 import debounce from 'lodash.debounce';
 import FetchSearch from "../../hooks/fetchSearch";
 import { FaXmark } from "react-icons/fa6";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+// import '@splidejs/react-splide/css';
+import '@splidejs/react-splide/css/skyblue';
+// import '@splidejs/react-splide/css/sea-green';
 const api_gerenal = import.meta.env.VITE_GENERAL;
 
 const containerVariant = {
@@ -197,6 +196,7 @@ const FeedsHome = () => {
                       <Splide options={{
                         type: 'slide',
                         perPage: 2,
+                        gap: "20px",
                         rewind: true,
                         arrows: true,
                         pagination: true,
@@ -205,7 +205,7 @@ const FeedsHome = () => {
                           1200: { perPage: 2 },
                           640: { perPage: 1}
                         },
-                      }} className="z-[9999999999] w-[90%] md:w-[600px] bg-white py-4 px-4 md:px-6 rounded-md relative">
+                      }} className="z-[9999999999] w-[90%] md:w-[700px] bg-white py-4 px-4 md:px-6 rounded-md relative">
                         <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
