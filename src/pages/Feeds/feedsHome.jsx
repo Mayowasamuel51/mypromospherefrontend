@@ -203,7 +203,7 @@ const FeedsHome = () => {
                         arrows: true,
                         pagination: true,
                         snap: true,
-                        width: "400px",
+                        // width: "400px",
                         breakpoints: {
                           640 : { perPage: 1 },
                         },
@@ -213,7 +213,7 @@ const FeedsHome = () => {
                             <motion.div variants={childVariant} className="flex flex-col gap-2 md:gap-4">
                               <div>
                                 <Link to={`/feed/${item.id}`}>
-                                  <LazyLoadImage width={`400px`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "400px", height: 300 }} className="rounded-md object-cover" />
+                                  <LazyLoadImage effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: 300, height: 300 }} className="rounded-md object-cover" />
                                 </Link>
                               </div>
                               <div className='flex items-center justify-between'>
