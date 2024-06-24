@@ -1,16 +1,13 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../loader";
 import ReactPlayer from "react-player";
 import anon from "../assests/images/anon.png";
 import { FaRegCirclePlay } from "react-icons/fa6";
+import VideoSkeleton from "../components/videoSkeleton";
 const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
 const api_thumbnails = import.meta.env.VITE_thumbnails;
-import VideoSkeleton from "../components/videoSkeleton";
 
 const MyVidoes = () => {
   const { FullScreen } = useStateContext();
@@ -40,7 +37,7 @@ const MyVidoes = () => {
       {isLoading && (
         <VideoSkeleton posts={4} />
       )}
-      {data?.data.posts.map((video) => (
+      {(data?.data.posts && !isLoading) && data?.data.posts.map((video) => (
         <div key={video.id} className="flex flex-col gap-4">
           <div className="w-full aspect-ratio-box rounded-lg overflow-hidden">
             <ReactPlayer
