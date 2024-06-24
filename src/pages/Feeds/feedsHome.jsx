@@ -193,13 +193,13 @@ const FeedsHome = () => {
               {modal &&
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
-                    <motion.div variants={divVariant} className="z-[9999999999] w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
+                    <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md relative">
                       <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
                       {/* splider here */}
                       <Splide option={{
                         type: 'slide',
-                        gap: "20px",
                         perPage: 2,
+                        gap: "20px",
                         rewind: true,
                         arrows: true,
                         pagination: true,
@@ -211,7 +211,7 @@ const FeedsHome = () => {
                       }}>
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
-                            <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
+                            <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
                               <div>
                                 <Link to={`/feed/${item.id}`}>
                                   <LazyLoadImage width={`400px`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "400px", height: 300 }} className="rounded-md object-cover" />
