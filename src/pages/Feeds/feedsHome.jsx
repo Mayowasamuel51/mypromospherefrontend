@@ -193,18 +193,17 @@ const FeedsHome = () => {
               {modal &&
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
-                    <div>
-                      <Splide option={{
+                    <motion.div variants={divVariant}>
+                      <Splide options={{
                         type: 'slide',
-                        gap: "20px",
                         perPage: 2,
                         rewind: true,
                         arrows: true,
                         pagination: true,
                         snap: true,
                         breakpoints: {
-                          // 1200: { perPage: 2 },
-                          // 640: { perPage: 1}
+                          1200: { perPage: 2 },
+                          640: { perPage: 1}
                         },
                       }} className="z-[9999999999] bg-white py-4 px-4 md:px-6 rounded-md relative">
                         <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
@@ -234,7 +233,7 @@ const FeedsHome = () => {
                           </SplideSlide>
                         ))}
                       </Splide>
-                    </div>
+                    </motion.div>
                   }
                 </motion.div>
               }
