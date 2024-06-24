@@ -12,8 +12,8 @@ const api_thumbnails = import.meta.env.VITE_thumbnails;
 const MyVidoes = () => {
   const { FullScreen } = useStateContext();
   const token = useStateContext();
-  const { isPending, isError, data, isLoading, error } = useQuery({
-    queryKey: ["myVideos"],
+  const { data, isLoading, isPending, error } = useQuery({
+    queryKey: ["myVideos"] ,
     queryFn: () =>
       axios.get(`${api_load_v1}${token.token?.id}`, {
         headers: {
@@ -34,7 +34,7 @@ const MyVidoes = () => {
 
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
-      {isLoading && (
+      {(isLoading || isPending) && (
         <VideoSkeleton posts={4} />
       )}
       {(data?.data.posts && !isLoading) && data?.data.posts.map((video) => (

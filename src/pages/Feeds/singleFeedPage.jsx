@@ -13,6 +13,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaHeart } from "react-icons/fa";
 
 const SingleFeedPage = () => {
+    const [comment, setComment] = useState(false);
+
     const { FullScreen } = useStateContext()
     const { id } = useParams();
     const navigate = useNavigate()
@@ -34,7 +36,6 @@ const SingleFeedPage = () => {
         setImageKey(prevKey => prevKey + 1);
     }
     if (isLoading) return <Loader />
-
     if (error) return <div className='min-h-screen grid place-items-center'><p>{error.message}</p></div>
 
     return (
