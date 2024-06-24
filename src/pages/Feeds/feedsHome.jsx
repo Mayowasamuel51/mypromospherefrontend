@@ -213,7 +213,7 @@ const FeedsHome = () => {
                             <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
                               <div>
                                 <Link to={`/feed/${item.id}`}>
-                                  <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
+                                  <LazyLoadImage effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "auto", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                               </div>
                               <div className='flex items-center justify-between'>
