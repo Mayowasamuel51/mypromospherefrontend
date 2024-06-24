@@ -199,19 +199,22 @@ const FeedsHome = () => {
                       <Splide option={{
                         type: 'slide',
                         gap: "20px",
-                        perPage: FullScreen ? 2 : 1,
+                        perPage: 2,
                         rewind: true,
                         arrows: true,
                         pagination: true,
                         snap: true,
                         width: "400px",
+                        breakpoints: {
+                          640 : { perPage: 1 },
+                        },
                       }}>
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
                             <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
                               <div>
                                 <Link to={`/feed/${item.id}`}>
-                                  <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
+                                  <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300 }} className="w-full rounded-md object-cover" />
                                 </Link>
                               </div>
                               <div className='flex items-center justify-between'>
