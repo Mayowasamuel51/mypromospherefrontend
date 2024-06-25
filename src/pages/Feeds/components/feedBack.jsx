@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { useStateContext } from "../../../contexts/ContextProvider";
+import { FaXmark } from "react-icons/fa6";
+import PropTypes from 'prop-types';
 
 const containerVariant = {
     initial: {
@@ -43,11 +45,13 @@ const divVariant = {
     }
 }
 
-const FeedBack = () => {
+const FeedBack = ({setComment}) => {
     const { token } = useStateContext();
     return (
         <motion.section variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
-            <motion.div variants={divVariant} className="flex flex-col gap-2 w-[80%] md:w-[750px] bg-white dark:bg-darkBg py-4 px-4 md:px-6 rounded-md">
+
+            <motion.div variants={divVariant} className="relative flex flex-col gap-2 w-[80%] md:w-[750px] bg-white dark:bg-darkBg py-4 px-4 md:px-6 rounded-md">
+            <FaXmark size={40} className="z-[99999999999] text-black dark:text-white absolute -top-10 -right-10" onClick={() => setComment(false)} />
                 {!token && <input className="w-full md:h-14 h-12" type="text" />}
                 <textarea name="" id="" className="w-full resize-none md:h-32"></textarea>
                 <button>Send FeedBack</button>
@@ -55,5 +59,9 @@ const FeedBack = () => {
         </motion.section>
     )
 }
+
+FeedBack.propTypes = {
+    setComment : PropTypes.func
+  }
 
 export default FeedBack;

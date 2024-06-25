@@ -162,7 +162,7 @@ const SingleFeedPage = () => {
             </section>
 
             <AnimatePresence>
-                {comment && <FeedBack />}
+                {comment && <FeedBack setComment={setComment} />}
             </AnimatePresence>
         </>
     )
