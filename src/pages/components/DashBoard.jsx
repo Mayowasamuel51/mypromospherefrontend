@@ -164,13 +164,13 @@ function Dashboard() {
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                    <FaShare size={20} className="text-black dark:bg-darkGray" />
+                                    <FaShare size={20} className="text-black dark:text-darkGray" />
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
                                 <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold md:text-purple" : "text-white dark:text-darkGray md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <IoIosSettings size={20} className="" />
-                                        <p className="text-center md:block hidden text-black dark:text-darkGray">Edit profile</p>
+                                        <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </NavLink>
                                 <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold md:text-purple" : "text-white dark:text-darkGray md:text-black"}>
