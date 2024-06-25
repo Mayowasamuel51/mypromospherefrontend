@@ -178,7 +178,7 @@ const FeedsHome = () => {
               <div className="flex my-3 lg:my-3">
                 <ReactSearchAutocomplete
                   items={categories}
-                  className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
+                  className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 bg-white dark:bg-darkBg"
                   placeholder="Search by categories, service"
                   onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
@@ -193,7 +193,7 @@ const FeedsHome = () => {
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
                     <motion.div variants={divVariant} className="relative">
-                      <FaXmark size={40} className="z-[99999999999] text-black absolute -top-10 -right-10" onClick={() => removeModal()} />
+                      <FaXmark size={40} className="z-[99999999999] text-black dark:text-white absolute -top-10 -right-10" onClick={() => removeModal()} />
                       <Splide options={{
                         type: 'slide',
                         perPage: 2,
@@ -205,7 +205,7 @@ const FeedsHome = () => {
                         breakpoints: {
                           640: { width: "100vw" ,perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
                         },
-                      }} className="z-[9999999999] w-[80%] md:w-[750px] bg-white py-4 px-4 md:px-6 rounded-md">
+                      }} className="z-[9999999999] w-[80%] md:w-[750px] bg-white dark:bg-darkBg py-4 px-4 md:px-6 rounded-md">
                         
                         {searchResults?.data.map((item) => (
                           <SplideSlide key={item.id}>
