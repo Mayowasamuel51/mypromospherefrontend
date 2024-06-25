@@ -149,7 +149,7 @@ function Dashboard() {
                         </motion.div>
                     </motion.article>
 
-                    <article className="hidden sticky top-28 bottom-0 rounded-md bg-purple md:rounded-none md:bg-white md:dark:bg-darkBg w-fit md:flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                    <article className="hidden sticky top-28 bottom-0 rounded-lg bg-purple md:bg-white md:dark:bg-darkBg w-fit md:flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-6 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
