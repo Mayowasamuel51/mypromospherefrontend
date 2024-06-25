@@ -82,7 +82,7 @@ const SingleFeedPage = () => {
                                 <p>{data?.data?.data.user_name}</p>
                             </div>
                         </Link>
-                        <p className='text-[#3D217A] font-bold text-lg'>{data?.data?.data?.categories}</p>
+                        <p className='text-purple font-bold text-lg'>{data?.data?.data?.categories}</p>
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
                         <div>
                             <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
@@ -106,7 +106,7 @@ const SingleFeedPage = () => {
                             </div>
                         </div>
                         <div className='flex items-center gap-5 md:gap-10'>
-                            <button className="flex-1 bg-[#3D217A] border border-[#3D217A] hover:bg-transparent hover:text-[#3D217A] duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
+                            <button className="flex-1 bg-purple border border-purple hover:bg-transparent hover:text-purple duration-300 w-full py-2 md:py-3 px-4 text-white rounded-md">Leave a Feedback</button>
                             <div>
                                 <FaHeart color="red" size={30} />
                             </div>

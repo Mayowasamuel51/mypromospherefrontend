@@ -650,7 +650,7 @@ const Post = () => {
           <button
             type="submit"
 
-            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
+            className="bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold"
           >
             Promote
           </button>

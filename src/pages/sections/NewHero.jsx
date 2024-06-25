@@ -25,7 +25,7 @@ const NewHero = () => {
           </div>
 
           <Link to="/">
-            <motion.button whileTap={{scale: 0.9}} whileHover={{scale: 1.1}}  className="bg-[#3D217A] rounded-md md:rounded-[10px] p-3 lg:p-5 text-white flex items-center  text-[1.2rem] gap-2 justify-center">
+            <motion.button whileTap={{scale: 0.9}} whileHover={{scale: 1.1}}  className="bg-purple rounded-md md:rounded-[10px] p-3 lg:p-5 text-white flex items-center  text-[1.2rem] gap-2 justify-center">
               Get Started <FaArrowRight className="" />
             </motion.button>
           </Link>

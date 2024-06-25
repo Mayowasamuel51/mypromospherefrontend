@@ -30,7 +30,7 @@ useEffect(() => {
     return (
         <>
             {true ? 
-            <header className="py-2 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A]">
+            <header className="py-2 px-4 lg:px-10 flex items-center justify-between bg-purple">
                 <div className="flex items-center gap-2">
                     <img src={LOGO} alt="" className="w-10 md:w-16 exl:w-20" />
                     <h1 className="text-sm font-bold text-black md:text-lg exl:text-xl">MyPromoSphere</h1>

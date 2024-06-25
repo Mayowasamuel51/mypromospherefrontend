@@ -166,7 +166,7 @@ const FeedsHome = () => {
                 <Link to={`/login`}>
                   <div className="flex flex-col items-center gap-1">
                     <FiPlusCircle color="#3D217A" size={40} />
-                    <p className="underline text-[#3D217A] text-sm">Register Today</p>
+                    <p className="underline text-purple text-sm">Register Today</p>
                   </div>
                 </Link>
               </div>

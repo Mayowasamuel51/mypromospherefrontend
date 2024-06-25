@@ -408,7 +408,7 @@ const Video = () => {
             {/* <p className="text-red pt-2" >{errors.description?.message}</p> */}
             <button
               type="sumbit"
-              className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
+              className="bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold"
             >
               Release Video Ad
             </button>

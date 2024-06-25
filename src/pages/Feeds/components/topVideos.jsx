@@ -26,7 +26,7 @@ const TopVideos = () => {
           <div className="min-h-screen md:col-span-2 lg:col-span-4 exl:col-span-4">
             <div className='flex flex-col gap-2 text-center'>
               <h1 className="text-semibold text-base md:text-xl">No Video Yet!!!</h1>
-              <Link to={`/dashboard/postVideo`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+              <Link to={`/dashboard/postVideo`} className="text-purple underline font-medium">Be the First to Showcase Your Product</Link>
             </div>
           </div>
         }

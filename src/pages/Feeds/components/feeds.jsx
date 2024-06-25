@@ -16,7 +16,7 @@ const Feeds = () => {
         {data?.data?.normalads.length === 0 &&
           <div className='flex flex-col gap-2 md:col-span-2 lg:col-span-4 exl:col-span-4 text-center'>
             <h1 className="text-semibold text-base md:text-xl">No post Yet!!!</h1>
-            <Link to={`/dashboard/postAd`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+            <Link to={`/dashboard/postAd`} className="text-purple underline font-medium">Be the First to Showcase Your Product</Link>
           </div>
         }
         {data?.data.normalads.slice(0, 4).map((item) => (

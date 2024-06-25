@@ -82,7 +82,7 @@ function Dashboard() {
             <DashBoardNav />
             <main className={`px-4 md:px-10 py-20 md:py-28`}>
                 <section className="flex items-start md:gap-10 gap-4">
-                    <motion.article variants={controlsVariant} animate={hidden ? "animate" : "initial"} exit="exit" className="top-20 left-4 fixed md:hidden z-10 rounded-md bg-[#3D217A] bg-opacity-90 md:rounded-none w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-3 px-2 md:px-6">
+                    <motion.article variants={controlsVariant} animate={hidden ? "animate" : "initial"} exit="exit" className="top-20 left-4 fixed md:hidden z-10 rounded-md bg-purple bg-opacity-90 md:rounded-none w-fit flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-3 px-2 md:px-6">
                         <motion.div className="flex flex-col md:gap-6 gap-5">
                             <motion.div variants={childVariant} className="flex flex-col gap-2">
                                 <img
@@ -99,12 +99,12 @@ function Dashboard() {
                             <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <motion.div variants={childVariant}>
                                     <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                        <FaShare size={20} className="text-white md:text-[#3D217A]" />
+                                        <FaShare size={20} className="text-white md:text-purple" />
                                         <p className="text-center md:block hidden">share</p>
                                     </button>
                                 </motion.div>
                                 <motion.div variants={childVariant}>
-                                    <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                             <IoIosSettings size={25} className="" />
                                             <p className="text-center md:block hidden">Edit profile</p>
@@ -112,7 +112,7 @@ function Dashboard() {
                                     </NavLink>
                                 </motion.div>
                                 <motion.div variants={childVariant}>
-                                    <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                             <FaEdit size={25} className="" />
                                             <p className="text-center md:block hidden">Personal Info</p>
@@ -122,7 +122,7 @@ function Dashboard() {
                             </motion.div>
                             <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
                                 <motion.div variants={childVariant}>
-                                    <NavLink to="/dashboard" className={({ isActive }) => isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to="/dashboard" className={({ isActive }) => isActive && pathname === "/dashboard" ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200">
                                             <MdDynamicFeed size={25} />
                                             <span className="md:block hidden">Post</span>
@@ -130,7 +130,7 @@ function Dashboard() {
                                     </NavLink>
                                 </motion.div>
                                 <motion.div variants={childVariant}>
-                                    <NavLink to="/dashboard/video" className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                    <NavLink to="/dashboard/video" className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                         <button className="flex items-center gap-2 duration-200">
                                             <FaVideo size={25} />
                                             <span className="md:block hidden">Video</span>
@@ -140,7 +140,7 @@ function Dashboard() {
                             </motion.div>
                         </motion.div>
                         <motion.div variants={childVariant}>
-                            <NavLink to={`postAd`} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                            <NavLink to={`postAd`} className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                 <button className="cursor-pointer flex items-center gap-2">
                                     <FiPlusSquare size={25} />
                                     <p className="md:block hidden">Post an Ad</p>
@@ -149,7 +149,7 @@ function Dashboard() {
                         </motion.div>
                     </motion.article>
 
-                    <article className="hidden sticky top-28 bottom-0 rounded-md bg-[#3D217A] md:rounded-none md:bg-white w-fit md:flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
+                    <article className="hidden sticky top-28 bottom-0 rounded-md bg-purple md:rounded-none md:bg-white w-fit md:flex items-center md:items-start text-center md:text-start flex-col justify-between gap-20 py-2 px-2 md:py-10 md:px-6">
                         <div className="flex flex-col md:gap-6 gap-4">
                             <div className="flex flex-col gap-2">
                                 <img
@@ -164,16 +164,16 @@ function Dashboard() {
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                                 <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                                    <FaShare size={20} className="text-white md:text-[#3D217A]" />
+                                    <FaShare size={20} className="text-white md:text-purple" />
                                     <p className="text-center md:block hidden">share</p>
                                 </button>
-                                <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to={'profileEdit'} className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
                                         <IoIosSettings size={20} className="" />
                                         <p className="text-center md:block hidden">Edit profile</p>
                                     </button>
                                 </NavLink>
-                                <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to={'personal-Info'} className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
                                         <FaEdit size={20} className="" />
                                         <p className="text-center md:block hidden">Personal Info</p>
@@ -181,13 +181,13 @@ function Dashboard() {
                                 </NavLink>
                             </div>
                             <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
-                                <NavLink to="/dashboard" className={({ isActive }) => isActive && pathname === "/dashboard" ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to="/dashboard" className={({ isActive }) => isActive && pathname === "/dashboard" ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200">
                                         <MdDynamicFeed size={20} />
                                         <span className="md:block hidden">Post</span>
                                     </button>
                                 </NavLink>
-                                <NavLink to="/dashboard/video" className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                                <NavLink to="/dashboard/video" className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                                     <button className="flex items-center gap-2 duration-200">
                                         <FaVideo size={20} />
                                         <span className="md:block hidden">Video</span>
@@ -195,7 +195,7 @@ function Dashboard() {
                                 </NavLink>
                             </div>
                         </div>
-                        <NavLink to={`postAd`} className={({ isActive }) => isActive ? "font-bold text-white md:text-[#3D217A]" : "text-white md:text-black"}>
+                        <NavLink to={`postAd`} className={({ isActive }) => isActive ? "font-bold text-white md:text-purple" : "text-white md:text-black"}>
                             <button className="cursor-pointer flex items-center gap-2">
                                 <FiPlusSquare size={20} />
                                 <p className="md:block hidden">Post an Ad</p>
