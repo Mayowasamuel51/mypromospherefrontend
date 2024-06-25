@@ -52,7 +52,7 @@ const FeedBack = ({ setComment, postId }) => {
             <motion.div variants={divVariant} className="relative flex flex-col gap-6 w-[80%] md:w-[750px] bg-white dark:bg-darkBg py-4 px-4 md:px-6 rounded-md">
                 <FaXmark size={40} className="z-[99999999999] text-black dark:text-white absolute -top-10 -right-10" onClick={() => setComment(false)} />
                 {!token && <input className="w-full md:h-14 h-12" type="text" />}
-                <textarea name="" id="" className="p-4 w-full resize-none md:h-44 bg-slate-100 dark:bg-inputDark rounded-md "></textarea>
+                <textarea name="" id="" className="p-4 w-full resize-none md:h-44 bg-slate-100 dark:bg-inputDark border rounded-md "></textarea>
                 <button className="border border-purple bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold duration-300 hover:bg-transparent hover:text-purple">Send FeedBack</button>
             </motion.div>
         </motion.section>
