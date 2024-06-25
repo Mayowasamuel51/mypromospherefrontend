@@ -85,7 +85,7 @@ const SingleFeedPage = () => {
                         <p className='text-purple font-bold text-lg'>{data?.data?.data?.categories}</p>
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
                         <div>
-                            <p className='p-4 bg-[#dcdcdc] rounded-md'>{data?.data?.data?.description}</p>
+                            <p className='p-4 bg-[#dcdcdc] dark:text-white dark:bg-darkBg rounded-md'>{data?.data?.data?.description}</p>
                         </div>
                         <p className='flex items-center'>
                             <TbCurrencyNaira size={35} />
