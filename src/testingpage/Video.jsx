@@ -337,7 +337,7 @@ const Video = () => {
             </div>
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 bg-slate-100 dark:bg-inputDark shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="productName"
                 name="productName"
                 {...register("productName", { required: true })}
@@ -401,7 +401,7 @@ const Video = () => {
             {/* <p className="text-red pt-2" >{errors.description?.message}</p> */}
             <button
               type="sumbit"
-              className="bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold"
+              className="border border-purple bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold duration-300 hover:bg-transparent hover:text-purple"
             >
               Release Video Ad
             </button>

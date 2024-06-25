@@ -542,7 +542,7 @@ const Post = () => {
                       htmlFor="images"
                       className="cursor-pointer duration-300 hover:scale-110"
                     >
-                      <div className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-md bg-slate-200 flex items-center justify-center">
+                      <div className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-md bg-slate-100 dark:bg-darkBg flex items-center justify-center">
                         <FaPlus size={25} />
                       </div>
                     </label>
@@ -650,7 +650,7 @@ const Post = () => {
           <button
             type="submit"
 
-            className="bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold"
+            className="border border-purple bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold duration-300 hover:bg-transparent hover:text-purple"
           >
             Promote
           </button>
