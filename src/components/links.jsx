@@ -85,14 +85,14 @@ const Content = ({ selected, dir }) => {
                 opacity: 0,
                 y: 8,
             }}
-            className="absolute left-0 top-[calc(100%_+_24px)] w-96 rounded-lg border bg-white dark:bg-darkBg shadow-md p-4"
+            className="absolute left-0 top-[calc(100%_+_24px)] w-96 rounded-lg border dark:border-none bg-white dark:bg-darkBg shadow-md p-4"
         >
             <Bridge />
             <Nub selected={selected} />
 
             {TABS.map((T) => {
                 return (
-                    <div className="overflow-hidden text-black dark:bg-darkGray font-medium leading-9" key={T.id}>
+                    <div className="overflow-hidden text-black dark:text-darkGray font-medium leading-9" key={T.id}>
                         {selected === T.id && (
                             <motion.div
                                 initial={{
@@ -146,7 +146,7 @@ const Nub = ({ selected }) => {
             }}
             animate={{ left }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-tl border bg-white dark:bg-darkBg"
+            className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-tl border dark:boder-none bg-white dark:bg-darkBg"
         />
     );
 };
