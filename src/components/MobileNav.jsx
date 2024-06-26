@@ -75,32 +75,32 @@ export default function MobileNav({ handleToggle }) {
             </motion.div>
           }
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/property" className="flex items-center gap-1">
-              <FaHouseChimneyWindow size={20} />
+            <Link to="/category/property" className="flex items-center gap-2">
+              <FaHouseChimneyWindow size={30} />
               <p>Property</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/apartment" className="flex items-center gap-1">
-              <MdApartment size={20} />
+            <Link to="/category/apartment" className="flex items-center gap-2">
+              <MdApartment size={30} />
               <p>Apartment</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/cars" className="flex items-center gap-1">
-              <FaCar size={20} />
+            <Link to="/category/cars" className="flex items-center gap-2">
+              <FaCar size={30} />
               <p>Cars</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/laptops" className="flex items-center gap-1">
-              <FaLaptop size={20} />
+            <Link to="/category/laptops" className="flex items-center gap-2">
+              <FaLaptop size={30} />
               <p>Laptops</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/discount" className="flex items-center gap-1">
-              <MdDiscount size={20} />
+            <Link to="/category/discount" className="flex items-center gap-2">
+              <MdDiscount size={30} />
               <p>Products on Discount</p>
             </Link>
           </motion.div>
