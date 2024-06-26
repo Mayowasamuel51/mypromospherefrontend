@@ -30,13 +30,7 @@ const ProfileHome = () => {
                             <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover" />
                         }
                         <div className="absolute inset-0 bg-black opacity-50"></div>
-                        {/* md:rounded-b-[60px] rounded-b-2xl */}
-                        { }
-                        <img
-                            src={data?.data?.data[0]?.profileImage ?? anon}
-                            alt="profile picture"
-                            className="w-[20%] absolute left-8 md:left-32 top-[70%] lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"
-                        />
+                        <img src={data?.data?.data[0]?.profileImage ?? anon} alt="profile picture" className="w-[20%] absolute left-8 md:left-32 top-[70%] lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"/>
                     </div>
                 </article>
                 <div className="my-18">
