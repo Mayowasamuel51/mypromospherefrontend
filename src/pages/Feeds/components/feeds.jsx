@@ -10,7 +10,7 @@ const Feeds = () => {
   if (error) return <div className='min-h-screen grid place-items-center text-red md:text-xl text-lg'><p>{error?.message}</p></div>
   return (
     <section>
-      <h1 className="font-semibold lg:text-3xl text-lg my-7">Personalized ads just for you</h1>
+      <h1 className="font-semibold lg:text-3xl text-lg my-7 dark:text-mainTextDark">Personalized ads just for you</h1>
       <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6">
         {isLoading && <PostsSkeleton posts={4} />}
         {data?.data?.normalads.length === 0 &&

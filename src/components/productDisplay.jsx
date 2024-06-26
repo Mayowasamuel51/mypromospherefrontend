@@ -48,17 +48,17 @@ const ProductDisplay = ({item, other_images}) => {
                 </div>
             }
             <div className='flex items-center justify-between'>
-                <h1 className='font-semibold'>{item.productName}</h1>
+                <h1 className='font-semibold dark:text-mainTextDark'>{item.productName}</h1>
                 <div className="flex items-center">
                     <TbCurrencyNaira size={20} />
-                    <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                    <p className="text-sm dark:text-mainTextDark">{(+item.price_range).toLocaleString()}</p>
                 </div>
             </div>
             <Link to={`/profile/user/${item.user_name}`} className="w-fit">
                 <div className="flex items-center gap-2">
                     <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                    {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                    {!token &&<p className="text-sm font-medium">{item.user_name}</p>}
+                    {token && <p className="text-sm font-medium dark:text-smallTextDark">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                    {!token &&<p className="text-sm font-medium dark:text-smallTextDark">{item.user_name}</p>}
                 </div>
             </Link>
         </div>
