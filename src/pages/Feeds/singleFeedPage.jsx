@@ -86,7 +86,7 @@ const SingleFeedPage = () => {
 
     return (
         <>
-            <Navbar blue={true} />
+            <Navbar />
             <section className="pt-16 lg:pt-32 px-4 lg:px-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <div className="flex-1">

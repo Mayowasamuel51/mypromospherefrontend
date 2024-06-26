@@ -22,7 +22,7 @@ const headerVariant = {
   }
 }
 
-export default function Navbar({ profile, blue }) {
+export default function Navbar({ profile }) {
   const location = useLocation()
   const [toggleIcon, setToggleIcon] = useState(false);
   const [hidden, setHidden] = useState(false)
@@ -60,10 +60,10 @@ export default function Navbar({ profile, blue }) {
   }, [toggleIcon]);
   // dark:bg-[#121212]
   return (
-    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`dark:bg-[#121212] bg-purple z-[9999999] fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
+    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`${!bg && profile} dark:bg-[#121212] bg-purple z-[9999999] fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
       <Link to={"/"} className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-14 exl:w-20" />
-        <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
+        <h1 className={`text-sm font-bold text-white md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
 
       <div onClick={handleToggle} className="z-[9999999999999] exl:hidden cursor-pointer ">
@@ -77,7 +77,7 @@ export default function Navbar({ profile, blue }) {
         {toggleIcon && <MobileNav handleToggle={handleToggle} />}
       </AnimatePresence>
 
-      <nav className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
+      <nav className={`text-black dark:text-white hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
         <Links hidden={hidden} bg={bg} />
       </nav>
 
@@ -88,8 +88,8 @@ export default function Navbar({ profile, blue }) {
         :
         <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
           <Link to="/login">
-            <button className={`flex items-center gap-2 text-lg py-2 px-5 ${(bg && !profile && !blue) ? "text-black" : "text-white"} font-['Poppinbase font-medium`}>
-              <MdLogin size={25} />
+            <button className={`flex items-center gap-2 text-lg py-2 px-5 text-white font-['Poppinbase font-medium`}>
+              <MdLogin size={30} />
               <p>Post an Ad</p>
             </button>
           </Link>
