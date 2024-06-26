@@ -34,19 +34,25 @@ const ProfileHome = () => {
                     </div>
                 </article>
                 <div className="my-18">
-                    <article className="mt-16 md:mt-24 md:px-32 px-8 flex flex-col gap-2">
-                        <div className="">
-                            <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0]?.name || data?.data?.data[0]?.user_name || "No Name"}
-                            </h1>
+                    <article className="mt-16 md:mt-24 md:px-32 px-8 flex justify-between">
+                        <div className="flex flex-col gap-2">
+                            <div className="">
+                                <h1 className="font-700 md:text-2xl text-lg capitalize dark:text-mainTextDark">
+                                    {data?.data?.data[0]?.name || data?.data?.data[0]?.user_name || "No Name"}
+                                </h1>
+                            </div>
+                            <div className="flex items-center gap-x-2">
+                                <BsGlobe className="md:text-base text-sm" />
+                                <p className="dark:text-smallTextDark">{data?.data?.data[0]?.websiteName ?? "No website name"}</p>
+                            </div>
+                            <div className="flex items-center gap-x-2">
+                                <BsTelephone className="md:text-base text-sm" />
+                                <p className="dark:text-smallTextDark">{data?.data?.data[0]?.user_phone ?? "User has not added their whatsApp Number"}</p>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-x-2">
-                            <BsGlobe className="md:text-base text-sm" />
-                            <p>Website </p>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                            <BsTelephone className="md:text-base text-sm" />
-                            <p>phone No</p>
+                        <div className="flex flex-col gap-2">
+                            <h1 className="text-mainText-bg">About me</h1>
+                            <p className="p-2 bg-darkBg text-smallTextDark">{data?.data?.data[0]?.aboutMe ?? "No about me"}</p>
                         </div>
                     </article>
                     <article className="">
