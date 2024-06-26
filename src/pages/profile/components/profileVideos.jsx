@@ -19,15 +19,11 @@ const ProfileVideos = () => {
   const { data, isLoading, isPending, error } = FetchOtherUserVideos(user_name);
 
   console.log(data)
-  if (error?.response?.status === 404) {
-    console.log(error)
-  } else {
-    <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
-  }
+  
   return (
-    <section className="relative grid md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exl:grid-cols-6 gap-10 px-4 lg:px-10 py-2 lg:py-10">
-      {(!data?.data.videos && !isLoading) && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 exl:col-span-6 my-2'>{token?.user_name == user_name ? "You have" : "This User has"} not made any post Yet!</h1>}
-      {(isLoading || isPending) && <VideoSkeleton posts={6} />}
+    <section className="relative grid md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-4 lg:px-10 py-2 lg:py-10">
+      {(!isLoading && error?.response?.status === 404) && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 my-2'>{token?.user_name == user_name ? "You have" : "This User has"} not made any post Yet!</h1>}
+      {(isLoading || isPending) && <VideoSkeleton posts={4} />}
       {data?.data?.videos.map((video) => (
         <div key={video.id} className='flex flex-col gap-4'>
           <div className='w-full rounded-lg overflow-hidden'>
