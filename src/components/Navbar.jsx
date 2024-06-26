@@ -59,7 +59,7 @@ export default function Navbar({ profile, blue }) {
     }
   }, [toggleIcon]);
   return (
-    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[9999999] ${bg ? profile || blue ? "bg-purple dark:bg-black" : "bg-white text-black" : profile || blue ? "bg-purple dark:bg-black" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
+    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[9999999] ${bg ? profile || blue ? "bg-purple dark:bg-[#121212] dark:border-b dark:border-grey" : "bg-white text-black" : profile || blue ? "bg-purple dark:bg-black" : "bg-transparent"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
       <Link to={"/"} className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-14 exl:w-20" />
         <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
