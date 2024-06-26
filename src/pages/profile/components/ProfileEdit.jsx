@@ -370,7 +370,7 @@ const ProfileEdit = () => {
           <div className="flex flex-col gap-5 my-4">
             <div className="">
               <div className="flex flex-col gap-2">
-                <label htmlFor="About" className="font-medium my-2">
+                <label htmlFor="About" className="font-light">
                   About
                 </label>{" "}
                 <textarea
@@ -386,7 +386,7 @@ const ProfileEdit = () => {
             </div>
             <div className="">
               <div className="flex flex-col gap-2">
-                <label htmlFor="website" className="">
+                <label htmlFor="website" className="font-light">
                   Website
                 </label>{" "}
                 <input
@@ -402,7 +402,7 @@ const ProfileEdit = () => {
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="website" className="">
+              <label htmlFor="website" className="font-light">
                 Contact Phone one
               </label>
               <input
@@ -416,7 +416,7 @@ const ProfileEdit = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="website" className=" flex items-center gap-2">
+              <label htmlFor="website" className="font-light flex items-center gap-2">
                 <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
               </label>
               <input
