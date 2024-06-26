@@ -58,7 +58,6 @@ export default function Navbar({ profile }) {
       document.body.classList.remove('no-scroll');
     }
   }, [toggleIcon]);
-  // dark:bg-[#121212]
   return (
     <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`${!bg && profile} dark:bg-[#121212] bg-purple z-[9999999] fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
       <Link to={"/"} className=" flex items-center">
@@ -68,9 +67,9 @@ export default function Navbar({ profile }) {
 
       <div onClick={handleToggle} className="z-[9999999999999] exl:hidden cursor-pointer ">
         {toggleIcon ? (
-          <XMarkIcon width={35} className={`text-white`} />
+          <XMarkIcon width={35} className={`${toggleIcon && "text-black dark:text-white"} text-white duration-300`} />
         ) : (
-          <Bars3BottomRightIcon width={35} className={`text-white`} />
+          <Bars3BottomRightIcon width={35} className={`${toggleIcon && "text-black dark:text-whi"} text-white duration-300`} />
         )}
       </div>
       <AnimatePresence>
