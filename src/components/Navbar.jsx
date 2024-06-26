@@ -65,11 +65,11 @@ export default function Navbar({ profile }) {
         <h1 className={`text-sm font-bold text-white md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
 
-      <div onClick={handleToggle} className="z-[9999999999999] exl:hidden cursor-pointer border-2">
+      <div onClick={handleToggle} className="z-[9999999999999] exl:hidden cursor-pointer">
         {toggleIcon ? (
-          <XMarkIcon width={35} className={`${toggleIcon ? "text-black dark:text-white" : "text-white"}  duration-300`} />
+          <XMarkIcon width={35} className={`${toggleIcon ? "text-black dark:text-white" : "text-white"}  duration-300 z-[9999999999999]`} />
         ) : (
-          <Bars3BottomRightIcon width={35} className={`${toggleIcon ? "text-black dark:text-white" : "text-white"} duration-300`} />
+          <Bars3BottomRightIcon width={35} className={`${toggleIcon ? "text-black dark:text-white" : "text-white"} duration-300 z-[9999999999999]`} />
         )}
       </div>
       <AnimatePresence>
