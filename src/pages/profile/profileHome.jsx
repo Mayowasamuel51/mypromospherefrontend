@@ -17,7 +17,7 @@ const ProfileHome = () => {
     console.log(data)
     return (
         <>
-            <Navbar profile="bg-transparent" />
+            <Navbar profile="bg-transparent text-white dark:text-white dark:bg-transparent" />
             <section>
                 <article>
                     <div className="w-full relative">
