@@ -18,7 +18,7 @@ const ProfileHome = () => {
     return (
         <>
             <Navbar profile="bg-transparent text-white dark:text-white dark:bg-transparent" />
-            <section>
+            <section className="relative">
                 <article>
                     <div className="w-full relative">
                         {data?.data?.data[0]?.backgroundimage ?
@@ -34,7 +34,7 @@ const ProfileHome = () => {
                         <img
                             src={data?.data?.data[0]?.profileImage ?? anon}
                             alt="profile picture"
-                            className="w-[25%] inseti lg:w-[15%] aspect-square object-cover object-top rounded-full"
+                            className="w-[25%] inseti lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"
                         />
                     </div>
                 </article>
@@ -42,7 +42,7 @@ const ProfileHome = () => {
                     <article className="text-center mt-12 md:mt-24">
                         <div className="flex flex-col gap-2">
                             <h1 className="font-700 md:text-2xl text-lg capitalize">
-                                {data?.data?.data[0]?.name || data?.data?.data[0]?.user_name || <Skeleton width={200}/>}
+                                {data?.data?.data[0]?.name || data?.data?.data[0]?.user_name || "No Name"}
                             </h1>
                         </div>
                     </article>
