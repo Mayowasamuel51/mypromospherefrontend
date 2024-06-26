@@ -29,7 +29,8 @@ const ProfileHome = () => {
                             /> :
                             <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover" />
                         }
-                        <div className="absolute inset-0 bg-black opacity-50 md:rounded-b-[60px] rounded-b-2xl"></div>
+                        <div className="absolute inset-0 bg-black opacity-50"></div>
+                        {/* md:rounded-b-[60px] rounded-b-2xl */}
                         { }
                         <img
                             src={data?.data?.data[0]?.profileImage ?? anon}
@@ -68,7 +69,9 @@ const ProfileHome = () => {
                             </div>
                         </div>
                     </article>
-                    <Outlet context={user_name} />
+                    <div className="md:px-32 px-6">
+                        <Outlet context={user_name} />
+                    </div>
                 </div>
             </section>
         </>
