@@ -95,7 +95,7 @@ const PersonalInfo = () => {
                 id="countries"
                 name="countries"
                 placeholder="Select Country"
-                className="bg-slate-100 dark:bg-inputDark mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
+                className="bg-slate-100 dark:bg-inputDark dark:placeholder:text-smallTextDark mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
                 value={country}
                 onChange={changeCountry}
               >
@@ -127,7 +127,7 @@ const PersonalInfo = () => {
                 id="countries"
                 name="countries"
                 placeholder="Select Country"
-                className="bg-slate-100 dark:bg-inputDark mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
+                className="bg-slate-100 dark:bg-inputDark dark:placeholder:text-smallTextDark mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
                 value={language}
                 onChange={changeLanguage}
               >

@@ -335,9 +335,7 @@ const ProfileEdit = () => {
             Change Backgorund Image
           </button>
         </form>
-
         <hr className="my-4" />
-
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
             <div>
@@ -400,13 +398,13 @@ const ProfileEdit = () => {
                   className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   placeholder="Add a link to drive traffic to your site"
                 />
-                     <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
+              {/* <p className='text-red  text-sm'>{errors.websiteName?.message}</p> */}
               </div>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="website" className="">
                 Contact Phone one
-              </label>{" "}
+              </label>
               <input
                 value={profileedit.user_phone}
                 onChange={handleProfileEdit}
@@ -420,7 +418,7 @@ const ProfileEdit = () => {
             <div className="flex flex-col gap-2">
               <label htmlFor="website" className=" flex items-center gap-2">
                 <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
-              </label>{" "}
+              </label>
               <input
                 value={ profileedit.whatapp }
                 onChange={handleProfileEdit}
@@ -441,7 +439,7 @@ const ProfileEdit = () => {
                 name="brandName"
                 className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your Brand Name"/>
-               <p className='text-red  text-sm'>{errors.brandName?.message}</p>
+               {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
           </div>
           <button
