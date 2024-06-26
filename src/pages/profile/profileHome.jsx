@@ -52,20 +52,22 @@ const ProfileHome = () => {
                         </div>
                         <div className="flex flex-col gap-2">
                             <h1 className="text-mainText-bg">About me</h1>
-                            <p className="p-2 bg-darkBg text-smallTextDark">{data?.data?.data[0]?.aboutMe ?? "No about me"}</p>
+                            <p className="rounded-md p-2 bg-darkBg text-smallTextDark">{data?.data?.data[0]?.aboutMe ?? "No about me"}</p>
                         </div>
                     </article>
                     <article className="">
                         <div className="flex items-center justify-center ">
-                            <div className="flex gap-2 my-2">
-                                <div className="flex justify-center items-center gap-x-4">
-                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "bg-purple border-2 border-purple rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black dark:text-white dark:border-2 dark:border-white flex gap-x-3 rounded-md md:px-4 md:py-2 px-3 py-2"}>
-                                        <p> Posts</p>
+                            <div className="flex border-b border-black dark:border-grey my-2">
+                                <div className="flex-1">
+                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple  rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2" : "text-black dark:text-mainTextDark md:px-4 md:py-2 px-3 py-2"}>
+                                        <p>Posts</p>
                                     </NavLink>
                                 </div>
-                                <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "bg-purple border-2 border-purple rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2 text-white" : "text-black dark:text-white dark:border-2 dark:border-white flex gap-x-3 border-r-0 rounded-md md:px-4 md:py-2 px-3 py-2"}>
-                                    <p>Videos</p>
-                                </NavLink>
+                                <div className="flex-1">
+                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple rounded-md z-10 flex md:px-4 md:py-2 px-3 py-2" : "text-black dark:text-mainTextDark dark:border-white md:px-4 md:py-2 px-3 py-2"}>
+                                        <p>Videos</p>
+                                    </NavLink>
+                                </div>
                             </div>
                         </div>
                     </article>
