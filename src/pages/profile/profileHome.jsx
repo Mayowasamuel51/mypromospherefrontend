@@ -69,7 +69,7 @@ const ProfileHome = () => {
                             </div>
                         </div>
                     </article>
-                    <div className="relative md:px-28 px-6">
+                    <div className="relative md:px-24 px-6">
                         <Outlet context={user_name} />
                     </div>
                 </div>
