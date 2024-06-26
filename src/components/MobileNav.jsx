@@ -38,7 +38,7 @@ const divVariant = {
   exit: {
     opacity: 0,
     transition: {
-      when: "afterChildren"
+      when: "afterChildren", staggerChildren: 0.3
     }
   }
 }
@@ -55,6 +55,13 @@ const childVariant = {
       type: "spring"
     }
   },
+  exit : {
+    x: '-20px',
+    opacity: 0,
+    transition : {
+      duration: 0.3
+    }
+  }
 }
 
 export default function MobileNav({ handleToggle }) {
