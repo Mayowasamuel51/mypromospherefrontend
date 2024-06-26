@@ -48,7 +48,7 @@ const ProductDisplay = ({item, other_images}) => {
                 </div>
             }
             <div className='flex items-center justify-between'>
-                <h1 className='font-semibold dark:text-mainTextDark'>{item.productName}</h1>
+                <h1 className='font-extralight dark:text-mainTextDark'>{item.productName}</h1>
                 <div className="flex items-center">
                     <TbCurrencyNaira size={20} />
                     <p className="text-sm dark:text-mainTextDark">{(+item.price_range).toLocaleString()}</p>
