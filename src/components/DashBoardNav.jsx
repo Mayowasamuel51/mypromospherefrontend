@@ -52,7 +52,7 @@ const DashBoardNav = () => {
           </motion.div>
         </header>
         :
-        <Navbar profile={true} />
+        <Navbar profile="bg-transparent text-white dark:text-white dark:bg-transparent" />
       }
 
     </>
