@@ -25,7 +25,7 @@ const ProfileHome = () => {
                             <img
                                 src={data?.data?.data[0]?.backgroundimage}
                                 alt=""
-                                className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover"
+                                className="w-screen h-[300px] md:h-[400px] object-center object-cover"
                             /> :
                             <img src={bgLOGO} alt="background" className="md:rounded-b-[60px] w-screen h-[300px] md:h-[400px] rounded-b-2xl object-center object-cover" />
                         }
@@ -69,7 +69,7 @@ const ProfileHome = () => {
                             </div>
                         </div>
                     </article>
-                    <div className="md:px-32 px-6">
+                    <div className="relative md:px-28 px-6">
                         <Outlet context={user_name} />
                     </div>
                 </div>
