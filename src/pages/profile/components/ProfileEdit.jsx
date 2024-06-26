@@ -371,7 +371,7 @@ const ProfileEdit = () => {
           </article>
           <div className="flex flex-col gap-5 my-4">
             <div className="">
-              <div>
+              <div className="flex flex-col gap-2">
                 <label htmlFor="About" className="font-medium my-2">
                   About
                 </label>{" "}
@@ -380,16 +380,15 @@ const ProfileEdit = () => {
                   value={profileedit.aboutMe}
                   onChange={handleProfileEdit}
                   name="aboutMe"
-                  className="resize-none h-32 bg-slate-100 dark:bg-inputDark focus:border focus:border-purple w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
+                  className="resize-none h-32 bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
-
                 ></textarea>
                 <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
               </div>
             </div>
             <div className="">
-              <div>
-                <label htmlFor="website" className="font-medium my-2">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="website" className="">
                   Website
                 </label>{" "}
                 <input
@@ -398,14 +397,14 @@ const ProfileEdit = () => {
                   onChange={handleProfileEdit}
                   name="websiteName"
                   // value={token?.websiteName && token?.websiteName}
-                  className="bg-slate-100 dark:bg-inputDark focus:border focus:border-purple w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                  className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   placeholder="Add a link to drive traffic to your site"
                 />
                      <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
               </div>
             </div>
-            <div className="">
-              <label htmlFor="website" className="font-medium my-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="website" className="">
                 Contact Phone one
               </label>{" "}
               <input
@@ -413,13 +412,13 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="number"
                 name="user_phone"
-                className="bg-slate-100 dark:bg-inputDark focus:border focus:border-purple w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Contact number "/>
                {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
 
-            <div className="">
-              <label htmlFor="website" className="font-medium my-2 flex items-center gap-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="website" className=" flex items-center gap-2">
                 <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
               </label>{" "}
               <input
@@ -427,14 +426,12 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="number"
                 name="whatapp"
-                className="bg-slate-100 dark:bg-inputDark focus:border focus:border-purple w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Whatapp number"/>
             </div>
 
-
-
-            <div className="">
-              <label htmlFor="website" className="font-medium my-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="website" className="">
                 Brand Name 
               </label>{" "}
               <input
@@ -442,7 +439,7 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="text"
                 name="brandName"
-                className="bg-slate-100 dark:bg-inputDark focus:border focus:border-purple w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your Brand Name"/>
                <p className='text-red  text-sm'>{errors.brandName?.message}</p>
             </div>
