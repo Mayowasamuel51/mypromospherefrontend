@@ -43,8 +43,8 @@ const Links = ({hidden, bg}) => {
                     {selected && <Content dir={dir} selected={selected} />}
                 </AnimatePresence>
             </div>
-            <NavLink to="/category/discount" className={({isActive})=> isActive ? "font-black nav-active px-2 py-1.5" : "nav-active px-2 py-1.5"}>Products on Discount</NavLink>
-            <NavLink className={`nav-active px-2 py-1.5`} to="/category/Kids_Baby_dresses">Baby Products</NavLink>
+            <NavLink to="/category/discount" className={({isActive})=> isActive ? "font-black nav-active px-2 py-1.5 text-white dark:text-white" : "nav-active px-2 py-1.5 text-white dark:text-white"}>Products on Discount</NavLink>
+            <NavLink className={`nav-active px-2 py-1.5 text-white dark:text-white`} to="/category/Kids_Baby_dresses">Baby Products</NavLink>
         </ul>
     )
 }
