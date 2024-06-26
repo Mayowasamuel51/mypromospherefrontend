@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion';
-import { Link as ScrollLink } from 'react-scroll';
+// import { Link as ScrollLink } from 'react-scroll';
 import Links from "./links";
 import ProfileHover from "./profileHover";
 import { MdLogin } from "react-icons/md";
@@ -58,8 +58,9 @@ export default function Navbar({ profile, blue }) {
       document.body.classList.remove('no-scroll');
     }
   }, [toggleIcon]);
+  // dark:bg-[#121212]
   return (
-    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[9999999] ${bg ? profile || blue ? "bg-purple dark:bg-[#121212] dark:border-b dark:border-grey" : "text-black dark:bg-[#121212] dark:border-b dark:border-grey"  : " dark:bg-purple"} fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
+    <motion.header variants={headerVariant} animate={hidden && !toggleIcon ? "hidden" : "visible"} className={`z-[9999999] fixed top-0 right-0 left-0 w-full flex flex-row justify-between items-center px-4 lg:px-10 py-3 lg:py-0 duration-300 text-black`}>
       <Link to={"/"} className=" flex items-center">
         <img src={logo} alt="logo" className="w-10 lg:w-14 exl:w-20" />
         <h1 className={`${(bg && !profile && !blue) ? "text-black" : "text-white"} text-sm font-bold text-black md:text-lg exl:text-xl`}>MyPromoSphere</h1>
