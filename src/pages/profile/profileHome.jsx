@@ -34,7 +34,7 @@ const ProfileHome = () => {
                         <img
                             src={data?.data?.data[0]?.profileImage ?? anon}
                             alt="profile picture"
-                            className="w-[25%] absolute left-8 md:left-32 top-[70%] lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"
+                            className="w-[20%] absolute left-8 md:left-32 top-[70%] lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"
                         />
                     </div>
                 </article>
@@ -45,11 +45,11 @@ const ProfileHome = () => {
                                 {data?.data?.data[0]?.name || data?.data?.data[0]?.user_name || "No Name"}
                             </h1>
                         </div>
-                        <div className="px-4 md:px-10 flex items-center gap-x-2">
+                        <div className="flex items-center gap-x-2">
                             <BsGlobe className="md:text-base text-sm" />
                             <p>Website </p>
                         </div>
-                        <div className="px-4 md:px-10 flex items-center gap-x-2">
+                        <div className="flex items-center gap-x-2">
                             <BsTelephone className="md:text-base text-sm" />
                             <p>phone No</p>
                         </div>
