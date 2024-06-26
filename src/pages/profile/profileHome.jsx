@@ -34,7 +34,7 @@ const ProfileHome = () => {
                         <img
                             src={data?.data?.data[0]?.profileImage ?? anon}
                             alt="profile picture"
-                            className="w-[25%] absolute right-8 md:right-32 top-[96%] lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"
+                            className="w-[25%] absolute left-8 md:left-32 top-[70%] lg:w-[15%] aspect-square object-cover object-top rounded-full border-4 border-white"
                         />
                     </div>
                 </article>
