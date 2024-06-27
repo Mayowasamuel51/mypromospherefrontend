@@ -34,10 +34,10 @@ const ProfileHome = () => {
                     </div>
                 </article>
                 <div className="my-18">
-                    <article className="mt-16 md:mt-24 md:px-32 px-8 flex justify-between">
+                    <article className="mt-16 md:mt-24 md:px-32 px-8 flex justify-between md:flex-row flex-col">
                         <div className="flex flex-col gap-2">
                             <div className="">
-                                <h1 className="font-700 md:text-2xl text-lg capitalize dark:text-mainTextDark">
+                                <h1 className="font-700 md:text-2xl text text-lg capitalize dark:text-mainTextDark">
                                     {data?.data?.data[0]?.name || data?.data?.data[0]?.user_name || "No Name"}
                                 </h1>
                             </div>
