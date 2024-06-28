@@ -31,6 +31,11 @@ const Categories = () => {
               <ProductDisplay key={apartment.id} item={apartment} other_images={data?.data?.other_image} />
             ))
           }
+          {category === "laptops" &&
+            data?.data?.data.map((laptop) => (
+              <ProductDisplay key={laptop.id} item={laptop} other_images={data?.data?.other_image} />
+            ))
+          }
         </div>
       </section>
     </>
