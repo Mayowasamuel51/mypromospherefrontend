@@ -64,7 +64,7 @@ const ProfileHome = () => {
                                     </NavLink>
                                 </div>
                                 <div className="flex-1 text-center">
-                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple z-10 py-3" : "text-black dark:text-mainTextDark dark:border-white py-3"}>
+                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple z-10 py-3" : "text-black dark:text-mainTextDark py-3"}>
                                         <p>Videos</p>
                                     </NavLink>
                                 </div>
