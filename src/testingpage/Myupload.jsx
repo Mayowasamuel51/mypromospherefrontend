@@ -10,11 +10,11 @@ const api_gerenal = import.meta.env.VITE_GENERAL;
 const Myuploads = ({ id }) => {
   const { token } = useStateContext();
   const { data, isLoading, error } = FetchUserposts(token);
-  if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
+  // if (error) return <div className='min-h-screen grid place-items-center'><p><h1>{error?.message}</h1></p></div>
   return (
     <div className="">
       <section className="relative grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6">
-        {(!data?.data.posts && !isLoading) && <h1 className='text-center col-span-2 md:col-span-4 lg:col-span-4'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
+        {(error?.response?.status === 404  && !isLoading) && <h1 className='text-center col-span-2 md:col-span-4 lg:col-span-4'>{token?.id == id ? "You have" : "This User has"} not made any post Yet!</h1>}
         {(isLoading) && <UploadSkeleton posts={4} />}
         {(data?.data.posts && !isLoading) &&
           data?.data.posts.map((item) => (
