@@ -23,7 +23,7 @@ const Categories = () => {
           }
           {category === "property" &&
             data?.data?.property.map((property) => (
-              <ProductDisplay key={property.id} item={property} other_images={data?.data?.other_image} />
+              <ProductDisplay key={property.id} item={property} />
             ))
           }
           {category === "apartment" &&
