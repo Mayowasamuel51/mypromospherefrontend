@@ -235,7 +235,7 @@ function Dashboard() {
                   {token ? `${token["user"]}` : "Anonymous"}
                 </p>
               </div>
-              <div className="">
+              <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center gap-x-6">
                 <Clipboard
                   className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
                   data-clipboard-text={promote}
