@@ -112,10 +112,10 @@ function Dashboard() {
                   className="w-[40px] aspect-square rounded-full object-cover object-center"
                 />
                 <h1 className="font-medium text-sm capitalize md:block hidden">
-                  {token ? `${token["user_name"]}` : "Anonymous"}
+                {token ? `${token["user_name"]}` : "Anonymous"}
                 </h1>
                 <p className="text-xs text-slate-400 md:block hidden">
-                  {token ? `${token["user"]}` : "Anonymous"}
+                {token ? `${token["user"]}` : "Anonymous"}
                 </p>
               </motion.div>
               <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
