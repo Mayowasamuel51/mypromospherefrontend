@@ -32,7 +32,7 @@ const Categories = () => {
             ))
           }
           {category === "laptops" &&
-            data?.data?.data.map((laptop) => (
+            data?.data?.data?.map((laptop) => (
               <ProductDisplay key={laptop.id} item={laptop} other_images={data?.data?.other_image} />
             ))
           }
