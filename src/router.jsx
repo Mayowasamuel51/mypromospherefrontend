@@ -48,6 +48,7 @@ import MyVideos from "./testingpage/MyVideos.jsx";
 import ProfileEdit from "./pages/profile/components/ProfileEdit.jsx";
 import PersonalInfo from "./pages/profile/components/PersonalInfo.jsx";
 import SearchCategories from "./pages/categories/searchCategories.jsx";
+import Copy from "./testingpage/Copy.jsx";
 
 
 const router = createBrowserRouter([
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
         <SignUpPage />
       </Suspense>
     ),
+  },
+  {
+    path:"copy",
+    element:<Copy/>
   },
   {
     path: "/full",
