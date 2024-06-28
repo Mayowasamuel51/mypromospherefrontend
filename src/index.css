@@ -331,8 +331,8 @@ html {
   position: absolute;
   background-color: #3D217A;
   width: 100%;
-  height: 2px;
-  bottom: 0;
+  height: 4px;
+  bottom: -2px;
   left: 0;
   right: 0;
 }
