@@ -11,29 +11,22 @@ const api_thumbnails = import.meta.env.VITE_thumbnails;
 
 const MyVidoes = () => {
   const { FullScreen } = useStateContext();
-  const token = useStateContext();
+  const { token } = useStateContext();
   const { data, isLoading, isPending, error } = useQuery({
-    queryKey: ["myVideos"] ,
-    queryFn: () =>
-      axios.get(`${api_load_v1}${token.token?.id}`, {
+    queryKey: ["myVideos", token] ,
+    queryFn: ({queryKey}) =>
+      axios.get(`${api_load_v1}${queryKey[1]?.id}`, {
         headers: {
           Accept: "application/json",
-          Authorization: `Bearer ${token.token.token}`,
+          Authorization: `Bearer ${queryKey[1]?.token}`,
         },
       }),
   });
 
-  if (error)
-    return (
-      <div className="min-h-screen grid place-items-center">
-        <p>
-          <h1 className="text-center">Sorry you dont have any Video uploads</h1>
-        </p>
-      </div>
-    );
 
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
+      {error?.response?.status === 404 && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 my-2'>You have not made any post Yet!</h1>}
       {(isLoading || isPending) && (
         <VideoSkeleton posts={4} />
       )}
