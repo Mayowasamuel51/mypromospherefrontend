@@ -14,7 +14,7 @@ const PostsSkeleton = ({ posts }) => {
               <Skeleton width={100} baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
               <div className="flex items-center">
                 <TbCurrencyNaira size={20} />
-                <Skeleton width={70} baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
+                <Skeleton width={50} baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"} />
               </div>
             </div>
             <div>

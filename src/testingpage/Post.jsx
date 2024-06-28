@@ -305,7 +305,7 @@ const Post = () => {
         });
         // console.log(response.data.item);
         // for (let i = 0; i < imageUpload.length; i++) {
-        uploadData?.images.forEach((image, index) => {
+        uploadData?.images.forEach((image) => {
           const imageRef = ref(
             storage,
             `/newuploads/${image.name} ${token?.user}`
@@ -508,7 +508,7 @@ const Post = () => {
                 className="hidden"
               />
             </label>
-            <div className="flex items-center gap-4 flex-wrap my-4">
+            <div className="flex justify-center items-center gap-4 flex-wrap mb-4">
               {imageUpload.map((image, index) => (
                 <div
                   key={index}
@@ -542,7 +542,7 @@ const Post = () => {
                       htmlFor="images"
                       className="cursor-pointer duration-300 hover:scale-110"
                     >
-                      <div className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-md bg-slate-200 flex items-center justify-center">
+                      <div className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-md bg-slate-100 dark:bg-darkBg flex items-center justify-center">
                         <FaPlus size={25} />
                       </div>
                     </label>
@@ -554,7 +554,7 @@ const Post = () => {
               value={uploadData?.category || ""}
               name="category"
               id="category"
-              className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="md:h-12 h-10 bg-slate-100 dark:bg-inputDark dark:placeholder:text-smallTextDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
             >
               <option value="">--Select a Category--</option>
               {categories.map((option, index) => {
@@ -567,7 +567,7 @@ const Post = () => {
             </select>
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 dark:placeholder:text-smallTextDark bg-slate-100 dark:bg-inputDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
                 id="productName"
                 name="productName"
                 type="text"
@@ -578,20 +578,20 @@ const Post = () => {
             </div>
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 dark:placeholder:text-smallTextDark bg-slate-100 dark:bg-inputDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
                 id="price_range"
                 name="price_range"
                 onChange={handleInputChange}
                 value={uploadData?.price_range || ""}
                 type="text"
-                placeholder="price"
+                placeholder="Price of Your Product"
               />
             </div>
             <div>
               <select
                 name="state"
                 id="state"
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 dark:placeholder:text-smallTextDark bg-slate-100 dark:bg-inputDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
                 onChange={handleInputChange}
                 value={uploadData?.state || ""}
               >
@@ -609,7 +609,7 @@ const Post = () => {
                 name="local_gov"
                 value={uploadData?.local_gov || ""}
                 onChange={handleInputChange}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 dark:placeholder:text-smallTextDark bg-slate-100 dark:bg-inputDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
               >
                 <option value="">--Select Local Government--</option>
                 {localGvt &&
@@ -627,7 +627,7 @@ const Post = () => {
                 name="discount"
                 onChange={handleInputChange}
                 value={uploadData?.discount || ""}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="dark:placeholder:text-smallTextDark md:h-12 h-10 bg-slate-100 dark:bg-inputDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
               >
                 <option value="">Discount</option>
                 <option value="Yes">Yes</option>
@@ -637,20 +637,20 @@ const Post = () => {
 
             <div>
               <textarea
-                className="resize-none md:h-20 h-16 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="resize-none md:h-20 h-16 dark:placeholder:text-smallTextDark bg-slate-100 dark:bg-inputDark appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none"
                 id="description"
                 name="description"
                 onChange={handleInputChange}
                 value={uploadData?.description || ""}
                 type="text"
-                placeholder="description"
+                placeholder="Your Product Description"
               />
             </div>
           </div>
           <button
             type="submit"
 
-            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
+            className="border border-purple bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold duration-300 hover:bg-transparent hover:text-purple"
           >
             Promote
           </button>

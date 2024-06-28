@@ -143,8 +143,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white dark:bg-black w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
-            : "inset bg-black dark:bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            ? "inset bg-white dark:bg-darkBg w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            : "inset bg-darkBg dark:bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
         }
       >
         <div>
@@ -197,7 +197,7 @@ const Login = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-7"
                   }
                   placeholder="example@gmail.com"
                 />
@@ -215,7 +215,7 @@ const Login = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 h-7"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-7"
                   }
                   placeholder="Enter password"
                 />

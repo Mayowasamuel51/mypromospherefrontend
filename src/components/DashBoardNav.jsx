@@ -25,7 +25,7 @@ const DashBoardNav = () => {
   return (
     <>
       {token ?
-        <header className="z-10 py-3 lg:py-0 px-4 lg:px-10 flex items-center justify-between bg-[#3D217A] dark:bg-black fixed w-full top-0 right-0 left-0">
+        <header className="z-10 py-3 lg:py-0 px-4 lg:px-10 flex items-center justify-between bg-purple dark:bg-[#121212] shadow-sm shadow-grey fixed w-full top-0 right-0 left-0">
           <Link to="/">
             <div className="flex items-center gap-1">
               <img src={LOGO} alt="" className="w-10 lg:w-14 exl:w-20" />
@@ -34,9 +34,9 @@ const DashBoardNav = () => {
           </Link>
           <div className="z-20 lg:hidden">
             {toggleNav ? (
-              <XMarkIcon width={35} className="text-black dark:text-white" onClick={handleToggle} />
+              <XMarkIcon width={35} className={`${toggleNav ? "text-black dark:text-white" : "text-white"}  duration-300 z-[9999999999999]`} onClick={handleToggle} />
             ) : (
-              <Bars3BottomRightIcon width={35} className="text-black dark:text-white" onClick={handleToggle} />
+              <Bars3BottomRightIcon width={35} className={`${toggleNav ? "text-black dark:text-white" : "text-white"}  duration-300 z-[9999999999999]`} onClick={handleToggle} />
             )}
           </div>
           <div className="lg:block hidden text-white">
@@ -52,7 +52,7 @@ const DashBoardNav = () => {
           </motion.div>
         </header>
         :
-        <Navbar profile={true} />
+        <Navbar profile="bg-transparent text-white dark:text-white dark:bg-transparent" />
       }
 
     </>

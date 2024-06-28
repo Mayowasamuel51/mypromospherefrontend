@@ -153,7 +153,7 @@ const SignUp = () => {
       }
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "overflow-hidden inset bg-white dark:bg-black rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-black dark:bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "overflow-hidden inset bg-white dark:bg-darkBg rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-darkBg dark:bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]"
         }
       >
         {/* sign-up center  */}
@@ -210,7 +210,7 @@ const SignUp = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white mt-1"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white dark:text-black mt-1"
                   }
                   placeholder="Full name"
                 />
@@ -228,7 +228,7 @@ const SignUp = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1"
                   }
                   placeholder="example@gmail.com"
                 />
@@ -246,7 +246,7 @@ const SignUp = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 "
                   }
                   placeholder="Enter password"
                 />
@@ -265,7 +265,7 @@ const SignUp = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white mt-1 "
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 "
                   }
                   placeholder="Confirm password"
                 />

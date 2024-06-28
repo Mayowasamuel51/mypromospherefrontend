@@ -297,7 +297,7 @@ const Video = () => {
                 id="categories"
                 name="categories"
                 {...register("categories", { required: true })}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 shadow appearance-none bg-slate-100 dark:bg-inputDark rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               >
                 {categories.map((option, index) => {
                   return (
@@ -335,16 +335,9 @@ const Video = () => {
                 ))}
               </div>
             </div>
-            {/* {4 - imageUpload.length > 0 && Array.from({ length: 4 - imageUpload.length }).map((_, index) => (
-                  <label key={index} htmlFor="dragOrDrop" className="cursor-pointer duration-300 hover:scale-110">
-                    <div className="w-[300px] h-[300px] md:w-[200px] md:h-[200px] rounded-md bg-slate-200 flex items-center justify-center">
-                      <FaPlus size={25} />
-                    </div>
-                  </label>
-                ))} */}
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 bg-slate-100 dark:bg-inputDark shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="productName"
                 name="productName"
                 {...register("productName", { required: true })}
@@ -355,7 +348,7 @@ const Video = () => {
 
             <div>
               <input
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="md:h-12 h-10 shadow appearance-none bg-slate-100 dark:bg-inputDark rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="price"
                 name="price"
                 type="text"
@@ -369,7 +362,7 @@ const Video = () => {
                 name="state"
                 id="state"
                 {...register("state", { required: true })}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 shadow appearance-none bg-slate-100 dark:bg-inputDark rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               >
                 <option value="">--Select your State--</option>
                 {data.States.map((state, i) => (
@@ -384,7 +377,7 @@ const Video = () => {
                 id="localGovernment"
                 name="localGovernment"
                 {...register("localGovernment", { required: true })}
-                className="md:h-12 h-10 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
+                className="md:h-12 h-10 shadow appearance-none bg-slate-100 dark:bg-inputDark rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               >
                 <option value="">--Select Local Government--</option>
                 {localGvt &&
@@ -397,7 +390,7 @@ const Video = () => {
             </div>
             <div>
               <textarea
-                className="resize-none md:h-20 h-16 shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="resize-none md:h-20 h-16 shadow appearance-none bg-slate-100 dark:bg-inputDark rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="description"
                 name="description"
                 type="text"
@@ -408,7 +401,7 @@ const Video = () => {
             {/* <p className="text-red pt-2" >{errors.description?.message}</p> */}
             <button
               type="sumbit"
-              className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md font-bold"
+              className="border border-purple bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold duration-300 hover:bg-transparent hover:text-purple"
             >
               Release Video Ad
             </button>

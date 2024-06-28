@@ -319,7 +319,7 @@ const Post = () => {
           <div className="flex flex-col gap-3">
             <Dropzone onDrop={acceptedFiles => dragOrClick(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
-                <section className="flex justify-center items-center border-2 border-[#3D217A] border-dashed rounded-2xl">
+                <section className="flex justify-center items-center border-2 border-purple border-dashed rounded-2xl">
                   <div {...getRootProps()}>
                     <input id="dragOrDrop" {...getInputProps()} />
                     <div className="text-center py-4">
@@ -437,7 +437,7 @@ const Post = () => {
 
             
           </div>
-          <button type="submit" className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md">
+          <button type="submit" className="bg-purple py-2 md:py-4 w-full text-white rounded-md">
             Post Normal Ad
           </button>
         </form>

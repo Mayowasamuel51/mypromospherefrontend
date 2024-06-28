@@ -2,11 +2,6 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-
-// import '@splidejs/react-splide/css';
-import '@splidejs/react-splide/css/skyblue';
-// import '@splidejs/react-splide/css/sea-green';
 import { useInView } from 'react-intersection-observer';
 import Navbar from "../../components/Navbar";
 import Feeds from "./components/feeds";
@@ -28,6 +23,10 @@ import { FiPlusCircle } from "react-icons/fi";
 import debounce from 'lodash.debounce';
 import FetchSearch from "../../hooks/fetchSearch";
 import { FaXmark } from "react-icons/fa6";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+// import '@splidejs/react-splide/css';
+import '@splidejs/react-splide/css/skyblue';
+// import '@splidejs/react-splide/css/sea-green';
 const api_gerenal = import.meta.env.VITE_GENERAL;
 
 const containerVariant = {
@@ -167,7 +166,7 @@ const FeedsHome = () => {
                 <Link to={`/login`}>
                   <div className="flex flex-col items-center gap-1">
                     <FiPlusCircle color="#3D217A" size={40} />
-                    <p className="underline text-[#3D217A] text-sm">Register Today</p>
+                    <p className="underline text-purple text-sm">Register Today</p>
                   </div>
                 </Link>
               </div>
@@ -179,7 +178,7 @@ const FeedsHome = () => {
               <div className="flex my-3 lg:my-3">
                 <ReactSearchAutocomplete
                   items={categories}
-                  className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 "
+                  className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 bg-white dark:bg-darkBg"
                   placeholder="Search by categories, service"
                   onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
@@ -193,82 +192,48 @@ const FeedsHome = () => {
               {modal &&
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
-                    <motion.div variants={divVariant} className="z-[9999999999] w-[90%] md:w-fit bg-white py-4 px-4 md:px-6 rounded-md flex flex-col md:flex-row items-center gap-4 relative">
-                      <FaXmark size={30} className="text-black absolute top-4 right-4" onClick={() => removeModal()} />
-                      {/* splider here */}
-                      <Splide hasTrack={false} option={{
+                    <motion.div variants={divVariant} className="relative">
+                      <FaXmark size={40} className="z-[99999999999] text-black dark:text-white absolute -top-10 -right-10" onClick={() => removeModal()} />
+                      <Splide options={{
                         type: 'slide',
-                        rewind: true,
+                        perPage: 2,
                         gap: "20px",
-                        perPage: FullScreen ? 2 : 1,
-                        arrows: false,
+                        rewind: true,
+                        arrows: searchResults.data.length > 2 ? true : false,
                         pagination: true,
                         snap: true,
-                        width: "400px",
-                      }}>
+                        breakpoints: {
+                          640: { width: "100vw" ,perPage: 1, arrows: searchResults.data.length > 1 ? true : false}
+                        },
+                      }} className="z-[9999999999] w-[80%] md:w-[750px] bg-white dark:bg-darkBg py-4 px-4 md:px-6 rounded-md">
+                        
                         {searchResults?.data.map((item) => (
-                          <div key={item.id}>
-                            <SplideTrack>
-                              <SplideSlide>
-                                <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
-                                  <div>
-                                    <Link to={`/feed/${item.id}`}>
-                                      <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
-                                    </Link>
-                                  </div>
-                                  <div className='flex items-center justify-between'>
-                                    <h1 className='font-semibold'>{item.productName}</h1>
-                                    <div className="flex items-center">
-                                      <TbCurrencyNaira size={20} />
-                                      <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                                    </div>
-                                  </div>
-                                  <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                                    <div className="flex items-center gap-2">
-                                      <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                                      {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                                      {!token && <p className="text-sm font-medium">{item.user_name}</p>}
-                                    </div>
-                                  </Link>
-                                </motion.div>
-                              </SplideSlide>
-                            </SplideTrack>
-                          </div>
+                          <SplideSlide key={item.id}>
+                            <motion.div variants={childVariant} key={item.id} className="flex flex-col gap-2 md:gap-4">
+                              <div>
+                                <Link to={`/feed/${item.id}`}>
+                                  <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="w-full rounded-md object-cover" />
+                                </Link>
+                              </div>
+                              <div className='flex items-center justify-between'>
+                                <h1 className='font-semibold'>{item.productName}</h1>
+                                <div className="flex items-center">
+                                  <TbCurrencyNaira size={20} />
+                                  <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
+                                </div>
+                              </div>
+                              <Link to={`/profile/user/${item.user_name}`} className="w-fit">
+                                <div className="flex items-center gap-2">
+                                  <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
+                                  {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
+                                  {!token && <p className="text-sm font-medium">{item.user_name}</p>}
+                                </div>
+                              </Link>
+                            </motion.div>
+                          </SplideSlide>
                         ))}
                       </Splide>
-                      {/* {searchResults?.data.map((item) => (
-                        <motion.div variants={childVariant} key={item.id} className="flex-1 flex flex-col gap-2 md:gap-4">
-                          <div>
-                            <Link to={`/feed/${item.id}`}>
-                              <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 200 }} className="w-full rounded-md object-cover" />
-                            </Link>
-                          </div>
-                          <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>{item.productName}</h1>
-                            <div className="flex items-center">
-                              <TbCurrencyNaira size={20} />
-                              <p className="text-sm">{(+item.price_range).toLocaleString()}</p>
-                            </div>
-                          </div>
-                          <Link to={`/profile/user/${item.user_name}`} className="w-fit">
-                            <div className="flex items-center gap-2">
-                              <img src={item.user_image === "null" ? anon : item.user_image} alt="user-profile-image" className="rounded-full w-8 md:w-10 aspect-square object-cover" />
-                              {token && <p className="text-sm font-medium">{item.user_id === token.id ? "me" : item.user_name}</p>}
-                              {!token && <p className="text-sm font-medium">{item.user_name}</p>}
-                            </div>
-                          </Link>
-                        </motion.div>
-                      ))} */}
-                    </motion.div>
-                  }
-
-                </motion.div>
-              }
-              {(!searchResults?.data && searchResults?.data?.length === 0) &&
-                <motion.div variants={containerVariant} initial="initial" animate="animate" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
-                  {(!searchResults?.data && searchResults?.data?.length === 0) &&
-                    <motion.div variants={divVariant} className="w-fit bg-white p-4 rounded-md z-[9999999999] shadow-md">
-                      <motion.p variants={childVariant}>No result Found!!</motion.p>
+                      <p className="text-base py-2 text-center text-white">{searchResults.data.length} {searchResults.data.length > 1 ? "Results" : "Result"} Found</p>
                     </motion.div>
                   }
                 </motion.div>

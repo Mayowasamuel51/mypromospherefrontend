@@ -331,13 +331,11 @@ const ProfileEdit = () => {
             </div>
           </article>
           <button type="submit"
-           className="bg-[#3D217A] py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2 text-xs md:text-base">
+           className="bg-purple py-2 px-2 md:py-3 md:px-4 text-white rounded-md my-2 text-xs md:text-base">
             Change Backgorund Image
           </button>
         </form>
-
         <hr className="my-4" />
-
         <form onSubmit={handleSubmit(formSubmit)}>
           <article className="flex items-center">
             <div>
@@ -371,8 +369,8 @@ const ProfileEdit = () => {
           </article>
           <div className="flex flex-col gap-5 my-4">
             <div className="">
-              <div>
-                <label htmlFor="About" className="font-medium my-2">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="About" className="font-light">
                   About
                 </label>{" "}
                 <textarea
@@ -380,16 +378,15 @@ const ProfileEdit = () => {
                   value={profileedit.aboutMe}
                   onChange={handleProfileEdit}
                   name="aboutMe"
-                  className="resize-none h-32 border border-[#3D217A] dark:border-slate-300 w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
+                  className="resize-none h-32 bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black "
                   placeholder="Tell Us About You"
-
                 ></textarea>
                 <p className='text-red  text-sm'>{errors.aboutMe?.message}</p>
               </div>
             </div>
             <div className="">
-              <div>
-                <label htmlFor="website" className="font-medium my-2">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="website" className="font-light">
                   Website
                 </label>{" "}
                 <input
@@ -398,43 +395,41 @@ const ProfileEdit = () => {
                   onChange={handleProfileEdit}
                   name="websiteName"
                   // value={token?.websiteName && token?.websiteName}
-                  className="border border-[#3D217A] dark:border-slate-300 w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                  className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-[100%] focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                   placeholder="Add a link to drive traffic to your site"
                 />
-                     <p className='text-red  text-sm'>{errors.websiteName?.message}</p>
+              {/* <p className='text-red  text-sm'>{errors.websiteName?.message}</p> */}
               </div>
             </div>
-            <div className="">
-              <label htmlFor="website" className="font-medium my-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="website" className="font-light">
                 Contact Phone one
-              </label>{" "}
+              </label>
               <input
                 value={profileedit.user_phone}
                 onChange={handleProfileEdit}
                 type="number"
                 name="user_phone"
-                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Contact number "/>
                {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
 
-            <div className="">
-              <label htmlFor="website" className="font-medium my-2 flex items-center gap-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="website" className="font-light flex items-center gap-2">
                 <p>Contact Two</p><div><FaWhatsapp  size={20} color="green"/></div>
-              </label>{" "}
+              </label>
               <input
                 value={ profileedit.whatapp }
                 onChange={handleProfileEdit}
                 type="number"
                 name="whatapp"
-                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your  Whatapp number"/>
             </div>
 
-
-
-            <div className="">
-              <label htmlFor="website" className="font-medium my-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="website" className="">
                 Brand Name 
               </label>{" "}
               <input
@@ -442,14 +437,14 @@ const ProfileEdit = () => {
                 onChange={handleProfileEdit}
                 type="text"
                 name="brandName"
-                className="border border-[#3D217A] dark:border-slate-300 w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
+                className="bg-slate-100 dark:bg-inputDark focus:outline focus:outline-2 focus:outline-purple dark:placeholder:text-smallTextDark w-full focus:outline-none p-3 text-[1rem] rounded-sm placeholder:text-black"
                 placeholder="Enter Your Brand Name"/>
-               <p className='text-red  text-sm'>{errors.brandName?.message}</p>
+               {/* <p className='text-red  text-sm'>{errors.brandName?.message}</p> */}
             </div>
           </div>
           <button
             type="submit"
-            className="bg-[#3D217A] py-2 md:py-4 w-full text-white rounded-md mt-2">
+            className="border border-purple bg-purple py-2 md:py-4 capitalize w-full text-white rounded-md mt-2 duration-300 hover:bg-transparent hover:text-purple">
             Update
           </button>
         </form>

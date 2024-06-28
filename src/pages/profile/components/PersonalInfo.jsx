@@ -51,7 +51,7 @@ const PersonalInfo = () => {
             <label htmlFor="birthDate" className='font-700'>BirthDate</label> <br />
             <input
               type="text"
-              className="border border-[#3D217A] mt-3 md:w-[80%] focus:outline-none p-2 text-[1rem] rounded-md w-full"
+              className="bg-slate-100 dark:bg-inputDark mt-3 w-full focus:outline-none p-2 text-[1rem] rounded-md"
               placeholder="MM-DD-YY"
             />
              {/* <Calendar onChange={onChange} value={value} /> */}
@@ -95,7 +95,7 @@ const PersonalInfo = () => {
                 id="countries"
                 name="countries"
                 placeholder="Select Country"
-                className="border border-[#3D217A] mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
+                className="bg-slate-100 dark:bg-inputDark dark:placeholder:text-smallTextDark mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
                 value={country}
                 onChange={changeCountry}
               >
@@ -127,7 +127,7 @@ const PersonalInfo = () => {
                 id="countries"
                 name="countries"
                 placeholder="Select Country"
-                className="border border-[#3D217A] mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
+                className="bg-slate-100 dark:bg-inputDark dark:placeholder:text-smallTextDark mt-3 focus:outline-none p-2 text-[1rem] rounded-md w-full"
                 value={language}
                 onChange={changeLanguage}
               >

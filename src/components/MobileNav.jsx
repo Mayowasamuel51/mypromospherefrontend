@@ -38,7 +38,7 @@ const divVariant = {
   exit: {
     opacity: 0,
     transition: {
-      when: "afterChildren"
+      when: "afterChildren", staggerChildren: 0.3
     }
   }
 }
@@ -55,13 +55,20 @@ const childVariant = {
       type: "spring"
     }
   },
+  exit : {
+    x: '-20px',
+    opacity: 0,
+    transition : {
+      duration: 0.3
+    }
+  }
 }
 
 export default function MobileNav({ handleToggle }) {
   const { token, LogOut } = useStateContext();
   return (
-    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`min-h-[100vh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white dark:bg-black dark:text-white`}>
-      <motion.div variants={divVariant} className="fixed inset-0 bg-white dark:bg-black dark:text-white bg-opacity-5 backdrop-blur-2xl flex flex-col min-h-[100vh] justify-between p-8">
+    <motion.div variants={MainCOntainerdivVariant} initial="initial" animate="animate" exit="exit" className={`min-h-[100vh] fixed exl:hidden inset-0 z-30 flex flex-col w-full bg-white dark:bg-black text-black dark:text-white`}>
+      <motion.div variants={divVariant} className="fixed inset-0 bg-white dark:bg-black text-black dark:text-white bg-opacity-5 backdrop-blur-2xl flex flex-col min-h-[100vh] justify-between p-8">
         <motion.div className="flex flex-col lg:gap-8 gap-5">
           {token &&
             <motion.div variants={childVariant}>
@@ -75,32 +82,32 @@ export default function MobileNav({ handleToggle }) {
             </motion.div>
           }
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/property" className="flex items-center gap-1">
-              <FaHouseChimneyWindow size={20} />
+            <Link to="/category/property" className="flex items-center gap-2">
+              <FaHouseChimneyWindow size={30} />
               <p>Property</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/apartment" className="flex items-center gap-1">
-              <MdApartment size={20} />
+            <Link to="/category/apartment" className="flex items-center gap-2">
+              <MdApartment size={30} />
               <p>Apartment</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/cars" className="flex items-center gap-1">
-              <FaCar size={20} />
+            <Link to="/category/cars" className="flex items-center gap-2">
+              <FaCar size={30} />
               <p>Cars</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/laptops" className="flex items-center gap-1">
-              <FaLaptop size={20} />
+            <Link to="/category/laptops" className="flex items-center gap-2">
+              <FaLaptop size={30} />
               <p>Laptops</p>
             </Link>
           </motion.div>
           <motion.div variants={childVariant} onClick={handleToggle}>
-            <Link to="/category/discount" className="flex items-center gap-1">
-              <MdDiscount size={20} />
+            <Link to="/category/discount" className="flex items-center gap-2">
+              <MdDiscount size={30} />
               <p>Products on Discount</p>
             </Link>
           </motion.div>

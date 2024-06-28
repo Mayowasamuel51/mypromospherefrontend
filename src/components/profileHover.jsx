@@ -52,10 +52,10 @@ const ProfileHover = ({ LogOut }) => {
     }
 
     return (
-        <motion.div onMouseEnter={mouseOver} onMouseLeave={mouseOut} className="relative text-black">
+        <motion.div onMouseEnter={mouseOver} onMouseLeave={mouseOut} className="relative text-black dark:text-darkGray">
             <motion.img whileHover={{scale: 0.90}} src={token?.profileImage || anon} alt="" className="w-10 aspect-square rounded-full cursor-pointer object-cover" />
             <AnimatePresence>
-                <motion.ul variants={ulVariant} animate={profileNav ? "animate" : "initial"} exit="exit" className={`${profileNav ? "visible" : "invisible"} flex flex-col gap-2 absolute right-[0px] bg-white w-[280px] p-4 rounded-md shadow-md`}>
+                <motion.ul variants={ulVariant} animate={profileNav ? "animate" : "initial"} exit="exit" className={`${profileNav ? "visible" : "invisible"} flex flex-col gap-2 absolute right-[0px] bg-white dark:bg-darkBg w-[280px] p-4 rounded-md shadow-md`}>
                     <motion.li variants={liVariant}>
                         <Link  to="/dashboard" className='group flex items-center gap-2 py-2 border-b-2'>
                             <img src={token?.profileImage ?? anon} alt="" className="group-hover:scale-125 duration-200 w-10 aspect-square rounded-full object-cover" />
@@ -69,7 +69,7 @@ const ProfileHover = ({ LogOut }) => {
                         <Link to={location.pathname === "/" ? 'dashboard/EditProfile' : '/dashboard/EditProfile'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">Edit Profile</Link>
                     </motion.li>
                     <motion.li  variants={liVariant}>
-                        <Link to={location.pathname === "/" ? 'dashboard/videos' : '/dashboard/videos'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">My Videos</Link>
+                        <Link to={location.pathname === "/" ? 'dashboard/video' : '/dashboard/video'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">My Videos</Link>
                     </motion.li>
                     <motion.div variants={liVariant} className="text-red flex items-center gap-2 cursor-pointer w-fit duration-200 hover:scale-110">
                         <FaPowerOff onClick={() => LogOut()} />

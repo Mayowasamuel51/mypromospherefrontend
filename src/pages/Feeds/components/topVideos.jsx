@@ -23,10 +23,10 @@ const TopVideos = () => {
     <>
       <section className="relative grid md:gap-4 md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
         {data?.data?.videos.length === 0 && 
-          <div className="min-h-screen md:col-span-2 lg:col-span-4 exl:col-span-4">
+          <div className="min-h-screen grid place-items-center md:col-span-2 lg:col-span-4 exl:col-span-4">
             <div className='flex flex-col gap-2 text-center'>
               <h1 className="text-semibold text-base md:text-xl">No Video Yet!!!</h1>
-              <Link to={`/dashboard/postVideo`} className="text-[#3D217A] underline font-medium">Be the First to Showcase Your Product</Link>
+              <Link to={`/dashboard/postVideo`} className="text-purple underline font-medium">Be the First to Showcase Your Product</Link>
             </div>
           </div>
         }
