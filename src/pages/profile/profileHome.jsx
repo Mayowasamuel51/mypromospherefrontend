@@ -59,7 +59,7 @@ const ProfileHome = () => {
             />
           </div>
         </article>
-        <div className="my-18">
+        <div className="">
           <article className="mt-16 md:mt-24 md:px-32 px-8 flex justify-between md:flex-row flex-col">
             <div className="flex flex-col gap-2">
               <div className="">
