@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import FetchUserposts from '../hooks/LoggedInUserPost';
 import UploadSkeleton from '../components/uploadSkeleton';
 import PropTypes from 'prop-types';
-
+const api_gerenal = import.meta.env.VITE_GENERAL;
 
 const Myuploads = ({ id }) => {
   const { token } = useStateContext();
@@ -21,7 +21,7 @@ const Myuploads = ({ id }) => {
             <Link to={`/feed/${item.id}`} key={item.id} className="">
               <div className="">
                 <div className=''>
-                  {item.titleImageurl ? <LazyLoadImage width={`100%`} effect='blur' style={{objectFit:"cover"}} src={`https://apimypromospheretest.com.ng/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[200px] object-cover rounded-md" /> : 'NOTHING TO SHOW '}
+                  {item.titleImageurl ? <LazyLoadImage width={`100%`} effect='blur' style={{objectFit:"cover"}} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" className="w-full h-[200px] object-cover rounded-md" /> : 'NOTHING TO SHOW '}
                 </div>
               </div>
             </Link>
