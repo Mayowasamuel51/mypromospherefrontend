@@ -6,23 +6,12 @@ import ReactPlayer from "react-player";
 import anon from "../assests/images/anon.png";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import VideoSkeleton from "../components/videoSkeleton";
-const api_load_v1 = import.meta.env.VITE_POSTSV_UPLOADS;
+import LoggedInUserVideo from "../hooks/LoggedInUserVideo";
 const api_thumbnails = import.meta.env.VITE_thumbnails;
 
 const MyVidoes = () => {
-  const { FullScreen } = useStateContext();
   const { token } = useStateContext();
-  const { data, isLoading, isPending, error } = useQuery({
-    queryKey: ["myVideos", token] ,
-    queryFn: ({queryKey}) =>
-      axios.get(`${api_load_v1}${queryKey[1]?.id}`, {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${queryKey[1]?.token}`,
-        },
-      }),
-  });
-
+  const { data, isLoading, isPending, error } = LoggedInUserVideo(token)
 
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
