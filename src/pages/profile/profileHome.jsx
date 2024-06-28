@@ -57,14 +57,14 @@ const ProfileHome = () => {
                     </article>
                     <article className="">
                         <div className="w-[80%] mx-auto">
-                            <div className="flex border-b border-black dark:border-grey my-4">
+                            <div className="flex items-center border-b border-black dark:border-grey my-4">
                                 <div className="flex-1 text-center">
-                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple py-3" : "text-black dark:text-mainTextDark py-3"}>
+                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple py-3 block" : "text-black dark:text-mainTextDark py-3 block"}>
                                         <p>Posts</p>
                                     </NavLink>
                                 </div>
                                 <div className="flex-1 text-center">
-                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple py-3" : "text-black dark:text-mainTextDark py-3"}>
+                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple py-3 block" : "text-black dark:text-mainTextDark py-3 block"}>
                                         <p>Videos</p>
                                     </NavLink>
                                 </div>
