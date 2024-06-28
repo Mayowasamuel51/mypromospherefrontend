@@ -83,7 +83,7 @@ function Dashboard() {
 
   if (!token) return <Navigate to="/" />;
   function show() {
-    toast.error("share your link to your friend , customer , family ", {
+    toast.error("Promote and share your link with your friends, customers, and family", {
       duration: 3000,
     });
   }
@@ -238,7 +238,7 @@ function Dashboard() {
                     className="text-black dark:text-mainTextDark"
                   />
                   <p className="text-center  dark:text-mainTextDark">
-                    share Your link
+                  Promote link
                   </p>
                 </Clipboard>
 

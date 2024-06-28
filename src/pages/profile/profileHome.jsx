@@ -19,21 +19,21 @@ import { useStateContext } from "../../contexts/ContextProvider";
 const api = import.meta.env.VITE_HOME;
 
 const ProfileHome = () => {
-    let location = useLocation();
+  let location = useLocation();
   const { token } = useStateContext();
   const { pathname } = useLocation();
   const { user_name } = useParams();
   const { data } = FetchUser(user_name);
   console.log(data);
   function show() {
-    toast.error("share your link to your friend , customer , family ", {
+    toast.error("Promote and share link with your friends, customers, and family ", {
       duration: 3000,
     });
   }
   const [promote, setPromote] = useState(
     `${api}/profile/user${location.pathname.slice(13)}`
   );
-  console.log(location.pathname.slice(14))
+  console.log(location.pathname.slice(14));
   return (
     <>
       <Navbar profile="bg-transparent text-white dark:text-white dark:bg-transparent" />
@@ -83,8 +83,8 @@ const ProfileHome = () => {
                       size={20}
                       className="text-black dark:text-mainTextDark"
                     />
-                    <p className="text-center  dark:text-mainTextDark">
-                      share Your link
+                    <p className="text-center  dark:text-mainTextDark font-bold">
+                    Copy  Promote link
                     </p>
                   </Clipboard>
 
