@@ -26,7 +26,7 @@ const MyVidoes = () => {
 
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
-      {error?.response?.status === 404 && <h1 className='text-center col-span-2 md:col-span-3 lg:col-span-4 my-2'>You have not made any post Yet!</h1>}
+      {error?.response?.status === 404 && <h1 className='text-center md:col-span-2 lg:col-span-3 exl:col-span-4 my-2'>You have not made any post Yet!</h1>}
       {(isLoading || isPending) && (
         <VideoSkeleton posts={4} />
       )}
