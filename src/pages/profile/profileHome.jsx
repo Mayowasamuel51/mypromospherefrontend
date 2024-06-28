@@ -74,14 +74,14 @@ const ProfileHome = () => {
                   <Clipboard
                     className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
                     data-clipboard-text={promote}
-                    button-title="Promote you service with your link"
+                    button-title="Promote this users service with their link"
                     onSuccess={show}
                   >
                     <FaShare
                       size={20}
                       className="text-black dark:text-mainTextDark"
                     />
-                    <p className="text-center  dark:text-mainTextDark font-bold">
+                    <p className="text-center dark:text-mainTextDark md:text-base text-sm">
                       Copy Promote link
                     </p>
                   </Clipboard>
