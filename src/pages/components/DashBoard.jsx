@@ -86,7 +86,7 @@ function Dashboard() {
       duration: 3000,
     });
   }
-  const [promote,setPromote]= useState(`http://localhost:3000/profile/user/${token?.user_name}`)
+  const [promote,setPromote]= useState(`https://mypromospherefrontend.vercel.app/profile/user/${token?.user_name}`)
   console.log(location.pathname)
   return (
     <>
