@@ -11,12 +11,12 @@ const api_thumbnails = import.meta.env.VITE_thumbnails;
 
 const MyVidoes = () => {
   const { token } = useStateContext();
-  const { data, isLoading, isPending, error } = LoggedInUserVideo(token)
+  const { data, isLoading, error } = LoggedInUserVideo(token)
 
   return (
     <section className="relative grid md:gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-10 py-4">
-      {error?.response?.status === 404 && <h1 className='text-center md:col-span-2 lg:col-span-3 exl:col-span-4 my-2'>You have not made any post Yet!</h1>}
-      {(isLoading || isPending) && (
+      {(error?.response?.status === 404 && !isLoading) && <h1 className='text-center md:col-span-2 lg:col-span-3 exl:col-span-4 my-2'>You have not made any post Yet!</h1>}
+      {(isLoading) && (
         <VideoSkeleton posts={4} />
       )}
       {(data?.data.posts && !isLoading) && data?.data.posts.map((video) => (
