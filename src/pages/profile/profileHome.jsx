@@ -56,7 +56,7 @@ const ProfileHome = () => {
                         </div>
                     </article>
                     <article className="">
-                        <div className="flex items-centerr ">
+                        <div className="">
                             <div className="flex border-b border-black dark:border-grey my-2">
                                 <div className="flex-1">
                                     <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple  rounded-md z-10" : "text-black dark:text-mainTextDark"}>
