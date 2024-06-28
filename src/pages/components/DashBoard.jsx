@@ -67,7 +67,7 @@ const childVariant = {
 };
 
 function Dashboard() {
-    let location = useLocation();
+  let location = useLocation();
   const { pathname } = useLocation();
   const { token } = useStateContext();
   const [hidden, setHidden] = useState(true);
@@ -81,14 +81,15 @@ function Dashboard() {
     }
   });
 
-  if (!token) return <Navigate to="/" />;
+
   function show() {
     toast.error("Promote and share your link with your friends, customers, and family", {
       duration: 3000,
     });
   }
-  const [promote,setPromote]= useState(`${api}/profile/user/${token?.user_name}`)
-  console.log(location.pathname)
+  const [promote] = useState(`${api}/profile/user/${token?.user_name}`)
+
+  if (!token) return <Navigate to="/" />;
   return (
     <>
       <DashBoardNav />
@@ -112,17 +113,26 @@ function Dashboard() {
                   className="w-[40px] aspect-square rounded-full object-cover object-center"
                 />
                 <h1 className="font-medium text-sm capitalize md:block hidden">
-                {token ? `${token["user_name"]}` : "Anonymous"}
+                  {token ? `${token["user_name"]}` : "Anonymous"}
                 </h1>
                 <p className="text-xs text-slate-400 md:block hidden">
-                {token ? `${token["user"]}` : "Anonymous"}
+                  {token ? `${token["user"]}` : "Anonymous"}
                 </p>
               </motion.div>
               <motion.div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
                 <motion.div variants={childVariant}>
                   <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                    <FaShare size={20} className="text-white md:text-purple" />
-                    <p className="text-center md:block hidden">share</p>
+                    <Clipboard
+                      className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
+                      data-clipboard-text={promote}
+                      button-title="Promote you service with your link"
+                      onSuccess={show}
+                    >
+                      <FaShare
+                        size={20}
+                        className="text-white md:text-purple"
+                      />
+                    </Clipboard>
                   </button>
                 </motion.div>
                 <motion.div variants={childVariant}>
@@ -225,8 +235,7 @@ function Dashboard() {
                   {token ? `${token["user"]}` : "Anonymous"}
                 </p>
               </div>
-              <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
-                {/* <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"> */}
+              <div className="">
                 <Clipboard
                   className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
                   data-clipboard-text={promote}
@@ -238,18 +247,9 @@ function Dashboard() {
                     className="text-black dark:text-mainTextDark"
                   />
                   <p className="text-center  dark:text-mainTextDark">
-                  Promote link
+                    Copy profile link
                   </p>
                 </Clipboard>
-
-                {/* <Clipboard  className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
-                    data-clipboard-text="you are my promote link "
-                    button-title="I'm a tooltip"
-                    onSuccess={show}
-                  >
-                    Share your promote Link
-                  </Clipboard> */}
-                {/* </button> */}
                 <NavLink
                   to={"profileEdit"}
                   className={({ isActive }) =>
