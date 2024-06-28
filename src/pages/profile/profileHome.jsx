@@ -66,6 +66,7 @@ const ProfileHome = () => {
                 <h1 className="font-700 md:text-2xl text text-lg capitalize dark:text-mainTextDark">
                   {data?.data?.data[0]?.name ||
                     data?.data?.data[0]?.user_name ||
+                    user_name ||
                     "No Name"}
                 </h1>
 
