@@ -70,7 +70,7 @@ const ProfileHome = () => {
                     "No Name"}
                 </h1>
 
-                <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
+                <div className="">
                   <Clipboard
                     className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
                     data-clipboard-text={promote}
@@ -103,7 +103,7 @@ const ProfileHome = () => {
             </div>
             <div className="flex flex-col gap-2">
               <h1 className="text-mainText-bg">About me</h1>
-              <p className="rounded-md p-2  dark:bg-darkBg text-smallTextDark">
+              <p className="rounded-md p-2 bg-[#dcdcdc] dark:bg-darkBg text-smallTextDark">
                 {data?.data?.data[0]?.aboutMe ?? "No about me"}
               </p>
             </div>
