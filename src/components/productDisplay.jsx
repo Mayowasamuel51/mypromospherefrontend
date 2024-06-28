@@ -19,7 +19,6 @@ const ProductDisplay = ({ item, other_images }) => {
                 <Splide options={{
                     type: 'slide',
                     focus: 1,
-                    start: 1,
                     gap: "20px",
                     perPage: 1,
                     arrows: false,
