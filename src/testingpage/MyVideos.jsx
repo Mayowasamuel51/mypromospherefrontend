@@ -1,7 +1,5 @@
 import { useStateContext } from "../contexts/ContextProvider";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import ReactPlayer from "react-player";
 import anon from "../assests/images/anon.png";
 import { FaRegCirclePlay } from "react-icons/fa6";
