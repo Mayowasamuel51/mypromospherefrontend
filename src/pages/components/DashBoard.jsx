@@ -20,6 +20,7 @@ import Clipboard from "react-clipboard.js";
 import { useQuery } from "@tanstack/react-query";
 
 
+const api = import.meta.env.VITE_HOME;
 const controlsVariant = {
   initial: {
     opacity: 0,
@@ -86,7 +87,7 @@ function Dashboard() {
       duration: 3000,
     });
   }
-  const [promote,setPromote]= useState(`https://mypromospherefrontend.vercel.app/profile/user/${token?.user_name}`)
+  const [promote,setPromote]= useState(`${api}/profile/user/${token?.user_name}`)
   console.log(location.pathname)
   return (
     <>

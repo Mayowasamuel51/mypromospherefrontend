@@ -12,7 +12,10 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaHeart } from "react-icons/fa";
 import FeedBack from "./components/feedBack"
+import { toast } from "sonner";
+import Clipboard from "react-clipboard.js";
 
+const api = import.meta.env.VITE_GENERAL;
 const containerVariant = {
     initial: {
         opacity: 0,
@@ -73,7 +76,7 @@ const SingleFeedPage = () => {
 
     useEffect(() => {
         if (data?.data?.data?.titleImageurl) {
-            setImageUrl(`https://apimypromospheretest.com.ng/public/storage/${data.data.data.titleImageurl.slice(7)}`);
+            setImageUrl(`${api}/public/storage/${data.data.data.titleImageurl.slice(7)}`);
         }
     }, [data]);
 
@@ -127,6 +130,7 @@ const SingleFeedPage = () => {
                             <div>
                                 <p>{data?.data?.data.user_name}</p>
                             </div>
+                 
                         </Link>
                         <p className='text-purple font-bold text-lg'>{data?.data?.data?.categories}</p>
                         <p className='font-bold text-lg'>{data?.data?.data?.productName || "This should be the product name"}</p>
