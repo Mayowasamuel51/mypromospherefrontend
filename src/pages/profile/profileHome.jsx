@@ -5,10 +5,8 @@ import anon from "../../assests/images/anon.png";
 import { BsTelephone } from "react-icons/bs";
 import { BsGlobe } from "react-icons/bs";
 import FetchUser from "../../hooks/fetchUser";
-import { FaShare, FaVideo } from "react-icons/fa";
+import { FaShare } from "react-icons/fa";
 import { useState } from "react";
-import { IoIosSettings } from "react-icons/io";
-import { FaEdit } from "react-icons/fa";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css'
@@ -30,7 +28,7 @@ const ProfileHome = () => {
       duration: 3000,
     });
   }
-  const [promote, setPromote] = useState(
+  const [promote] = useState(
     `${api}/profile/user${location.pathname.slice(13)}`
   );
   console.log(location.pathname.slice(14));
@@ -72,7 +70,6 @@ const ProfileHome = () => {
                 </h1>
 
                 <div className="flex items-center md:items-start flex-col md:gap-6 gap-4 justify-center">
-                  {/* <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"> */}
                   <Clipboard
                     className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
                     data-clipboard-text={promote}
@@ -84,44 +81,9 @@ const ProfileHome = () => {
                       className="text-black dark:text-mainTextDark"
                     />
                     <p className="text-center  dark:text-mainTextDark font-bold">
-                    Copy  Promote link
+                      Copy Promote link
                     </p>
                   </Clipboard>
-
-                  {/* <Clipboard  className="flex items-center gap-2 duration-200 rounded-md cursor-pointer"
-                    data-clipboard-text="you are my promote link "
-                    button-title="I'm a tooltip"
-                    onSuccess={show}
-                  >
-                    Share your promote Link
-                  </Clipboard> */}
-                  {/* </button> */}
-                  <NavLink
-                    to={"profileEdit"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "md:text-purple"
-                        : "text-white dark:text-mainTextDark md:text-black"
-                    }
-                  >
-                    <button className="flex items-center gap-2 duration-200rounded-md cursor-pointer">
-                      <IoIosSettings size={20} className="" />
-                      <p className="text-center ">Edit profile</p>
-                    </button>
-                  </NavLink>
-                  <NavLink
-                    to={"personal-Info"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "md:text-purple"
-                        : "text-white dark:text-mainTextDark md:text-black"
-                    }
-                  >
-                    <button className="flex items-center gap-2 duration-200 rounded-md cursor-pointer">
-                      <FaEdit size={20} className="" />
-                      <p className="text-center ">Personal Info</p>
-                    </button>
-                  </NavLink>
                 </div>
               </div>
               <div className="flex items-center gap-x-2">
@@ -140,7 +102,7 @@ const ProfileHome = () => {
             </div>
             <div className="flex flex-col gap-2">
               <h1 className="text-mainText-bg">About me</h1>
-              <p className="rounded-md p-2 bg-darkBg text-smallTextDark">
+              <p className="rounded-md p-2  dark:bg-darkBg text-smallTextDark">
                 {data?.data?.data[0]?.aboutMe ?? "No about me"}
               </p>
             </div>
