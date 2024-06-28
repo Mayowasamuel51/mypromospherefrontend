@@ -56,15 +56,15 @@ const ProfileHome = () => {
                         </div>
                     </article>
                     <article className="">
-                        <div className="">
+                        <div className="w-[80%] mx-auto">
                             <div className="flex border-b border-black dark:border-grey my-2">
-                                <div className="flex-1">
-                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple  rounded-md z-10" : "text-black dark:text-mainTextDark"}>
+                                <div className="flex-1 text-center">
+                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple rounded-md z-10 py-3" : "text-black dark:text-mainTextDark py-3"}>
                                         <p>Posts</p>
                                     </NavLink>
                                 </div>
-                                <div className="flex-1">
-                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple rounded-md z-10" : "text-black dark:text-mainTextDark dark:border-white"}>
+                                <div className="flex-1 text-center">
+                                    <NavLink to={`/profile/user/${user_name}/videos`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}/videos` ? "text-purple rounded-md z-10 py-3" : "text-black dark:text-mainTextDark dark:border-white py-3"}>
                                         <p>Videos</p>
                                     </NavLink>
                                 </div>
