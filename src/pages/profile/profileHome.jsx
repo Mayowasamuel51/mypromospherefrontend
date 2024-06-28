@@ -59,7 +59,7 @@ const ProfileHome = () => {
                         <div className="w-[80%] mx-auto">
                             <div className="profile-links flex items-center border-b border-black dark:border-grey my-4">
                                 <div className="flex-1 text-center">
-                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple py-3 block outline after" : "text-black dark:text-mainTextDark py-3 block"}>
+                                    <NavLink to={`/profile/user/${user_name}`} className={({ isActive }) => isActive && pathname === `/profile/user/${user_name}` ? "text-purple py-3 block after" : "text-black dark:text-mainTextDark py-3 block"}>
                                         <p>Posts</p>
                                     </NavLink>
                                 </div>
