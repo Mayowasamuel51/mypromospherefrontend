@@ -14,7 +14,8 @@ const ProductDisplay = ({item, other_images}) => {
     const { token } = useStateContext()
     return (
         <div key={item.id} className="product-display flex flex-col gap-2 md:gap-4">
-            {other_images?.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
+            {other_images && 
+            other_images?.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                 <Splide options={{
                     type: 'slide',
                     focus: 1,

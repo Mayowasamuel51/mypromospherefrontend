@@ -8,8 +8,6 @@ import FetchUser from "../../hooks/fetchUser";
 import { FaShare } from "react-icons/fa";
 import { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-// import Skeleton from 'react-loading-skeleton';
-// import 'react-loading-skeleton/dist/skeleton.css'
 import { toast } from "sonner";
 import Clipboard from "react-clipboard.js";
 import { useStateContext } from "../../contexts/ContextProvider";
@@ -23,15 +21,16 @@ const ProfileHome = () => {
   const { user_name } = useParams();
   const { data } = FetchUser(user_name);
   console.log(data);
+
   function show() {
-    toast.error("Promote and share link with your friends, customers, and family ", {
+    toast.error(`Link Copied to ClipBoard. \nPromote and share link with your friends, customers, and family `, {
       duration: 3000,
     });
   }
   const [promote] = useState(
     `${api}/profile/user${location.pathname.slice(13)}`
   );
-  console.log(location.pathname.slice(14));
+
   return (
     <>
       <Navbar profile="bg-transparent text-white dark:text-white dark:bg-transparent" />
