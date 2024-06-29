@@ -106,7 +106,7 @@ const Login = () => {
         // setUser(data.data)
         setLoginUrl(data.url)
         // navigate("/")
-        console.log(data)
+        // console.log(data)
       })
       .catch((error) => console.error(error));
   }, []);
