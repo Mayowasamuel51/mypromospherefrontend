@@ -7,10 +7,10 @@ function PostButtons() {
     <div className="my-4 shadow-md md:p-4 w-fit mx-auto overflow-hidden bg-[#F0D8DD]">
       <div className="flex justify-center items-center md:gap-10 font-medium">
         <Link to="/dashboard/postAd">
-          <motion.button whileTap={{ scale: 1.05 }} className={`px-3 md:px-6 py-4 md:py-4 md:text-base text-xs ${location.pathname === "/dashboard/postAd" && "bg-[#EC6A87] text-white"}`}>Post a Top Ad</motion.button>
+          <motion.button whileTap={{ scale: 1.05 }} className={`px-3 md:px-6 py-4 md:py-4 md:text-base text-xs ${location.pathname === "/dashboard/postAd" && "bg-[#EC6A87] text-white"}`}>Normal Upload</motion.button>
         </Link>
         <Link to="/dashboard/postVideo">
-          <motion.button whileTap={{ scale: 1.05 }} className={`px-3 md:px-6 py-4 md:py-4 text-black md:text-base text-xs ${location.pathname === "/dashboard/postVideo" && "bg-[#EC6A87] text-white"}`}>Post a Top Ad Video</motion.button>
+          <motion.button whileTap={{ scale: 1.05 }} className={`px-3 md:px-6 py-4 md:py-4 text-black md:text-base text-xs ${location.pathname === "/dashboard/postVideo" && "bg-[#EC6A87] text-white"}`}> Top Ad </motion.button>
         </Link>
       </div>
     </div>

@@ -63,7 +63,7 @@ const Video = () => {
   };
   const onChangecategories = (e) => {
     setCategoriesValues(e.target.value);
-    console.log(CategoriesValues);
+    // console.log(CategoriesValues);
   };
   const handleChange = (event) => {
     const { name, value, type, checked, files } = event.target;
@@ -78,10 +78,10 @@ const Video = () => {
       "state_changed",
       (snapshot) => {
         let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(progress);
+        // console.log(progress);
       },
       (error) => {
-        console.log("error :(");
+        // console.log("error :(");
       },
       () => {
         console.log("success!!");
@@ -235,7 +235,7 @@ const Video = () => {
           formData.append('whatapp', profile?.data?.data[0].whatapp)
           formData.append('user_phone', profile?.data?.data[0].user_phone)
 
-          console.log(data.picture[0]);
+          // console.log(data.picture[0]);
           // formData.append("local_gov",data.local_gov);
           // formData.append("discount",data.discount);
           // formData.append("user_image",data.user_image)
@@ -248,15 +248,18 @@ const Video = () => {
             })
             .then((res) => {
               if (res.status === 200) {
-                console.log("success!!");
-                console.log("worked in database for vidoes ");
-                console.log(CategoriesValues);
+                // console.log("success!!");
+                // console.log("worked in database for vidoes ");
+                // console.log(CategoriesValues);
+                toast.success("You have just made a post");
                 return res.data.item;
               } else if (res.status === 500 || res.status === 401) {
-                console.log(res.data.message);
+                // console.log(res.data.message);
               }
             })
-            .catch((err) => console.log(err.message));
+            .catch((err) =>{
+              //  console.log(err.message)
+        });
         });
       }
     );
@@ -403,7 +406,7 @@ const Video = () => {
               type="sumbit"
               className="border border-purple bg-purple py-2 md:py-4 w-full text-white rounded-md font-bold duration-300 hover:bg-transparent hover:text-purple"
             >
-              Release Video Ad
+                 Promote your Video
             </button>
           </div>
         </form>

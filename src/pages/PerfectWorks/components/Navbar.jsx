@@ -18,7 +18,7 @@ export default function Navbar() {
         <img src={logo} alt="logo" className="w-10 md:w-16 exl:w-20" />
         <h1 className=" text-sm font-bold text-white md:text-lg exl:text-xl">
           MyPromoSphere
-        </h1>
+      </h1>
       </Link>
 
       <div className="hidden sm:block flex items-center gap-x-3">

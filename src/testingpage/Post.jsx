@@ -241,11 +241,11 @@ const Post = () => {
                 name: image.name,
               });
               selectedFilesArray.forEach((image) => {
-                console.log(image);
+                // console.log(image);
                 if (newImages.length < 5) {
                   setImageUpload(newImages);
-                  console.log("new image", newImages)
-                  console.log("image upload", imageUpload)
+                  // console.log("new image", newImages)
+                  // console.log("image upload", imageUpload)
                   return {
                     ...prevState,
                     images: selectedFilesArray,
@@ -363,12 +363,15 @@ const Post = () => {
                   .then((res) => {
                     if (res.status === 200) {
                       console.log("worked with second ...................");
-                      console.log(res.data.item);
+                      // console.log(res.data.item);
                     } else if (res.status === 500 || res.status === 401) {
-                      console.log(res.data.message);
+                      // console.log(res.data.message);
                     }
                   })
-                  .catch((err) => console.log(err.message));
+                  .catch((err) =>{ 
+                    // console.log(err.message)
+
+                  });
               });
             }
           );
@@ -377,7 +380,7 @@ const Post = () => {
 
         // const second_repsone = await axios.post();
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
     onSuccess: () => {
@@ -403,7 +406,7 @@ const Post = () => {
       setImageUpload([]);
     },
     onError: (error) => {
-      console.log(error);
+      // console.log(error);
       toast.error("Failed to upload post");
     },
   });
@@ -455,10 +458,10 @@ const Post = () => {
     const formData = new FormData();
     uploadData?.images.forEach((image, index) => {
       if (index === 0) {
-        console.log(image.name);
+        // console.log(image.name);
         formData.append(`titleImageurl`, image);
       } else {
-        console.log(image);
+        // console.log(image);
       }
     });
     formData.append('user_name', token?.user_name)

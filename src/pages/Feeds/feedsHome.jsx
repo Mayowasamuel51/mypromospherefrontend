@@ -179,7 +179,7 @@ const FeedsHome = () => {
                 <ReactSearchAutocomplete
                   items={categories}
                   className="z-[20] w-full lg:w-[80%] md:border-none focus:shadow-none h-10 lg:h-12 bg-white dark:bg-darkBg"
-                  placeholder="Search by categories, service"
+                  placeholder="Search by categories, product Name"
                   onSearch={handleOnSearch}
                   onSelect={handleOnSelect}
                 />

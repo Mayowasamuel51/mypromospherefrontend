@@ -47,7 +47,7 @@ import Error from "./error.jsx";
 import MyVideos from "./testingpage/MyVideos.jsx";
 import ProfileEdit from "./pages/profile/components/ProfileEdit.jsx";
 import PersonalInfo from "./pages/profile/components/PersonalInfo.jsx";
-import SearchCategories from "./pages/categories/searchCategories.jsx";
+// import SearchCategories from "./pages/categories/searchCategories.jsx";
 import Copy from "./testingpage/Copy.jsx";
 
 
@@ -71,10 +71,10 @@ const router = createBrowserRouter([
     path: "/category/:category",
     element: <Suspense fallback={<Loader />}><Categories /></Suspense>,
   },
-  {
-    path: "/search/:category",
-    element: <SearchCategories />
-  },
+  // {
+  //   path: "/search/:category",
+  //   element: <SearchCategories />
+  // },
   {
     path: "feed/:id",
     element: (

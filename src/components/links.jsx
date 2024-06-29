@@ -44,7 +44,7 @@ const Links = ({hidden, bg}) => {
                 </AnimatePresence>
             </div>
             <NavLink to="/category/discount" className={({isActive})=> isActive ? "font-black nav-active px-2 py-1.5 text-white dark:text-white" : "nav-active px-2 py-1.5 text-white dark:text-white"}>Products on Discount</NavLink>
-            <NavLink className={`nav-active px-2 py-1.5 text-white dark:text-white`} to="/category/Kids_Baby_dresses">Baby Products</NavLink>
+            <NavLink className={`nav-active px-2 py-1.5 text-white dark:text-white`} to="/category/Vehicles_Upgrade">Vehicles Upgrade</NavLink>
         </ul>
     )
 }
@@ -176,11 +176,11 @@ const TABS = [
         Component: SubHot,
         icon: <FaChevronDown />
     },
-    {
-        title: "Fashion",
-        Component: SubFashion,
-        icon: <FaChevronDown />
-    }
+    // {
+    //     title: "Fashion",
+    //     Component: SubFashion,
+    //     icon: <FaChevronDown />
+    // }
 ].map((n, idx) => ({ ...n, id: idx + 1 }));
 
 Links.propTypes = {

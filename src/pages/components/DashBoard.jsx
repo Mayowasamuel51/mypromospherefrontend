@@ -247,7 +247,7 @@ function Dashboard() {
                     className="text-black dark:text-mainTextDark"
                   />
                   <p className="text-center  dark:text-mainTextDark">
-                    Copy profile link
+                    Copy your promote link
                   </p>
                 </Clipboard>
                 <NavLink
@@ -316,7 +316,7 @@ function Dashboard() {
             >
               <button className="cursor-pointer flex items-center gap-2">
                 <FiPlusSquare size={20} />
-                <p className="">Post an Ad</p>
+                <p className="font-bold text-lg">Post an Ad</p>
               </button>
             </NavLink>
           </article>

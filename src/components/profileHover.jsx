@@ -65,9 +65,9 @@ const ProfileHover = ({ LogOut }) => {
                             </div>
                         </Link>
                     </motion.li>
-                    <motion.li  variants={liVariant}>
+                    {/* <motion.li  variants={liVariant}>
                         <Link to={location.pathname === "/" ? 'dashboard/EditProfile' : '/dashboard/EditProfile'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">Edit Profile</Link>
-                    </motion.li>
+                    </motion.li> */}
                     <motion.li  variants={liVariant}>
                         <Link to={location.pathname === "/" ? 'dashboard/video' : '/dashboard/video'} className="w-fit cursor-pointer font-['Poppins'] text-base font-medium">My Videos</Link>
                     </motion.li>

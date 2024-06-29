@@ -42,15 +42,22 @@ export default function Footer() {
             Call us today at
           </p>
           <p className=" text-purple font-['Roboto'] font-medium lg:leading-8">
-            +234-908-347-2391
+            +234-816-058-7687
           </p>
-          <Link>
+
+          <p className=" text-white font-['Roboto'] font-medium lg:leading-8">
+            Email us at 
+          </p>
+          <p className=" text-purple font-['Roboto'] font-medium lg:leading-8">
+          mypromosphere@gmail.com
+          </p>
+          {/* <Link>
             <img src={logo} alt="logo" className=" w-16 " />
-          </Link>
+          </Link> */}
         </div>
 
         <div className=" flex flex-col gap-y-5">
-          <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
+          {/* <h2 className=" text-white font-['Inter'] text-xl font-semibold lg:text-2xl">
             Fashion
           </h2>
           <ul className=" flex flex-col gap-y-2">
@@ -65,7 +72,7 @@ export default function Footer() {
                 </Link>
               );
             })}
-          </ul>
+          </ul> */}
         </div>
 
         <div className=" flex flex-col gap-y-5">

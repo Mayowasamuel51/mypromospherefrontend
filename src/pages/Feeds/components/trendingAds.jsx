@@ -18,7 +18,7 @@ const TrendingAds = () => {
             }
             {data?.data.normalads.filter((item) => item.categories === "Apartment").length > 0 &&
                 <div className="flex items-center gap-2 lg:my-10 my-5">
-                    <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl dark:text-mainTextDark'>Find Your Dream Property: Discover Homes Tailored to Your Lifestyle!</h1>
+                    <h1 className='font-medium md:font-bold text-lg lg:text-xl large:text-3xl dark:text-mainTextDark'>Find Your Perfect Home: Modern Apartments for Every Lifestyle</h1>
                 </div>
             }
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
@@ -27,31 +27,31 @@ const TrendingAds = () => {
                     <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Fashion").length > 0 &&
+            {data?.data.normalads.filter((item) => item.categories === "Luxury-apartment").length > 0 &&
                 <div className="flex items-center gap-2 lg:my-10 my-5">
-                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl dark:text-mainTextDark'>Always Stay in Vogue</h1>
+                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl dark:text-mainTextDark'>Live in Elegance: Discover Your Dream Luxury Apartment Today</h1>
                 </div>
             }
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
-                {data?.data.normalads.filter((item) => item.categories === "Fashion").map((item) => (
+                {data?.data.normalads.filter((item) => item.categories === "Luxury-apartment").map((item) => (
                     <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
-            {data?.data.normalads.filter((item) => item.categories === "Skincare").length > 0 &&
+            {data?.data.normalads.filter((item) => item.categories === "Vehicles Upgrade").length > 0 &&
                 <div className="flex items-center gap-2 lg:my-10 my-5">
-                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl dark:text-mainTextDark'>Unlock Your Best Skin: Elevate Your Routine with Premium Skincare!</h1>
+                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl dark:text-mainTextDark'>Drive in Style: Upgrade to the Vehicle of Your Dreams</h1>
                 </div>
             }
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
                 {isLoading && <PostsSkeleton posts={4} />}
-                {data?.data.normalads.filter((item) => item.categories === "Skincare").map((item) => (
+                {data?.data.normalads.filter((item) => item.categories === "Vehicles Upgrade").map((item) => (
                     <ProductDisplay key={item.id} item={item} other_images={data?.data?.other_images} />
                 ))}
             </section>
             {data?.data.normalads.filter((item) => item.categories === "Laptops").length > 0 &&
                 <div className="flex items-center gap-2 lg:my-10 my-5">
-                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl dark:text-mainTextDark'>Unleash Your Productivity: Explore the Latest Laptop Innovations!</h1>
+                    <h1 className='font-medium md:font-bold text-lg lg:text-2xl exl:text-3xl dark:text-mainTextDark'>Unleash Power and Performance: Get the Latest Premium Laptops!</h1>
                 </div>
             }
             <section className="relative grid md:grid-cols-2 lg:grid-cols-3 exl:grid-cols-4 gap-6 min-h-full">
