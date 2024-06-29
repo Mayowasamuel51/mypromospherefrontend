@@ -24,7 +24,9 @@ function GoogleCallback() {
             toast.success("successfully Logged In")
 
 
-        }).catch((err)=>console.log(err.message))
+        }).catch((err)=>{
+            // console.log(err.message)}
+    })
     },[])
     
 }
