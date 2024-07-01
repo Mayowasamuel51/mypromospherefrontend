@@ -156,7 +156,6 @@ const SignUp = () => {
         className={toggleLight ? "overflow-hidden bg-white dark:bg-darkBg rounded-tl-[70px] rounded-tr-[70px] md:rounded-sm bigLg:rounded-3xl flex w-full lg:w-[60%]" : "overflow-hidden bg-darkBg dark:bg-white rounded-tl-[70px] rounded-tr-[70px] md:rounded-sm bigLg:rounded-3xl flex w-full lg:w-[60%]"
         }
       >
-        {/* sign-up center  */}
         <div className='flex-[4] py-8 lg:py-2 lg:px-8 p-10 lg:p-0'>
           {/* back  */}
           <article className="flex items-center justify-between">
@@ -209,13 +208,13 @@ const SignUp = () => {
                   {...register("name", { required: true })}
                   className={
                     toggleLight
-                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white dark:text-black mt-1"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-10"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[330px] focus:outline-none text-white dark:text-black mt-1 h-10"
                   }
                   placeholder="Full name"
                 />
               </div>
-              <div className="flex flex-col mt-1">
+              <div className="flex flex-col mt-1 h-10">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white dark:text-black"}
@@ -227,13 +226,13 @@ const SignUp = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-10"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-10"
                   }
                   placeholder="example@gmail.com"
                 />
               </div>
-              <div className="flex flex-col mt-1">
+              <div className="flex flex-col mt-1 h-10">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white dark:text-black"}
@@ -245,14 +244,14 @@ const SignUp = () => {
                   type={passwordVisible ? "text" : "password"}
                   className={
                     toggleLight
-                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-10"
                       : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 "
                   }
                   placeholder="Enter password"
                 />
               </div>
               {/* password confirm */}
-              <div className="relative flex flex-col mt-1">
+              <div className="relative flex flex-col mt-1 h-10">
                 <label
                   htmlFor="name"
                   className={toggleLight ? "" : "text-white dark:text-black"}
@@ -264,7 +263,7 @@ const SignUp = () => {
                   type={passwordVisible ? "text" : "password"}
                   className={
                     toggleLight
-                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-10"
                       : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 "
                   }
                   placeholder="Confirm password"

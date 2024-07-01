@@ -191,8 +191,8 @@ const Login = () => {
                   type="text"
                   className={
                     toggleLight
-                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-7"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-10"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] bg-transparent border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-10"
                   }
                   placeholder="example@gmail.com"
                 />
@@ -209,8 +209,8 @@ const Login = () => {
                   type={passwordVisible ? "text" : "password"}
                   className={
                     toggleLight
-                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-7"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-7"
+                      ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-[95%] border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1 h-10"
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-[95%] border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 h-10"
                   }
                   placeholder="Enter password"
                 />
