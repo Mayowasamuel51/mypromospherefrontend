@@ -6,7 +6,7 @@ import { TbCurrencyNaira } from "react-icons/tb";
 const PostsSkeleton = ({ posts }) => {
     const { FullScreen, isDarkMode } = useStateContext();
     return  Array.from({ length: posts }).map((_, index) => (
-        <div key={index}   className='flex flex-col gap-2 md:gap-4'>
+        <div key={index}   className='flex flex-col gap-4 md:gap-6'>
             <div>
                 <Skeleton baseColor={isDarkMode && "#27272c"} highlightColor={isDarkMode && "#444"}  width={`100%`} height={400} />
             </div>

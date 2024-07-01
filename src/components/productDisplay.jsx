@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 const ProductDisplay = ({ item, other_images }) => {
     const { token } = useStateContext()
     return (
-        <div key={item.id} className="product-display flex flex-col gap-2 md:gap-4">
+        <div key={item.id} className="product-display flex flex-col gap-4 md:gap-6">
             {other_images &&
                 other_images?.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                 <Splide options={{
