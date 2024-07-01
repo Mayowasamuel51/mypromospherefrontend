@@ -124,7 +124,7 @@ const SignUp = () => {
   }, []);
   return (
     
-    <section className="relative newhero min-h-screen flex justify-center items-center">
+    <section className="relative newhero min-h-screen flex justify-center items-end bigLg:items-center">
       <Helmet>
         <meta charSet="utf-8" />
         <title>SignUp</title>
@@ -153,7 +153,7 @@ const SignUp = () => {
       }
       <Toaster position="top-center" />
       <div
-        className={toggleLight ? "overflow-hidden inset bg-white dark:bg-darkBg rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]" : "overflow-hidden inset bg-darkBg dark:bg-white rounded-md lg:rounded-3xl flex w-[95%] lg:w-[60%]"
+        className={toggleLight ? "overflow-hidden bg-white dark:bg-darkBg rounded-tl-[70px] rounded-tr-[70px] md:rounded-sm bigLg:rounded-3xl flex w-full lg:w-[60%]" : "overflow-hidden bg-darkBg dark:bg-white rounded-tl-[70px] rounded-tr-[70px] md:rounded-sm bigLg:rounded-3xl flex w-full lg:w-[60%]"
         }
       >
         {/* sign-up center  */}
