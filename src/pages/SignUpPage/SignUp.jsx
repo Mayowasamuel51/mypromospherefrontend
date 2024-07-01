@@ -168,9 +168,9 @@ const SignUp = () => {
 
             <button onClick={toggleBtn}>
               {toggleLight ? (
-                <MdNightlight className="text-white dark:text-black text-[2rem]" />
+                <MdNightlight className="text-black dark:text-white text-[2rem]" />
               ) : (
-                <PiSunLight className="text-white dark:text-black text-[2rem]" />
+                <PiSunLight className="text-black dark:text-white text-[2rem]" />
               )}
             </button>
           </article>
