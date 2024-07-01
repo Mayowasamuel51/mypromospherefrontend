@@ -143,8 +143,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "bg-white dark:bg-darkBg w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-[60px] md:rounded-sm bigLg:rounded-3xl p-10 lg:px-8 flex justify-between"
-            : "bg-darkBg dark:bg-white w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-[60px] md:rounded-sm bigLg:rounded-3xl p-10 lg:px-8 flex justify-between"
+            ? "bg-white dark:bg-darkBg w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-[60px] md:rounded-sm bigLg:rounded-3xl p-10 lg:px-8 lg:p-0 flex justify-between"
+            : "bg-darkBg dark:bg-white w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-[60px] md:rounded-sm bigLg:rounded-3xl p-10 lg:px-8 lg:p-0 flex justify-between"
         }
       >
         <div>
