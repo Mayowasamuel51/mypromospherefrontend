@@ -25,7 +25,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const viewPassword = ()=> {
+  const viewPassword = () => {
     setPasswordVisible(prev => !prev)
   }
 
@@ -68,7 +68,7 @@ const Login = () => {
         setToken(response.data)
         setUser(response.data)
         localStorage.setItem("user-details", JSON.stringify(response.data))
-  
+
         navigate("/")
         toast.success("successfully Logged In")
         setLoading(false)
@@ -112,8 +112,8 @@ const Login = () => {
   }, []);
 
   return (
-    <section className="relative bg-purple h-screen">
-         <Helmet>
+    <section className="relative newhero h-screen">
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Login</title>
         <meta
@@ -127,7 +127,7 @@ const Login = () => {
             "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
           }
         />
-          <meta
+        <meta
           property="og:description"
           content={
             "Mypromosphere is the premier online marketplace that helps you effectively sell your products and services to customers."
@@ -143,8 +143,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white dark:bg-darkBg w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
-            : "inset bg-darkBg dark:bg-white w-[95%] max-w-2xl md:rounded-3xl rounded-sm px-4 lg:px-8 flex justify-between"
+            ? "inset bg-white dark:bg-darkBg w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-3xl md:rounded-sm bigLg:rounded-3xl px-4 lg:px-8 flex justify-between"
+            : "inset bg-darkBg dark:bg-white w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-3xl md:rounded-sm bigLg:rounded-3xl px-4 lg:px-8 flex justify-between"
         }
       >
         <div>
@@ -248,11 +248,11 @@ const Login = () => {
               </article>
             </form>
             <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
-                  <img src={google} alt="" className="px-3 " />
-                  {loginUrl != null && (
-                    <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
-                  )}
-                </button>
+              <img src={google} alt="" className="px-3 " />
+              {loginUrl != null && (
+                <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
+              )}
+            </button>
             {/* end of form  */}
           </article>
         </div>

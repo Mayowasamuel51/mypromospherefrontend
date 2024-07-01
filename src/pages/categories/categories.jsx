@@ -7,7 +7,6 @@ import ProductDisplay from "../../components/productDisplay";
 const Categories = () => {
   const { category } = useParams();
   const { data, isLoading, error } = FetchCategories(category)
-  // console.log(data)
   return (
     <>
       <Navbar />
