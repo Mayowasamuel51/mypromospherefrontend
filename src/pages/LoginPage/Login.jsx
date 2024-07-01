@@ -112,7 +112,7 @@ const Login = () => {
   }, []);
 
   return (
-    <section className="relative newhero h-screen">
+    <section className="relative newhero h-screen flex justify-center items-end bigLg:items-center">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Login</title>
@@ -143,8 +143,8 @@ const Login = () => {
       <div
         className={
           toggleLight
-            ? "inset bg-white dark:bg-darkBg w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-3xl md:rounded-sm bigLg:rounded-3xl px-4 lg:px-8 flex justify-between"
-            : "inset bg-darkBg dark:bg-white w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-3xl md:rounded-sm bigLg:rounded-3xl px-4 lg:px-8 flex justify-between"
+            ? "bg-white dark:bg-darkBg w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-3xl md:rounded-sm bigLg:rounded-3xl px-4 lg:px-8 flex justify-between"
+            : "bg-darkBg dark:bg-white w-full md:w-[95%] max-w-2xl rounded-tl-3xl rounded-tr-3xl md:rounded-sm bigLg:rounded-3xl px-4 lg:px-8 flex justify-between"
         }
       >
         <div>
