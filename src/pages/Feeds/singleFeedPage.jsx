@@ -15,48 +15,9 @@ import FeedBack from "./components/feedBack"
 import { toast } from "sonner";
 import Clipboard from "react-clipboard.js";
 
-const api = import.meta.env.VITE_GENERAL;
-const containerVariant = {
-    initial: {
-        opacity: 0,
-        zIndex: -1
-    },
-    animate: {
-        opacity: 1,
-        zIndex: 99999999,
-        transition: {
-            duration: 0.5, delayChildren: 0.4
-        }
-    },
-    exit: {
-        opacity: 0,
-        zIndex: -1,
-        transition: {
-            when: "afterChildren", staggerChildren: 0.3, duration: 0.3
-        }
-    }
-}
 
-const divVariant = {
-    initial: {
-        opacity: 0,
-        y: "-100%",
-    },
-    animate: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: "spring", staggerChildren: 0.3, delayChildren: 0.5, duration: 0.5, stiffness: 250
-        }
-    },
-    exit: {
-        opacity: 0,
-        y: "-100%",
-        transition: {
-            when: "afterChildren", duration: 0.3, staggerChildren: 0.3,
-        }
-    }
-}
+const api = import.meta.env.VITE_GENERAL;
+
 
 const SingleFeedPage = () => {
     const [comment, setComment] = useState(false);

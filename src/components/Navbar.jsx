@@ -5,6 +5,7 @@ import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-
 import Links from "./links";
 import ProfileHover from "./profileHover";
 import { MdLogin } from "react-icons/md";
+import PropTypes from 'prop-types';
 
 
 // assests
@@ -95,4 +96,8 @@ export default function Navbar({ profile }) {
       }
     </motion.header>
   );
+}
+
+Navbar.propTypes = {
+  profile : PropTypes.string
 }
