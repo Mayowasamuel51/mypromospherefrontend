@@ -250,7 +250,7 @@ const Login = () => {
             <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
               <img src={google} alt="" className="px-3 " />
               {loginUrl != null && (
-                <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
+                <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto" href={loginUrl}>Continue with Google</a>
               )}
             </button>
             {/* end of form  */}
