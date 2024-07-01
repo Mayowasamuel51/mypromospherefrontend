@@ -253,7 +253,7 @@ const Login = () => {
         </div>
 
         {/* side  */}
-        <div className="hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-tr-3xl rounded-br-3xl">
+        <div className="hidden bigLg:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-tr-3xl rounded-br-3xl">
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>

@@ -316,29 +316,17 @@ const SignUp = () => {
                   alt=""
                   className="w-full text-white colorize-img3"
                 />
-                {/* <div className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
-                  <img src={google} alt="" className="px-3" />
-                  <p className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto">
-                    <a href={loginUrl}>Continue with Google</a>
-                  </p>
-                </div> */}
                   <button className="bg-white py-[.4rem] text-dark w-full rounded-full border border-black flex items-center">
                   <img src={google} alt="" className="px-3 " />
                   {loginUrl != null && (
                     <a className="text-[.8rem] sm:text-[1.125rem] smax:text[1.23rem] mx-auto " href={loginUrl}>Continue with Google</a>
                   )}
                 </button>
-                {/* <p className={toggleLight ? "my-2" : "my-2 text-white"}>
-                  You already have an account? <Link className="text-red" to="/login">Login</Link>{" "}
-                </p> */}
               </article>
             </form>
-            {/* end of form  */}
           </article>
         </div>
-
-        {/* side  */}
-        <div className="flex-[3] hidden smax:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative">
+        <div className="flex-[3] hidden bigLg:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative">
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>
