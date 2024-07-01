@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { motion, useMotionValueEvent, useScroll, AnimatePresence } from 'framer-motion';
-// import { Link as ScrollLink } from 'react-scroll';
 import Links from "./links";
 import ProfileHover from "./profileHover";
 import { MdLogin } from "react-icons/md";
@@ -81,11 +80,11 @@ export default function Navbar({ profile }) {
       </nav>
 
       {token ?
-        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
+        <div className="hidden z-50 bigLg:flex bigLg:items-center bigLg:gap-x-6">
           <ProfileHover LogOut={LogOut} />
         </div>
         :
-        <div className="hidden z-50 exl:flex exl:items-center exl:gap-x-6">
+        <div className="hidden z-50 bigLg:flex bigLg:items-center bigLg:gap-x-6">
           <Link to="/login">
             <button className={`flex items-center gap-2 text-lg py-2 px-5 text-white font-['Poppinbase font-medium`}>
               <MdLogin size={30} />
