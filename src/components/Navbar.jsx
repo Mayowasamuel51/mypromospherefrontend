@@ -65,7 +65,7 @@ export default function Navbar({ profile }) {
         <h1 className={`text-sm font-bold text-white md:text-lg exl:text-xl`}>MyPromoSphere</h1>
       </Link>
 
-      <div onClick={handleToggle} className="z-[9999999999999] exl:hidden cursor-pointer">
+      <div onClick={handleToggle} className="z-[9999999999999] bigLg:hidden cursor-pointer">
         {toggleIcon ? (
           <XMarkIcon width={35} className={`${toggleIcon ? "text-black dark:text-white" : "text-white"}  duration-300 z-[9999999999999]`} />
         ) : (
@@ -76,7 +76,7 @@ export default function Navbar({ profile }) {
         {toggleIcon && <MobileNav handleToggle={handleToggle} />}
       </AnimatePresence>
 
-      <nav className={`text-black dark:text-white hidden exl:flex exl:items-center exl:gap-x-[68px]`}>
+      <nav className={`text-black dark:text-white hidden bigLg:flex bigLg:items-center bigLg:gap-x-[68px]`}>
         <Links hidden={hidden} bg={bg} />
       </nav>
 

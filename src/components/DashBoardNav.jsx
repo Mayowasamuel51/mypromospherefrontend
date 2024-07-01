@@ -32,21 +32,21 @@ const DashBoardNav = () => {
               <h1 className="text-xs font-bold text-white md:text-lg exl:text-xl">MyPromoSphere</h1>
             </div>
           </Link>
-          <div className="z-20 lg:hidden">
+          <div className="z-20 bigLg:hidden">
             {toggleNav ? (
               <XMarkIcon width={35} className={`${toggleNav ? "text-black dark:text-white" : "text-white"}  duration-300 z-[9999999999999]`} onClick={handleToggle} />
             ) : (
               <Bars3BottomRightIcon width={35} className={`${toggleNav ? "text-black dark:text-white" : "text-white"}  duration-300 z-[9999999999999]`} onClick={handleToggle} />
             )}
           </div>
-          <div className="lg:block hidden text-white">
+          <div className="bigLg:block hidden text-white">
             <Links />
           </div>
           <AnimatePresence>
             {toggleNav && <DashboardMobileNav toggleNav={toggleNav} LogOut={LogOut} handleToggle={handleToggle} />}
           </AnimatePresence>
-          <motion.div className={`hidden text-black fixed inset-0 lg:static lg:flex flex-col justify-between lg:flex-row items-center gap-10`}>
-            <motion.nav  className={`min-h-fit lg:py-0 py-10 flex justify-between items-center gap-10 text-white bg-transparent bg-opacity-5`}>
+          <motion.div className={`hidden text-black fixed inset-0 lg:static bigLg:flex flex-col justify-between bigLg:flex-row items-center gap-10`}>
+            <motion.nav  className={`min-h-fit bigLg:py-0 py-10 flex justify-between items-center gap-10 text-white bg-transparent bg-opacity-5`}>
               <ProfileHover LogOut={LogOut} />
             </motion.nav>
           </motion.div>

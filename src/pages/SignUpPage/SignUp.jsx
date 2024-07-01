@@ -246,7 +246,7 @@ const SignUp = () => {
                   className={
                     toggleLight
                       ? "dark:bg-transparent valid:bg-transparent autofill:bg-transparent w-full border border-black border-t-0 border-r-0 border-l-0 focus:outline-none max-w-[370px] mt-1"
-                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent  bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 "
+                      : "dark:bg-transparent valid:bg-transparent autofill:bg-transparent bg-transparent w-full border border-white border-t-0 border-r-0 border-l-0 max-w-[370px] focus:outline-none text-white dark:text-black mt-1 "
                   }
                   placeholder="Enter password"
                 />

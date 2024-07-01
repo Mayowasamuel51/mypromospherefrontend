@@ -102,11 +102,7 @@ const Login = () => {
         throw new Error('Something went wrong!');
       })
       .then((data) => {
-        // setToken(data.data)
-        // setUser(data.data)
         setLoginUrl(data.url)
-        // navigate("/")
-        // console.log(data)
       })
       .catch((error) => console.error(error));
   }, []);
@@ -148,7 +144,6 @@ const Login = () => {
         }
       >
         <div>
-          {/* back  */}
           <article className="flex items-center justify-between py-2">
             <Link to={"/"}>
               <button className="focus-outline-none">
