@@ -157,7 +157,7 @@ const SignUp = () => {
         }
       >
         {/* sign-up center  */}
-        <div className='flex-[4] py-2 lg:px-8 p-10 lg:p-0'>
+        <div className='flex-[4] py-8 lg:py-2 lg:px-8 p-10 lg:p-0'>
           {/* back  */}
           <article className="flex items-center justify-between">
             <Link to={"/"}>
