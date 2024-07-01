@@ -18,7 +18,6 @@ const ProductDisplay = ({ item, other_images }) => {
                 other_images?.filter((img) => img.itemfree_ads_id === item.id).length > 0 ?
                 <Splide options={{
                     type: 'slide',
-                    focus: 1,
                     gap: "20px",
                     perPage: 1,
                     arrows: false,

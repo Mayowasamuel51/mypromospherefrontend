@@ -193,7 +193,7 @@ const FeedsHome = () => {
                 <motion.div variants={containerVariant} initial="initial" animate="animate" exit="exit" className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80">
                   {(modal && searchResults?.data && searchResults.data.length > 0) &&
                     <motion.div variants={divVariant} className="relative">
-                      <FaXmark size={40} className="z-[99999999999] text-black dark:text-white absolute -top-10 -right-10" onClick={() => removeModal()} />
+                      <FaXmark size={40} className="z-[99999999999] text-white absolute -top-10 -right-10" onClick={() => removeModal()} />
                       <Splide options={{
                         type: 'slide',
                         perPage: 2,
@@ -269,7 +269,7 @@ const FeedsHome = () => {
                         "bg-[#EC6A87] text-white"
                         }`}
                     >
-                      Top Video Ads
+                      For You
                     </motion.button>
                   </Link>
                 </div>
@@ -320,7 +320,7 @@ const FeedsHome = () => {
                   }`}
               >
                 <FaVideo size={20} className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`} />
-                <p className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`}>Top Video Ads</p>
+                <p className={`${location.pathname === "/top-videos" ? "text-[#EC6A87]" : "text-black"}`}>For You</p>
               </motion.button>
             </Link>
           </div>
