@@ -24,25 +24,25 @@ const ProductDisplay = ({ item, other_images }) => {
                     pagination: true,
                     snap: true,
                     width: "100%",
-                    height: "300px",
+                    height: "400px",
                 }} className="">
                     <SplideSlide className='rounded-md'>
                         <Link to={`/feed/${item.id}`}>
-                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                            <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 400, objectFit: "cover" }} className="rounded-md object-cover" />
                         </Link>
                     </SplideSlide>
                     {other_images &&
                         other_images?.filter((img) => img.itemfree_ads_id === item.id).map((img, index, arr) => arr.length > 0 && (
                             <SplideSlide key={img.id} className='rounded-md'>
                                 <Link to={`/feed/${item.id}`}>
-                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                                    <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={img.itemadsimagesurls} alt="" style={{ width: "100%", height: 400, objectFit: "cover" }} className="rounded-md object-cover" />
                                 </Link>
                             </SplideSlide>
                         ))}
                 </Splide> :
                 <div>
                     <Link to={`/feed/${item.id}`}>
-                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 300, objectFit: "cover" }} className="rounded-md object-cover" />
+                        <LazyLoadImage width={`100%`} effect='blur' visibleByDefault={true} src={`${api_gerenal}/public/storage/${item.titleImageurl.slice(7)}`} alt="" style={{ width: "100%", height: 400, objectFit: "cover" }} className="rounded-md object-cover" />
                     </Link>
                 </div>
             }
