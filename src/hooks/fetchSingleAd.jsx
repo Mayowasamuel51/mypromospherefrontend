@@ -10,6 +10,7 @@ const FetchSingleAd = (id) => {
     queryFn: ({queryKey})=> axios.get(`${api_fetch_single_ad}${queryKey[1]}`),
     initialData: ()=> {
       const ad = queryClient.getQueriesData(["trendingAds"]).flat()[1]?.data.find((ad)=> +ad.id === parseInt(id))
+      console.log(ad)
       if (ad) return {data: ad}
       else return undefined
   }
