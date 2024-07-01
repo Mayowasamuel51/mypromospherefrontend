@@ -143,7 +143,7 @@ const Login = () => {
             : "bg-darkBg dark:bg-white w-full md:w-[95%] rounded-tl-[70px] rounded-tr-[70px] md:rounded-sm bigLg:rounded-3xl p-10 lg:px-8 lg:p-0 flex"
         }
       >
-        <div>
+        <div className="flex-1">
           <article className="flex items-center justify-between py-2">
             <Link to={"/"}>
               <button className="focus-outline-none">
@@ -253,7 +253,7 @@ const Login = () => {
         </div>
 
         {/* side  */}
-        <div className="hidden bigLg:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-tr-3xl rounded-br-3xl">
+        <div className="flex-1 hidden bigLg:block bg-gradient-to-b from-[#EC6A87] to-[#D60DE8] relative right-[-2rem] rounded-tr-3xl rounded-br-3xl">
           <h1 className="px-12 max-w-[20rem] smax:mt-[4rem] lg:mt-22 md:mt-12 text-black font-700">
             Find hundreds of services online and post your own content too.
           </h1>
